@@ -1,0 +1,174 @@
+@import "sanitize";
+@import "mixins";
+@import "fonts";
+
+body {
+	background-color: #ccc;
+	font-size: 18px;
+	line-height: 24px;
+	font-family: "et-bembo";
+}
+
+#main {
+	background-color: white;
+	position: absolute;
+	left: 10;
+	top: 10;
+//	width: 1024px;
+//	height: 768px;
+	width: 768px;
+	height: 1024px;
+}
+
+#navbar {
+	@include notouch;
+	font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+	font-size: 14px;
+	position: absolute;
+	height: 40px;
+	width: 100%;
+	background-color: gray;
+	color: white;
+	text-align: center;
+	& .button {
+		width: 40px;
+		height: 40px;
+//		border: 1px solid white;
+		display: inline-block;
+		padding-top:4px;
+		font-size: 40px;
+		&:hover {
+			background-color: #333;
+		}
+	}
+	& #navtitle {
+		position: relative;
+		display: inline-block;
+		height: 40px;
+//		width: 1024px - 160px;
+		width: 768px - 160px;
+		top: -4px;
+	}
+}
+
+#content {
+	position: absolute;
+	display: block;
+	top:40px;
+	left: 0px;
+//	width:1024px;
+//	height: 768px-40px;
+	width: 768px;
+	height: 1024px-40px;
+}
+
+.page {
+	width:100%;
+	height:100%;
+	&.portrait {
+		& .textframe {
+			width: 640px;
+			height: 864px;
+			top: 64px;
+			left: 64px;
+		}
+	}
+	&.landscape {
+		& .textframe {
+			width: 480px;
+			height: 648px;
+			top:40px;
+			&.verso {
+				left: 24px;
+			}
+			&.recto {
+				left: 24px + 480px + 16px;
+			}
+		}
+	}
+}
+
+.textframe {
+	display: block;
+	position: absolute;
+	overflow-y: scroll;
+}
+
+p.title, p.author {
+	text-align: center;
+	font-size: 24px;
+	line-height: 48px;
+}
+
+p.title {
+	font-style: italic;
+}
+
+p.author {
+	font-weight: bold;
+}
+
+div.stanza {
+	margin-bottom: 24px;
+}
+
+p.cantohead {
+	font-weight: bold;
+	text-align: center;
+	line-height: 48px;
+	font-size: 24px;
+	letter-spacing: 0px;
+	margin-bottom: 24px;
+}
+
+p.summary {
+	font-style: italic;
+	margin: 24px;
+}
+
+// individual poet fixes
+
+.norton {
+	& p.cantohead {
+		letter-spacing: 3px;
+	}
+	& span.note {
+		display: none;
+	}
+	& p + p {
+		text-indent: 24px;
+	}
+	& p.summary + p {
+		text-indent: 0;
+	}
+	& p + p.summary {
+		text-indent: 0;
+	}
+}
+
+.wright {
+	& p.slindent {
+		text-indent: 1.1rem;
+	}
+	& p.slindent2em {
+		text-indent: 1.1rem;
+	}
+	& p.slindent4em {
+		text-indent: 2.2rem;
+	}
+	& p.slindent6em {
+		text-indent: 3.3rem;
+	}
+	& p.slindent8em {
+		text-indent: 4.4rem;
+	}
+	& p.slindent10em {
+		text-indent: 5.5rem;
+	}
+	& p.slindent12em {
+		text-indent: 6.6rem;
+	}
+	& p.slindent14em {
+		text-indent: 7.7rem;
+	}
+}
