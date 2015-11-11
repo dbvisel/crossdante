@@ -70,7 +70,7 @@ function setlens(newtrans, newcanto) {
 	translation = newtrans;
 	canto = newcanto;
 	if(canto > 0) {
-		$("#navtitle").html(translatorname[translation]+" · Canto "+canto);
+		$("#navtitle").html(translatorname[translation]+" · <strong>Canto "+canto+"</strong>");
 	} else {
 		$("#navtitle").html("&nbsp;");
 	}
