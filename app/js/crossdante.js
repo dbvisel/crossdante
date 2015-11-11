@@ -1,5 +1,5 @@
 var translatorclass = ["italian poetry","longfellow poetry","norton","wright poetry"];
-var translatorname = ["Dante Alighieri","Henry Wadsworth Longfellow","Charles Eliot Norton","S. Fowler Wright"];
+var translatorname = ["Dante","Longfellow","Norton","Wright"];
 var text = [];
 
 var translation = 0;
