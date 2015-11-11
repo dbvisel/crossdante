@@ -8,6 +8,7 @@ var canto = 0;
 var cantos = 4;
 var percentage = 0;
 var initialtextwidth = 0;
+var lineheight = 24;
 
 
 $.fn.textWidth = function(text) {
@@ -52,8 +53,17 @@ function recalclenssize() {
 
 }
 
+function rounded(h) {
+	return lineheight * Math.floor(h / lineheight);
+}
 
 function setlens(newtrans, newcanto) {
+//	var currentpercentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
+	var currentpercentage = rounded($("#text").scrollTop())/($("#text")[0].scrollHeight);
+	if((newtrans - translation) === 0) {
+		currentpercentage = 0;
+	}
+
 	if(newtrans >= translations) {
 		newtrans = 0;
 	}
@@ -75,6 +85,9 @@ function setlens(newtrans, newcanto) {
 		$("#navtitle").html("&nbsp;");
 	}
 	fixpadding("#text",initialtextwidth);
+	var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
+//	var scrollto = currentpercentage * ($("#text")[0].scrollHeight));
+	$("#text").scrollTop(scrollto);
 }
 
 
