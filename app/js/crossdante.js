@@ -39,6 +39,19 @@ function fixpadding(tofix) {
 	}
 }
 
+function recalclenssize() {
+	lensheight = document.window.height() - $("nav").height();
+	lenswidth = document.window.width();
+	if(lenswidth > lensheight) {
+		$("#lens").addClass("landscape").removeClass("portrait");
+	} else {
+		$("#lens").addClass("portrait").removeClass("landscape");
+	}
+	$("#navbar").css("width",lenswidth);
+	$("#lens").css({"width":lenswidth,"height":lensheight});
+
+}
+
 
 function setlens(newtrans, newcanto) {
 	if(newtrans >= translations) {
@@ -83,16 +96,23 @@ $("document").ready(function() {
 	$(document).keydown(function(e) {
 		e.preventDefault();
 		if((e.keyCode || e.which) === 37) {
+			$("#navprev").addClass('on');
 			setlens(translation-1,canto);
 		}
 		if((e.keyCode || e.which) === 39) {
+			$("#navnext").addClass('on');
 			setlens(translation+1,canto);
 		}
 		if((e.keyCode || e.which) === 38) {
+			$("#navup").addClass('on');
 			setlens(translation,canto-1);
 		}
 		if((e.keyCode || e.which) === 40) {
+			$("#navdown").addClass('on');
 			setlens(translation,canto+1);
 		}
+	}).keyup(function(e) {
+		e.preventDefault();
+		$(".button").removeClass("on");
 	});
 });
