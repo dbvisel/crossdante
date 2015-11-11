@@ -59,7 +59,8 @@ function rounded(h) {
 
 function setlens(newtrans, newcanto) {
 //	var currentpercentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
-	var currentpercentage = rounded($("#text").scrollTop())/($("#text")[0].scrollHeight);
+	var currentpercentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
+
 	if((newtrans - translation) === 0) {
 		currentpercentage = 0;
 	}
@@ -85,8 +86,13 @@ function setlens(newtrans, newcanto) {
 		$("#navtitle").html("&nbsp;");
 	}
 	fixpadding("#text",initialtextwidth);
-	var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
-//	var scrollto = currentpercentage * ($("#text")[0].scrollHeight));
+// this method still isn't great! it tries to round to current lineheight to avoid cutting off lines
+
+//	var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
+	var scrollto = rounded((currentpercentage * ($("#text").prop('scrollHeight'))));
+
+
+
 	$("#text").scrollTop(scrollto);
 }
 
