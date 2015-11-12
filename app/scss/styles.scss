@@ -2,30 +2,37 @@
 @import "mixins";
 @import "fonts";
 
+$navheight: 40px;
+$fontsize: 18px;
+$lineheight: 24px;
+
 body {
-	background-color: #ccc;
-	font-size: 18px;
-	line-height: 24px;
+	font-size: $fontsize;
+	line-height: $lineheight;
 	font-family: "et-bembo";
+	height: 100%;
+	width: 100%;
+	margin: 0;
 }
 
 #main {
-	background-color: white;
 	position: absolute;
-	left: 10;
-	top: 10;
+	width: 100%;
+	height: 100%;
+//	left: 10;
+//	top: 10;
 //	width: 1024px;
 //	height: 768px;
-	width: 768px;
-	height: 1024px;
+//	width: 768px;
+//	height: 1024px;
 }
 
 #navbar {
 	@include notouch;
 	font-family: "Source Sans Pro";
-	font-size: 16px;
+	font-size: $fontsize;
 	position: absolute;
-	height: 40px;
+	height: $navheight;
 	width: 100%;
 	background-color: gray;
 	color: white;
@@ -39,10 +46,10 @@ body {
 		display: inline-block;
 	}
 	& .button {
-		width: 40px;
-		height: 40px;
+		width: $navheight;
+		height: $navheight;
 		display: inline-block;
-		padding-top:8px;
+		padding-top:$navheight / 5; // 8px
 		transition: 0.25s;
 		&:hover, &.on {
 			color: #333;
@@ -51,43 +58,60 @@ body {
 	& #navtitle {
 		position: relative;
 		display: inline-block;
-		height: 40px;
-		padding-top: 8px;
+		height: $navheight;
+		padding-top: $navheight / 5; //8px
 	}
 }
 
 #content {
 	position: absolute;
 	display: block;
-	top:40px;
-	left: 0px;
+	top: $navheight;
+	left: 0;
 //	width:1024px;
 //	height: 768px-40px;
-	width: 768px;
-	height: 1024px-40px;
+//	width: 768px;
+//	height: 1024px-40px;
+	width: 100%;
+	height: 100%; // this should be 100% - $navheight;
+	overflow: hidden;
 }
 
 .page {
 	width:100%;
 	height:100%;
+	display: none;
+	overflow: hidden;
+	&.on {
+		display:block;
+	}
 	&.portrait {
 		& .textframe {
-			width: 640px;
-			height: 864px;
-			top: 64px;
-			left: 64px;
+//			width: 640px;
+//			height: 864px;
+			position: absolute;
+			padding: 64px 64px;
+			height: 100%;
+			width: 100%;
+			&:last-child {
+				margin-bottom: 64px;
+			}
 		}
 	}
 	&.landscape {
 		& .textframe {
-			width: 480px;
-			height: 648px;
-			top:40px;
+//			width: 480px;
+//			height: 648px;
+			position: absolute;
+			padding: 40px 128px;
+			height: 100%;
+			width: 100%;
+			&:last-child {
+				margin-bottom: 40px;
+			}
 			&.verso {
-				left: 24px;
 			}
 			&.recto {
-				left: 24px + 480px + 16px;
 			}
 		}
 	}
@@ -101,12 +125,13 @@ body {
 
 p.title, p.author {
 	text-align: center;
-	font-size: 24px;
-	line-height: 48px;
+	font-size: $fontsize * 1.5;
+	line-height: $lineheight * 2;
 }
 
 p.title {
 	font-style: italic;
+	margin-top: 4 * $lineheight;
 }
 
 p.author {
@@ -114,34 +139,34 @@ p.author {
 }
 
 div.stanza {
-	margin-bottom: 24px;
+	margin-bottom: $lineheight;
 }
 
 p.cantohead {
 	font-weight: bold;
 	text-align: center;
-	line-height: 48px;
-	font-size: 24px;
-	letter-spacing: 0px;
-	margin-bottom: 24px;
+	line-height: $lineheight * 2;
+	font-size: $fontsize * 1.5;
+	letter-spacing: 0;
+	margin-bottom: $lineheight;
 }
 
 p.summary {
 	font-style: italic;
-	margin: 24px;
+	margin: $lineheight 2 * $lineheight;
 }
 
 // individual poet fixes
 
 .norton {
 	& p.cantohead {
-		letter-spacing: 3px;
+		letter-spacing: $fontsize * 3/16;
 	}
 	& span.note {
 		display: none;
 	}
 	& p + p {
-		text-indent: 24px;
+		text-indent: $lineheight;
 	}
 	& p.summary + p {
 		text-indent: 0;
@@ -153,27 +178,27 @@ p.summary {
 
 .wright {
 	& p.slindent {
-		text-indent: 1.1rem;
+		text-indent: 1*$lineheight;
 	}
 	& p.slindent2em {
-		text-indent: 1.1rem;
+		text-indent: 2*$lineheight;
 	}
 	& p.slindent4em {
-		text-indent: 2.2rem;
+		text-indent: 4*$lineheight;
 	}
 	& p.slindent6em {
-		text-indent: 3.3rem;
+		text-indent: 6*$lineheight;
 	}
 	& p.slindent8em {
-		text-indent: 4.4rem;
+		text-indent: 8*$lineheight;
 	}
 	& p.slindent10em {
-		text-indent: 5.5rem;
+		text-indent: 10*$lineheight;
 	}
 	& p.slindent12em {
-		text-indent: 6.6rem;
+		text-indent: 12*$lineheight;
 	}
 	& p.slindent14em {
-		text-indent: 7.7rem;
+		text-indent: 14*$lineheight;
 	}
 }
