@@ -6,7 +6,7 @@ var translation = 0;
 var translations = 4;
 var canto = 0;
 var cantos = 4;
-var percentage = 0;
+
 var initialtextwidth = 0;
 
 var lineheight = 24;
@@ -79,12 +79,12 @@ function rounded(h) {
 }
 
 
-function setlens(newtrans, newcanto) {
-//	var currentpercentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
-	var currentpercentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
-
-	if((newtrans - translation) === 0) {
-		currentpercentage = 0;
+function setlens(newtrans, newcanto, percentage) {
+	var changetrans = false;
+	if(newtrans - translation !== 0) {
+		changetrans = true;
+//	var percentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
+		percentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
 	}
 
 	if(newtrans >= translations) {
@@ -100,26 +100,40 @@ function setlens(newtrans, newcanto) {
 		newcanto = cantos-1;
 	}
 	$("#text").html(text[newtrans][newcanto]).removeClass(translatorclass[translation]).addClass(translatorclass[newtrans]);
+
 	translation = newtrans;
 	canto = newcanto;
+
 	if(canto > 0) {
 		$("#navtitle").html(translatorname[translation]+" · <strong>Canto "+canto+"</strong>");
 	} else {
 		$("#navtitle").html("&nbsp;");
 	}
+
 	fixpadding("#text",initialtextwidth);
 
+	if(changetrans) {
 // this method still isn't great! it tries to round to current lineheight 
 // to avoid cutting off lines
 //var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
-	var scrollto = rounded((currentpercentage * ($("#text").prop('scrollHeight'))));
-	$("#text").scrollTop(scrollto);
+		var scrollto = rounded((percentage * ($("#text").prop('scrollHeight'))));
+		$("#text").scrollTop(scrollto);
+	} else {
+		if(percentage > 0) {
+			$('#text').scrollTop($('#text')[0].scrollHeight);
+		} else {
+			$('#text').scrollTop(0);
+		}
+	}
 }
 
 
 $("document").ready(function() {
 	setpage("lens");
 	resize();
+
+// button controls
+
 	$("#navprev").click(function() {
 		setlens(translation-1,canto);
 	});
@@ -132,6 +146,33 @@ $("document").ready(function() {
 	$("#navdown").click(function() {
 		setlens(translation,canto+1);
 	});
+
+// swipe controls
+
+	$("#lens").touchwipe({
+		wipeLeft: function() { setlens(translation+1,canto); },
+		wipeRight: function() { setlens(translation-1,canto); },
+
+// these need to check if you're at the start/end of section
+
+		wipeUp: function() { 
+			if($("#text").scrollTop() === 0) {
+				setlens(translation,canto-1,1);  // this needs to be at the bottom!
+			}
+		},
+		wipeDown: function() { 
+			if(($("#text").scrollTop() + $("#text").outerHeight())/($("#text").prop('scrollHeight')) >= 1) {
+				setlens(translation,canto+1); 
+			} 
+		}, 
+		min_move_x: 20,
+		min_move_y: 20,
+		preventDefaultEvents: false
+	});
+
+
+// key controls
+
 	$(document).keydown(function(e) {
 		e.preventDefault();
 		if((e.keyCode || e.which) === 37) {
