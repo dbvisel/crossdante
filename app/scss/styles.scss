@@ -2,13 +2,26 @@
 @import "mixins";
 @import "fonts";
 
-$navheight: 40px;
-$fontsize: 18px;
-$lineheight: 24px;
 
 $headerfamily: "Source Sans Pro";
 $textfamily: "et-bembo";
 
+
+$navheight: 40px;
+$fontsize: 18px;
+$lineheight: 24px;
+
+$navbartext: white;
+$navbartexton: #333;
+$navbarcolor: teal;
+$pagetext: #111;
+$pagebackground: white;
+$pagebackground: #eee;
+
+
+//
+// main
+//
 
 body {
 	font-size: $fontsize;
@@ -23,13 +36,12 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-//	left: 10;
-//	top: 10;
-//	width: 1024px;
-//	height: 768px;
-//	width: 768px;
-//	height: 1024px;
 }
+
+
+//
+// navigation
+//
 
 #navbar {
 	@include notouch;
@@ -38,8 +50,8 @@ body {
 	position: absolute;
 	height: $navheight;
 	width: 100%;
-	background-color: gray;
-	color: white;
+	background-color: $navbarcolor;
+	color: $navbartext;
 	text-align: center;
 	& .left {
 		float: left;
@@ -56,7 +68,7 @@ body {
 		padding-top:$navheight / 5; // 8px
 		transition: 0.25s;
 		&:hover, &.on {
-			color: #333;
+			color: $navbartexton;
 		}
 	}
 	& #navtitle {
@@ -77,15 +89,16 @@ body {
   }
 }
 
+
+//
+// content area
+//
+
 #content {
 	position: absolute;
 	display: block;
 	top: $navheight;
 	left: 0;
-//	width:1024px;
-//	height: 768px-40px;
-//	width: 768px;
-//	height: 1024px-40px;
 	width: 100%;
 	height: 100%; // this should be 100% - $navheight;
 	overflow: hidden;
@@ -96,6 +109,8 @@ body {
 	height:100%;
 	display: none;
 	overflow: hidden;
+	background-color: $pagebackground;
+	color: $pagetext;
 	&.on {
 		display:block;
 	}
@@ -141,7 +156,10 @@ body {
 	}
 }
 
+
+//
 // settings-specific
+//
 
 #translatorlist {
 	margin-top: $lineheight/2;
@@ -153,7 +171,40 @@ body {
 	}
 }
 
+#translationgo {
+	margin-top: $lineheight;
+	& p {
+		margin-bottom: $lineheight/2;
+		width: $lineheight * 15;
+		& select {
+			background-color: $navbarcolor;
+			color: $navbartext;
+			margin-left: $lineheight;
+			display: inline-block;
+			width: $lineheight * 10;
+			padding-left: $lineheight * 0.25;
+			float: right;
+			border-radius: $lineheight / 6;
+		}
+	}
+	& #selectgo {
+		float: right;
+		display: inline-block;
+		border-radius: $lineheight / 6;
+		padding: $lineheight / 12 $lineheight/3;
+		background-color: $navbarcolor;
+		color: $navbartext;
+		font-weight: bold;
+		&:hover {
+			color: $navbartexton;
+		}
+	}
+}
+
+
+//
 // lens-specific
+//
 
 .textframe {
 	display: block;

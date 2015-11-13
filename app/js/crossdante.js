@@ -1,5 +1,9 @@
+// current problems:
+// translation data + canto names needs to be in some kind of object
+// still a mess with currenttranslationlist and translationname
+
 var translatorclass = ["italian poetry","longfellow poetry","norton","wright poetry"];
-var translatorname = ["Dante","Longfellow","Norton","Wright"];
+var translationname = ["Dante","Longfellow","Norton","Wright"];
 var text = [];
 
 var translation = 0;
@@ -7,7 +11,7 @@ var translations = 4;
 var canto = 0;
 var cantos = 4;
 var currentpage = "lens";
-var currenttranslationlist = translatorname.slice();
+var currenttranslationlist = translationname.slice();
 
 var initialtextwidth = 0;
 
@@ -62,13 +66,16 @@ function resize() {
 // 1) if current translation is deleted, current translation needs to be set to something else
 
 function settings() {
-	var thisid;
+	var thisid, insert;
+
+// add in translation chooser
+
 	$("#translatorlist").remove();
-	$("#settings").append('<ul id="translatorlist"></div>');
-	for(var i in translatorname) {
-		thisid = translatorname[i].toLowerCase();
-		$("#translatorlist").append('<li><input type="checkbox" id="'+thisid+'" /><span id="'+thisid+'" >'+translatorname[i]+'</span></li>');
-		$("input#"+thisid).prop("checked", (currenttranslationlist.indexOf(translatorname[i]) > -1));
+	$("#translationchoose").append('<ul id="translatorlist"></div>');
+	for(var i in translationname) {
+		thisid = translationname[i].toLowerCase();
+		$("#translatorlist").append('<li><input type="checkbox" id="'+thisid+'" /><span id="'+thisid+'" >'+translationname[i]+'</span></li>');
+		$("input#"+thisid).prop("checked", (currenttranslationlist.indexOf(translationname[i]) > -1));
 	}
 
 	$('#translatorlist :checkbox').click(function() {
@@ -80,12 +87,31 @@ function settings() {
 		$("input#"+ this.id).prop("checked", !$("input#"+ this.id).prop("checked"));
 		changetranslation(this.id,$("input#"+ this.id).prop("checked"));
 	});
+
+// add in toc
+
+	$("#selectors").remove();
+	$("#translationgo").append('<div id="selectors"><p>Canto: <select id="selectcanto"></select></p><p>Translation: <select id="selecttranslator"></select></p><p><span id="selectgo">Go</span></p></div>');
+	for(i = 0; i < cantos; i++) {
+		insert = (canto == i) ? "selected" : "";
+		$("select#selectcanto").append('<option id="canto'+i+'" '+insert+'>'+i+"</option>");
+	}
+	for(i in currenttranslationlist) {
+		insert = (translation == i) ? "selected" : "";
+		$("select#selecttranslator").append('<option id="translator'+i+'" '+insert+'>'+currenttranslationlist[i]+"</option>");
+	}
+	$("#selectgo").click(function() {
+		var thistrans = parseInt($("#selecttranslator option:selected").attr("id").substr(10));
+		var thiscanto = parseInt($("#selectcanto option:selected").attr("id").substr(5));
+		setpage("lens");
+		setlens(thistrans,thiscanto,0);
+	});
 }
 
 function changetranslation(thisid,isset) {
-	for(var i in translatorname) {
-		if(thisid == translatorname[i].toLowerCase()) {
-			thisid = translatorname[i];
+	for(var i in translationname) {
+		if(thisid == translationname[i].toLowerCase()) {
+			thisid = translationname[i];
 			if(isset) {
 				currenttranslationlist.push(thisid);
 				translations++;
@@ -104,9 +130,15 @@ function changetranslation(thisid,isset) {
 		}
 	}
 
-// also we need to sort current array to match old order
+	var newlist = [];
+	for(i in translationname) {
+		if(currenttranslationlist.indexOf(translationname[i]) > -1) {
+			newlist.push(translationname[i]);
+		}
+	}
+	currenttranslationlist = newlist.slice();
 // also what do we do when one is deleted?
-
+	settings();
 }
 
 // lens-specific
@@ -142,6 +174,8 @@ function rounded(h) {
 
 function setlens(newtrans, newcanto, percentage) {
 	var changetrans = false;
+	var currentcantos = currenttranslationlist.length();
+
 
 // if page isn't set to "lens" this doesn't do anything
 
@@ -158,11 +192,11 @@ function setlens(newtrans, newcanto, percentage) {
 		if(newtrans < 0) {
 			newtrans = translations-1;
 		}
-		if(newcanto >= cantos) {
+		if(newcanto >= currentcantos) {
 			newcanto = 0;
 		}
 		if(newcanto < 0) {
-			newcanto = cantos-1;
+			newcanto = currentcantos-1;
 		}
 		$("#text").html(text[newtrans][newcanto]).removeClass(translatorclass[translation]).addClass(translatorclass[newtrans]);
 
@@ -170,7 +204,7 @@ function setlens(newtrans, newcanto, percentage) {
 		canto = newcanto;
 
 		if(canto > 0) {
-			$("#navtitle").html(translatorname[translation]+" · <strong>Canto "+canto+"</strong>");
+			$("#navtitle").html(translationname[translation]+" · <strong>Canto "+canto+"</strong>");
 		} else {
 			$("#navtitle").html("&nbsp;");
 		}
