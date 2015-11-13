@@ -6,6 +6,8 @@ var translation = 0;
 var translations = 4;
 var canto = 0;
 var cantos = 4;
+var currentpage = "lens";
+var currenttranslationlist = translatorname.slice();
 
 var initialtextwidth = 0;
 
@@ -13,6 +15,7 @@ var lineheight = 24;
 var lenswidth = 768; // assuming ipad in portrait
 var lensheight = 984; // assuming ipad in portrait
 
+// borrowed
 
 $.fn.textWidth = function(text) {
   var org = $(this);
@@ -27,6 +30,86 @@ $.fn.textWidth = function(text) {
   return width;
 };
 
+// general
+
+function setpage(pageid) {
+	$(".page").removeClass("on");
+	$(".page#"+pageid).addClass("on");
+	currentpage = pageid;
+}
+
+function resize() {
+	var windowwidth = window.innerWidth;
+	var windowheight = window.innerHeight;
+	lenswidth = windowwidth;
+	lensheight = windowheight - $("nav").height();
+
+	if(lenswidth > lensheight) {
+		$(".page").addClass("landscape").removeClass("portrait");
+	} else {
+		$(".page").addClass("portrait").removeClass("landscape");
+	}
+	$("#main").css({"width":lenswidth+"px","height":windowheight+"px"});
+	$("#content").css({"width":lenswidth+"px","height":lensheight+"px"});
+
+	initialtextwidth = parseInt($("#text").css("width"),0);
+	setlens(translation,canto);
+}
+
+// settings
+
+// this needs to have some logic:
+// 1) if current translation is deleted, current translation needs to be set to something else
+
+function settings() {
+	var thisid;
+	$("#translatorlist").remove();
+	$("#settings").append('<ul id="translatorlist"></div>');
+	for(var i in translatorname) {
+		thisid = translatorname[i].toLowerCase();
+		$("#translatorlist").append('<li><input type="checkbox" id="'+thisid+'" /><span id="'+thisid+'" >'+translatorname[i]+'</span></li>');
+		$("input#"+thisid).prop("checked", (currenttranslationlist.indexOf(translatorname[i]) > -1));
+	}
+
+	$('#translatorlist :checkbox').click(function() {
+		var $this = $(this);
+		changetranslation(this.id,$this.is(':checked'));
+	});
+
+	$("#translatorlist span").click(function(e) {
+		$("input#"+ this.id).prop("checked", !$("input#"+ this.id).prop("checked"));
+		changetranslation(this.id,$("input#"+ this.id).prop("checked"));
+	});
+}
+
+function changetranslation(thisid,isset) {
+	for(var i in translatorname) {
+		if(thisid == translatorname[i].toLowerCase()) {
+			thisid = translatorname[i];
+			if(isset) {
+				currenttranslationlist.push(thisid);
+				translations++;
+			} else {
+				if(translations > 1) {
+					var j = currenttranslationlist.indexOf(thisid);
+					if (j > -1) {
+						currenttranslationlist.splice(j, 1);
+					}
+					translations--;
+				} else {
+					// there's only one translation in the list, do not delete last
+					$("input#"+ thisid.toLowerCase()).prop("checked", true);
+				}
+			}
+		}
+	}
+
+// also we need to sort current array to match old order
+// also what do we do when one is deleted?
+
+}
+
+// lens-specific
 
 function fixpadding(tofix) {
 	if($(tofix).hasClass("poetry")) {
@@ -51,28 +134,6 @@ function fixpadding(tofix) {
 	}
 }
 
-function setpage(pageid) {
-	$(".page").removeClass("on");
-	$(".page#"+pageid).addClass("on");
-}
-
-function resize() {
-	var windowwidth = window.innerWidth;
-	var windowheight = window.innerHeight;
-	lenswidth = windowwidth;
-	lensheight = windowheight - $("nav").height();
-
-	if(lenswidth > lensheight) {
-		$(".page").addClass("landscape").removeClass("portrait");
-	} else {
-		$(".page").addClass("portrait").removeClass("landscape");
-	}
-	$("#main").css({"width":lenswidth+"px","height":windowheight+"px"});
-	$("#content").css({"width":lenswidth+"px","height":lensheight+"px"});
-
-	initialtextwidth = parseInt($("#text").css("width"),0);
-	setlens(translation,canto);
-}
 
 function rounded(h) {
 	return lineheight * Math.floor(h / lineheight);
@@ -81,52 +142,58 @@ function rounded(h) {
 
 function setlens(newtrans, newcanto, percentage) {
 	var changetrans = false;
-	if(newtrans - translation !== 0) {
-		changetrans = true;
-//	var percentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
-		percentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
-	}
 
-	if(newtrans >= translations) {
-		newtrans = 0;
-	}
-	if(newtrans < 0) {
-		newtrans = translations-1;
-	}
-	if(newcanto >= cantos) {
-		newcanto = 0;
-	}
-	if(newcanto < 0) {
-		newcanto = cantos-1;
-	}
-	$("#text").html(text[newtrans][newcanto]).removeClass(translatorclass[translation]).addClass(translatorclass[newtrans]);
+// if page isn't set to "lens" this doesn't do anything
 
-	translation = newtrans;
-	canto = newcanto;
+	if(currentpage == "lens") {
+		if(newtrans - translation !== 0) {
+			changetrans = true;
+	//	var percentage = ($("#text").scrollTop())/($("#text")[0].scrollHeight);
+			percentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
+		}
 
-	if(canto > 0) {
-		$("#navtitle").html(translatorname[translation]+" · <strong>Canto "+canto+"</strong>");
-	} else {
-		$("#navtitle").html("&nbsp;");
-	}
+		if(newtrans >= translations) {
+			newtrans = 0;
+		}
+		if(newtrans < 0) {
+			newtrans = translations-1;
+		}
+		if(newcanto >= cantos) {
+			newcanto = 0;
+		}
+		if(newcanto < 0) {
+			newcanto = cantos-1;
+		}
+		$("#text").html(text[newtrans][newcanto]).removeClass(translatorclass[translation]).addClass(translatorclass[newtrans]);
 
-	fixpadding("#text",initialtextwidth);
+		translation = newtrans;
+		canto = newcanto;
 
-	if(changetrans) {
-// this method still isn't great! it tries to round to current lineheight 
-// to avoid cutting off lines
-//var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
-		var scrollto = rounded((percentage * ($("#text").prop('scrollHeight'))));
-		$("#text").scrollTop(scrollto);
-	} else {
-		if(percentage > 0) {
-			$('#text').scrollTop($('#text')[0].scrollHeight);
+		if(canto > 0) {
+			$("#navtitle").html(translatorname[translation]+" · <strong>Canto "+canto+"</strong>");
 		} else {
-			$('#text').scrollTop(0);
+			$("#navtitle").html("&nbsp;");
+		}
+
+		fixpadding("#text",initialtextwidth);
+
+		if(changetrans) {
+	// this method still isn't great! it tries to round to current lineheight 
+	// to avoid cutting off lines
+	//var scrollto = rounded((currentpercentage * ($("#text")[0].scrollHeight)));
+			var scrollto = rounded((percentage * ($("#text").prop('scrollHeight'))));
+			$("#text").scrollTop(scrollto);
+		} else {
+			if(percentage > 0) {
+				$('#text').scrollTop($('#text')[0].scrollHeight);
+			} else {
+				$('#text').scrollTop(0);
+			}
 		}
 	}
 }
 
+// now start
 
 $("document").ready(function() {
 	setpage("lens");
@@ -195,6 +262,24 @@ $("document").ready(function() {
 		e.preventDefault();
 		$(".button").removeClass("on");
 	});
+
+// page controls
+
+	$("#navtitle").click(function() {
+		setpage("lens");
+	});
+	$("#navsettings").click(function() {
+		if(currentpage == "settings") {
+			setpage("lens");
+		} else {
+			settings();
+			setpage("settings");
+		}
+	});
+
+
+// resize listener
+
 	$(window).resize(function() {
 		resize();
 	});
