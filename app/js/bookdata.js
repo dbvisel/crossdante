@@ -1,4 +1,5 @@
 var cantotitles = ["Title page","Canto 1","Canto 2","Canto 3"];
+
 var translationdata = [
 	{"translationid":"dante",
 	 "translationshortname":"Dante",
@@ -21,5 +22,3 @@ var translationdata = [
    "translationclass":"poetry wright",
    "order":3}
 	];
-
-var translationname = ["Dante","Longfellow","Norton","Wright"];
