@@ -1,17 +1,15 @@
 // current problems:
-// translation data + canto names needs to be in some kind of object
-// still a mess with currenttranslationlist and translationname
+//
+// text centering needs to be reworked probably
 
-var translatorclass = ["italian poetry","longfellow poetry","norton","wright poetry"];
-var translationname = ["Dante","Longfellow","Norton","Wright"];
 var text = [];
+var currenttranslationlist = [];
 
 var translation = 0;
-var translations = 4;
+var translations = translationdata.length;
 var canto = 0;
-var cantos = 4;
+var cantos = cantotitles.length;
 var currentpage = "lens";
-var currenttranslationlist = translationname.slice();
 
 var initialtextwidth = 0;
 
@@ -33,6 +31,14 @@ $.fn.textWidth = function(text) {
   html.remove();
   return width;
 };
+
+// setup 
+
+function settranslationlist() {
+	for(var i in translationdata) {
+		currenttranslationlist.push(translationdata[i].translationid);
+	}
+}
 
 // general
 
@@ -72,10 +78,9 @@ function settings() {
 
 	$("#translatorlist").remove();
 	$("#translationchoose").append('<ul id="translatorlist"></div>');
-	for(var i in translationname) {
-		thisid = translationname[i].toLowerCase();
-		$("#translatorlist").append('<li><input type="checkbox" id="'+thisid+'" /><span id="'+thisid+'" >'+translationname[i]+'</span></li>');
-		$("input#"+thisid).prop("checked", (currenttranslationlist.indexOf(translationname[i]) > -1));
+	for(var i in translationdata) {
+		$("#translatorlist").append('<li><input type="checkbox" id="'+translationdata[i].translationid+'" /><span id="'+translationdata[i].translationid+'" >'+translationdata[i].translationfullname+'</span></li>');
+		$("input#"+translationdata[i].translationid).prop("checked", (currenttranslationlist.indexOf(translationdata[i].translationid) > -1));
 	}
 
 	$('#translatorlist :checkbox').click(function() {
@@ -94,24 +99,31 @@ function settings() {
 	$("#translationgo").append('<div id="selectors"><p>Canto: <select id="selectcanto"></select></p><p>Translation: <select id="selecttranslator"></select></p><p><span id="selectgo">Go</span></p></div>');
 	for(i = 0; i < cantos; i++) {
 		insert = (canto == i) ? "selected" : "";
-		$("select#selectcanto").append('<option id="canto'+i+'" '+insert+'>'+i+"</option>");
+		$("select#selectcanto").append('<option id="canto'+i+'" '+insert+'>'+cantotitles[i]+"</option>");
 	}
 	for(i in currenttranslationlist) {
 		insert = (translation == i) ? "selected" : "";
-		$("select#selecttranslator").append('<option id="translator'+i+'" '+insert+'>'+currenttranslationlist[i]+"</option>");
+		for(var j = 0; j < translationdata.length; j++) {
+			if(translationdata[j].translationid == currenttranslationlist[i]) {
+				$("select#selecttranslator").append('<option id="tr_'+translationdata[j].translationid+'" '+insert+'>'+translationdata[j].translationfullname+"</option>");
+			}
+		}
 	}
 	$("#selectgo").click(function() {
-		var thistrans = parseInt($("#selecttranslator option:selected").attr("id").substr(10));
+		var thistrans = $("#selecttranslator option:selected").attr("id").substr(3);
 		var thiscanto = parseInt($("#selectcanto option:selected").attr("id").substr(5));
-		setpage("lens");
-		setlens(thistrans,thiscanto,0);
+		for(var j = 0; j < translationdata.length; j++) {
+			if(currenttranslationlist[j] == thistrans) {
+				setpage("lens");
+				setlens(j,thiscanto,0);
+			}
+		}
 	});
 }
 
 function changetranslation(thisid,isset) {
-	for(var i in translationname) {
-		if(thisid == translationname[i].toLowerCase()) {
-			thisid = translationname[i];
+	for(var i in translationdata) {
+		if(thisid == translationdata[i].translationid) {
 			if(isset) {
 				currenttranslationlist.push(thisid);
 				translations++;
@@ -131,9 +143,9 @@ function changetranslation(thisid,isset) {
 	}
 
 	var newlist = [];
-	for(i in translationname) {
-		if(currenttranslationlist.indexOf(translationname[i]) > -1) {
-			newlist.push(translationname[i]);
+	for(i in translationdata) {
+		if(currenttranslationlist.indexOf(translationdata[i].translationid) > -1) {
+			newlist.push(translationdata[i].translationid);
 		}
 	}
 	currenttranslationlist = newlist.slice();
@@ -155,9 +167,9 @@ function fixpadding(tofix) {
 	} else {
 // this is prose, standardized padding
 		var desiredwidth = lineheight * 16;
-		console.log(lenswidth + " "+desiredwidth);
+//		console.log(lenswidth + " "+desiredwidth);
 		var padding = (lenswidth - desiredwidth)/2;
-		console.log(padding);
+//		console.log(padding);
 		if((desiredwidth + 20) > lenswidth) {
 			$(tofix).css({"padding-left":"10px","padding-right":"10px"});
 		} else {
@@ -174,7 +186,7 @@ function rounded(h) {
 
 function setlens(newtrans, newcanto, percentage) {
 	var changetrans = false;
-	var currentcantos = currenttranslationlist.length();
+	var currenttranslations = currenttranslationlist.length;
 
 
 // if page isn't set to "lens" this doesn't do anything
@@ -186,25 +198,34 @@ function setlens(newtrans, newcanto, percentage) {
 			percentage = rounded($("#text").scrollTop())/($("#text").prop('scrollHeight'));
 		}
 
-		if(newtrans >= translations) {
+		if(newtrans >= currenttranslations) {
 			newtrans = 0;
 		}
 		if(newtrans < 0) {
-			newtrans = translations-1;
+			newtrans = currenttranslations-1;
 		}
-		if(newcanto >= currentcantos) {
+		if(newcanto >= cantos) {
 			newcanto = 0;
 		}
 		if(newcanto < 0) {
-			newcanto = currentcantos-1;
+			newcanto = cantos-1;
 		}
-		$("#text").html(text[newtrans][newcanto]).removeClass(translatorclass[translation]).addClass(translatorclass[newtrans]);
+
+// figure out which translation is the current translation
+
+		for(var i=0; i < translationdata.length; i++) {
+			if(currenttranslationlist[newtrans] == translationdata[i].translationid) {
+				newtrans = i;
+			}
+		}
+
+		$("#text").html(text[newtrans][newcanto]).removeClass(translationdata[translation].translationclass).addClass(translationdata[newtrans].translationclass);
 
 		translation = newtrans;
 		canto = newcanto;
 
 		if(canto > 0) {
-			$("#navtitle").html(translationname[translation]+" · <strong>Canto "+canto+"</strong>");
+			$("#navtitle").html(translationdata[translation].translationshortname+" · <strong>Canto "+canto+"</strong>");
 		} else {
 			$("#navtitle").html("&nbsp;");
 		}
@@ -230,6 +251,7 @@ function setlens(newtrans, newcanto, percentage) {
 // now start
 
 $("document").ready(function() {
+	settranslationlist();
 	setpage("lens");
 	resize();
 
@@ -266,8 +288,8 @@ $("document").ready(function() {
 				setlens(translation,canto+1); 
 			} 
 		}, 
-		min_move_x: 20,
-		min_move_y: 20,
+		min_move_x: 40,
+		min_move_y: 40,
 		preventDefaultEvents: false
 	});
 
