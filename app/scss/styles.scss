@@ -8,8 +8,12 @@ $textfamily: "et-bembo";
 
 
 $navheight: 40px;
+
 $fontsize: 18px;
 $lineheight: 24px;
+
+$fontsize: 3vw;
+$lineheight: 4vw;
 
 $navbartext: white;
 $navbartexton: #333;
@@ -47,6 +51,8 @@ body {
 	@include notouch;
 	font-family: $headerfamily;
 	font-size: $fontsize;
+	font-size: 18px; // keep this distinct from resizing elements!
+	line-height: 24px;
 	position: absolute;
 	height: $navheight;
 	width: 100%;
@@ -119,7 +125,7 @@ body {
 //			width: 640px;
 //			height: 864px;
 			position: absolute;
-			padding: 64px 64px;
+			padding: 64px 64px; // left/right padding is never actually applied
 			height: 100%;
 			width: 100%;
 			&:last-child {
@@ -132,7 +138,7 @@ body {
 //			width: 480px;
 //			height: 648px;
 			position: absolute;
-			padding: 40px 128px;
+			padding: 40px 128px; // left/right padding is never actually applied
 			height: 100%;
 			width: 100%;
 			&:last-child {
@@ -202,15 +208,23 @@ body {
 }
 
 
+
 //
 // lens-specific
 //
+
+.textpage {
+	font-size: $fontsize;
+	line-height: $lineheight;
+}
+
 
 .textframe {
 	display: block;
 	position: absolute;
 	overflow-y: scroll;
 }
+
 
 p.title, p.author {
 	text-align: center;
@@ -294,3 +308,24 @@ p.summary {
 		text-indent: 14*$lineheight;
 	}
 }
+
+// media queries!
+
+@media (max-width: 500px) {
+    font-size: 14px
+}
+
+
+// ipad in portrait 
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { /* STYLES GO HERE */ }
+
+// ipad in landscape
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { /* STYLES GO HERE */}

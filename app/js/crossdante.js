@@ -166,7 +166,7 @@ function fixpadding(tofix) {
 		$(tofix).css({"padding-left":(initialtextwidth - maxwidth)/2+"px","padding-right":(initialtextwidth - maxwidth)/2+"px"});
 	} else {
 // this is prose, standardized padding
-		var desiredwidth = lineheight * 16;
+		var desiredwidth = lineheight * 24; // was 16
 //		console.log(lenswidth + " "+desiredwidth);
 		var padding = (lenswidth - desiredwidth)/2;
 //		console.log(padding);

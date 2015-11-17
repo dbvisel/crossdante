@@ -16,6 +16,7 @@ var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var autoprefixer = require('gulp-autoprefixer');
+var coffee = require('gulp-coffee');
 
 gulp.task('browserSync', function() {
   browserSync({
@@ -54,6 +55,12 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('coffee', function() {
+  gulp.src('app/coffee/*.coffee')
+    .pipe(coffee({bare: true})) // this is to get rid of closure on individual files!
+    .pipe(gulp.dest('app/js'));
+});
+
 gulp.task('lint', function() {
   return gulp.src(['./*.js','app/js/*.js','app/js/translations/*.js'])
     .pipe(jshint())
@@ -71,6 +78,7 @@ gulp.task('clean:dist', function(callback){
 
 gulp.task('watch', ['browserSync', 'sass'], function (){
   gulp.watch('app/scss/*.scss', ['sass']);
+  gulp.watch('app/coffee/*.coffee', ['coffee']);
   gulp.watch('app/*.html', browserSync.reload);
   gulp.watch('app/js/*.js', ['lint', browserSync.reload]);
 });

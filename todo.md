@@ -5,6 +5,10 @@ bugs:
  * Centering of poetry is currently off a little bit
  * Resizing (especially on a phone this is weird)
 
+tweaks:
+
+ * better solution for icons
+
 features to add:
 
  * line numbering
