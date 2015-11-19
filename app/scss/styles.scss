@@ -12,12 +12,12 @@ $navheight: 40px;
 $fontsize: 18px;
 $lineheight: 24px;
 
-$fontsize: 3vw;
-$lineheight: 4vw;
+$textfontsize: 3vw;
+$textlineheight: 4vw;
 
-$navbartext: white;
-$navbartexton: #333;
-$navbarcolor: teal;
+$navtext: white;
+$navtexton: #333;
+$navcolor: teal;
 $pagetext: #111;
 $pagebackground: white;
 $pagebackground: #eee;
@@ -56,8 +56,8 @@ body {
 	position: absolute;
 	height: $navheight;
 	width: 100%;
-	background-color: $navbarcolor;
-	color: $navbartext;
+	background-color: $navcolor;
+	color: $navtext;
 	text-align: center;
 	& .left {
 		float: left;
@@ -74,7 +74,7 @@ body {
 		padding-top:$navheight / 5; // 8px
 		transition: 0.25s;
 		&:hover, &.on {
-			color: $navbartexton;
+			color: $navtexton;
 		}
 	}
 	& #navtitle {
@@ -124,10 +124,7 @@ body {
 		& .textframe {
 //			width: 640px;
 //			height: 864px;
-			position: absolute;
 			padding: 64px 64px; // left/right padding is never actually applied
-			height: 100%;
-			width: 100%;
 			&:last-child {
 				margin-bottom: 64px;
 			}
@@ -137,10 +134,7 @@ body {
 		& .textframe {
 //			width: 480px;
 //			height: 648px;
-			position: absolute;
 			padding: 40px 128px; // left/right padding is never actually applied
-			height: 100%;
-			width: 100%;
 			&:last-child {
 				margin-bottom: 40px;
 			}
@@ -152,13 +146,22 @@ body {
 	}
 }
 
+.textframe {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+// 	transition:all 1.0s ease-in-out;
+}
+
 .basic {
 	font-family: $headerfamily;
-	font-size: $fontsize;
-	padding: $lineheight;
+	font-size: $textfontsize;
+//	padding: $textlineheight;
+	padding-top: $textlineheight;
+	line-height: $textlineheight;
 	h1 {
 		font-weight: bold;
-		margin-bottom: $lineheight/2;
+		margin-bottom: $textlineheight;
 	}
 }
 
@@ -167,42 +170,57 @@ body {
 // settings-specific
 //
 
+#settings h1 {
+	text-align: center;
+	margin-bottom: $textlineheight;
+}
+
+#translationchoose {
+	position: relative;
+	width: 60vw;
+	left: 20vw;
+}
+
 #translatorlist {
-	margin-top: $lineheight/2;
+	margin-top: $textlineheight/2;
 	& li {
 		list-style-type: none;
 		& input {
-			margin-right: $lineheight/2;
+			margin-right: $textlineheight/2;
 		}
 	}
 }
 
 #translationgo {
-	margin-top: $lineheight;
+	position: relative;
+	margin-top: $textlineheight;
+	width: 60vw; // has to take account of padding on .basic
+	left: 20vw;
 	& p {
-		margin-bottom: $lineheight/2;
-		width: $lineheight * 15;
+		margin-bottom: $textlineheight/2;
+//		width: $textlineheight * 15;
 		& select {
-			background-color: $navbarcolor;
-			color: $navbartext;
-			margin-left: $lineheight;
+			background-color: $navcolor;
+			color: $navtext;
+//			margin-left: $textlineheight;
 			display: inline-block;
-			width: $lineheight * 10;
-			padding-left: $lineheight * 0.25;
+//			width: $textlineheight * 10;
+			width: 60%;
+			padding-left: $textlineheight * 0.25;
 			float: right;
-			border-radius: $lineheight / 6;
+			border-radius: $textlineheight / 6;
 		}
 	}
 	& #selectgo {
 		float: right;
 		display: inline-block;
-		border-radius: $lineheight / 6;
-		padding: $lineheight / 12 $lineheight/3;
-		background-color: $navbarcolor;
-		color: $navbartext;
+		border-radius: $textlineheight / 6;
+		padding: $textlineheight / 12 $textlineheight/3;
+		background-color: $navcolor;
+		color: $navtext;
 		font-weight: bold;
 		&:hover {
-			color: $navbartexton;
+			color: $navtexton;
 		}
 	}
 }
@@ -214,8 +232,8 @@ body {
 //
 
 .textpage {
-	font-size: $fontsize;
-	line-height: $lineheight;
+	font-size: $textfontsize;
+	line-height: $textlineheight;
 }
 
 
@@ -228,8 +246,8 @@ body {
 
 p.title, p.author {
 	text-align: center;
-	font-size: $fontsize * 1.5;
-	line-height: $lineheight * 2;
+	font-size: $textfontsize * 1.5;
+	line-height: $textlineheight * 2;
 }
 
 p.title {
@@ -248,17 +266,56 @@ div.stanza {
 p.cantohead {
 	font-weight: bold;
 	text-align: center;
-	line-height: $lineheight * 2;
-	font-size: $fontsize * 1.5;
+	font-size: 150%; // $textfontsize * 1.5; (should be 27) 
+	line-height: 170.77777777%; // $textlineheight * 2; (should be 48) 
 	letter-spacing: 0;
-	margin-bottom: $lineheight;
+	margin-bottom: $textlineheight;
 }
 
 p.summary {
 	font-style: italic;
-	margin: $lineheight 2 * $lineheight;
+	margin: $textlineheight 2*$textlineheight;
 }
 
+// notes
+
+.note {
+	& .noteno {
+		color: $navcolor;
+		font-family: $headerfamily;
+		position: relative;
+		bottom: 1vw;
+	  font-size: 75%;
+	  font-weight: bold;
+	  line-height: normal;
+	}
+	& .notetext {
+		display: none;
+	}
+}
+
+.notewindow {
+	position: fixed;
+	background-color: $pagebackground;
+	font-family: $headerfamily;
+	z-index: 999;
+	width: 50vw;
+	left: 25vw;
+	top: 25vh;
+	padding: $textlineheight;
+	border-radius: 5px;
+	border: 5px solid $navcolor;
+	font-size: $textfontsize * 0.75;
+	line-height: $textlineheight * 0.75;
+}
+
+// prose 
+
+.prose {
+	& p + p {
+		text-indent: $textlineheight;
+	}
+}
 
 //
 // individual poet fixes
@@ -266,13 +323,7 @@ p.summary {
 
 .norton {
 	& p.cantohead {
-		letter-spacing: $fontsize * 3/16;
-	}
-	& span.note {
-		display: none;
-	}
-	& p + p {
-		text-indent: $lineheight;
+		letter-spacing: $textfontsize * 3/16;
 	}
 	& p.summary + p {
 		text-indent: 0;
@@ -282,30 +333,36 @@ p.summary {
 	}
 }
 
+.longfellow {
+	& p.slindent {
+		text-indent: 1*$textlineheight;
+	}
+}
+
 .wright {
 	& p.slindent {
-		text-indent: 1*$lineheight;
+		text-indent: 1*$textlineheight;
 	}
 	& p.slindent2em {
-		text-indent: 2*$lineheight;
+		text-indent: 2*$textlineheight;
 	}
 	& p.slindent4em {
-		text-indent: 4*$lineheight;
+		text-indent: 4*$textlineheight;
 	}
 	& p.slindent6em {
-		text-indent: 6*$lineheight;
+		text-indent: 6*$textlineheight;
 	}
 	& p.slindent8em {
-		text-indent: 8*$lineheight;
+		text-indent: 8*$textlineheight;
 	}
 	& p.slindent10em {
-		text-indent: 10*$lineheight;
+		text-indent: 10*$textlineheight;
 	}
 	& p.slindent12em {
-		text-indent: 12*$lineheight;
+		text-indent: 12*$textlineheight;
 	}
 	& p.slindent14em {
-		text-indent: 14*$lineheight;
+		text-indent: 14*$textlineheight;
 	}
 }
 

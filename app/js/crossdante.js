@@ -11,7 +11,7 @@ var canto = 0;
 var cantos = cantotitles.length;
 var currentpage = "lens";
 
-var initialtextwidth = 0;
+var textwidth = 0;
 
 var lineheight = 24;
 var lenswidth = 768; // assuming ipad in portrait
@@ -40,6 +40,27 @@ function settranslationlist() {
 	}
 }
 
+function setupnotes() {
+	var count = 0;
+	$(".note").each(function() {
+		$(this).children(".notetext").attr("data-notenumber",count);
+		$(this).children(".noteno").attr("data-notenumber",count).click(function(e) {
+			e.stopPropagation();
+			var thisnote = $(this).attr("data-notenumber");
+			var notetext = $(".notetext[data-notenumber="+thisnote+"]").html();
+			hidenotes();
+			$('<div class="notewindow">'+notetext+'</div>')
+				.appendTo("#main")
+				.click( hidenotes );
+		});
+		count++;
+	});
+}
+
+function hidenotes() {
+	$(".notewindow").remove();
+}
+
 // general
 
 function setpage(pageid) {
@@ -62,8 +83,11 @@ function resize() {
 	$("#main").css({"width":lenswidth+"px","height":windowheight+"px"});
 	$("#content").css({"width":lenswidth+"px","height":lensheight+"px"});
 
-	initialtextwidth = parseInt($("#text").css("width"),0);
+	textwidth = parseInt($("#text").css("width"),0);
+
+
 	setlens(translation,canto);
+
 }
 
 // settings
@@ -160,21 +184,33 @@ function fixpadding(tofix) {
 		var maxwidth = 0;
 		$(tofix+" p").each(function() {
 			if($(this).textWidth() > maxwidth ) {
-				maxwidth = $(this).textWidth() + 18; // a little padding is necessary (~font size?)
+				maxwidth = $(this).textWidth() + 90; // some padding is necessary 
 			}
 		});
-		$(tofix).css({"padding-left":(initialtextwidth - maxwidth)/2+"px","padding-right":(initialtextwidth - maxwidth)/2+"px"});
+
+console.log("text width: " + textwidth);
+console.log("max width: " + maxwidth);
+
+		$(tofix).css({"padding-left":(textwidth - maxwidth)/2+"px","padding-right":(textwidth - maxwidth)/2+"px"});
 	} else {
 // this is prose, standardized padding
-		var desiredwidth = lineheight * 24; // was 16
+
+		var desiredwidth = 75; // this is in vw
+
+console.log("text width: " + textwidth);
+console.log("desired width: " + desiredwidth);
+console.log("lineheight: " + lineheight);
+
 //		console.log(lenswidth + " "+desiredwidth);
-		var padding = (lenswidth - desiredwidth)/2;
-//		console.log(padding);
-		if((desiredwidth + 20) > lenswidth) {
-			$(tofix).css({"padding-left":"10px","padding-right":"10px"});
+//		var padding = (lenswidth - desiredwidth)/2;
+		var padding = (100 - desiredwidth)/2;
+/*
+		if((desiredwidth + 2) > lenswidth) {
+			$(tofix).css({"padding-left":"1vw","padding-right":"1vw"});
 		} else {
-			$(tofix).css({"padding-left":padding+"px","padding-right":padding + "px"});
-		}
+			*/
+			$(tofix).css({"padding-left":padding+"vw","padding-right":padding + "vw"});
+//		}
 	}
 }
 
@@ -220,7 +256,7 @@ function setlens(newtrans, newcanto, percentage) {
 		}
 
 		$("#text").html(text[newtrans][newcanto]).removeClass(translationdata[translation].translationclass).addClass(translationdata[newtrans].translationclass);
-
+		setupnotes();
 		translation = newtrans;
 		canto = newcanto;
 
@@ -230,7 +266,7 @@ function setlens(newtrans, newcanto, percentage) {
 			$("#navtitle").html("&nbsp;");
 		}
 
-		fixpadding("#text",initialtextwidth);
+		fixpadding("#text");
 
 		if(changetrans) {
 	// this method still isn't great! it tries to round to current lineheight 
@@ -252,6 +288,7 @@ function setlens(newtrans, newcanto, percentage) {
 
 $("document").ready(function() {
 	settranslationlist();
+	setupnotes();
 	setpage("lens");
 	resize();
 
@@ -333,10 +370,10 @@ $("document").ready(function() {
 		}
 	});
 
+$("#main").click( hidenotes );
 
 // resize listener
 
-	$(window).resize(function() {
-		resize();
-	});
+	$(window).resize( resize );
+
 });
