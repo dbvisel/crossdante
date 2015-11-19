@@ -5,7 +5,7 @@ bugs:
  * Centering of poetry is currently off a little bit
    * fixed for now?
  * Resizing (especially on a phone this is weird)
-   * maybe fixed
+   * vh doesn't work very well on Android Chrome in portrait
 
 tweaks:
 
@@ -16,6 +16,7 @@ features to add:
  * line numbering
  * landscape mode
  * Graphical swiping
+ * save place with localstorage
 
  other:
 
