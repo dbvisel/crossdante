@@ -277,6 +277,8 @@ p.summary {
 	margin: $textlineheight 2*$textlineheight;
 }
 
+
+
 // notes
 
 .note {
@@ -315,21 +317,21 @@ p.summary {
 	& p + p {
 		text-indent: $textlineheight;
 	}
+	& p.summary + p {
+		text-indent: 0;
+	}
+	& p + p.summary {
+		text-indent: 0;
+	}
 }
 
 //
 // individual poet fixes
 //
 
-.norton {
+.norton, .carlyle {
 	& p.cantohead {
 		letter-spacing: $textfontsize * 3/16;
-	}
-	& p.summary + p {
-		text-indent: 0;
-	}
-	& p + p.summary {
-		text-indent: 0;
 	}
 }
 

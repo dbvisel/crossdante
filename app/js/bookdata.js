@@ -20,5 +20,10 @@ var translationdata = [
 	 "translationshortname":"Wright",
 	 "translationfullname":"S. Fowler Wright",
    "translationclass":"poetry wright",
-   "order":3}
+   "order":3},
+  {"translationid":"carlyle",
+   "translationshortname":"Carlyle",
+   "translationfullname":"Carlyle/Okey/Wiksteed",
+   "translationclass":"prose carlyle",
+   "order":4}
 	];
