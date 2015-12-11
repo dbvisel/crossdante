@@ -28,3 +28,8 @@ next version:
  * make a text-editable version of the original: it's a column, but when it's shown the text is always editable.  
    * how is this saved?
    * if this were to be a useful tool, how are texts loaded and changed?
+
+maybe useful:
+ * https://css-tricks.com/drag-and-drop-file-uploading/
+
+ Make a responsive SCSS framework for certain breakpoints, base all sizes on that.

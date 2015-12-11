@@ -95,3 +95,15 @@ gulp.task('default', function (callback) {
     callback
   );
 });
+
+gulp.task('cordovabuild', function(){
+  var assets = useref.assets();
+  return gulp.src('app-cordova/*.html')
+    .pipe(assets)
+    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulpIf('*.css', minifyCSS()))
+    .pipe(assets.restore())
+    .pipe(useref())
+    .pipe(gulp.dest('crossdante/www'));
+});
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cross Dante</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Cross Dante">
+  <meta name="author" content="Dan Visel">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+		<meta name="msapplication-tap-highlight" content="no">
+  <!--build:css css/stylesapp.min.css-->
+  <link rel="stylesheet" href="../app/css/styles.css" />
+  <!--endbuild-->
+</head>
+<body>
+	<div id="main">
+		<nav id="navbar">
+			<nav class="left"><nav class="button" id="navprev">◀</nav><nav class="button" id="navup">▲</nav></nav>
+			<nav id="navtitle"></nav>
+			<nav class="right"><nav class="button" id="navsettings">&nbsp;</nav><nav class="button" id="navdown">▼</nav><nav class="button" id="navnext">▶</nav></nav>
+		</nav>
+		<div id="content">
+			<div class="page textpage" id="lens">
+				<div class="textframe" id="text"></div>
+			</div>
+			<div class="page basic" id="help"></div>
+			<div class="page basic" id="settings">
+				<h1>Settings</h1>
+				<div id="translationchoose">
+					<p>Choose which translations to show:</p>
+				</div>
+				<div id="translationgo"></div>
+			</div>
+		</div>
+	<script src="cordova.js"></script>
+  <!--build:js js/mainapp.min.js -->
+  <script src="../app/js/lib/vminpoly-master/tokenizer.js"></script>
+  <script src="../app/js/lib/vminpoly-master/parser.js"></script>
+  <script src="../app/js/lib/vminpoly-master/vminpoly.js"></script>
+  <script src="../app/js/lib/jquery-2.1.4.js"></script>
+  <script src="../app/js/lib/jquery.touchwipe.min.js"></script>
+  <script src="../app/js/lib/fastclick/fastclick.js"></script>
+  <script src="../app/js/bookdata.js"></script>
+  <script src="../app/js/crossdante.js"></script>
+  <script src="../app/js/translations/italian.js"></script>
+  <script src="../app/js/translations/longfellow.js"></script>
+  <script src="../app/js/translations/norton.js"></script>
+  <script src="../app/js/translations/wright.js"></script>
+  <script src="../app/js/translations/carlyle.js"></script>
+  <script src="../app/js/app.js"></script>
+  <!-- endbuild -->
+</body>
+</html>
