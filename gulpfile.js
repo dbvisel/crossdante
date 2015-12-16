@@ -96,6 +96,8 @@ gulp.task('default', function (callback) {
   );
 });
 
+// this doesn't copy fonts/ n
+
 gulp.task('cordovabuild', function(){
   var assets = useref.assets();
   return gulp.src('app-cordova/*.html')
