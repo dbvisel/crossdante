@@ -1,4 +1,4 @@
-// take 2, more app-y!
+// version 3: no jQuery, more appish
 
 //
 //// polyfills
