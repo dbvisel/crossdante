@@ -21,7 +21,9 @@ var coffee = require('gulp-coffee');
 gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: 'app'
+      baseDir: 'app',
+      index: "index2.html"
+
     },
   });
 });
@@ -108,4 +110,3 @@ gulp.task('cordovabuild', function(){
     .pipe(useref())
     .pipe(gulp.dest('crossdante/www'));
 });
-

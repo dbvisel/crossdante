@@ -1,0 +1,68 @@
+//
+// settings-specific
+//
+
+#translationchoose {
+	position: relative;
+  width: 60vw;
+  left: 10vw;
+}
+
+#translatorlist {
+	margin-top: $textlineheight/2;
+  width: 60vw;
+  left: 10vw;
+	& li {
+		list-style-type: none;
+		& input {
+			margin-right: $textlineheight/2;
+		}
+	}
+}
+
+#translationgo {
+	position: relative;
+	margin-top: $textlineheight;
+  width: 60vw;
+  left: 10vw;
+	& p {
+		margin-bottom: $textlineheight/2;
+//		width: $textlineheight * 15;
+		& select {
+			background-color: $navcolor;
+			color: $navtext;
+//			margin-left: $textlineheight;
+			display: inline-block;
+//			width: $textlineheight * 10;
+			width: 60%;
+			padding-left: $textlineheight * 0.25;
+			float: right;
+			border-radius: $textlineheight / 6;
+		}
+	}
+	& #selectgo {
+		float: right;
+		display: inline-block;
+		border-radius: $textlineheight / 6;
+		padding: $textlineheight / 12 $textlineheight/3;
+		background-color: $navcolor;
+		color: $navtext;
+		font-weight: bold;
+		&:hover {
+			color: $navtexton;
+		}
+	}
+}
+
+#settings > p {
+  clear: both;
+  text-align: center;
+  margin-top: $textlineheight * 3;
+  & a {
+    margin-left: $textlineheight / 4;
+    margin-right: $textlineheight / 4;
+		&.off {
+			font-weight: normal;
+		}
+  }
+}

@@ -1,6 +1,13 @@
 # to do
 
-bugs: 
+Add this in: https://github.com/matejlatin/Gutenberg
+Better way to deal with icons: https://css-tricks.com/ligature-icons/
+
+Look at Vivliostyle for pagination:
+ * documentation: http://vivliostyle.com/en/about/
+ * example: http://vivliostyle.github.io/vivliostyle.js/samples/css-secrets/viewer/vivliostyle-viewer.html#x=../doc/index.xhtml&spread=true&f=epubcfi(/2!/4/20[idp140542532235456]/10[idp140542532350000]/8[section-dry]/25:0)
+
+bugs:
 
  * Centering of poetry is currently off a little bit
    * fixed for now?
@@ -17,6 +24,7 @@ features to add:
  * line numbering
  * landscape mode with two translations scrolling together
  * Graphical swiping
+		* Maybe this: http://scrollmagic.io/examples/advanced/section_wipes_manual.html
  * save place with localstorage
 
 other:
@@ -33,3 +41,7 @@ maybe useful:
  * https://css-tricks.com/drag-and-drop-file-uploading/
 
  Make a responsive SCSS framework for certain breakpoints, base all sizes on that.
+
+ http://www.divinecomedy.org/divine_comedy.html
+
+ https://www.quora.com/What-is-the-most-successful-translation-crowdsourcing-project-and-why

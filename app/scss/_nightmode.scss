@@ -1,0 +1,50 @@
+// night mode
+
+$nightbackground: black;
+$nightpagetext: white;
+$nightnavcolor: black;
+$nightnavtext: gray;
+$nightnavtexton: orange;
+
+
+body.nightmode {
+  & .page {
+    background-color: $nightbackground;
+    color: $nightpagetext;
+  }
+  & .note .noteno {
+    color: $nightnavtext;
+  }
+  & .notewindow {
+    background-color: $nightbackground;
+    border-color: $nightnavtext;
+    color: $nightnavtext;
+  }
+  & #navbar {
+    background-color: $nightnavcolor;
+    border-bottom-color: $nightnavtext;
+    color: $nightnavtext;
+    & .button:hover, & .button.on {
+      color: $nightnavtexton;
+    }
+  }
+  & .basic a {
+    color: $nightnavtext;
+    &:hover, &.on {
+      color: $nightnavtexton;
+    }
+  }
+  & #translationgo {
+    & p select {
+  		background-color: $nightnavtext;
+  		color: $nightnavcolor;
+    }
+    & #selectgo {
+      background-color: $nightnavtext;
+      color: $nightnavcolor;
+      &:hover, &.on {
+        color: $nightnavtexton;
+      }
+    }
+  }
+}

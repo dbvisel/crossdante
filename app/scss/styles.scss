@@ -19,8 +19,8 @@ $navtext: white;
 $navtexton: #333;
 $navcolor: teal;
 $pagetext: #111;
-$pagebackground: white;
 $pagebackground: #eee;
+
 
 
 //
@@ -49,6 +49,7 @@ body {
 
 #navbar {
 	@include notouch;
+	box-sizing: border-box;
 	font-family: $headerfamily;
 	font-size: $fontsize;
 	font-size: 18px; // keep this distinct from resizing elements!
@@ -57,6 +58,7 @@ body {
 	height: $navheight;
 	width: 100%;
 	background-color: $navcolor;
+	border-bottom: 1px solid $navcolor;
 	color: $navtext;
 	text-align: center;
 	& .left {
@@ -159,71 +161,26 @@ body {
 //	padding: $textlineheight;
 	padding-top: $textlineheight;
 	line-height: $textlineheight;
-	h1 {
+	padding-left: 10vw;
+	padding-right: 10vw;
+	& h1 {
 		font-weight: bold;
 		margin-bottom: $textlineheight;
+		text-align: center;
+		margin-bottom: $textlineheight;
 	}
-}
-
-
-//
-// settings-specific
-//
-
-#settings h1 {
-	text-align: center;
-	margin-bottom: $textlineheight;
-}
-
-#translationchoose {
-	position: relative;
-	width: 60vw;
-	left: 20vw;
-}
-
-#translatorlist {
-	margin-top: $textlineheight/2;
-	& li {
-		list-style-type: none;
-		& input {
-			margin-right: $textlineheight/2;
-		}
-	}
-}
-
-#translationgo {
-	position: relative;
-	margin-top: $textlineheight;
-	width: 60vw; // has to take account of padding on .basic
-	left: 20vw;
-	& p {
-		margin-bottom: $textlineheight/2;
-//		width: $textlineheight * 15;
-		& select {
-			background-color: $navcolor;
-			color: $navtext;
-//			margin-left: $textlineheight;
-			display: inline-block;
-//			width: $textlineheight * 10;
-			width: 60%;
-			padding-left: $textlineheight * 0.25;
-			float: right;
-			border-radius: $textlineheight / 6;
-		}
-	}
-	& #selectgo {
-		float: right;
-		display: inline-block;
-		border-radius: $textlineheight / 6;
-		padding: $textlineheight / 12 $textlineheight/3;
-		background-color: $navcolor;
-		color: $navtext;
+	& a {
 		font-weight: bold;
-		&:hover {
-			color: $navtexton;
-		}
+		color: $navcolor;
+	}
+	& .backtosettings {
+		float: right;
+		margin-top: $textlineheight;
+		display: block;
 	}
 }
+
+@import "settings";
 
 
 
@@ -266,8 +223,8 @@ div.stanza {
 p.cantohead {
 	font-weight: bold;
 	text-align: center;
-	font-size: 150%; // $textfontsize * 1.5; (should be 27) 
-	line-height: 170.77777777%; // $textlineheight * 2; (should be 48) 
+	font-size: 150%; // $textfontsize * 1.5; (should be 27)
+	line-height: 170.77777777%; // $textlineheight * 2; (should be 48)
 	letter-spacing: 0;
 	margin-bottom: $textlineheight;
 }
@@ -311,7 +268,15 @@ p.summary {
 	line-height: $textlineheight * 0.75;
 }
 
-// prose 
+// poetry
+
+.poetry {
+	& p {
+		hanging-punctuation: first; // does not actually do anything!
+	}
+}
+
+// prose
 
 .prose {
 	& p + p {
@@ -325,48 +290,27 @@ p.summary {
 	}
 }
 
-//
-// individual poet fixes
-//
+// help page
 
-.norton, .carlyle {
-	& p.cantohead {
-		letter-spacing: $textfontsize * 3/16;
+#help {
+	& p + p {
+		text-indent: $lineheight;
+	}
+	& ul {
+		margin-top: $lineheight;
+	}
+	& li {
+		margin-left: $lineheight * 2;
 	}
 }
 
-.longfellow {
-	& p.slindent {
-		text-indent: 1*$textlineheight;
-	}
-}
+// import individual poet fixes
 
-.wright {
-	& p.slindent {
-		text-indent: 1*$textlineheight;
-	}
-	& p.slindent2em {
-		text-indent: 2*$textlineheight;
-	}
-	& p.slindent4em {
-		text-indent: 4*$textlineheight;
-	}
-	& p.slindent6em {
-		text-indent: 6*$textlineheight;
-	}
-	& p.slindent8em {
-		text-indent: 8*$textlineheight;
-	}
-	& p.slindent10em {
-		text-indent: 10*$textlineheight;
-	}
-	& p.slindent12em {
-		text-indent: 12*$textlineheight;
-	}
-	& p.slindent14em {
-		text-indent: 14*$textlineheight;
-	}
-}
+@import "poets";
+
+// night mode
+
+@import "nightmode";
 
 // media queries!
 
@@ -375,16 +319,16 @@ p.summary {
 }
 
 
-// ipad in portrait 
+// ipad in portrait
 
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : portrait) { /* STYLES GO HERE */ }
 
 // ipad in landscape
 
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : landscape) { /* STYLES GO HERE */}
