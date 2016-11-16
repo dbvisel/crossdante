@@ -1,1 +1,6 @@
+# Ignore Mac OS Stuff
+.DS_Store
+
+# Node
 node_modules/
+
