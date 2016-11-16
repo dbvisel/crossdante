@@ -22,7 +22,7 @@ gulp.task('browserSync', function() {
   browserSync({
     server: {
       baseDir: 'app',
-      index: "index2.html"
+      index: "index.html"
 
     },
   });

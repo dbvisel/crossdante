@@ -1,6 +1,6 @@
 # node-sass
 
-#### Supported Node.js versions 0.10, 0.12, 1, 2, 3, 4, 5, and 6.
+#### Supported Node.js versions 0.10, 0.12, 1, 2, 3, 4, 5, 6 and 7.
 
 <table>
   <tr>
@@ -538,7 +538,7 @@ As local or global [.npmrc](https://docs.npmjs.com/misc/config) configuration fi
 
 As a process argument:
 
-* E.g. `npm install node-sass --SASS_BINARY_SITE=http://example.com/`
+* E.g. `npm install node-sass --sass-binary-site=http://example.com/`
 
 ## Post-install Build
 

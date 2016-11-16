@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cross Dante</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Cross Dante">
+  <meta name="author" content="Dan Visel">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+	<div id="main">
+		<nav id="navbar">
+			<nav class="left"><nav class="button" id="navprev">◀</nav><nav class="button" id="navup">▲</nav></nav>
+			<nav id="navtitle"></nav>
+			<nav class="right"><nav class="button" id="navsettings">&nbsp;</nav><nav class="button" id="navdown">▼</nav><nav class="button" id="navnext">▶</nav></nav>
+		</nav>
+		<div id="content">
+			<div class="page textpage" id="lens">
+				<div class="textframe" id="text"></div>
+			</div>
+			<div class="page basic" id="help">
+				<h1>Help</h1>
+				<p>To <strong>change translations</strong>, use the left and right arrows. You can also swipe left or right.</p>
+				<p>To <strong>change canto</strong>, use the up and down arrows. You can also swipe up or down when you are at the top or bottom (respectively) of a canto.</p>
+				<p>Tap on the gear in the upper right to go to <strong>settings</strong>. When you are in settings:</p>
+				<ul><li>Check or uncheck a translation to select the translations that you want to read.</li>
+					<li>Choose a canto and a translation to go directly to a point in the text.</li>
+					<li>Choosing <em>Night mode</em> makes the text light and the background dark. <em>Day mode</em> (the default) makes the text dark and the background light.</li>
+					<li>Clicking on the gear will take you back to the text.</li>
+				</ul>
+				<a href="#" class="backtosettings">Back</a>
+			</div>
+			<div class="page basic" id="about">
+				<h1>About</h1>
+				<p>This is an interactive version of Dante's <em>Inferno</em> in multiple translations.</p>
+				<a href="#" class="backtosettings">Back</a>
+			</div>
+			<div class="page basic" id="settings">
+				<h1>Settings</h1>
+				<div id="translationchoose">
+					<p>Choose which translations to show:</p>
+				</div>
+				<div id="translationgo"></div>
+				<p><a href="#" id="daymode">Day</a>/<a href="#" id="nightmode" class="off">Night</a> · <a href="#" id="helplink">Help</a> · <a href="#" id="aboutlink">About</a></p>
+			</div>
+		</div>
+  <script src="js/lib/vminpoly-master/tokenizer.js"></script>
+  <script src="js/lib/vminpoly-master/parser.js"></script>
+  <script src="js/lib/vminpoly-master/vminpoly.js"></script>
+	<script src="js/crossdante.min.js"></script>
+</body>
+</html>

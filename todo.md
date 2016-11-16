@@ -3,6 +3,8 @@
 Add this in: https://github.com/matejlatin/Gutenberg
 Better way to deal with icons: https://css-tricks.com/ligature-icons/
 
+ * change Gulp cordova build script to NPM script
+
 Look at Vivliostyle for pagination:
  * documentation: http://vivliostyle.com/en/about/
  * example: http://vivliostyle.github.io/vivliostyle.js/samples/css-secrets/viewer/vivliostyle-viewer.html#x=../doc/index.xhtml&spread=true&f=epubcfi(/2!/4/20[idp140542532235456]/10[idp140542532350000]/8[section-dry]/25:0)
