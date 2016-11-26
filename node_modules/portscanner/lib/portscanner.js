@@ -98,7 +98,7 @@ portscanner.checkPortStatus = function(port, options, callback) {
   // Return after the socket has closed
   socket.on('close', function(exception) {
     if(exception && !connectionRefused) 
-      error = exception;
+      error = error || exception;
     else
       error = null;
     callback(error, status)

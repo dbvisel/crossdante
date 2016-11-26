@@ -23,7 +23,11 @@ var appdata = {
 	currentpage: "lens",
 	nightmode: false,
 	currentpercentage: 0, // this is current percentage of page (maybe this should be in terms of lines on page?)
-	currentlines: 0       // this is the number of lines calculated to be on the page
+	currentlines: 0,       // this is the number of lines calculated to be on the page
+	elements: {},
+	textdata: {},
+	translationdata: translationdata,
+	cantotitles: cantotitles
 };
 
 module.exports = appdata;
