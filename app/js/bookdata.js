@@ -1,6 +1,6 @@
-var cantotitles = ["Title page","Canto 1","Canto 2","Canto 3"];
+const cantotitles = ["Title page","Canto 1","Canto 2","Canto 3"];
 
-var translationdata = [
+const translationdata = [
 	{"translationid":"dante",
 		"translationshortname":"Dante",
 		"translationfullname":"Dante Alighieri",

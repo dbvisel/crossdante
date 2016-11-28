@@ -5,8 +5,8 @@
 //
 // this probably needs some reworking?
 
-var translationdata = require("./bookdata").translationdata;
-var cantotitles = require("./bookdata").cantotitles;
+const translationdata = require("./bookdata").translationdata;
+const cantotitles = require("./bookdata").cantotitles;
 
 var appdata = {
 	currenttranslationlist: [],    // list of ids of translations we're currently using

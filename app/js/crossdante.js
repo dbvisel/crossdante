@@ -2,11 +2,11 @@
 
 "use strict";
 
-var Hammer = require("hammerjs");
-var Fastclick = require("fastclick");	// why is this not working?
+const Hammer = require("hammerjs");
+const Fastclick = require("fastclick");	// why is this not working?
 
-var dom = require("./dom");
-var appdata = require("./appdata");
+const dom = require("./dom");
+let appdata = require("./appdata");
 
 var app = {
 	initialize: function() { // could set this to choose translations?
@@ -28,7 +28,7 @@ var app = {
 
 		// set up current translation list (initially use all of them)
 
-		for(var i in appdata.translationdata) {
+		for(let i in appdata.translationdata) {
 			appdata.currenttranslationlist.push(appdata.translationdata[i].translationid);
 		}
 
@@ -43,97 +43,100 @@ var app = {
 		// start fastclick
 
 		if ('addEventListener' in document) {
-			document.addEventListener('DOMContentLoaded', function() {
+			document.addEventListener('DOMContentLoaded', () => {
 				Fastclick.attach(document.body);
 			}, false);
 		}
 	},
 	helpers: {
 		gosettings: function(element) {
-			element.onclick = function() {
+			element.onclick = () => {
 				app.setpage("settings");
 			};
 		},
 		setupnote: function(el) {
-			el.onclick = function(e) {
+			el.onclick = (e) => {
 				e.stopPropagation();
-				var thisnote = this.getAttribute("data-notenumber");
-				var notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
+				let thisnote = this.getAttribute("data-notenumber");
+				let notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
 				app.hidenotes();
-				var insert = dom.create(`<div class="notewindow" id="notewindow">${notetext}</div>`);
+				let insert = dom.create(`<div class="notewindow" id="notewindow">
+						${notetext}
+					</div>`);
 				appdata.elements.main.appendChild(insert);
-				document.getElementById("notewindow").onclick = function() {
+				document.getElementById("notewindow").onclick = () => {
 					app.hidenotes();
 				};
 			};
 		},
 		checkboxgo: function(el) {
-			el.onclick = function() {
+			el.onclick = () => {
 				app.changetranslation(this.id.replace("check-",""),document.getElementById(this.id).checked);
 			};
 		},
 		checkboxspango: function(el) {
-			el.onclick = function() {
+			el.onclick = () => {
 				document.getElementById(`check-${this.id}`).checked = !document.getElementById(`check-${this.id}`).checked;
 				app.changetranslation(this.id,document.getElementById(`check-${this.id}`).checked);
 			};
 		}
 	},
 	setupcontrols: function() {
-		var hammertime;
 
 		// button controls
-		document.getElementById("navprev").onclick = function () {
+		document.getElementById("navprev").onclick = () => {
 			app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
 		};
-		document.getElementById("navnext").onclick = function () {
+		document.getElementById("navnext").onclick = () => {
 			app.setlens(appdata.currenttranslation+1,appdata.currentcanto);
 		};
-		document.getElementById("navup").onclick = function () {
+		document.getElementById("navup").onclick = () => {
 			app.setlens(appdata.currenttranslation,appdata.currentcanto-1,0);
 		};
-		document.getElementById("navdown").onclick = function () {
+		document.getElementById("navdown").onclick = () => {
 			app.setlens(appdata.currenttranslation,appdata.currentcanto+1,0);
 		};
 		// initial settings
 
-		document.getElementById("aboutlink").onclick = function() {
+		document.getElementById("aboutlink").onclick = () => {
 			app.setpage("about");
 		};
-		document.getElementById("helplink").onclick = function() {
+		document.getElementById("helplink").onclick = () => {
 			app.setpage("help");
 		};
-		document.getElementById("daymode").onclick = function() {
+		document.getElementById("daymode").onclick = () => {
 			dom.removeclass("body","nightmode");
 			dom.addclass("#nightmode","off");
 			dom.removeclass("#daymode","off");
 			appdata.nightmode = false;
 		};
-		document.querySelector("#nightmode").onclick = function() {
+		document.querySelector("#nightmode").onclick = () => {
 			dom.addclass("body","nightmode");
 			dom.removeclass("#nightmode","off");
 			dom.addclass("#daymode","off");
 			appdata.nightmode = true;
 		};
 
-		document.querySelectorAll(".backtosettings").forEach(app.helpers.gosettings);
-// ES6: can we changed this to a for ... in loop?
+		// document.querySelectorAll(".backtosettings").forEach(app.helpers.gosettings);
+		for(let i of document.querySelectorAll(".backtosettings")) {
+			app.helpers.gosettings(i);
+		}
 
 	// swipe controls
 
-		hammertime = new Hammer(appdata.elements.lens);
+		let hammertime = new Hammer(appdata.elements.lens); // does this need to be a global?
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		hammertime.on('swipeleft',function() {
+		hammertime.on('swipeleft',() => {
 			app.setlens(appdata.currenttranslation+1,appdata.currentcanto);
-		}).on('swiperight',function() {
+		}).on('swiperight',() => {
 			app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
 		});
 
-		hammertime.on('swipedown',function() {
+		hammertime.on('swipedown',() => {
 			if(appdata.elements.text.scollTop === 0) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);  // this needs to be at the bottom!
 			}
-		}).on('swipeup',function() {
+		}).on('swipeup',() => {
 // if difference between current scroll position + height of frame & complete height
 // of column is less than 8, go to the next one
 
@@ -144,7 +147,7 @@ var app = {
 
 	// key controls
 
-		document.body.onkeydown = function(e) {
+		document.body.onkeydown = (e) => {
 			e.preventDefault();
 			if((e.keyCode || e.which) === 37) {
 				dom.addclass("#navprev","on");
@@ -163,17 +166,17 @@ var app = {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto+1,0);
 			}
 		};
-		document.body.onkeyup = function(e) {
+		document.body.onkeyup = (e) => {
 			e.preventDefault();
 			dom.removeclass(".button","on");
 		};
 
 	// page controls
 
-		document.querySelector("#navtitle").onclick = function () {
+		document.querySelector("#navtitle").onclick = () => {
 			app.setpage("lens");
 		};
-		document.querySelector("#navsettings").onclick = function () {
+		document.querySelector("#navsettings").onclick = () => {
 			if(appdata.currentpage == "settings") {
 //      if(appdata.currenttranslationlist.indexOf(appdata.translationdata[appdata.currenttranslation].translationid) > -1 ) {}
 				app.setpage("lens");
@@ -182,17 +185,17 @@ var app = {
 				app.setpage("settings");
 			}
 		};
-		appdata.elements.main.onclick = function () {
+		appdata.elements.main.onclick = () => {
 			app.hidenotes();
 		};
 	},
 	setupnotes: function() {
-		var count = 0;
-		var notes = document.querySelectorAll(".note");
+		let count = 0;
+		let notes = document.querySelectorAll(".note");
 
-		for(var i = 0; i < notes.length; i++) {
-			var children = notes[i].children;
-			for(var j=0; j < children.length; j++) {
+		for(let i = 0; i < notes.length; i++) {
+			let children = notes[i].children;
+			for(let j=0; j < children.length; j++) {
 				if(dom.hasclass(children[j],"notetext")) {
 					console.log("notetext "+count);
 					children[j].setAttribute("data-notenumber", count);
@@ -227,7 +230,7 @@ var app = {
 	},
 	setlens: function(newtrans, newcanto, percentage) {
 		console.log(`Setlens called for ${newtrans}, canto ${newcanto}`);
-		var changetrans = false;
+		let changetrans = false;
 
 	// if page isn't set to "lens" this doesn't do anything
 
@@ -253,7 +256,7 @@ var app = {
 
 	// figure out which translation is the current translation
 
-			for(var i=0; i < appdata.translationdata.length; i++) {
+			for(let i=0; i < appdata.translationdata.length; i++) {
 				if(appdata.currenttranslationlist[newtrans] == appdata.translationdata[i].translationid) {
 					newtrans = i;
 				}
@@ -281,7 +284,7 @@ var app = {
 		// this method still isn't great! it tries to round to current lineheight
 		// to avoid cutting off lines
 
-				var scrollto = app.rounded(percentage * appdata.elements.text.scrollHeight);
+				let scrollto = app.rounded(percentage * appdata.elements.text.scrollHeight);
 				appdata.elements.text.scrollTop = scrollto;
 			} else {
 				if(percentage > 0) {
@@ -301,16 +304,16 @@ var app = {
 
 	},
 	fixpadding: function() {
-		var divs = document.querySelectorAll("#text p");
-		var i, div, padding, desiredwidth;
-		var maxwidth = 0;
+		const divs = document.querySelectorAll("#text p");
+		var div, padding, desiredwidth;
+		let maxwidth = 0;
 
 		if(dom.hasclass(appdata.elements.text,"poetry")) {
 
 // this is poetry, figure out longest line
 
 			appdata.elements.text.style.paddingLeft = 0;
-			for(i=0; i<divs.length; i++) {
+			for(let i=0; i<divs.length; i++) {
 				div = divs[i];
 				div.style.display = "inline-block";
 				if(div.clientWidth > maxwidth) {
@@ -354,36 +357,46 @@ var app = {
 		dom.removebyselector(".notewindow");
 	},
 	updatesettings: function() {
-		var insert, i, j, translatorlist;
 
 	// add in translation chooser
 
 		dom.removebyselector("#translatorlist");
-		insert = dom.create('<ul id="translatorlist"></ul>');
+		let insert = dom.create('<ul id="translatorlist"></ul>');
 		document.getElementById("translationchoose").appendChild(insert);
-		translatorlist = document.querySelector("#translatorlist");
-		for(i in appdata.translationdata) {
-			insert = dom.create(`<li><input type="checkbox" id="check-${appdata.translationdata[i].translationid}" /><span id="${appdata.translationdata[i].translationid}" >${appdata.translationdata[i].translationfullname}</span></li>`);
+		const translatorlist = document.querySelector("#translatorlist");
+		for(let i in appdata.translationdata) {
+			insert = dom.create(`<li>
+					<input type="checkbox" id="check-${appdata.translationdata[i].translationid}" />
+					<span id="${appdata.translationdata[i].translationid}" >${appdata.translationdata[i].translationfullname}</span>
+				</li>`);
 			translatorlist.appendChild(insert);
 			document.getElementById("check-"+appdata.translationdata[i].translationid).checked = (appdata.currenttranslationlist.indexOf(appdata.translationdata[i].translationid) > -1);
 		}
 
-		document.querySelectorAll("#translatorlist input[type=checkbox]").forEach(app.helpers.checkboxgo);
-		// ES6: can we changed this to a for ... in loop?
-		document.querySelectorAll("#translatorlist span").forEach(app.helpers.checkboxspango);
-		// ES6: can we changed this to a for ... in loop?
+		// document.querySelectorAll("#translatorlist input[type=checkbox]").forEach(app.helpers.checkboxgo);
+		for(let i of document.querySelectorAll("#translatorlist input[type=checkbox]")) {
+			app.helpers.checkboxgo(i);
+		}
+		// document.querySelectorAll("#translatorlist span").forEach(app.helpers.checkboxspango);
+		for(let i of document.querySelectorAll("#translatorlist span")) {
+			app.helpers.checkboxspango(i);
+		}
 
 	// add in toc
 
 		dom.removebyselector("#selectors");
-		insert = dom.create('<div id="selectors"><p>Canto: <select id="selectcanto"></select></p><p>Translation: <select id="selecttranslator"></select></p><p><span id="selectgo">Go</span></p></div>');
+		insert = dom.create(`<div id="selectors">
+				<p>Canto: <select id="selectcanto"></select></p>
+				<p>Translation: <select id="selecttranslator"></select></p>
+				<p><span id="selectgo">Go</span></p>
+			</div>`);
 		document.getElementById("translationgo").appendChild(insert);
-		for(i = 0; i < appdata.cantocount; i++) {
+		for(let i = 0; i < appdata.cantocount; i++) {
 			insert = dom.create(`<option id="canto${i}" ${((appdata.currentcanto == i) ? "selected" : "")}>${appdata.cantotitles[i]}</option>`);
 			document.getElementById("selectcanto").appendChild(insert);
 		}
-		for(i in appdata.currenttranslationlist) {
-			for(j = 0; j < appdata.translationdata.length; j++) {
+		for(let i in appdata.currenttranslationlist) {
+			for(let j = 0; j < appdata.translationdata.length; j++) {
 				if(appdata.translationdata[j].translationid == appdata.currenttranslationlist[i]) {
 					insert = dom.create(`<option id="tr_${appdata.translationdata[j].translationid}" ${((appdata.currenttranslation == i) ? "selected" : "")}>${appdata.translationdata[j].translationfullname}</option>`);
 					document.getElementById("selecttranslator").appendChild(insert);
@@ -391,12 +404,12 @@ var app = {
 			}
 		}
 
-		document.querySelector("#selectgo").onclick = function () {
-			var selected = document.getElementById("selecttranslator");
-			var thistrans = selected.options[selected.selectedIndex].id.substr(3);
+		document.querySelector("#selectgo").onclick = () => {
+			let selected = document.getElementById("selecttranslator");
+			let thistrans = selected.options[selected.selectedIndex].id.substr(3);
 			selected = document.getElementById("selectcanto");
-			var thiscanto = selected.options[selected.selectedIndex].id.substr(5);
-			for(j = 0; j < appdata.translationdata.length; j++) {
+			let thiscanto = selected.options[selected.selectedIndex].id.substr(5);
+			for(let j = 0; j < appdata.translationdata.length; j++) {
 				if(appdata.currenttranslationlist[j] == thistrans) {
 					app.setpage("lens");
 					app.setlens(j,thiscanto,0);
@@ -410,14 +423,14 @@ var app = {
 	},
 	changetranslation: function(thisid, isset) {
 		console.log("changetranslation fired!");
-		for(var i in appdata.translationdata) {
+		for(let i in appdata.translationdata) {
 			if(thisid == appdata.translationdata[i].translationid) {
 				if(isset) {
 					appdata.currenttranslationlist.push(thisid);
 					appdata.translationcount++;
 				} else {
 					if(appdata.translationcount > 1) {
-						var j = appdata.currenttranslationlist.indexOf(thisid);
+						let j = appdata.currenttranslationlist.indexOf(thisid);
 						if (j > -1) {
 							appdata.currenttranslationlist.splice(j, 1);
 						}
@@ -431,8 +444,8 @@ var app = {
 			app.savecurrentdata();
 		}
 
-		var newlist = [];
-		for(i in appdata.translationdata) {
+		let newlist = [];
+		for(let i in appdata.translationdata) {
 			if(appdata.currenttranslationlist.indexOf(appdata.translationdata[i].translationid) > -1) {
 				newlist.push(appdata.translationdata[i].translationid);
 			}

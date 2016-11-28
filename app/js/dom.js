@@ -1,6 +1,8 @@
 // dom.js
 
-var dom = {
+"use strict";
+
+const dom = {
 	create: function(htmlStr) {
 		var frag = document.createDocumentFragment();
 		var temp = document.createElement('div');
