@@ -43,8 +43,9 @@ var app = {
 		// start fastclick
 
 		if ('addEventListener' in document) {
+			console.log(Fastclick);
 			document.addEventListener('DOMContentLoaded', () => {
-				Fastclick.attach(document.body);
+				Fastclick(document.body);
 			}, false);
 		}
 	},
@@ -55,8 +56,10 @@ var app = {
 			};
 		},
 		setupnote: function(el) {
-			el.onclick = (e) => {
+			el.onclick = function(e) {
 				e.stopPropagation();
+console.log(this);
+
 				let thisnote = this.getAttribute("data-notenumber");
 				let notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
 				app.hidenotes();
@@ -261,7 +264,8 @@ var app = {
 					newtrans = i;
 				}
 			}
-			appdata.elements.text.innerHTML = app.textdata[newtrans][newcanto];
+
+			appdata.elements.text.innerHTML = appdata.textdata[newtrans][newcanto];
 			dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
 			dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
 			app.setupnotes();
