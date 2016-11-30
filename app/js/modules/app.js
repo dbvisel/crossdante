@@ -12,7 +12,6 @@ let appdata = require("./appdata");
 var app = {
 	initialize: function() {
 		console.log("initializing!");
-		console.log(appdata);
 		this.bindEvents();
 
 		// basic doc setup
@@ -23,10 +22,15 @@ var app = {
 		appdata.elements.text = document.getElementById("text");
 		appdata.elements.slider = document.getElementById("slider");
 
+		// set up about page
+
+		document.getElementById("abouttext").innerHTML = appdata.description;
+
 		// set up current translation list (initially use all of them)
 
 		for(let i in appdata.translationdata) {
 			appdata.currenttranslationlist.push(appdata.translationdata[i].translationid);
+			document.getElementById("textsources").innerHTML += `<li>${appdata.translationdata[i].translationfullname}, <em>${appdata.translationdata[i].title}:</em> ${appdata.translationdata[i].source}</li>`;
 		}
 
 		// check to see if there are saved localstorage, if so, take those values

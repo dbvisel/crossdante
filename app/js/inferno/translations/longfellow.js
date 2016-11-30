@@ -7,6 +7,7 @@ module.exports = {
 	author: 'Dante Alighieri',
 	translationid:"longfellow",
 	title: 'Inferno',
+	source: `<a href="http://www.gutenberg.org/ebooks/1001">Project Gutenberg</a>`,
 	translationshortname:"Longfellow",
 	translationfullname:"Henry Wordsworth Longfellow",
 	translationclass:"poetry longfellow",

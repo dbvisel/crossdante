@@ -7,6 +7,7 @@ module.exports = {
 	author: 'Dante Alighieri',
 	translationid:"norton",
 	title: 'Hell',
+	source: `<a href="http://www.gutenberg.org/ebooks/1995">Project Gutenberg</a>`,
 	translation: true,
 	translationshortname:"Norton",
 	translationfullname:"Charles Eliot Norton",

@@ -5,6 +5,7 @@ module.exports = {
 	bookname: 'inferno',
 	booktitle: "Inferno",
 	bookauthor: "Dante Alighieri",
+	description: `<p>What can one say about Dante’s <em>Inferno</em> that hasn’t already been said? Not very much. Obviously, there are better places to learn about Dante than the about page of an app; and you are probably smart enough to find them. Please note that the translations here aren’t being presented as the best translations of the <em>Inferno</em> available: rather, they’re here by virtue of being in the public domain.`,
 
 	cantotitles: [	// this is canto sequence
 		"Title page","Canto 1","Canto 2","Canto 3","Canto 4","Canto 5","Canto 6","Canto 7","Canto 8","Canto 9",
@@ -19,7 +20,10 @@ module.exports = {
 		{"translationid":"longfellow",
 			"order":1},
 		{"translationid":"norton",
-			"order":2}/*,
+			"order":2},
+		{"translationid":"cary",
+			"order":2},
+			/*,
 		{"translationid":"wright",
 			"order":3},
 		{"translationid":"carlyle",
@@ -29,7 +33,8 @@ module.exports = {
 	textdata: [	// set up translations
 		require("./translations/dante"),
 		require("./translations/longfellow"),
-		require("./translations/norton")/*,
+		require("./translations/norton"),
+		require("./translations/cary")/*,
 		require("./translations/wright"),
 		require("./translations/carlyle")*/
 	]

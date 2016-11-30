@@ -8,6 +8,7 @@ module.exports = {
 	translationid:"dante",
 	title: 'Inferno',
 	translation: false,
+	source: `<a href="http://www.gutenberg.org/ebooks/1009">Project Gutenberg</a>`,
 	translationshortname:"Dante",
 	translationfullname:"Dante Alighieri",
 	translationclass:"poetry",

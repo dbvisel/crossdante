@@ -7,6 +7,7 @@ module.exports = {
 	author: 'Dante Alighieri',
 	translationid:"wright",
 	title: 'Inferno',
+	source: "the internet",
 	translation: true,
 	translationshortname:"Wright",
 	translationfullname:"S. Fowler Wright",

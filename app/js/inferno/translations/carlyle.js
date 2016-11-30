@@ -8,6 +8,7 @@ module.exports = {
 	translationid:"carlyle",
 	title: 'Inferno',
 	translation: true,
+	source: "the internet",
 	translationshortname:"Carlyle",
 	translationfullname: 'John Aitken Carlyle, Thomas Okey &amp; P. H. Wiksteed',
 	translationclass:"prose carlyle",
