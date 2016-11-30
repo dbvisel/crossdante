@@ -181,7 +181,7 @@ body {
 	}
 	& .backtosettings {
 		float: right;
-		margin-top: $textlineheight;
+		margin: $textlineheight 0;
 		display: block;
 	}
 }

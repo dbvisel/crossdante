@@ -12,11 +12,10 @@ let appdata = require("./appdata");
 var app = {
 	initialize: function() { // could set this to choose translations?
 		console.log("initializing!");
+		console.log(appdata);
 		this.bindEvents();
 
 		// basic doc setup
-
-		appdata.setup();
 
 		appdata.elements.lens = document.getElementById("lens");
 		appdata.elements.main = document.getElementById("main");
@@ -583,8 +582,4 @@ console.log(`Newtrans number: ${newtrans}`);
 	}
 };
 
-app.initialize();
-if (!('onDeviceReady' in document)) {
-	console.log("Running non-Cordova code!");
-	app.setup(); // (hopefully this doesn't fire in real version?)
-}
+module.exports = app;
