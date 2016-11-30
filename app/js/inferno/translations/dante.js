@@ -14,7 +14,7 @@ module.exports = {
 	text:[`<p class="title">Inferno</p>
 	<p class="author">Dante Alighieri</p>`,
 
-	`<p class="cantohead">1</p>
+		`<p class="cantohead">1</p>
 		<div class="stanza">
 			<p>Nel mezzo del cammin di nostra vita</p>
 			<p>mi ritrovai per una selva oscura,</p>
@@ -244,7 +244,7 @@ module.exports = {
 			<p>Allor si mosse, e io li tenni dietro.</p>
 		</div>`,
 
-	`<p class="cantohead">2</p>
+		`<p class="cantohead">2</p>
 		<div class="stanza">
 			<p>Lo giorno se n&rsquo;andava, e l&rsquo;aere bruno</p>
 			<p>toglieva li animai che sono in terra</p>
@@ -484,7 +484,7 @@ module.exports = {
 			<p>intrai per lo cammino alto e silvestro.</p>
 		</div>`,
 
-	`<p class="cantohead">3</p>
+		`<p class="cantohead">3</p>
 		<div class="stanza">
 			<p>‘&lsquo;Per me si va ne la citt&agrave; dolente,</p>
 			<p>per me si va ne l&rsquo;etterno dolore,</p>
@@ -716,9 +716,9 @@ module.exports = {
 
 		`<p class="cantohead">4</p>
 		<div class="stanza">
-			<p>﻿Ruppemi l&rsquo;alto sonno ne la testa</p>
-		<p>un greve truono, s&igrave; ch&rsquo;io mi riscossi</p>
-		<p>come persona ch&rsquo;&egrave; per forza desta;</p>
+			<p>Ruppemi l&rsquo;alto sonno ne la testa</p>
+			<p>un greve truono, s&igrave; ch&rsquo;io mi riscossi</p>
+			<p>come persona ch&rsquo;&egrave; per forza desta;</p>
 		</div>
 		<div class="stanza">
 			<p>e l&rsquo;occhio riposato intorno mossi,</p>
@@ -969,9 +969,9 @@ module.exports = {
 			<p>E vegno in parte ove non &egrave; che luca.</p>
 		</div>`,
 
-			`<p class="cantohead">5</p>
+		`<p class="cantohead">5</p>
 		<div class="stanza">
-			<p>﻿Cos&igrave; discesi del cerchio primaio</p>
+		<p>Cos&igrave; discesi del cerchio primaio</p>
 		<p>gi&ugrave; nel secondo, che men loco cinghia</p>
 		<p>e tanto pi&ugrave; dolor, che punge a guaio.</p>
 		</div>
@@ -1209,9 +1209,9 @@ module.exports = {
 			<p>E caddi come corpo morto cade.</p>
 		</div>`,
 
-			`<p class="cantohead">6</p>
+		`<p class="cantohead">6</p>
 		<div class="stanza">
-			<p>﻿Al tornar de la mente, che si chiuse</p>
+			<p>Al tornar de la mente, che si chiuse</p>
 		<p>dinanzi a la piet&agrave; d&rsquo;i due cognati,</p>
 		<p>che di trestizia tutto mi confuse,</p>
 		</div>
@@ -1404,9 +1404,9 @@ module.exports = {
 			<p>quivi trovammo Pluto, il gran nemico.</p>
 		</div>`,
 
-			`<p class="cantohead">7</p>
+		`<p class="cantohead">7</p>
 		<div class="stanza">
-			<p>﻿&laquo;Pape Sat&agrave;n, pape Sat&agrave;n aleppe!&raquo;,</p>
+			<p>&laquo;Pape Sat&agrave;n, pape Sat&agrave;n aleppe!&raquo;,</p>
 		<p>cominci&ograve; Pluto con la voce chioccia;</p>
 		<p>e quel savio gentil, che tutto seppe,</p>
 		</div>
@@ -1624,9 +1624,9 @@ module.exports = {
 			<p>Venimmo al pi&egrave; d&rsquo;una torre al da sezzo.</p>
 		</div>`,
 
-			`<p class="cantohead">8</p>
+		`<p class="cantohead">8</p>
 		<div class="stanza">
-			<p>﻿Io dico, seguitando, ch&rsquo;assai prima</p>
+			<p>Io dico, seguitando, ch&rsquo;assai prima</p>
 		<p>che noi fossimo al pi&egrave; de l&rsquo;alta torre,</p>
 		<p>li occhi nostri n&rsquo;andar suso a la cima</p>
 		</div>
@@ -1844,9 +1844,9 @@ module.exports = {
 			<p>tal che per lui ne fia la terra aperta&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">9</p>
+		`<p class="cantohead">9</p>
 		<div class="stanza">
-			<p>﻿Quel color che vilt&agrave; di fuor mi pinse</p>
+			<p>Quel color che vilt&agrave; di fuor mi pinse</p>
 		<p>veggendo il duca mio tornare in volta,</p>
 		<p>pi&ugrave; tosto dentro il suo novo ristrinse.</p>
 		</div>
@@ -2069,9 +2069,9 @@ module.exports = {
 			<p>passammo tra i mart&igrave;ri e li alti spaldi.</p>
 		</div>`,
 
-			`<p class="cantohead">10</p>
+		`<p class="cantohead">10</p>
 		<div class="stanza">
-			<p>﻿Ora sen va per un secreto calle,</p>
+			<p>Ora sen va per un secreto calle,</p>
 		<p>tra &rsquo;l muro de la terra e li mart&igrave;ri,</p>
 		<p>lo mio maestro, e io dopo le spalle.</p>
 		</div>
@@ -2299,9 +2299,9 @@ module.exports = {
 			<p>che &rsquo;nfin l&agrave; s&ugrave; facea spiacer suo lezzo.</p>
 		</div>`,
 
-			`<p class="cantohead">11</p>
+		`<p class="cantohead">11</p>
 		<div class="stanza">
-			<p>﻿In su l&rsquo;estremit&agrave; d&rsquo;un&rsquo;alta ripa</p>
+			<p>In su l&rsquo;estremit&agrave; d&rsquo;un&rsquo;alta ripa</p>
 		<p>che facevan gran pietre rotte in cerchio,</p>
 		<p>venimmo sopra pi&ugrave; crudele stipa;</p>
 		</div>
@@ -2494,9 +2494,9 @@ module.exports = {
 			<p>e &rsquo;l balzo via l&agrave; oltra si dismonta&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">12</p>
+		`<p class="cantohead">12</p>
 		<div class="stanza">
-			<p>﻿Era lo loco ov&rsquo; a scender la riva</p>
+			<p>Era lo loco ov&rsquo; a scender la riva</p>
 		<p>venimmo, alpestro e, per quel che v&rsquo;er&rsquo; anco,</p>
 		<p>tal, ch&rsquo;ogne vista ne sarebbe schiva.</p>
 		</div>
@@ -2729,9 +2729,9 @@ module.exports = {
 			<p>Poi si rivolse e ripassossi &rsquo;l guazzo.</p>
 		</div>`,
 
-			`<p class="cantohead">13</p>
+		`<p class="cantohead">13</p>
 		<div class="stanza">
-			<p>﻿Non era ancor di l&agrave; Nesso arrivato,</p>
+			<p>Non era ancor di l&agrave; Nesso arrivato,</p>
 		<p>quando noi ci mettemmo per un bosco</p>
 		<p>che da neun sentiero era segnato.</p>
 		</div>
@@ -2984,9 +2984,9 @@ module.exports = {
 			<p>Io fei gibetto a me de le mie case&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">14</p>
+		`<p class="cantohead">14</p>
 		<div class="stanza">
-			<p>﻿Poi che la carit&agrave; del natio loco</p>
+			<p>Poi che la carit&agrave; del natio loco</p>
 		<p>mi strinse, raunai le fronde sparte</p>
 		<p>e rende&rsquo;le a colui, ch&rsquo;era gi&agrave; fioco.</p>
 		</div>
@@ -3224,9 +3224,9 @@ module.exports = {
 			<p>e sopra loro ogne vapor si spegne&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">15</p>
+		`<p class="cantohead">15</p>
 		<div class="stanza">
-			<p>﻿Ora cen porta l&rsquo;un de&rsquo; duri margini;</p>
+			<p>Ora cen porta l&rsquo;un de&rsquo; duri margini;</p>
 		<p>e &rsquo;l fummo del ruscel di sopra aduggia,</p>
 		<p>s&igrave; che dal foco salva l&rsquo;acqua e li argini.</p>
 		</div>
@@ -3434,9 +3434,9 @@ module.exports = {
 			<p>quelli che vince, non colui che perde.</p>
 		</div>`,
 
-			`<p class="cantohead">16</p>
+		`<p class="cantohead">16</p>
 		<div class="stanza">
-			<p>﻿Gi&agrave; era in loco onde s&rsquo;udia &rsquo;l rimbombo</p>
+			<p>Gi&agrave; era in loco onde s&rsquo;udia &rsquo;l rimbombo</p>
 		<p>de l&rsquo;acqua che cadea ne l&rsquo;altro giro,</p>
 		<p>simile a quel che l&rsquo;arnie fanno rombo,</p>
 		</div>
@@ -3664,9 +3664,9 @@ module.exports = {
 			<p>che &rsquo;n s&ugrave; si stende e da pi&egrave; si rattrappa.</p>
 		</div>`,
 
-			`<p class="cantohead">17</p>
+		`<p class="cantohead">17</p>
 		<div class="stanza">
-			<p>﻿&laquo;Ecco la fiera con la coda aguzza,</p>
+			<p>&laquo;Ecco la fiera con la coda aguzza,</p>
 		<p>che passa i monti e rompe i muri e larmi!</p>
 		<p>Ecco colei che tutto l mondo appuzza!&raquo;.</p>
 		</div>
@@ -3894,9 +3894,9 @@ module.exports = {
 			<p>si dilegu&ograve; come da corda cocca.</p>
 		</div>`,
 
-			`<p class="cantohead">18</p>
+		`<p class="cantohead">18</p>
 		<div class="stanza">
-			<p>﻿Luogo &egrave; in inferno detto Malebolge,</p>
+			<p>Luogo &egrave; in inferno detto Malebolge,</p>
 		<p>tutto di pietra di color ferrigno,</p>
 		<p>come la cerchia che dintorno il volge.</p>
 		</div>
@@ -4124,9 +4124,9 @@ module.exports = {
 			<p>E quinci sian le nostre viste sazie&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">19</p>
+		`<p class="cantohead">19</p>
 		<div class="stanza">
-			<p>﻿O Simon mago, o miseri seguaci</p>
+			<p>O Simon mago, o miseri seguaci</p>
 		<p>che le cose di Dio, che di bontate</p>
 		<p>deon essere spose, e voi rapaci</p>
 		</div>
@@ -4349,9 +4349,9 @@ module.exports = {
 			<p>Indi un altro vallon mi fu scoperto.</p>
 		</div>`,
 
-			`<p class="cantohead">20</p>
+		`<p class="cantohead">20</p>
 		<div class="stanza">
-			<p>﻿Di nova pena mi conven far versi</p>
+			<p>Di nova pena mi conven far versi</p>
 		<p>e dar matera al ventesimo canto</p>
 		<p>de la prima canzon, ch&rsquo;&egrave; d&rsquo;i sommersi.</p>
 		</div>
@@ -4569,9 +4569,9 @@ module.exports = {
 			<p>S&igrave; mi parlava, e andavamo introcque.</p>
 		</div>`,
 
-			`<p class="cantohead">21</p>
+		`<p class="cantohead">21</p>
 		<div class="stanza">
-			<p>﻿Cos&igrave; di ponte in ponte, altro parlando</p>
+			<p>Cos&igrave; di ponte in ponte, altro parlando</p>
 		<p>che la mia comed&igrave;a cantar non cura,</p>
 		<p>venimmo; e tenavamo &rsquo;l colmo, quando</p>
 		</div>
@@ -4804,9 +4804,9 @@ module.exports = {
 			<p>ed elli avea del cul fatto trombetta.</p>
 		</div>`,
 
-			`<p class="cantohead">22</p>
+		`<p class="cantohead">22</p>
 		<div class="stanza">
-			<p>﻿Io vidi gi&agrave; cavalier muover campo,</p>
+			<p>Io vidi gi&agrave; cavalier muover campo,</p>
 		<p>e cominciare stormo e far lor mostra,</p>
 		<p>e talvolta partir per loro scampo;</p>
 		</div>
@@ -5059,9 +5059,9 @@ module.exports = {
 			<p>E noi lasciammo lor cos&igrave; &rsquo;mpacciati.</p>
 		</div>`,
 
-			`<p class="cantohead">23</p>
+		`<p class="cantohead">23</p>
 		<div class="stanza">
-			<p>﻿Taciti, soli, sanza compagnia</p>
+			<p>Taciti, soli, sanza compagnia</p>
 		<p>n&rsquo;andavam l&rsquo;un dinanzi e l&rsquo;altro dopo,</p>
 		<p>come frati minor vanno per via.</p>
 		</div>
@@ -5309,9 +5309,9 @@ module.exports = {
 			<p>dietro a le poste de le care piante.</p>
 		</div>`,
 
-			`<p class="cantohead">24</p>
+		`<p class="cantohead">24</p>
 		<div class="stanza">
-			<p>﻿In quella parte del giovanetto anno</p>
+			<p>In quella parte del giovanetto anno</p>
 		<p>che &rsquo;l sole i crin sotto l&rsquo;Aquario tempra</p>
 		<p>e gi&agrave; le notti al mezzo d&igrave; sen vanno,</p>
 		</div>
@@ -5564,9 +5564,9 @@ module.exports = {
 			<p>E detto l&rsquo;ho perch&eacute; doler ti debbia!&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">25</p>
+		`<p class="cantohead">25</p>
 		<div class="stanza">
-			<p>﻿Al fine de le sue parole il ladro</p>
+			<p>Al fine de le sue parole il ladro</p>
 		<p>le mani alz&ograve; con amendue le fiche,</p>
 		<p>gridando: &laquo;Togli, Dio, ch&rsquo;a te le squadro!&raquo;.</p>
 		</div>
@@ -5819,9 +5819,9 @@ module.exports = {
 			<p>l&rsquo;altr&rsquo; era quel che tu, Gaville, piagni.</p>
 		</div>`,
 
-			`<p class="cantohead">26</p>
+		`<p class="cantohead">26</p>
 		<div class="stanza">
-			<p>﻿Godi, Fiorenza, poi che se&rsquo; s&igrave; grande</p>
+			<p>Godi, Fiorenza, poi che se&rsquo; s&igrave; grande</p>
 		<p>che per mare e per terra batti l&rsquo;ali,</p>
 		<p>e per lo &rsquo;nferno tuo nome si spande!</p>
 		</div>
@@ -6059,9 +6059,9 @@ module.exports = {
 			<p>infin che &rsquo;l mar fu sovra noi richiuso&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">27</p>
+		`<p class="cantohead">27</p>
 		<div class="stanza">
-			<p>﻿Gi&agrave; era dritta in s&ugrave; la fiamma e queta</p>
+			<p>Gi&agrave; era dritta in s&ugrave; la fiamma e queta</p>
 		<p>per non dir pi&ugrave;, e gi&agrave; da noi sen gia</p>
 		<p>con la licenza del dolce poeta,</p>
 		</div>
@@ -6289,9 +6289,9 @@ module.exports = {
 			<p>a quei che scommettendo acquistan carco.</p>
 		</div>`,
 
-			`<p class="cantohead">28</p>
+		`<p class="cantohead">28</p>
 		<div class="stanza">
-			<p>﻿Chi poria mai pur con parole sciolte</p>
+			<p>Chi poria mai pur con parole sciolte</p>
 		<p>dicer del sangue e de le piaghe a pieno</p>
 		<p>ch&rsquo;i&rsquo; ora vidi, per narrar pi&ugrave; volte?</p>
 		</div>
@@ -6529,9 +6529,9 @@ module.exports = {
 			<p>Cos&igrave; s&rsquo;osserva in me lo contrapasso&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">29</p>
+		`<p class="cantohead">29</p>
 		<div class="stanza">
-			<p>﻿La molta gente e le diverse piaghe</p>
+			<p>La molta gente e le diverse piaghe</p>
 		<p>avean le luci mie s&igrave; inebr&iuml;ate,</p>
 		<p>che de lo stare a piangere eran vaghe.</p>
 		</div>
@@ -6764,9 +6764,9 @@ module.exports = {
 			<p>com&rsquo; io fui di natura buona scimia&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">30</p>
+		`<p class="cantohead">30</p>
 		<div class="stanza">
-			<p>﻿Nel tempo che Iunone era crucciata</p>
+			<p>Nel tempo che Iunone era crucciata</p>
 		<p>per Semel&egrave; contra &rsquo;l sangue tebano,</p>
 		<p>come mostr&ograve; una e altra f&iuml;ata,</p>
 		</div>
@@ -7014,9 +7014,9 @@ module.exports = {
 			<p>ch&eacute; voler ci&ograve; udire &egrave; bassa voglia&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">31</p>
+		`<p class="cantohead">31</p>
 		<div class="stanza">
-			<p>﻿Una medesma lingua pria mi morse,</p>
+			<p>Una medesma lingua pria mi morse,</p>
 		<p>s&igrave; che mi tinse l&rsquo;una e l&rsquo;altra guancia,</p>
 		<p>e poi la medicina mi riporse;</p>
 		</div>
@@ -7259,9 +7259,9 @@ module.exports = {
 			<p>e come albero in nave si lev&ograve;.</p>
 		</div>`,
 
-			`<p class="cantohead">32</p>
+		`<p class="cantohead">32</p>
 		<div class="stanza">
-			<p>﻿S&rsquo;&iuml;o avessi le rime aspre e chiocce,</p>
+			<p>S&rsquo;&iuml;o avessi le rime aspre e chiocce,</p>
 		<p>come si converrebbe al tristo buco</p>
 		<p>sovra &rsquo;l qual pontan tutte l&rsquo;altre rocce,</p>
 		</div>
@@ -7494,9 +7494,9 @@ module.exports = {
 			<p>se quella con ch&rsquo;io parlo non si secca&raquo;.</p>
 		</div>`,
 
-			`<p class="cantohead">33</p>
+		`<p class="cantohead">33</p>
 		<div class="stanza">
-			<p>﻿La bocca sollev&ograve; dal fiero pasto</p>
+			<p>La bocca sollev&ograve; dal fiero pasto</p>
 		<p>quel peccator, forbendola a&rsquo; capelli</p>
 		<p>del capo ch&rsquo;elli avea di retro guasto.</p>
 		</div>
@@ -7759,9 +7759,9 @@ module.exports = {
 			<p>e in corpo par vivo ancor di sopra.</p>
 		</div>`,
 
-			`<p class="cantohead">34</p>
+		`<p class="cantohead">34</p>
 		<div class="stanza">
-			<p>﻿&laquo;Vexilla regis prodeunt inferni</p>
+			<p>&laquo;Vexilla regis prodeunt inferni</p>
 		<p>verso di noi; per&ograve; dinanzi mira&raquo;,</p>
 		<p>disse &rsquo;l maestro mio, &laquo;se tu &rsquo;l discerni&raquo;.</p>
 		</div>
@@ -7993,4 +7993,4 @@ module.exports = {
 		<div class="stanza">
 			<p>E quindi uscimmo a riveder le stelle.</p>
 		</div>`]
-	};
+};

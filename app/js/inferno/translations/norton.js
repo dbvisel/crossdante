@@ -14,7 +14,7 @@ module.exports = {
 	text:[`<p class="title">Hell</p>
 	<p class="author">Charles Eliot Norton</p>`,
 
-	`<p class="cantohead">CANTO I</p>
+		`<p class="cantohead">CANTO I</p>
 		<p class="summary">Dante, astray in a wood, reaches the foot of a hill which he begins to ascend; he is hindered by three beasts; he turns back and is met by Virgil, who proposes to guide him into the eternal world.</p>
 		<p>Midway upon the road of our life I found myself within a dark wood, for the right way had been missed. Ah! how hard a thing it is to tell what this wild and rough and dense wood was, which in thought renews the fear! So bitter is it that death is little more. But in order to treat of the good that there I found, I will tell of the other things that I have seen there. I cannot well recount how I entered it, so full was I of slumber at that point where I abandoned the true way. But after I had arrived at the foot of a hill, where that valley ended which had pierced my heart with fear, I looked on high, and saw its shoulders clothed already with the rays of the planet
 			<span class="note">
@@ -48,7 +48,7 @@ module.exports = {
 		Italy shall he be the salvation, for which the virgin Camilla died, and Euryalus, Turnus and Nisus of their wounds. He shall hunt her through every town till he shall have set her back in hell, there whence envy first sent her forth. Wherefore I think and deem it for thy best that thou follow me, and I will be thy guide, and will lead thee hence through the eternal place where thou shalt hear the despairing shrieks, shalt see the ancient spirits woeful who each proclaim the second death. And then thou shalt see those who are contented in the fire, because they hope to come, whenever it may be, to the blessed folk; to whom if thou wilt thereafter ascend, them shall be a soul more worthy than I for that. With her I will leave thee at my departure; for that Emperor who reigneth them above, because I was rebellious to His law, wills not that into His city any one should come through me. In all parts He governs and them He reigns: there in His city and His lofty seat. O happy he whom thereto He elects!&rdquo; And I to him, &ldquo;Poet, I beseech thee by that God whom thou didst not know, in order that I may escape this ill and worse, that thou lead me thither whom thou now hest said, so that I may see the gate of St. Peter, and those whom thou makest so afflicted.&rdquo;</p>
 		<p>Then he moved on, and I behind him kept.</p>`,
 
-	`<p class="cantohead">CANTO II</p>
+		`<p class="cantohead">CANTO II</p>
 		<p class="summary">Dante, doubtful of his own powers, is discouraged at the outset.&mdash;Virgil cheers him by telling him that he has been sent to his aid by a blessed Spirit from Heaven.&mdash;Dante casts off fear, and the poets proceed.</p>
 		<p>The day was going, and the dusky air was taking the living things that are on earth from their fatigues, and I alone was preparing to sustain the war alike of the road, and of the woe which the mind that erreth not shall retrace. O Muses, O lofty genius, now assist me! O mind that didst inscribe that which I saw, here shall thy nobility appear! I began:&mdash;&ldquo;Poet, that guidest me, consider my virtue, if it is sufficient, ere to the deep pass thou trustest me. Thou sayest that the parent of Silvius while still corruptible went to the immortal world and was there in the body. Wherefore if the Adversary of every ill was then courteous, thinking on the high effect that should proceed from him, and on the Who and the What,
 			<span class="note">
@@ -75,7 +75,7 @@ module.exports = {
 		is in heaven who hath pity for this hindrance whereto I send thee, so that stern judgment there above she breaketh. She summoned Lucia in her request, and said, &ldquo;Thy faithful one now hath need of thee, and unto thee I commend him.&rdquo; Lucia, the foe of every cruel one, rose and came to the place where I was, seated with the ancient Rachel. She said, &ldquo;Beatrice, true praise of God, why dost thou not succor him who so loved thee that for thee he came forth from the vulgar throng? Dost thou not hear the pity of his plaint? Dost thou not see the death that combats him beside the stream whereof the sea hath no vaunt?&rdquo; In the world never were persons swift to seek their good, and to fly their harm, as I, after these words were uttered, came here below, from my blessed seat, putting my trust in thy upright speech, which honors thee and them who have heard it.&rsquo; After she had said this to me, weeping she turned her lucent eyes, whereby she made me more speedy in coming. And I came to thee as she willed. Thee have I delivered from that wild beast that took from thee the short ascent of the beautiful mountain. What is it then? Why, why dost thou hold back? why dost thou harbor such cowardice in thy heart? why hast thou not daring and boldness, since three blessed Ladies care for thee in the court of Heaven, and my speech pledges thee such good?&rdquo;</p>
 		<p>As flowerets, bent and closed by the chill of night, after the sun shines on them straighten themselves all open on their stem, so I became with my weak virtue, and such good daring hastened to my heart that I began like one enfranchised: &ldquo;Oh compassionate she who succored me! and thou courteous who didst speedily obey the true words that she addressed to thee! Thou by thy words hast so disposed my heart with desire of going, that I have returned unto my first intent. Go on now, for one sole will is in us both: Thou Leader, thou Lord, and thou Master.&rdquo; Thus I said to him; and when he had moved on, I entered along the deep and savage road.</p>`,
 
-	`<p class="cantohead">CANTO III</p>
+		`<p class="cantohead">CANTO III</p>
 		<p class="summary">The gate of Hell.&mdash;Virgil lends Dante in.&mdash;The punishment of the neither good nor bad.&mdash;Acheron, and the sinners on its bank.&mdash;Charon.&mdash;Earthquake.&mdash;Dante swoons.</p>
 		<p>&ldquo;Through me is the way into the woeful city; through me is the way into eternal woe; through me is the way among the lost people. Justice moved my lofty maker: the divine Power, the supreme Wisdom and the primal Love made me. Before me were no things created, unless eternal, and I eternal last. Leave every hope, ye who enter!&rdquo;</p>
 		<p>These words of color obscure I saw written at the top of a gate; whereat I, &ldquo;Master, their meaning is dire to me.&rdquo;</p>
@@ -103,7 +103,7 @@ module.exports = {
 		<p>As in autumn the leaves fall off one after the other, till the bough sees all its spoils upon the earth, in like wise the evil seed of Adam throw themselves from that shore one by one at signals, as the bird at his call. Thus they go over the dusky wave, and before they have landed on the farther side, already on this a new throng is gathered.</p>
 		<p>&ldquo;My son,&rdquo; said the courteous Master, &ldquo;those who die in the wrath of God, all meet together here from every land. And they are eager to pass over the stream, for the divine justice spurs them, so that fear is turned to desire. This way a good soul never passes; and therefore if Charon snarleth at thee, thou now mayest well know what his speech signifies.&rdquo; This ended, the dark plain trembled so mightily, that the memory of the terror even now bathes me with sweat. The tearful land gave forth a wind that flashed a vermilion light which vanquished every sense of mine, and I fell as a man whom slumber seizes.</p>`,
 
-	`<p class="cantohead">CANTO IV</p>
+		`<p class="cantohead">CANTO IV</p>
 		<p class="summary">The further side of Acheron.&mdash;Virgil leads Dante into Limbo, the First Circle of Hell, containing the spirits of those who lived virtuously but without Christianity.&mdash;Greeting of Virgil by his fellow poets.&mdash;They enter a castle, where are the shades of ancient worthies.&mdash;Virgil and Dante depart.</p>
 		<p>A heavy thunder broke the deep sleep in my head, so that I started up like a person who by force is wakened. And risen erect, I moved my rested eye round about, and looked fixedly to distinguish the place where I was. True it is, that I found myself on the verge of the valley of the woeful abyss that gathers in thunder of infinite wailings. Dark, profound it was, and cloudy, so that though I fixed my sight on the bottom I did not discern anything there.</p>
 		<p>“Now we descend down here into the blind world,” began the Poet all deadly pale, “I will be first, and thou shalt be second.”</p>
@@ -122,7 +122,7 @@ module.exports = {
 		<p>I saw Electra with many companions, among whom I knew both Hector and Aeneas, Caesar in armor, with his gerfalcon eyes; I saw Camilla and Penthesilea on the other side, and I saw the King Latinus, who was seated with Lavinia his daughter. I saw that Brutus who drove out Tarquin; Lucretia, Julia, Marcia, and Cornelia; and alone, apart, I saw the Saladin. When I raised my brow a little more, I saw the Master of those who know, seated amid the philosophic family; all regard him, all do him honor. Here I saw both Socrates and Plato, who before the others stand nearest to him; Democritus, who ascribes the world to chance; Diogenes, Anaxagoras, and Thales, Empedocles, Heraclitus, and Zeno; and I saw the good collector of the qualities, Dioscorides, I mean; and I saw Orpheus, Tully, and Linus, and moral Seneca, Euclid the geometer, and Ptolemy, Hippocrates, Avicenna, Galen, and Averrhoes, who made the great comment. I cannot report of all in full, because the long theme so drives me that many times speech comes short of fact.</p>
 		<p>The company of six is reduced to two. By another way the wise guide leads me, out from the quiet, into the air that trembles, and I come into a region where is nothing that can give light.</p>`,
 
-	`<p class="cantohead">CANTO V</p>
+		`<p class="cantohead">CANTO V</p>
 		<p class="summary">The Second Circle, that of Carnal Sinners.&mdash;Minos.&mdash;Shades renowned of old.&mdash;Francesca da Rimini.</p>
 		<p>Thus I descended from the first circle down into the second, which girdles less space, and so much more woe that it goads to wailing. There abides Minos horribly, and snarls; he examines the sins at the entrance; he judges, and he sends according as he entwines himself. I mean, that, when the miscreant spirit comes there before him, it confesses itself wholly, and that discerner of sins sees what place of Hell is for it; he girdles himself with his tail so many times as the degrees he wills it should be sent down. Always before him stand many of them. They go, in turn, each to the judgment; they speak, and hear, and then are whirled below.</p>
 		<p>“O thou that comest to the woeful inn,” said Minos to me, when he saw me, leaving the act of so great an office, “beware how thou enterest, and to whom thou trustest thyself; let not the amplitude of the entrance deceive thee.” And my Leader to him, “Why then dost thou cry out? Hinder not his fated going; thus is it willed there where is power to do that which is willed; and ask thou no more.”</p>
@@ -139,7 +139,7 @@ module.exports = {
 		</p>
 		<p>While one spirit said this the other was weeping so that through pity I swooned, as if I had been dying, and fell as a dead body falls.</p>`,
 
-	`<p class="cantohead">CANTO VI</p>
+		`<p class="cantohead">CANTO VI</p>
 		<p class="summary">The Third Circle, that of the Gluttonous.&mdash;Cerberus.&mdash;Ciacco.</p>
 		<p>When the mind returned, which closed itself before the pity of these two kinsfolk, that had all confounded me with sadness, new torments and new tormented souls I see around me wherever I move, and howsoever I turn, and wherever I gaze.</p>
 		<p>I am in the third circle, that of the rain eternal, accursed, cold, and heavy. Its rule and quality are never new. Coarse hail, and foul water and snow pour down through the tenebrous air; the earth that receives them stinks. Cerberus, a beast cruel and monstrous, with three throats barks doglike above the people that are here submerged. He has vermilion eyes, and a greasy and black beard, and a big belly, and hands armed with claws: he tears the spirits, flays them, and rends them. The rain makes them howl like dogs; of one of their sides they make a screen for the other; the profane wretches often turn themselves.</p>
@@ -168,7 +168,7 @@ module.exports = {
 			</span>
 		the great enemy.</p>`,
 
-	`<p class="cantohead">CANTO VII</p>
+		`<p class="cantohead">CANTO VII</p>
 		<p class="summary">The Fourth Circle, that of the Avaricious and the Prodigal.&mdash;Pluto.&mdash;Fortune.&mdash;The Styx.&mdash;The Fifth Circle, that of the Wrathful and the Sullen.</p>
 		<p>“<em>Pape Satan, pape Satan aleppe</em>,”&mdash;began Pluto with his clucking voice. And that gentle Sage, who knew everything, said to comfort me, “Let not thy fear hurt thee; for whatso power he have shall not take from thee the descent of this rock.” Then he turned to that swollen lip and said, “Be silent, accursed wolf! inwardly consume thyself with thine own rage: not without cause is this going to the abyss; it is willed on high, there where Michael did vengeance on the proud adultery.”
 			<span class="note">
@@ -196,7 +196,7 @@ module.exports = {
 		</p>
 		<p>Thus we circled a great arc of the foul fen, between the dry bank and the slough, with eyes turned on those who guzzle the mire. We came at length to the foot of a tower.</p>`,
 
-	`<p class="cantohead">CANTO VIII</p>
+		`<p class="cantohead">CANTO VIII</p>
 		<p class="summary">The Fifth Circle.&mdash;Phlegyas and his boat.&mdash;Passage of the Styx.&mdash;Filippo Argenti.&mdash;The City of Dis.&mdash;The demons refuse entrance to the poets.</p>
 		<p>I say, continuing, that, long before we were at the foot of the high tower, our eyes went upward to its top because of two flamelets that we saw set there, and another giving sigual back from so far that hardly could the eye reach it. And I turned me to the Sea of all wisdom; I said, “This one, what says it? and what answers that other fire? and who are they that make it?” And he to me, “Upon the foul waves already thou mayest discern that which is expected, if the fume of the marsh hide it not from thee.”</p>
 		<p>Bowstring never sped arrow from itself that ran so swift a course through the air, as a very little boat which I saw coming through the water toward us at that instant, under the direction of a single ferryman, who was crying out, “Art thou then come, fell soul?”</p>
@@ -215,7 +215,7 @@ module.exports = {
 		<p>“O my dear Leader, who more than seven times hast renewed assurance in me, and drawn me from deep peril that stood confronting me, leave me not,” said I, “thus undone; and, if the going farther onward be denied us, let us together retrace our footprints quickly.” And that Lord who had led me thither said to me, “Fear not, for no one can take from us our onward way, by Such an one it is given to us. But here await me, and comfort thy dejected spirit and feed on good hope, for I will not leave thee in the nether world.”</p>
 		<p>So the sweet Father goes away, and here abandons me, and I remain in suspense; and yes and no contend within my head. I could not hear what he set forth to them, but he had not staid there long with them, when each ran vying back within. These our adversaries closed the gates on the breast of my Lord, who remained without, and returned to me with slow steps. He held his eyes upon the ground, and his brow was shorn of all hardihood, and he said in sighs, “Who hath denied to me the houses of woe?” And he said to me, “Thou, because I am wroth, be not dismayed, for I shall win the strife, whoever circle round within for the defence. This their insolence is not new, for of old they used it at a less secret gate, which still is found without a bolt. Above it thou didst see the dead inscription; and already on this side of it descends the steep, passing without escort through the circles, One such that by him the city shall be opened to us.”</p>`,
 
-	`<p class="cantohead">CANTO IX</p>
+		`<p class="cantohead">CANTO IX</p>
 		<p class="summary">The City of Dis.&mdash;Erichtho.&mdash;The Three Furies.&mdash;The Heavenly Messenger.&mdash;The Sixth Circle, that of the Heresiarchs.</p>
 		<p>That color which cowardice painted outwardly on me when I saw my Guide turn back, repressed more speedily his own new color. He stopped attentive, like a man that listens, for the eye could not lead him far through the black air, and through the dense fog.</p>
 		<p>“Yet it must be for us to win the fight,” began he, “unless&mdash;Such an one offered herself to us.
@@ -250,7 +250,7 @@ module.exports = {
 		<p>And I, “Master, who are these folk that, buried within those coffers, make themselves heard with their woeful sighs?” And he to me, “Here are the heresiarchs with their followers of every sect, and the tombs are much more laden than thou thinkest. Like with like is buried here, and the monuments are more and less hot.”</p>
 		<p>And when he to the right hand had turned, we passed between the torments and the high battlements.</p>`,
 
-	`<p class="cantohead">CANTO X</p>
+		`<p class="cantohead">CANTO X</p>
 		<p class="summary">The Sixth Circle: Heresiarchs.&mdash;Farinata degli Uberti.-Cavalcante Cavalcanti.&mdash;Frederick II.</p>
 		<p>Now along a narrow path between the wall of the city and the torments my Master goeth on, and I behind his shoulders.</p>
 		<p>“O Virtue supreme,” I began, “that through the impious circles turnest me, according to thy pleasure, speak to me and satisfy my desires. The folk that are lying in the sepulchres, can they be seen? All the lids are now lifted, and no one keepeth guard.” And he to me, “All shall be locked in when from Jehoshaphat they shall here return with the bodies which they have left on earth. Upon this side Epicurus with all his followers, who make the soul mortal with the body, have their burial place. Therefore as to the demand that thou makest of me, thou shalt soon be satisfied here within; and also as to the desire concerning which thou art silent to me.” And I, “Good Leader, I hold not my heart hidden from thee except in order to speak little; and not only now to that hast thou disposed me.”</p>
@@ -290,7 +290,7 @@ module.exports = {
 		<p>Thereon he hid himself; and I toward the ancient Poet turned my steps, reflecting on that speech which seemed hostile to me. He moved on, and then, thus going, he said to me, “Why art thou so distraught?” And I satisfied his demand. “Let thy memory preserve that which thou hast heard against thyself,” commanded me that Sage, “and now attend to this,” and he raised his finger. “When thou shalt be in presence of the sweet radiance of her whose beautiful eye sees everything, from her thou shalt learn the journey of thy life.” Then to the left he turned his step.</p>
 		<p>We left the wall, and went toward the middle by a path which strikes into a valley that even up there its stench made displeasing.</p>`,
 
-	`<p class="cantohead">CANTO XI</p>
+		`<p class="cantohead">CANTO XI</p>
 		<p class="summary">The Sixth Circle: Heretics.&mdash;Tomb of Pope Anastasins.&mdash;Discourse of Virgil on the divisions of the lower Hell.</p>
 		<p>Upon the edge of a high bank formed by great rocks broken in a circle, we came above a more cruel pen. And here, because of the horrible excess of the stench that the deep abyss throws out, we drew aside behind the lid of a great tomb, whereon I saw an inscription which said, “Pope Anastasius I hold, he whom Photinus drew from the right way.”</p>
 		<p>“Our descent must needs be slow so that the sense may first accustom itself a little to the dismal blast, and then will be no heed of it.” Thus the Master, and I said to him, “Some compensation do thou find that the time pass not lost.” And be, “Behold, I am thinking of that. My son, within these rocks,” he began to say, “are three circlets from grade to grade like those thou leavest. All are full of accursed spirits; but, in order that hereafter sight only may suffice thee, hear how and wherefore they are in constraint.</p>
@@ -340,7 +340,7 @@ module.exports = {
 			</span>
 		and far yonder is the way down the cliff.”</p>`,
 
-	`<p class="cantohead">CANTO XII</p>
+		`<p class="cantohead">CANTO XII</p>
 		<p class="summary">First round of the Seventh Circle; those who do violence to others; Tyrants and Homicides.&mdash;The Minotaur.&mdash;The Centaurs.&mdash;Chiron.&mdash;Nessus.&mdash;The River of Boiling Blood, and the Sinners in it.</p>
 		<p>The place where we came to descend the bank was rugged, and, because of what was there besides, such that every eye would be shy of it.</p>
 		<p>As is that ruin which, on this side of Trent, struck the Adige on its flank, either by earthquake or by failure of support,&mdash;for from the top of the mountain whence it moved, to the plain, the cliff has so fallen down that it might give a path to one who was above,&mdash;so was the descent of that ravine. And on the edge of the broken chasm lay stretched out the infamy of Crete, that was conceived in the false cow. And when he saw us he bit himself even as one whom wrath rends inwardly. My Sage cried out toward him, “Perchance thou believest that here is the Duke of Athens who up in the world brought death to thee? Get thee gone, beast, for this one comes not instructed by thy sister, but he goes to behold your punishments.”</p>
@@ -367,7 +367,7 @@ module.exports = {
 		<p>“Even as on this side, thou seest that the boiling stream ever diminishes,” said the Centaur, “I would have thee believe that on this other its bed sinks more and more, until it comes round again where it behoves that tyranny should groan. The divine justice here pierces that Attila who was a scourge on earth, and Pyrrhus and Sextus; and forever milks the tears that with the boiling it unlocks from Rinier of Corneto, and from Rinier Pazzo, who upon the highways made such warfare.”</p>
 		<p>Then he turned back and repassed the ford.</p>`,
 
-	`<p class="cantohead">CANTO XIII</p>
+		`<p class="cantohead">CANTO XIII</p>
 		<p class="summary">Second round of the Seventh Circle: of those who have done violence to themselves and to their goods.&mdash;The Wood of Self-murderers.&mdash;The Harpies.&mdash;Pier delle Vigne.&mdash;Lano of Siena and others.</p>
 		<p>Nessus had not yet reached the yonder bank when we set forward through a wood which was marked by no path. Not green leaves but of a dusky color, not smooth boughs but knotty and gnarled, not fruits were there but thorns with poison. Those savage beasts that hold in hate the tilled places between Cecina and Corneto have no thickets so rough or so dense.</p>
 		<p>Here the foul Harpies make their nests, who chased the Trojans from the Strophades with dismal announcement of future calamity. They have broad wings, and human necks and faces, feet with claws, and a great feathered belly. They make lament upon the strange trees.</p>
@@ -428,7 +428,7 @@ module.exports = {
 			</span>
 		would have labored in vain. I made a gibbet for myself of my own dwelling.”</p>`,
 
-	`<p class="cantohead">CANTO XIV</p>
+		`<p class="cantohead">CANTO XIV</p>
 		<p class="summary">Third round of the Seventh Circle of those who have done violence to God.&mdash;The Burning Sand.&mdash;Capaneus.&mdash;Figure of the Old Man in Crete.&mdash;The Rivers of Hell.</p>
 		<p>Because the charity of my native place constrained me, I gathered up the scattered leaves and gave them back to him who was already hoarse.</p>
 		<p>Then we came to the confine, where the second round is divided from the third, and where is seen a horrible mode of justice.</p>
@@ -462,7 +462,7 @@ module.exports = {
 		<p>And I again, “Master, where are Phlegethon and Lethe found, for of the one thou art silent, and of the other thou sayest that it is formed by this rain?”</p>
 		<p>“In all thy questions surely thou pleasest me,” he answered, “but the boiling of the red water ought truly to solve one that thou askest. Lethe thou shalt see, but outside of this ditch, there where souls go to lave themselves when sin repented of is taken away.” Then he said, “Now it is time to depart from the wood; take heed that thou come behind me; the margins afford way, for they are not burning, and above them all the vapor is extinguished.”</p>`,
 
-	`<p class="cantohead">CANTO XV</p>
+		`<p class="cantohead">CANTO XV</p>
 		<p class="summary">Third round of the Seventh Circle: of those who have done violence to Nature.&mdash;Brunetto Latini.&mdash;Prophecies of misfortune to Dante.</p>
 		<p>Now one of the hard margins bears us on, and the fume of the brook overshadows so that it saves the water and the banks from the fire. As the Flemings, between Wissant and Bruges, fearing the flood that is blown in upon them, make the dyke whereby the sea is routed; and as the Paduans along the Brenta, in order to defend their towns and castles, ere Chiarentana
 			<span class="note">
@@ -520,7 +520,7 @@ module.exports = {
 			</span>
 		across the plain, and of these he seemed the one that wins, and not he that loses.</p>`,
 
-	`<p class="cantohead">CANTO XVI</p>
+		`<p class="cantohead">CANTO XVI</p>
 		<p class="summary">Third round of the Seventh Circle: of those who have done violence to Nature.&mdash;Guido Guerra, Tegghiaio Aldobrandi and Jacopo Rusticucci.&mdash;The roar of Phlegethon as it pours downward.&mdash;The cord thrown into the abyss.</p>
 		<p>Now was I in a place where the resounding of the water that was falling into the next circle was heard, like that hum which the beehives make, when three shades together separated themselves, running, from a troop that was passing under the rain of the bitter torment. They came toward us, and each cried out, “Stop thou, that by thy garb seemest to us to be one from our wicked city!”</p>
 		<p>Ah me! what wounds I saw upon their limbs, recent and old, burnt in by the flames. Still it grieves me for them but to remember it.</p>
@@ -571,7 +571,7 @@ module.exports = {
 			</span>
 		but here I cannot be silent, and by the notes of this comedy, Reader, I swear to thee,&mdash;so may they not be void of lasting grace,&mdash;that I saw through that thick and dark air a shape come swimming upwards marvelous to every steadfast heart; like as he returns who goes down sometimes to loose an anchor that grapples either a rock or other thing that in the sea is hid, who stretches upward, and draws in his feet.</p>`,
 
-	`<p class="cantohead">CANTO XVII</p>
+		`<p class="cantohead">CANTO XVII</p>
 		<p class="summary">Third round of the Seventh Circle: of those who have done violence to Art.&mdash;Geryon.&mdash;The Usurers.&mdash;Descent to the Eighth Circle.</p>
 		<p>“Behold the wild beast with the pointed tail, that passes mountains, and breaks walls and weapons; behold him that infects all the world.”
 			<span class="note">
@@ -640,7 +640,7 @@ module.exports = {
 		<p>I heard now on the right hand the gorge making beneath us a horrible roar; wherefore I stretch out my head, with my eyes downward. Then I became more afraid to lean over, because I saw fires and heard laments; whereat I, trembling, wholly cowered back. And I saw then, what I had not seen before, the descending and the wheeling, by the great evils that were drawing near on diverse sides.</p>
 		<p>As the falcon which has been long on wing, that, without sight of lure or bird, makes the falconer say, “Ah me, thou stoopest!” descends weary, there whence he had set forth swiftly, through a hundred circles, and lights far from his master, disdainful and sullen; so Geryon set us at the bottom, at the very foot of the scarped rock, and, disburdened of our persons, darted away as arrow from the bowstring.</p>`,
 
-	`<p class="cantohead">CANTO XVIII</p>
+		`<p class="cantohead">CANTO XVIII</p>
 		<p class="summary">Eighth Circle: the first pit: panders and seducers.&mdash;Venedico Caccianimico.&mdash;Jason.&mdash;Second pit: false flatterers.&mdash;Alessio Interminei.&mdash;Thais.</p>
 		<p>There is a place in Hell called Malebolge, all of stone of the color of iron, as is the encircling wall that surrounds it. Right in the middle of this field malign yawns an abyss exceeding wide and deep, the structure of which I will tell of in its place. That belt, therefore, which remains between the abyss and the foot of the high bank is circular, and it has its ground divided into ten valleys. Such an aspect as where, for guard of the walls, many moats encircle castles, the place where they are presents, such image did these make here. And as in such strongholds from their thresholds to the outer bank are little bridges, so from the base of the precipitous wall started crags which traversed the dykes and the moats far as the abyss that collects and cuts them off.</p>
 		<p>In this place, shaken off from the back of Geryon, we found ourselves; and the Poet held to the left, and I moved on behind. On the right hand I saw new sorrow, new torments, and new scourgers, with which the first pit
@@ -702,7 +702,7 @@ module.exports = {
 			</span>
 		And herewith let our sight be satisfied.</p>`,
 
-	`<p class="cantohead">CANTO XIX</p>
+		`<p class="cantohead">CANTO XIX</p>
 		<p class="summary">Eighth Circle third pit: simonists.&mdash;Pope Nicholas III.</p>
 		<p>Oh Simon Magus! Oh ye his wretched followers, who, rapacious, do prostitute for gold and silver the things of God that ought to be the brides of righteousness, now it behoves for you the trumpet sound, since ye are in the third pit!</p>
 		<p>Already were we come to the next tomb,
@@ -781,7 +781,7 @@ module.exports = {
 		</p>
 		<p>And, while I was singing these notes to him, whether anger or conscience stung him, he violently quivered with both feet. I believe, forsooth, that it had pleased my Leader, with so contented look be listened ever to the sound of the true words uttered. Thereupon with both his arms he took me, and when he had me wholly on his breast, remounted on the way by which he had descended. Nor did he tire of holding me clasped till he had borne me up to the summit of the arch which is the passage from the fourth to the fifth dyke. Here softly he laid down his burden, softly because of the ragged and steep crag, that would be a difficult pass for goats. Thence another great valley was discovered to me.</p>`,
 
-	`<p class="cantohead">CANTO XX</p>
+		`<p class="cantohead">CANTO XX</p>
 		<p class="summary">Eighth Circle: fourth pit: diviners, soothsayers, and magicians.&mdash;Amphiaraus.&mdash;Tiresias.&mdash;Aruns.&mdash;Manto.&mdash;Eurypylus.&mdash;Michael Scott.&mdash;Asdente.</p>
 		<p>Of a new punishment needs must I make verses, and give matetial to the twentieth canto of the first lay, which is of the submerged.
 			<span class="note">
@@ -863,7 +863,7 @@ module.exports = {
 			</span>
 		holds the confines of both the hemispheres, and touches the wave below Seville. And already yesternight was the moon round; well shouldst thou remember it, for it did thee no harm sometimes in the deep wood.” Thus he spoke to me, and we went on the while.</p>`,
 
-	`<p class="cantohead">CANTO XXI</p>
+		`<p class="cantohead">CANTO XXI</p>
 		<p class="summary">Eighth Circle: fifth pit: barrators.&mdash;A magistrate of Lucca.&mdash;The Malebranche.&mdash;Parley with them.</p>
 		<p>So from bridge to bridge we went, speaking other things, which my Comedy careth not to sing, and held the suffimit, when we stopped to see the next cleft of Malebolge and the next vain lamentations; and I saw it wonderfully dark.</p>
 		<p>As in the Arsenal of the Venetians, in winter, the sticky pitch for smearing their unsound vessels is boiling, because they cannot go to sea, and, instead thereof, one builds him a new bark, and one caulks the sides of that which hath made many a voyage; one hammers at the prow, and one at the stern; another makes oars, and another twists the cordage; and one the foresail and the mainsail patches,&mdash;so, not by fire, but by divine art, a thick pitch was boiling there below, which belimed the bank on every side. I saw it, but saw not in it aught but the bubbles which the boiling raised, and all of it swelling up and again sinking compressed.</p>
@@ -921,7 +921,7 @@ module.exports = {
 		<p>“O me! Master, what is it that I see?” said I; “pray let us go alone without escort, if thou knowest the way, for I desire it not for myself. If thou art as wary as thou art wont to be, dost thou not see that they show their teeth, and threaten harm to us with their brows?” And he to me, “I would not have thee afraid. Let them grin on at their will, for they are doing it at the boiled wretches.”</p>
 		<p>Upon the left bank they wheeled round, but first each had pressed his tongue with his teeth toward their leader for a signal, and he had made a trumpet of his rump.</p>`,
 
-	`<p class="cantohead">CANTO XXII</p>
+		`<p class="cantohead">CANTO XXII</p>
 		<p class="summary">Eighth Circle: fifth pit: barrators.&mdash;Ciampolo of Navarre.&mdash;Fra Gomita.&mdash;Michaci Zanche.&mdash;Fray of the Malebranche.</p>
 		<p>I have seen of old horsemen moving camp, and beginning an assault, and making their muster, and sometimes setting forth on their escape; I have seen runners through your land, O Aretines, and I have seen freebooters starting, tournaments struck and jousts run, at times with trumpets, and at times with bells, with drums, and with signals from strongholds, and with native things and foreign,&mdash;but never with so strange a pipe did I see horsemen or footmen set forth, or ship by sign of land or star.</p>
 		<p>We went along with the ten demons. Ah, the fell company! but in the church with saints, and in the tavern with gluttons. Ever on the pitch was I intent, to see every aspect of the pit, and of the people that were burning in it.</p>
@@ -947,7 +947,7 @@ module.exports = {
 		<p>“If you wish to see or to hear Tuscans or Lombards,” thereon began again the frightened one, “I will make them come; but let the Malebranche stand a little withdrawn, so that they may not be afraid of their vengeance, and I, sitting in this very place, for one that I am, will make seven of them come, when I shall whistle as is our wont to do whenever one of us comes out.” Cagnazzo at this speech raised his muzzle, shaking his head, and said, “Hear the knavery he has devised for throwing himself under!” Whereon he who had snares in great plenty answered, “Too knavish am I, when I procure for mine own companions greater sorrow.” Alichino held not in, and, in opposition to the others, said to him, “If thou dive, I will not come behind thee at a gallop, but I will beat my wings above the pitch; let the ridge be left, and be the bank a shield, to see if thou alone availest more than we.”</p>
 		<p>O thou that readest! thou shalt hear new sport. Each turned his eyes to the other side, he first who had been most averse to doing it. The Navarrese chose well his time, planted his feet firmly on the ground, and in an instant leaped, and from their purpose freed himself. At this, each of them was pricked with shame, but he most who was the cause of the loss; wherefore he started and cried out, “Thou art caught.” But little it availed, for wings could not outstrip fear. The one went under, and the other, flying, turned his breast upward. Not otherwise the wild duck on a sudden dives when the falcon comes close, and he returns up vexed and baffled. Calcabrina, enraged at the flout, kept flying behind him, desirous that the sinner should escape, that he might have a scuffle; and when the barrator had disappeared he turned his talons upon his companion, and grappled with him above the ditch. But the other was indeed a sparrowhawk full grown to gripe him well, and both fell into the midst of the boiling pool. The heat was a sudden ungrappler, but nevertheless there was no rising from it, they had their wings so glued. Barbariccia, grieving with the rest of his troop, made four of them fly to the other side with all their forks, and very quickly, this side and that, they descended to their post. They stretched out their hooks toward the belimed ones, who were already baked within the crust: and we left them thus embroiled.</p>`,
 
-	`<p class="cantohead">CANTO XXIII</p>
+		`<p class="cantohead">CANTO XXIII</p>
 		<p class="summary">Eighth Circle. Escape from the fifth pit.&mdash;The sixth pit: hypocrites, in cloaks of gilded lead.&mdash;Jovial Friars.&mdash;Caiaphas.&mdash;Annas.&mdash;Frate Catalano.</p>
 		<p>Silent, alone, and without company, we went on, one before, the other behind, as the Minor friars go along the way. My thought was turned by the present brawl upon the fable of Aesop, in which he tells of the frog and the mole; for NOW and THIS INSTANT are not more alike than the one is to the other, if beginning and end are rightly coupled by the attentive mind.
 			<span class="note">
@@ -991,7 +991,7 @@ module.exports = {
 			</span>
 		And the Friar, “I once heard tell at Bologna vices enough of the devil, among which I heard that he is false, and the father of lies.” Then the Leader with great steps went on, disturbed a little with anger in his look; whereon I departed from the heavily burdened ones, following the prints of the beloved feet.</p>`,
 
-	`<p class="cantohead">CANTO XXIV</p>
+		`<p class="cantohead">CANTO XXIV</p>
 		<p class="summary">Eighth Circle. The poets climb from the sixth pit.&mdash;Seventh pit, filled with serpents, by which thieves are tormented.&mdash;Vanni Fucci.&mdash;Prophecy of calamity to Dante.</p>
 		<p>In that part of the young year when the sun tempers his locks beneath Aquarius,
 			<span class="note">
@@ -1042,7 +1042,7 @@ module.exports = {
 			</span>
 		Pistoia first strips itself of the Black, then Florence renovates her people and her customs. Mars draws a flame from Val di Magra wrapped in turbid clouds, and with impetuous and bitter storm shall it be opposed upon Campo Piceno, where it shall suddenly rend the mist, so that every White shall thereby be smitten. And this have I said because it must grieve thee.”</p>`,
 
-	`<p class="cantohead">CANTO XXV</p>
+		`<p class="cantohead">CANTO XXV</p>
 		<p class="summary">Eighth Circle: seventh pit: fraudulent thieves.&mdash;Cacus.&mdash;Agnel Brunelleschi and others.</p>
 		<p>At the end of his words the thief raised his hands with both the figs,
 			<span class="note">
@@ -1105,7 +1105,7 @@ module.exports = {
 			</span>
 		was he whom thou, Gaville, weepest.</p>`,
 
-	`<p class="cantohead">CANTO XXVI</p>
+		`<p class="cantohead">CANTO XXVI</p>
 		<p class="summary">Eighth Circle: eighth pit fraudulent counselors.&mdash;Ulysses and Diomed.</p>
 		<p>Rejoice, Florence, since thou art so great that over sea and land thou beatest thy wings, and thy name is spread through Hell. Among the thieves I found five such, thy citizens, whereat shame comes to me, and thou unto great honor risest not thereby. But, if near the morning one dreams the truth, thou shalt feel within little time what Prato, as well as others, craves for thee.
 			<span class="note">
@@ -1169,7 +1169,7 @@ module.exports = {
 			</span>
 		On the right hand I left Seville, on the other already I had left Ceuta. ‘O brothers,’ said I, ‘who through a hundred thousand perils have reached the West, to this so little vigil of your senses that remains be ye unwilling to deny, the experience, following the sun, of the world that hath no people. Consider ye your origin; ye were not made to live as brutes, but for pursuit of virtue and of knowledge.’ With this little speech I made my companions so eager for the road that hardly afterwards could I have held them back. And turning our stern to the morning, with our oars we made wings for the mad flight, always gaining on the left hand side. The night saw now all the stars of the other pole, and ours so low that it rose not forth from the ocean floor. Five times rekindled and as many quenched was the light beneath the moon, since we had entered on the deep pass, when there appeared to us a mountain dim through the distance, and it appeared to me so high as I had not seen any. We rejoiced thereat, and soon it turned to lamentation, for from the strange land a whirlwind rose, and struck the fore part of the vessel. Three times it made her whirl with all the waters, the fourth it made her stern lift up, and the prow go down, as pleased Another, till the sea had closed over us.”</p>`,
 
-	`<p class="cantohead">CANTO XXVII</p>
+		`<p class="cantohead">CANTO XXVII</p>
 		<p class="summary">Eighth Circle: eighth pit fraudulent counselors.&mdash;Guido da Montefeltro.</p>
 		<p>Now was the flame erect and quiet, through not speaking more, and now was going from us, with the permission of the sweet poet, when another that was coming behind it made us turn our eyes to its tip, by a confused sound that issued forth therefrom. As the Sicilian bull
 			<span class="note">
@@ -1247,7 +1247,7 @@ module.exports = {
 		came for me afterwards, when I was dead, but one of the Black Cherubim said to him, ‘Bear him not away; do me not wrong; he must come down among my drudges because he gave the fraudulent counsel, since which till now I have been at his hair; for he who repents not cannot be absolved, nor can repentance and will exist together, because of the contradiction that allows it not.’ O woeful me! how I shuddered when he took me, saying to me, ‘Perhaps thou didst not think that I was a logician.’ To Minos he bore me; and he twined his tail eight times round his hard back, and, after he had bitten it in great rage, he said, ‘This is one of the sinners of the thievish fire.’ Therefore I, where thou seest, am lost, and going thus robed I rankle.” When he had thus completed his speech the flame, sorrowing, departed, twisting and flapping its sharp horn.</p>
 		<p>We passed onward, I and my Leader, along the crag, far as upon the next arch that covers the ditch in which the fee is paid by those who, sowing discord, win their burden.</p>`,
 
-	`<p class="cantohead">CANTO XXVIII</p>
+		`<p class="cantohead">CANTO XXVIII</p>
 		<p class="summary">Eighth Circle: ninth pit: sowers of discord and schism.&mdash;Mahomet and Ali.&mdash;Fra Dolcino.&mdash;Pier da Medicina. -Curio.&mdash;Mosca.&mdash;Bertrau de Born.</p>
 		<p>Who, even with words unfettered,
 			<span class="note">
@@ -1342,7 +1342,7 @@ module.exports = {
 			</span>
 		he that gave to the young king the ill encouragements. I made father and son rebellious to each other. Ahithophel did not more with Absalom and with David by his wicked goadings. Because I divided persons so united, I bear my brain, alas! divided from its source which is in this trunk. Thus retaliation is observed in me.”</p>`,
 
-	`<p class="cantohead">CANTO XXIX</p>
+		`<p class="cantohead">CANTO XXIX</p>
 		<p class="summary">Eighth Circle ninth pit.&mdash;Geri del Bello.&mdash;Tenth pit: falsifiers of all sorts.&mdash;Griffolino of Arezzo.&mdash;Capocchio.</p>
 		<p>The many people and the diverse wounds had so inebriated mine eyes that they were fain to stay for weeping. But Virgil said to me, “What art thou still watching? why is thy sight still fixed down there among the dismal mutilated shades? Thou hast not done so at the other pits; consider if thou thinkest to count them, that the valley circles two and twenty miles; and already the moon is beneath our feet; the time is little now that is conceded to us, and other things are to be seen than thou seest.” “If thou hadst,” replied I thereupon, “attended to the reason why I was looking perhaps thou wouldst have permitted me yet to stay.”</p>
 		<p>Meanwhile my Leader went on, and I behind him went, already waking reply, and adding, “Within that cavern where I just now was holding my eyes so fixedly, I think that a spirit of my own blood weeps the sin that down there costs so dear.” Then said the Master, “Let not thy thought henceforth reflect on him; attend to other thing, and let him there remain, for I saw him at the foot of the little bridge pointing at thee, and threatening fiercely with his finger, and I heard him called Geri del Bello.
@@ -1392,7 +1392,7 @@ module.exports = {
 			</span>
 		in the garden where such seed takes root; and except the brigade in which Caccia of Asciano wasted his vineyard and his great wood, and the Abbagliato showed his wit. But that thou mayest know who thus seconds thee against the Sienese, so sharpen thine eye toward me that my face may answer well to thee, so shalt thou see that I am the shade of Capocchio, who falsified the metals by alchemy; and thou shouldst recollect, if I descry thee aright, how I was a good ape of nature.”</p>`,
 
-	`<p class="cantohead">CANTO XXX</p>
+		`<p class="cantohead">CANTO XXX</p>
 		<p class="summary">Eighth Circle: tenth pit: falsifiers of all sorts.&mdash;Myrrha.&mdash;Gianni Schicchi.&mdash;Master Adam.&mdash;Sinon of Troy.</p>
 		<p>At the time when Juno was wroth because of Semele against the Theban blood, as she showed more than once, Athamas became so insane, that seeing his wife come laden on either hand with her two sons, cried out, “Spread we the nets, so that I may take the lioness and the young lions at the pass,” and then he stretched out his pitiless talons, taking the one who was named Learchus, and whirled him and struck him on a rock; and she drowned herself with her other burden. And when Fortune turned downward the all-daring loftiness of the Trojans, so that together with the kingdom the king was undone, Hecuba, sad, wretched, and captive, when she saw Polyxena dead, and woeful descried her Polydorus on the sea-bank, frantic, barked like a dog,&mdash;to such degree had grief distraught her mind.</p>
 		<p>But neither the furies of Thebes, nor the Trojan, were ever seen toward any one so cruel, whether in goading beasts or human limbs,
@@ -1431,7 +1431,7 @@ module.exports = {
 		<p>And one of them who took it ill perchance at being named so darkly, with his fist struck him on his stiff paunch; it sounded as if it were a drum; and Master Adam struck him on the face with his arm that did not seem less hard, saying to him, “Though, because of my heavy limbs, moving hence be taken from me, I have an arm free for such need.” Whereon he replied, “When thou wast going to the fire thou hadst it not thus ready, but so and more thou hadst it when thou wast coining.” And the hydropic, “Thou sayst true in this, but thou wast not so true a witness there where thou wast questioned of the truth at Troy.” “If I spake false, thou didst falsify the coin,” said Sinon, “and I am here for a single sin, and thou for more than any other demon.” “Remember, perjured one, the horse,” answered he who had the puffed up paunch, “and be it ill for thee that the whole world knows it.” “And be ill for thee the thirst which cracks thy tongue,” said the Greek, “and the putrid water that makes thy belly thus a hedge before thine eyes.” Then the coiner, “So yawns thy mouth for its own harm as it is wont, for if I am thirsty, and humor stuffs me out, thou hast the burning, and the head that pains thee, and to lick the mirror of Narcissus thou wouldst not want many words of invitation.”</p>
 		<p>To listen to them was I wholly fixed, when the Master said to me, “Now then look, for it wants but little that I quarrel with thee.” When I heard him speak to me with anger, I turned me toward him with such shame that still it circles through my memory. And as is he that dreams of his harm, and, dreaming, desires to dream, so that that which is he craves as if it were not, such I became, not being able to speak, for I desired to excuse myself, and I was indeed excusing myself, and did not think that I was doing it. “Less shame doth wash away a greater fault than thine hath been,” said the Master; therefore disburden thyself of all regret, and make reckoning that I am always at thy side, if again it happen that fortune find thee where people are in similar brawl; for the wish to hear it is a base wish.”</p>`,
 
-	`<p class="cantohead">CANTO XXXI</p>
+		`<p class="cantohead">CANTO XXXI</p>
 		<p class="summary">The Giants around the Eighth Circle.&mdash;Nimrod. &mdash;Ephialtes.&mdash;Antaeus sets the Poets down in the Ninth Circle.</p>
 		<p>One and the same tongue first stung me, so that it tinged both my cheeks, and then supplied the medicine to me. Thus do I hear
 			<span class="note">
@@ -1518,7 +1518,7 @@ module.exports = {
 		seems to look when a cloud is going over so that the tower hangs counter to it, thus seemed Antaeus to me that stood attent to see him bend; and it was a moment when I could have wished to go by another road. But lightly on the bottom that swallows Lucifer with Judas he set us down; nor, thus bent, did he there make stay, and like a mast in
 		a ship he raised himself.</p>`,
 
-	`<p class="cantohead">CANTO XXXII</p>
+		`<p class="cantohead">CANTO XXXII</p>
 		<p class="summary">Ninth Circle: traitors. First ring: Caina.&mdash;Counts of Mangona.&mdash;Camicion de’ Pazzi.&mdash;Second ring: Antenora.&mdash;Bocca degli Abati.&mdash;Buoso da Duera.&mdash;Count Ugolino.</p>
 		<p>If I had rhymes both harsh and raucous, such as would befit the dismal hole on which thrust
 			<span class="note">
@@ -1636,7 +1636,7 @@ module.exports = {
 		who opened Faenza when it was sleeping.”</p>
 		<p>We had now parted from him when I saw two frozen in one hole, so that the head of one was a hood for the other. And as bread is devoured in hunger, so the uppermost one set his teeth upon the other where the brain joins with the nape. Not otherwise Tydeus gnawed for spite the temples of Menalippus than this one did the skull and the other parts. “O thou! that by so bestial a sign showest hatred against him whom thou dost eat, tell me the wherefore,” said I, “with this compact, that if thou rightfully of him complainest, I, knowing who ye are, and his sin, may yet recompense thee for it in the world above, if that with which I speak be not dried up.”</p>`,
 
-	`<p class="cantohead">CANTO XXXIII</p>
+		`<p class="cantohead">CANTO XXXIII</p>
 		<p class="summary">Ninth circle: traitors. Second ring: Antenora.&mdash;Count Ugolino.&mdash;Third ring Ptolomaea.&mdash;Brother Alberigo. Branca d’ Oria.</p>
 		<p>From his savage repast that sinner raised his mouth, wiping it with the hair of the head that he had spoiled behind: then he began, “Thou willest that I renew a desperate grief that oppresses my heart already only in thinking ere I speak of it. But, if my words are to be seed that may bear fruit of infamy for the traitor whom I gnaw, thou shalt see me speak and weep at once. I know not who thou art, nor by what mode thou art come down hither, but Florentine thou seemest to me truly when I hear thee. Thou hast to know that I was the Count Ugolino and he the Archbishop Ruggieri.
 			<span class="note">
@@ -1703,7 +1703,7 @@ module.exports = {
 		and many years have passed since he was thus shut up.” “I think,” said I to him, “that thou deceivest me, for Branca d’ Oria is not yet dead, and he eats, and drinks, and sleeps, and puts on clothes.” “In the ditch of the Malebranche above,” he said, “there where the tenacious pitch is boiling, Michel Zanche had not yet arrived when this one left in his own stead a devil in his body, and in that of one of his near kin, who committed the treachery together with him. But now stretch out hither thy hand; open my eyes for me.” And I opened them not for him, and to be rude to him was courtesy.</p>
 		<p>Ah Genoese! men strange to all morality and full of all corruption, why are ye not scattered from the world? For with the worst spirit of Romagna I found one of you such that for his deeds in soul he is bathed in Cocytus, and in body he seems still alive on earth.</p>`,
 
-	`<p class="cantohead">CANTO XXXIV</p>
+		`<p class="cantohead">CANTO XXXIV</p>
 		<p class="summary">Ninth Circle: traitors. Fourth ring: Judecca.&mdash;Lucifer.&mdash;Judas, Brutus and Cassius.&mdash;Centre of the universe.&mdash;Passage from Hell.&mdash;Ascent to the surface of the Southern Hemisphere.</p>
 		<p>“<em>Vexilla regis prodeunt inferni</em>,<span class="note">
 				<span class="noteno">1</span>
@@ -1745,4 +1745,4 @@ module.exports = {
 				<span class="notetext">Hell is his tomb; this vacant dark passage through the opposite hemisphere is, of course, of the same depth as Hell from surface to centre.</span>
 			</span>
 		which not by sight is known, but by the sound of a rivulet that here descends along the hollow of a rock that it has gnawed with its course that winds and little falls. My Leader and I entered through that hidden way, to return to the bright world. And without care, to have any repose, we mounted up, he first and I second, till through a round opening I saw of those beauteous things which heaven bears, and thence we came forth to see again the stars.</p>`]
-	};
+};

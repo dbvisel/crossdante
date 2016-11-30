@@ -14,7 +14,7 @@ module.exports = {
 	text:[`<p class="title">Inferno</p>
 	<p class="author">S. Fowler Wright</p>`,
 
-	`<p class="cantohead">Canto I</p>
+		`<p class="cantohead">Canto I</p>
 		<div class="stanza">
 			<p>ONE night, when half my life behind me lay,</p>
 			<p>I wandered from the straight lost path afar.</p>
@@ -165,7 +165,7 @@ module.exports = {
 			<p>Then he moved forward, and behind I trod.</p>
 		</div>`,
 
-	`<p class="cantohead">Canto II</p>
+		`<p class="cantohead">Canto II</p>
 		<div class="stanza">
 			<p>THE day was falling, and the darkening air</p>
 			<p>Released earth&rsquo;s creatures from their toils, while I,</p>
@@ -311,7 +311,7 @@ module.exports = {
 			<p>Went forward on that hard and dreadful way.</p>
 		</div>`,
 
-	`<p class="cantohead">Canto III</p>
+		`<p class="cantohead">Canto III</p>
 		<div class="stanza">
 			<p>THE gateway to the city of Doom. Through me</p>
 			<p>The entrance to the Everlasting Pain.</p>
@@ -492,4 +492,4 @@ module.exports = {
 			<p>Reminds me of the sudden-crimsoned night,</p>
 			<p>As sank I senseless by the dreadful shore.</p>
 		</div>`]
-	};
+};

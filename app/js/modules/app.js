@@ -3,14 +3,14 @@
 "use strict";
 
 const Hammer = require("hammerjs");
-const Fastclick = require("fastclick");	// why is this not working?
+const Fastclick = require("fastclick");
 const Velocity = require("velocity-animate");
 
 const dom = require("./dom");
 let appdata = require("./appdata");
 
 var app = {
-	initialize: function() { // could set this to choose translations?
+	initialize: function() {
 		console.log("initializing!");
 		console.log(appdata);
 		this.bindEvents();
@@ -49,40 +49,39 @@ var app = {
 		// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
 
 		window.addEventListener('load', function() {
-		  var maybePreventPullToRefresh = false;
-		  var lastTouchY = 0;
-		  var touchstartHandler = function(e) {
-		    if (e.touches.length != 1) return;
-		    lastTouchY = e.touches[0].clientY;
-		    // Pull-to-refresh will only trigger if the scroll begins when the
-		    // document's Y offset is zero.
-		    maybePreventPullToRefresh = window.pageYOffset == 0;
-		  }
+			var maybePreventPullToRefresh = false;
+			var lastTouchY = 0;
+			var touchstartHandler = function(e) {
+				if (e.touches.length != 1) return;
+				lastTouchY = e.touches[0].clientY;
+				// Pull-to-refresh will only trigger if the scroll begins when the
+				// document's Y offset is zero.
+				maybePreventPullToRefresh = window.pageYOffset == 0;
+			};
 
-		  var touchmoveHandler = function(e) {
-		    var touchY = e.touches[0].clientY;
-		    var touchYDelta = touchY - lastTouchY;
-		    lastTouchY = touchY;
+			var touchmoveHandler = function(e) {
+				var touchY = e.touches[0].clientY;
+				var touchYDelta = touchY - lastTouchY;
+				lastTouchY = touchY;
 
-		    if (maybePreventPullToRefresh) {
-		      // To suppress pull-to-refresh it is sufficient to preventDefault the
-		      // first overscrolling touchmove.
-		      maybePreventPullToRefresh = false;
-		      if (touchYDelta > 0) {
-		        e.preventDefault();
+				if (maybePreventPullToRefresh) {
+					// To suppress pull-to-refresh it is sufficient to preventDefault the
+					// first overscrolling touchmove.
+					maybePreventPullToRefresh = false;
+					if (touchYDelta > 0) {
+						e.preventDefault();
 
 						if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
-								app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
+							app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
 						}
-		        return;
-		      }
-		    }
-		  }
+						return;
+					}
+				}
+			};
 
-		  document.addEventListener('touchstart', touchstartHandler, false);
-		  document.addEventListener('touchmove', touchmoveHandler, false);
+			document.addEventListener('touchstart', touchstartHandler, false);
+			document.addEventListener('touchmove', touchmoveHandler, false);
 		});
-
 
 	},
 	helpers: {
@@ -303,7 +302,7 @@ var app = {
 
 	// figure out which translation is the current translation
 
-console.log(`Newtrans going in: ${newtrans}`);
+			console.log(`Newtrans going in: ${newtrans}`);
 
 			for(let i=0; i < appdata.translationdata.length; i++) {
 				console.log(`i: ${i}, ${appdata.translationdata[i].translationid}`);
@@ -312,16 +311,16 @@ console.log(`Newtrans going in: ${newtrans}`);
 				}
 			}
 
-			newtrans = appdata.currenttranslationlist.indexOf(appdata.translationdata[newtrans].translationid)
-console.log(`Recalced newtrans: ${newtrans}`);
+			newtrans = appdata.currenttranslationlist.indexOf(appdata.translationdata[newtrans].translationid);
+			console.log(`Recalced newtrans: ${newtrans}`);
 
-console.log(`Current translation list length: ${appdata.currenttranslationlist.length}`);
-console.log(`Current translation list:`);
-console.log(appdata.currenttranslationlist);
-console.log(`Current translation: ${appdata.currenttranslation}`);
-console.log(`Newtrans number: ${newtrans}`);
+			console.log(`Current translation list length: ${appdata.currenttranslationlist.length}`);
+			console.log(`Current translation list:`);
+			console.log(appdata.currenttranslationlist);
+			console.log(`Current translation: ${appdata.currenttranslation}`);
+			console.log(`Newtrans number: ${newtrans}`);
 
-// these numbers are wrong!
+			// these numbers are wrong!
 
 			if(newtrans !== appdata.currenttranslation) {
 				appdata.elements.text.id = "oldtext";
@@ -331,7 +330,10 @@ console.log(`Newtrans number: ${newtrans}`);
 
 					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
 					appdata.elements.slider.appendChild(insert);
-					Velocity(appdata.elements.slider, {'left':"-100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
+					Velocity(appdata.elements.slider, {'left':"-100%"}, {
+						duration: appdata.delay,
+						mobileHA: false,
+						complete: function() {
 							dom.removebyselector("#oldtext");
 							appdata.elements.slider.style.left = "0";
 							appdata.elements.text.style.left = "0";
@@ -343,10 +345,13 @@ console.log(`Newtrans number: ${newtrans}`);
 
 					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:-100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
 					appdata.elements.slider.insertBefore(insert, appdata.elements.slider.childNodes[0]);
-					Velocity(appdata.elements.slider, {'left':"100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
-						dom.removebyselector("#oldtext");
-						appdata.elements.slider.style.left = "0";
-						appdata.elements.text.style.left = "0";
+					Velocity(appdata.elements.slider, {'left':"100%"}, {
+						duration: appdata.delay,
+						mobileHA: false,
+						complete: function() {
+							dom.removebyselector("#oldtext");
+							appdata.elements.slider.style.left = "0";
+							appdata.elements.text.style.left = "0";
 						}
 					});
 				}
@@ -355,9 +360,9 @@ console.log(`Newtrans number: ${newtrans}`);
 
 				// not shift left/shift right – do normal thing
 
-					appdata.elements.text.innerHTML = appdata.textdata[newtrans].text[newcanto];
-					dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
-					dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
+				appdata.elements.text.innerHTML = appdata.textdata[newtrans].text[newcanto];
+				dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
+				dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
 
 			}
 

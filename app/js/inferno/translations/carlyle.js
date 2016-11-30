@@ -14,7 +14,7 @@ module.exports = {
 	text:[`<p class="title">Inferno</p>
 	<p class="author">John Aitken Carlyle, Thomas Okey &amp; P. H. Wiksteed</p>`,
 
-	`<p class="cantohead">CANTO I</p>
+		`<p class="cantohead">CANTO I</p>
 		<p class="summary">Dante finds himself astray in a dark Wood, where he spends a night of great misery. He says that death is hardly more bitter, than it is to recall what he suffered there; but that he will tell the fearful things he saw, in order that he may also tell how he found guidance, and first began to discern the real causes of all misery. He comes to a Hill; and seeing its summit already bright with the rays of the Sun, he begins to ascend it. The way to it looks quite deserted. He is met by a beautiful Leopard, which keeps distracting his attention from the Hill, and makes him turn back several times. The hour of the morning, the season, and the gay outward aspect of that animal, give him good hopes at first; but he is driven down and terrified by a Lion and a She-wolf. Virgil comes to his aid, and tells him that the Wolf lets none pass her way, but entangles and slays every one that tries to get up the mountain by the road on which she stands. He says a time will come when a swift and strong Greyhound shall clear the earth of her, and chase her into Hell. And he offers to conduct Dante by another road; to show him the eternal roots of misery and of joy, and leave him with a higher guide that will lead him up to Heaven.</p>
 		<p>In the middle of the journey of our life
 			<span class="note">
@@ -91,11 +91,11 @@ module.exports = {
 		<p>He answered me: &ldquo;Not man, a man I once was; and my parents were Lombards, and both of Mantua by country.</p>
 		<p>TK!</p>`,
 
-	`<p class="cantohead">CANTO II</p>
+		`<p class="cantohead">CANTO II</p>
 		<p class="summary">End of the first day. Brief Invocation. Danet is discouraged at the outset, when he begins seriously to reflect upon what he has undertaken. That very day, his own strength had miserably failed before the Lion and the She-Wolf. He bids Virgil consider well whether there be sufficient virtue in him, before committing him to so dreadful a passage. He recalls the great errands of &AElig;neas and of Paul, and the great results of their going to the immortal world; and comparing himself with them, he feels his heart quail, and is ready to turn back. Virgil discerns the fear that has come over him; and in order to remove it, tells him how a blessed Spirit has descended from Heaven expressly to command the journey. On hearing this, Dante immediately casts off pusillanimity, and at once accepts the Freedom and the Mission that are given him.</p>
 		<p>TK!</p>`,
 
-	`<p class="cantohead">CANTO III</p>
+		`<p class="cantohead">CANTO III</p>
 		<p class="summary">Inscription over the Gate of Hell, and the impression it produces upon Dante. Virgil takes him by the hand, and leads him in. The dismal sounds make him burst into tears. His head is quite bewildered. Upon a Dark Plain, which goes around the confines, he sees a vast multitude of spirits running behind a flag in great haste and confusion, urged on by furious wasps and hornets. These are the unhappy people, who never were alive&mdash;never awakened to take any part in either good or evil, to care for anything but themselves. They are mixed with a similar class of fallen angels. After passing through the crowd of them, the Poets come to a great River, which flows round the brim of Hell; and then descends to form the other rivers, the marshes, and the ice that we shall meet with. It is the river Acheron; and on its Shore all that die under the wrath of God assemble from every country to be ferried over by the demon Charon. He makes them enter his boat by glaring on them with his burning eyes. Having seen these, and being refused a passage by Charon, Dante is suddenly stunned by a violent trembling of the ground, accompanied with wind and lightning, and falls down in a state of insensibility.</p>
 		<p>TK!</p>`]
-	};
+};

@@ -14,7 +14,7 @@ module.exports = {
 	text:[`<p class="title">Inferno</p>
 	<p class="author">Henry Wadsworth Longfellow</p>`,
 
-	`<p class="cantohead">Inferno: Canto I</p>
+		`<p class="cantohead">Inferno: Canto I</p>
 	<div class="stanza">
 		<p>Midway upon the journey of our life</p>
 		<p class="slindent">I found myself within a forest dark,</p>
@@ -244,7 +244,7 @@ module.exports = {
 		<p>Then he moved on, and I behind him followed.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto II</p>
+		`<p class="cantohead">Inferno: Canto II</p>
 	<div class="stanza">
 		<p>Day was departing, and the embrowned air</p>
 		<p class="slindent">Released the animals that are on earth</p>
@@ -484,7 +484,7 @@ module.exports = {
 		<p>I entered on the deep and savage way.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto III</p>
+		`<p class="cantohead">Inferno: Canto III</p>
 	<div class="stanza">
 		<p>&ldquo;Through me the way is to the city dolent;</p>
 		<p class="slindent">Through me the way is to eternal dole;</p>
@@ -714,7 +714,7 @@ module.exports = {
 		<p>And as a man whom sleep hath seized I fell.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto IV</p>
+		`<p class="cantohead">Inferno: Canto IV</p>
 <div class="stanza">
 		<p>Broke the deep lethargy within my head</p>
 		<p class="slindent">A heavy thunder, so that I upstarted,</p>
@@ -969,7 +969,7 @@ module.exports = {
 		<p>And to a place I come where nothing shines.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto V</p>
+		`<p class="cantohead">Inferno: Canto V</p>
 	<div class="stanza">
 		<p>Thus I descended out of the first circle</p>
 	<p class="slindent">Down to the second, that less space begirds,</p>
@@ -1209,7 +1209,7 @@ module.exports = {
 		<p>And fell, even as a dead body falls.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto VI</p>
+		`<p class="cantohead">Inferno: Canto VI</p>
 	<div class="stanza">
 		<p>At the return of consciousness, that closed</p>
 	<p class="slindent">Before the pity of those two relations,</p>
@@ -1247,8 +1247,8 @@ module.exports = {
 	</div>
 	<div class="stanza">
 		<p>When Cerberus perceived us, the great worm!</p>
-	<p class="slindent"> His mouths he opened, and displayed his tusks;</p>
-	<p class="slindent"> Not a limb had he that was motionless.</p>
+	<p class="slindent">His mouths he opened, and displayed his tusks;</p>
+	<p class="slindent">Not a limb had he that was motionless.</p>
 	</div>
 	<div class="stanza">
 		<p>And my Conductor, with his spans extended,</p>
@@ -1404,7 +1404,7 @@ module.exports = {
 		<p>There we found Plutus the great enemy.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto VII</p>
+		`<p class="cantohead">Inferno: Canto VII</p>
 	<div class="stanza">
 		<p>“Pape Satan, Pape Satan, Aleppe!”</p>
 	<p class="slindent">Thus Plutus with his clucking voice began;</p>
@@ -1624,7 +1624,7 @@ module.exports = {
 		<p>Unto the foot of a tower we came at last.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto VIII</p>
+		`<p class="cantohead">Inferno: Canto VIII</p>
 	<div class="stanza">
 		<p>I say, continuing, that long before</p>
 	<p class="slindent">We to the foot of that high tower had come,</p>
@@ -1844,7 +1844,7 @@ module.exports = {
 		<p>One by whose means the city shall be opened.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto IX</p>
+		`<p class="cantohead">Inferno: Canto IX</p>
 	<div class="stanza">
 		<p>That hue which cowardice brought out on me,</p>
 	<p class="slindent">Beholding my Conductor backward turn,</p>
@@ -2069,7 +2069,7 @@ module.exports = {
 		<p>Between the torments and high parapets.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto X</p>
+		`<p class="cantohead">Inferno: Canto X</p>
 	<div class="stanza">
 		<p>Now onward goes, along a narrow path</p>
 	<p class="slindent">Between the torments and the city wall,</p>
@@ -2299,7 +2299,7 @@ module.exports = {
 		<p>Which even up there unpleasant made its stench.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XI</p>
+		`<p class="cantohead">Inferno: Canto XI</p>
 	<div class="stanza">
 		<p>Upon the margin of a lofty bank</p>
 	<p class="slindent">Which great rocks broken in a circle made,</p>
@@ -2494,7 +2494,7 @@ module.exports = {
 		<p>And far beyond there we descend the crag.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XII</p>
+		`<p class="cantohead">Inferno: Canto XII</p>
 	<div class="stanza">
 		<p>The place where to descend the bank we came</p>
 	<p class="slindent">Was alpine, and from what was there, moreover,</p>
@@ -2729,7 +2729,7 @@ module.exports = {
 		<p>Then back he turned, and passed again the ford.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XIII</p>
+		`<p class="cantohead">Inferno: Canto XIII</p>
 	<div class="stanza">
 		<p>Not yet had Nessus reached the other side,</p>
 	<p class="slindent">When we had put ourselves within a wood,</p>
@@ -2984,7 +2984,7 @@ module.exports = {
 		<p>Of my own house I made myself a gibbet.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XIV</p>
+		`<p class="cantohead">Inferno: Canto XIV</p>
 	<div class="stanza">
 		<p>Because the charity of my native place</p>
 	<p class="slindent">Constrained me, gathered I the scattered leaves,</p>
@@ -3224,7 +3224,7 @@ module.exports = {
 		<p>And over them all vapours are extinguished.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XV</p>
+		`<p class="cantohead">Inferno: Canto XV</p>
 	<div class="stanza">
 		<p>Now bears us onward one of the hard margins,</p>
 	<p class="slindent">And so the brooklet’s mist o’ershadows it,</p>
@@ -3434,7 +3434,7 @@ module.exports = {
 		<p>The one who wins, and not the one who loses.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XVI</p>
+		`<p class="cantohead">Inferno: Canto XVI</p>
 	<div class="stanza">
 		<p>Now was I where was heard the reverberation</p>
 	<p class="slindent">Of water falling into the next round,</p>
@@ -3664,7 +3664,7 @@ module.exports = {
 		<p>Who upward stretches, and draws in his feet.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XVII</p>
+		`<p class="cantohead">Inferno: Canto XVII</p>
 	<div class="stanza">
 		<p>“Behold the monster with the pointed tail,</p>
 	<p class="slindent">Who cleaves the hills, and breaketh walls and weapons,</p>
@@ -3894,7 +3894,7 @@ module.exports = {
 		<p>He sped away as arrow from the string.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XVIII</p>
+		`<p class="cantohead">Inferno: Canto XVIII</p>
 	<div class="stanza">
 		<p>There is a place in Hell called Malebolge,</p>
 	<p class="slindent">Wholly of stone and of an iron colour,</p>
@@ -4124,7 +4124,7 @@ module.exports = {
 		<p>And herewith let our sight be satisfied.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XIX</p>
+		`<p class="cantohead">Inferno: Canto XIX</p>
 	<div class="stanza">
 		<p>O Simon Magus, O forlorn disciples,</p>
 	<p class="slindent">Ye who the things of God, which ought to be</p>
@@ -4349,7 +4349,7 @@ module.exports = {
 		<p>Thence was unveiled to me another valley.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XX</p>
+		`<p class="cantohead">Inferno: Canto XX</p>
 	<div class="stanza">
 		<p>Of a new pain behoves me to make verses</p>
 	<p class="slindent">And give material to the twentieth canto</p>
@@ -4569,7 +4569,7 @@ module.exports = {
 		<p>Thus spake he to me, and we walked the while.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXI</p>
+		`<p class="cantohead">Inferno: Canto XXI</p>
 	<div class="stanza">
 		<p>From bridge to bridge thus, speaking other things</p>
 	<p class="slindent">Of which my Comedy cares not to sing,</p>
@@ -4804,7 +4804,7 @@ module.exports = {
 		<p>And he had made a trumpet of his rump.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXII</p>
+		`<p class="cantohead">Inferno: Canto XXII</p>
 	<div class="stanza">
 		<p>I have erewhile seen horsemen moving camp,</p>
 	<p class="slindent">Begin the storming, and their muster make,</p>
@@ -5059,7 +5059,7 @@ module.exports = {
 		<p>And in this manner busied did we leave them.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXIII</p>
+		`<p class="cantohead">Inferno: Canto XXIII</p>
 	<div class="stanza">
 		<p>Silent, alone, and without company</p>
 	<p class="slindent">We went, the one in front, the other after,</p>
@@ -5309,7 +5309,7 @@ module.exports = {
 		<p>After the prints of his beloved feet.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXIV</p>
+		`<p class="cantohead">Inferno: Canto XXIV</p>
 	<div class="stanza">
 		<p>In that part of the youthful year wherein</p>
 	<p class="slindent">The Sun his locks beneath Aquarius tempers,</p>
@@ -5564,7 +5564,7 @@ module.exports = {
 		<p>And this I’ve said that it may give thee pain.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXV</p>
+		`<p class="cantohead">Inferno: Canto XXV</p>
 	<div class="stanza">
 		<p>At the conclusion of his words, the thief</p>
 	<p class="slindent">Lifted his hands aloft with both the figs,</p>
@@ -5819,7 +5819,7 @@ module.exports = {
 		<p>The other was he whom thou, Gaville, weepest.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXVI</p>
+		`<p class="cantohead">Inferno: Canto XXVI</p>
 	<div class="stanza">
 		<p>Rejoice, O Florence, since thou art so great,</p>
 	<p class="slindent">That over sea and land thou beatest thy wings,</p>
@@ -6059,7 +6059,7 @@ module.exports = {
 		<p>Until the sea above us closed again.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXVII</p>
+		`<p class="cantohead">Inferno: Canto XXVII</p>
 	<div class="stanza">
 		<p>Already was the flame erect and quiet,</p>
 	<p class="slindent">To speak no more, and now departed from us</p>
@@ -6289,7 +6289,7 @@ module.exports = {
 		<p>By those who, sowing discord, win their burden.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXVIII</p>
+		`<p class="cantohead">Inferno: Canto XXVIII</p>
 	<div class="stanza">
 		<p>Who ever could, e’en with untrammelled words,</p>
 	<p class="slindent">Tell of the blood and of the wounds in full</p>
@@ -6529,7 +6529,7 @@ module.exports = {
 		<p>Thus is observed in me the counterpoise.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXIX</p>
+		`<p class="cantohead">Inferno: Canto XXIX</p>
 	<div class="stanza">
 		<p>The many people and the divers wounds</p>
 	<p class="slindent">These eyes of mine had so inebriated,</p>
@@ -6764,7 +6764,7 @@ module.exports = {
 		<p>How I a skilful ape of nature was.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXX</p>
+		`<p class="cantohead">Inferno: Canto XXX</p>
 	<div class="stanza">
 		<p>’Twas at the time when Juno was enraged,</p>
 	<p class="slindent">For Semele, against the Theban blood,</p>
@@ -7014,7 +7014,7 @@ module.exports = {
 		<p>For a base wish it is to wish to hear it.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXXI</p>
+		`<p class="cantohead">Inferno: Canto XXXI</p>
 	<div class="stanza">
 		<p>One and the selfsame tongue first wounded me,</p>
 	<p class="slindent">So that it tinged the one cheek and the other,</p>
@@ -7259,7 +7259,7 @@ module.exports = {
 		<p>But, as a mast does in a ship, uprose.</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXXII</p>
+		`<p class="cantohead">Inferno: Canto XXXII</p>
 	<div class="stanza">
 		<p>If I had rhymes both rough and stridulous,</p>
 	<p class="slindent">As were appropriate to the dismal hole</p>
@@ -7494,7 +7494,7 @@ module.exports = {
 		<p>If that wherewith I speak be not dried up.”</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXXIII</p>
+		`<p class="cantohead">Inferno: Canto XXXIII</p>
 	<div class="stanza">
 		<p>His mouth uplifted from his grim repast,</p>
 	<p class="slindent">That sinner, wiping it upon the hair</p>
@@ -7526,7 +7526,7 @@ module.exports = {
 	<p class="slindent">And after put to death, I need not say;</p>
 	</div>
 	<div class="stanza">
-		<p> But ne’ertheless what thou canst not have heard,</p>
+		<p>But ne’ertheless what thou canst not have heard,</p>
 	<p class="slindent">That is to say, how cruel was my death,</p>
 	<p class="slindent">Hear shalt thou, and shalt know if he has wronged me.</p>
 	</div>
@@ -7759,7 +7759,7 @@ module.exports = {
 		<p>And still above in body seems alive!</p>
 	</div>`,
 
-	`<p class="cantohead">Inferno: Canto XXXIV</p>
+		`<p class="cantohead">Inferno: Canto XXXIV</p>
 	<div class="stanza">
 		<p>“&nbsp;‘Vexilla Regis prodeunt Inferni’</p>
 	<p class="slindent">Towards us; therefore look in front of thee,”</p>
@@ -7841,7 +7841,7 @@ module.exports = {
 	<p class="slindent">Sails of the sea I never saw so large.</p>
 	</div>
 	<div class="stanza">
-		<p> No feathers had they, but as of a bat</p>
+		<p>No feathers had they, but as of a bat</p>
 	<p class="slindent">Their fashion was; and he was waving them,</p>
 	<p class="slindent">So that three winds proceeded forth therefrom.</p>
 	</div>
