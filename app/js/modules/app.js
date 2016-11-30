@@ -22,8 +22,10 @@ var app = {
 		appdata.elements.text = document.getElementById("text");
 		appdata.elements.slider = document.getElementById("slider");
 
+
 		// set up about page
 
+		document.title = "Cross Dante " + appdata.booktitle;
 		document.getElementById("abouttext").innerHTML = appdata.description;
 
 		// set up current translation list (initially use all of them)
@@ -32,6 +34,8 @@ var app = {
 			appdata.currenttranslationlist.push(appdata.translationdata[i].translationid);
 			document.getElementById("textsources").innerHTML += `<li>${appdata.translationdata[i].translationfullname}, <em>${appdata.translationdata[i].title}:</em> ${appdata.translationdata[i].source}</li>`;
 		}
+
+		appdata.currenttranslation = appdata.currenttranslationlist[0];
 
 		// check to see if there are saved localstorage, if so, take those values
 
@@ -129,10 +133,10 @@ var app = {
 
 		// button controls
 		document.getElementById("navprev").onclick = () => {
-			app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
+			app.setlens(app.nexttrans(appdata.currenttranslation),appdata.currentcanto);
 		};
 		document.getElementById("navnext").onclick = () => {
-			app.setlens(appdata.currenttranslation+1,appdata.currentcanto);
+			app.setlens(app.prevtrans(appdata.currenttranslation),appdata.currentcanto);
 		};
 		document.getElementById("navup").onclick = () => {
 			app.setlens(appdata.currenttranslation,appdata.currentcanto-1,0);
@@ -166,14 +170,14 @@ var app = {
 			app.helpers.gosettings(i);
 		}
 
-	// swipe controls
+		// swipe controls
 
 		let hammertime = new Hammer(appdata.elements.lens); // does this need to be a global?
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 		hammertime.on('swipeleft',() => {
-			app.setlens(appdata.currenttranslation+1,appdata.currentcanto);
+			app.setlens(app.nexttrans(appdata.currenttranslation),appdata.currentcanto);
 		}).on('swiperight',() => {
-			app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
+			app.setlens(app.prevtrans(appdata.currenttranslation),appdata.currentcanto);
 		});
 
 		hammertime.on('swipedown',(e) => {
@@ -182,8 +186,8 @@ var app = {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup',() => {
-// if difference between current scroll position + height of frame & complete height
-// of column is less than 8, go to the next one
+			// if difference between current scroll position + height of frame & complete height
+			// of column is less than 8, go to the next one
 
 
 			if(Math.abs(appdata.elements.text.scrollTop + appdata.elements.text.clientHeight - appdata.elements.text.scrollHeight) < 8) {
@@ -191,17 +195,17 @@ var app = {
 			}
 		});
 
-	// key controls
+		// key controls
 
 		document.body.onkeydown = (e) => {
 			e.preventDefault();
 			if((e.keyCode || e.which) === 37) {
 				dom.addclass("#navprev","on");
-				app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
+				app.setlens(app.prevtrans(appdata.currenttranslation),appdata.currentcanto);
 			}
 			if((e.keyCode || e.which) === 39) {
 				dom.addclass("#navnext","on");
-				app.setlens(appdata.currenttranslation+1,appdata.currentcanto);
+				app.setlens(app.nexttrans(appdata.currenttranslation),appdata.currentcanto);
 			}
 			if((e.keyCode || e.which) === 38) {
 				dom.addclass("#navup","on");
@@ -217,14 +221,14 @@ var app = {
 			dom.removeclass(".button","on");
 		};
 
-	// page controls
+		// page controls
 
 		document.querySelector("#navtitle").onclick = () => {
 			app.setpage("lens");
 		};
 		document.querySelector("#navsettings").onclick = () => {
 			if(appdata.currentpage == "settings") {
-//      if(appdata.currenttranslationlist.indexOf(appdata.translationdata[appdata.currenttranslation].translationid) > -1 ) {}
+				//      if(appdata.currenttranslationlist.indexOf(appdata.translationdata[appdata.currenttranslation].translationid) > -1 ) {}
 				app.setpage("lens");
 			} else {
 				app.updatesettings();
@@ -272,28 +276,44 @@ var app = {
 		appdata.textwidth = appdata.windowwidth;
 		app.setlens(appdata.currenttranslation,appdata.currentcanto);
 	},
+	nexttrans: function(giventranslation) {
+		if(appdata.currenttranslationlist.length > 1) {
+			if((appdata.currenttranslationlist.indexOf(giventranslation) + 1) == appdata.currenttranslationlist.length ) {
+				return appdata.currenttranslationlist[0];
+			} else {
+				return appdata.currenttranslationlist[(appdata.currenttranslationlist.indexOf(giventranslation) + 1)];
+			}
+		} else {
+			return giventranslation;
+		}
+	},
+	prevtrans: function(giventranslation) {
+		if(appdata.currenttranslationlist.length > 1) {
+			if(appdata.currenttranslationlist.indexOf(giventranslation) == 0) {
+				return appdata.currenttranslationlist[appdata.currenttranslationlist.length - 1];
+			} else {
+				return appdata.currenttranslationlist[(appdata.currenttranslationlist.indexOf(giventranslation) - 1)];
+			}
+		} else {
+			return giventranslation;
+		}
+	},
 	setlens: function(newtrans, newcanto, percentage) {
 		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}`);
 		dom.removebyselector("#oldtext"); // attempt to fix flickering if too fast change
 
 		let changetrans = false;
-
-	// if page isn't set to "lens" this doesn't do anything
+		let oldindex = appdata.currenttranslationlist.indexOf(appdata.currenttranslation); // the number of the old translation
+		let newindex = appdata.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to
 
 		if(appdata.currentpage == "lens") {
-			if(newtrans - appdata.currenttranslation !== 0) {
+
+			// if page isn't set to "lens" this doesn't do anything
+
+			if((newindex - oldindex) !== 0) {
 				changetrans = true;
 				percentage = (appdata.elements.text.scrollTop /*+ appdata.elements.text.clientHeight*/)/appdata.elements.text.scrollHeight;
 				console.log(`—>Current percentage: ${percentage}`);
-
-				if(newtrans >= appdata.translationcount) {
-					newtrans = 0;
-				} else {
-					if(newtrans < 0) {
-						newtrans = appdata.translationcount-1;
-					}
-				}
-
 			}
 
 			if(newcanto >= appdata.cantocount) {
@@ -304,35 +324,34 @@ var app = {
 				}
 			}
 
-	// figure out which translation is the current translation
+			// need to figure which translationdata we need
 
-			console.log(`Newtrans going in: ${newtrans}`);
+			let newdata = 0;
+			let olddata = 0;
 
-			for(let i=0; i < appdata.translationdata.length; i++) {
-				console.log(`i: ${i}, ${appdata.translationdata[i].translationid}`);
-				if(appdata.currenttranslationlist[newtrans] == appdata.translationdata[i].translationid) {
-					newtrans = i;
+			for(var j in appdata.translationdata) {
+				if(newtrans == appdata.translationdata[j].translationid) {
+					newdata = j;
+				}
+				if(appdata.currenttranslation == appdata.translationdata[j].translationid) {
+					olddata = j;
 				}
 			}
 
-			newtrans = appdata.currenttranslationlist.indexOf(appdata.translationdata[newtrans].translationid);
-			console.log(`Recalced newtrans: ${newtrans}`);
+			if(newindex !== oldindex) {
 
-			console.log(`Current translation list length: ${appdata.currenttranslationlist.length}`);
-			console.log(`Current translation list:`);
-			console.log(appdata.currenttranslationlist);
-			console.log(`Current translation: ${appdata.currenttranslation}`);
-			console.log(`Newtrans number: ${newtrans}`);
+				// console.log("Change in translation!");
 
-			// these numbers are wrong!
-
-			if(newtrans !== appdata.currenttranslation) {
 				appdata.elements.text.id = "oldtext";
-				if(((newtrans > appdata.currenttranslation) && (appdata.currenttranslation > 0 || newtrans !== (appdata.currenttranslationlist.length-1))) || (newtrans == 0 && (appdata.currenttranslation == (appdata.currenttranslationlist.length-1)))) {
 
-					// we are inserting to the right
+				// if new is bigger than old AND ( old is not 0 OR new is not the last one )
+				// OR if new is 0 and old is the last one
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
+				if( ((newindex > oldindex) && (oldindex > 0 || newindex !== (appdata.currenttranslationlist.length - 1 ))) || (newindex == 0 && oldindex == (appdata.currenttranslationlist.length-1)) ) {
+
+					// console.log("Going right");  // we are inserting to the right
+
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:100%;">${ appdata.textdata[newdata].text[newcanto] }</div>`);
 					appdata.elements.slider.appendChild(insert);
 					Velocity(appdata.elements.slider, {'left':"-100%"}, {
 						duration: appdata.delay,
@@ -345,9 +364,9 @@ var app = {
 					});
 				} else {
 
-					// we are inserting to the left
+					// console.log("Going left"); // we are inserting to the left
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:-100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:-100%;">${ appdata.textdata[newdata].text[newcanto] }</div>`);
 					appdata.elements.slider.insertBefore(insert, appdata.elements.slider.childNodes[0]);
 					Velocity(appdata.elements.slider, {'left':"100%"}, {
 						duration: appdata.delay,
@@ -362,33 +381,27 @@ var app = {
 				appdata.elements.text = document.getElementById("text");
 			} else {
 
-				// not shift left/shift right – do normal thing
+				// console.log("No change in translation!"); // not shift left/shift right – do normal thing
 
-				appdata.elements.text.innerHTML = appdata.textdata[newtrans].text[newcanto];
-				dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
-				dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
-
+				appdata.elements.text.innerHTML = appdata.textdata[newdata].text[newcanto];
+				dom.removeclass("#text",appdata.translationdata[olddata].translationclass);
+				dom.addclass("#text",appdata.translationdata[newdata].translationclass);
 			}
 
 			app.setupnotes();
 			appdata.currenttranslation = newtrans;
 			appdata.currentcanto = newcanto;
 
-			if(appdata.currentcanto > 0) {
-				document.getElementById("navtitle").innerHTML = appdata.translationdata[appdata.currenttranslation].translationshortname+` · <strong>Canto ${appdata.currentcanto}</strong>`;
-			} else {
-				document.getElementById("navtitle").innerHTML = "&nbsp;";
-			}
 
 			app.fixpadding();
 
-// set percentage: this is terrible! fix this!
-// first: try to figure out how many lines we have? Can we do that?
+			// set percentage: this is terrible! fix this!
+			// first: try to figure out how many lines we have? Can we do that?
 
 			if(changetrans) {
 
-		// this method still isn't great! it tries to round to current lineheight
-		// to avoid cutting off lines
+				// this method still isn't great! it tries to round to current lineheight
+				// to avoid cutting off lines
 
 				let scrollto = app.rounded(percentage * appdata.elements.text.scrollHeight);
 				appdata.elements.text.scrollTop = scrollto;
@@ -398,6 +411,12 @@ var app = {
 				} else {
 					appdata.elements.text.scrollTop = 0;
 				}
+			}
+
+			if(appdata.currentcanto > 0) {
+				document.getElementById("navtitle").innerHTML = `${appdata.translationdata[newdata].translationshortname} · <strong>Canto ${appdata.currentcanto}</strong>`;
+			} else {
+				document.getElementById("navtitle").innerHTML = "&nbsp;";
 			}
 		}
 		app.savecurrentdata();
@@ -416,7 +435,7 @@ var app = {
 
 		if(dom.hasclass(appdata.elements.text,"poetry")) {
 
-// this is poetry, figure out longest line
+			// this is poetry, figure out longest line
 
 			appdata.elements.text.style.paddingLeft = 0;
 			for(let i=0; i<divs.length; i++) {
@@ -435,7 +454,7 @@ var app = {
 			appdata.elements.text.style.paddingRight = (appdata.textwidth - maxwidth)/2+"px";
 		} else {
 
-	// this is prose, standardized padding
+			// this is prose, standardized padding
 
 			desiredwidth = 75; // this is in vw
 
@@ -443,11 +462,11 @@ var app = {
 			console.log("—>desired width: " + desiredwidth);
 			console.log("—>lineheight: " + appdata.lineheight);
 
-	//		console.log(lenswidth + " "+desiredwidth);
-	//		var padding = (lenswidth - desiredwidth)/2;
+			//		console.log(lenswidth + " "+desiredwidth);
+			//		var padding = (lenswidth - desiredwidth)/2;
 
 			padding = (100 - desiredwidth)/2;
-	/*
+			/*
 			if((desiredwidth + 2) > lenswidth) {
 				appdata.elements.text.style.paddingLeft = "1vw";
 				appdata.elements.text.style.paddingRight = "1vw";
@@ -455,7 +474,7 @@ var app = {
 				*/
 			appdata.elements.text.style.paddingLeft = padding+"vw";
 			appdata.elements.text.style.paddingRight = padding+"vw";
-	//		}
+			//		}
 		}
 
 	},
@@ -464,7 +483,7 @@ var app = {
 	},
 	updatesettings: function() {
 
-	// add in translation chooser
+		// add in translation chooser
 
 		dom.removebyselector("#translatorlist");
 		let insert = dom.create('<ul id="translatorlist"></ul>');
@@ -488,7 +507,7 @@ var app = {
 			app.helpers.checkboxspango(i);
 		}
 
-	// add in toc
+		// add in toc
 
 		dom.removebyselector("#selectors");
 		insert = dom.create(`<div id="selectors">
@@ -504,7 +523,7 @@ var app = {
 		for(let i in appdata.currenttranslationlist) {
 			for(let j = 0; j < appdata.translationdata.length; j++) {
 				if(appdata.translationdata[j].translationid == appdata.currenttranslationlist[i]) {
-					insert = dom.create(`<option id="tr_${appdata.translationdata[j].translationid}" ${((appdata.currenttranslation == i) ? "selected" : "")}>${appdata.translationdata[j].translationfullname}</option>`);
+					insert = dom.create(`<option id="tr_${appdata.translationdata[j].translationid}" ${((appdata.currenttranslationlist.indexOf(appdata.currenttranslation) == i) ? "selected" : "")}>${appdata.translationdata[j].translationfullname}</option>`);
 					document.getElementById("selecttranslator").appendChild(insert);
 				}
 			}
@@ -518,20 +537,19 @@ var app = {
 			for(let j = 0; j < appdata.translationdata.length; j++) {
 				if(appdata.currenttranslationlist[j] == thistrans) {
 					app.setpage("lens");
-					app.setlens(j,thiscanto,0);
+					app.setlens(appdata.currenttranslationlist[j],thiscanto,0);
 				}
 			}
 		};
 	},
 	savecurrentdata: function() {
 
-// this should store appdate on localstorage (does that work for mobile?)
-// also if we're not on mobile, set canto/translation in hash
+		// this should store appdate on localstorage (does that work for mobile?)
+		// also if we're not on mobile, set canto/translation in hash
 
 
 	},
 	changetranslation: function(thisid, isset) {
-		console.log("change translation fired!");
 		for(let i in appdata.translationdata) {
 			if(thisid == appdata.translationdata[i].translationid) {
 				if(isset) {
@@ -561,15 +579,16 @@ var app = {
 		}
 		appdata.currenttranslationlist = newlist.slice();
 
-		console.log("New translation list:");
-		console.log(appdata.currenttranslationlist);
+		if(appdata.currenttranslationlist.indexOf(appdata.currenttranslation) < 0) {
+			appdata.currenttranslation = appdata.currenttranslationlist[0];
+		}
 
-		// also what do we do when one is deleted?
 		app.updatesettings();
 	},
 	setpage: function(newpage) {
 		dom.removeclass(".page","on");
 		dom.addclass(".page#"+newpage,"on");
+		appdata.currentpage = newpage;
 		if(newpage !== "lens") {
 			// set title to be whatever the h1 is
 
@@ -578,7 +597,6 @@ var app = {
 		} else {
 			app.resize();
 		}
-		appdata.currentpage = newpage;
 	},
 	onDeviceReady: function() {
 		console.log("device ready!");

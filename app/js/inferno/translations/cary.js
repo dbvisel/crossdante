@@ -184,7 +184,7 @@ module.exports = {
 		<p>And eminent endowments come to proof.</p>
 		</div>
 		<div class="stanza">
-		<p>I thus began: &ldquo;ard! thou who art my guide,</p>
+		<p>I thus began: &ldquo;Bard! thou who art my guide,</p>
 		<p>Consider well, if virtue be in me</p>
 		<p>Sufficient, ere to this high enterprise</p>
 		<p>Thou trust me. Thou hast told that Silvius&rsquo; sire,</p>
@@ -244,12 +244,7 @@ module.exports = {
 		<p>And by all means for his deliverance meet,</p>
 		<p>Assist him. So to me will comfort spring.</p>
 		<p>I who now bid thee on this errand forth</p>
-		<p>Am Beatrice; from a place I come</p>
-		</div>
-		<div class="stanza">
-		<p>(Note: Beatrice. I use this word, as it is</p>
-		<p>pronounced in the Italian, as consisting of four</p>
-		<p>syllables, of which the third is a long one.)</p>
+		<p>Am Beatrice<span class="note"><span class="noteno">1</span><span class="notetext">I use this word, as it is pronounced in the Italian, as consisting of four syllables, of which the third is a long one.</span></span>; from a place I come</p>
 		</div>
 		<div class="stanza">
 		<p>Revisited with joy. Love brought me thence,</p>
