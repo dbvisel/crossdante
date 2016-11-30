@@ -34,12 +34,16 @@ body {
 	height: 100%;
 	width: 100%;
 	margin: 0;
+	overflow-y: hidden; // attempt to fix android swipe down issue
+	touch-action: none; // attempt to fix android swipe down issue
 }
 
 #main {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	touch-action: none; // attempt to fix android swipe down issue
+	overflow-y: hidden; // attempt to fix android swipe down issue
 }
 
 
@@ -110,6 +114,8 @@ body {
 	width: 100%;
 	height: 100%; // this should be 100% - $navheight;
 	overflow: hidden;
+	touch-action: none; // attempt to fix android swipe down issue
+	overflow-y: hidden; // attempt to fix android swipe down issue
 }
 
 .page {
@@ -192,6 +198,12 @@ body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	touch-action: none; // attempt to fix android swipe down reloads page
+	overflow-y: hidden; // attempt to fix android swipe down issue
+}
+
+#lens {
+	touch-action: none; // attempt to fix android swipe down reloads page
 }
 
 .textpage {

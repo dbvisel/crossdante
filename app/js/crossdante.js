@@ -49,8 +49,55 @@ var app = {
 				Fastclick(document.body);
 			}, false);
 		}
+
+		// attempt to fix android pull down to refresh
+		// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
+		// this kills off swiping down to change cantos, needs to be reined in somehow
+
+		window.addEventListener('load', function() {
+		  var maybePreventPullToRefresh = false;
+		  var lastTouchY = 0;
+		  var touchstartHandler = function(e) {
+		    if (e.touches.length != 1) return;
+		    lastTouchY = e.touches[0].clientY;
+		    // Pull-to-refresh will only trigger if the scroll begins when the
+		    // document's Y offset is zero.
+		    maybePreventPullToRefresh = window.pageYOffset == 0;
+		  }
+
+		  var touchmoveHandler = function(e) {
+		    var touchY = e.touches[0].clientY;
+		    var touchYDelta = touchY - lastTouchY;
+		    lastTouchY = touchY;
+
+		    if (maybePreventPullToRefresh) {
+		      // To suppress pull-to-refresh it is sufficient to preventDefault the
+		      // first overscrolling touchmove.
+		      maybePreventPullToRefresh = false;
+		      if (touchYDelta > 0) {
+		        e.preventDefault();
+
+						// could we then call setlens?
+
+						if(appdata.currentpage == "lens") {
+							app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);
+						}
+						
+		        return;
+		      }
+		    }
+		  }
+
+		  document.addEventListener('touchstart', touchstartHandler, false);
+		  document.addEventListener('touchmove', touchmoveHandler, false);
+		});
+
+
 	},
 	helpers: {
+
+		// this wouldn't work as a real module! refactor?
+
 		gosettings: function(element) {
 			element.onclick = () => {
 				app.setpage("settings");
@@ -135,13 +182,15 @@ var app = {
 			app.setlens(appdata.currenttranslation-1,appdata.currentcanto);
 		});
 
-		hammertime.on('swipedown',() => {
+		hammertime.on('swipedown',(e) => {
+			e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			if(appdata.elements.text.scollTop === 0) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup',() => {
 // if difference between current scroll position + height of frame & complete height
 // of column is less than 8, go to the next one
+
 
 			if(Math.abs(appdata.elements.text.scrollTop + appdata.elements.text.clientHeight - appdata.elements.text.scrollHeight) < 8) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto+1);
