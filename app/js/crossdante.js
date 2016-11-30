@@ -16,37 +16,7 @@ var app = {
 
 		// basic doc setup
 
-		// couldn't this be done dynamically from what's in bookdata.js?
-		// this currently fails but it's failing because it can't get to the modules.
-		// If the modules were compiled & in dist/js/modules, would this work?
-		// If we switched from Browserify to Webpack would this work?
-
-		/*
-		for(let i in appdata.translationdata) {
-			console.log(`${appdata.translationdata[i].order}: ${appdata.translationdata[i].translationid}`);
-			appdata.textdata[appdata.translationdata[i].order] = require(`./translations/${appdata.translationdata[i].translationid}`);
-		}
-		*/
-
-		appdata.textdata[0] = require("./translations/dante");
-		appdata.textdata[1] = require("./translations/longfellow");
-		appdata.textdata[2] = require("./translations/norton");
-		appdata.textdata[3] = require("./translations/wright");
-		appdata.textdata[4] = require("./translations/carlyle");
-
-		for(let i in appdata.textdata) {
-			for(let j in appdata.translationdata) {
-				if(appdata.translationdata[j].translationid == appdata.textdata[i].translationid) {
-					appdata.translationdata[j].bookname = appdata.textdata[i].bookname;
-					appdata.translationdata[j].author = appdata.textdata[i].author;
-					appdata.translationdata[j].title = appdata.textdata[i].title;
-					appdata.translationdata[j].translation = appdata.textdata[i].translation;
-					appdata.translationdata[j].translationshortname = appdata.textdata[i].translationshortname;
-					appdata.translationdata[j].translationfullname = appdata.textdata[i].translationfullname;
-					appdata.translationdata[j].translationclass = appdata.textdata[i].translationclass;
-				}
-			}
-		}
+		appdata.setup();
 
 		appdata.elements.lens = document.getElementById("lens");
 		appdata.elements.main = document.getElementById("main");
