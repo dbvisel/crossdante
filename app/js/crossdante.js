@@ -16,11 +16,37 @@ var app = {
 
 		// basic doc setup
 
-		appdata.textdata[0] = require("./translations/italian.js").text;
-		appdata.textdata[1] = require("./translations/longfellow.js").text;
-		appdata.textdata[2] = require("./translations/norton.js").text;
-		appdata.textdata[3] = require("./translations/wright.js").text;
-		appdata.textdata[4] = require("./translations/carlyle.js").text;
+		// couldn't this be done dynamically from what's in bookdata.js?
+		// this currently fails but it's failing because it can't get to the modules.
+		// If the modules were compiled & in dist/js/modules, would this work?
+		// If we switched from Browserify to Webpack would this work?
+
+		/*
+		for(let i in appdata.translationdata) {
+			console.log(`${appdata.translationdata[i].order}: ${appdata.translationdata[i].translationid}`);
+			appdata.textdata[appdata.translationdata[i].order] = require(`./translations/${appdata.translationdata[i].translationid}`);
+		}
+		*/
+
+		appdata.textdata[0] = require("./translations/dante");
+		appdata.textdata[1] = require("./translations/longfellow");
+		appdata.textdata[2] = require("./translations/norton");
+		appdata.textdata[3] = require("./translations/wright");
+		appdata.textdata[4] = require("./translations/carlyle");
+
+		for(let i in appdata.textdata) {
+			for(let j in appdata.translationdata) {
+				if(appdata.translationdata[j].translationid == appdata.textdata[i].translationid) {
+					appdata.translationdata[j].bookname = appdata.textdata[i].bookname;
+					appdata.translationdata[j].author = appdata.textdata[i].author;
+					appdata.translationdata[j].title = appdata.textdata[i].title;
+					appdata.translationdata[j].translation = appdata.textdata[i].translation;
+					appdata.translationdata[j].translationshortname = appdata.textdata[i].translationshortname;
+					appdata.translationdata[j].translationfullname = appdata.textdata[i].translationfullname;
+					appdata.translationdata[j].translationclass = appdata.textdata[i].translationclass;
+				}
+			}
+		}
 
 		appdata.elements.lens = document.getElementById("lens");
 		appdata.elements.main = document.getElementById("main");
@@ -52,7 +78,6 @@ var app = {
 
 		// attempt to fix android pull down to refresh
 		// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
-		// this kills off swiping down to change cantos, needs to be reined in somehow
 
 		window.addEventListener('load', function() {
 		  var maybePreventPullToRefresh = false;
@@ -82,7 +107,7 @@ var app = {
 						if(appdata.currentpage == "lens") {
 							app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);
 						}
-						
+
 		        return;
 		      }
 		    }
@@ -338,7 +363,7 @@ console.log(`Newtrans number: ${newtrans}`);
 
 					// we are inserting to the right
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:100%;">${ appdata.textdata[newtrans][newcanto] }</div>`);
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
 					appdata.elements.slider.appendChild(insert);
 					Velocity(appdata.elements.slider, {'left':"-100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
 							dom.removebyselector("#oldtext");
@@ -346,12 +371,11 @@ console.log(`Newtrans number: ${newtrans}`);
 							appdata.elements.text.style.left = "0";
 						}
 					});
-
 				} else {
 
 					// we are inserting to the left
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:-100%;">${ appdata.textdata[newtrans][newcanto] }</div>`);
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:-100%;">${ appdata.textdata[newtrans].text[newcanto] }</div>`);
 					appdata.elements.slider.insertBefore(insert, appdata.elements.slider.childNodes[0]);
 					Velocity(appdata.elements.slider, {'left':"100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
 						dom.removebyselector("#oldtext");
@@ -365,7 +389,7 @@ console.log(`Newtrans number: ${newtrans}`);
 
 				// not shift left/shift right – do normal thing
 
-					appdata.elements.text.innerHTML = appdata.textdata[newtrans][newcanto];
+					appdata.elements.text.innerHTML = appdata.textdata[newtrans].text[newcanto];
 					dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
 					dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
 
