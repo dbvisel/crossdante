@@ -102,12 +102,9 @@ var app = {
 		      if (touchYDelta > 0) {
 		        e.preventDefault();
 
-						// could we then call setlens?
-
-						if(appdata.currentpage == "lens") {
-							app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);
+						if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
+								app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
 						}
-
 		        return;
 		      }
 		    }
