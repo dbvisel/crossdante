@@ -5,15 +5,14 @@
 //
 // this probably needs some reworking?
 
-const translationdata = require("./bookdata").translationdata;
-const cantotitles = require("./bookdata").cantotitles;
+const bookdata = require("./bookdata");
 
 var appdata = {
 	currenttranslationlist: [],    // list of ids of translations we're currently using
 	currenttranslation: 0,
-	translationcount: translationdata.length,
+	translationcount: bookdata.translationdata.length,
 	currentcanto: 0,
-	cantocount: cantotitles.length,
+	cantocount: bookdata.cantotitles.length,
 	lineheight: 24,
 	lenswidth: window.innerWidth,
 	lensheight: window.innerHeight - 40,
@@ -26,8 +25,9 @@ var appdata = {
 	currentlines: 0,       // this is the number of lines calculated to be on the page
 	elements: {},
 	textdata: {},
-	translationdata: translationdata,
-	cantotitles: cantotitles
+	translationdata: bookdata.translationdata,
+	cantotitles: bookdata.cantotitles,
+	delay: 500
 };
 
 module.exports = appdata;

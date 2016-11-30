@@ -9,7 +9,7 @@
     "watch-scss": "node-sass app/scss -wo dist/css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "build-js": "browserify --debug -d app/js/crossdante.js -t babelify > dist/js/crossdante.js",
-    "production-js": "browserify --debug -d app/js/crossdante.js -t babelify > dist/js/crossdante.js && uglifyjs dist/js/crossdante.js -m -o dist/js/crossdante.min.js --source-map dist/js/crossdante.js -p relative",
+    "production-js": "browserify --debug -d app/js/crossdante.js -t babelify > dist/js/crossdante.js && uglifyjs dist/js/crossdante.js -m -o dist/js/crossdante.min.js --source-map dist/js/crossdante.map.js -p relative",
     "lint": "eslint app/js/*.js && eslint app/js/translations/*.js",
     "watch-js": "watchify app/js/crossdante.js -o dist/js/crossdante.js -dv",
     "watch": "npm run watch-scss & npm run watch-js",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "fastclick": "^1.0.6",
-    "hammerjs": "^2.0.8"
+    "hammerjs": "^2.0.8",
+    "velocity-animate": "^1.3.1"
   }
 }

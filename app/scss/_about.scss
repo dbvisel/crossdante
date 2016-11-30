@@ -1,0 +1,15 @@
+// about page
+
+#about {
+	overflow-y: scroll;
+	& p + p {
+		text-indent: $lineheight;
+	}
+	& h2 {
+		margin-top: $lineheight;
+	}
+	& ul {
+		list-style-position: inside;
+		list-style-type: circle;
+	}
+}

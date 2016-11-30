@@ -2,7 +2,16 @@
 
 "use strict";
 
-const carlyle = [`<p class="title">Inferno</p>
+module.exports = {
+	bookname: 'inferno',
+	author: 'Dante Alighieri',
+	translationid:"carlyle",
+	title: 'Inferno',
+	translation: true,
+	translationshortname:"Carlyle",
+	translationfullname: 'John Aitken Carlyle, Thomas Okey &amp; P. H. Wiksteed',
+	translationclass:"prose carlyle",
+	text:[`<p class="title">Inferno</p>
 	<p class="author">John Aitken Carlyle, Thomas Okey &amp; P. H. Wiksteed</p>`,
 
 	`<p class="cantohead">CANTO I</p>
@@ -88,6 +97,5 @@ const carlyle = [`<p class="title">Inferno</p>
 
 	`<p class="cantohead">CANTO III</p>
 		<p class="summary">Inscription over the Gate of Hell, and the impression it produces upon Dante. Virgil takes him by the hand, and leads him in. The dismal sounds make him burst into tears. His head is quite bewildered. Upon a Dark Plain, which goes around the confines, he sees a vast multitude of spirits running behind a flag in great haste and confusion, urged on by furious wasps and hornets. These are the unhappy people, who never were alive&mdash;never awakened to take any part in either good or evil, to care for anything but themselves. They are mixed with a similar class of fallen angels. After passing through the crowd of them, the Poets come to a great River, which flows round the brim of Hell; and then descends to form the other rivers, the marshes, and the ice that we shall meet with. It is the river Acheron; and on its Shore all that die under the wrath of God assemble from every country to be ferried over by the demon Charon. He makes them enter his boat by glaring on them with his burning eyes. Having seen these, and being refused a passage by Charon, Dante is suddenly stunned by a violent trembling of the ground, accompanied with wind and lightning, and falls down in a state of insensibility.</p>
-		<p>TK!</p>`];
-
-module.exports = carlyle;
+		<p>TK!</p>`]
+	};

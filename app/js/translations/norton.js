@@ -2,7 +2,16 @@
 
 "use strict";
 
-const norton = [`<p class="title">Hell</p>
+module.exports = {
+	bookname: 'inferno',
+	author: 'Dante Alighieri',
+	translationid:"norton",
+	title: 'Hell',
+	translation: true,
+	translationshortname:"Norton",
+	translationfullname:"Charles Eliot Norton",
+	translationclass:"norton prose",
+	text:[`<p class="title">Hell</p>
 	<p class="author">Charles Eliot Norton</p>`,
 
 	`<p class="cantohead">CANTO I</p>
@@ -175,12 +184,10 @@ const norton = [`<p class="title">Hell</p>
 		<p>And he to me, “Vain thought thou harborest; the undiscerning life that made them foul, to all recognition now makes them dim. Forever will they come to the two buttings; these will rise from the sepulchre with closed fist, and these with shorn hair. Ill-giving and ill-keeping have taken from them the fair world, and set them to this scuffle; such as it is, I adorn not words for it. Now canst thou, son, see the brief jest of the goods that are committed unto Fortune, for which the human race so scramble; for all the gold that is beneath the moon, or that ever was, of these weary souls could not make a single one repose.”</p>
 		<p>“Master,” said I to him, “now tell me further; this Fortune, on which thou touchest for me, what is it, that hath the goods of the world so in its clutches?”</p>
 		<p>And he to me, “O creatures foolish, how great is that ignorance that harms you! I would have thee now take in my judgment of her. He whose wisdom transcendeth all made the heavens, and gave them their guides, so that every part on every part doth shine, equally distributing the light. In like wise for the splendors of the world, He ordained a general ministress and guide, who should ever and anon transfer the vain goods from race to race, and from one blood to another, beyond the resistance of human wit. Wherefore one race rules, and the other languishes, pursuant to her judgment, which is occult as the snake in the grass. Your wisdom hath no withstanding of her: she provides, judges and maintains her realm, as theirs the other gods. Her permutations have no truce; necessity compels her to be swift, so often cometh he who obtains a turn. This is she who is so set upon the cross, even by those who ought to give her praise, giving her blame amiss and ill report. But she is blessed and hears this not. With the other Primal Creatures glad she turns her sphere, and blessed she rejoices. But now let us descend to greater woe. Already every star sinks that was rising when I set out, and too long stay is forbidden.”</p>
-		<p>We crossed the circle to the other bank, above a fount that boils and pours down through a cleft that proceeds from it. The water was far darker than perse;
-			<span class="note">
+		<p>We crossed the circle to the other bank, above a fount that boils and pours down through a cleft that proceeds from it. The water was far darker than perse;<span class="note">
 				<span class="noteno">1</span>
 				<span class="notetext">Purple-black.</span>
-			</span>
-		and we, in company with the dusky waves, entered down through a strange way. A marsh it makes, that is named Styx, this dismal little stream, when it has descended to the foot of the malign gray slopes. And I, who stood intent to gaze, saw muddy people in that swamp, all naked and with look of hurt. They were smiting each other, not only with hands, but with head, and with chest, and with feet, mangling one another piecemeal with their teeth.</p>
+		</span> and we, in company with the dusky waves, entered down through a strange way. A marsh it makes, that is named Styx, this dismal little stream, when it has descended to the foot of the malign gray slopes. And I, who stood intent to gaze, saw muddy people in that swamp, all naked and with look of hurt. They were smiting each other, not only with hands, but with head, and with chest, and with feet, mangling one another piecemeal with their teeth.</p>
 		<p>The good Master said, “Son, now thou seest the souls of those whom anger overcame; and likewise I would have thee believe for certain that beneath the water are folk who sigh, and make this water bubble at the surface, as thine eye tells thee wherever it turns. Fixed in the slime, they say, ‘Sullen were we in the sweet air that by the Sun is gladdened, bearing within ourselves the sluggish fume; now we are sullen in the black mire.’ This hymn they gurgle in their throats, for they cannot speak with entire words.”
 			<span class="note">
 				<span class="noteno">1</span>
@@ -1737,6 +1744,5 @@ const norton = [`<p class="title">Hell</p>
 				<span class="noteno">1</span>
 				<span class="notetext">Hell is his tomb; this vacant dark passage through the opposite hemisphere is, of course, of the same depth as Hell from surface to centre.</span>
 			</span>
-		which not by sight is known, but by the sound of a rivulet that here descends along the hollow of a rock that it has gnawed with its course that winds and little falls. My Leader and I entered through that hidden way, to return to the bright world. And without care, to have any repose, we mounted up, he first and I second, till through a round opening I saw of those beauteous things which heaven bears, and thence we came forth to see again the stars.</p>`];
-
-module.exports = norton;
+		which not by sight is known, but by the sound of a rivulet that here descends along the hollow of a rock that it has gnawed with its course that winds and little falls. My Leader and I entered through that hidden way, to return to the bright world. And without care, to have any repose, we mounted up, he first and I second, till through a round opening I saw of those beauteous things which heaven bears, and thence we came forth to see again the stars.</p>`]
+	};

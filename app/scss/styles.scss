@@ -181,12 +181,18 @@ body {
 }
 
 @import "settings";
-
-
+@import "about";
+@import "help";
 
 //
 // lens-specific
 //
+
+#slider {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
 
 .textpage {
 	font-size: $textfontsize;
@@ -290,19 +296,6 @@ p.summary {
 	}
 }
 
-// help page
-
-#help {
-	& p + p {
-		text-indent: $lineheight;
-	}
-	& ul {
-		margin-top: $lineheight;
-	}
-	& li {
-		margin-left: $lineheight * 2;
-	}
-}
 
 // import individual poet fixes
 

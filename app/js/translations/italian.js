@@ -2,7 +2,16 @@
 
 "use strict";
 
-const italian = [`<p class="title">Inferno</p>
+module.exports = {
+	bookname: 'inferno',
+	author: 'Dante Alighieri',
+	translationid:"dante",
+	title: 'Inferno',
+	translation: false,
+	translationshortname:"Dante",
+	translationfullname:"Dante Alighieri",
+	translationclass:"poetry",
+	text:[`<p class="title">Inferno</p>
 	<p class="author">Dante Alighieri</p>`,
 
 	`<p class="cantohead">1</p>
@@ -7983,6 +7992,5 @@ const italian = [`<p class="title">Inferno</p>
 		</div>
 		<div class="stanza">
 			<p>E quindi uscimmo a riveder le stelle.</p>
-		</div>`];
-
-module.exports = italian;
+		</div>`]
+	};

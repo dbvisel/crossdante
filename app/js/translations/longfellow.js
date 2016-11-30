@@ -2,7 +2,16 @@
 
 "use strict";
 
-const longfellow = [`<p class="title">Inferno</p>
+module.exports = {
+	bookname: 'inferno',
+	author: 'Dante Alighieri',
+	translationid:"longfellow",
+	title: 'Inferno',
+	translationshortname:"Longfellow",
+	translationfullname:"Henry Wordsworth Longfellow",
+	translationclass:"poetry longfellow",
+	translation: true,
+	text:[`<p class="title">Inferno</p>
 	<p class="author">Henry Wadsworth Longfellow</p>`,
 
 	`<p class="cantohead">Inferno: Canto I</p>
@@ -7983,6 +7992,5 @@ const longfellow = [`<p class="title">Inferno</p>
 	</div>
 	<div class="stanza">
 		<p>Thence we came forth to rebehold the stars.</p>
-	</div>`];
-
-module.exports = longfellow;
+	</div>`]
+};

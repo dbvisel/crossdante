@@ -4,6 +4,7 @@
 
 const Hammer = require("hammerjs");
 const Fastclick = require("fastclick");	// why is this not working?
+const Velocity = require("velocity-animate");
 
 const dom = require("./dom");
 let appdata = require("./appdata");
@@ -15,16 +16,17 @@ var app = {
 
 		// basic doc setup
 
-		appdata.textdata[0] = require("./translations/italian.js");
-		appdata.textdata[1] = require("./translations/longfellow.js");
-		appdata.textdata[2] = require("./translations/norton.js");
-		appdata.textdata[3] = require("./translations/wright.js");
-		appdata.textdata[4] = require("./translations/carlyle.js");
+		appdata.textdata[0] = require("./translations/italian.js").text;
+		appdata.textdata[1] = require("./translations/longfellow.js").text;
+		appdata.textdata[2] = require("./translations/norton.js").text;
+		appdata.textdata[3] = require("./translations/wright.js").text;
+		appdata.textdata[4] = require("./translations/carlyle.js").text;
 
 		appdata.elements.lens = document.getElementById("lens");
 		appdata.elements.main = document.getElementById("main");
 		appdata.elements.content = document.getElementById("content");
 		appdata.elements.text = document.getElementById("text");
+		appdata.elements.slider = document.getElementById("slider");
 
 		// set up current translation list (initially use all of them)
 
@@ -43,7 +45,6 @@ var app = {
 		// start fastclick
 
 		if ('addEventListener' in document) {
-			console.log(Fastclick);
 			document.addEventListener('DOMContentLoaded', () => {
 				Fastclick(document.body);
 			}, false);
@@ -58,7 +59,6 @@ var app = {
 		setupnote: function(el) {
 			el.onclick = function(e) {
 				e.stopPropagation();
-console.log(this);
 
 				let thisnote = this.getAttribute("data-notenumber");
 				let notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
@@ -73,12 +73,12 @@ console.log(this);
 			};
 		},
 		checkboxgo: function(el) {
-			el.onclick = () => {
+			el.onclick = function() {
 				app.changetranslation(this.id.replace("check-",""),document.getElementById(this.id).checked);
 			};
 		},
 		checkboxspango: function(el) {
-			el.onclick = () => {
+			el.onclick = function() {
 				document.getElementById(`check-${this.id}`).checked = !document.getElementById(`check-${this.id}`).checked;
 				app.changetranslation(this.id,document.getElementById(`check-${this.id}`).checked);
 			};
@@ -200,11 +200,9 @@ console.log(this);
 			let children = notes[i].children;
 			for(let j=0; j < children.length; j++) {
 				if(dom.hasclass(children[j],"notetext")) {
-					console.log("notetext "+count);
 					children[j].setAttribute("data-notenumber", count);
 				}
 				if(dom.hasclass(children[j],"noteno")) {
-					console.log("noteno "+count);
 					children[j].setAttribute("data-notenumber", count);
 					app.helpers.setupnote(children[j]);
 				}
@@ -232,7 +230,9 @@ console.log(this);
 		app.setlens(appdata.currenttranslation,appdata.currentcanto);
 	},
 	setlens: function(newtrans, newcanto, percentage) {
-		console.log(`Setlens called for ${newtrans}, canto ${newcanto}`);
+		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}`);
+		dom.removebyselector("#oldtext"); // attempt to fix flickering if too fast change
+
 		let changetrans = false;
 
 	// if page isn't set to "lens" this doesn't do anything
@@ -241,33 +241,87 @@ console.log(this);
 			if(newtrans - appdata.currenttranslation !== 0) {
 				changetrans = true;
 				percentage = (appdata.elements.text.scrollTop /*+ appdata.elements.text.clientHeight*/)/appdata.elements.text.scrollHeight;
-				console.log(percentage);
+				console.log(`—>Current percentage: ${percentage}`);
+
+				if(newtrans >= appdata.translationcount) {
+					newtrans = 0;
+				} else {
+					if(newtrans < 0) {
+						newtrans = appdata.translationcount-1;
+					}
+				}
+
 			}
 
-			if(newtrans >= appdata.translationcount) {
-				newtrans = 0;
-			}
-			if(newtrans < 0) {
-				newtrans = appdata.translationcount-1;
-			}
 			if(newcanto >= appdata.cantocount) {
 				newcanto = 0;
-			}
-			if(newcanto < 0) {
-				newcanto = appdata.cantocount-1;
+			} else {
+				if(newcanto < 0) {
+					newcanto = appdata.cantocount-1;
+				}
 			}
 
 	// figure out which translation is the current translation
 
+console.log(`Newtrans going in: ${newtrans}`);
+
 			for(let i=0; i < appdata.translationdata.length; i++) {
+				console.log(`i: ${i}, ${appdata.translationdata[i].translationid}`);
 				if(appdata.currenttranslationlist[newtrans] == appdata.translationdata[i].translationid) {
 					newtrans = i;
 				}
 			}
 
-			appdata.elements.text.innerHTML = appdata.textdata[newtrans][newcanto];
-			dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
-			dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
+			newtrans = appdata.currenttranslationlist.indexOf(appdata.translationdata[newtrans].translationid)
+console.log(`Recalced newtrans: ${newtrans}`);
+
+console.log(`Current translation list length: ${appdata.currenttranslationlist.length}`);
+console.log(`Current translation list:`);
+console.log(appdata.currenttranslationlist);
+console.log(`Current translation: ${appdata.currenttranslation}`);
+console.log(`Newtrans number: ${newtrans}`);
+
+// these numbers are wrong!
+
+			if(newtrans !== appdata.currenttranslation) {
+				appdata.elements.text.id = "oldtext";
+				if(((newtrans > appdata.currenttranslation) && (appdata.currenttranslation > 0 || newtrans !== (appdata.currenttranslationlist.length-1))) || (newtrans == 0 && (appdata.currenttranslation == (appdata.currenttranslationlist.length-1)))) {
+
+					// we are inserting to the right
+
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:100%;">${ appdata.textdata[newtrans][newcanto] }</div>`);
+					appdata.elements.slider.appendChild(insert);
+					Velocity(appdata.elements.slider, {'left':"-100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
+							dom.removebyselector("#oldtext");
+							appdata.elements.slider.style.left = "0";
+							appdata.elements.text.style.left = "0";
+						}
+					});
+
+				} else {
+
+					// we are inserting to the left
+
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newtrans].translationclass }" style="left:-100%;">${ appdata.textdata[newtrans][newcanto] }</div>`);
+					appdata.elements.slider.insertBefore(insert, appdata.elements.slider.childNodes[0]);
+					Velocity(appdata.elements.slider, {'left':"100%"}, {duration: appdata.delay, mobileHA: false, complete: function() {
+						dom.removebyselector("#oldtext");
+						appdata.elements.slider.style.left = "0";
+						appdata.elements.text.style.left = "0";
+						}
+					});
+				}
+				appdata.elements.text = document.getElementById("text");
+			} else {
+
+				// not shift left/shift right – do normal thing
+
+					appdata.elements.text.innerHTML = appdata.textdata[newtrans][newcanto];
+					dom.removeclass("#text",appdata.translationdata[appdata.currenttranslation].translationclass);
+					dom.addclass("#text",appdata.translationdata[newtrans].translationclass);
+
+			}
+
 			app.setupnotes();
 			appdata.currenttranslation = newtrans;
 			appdata.currentcanto = newcanto;
@@ -326,8 +380,8 @@ console.log(this);
 				div.style.display = "block";
 			}
 
-			console.log("text width: " + appdata.textwidth);
-			console.log("max width: " + maxwidth);
+			console.log("—>text width: " + appdata.textwidth);
+			console.log("—>max width: " + maxwidth);
 
 			appdata.elements.text.style.paddingLeft = (appdata.textwidth - maxwidth)/2+"px";
 			appdata.elements.text.style.paddingRight = (appdata.textwidth - maxwidth)/2+"px";
@@ -337,9 +391,9 @@ console.log(this);
 
 			desiredwidth = 75; // this is in vw
 
-			console.log("text width: " + appdata.textwidth);
-			console.log("desired width: " + desiredwidth);
-			console.log("lineheight: " + appdata.lineheight);
+			console.log("—>text width: " + appdata.textwidth);
+			console.log("—>desired width: " + desiredwidth);
+			console.log("—>lineheight: " + appdata.lineheight);
 
 	//		console.log(lenswidth + " "+desiredwidth);
 	//		var padding = (lenswidth - desiredwidth)/2;
@@ -422,11 +476,14 @@ console.log(this);
 		};
 	},
 	savecurrentdata: function() {
+
 // this should store appdate on localstorage (does that work for mobile?)
-		console.log("Storing preferences! TK");
+// also if we're not on mobile, set canto/translation in hash
+
+
 	},
 	changetranslation: function(thisid, isset) {
-		console.log("changetranslation fired!");
+		console.log("change translation fired!");
 		for(let i in appdata.translationdata) {
 			if(thisid == appdata.translationdata[i].translationid) {
 				if(isset) {
@@ -455,14 +512,25 @@ console.log(this);
 			}
 		}
 		appdata.currenttranslationlist = newlist.slice();
+
+		console.log("New translation list:");
+		console.log(appdata.currenttranslationlist);
+
 		// also what do we do when one is deleted?
 		app.updatesettings();
 	},
 	setpage: function(newpage) {
 		dom.removeclass(".page","on");
 		dom.addclass(".page#"+newpage,"on");
+		if(newpage !== "lens") {
+			// set title to be whatever the h1 is
+
+			let newtitle = document.querySelector("#" + newpage + " h1").innerHTML;
+			document.getElementById("navtitle").innerHTML = newtitle;
+		} else {
+			app.resize();
+		}
 		appdata.currentpage = newpage;
-		app.resize();
 	},
 	onDeviceReady: function() {
 		console.log("device ready!");
