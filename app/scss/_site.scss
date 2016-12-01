@@ -1,0 +1,69 @@
+$sitelineheight: 2.25rem;
+$indentwidth: 1rem;
+
+#site {
+	font-family: 'Source Sans Pro';
+	background-color: $navcolor;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 2rem;
+	overflow-y: scroll;
+	& a {
+		color: $navcolor;
+		font-weight: bold;
+		&[disabled] {
+		  pointer-events: none;
+			color: gray;
+		}
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	& em a {
+		font-weight: normal;
+		font-style: italic;
+	}
+	& #sitebox {
+		box-sizing: border-box;
+		width: 100%;
+		background-color: $pagebackground;
+		padding: 2rem;
+		border-radius: 1rem;
+		font-size: 1.5rem;
+		line-height: $sitelineheight;
+	}
+	& h1 {
+		font-family: 'Source Sans Pro';
+		text-align: center;
+		font-size: $sitelineheight;
+		margin-bottom: $sitelineheight;
+	}
+	& h2 {
+		font-family: 'Source Sans Pro';
+		font-size: 1.75rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+	& p {
+	}
+	& p + p {
+		text-indent: 2rem;
+	}
+	& .list {
+		margin: $sitelineheight/2 0 $sitelineheight/2 2*$indentwidth;
+		text-indent: -$indentwidth;
+		& .listitem {
+ 			& .linum {
+				display: inline-block;
+				color: $navcolor;
+				position: relative;
+				width: $indentwidth;
+			}
+		}
+	}
+	& .list .list {
+		margin: 0 0 0 2 * $indentwidth;
+	}
+}

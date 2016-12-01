@@ -27,6 +27,10 @@ $pagebackground: #eee;
 // main
 //
 
+html {
+	height: 100%; // put in for site, does this break anything?
+}
+
 body {
 	font-size: $fontsize;
 	line-height: $lineheight;
@@ -317,10 +321,14 @@ p.summary {
 
 @import "nightmode";
 
+// deal with the site
+
+@import "site";
+
 // media queries!
 
 @media (max-width: 500px) {
-    font-size: 14px
+//    font-size: 14px; // is this killing us?
 }
 
 

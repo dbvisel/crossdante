@@ -230,6 +230,9 @@ textarea {
   font-stretch: normal;
   src: url("../fonts/SourceSansPro-BoldIt.eot") format("embedded-opentype"), url("../fonts/SourceSansPro-BoldIt.ttf.woff2") format("woff2"), url("../fonts/SourceSansPro-BoldIt.otf.woff") format("woff"), url("../fonts/SourceSansPro-BoldIt.otf") format("opentype"), url("../fonts/SourceSansPro-BoldIt.ttf") format("truetype"); }
 
+html {
+  height: 100%; }
+
 body {
   font-size: 18px;
   line-height: 24px;
@@ -564,8 +567,56 @@ body.nightmode #translationgo #selectgo {
   body.nightmode #translationgo #selectgo:hover, body.nightmode #translationgo #selectgo.on {
     color: orange; }
 
-@media (max-width: 500px) {
-  font-size: 14px; }
+#site {
+  font-family: 'Source Sans Pro';
+  background-color: teal;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+  overflow-y: scroll; }
+  #site a {
+    color: teal;
+    font-weight: bold; }
+    #site a[disabled] {
+      pointer-events: none;
+      color: gray; }
+    #site a:hover {
+      text-decoration: underline; }
+  #site em a {
+    font-weight: normal;
+    font-style: italic; }
+  #site #sitebox {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem; }
+  #site h1 {
+    font-family: 'Source Sans Pro';
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 2.25rem; }
+  #site h2 {
+    font-family: 'Source Sans Pro';
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem; }
+  #site p + p {
+    text-indent: 2rem; }
+  #site .list {
+    margin: 1.125rem 0 1.125rem 2rem;
+    text-indent: -1rem; }
+    #site .list .listitem .linum {
+      display: inline-block;
+      color: teal;
+      position: relative;
+      width: 1rem; }
+  #site .list .list {
+    margin: 0 0 0 2rem; }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* STYLES GO HERE */ }
