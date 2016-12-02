@@ -575,7 +575,8 @@ body.nightmode #translationgo #selectgo {
   height: 100%;
   box-sizing: border-box;
   padding: 2rem;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  touch-action: auto; }
   #site a {
     color: teal;
     font-weight: bold; }
@@ -595,6 +596,10 @@ body.nightmode #translationgo #selectgo {
     border-radius: 1rem;
     font-size: 1.5rem;
     line-height: 2.25rem; }
+    #site #sitebox #textbox {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto; }
   #site h1 {
     font-family: 'Source Sans Pro';
     text-align: center;
@@ -615,8 +620,23 @@ body.nightmode #translationgo #selectgo {
       color: teal;
       position: relative;
       width: 1rem; }
-  #site .list .list {
-    margin: 0 0 0 2rem; }
+    #site .list .list {
+      margin: 0 0 0 2rem; }
+
+@media only screen and (max-width: 480px) {
+  #site {
+    padding: 1rem; }
+    #site #sitebox {
+      padding: 1rem;
+      font-size: 1rem;
+      line-height: 1.5rem; }
+    #site .list {
+      margin-left: 1rem;
+      text-indent: -0.5rem; }
+      #site .list .listitem .linum {
+        width: 0.5rem; }
+      #site .list .list {
+        margin-left: 1rem; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* STYLES GO HERE */ }

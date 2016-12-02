@@ -1,4 +1,4 @@
-// longfellow.js
+// inferno/longfellow.js
 
 "use strict";
 
@@ -7,11 +7,11 @@ module.exports = {
 	author: 'Dante Alighieri',
 	translationid:"longfellow",
 	title: 'Inferno',
+	translation: true,
 	source: `<a href="http://www.gutenberg.org/ebooks/1001">Project Gutenberg</a>`,
 	translationshortname:"Longfellow",
 	translationfullname:"Henry Wordsworth Longfellow",
 	translationclass:"poetry longfellow",
-	translation: true,
 	text:[`<p class="title">Inferno</p>
 	<p class="author">Henry Wadsworth Longfellow</p>`,
 

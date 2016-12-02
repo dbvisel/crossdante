@@ -383,9 +383,18 @@ var app = {
 
 				// console.log("No change in translation!"); // not shift left/shift right – do normal thing
 
+				for(var j in appdata.translationdata) {
+					if(newtrans == appdata.translationdata[j].translationid) {
+						newdata = j;
+					}
+					if(appdata.currenttranslation == appdata.translationdata[j].translationid) {
+						olddata = j;
+					}
+				}
+
 				appdata.elements.text.innerHTML = appdata.textdata[newdata].text[newcanto];
-				dom.removeclass("#text",appdata.translationdata[olddata].translationclass);
-				dom.addclass("#text",appdata.translationdata[newdata].translationclass);
+				dom.removeclass("#text",appdata.translationdata[olddata].translationclass); // is this not working for multiple classes?
+				dom.addclass("#text",appdata.translationdata[newdata].translationclass); // is this not working for multiple classes?
 			}
 
 			app.setupnotes();
