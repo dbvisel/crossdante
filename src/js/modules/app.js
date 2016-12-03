@@ -269,10 +269,11 @@ var app = {
 
 		dom.addclass(".page",appdata.lenswidth > appdata.lensheight ? "landscape" : "portrait");
 		dom.removeclass(".page",appdata.lenswidth > appdata.lensheight ? "portrait" : "landscape");
-
+/*
 		appdata.elements.main.style.width = appdata.lenswidth+"px";
-		appdata.elements.main.style.height = appdata.windowheight+"px";
 		appdata.elements.content.style.width = appdata.lenswidth+"px";
+*/
+		appdata.elements.main.style.height = appdata.windowheight+"px";
 		appdata.elements.content.style.height = appdata.lensheight+"px";
 
 		if(appdata.responsive) {

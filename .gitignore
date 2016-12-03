@@ -6,3 +6,8 @@ node_modules
 node_modules/
 node_modules/**/*
 
+# Cordova
+
+apps/crossdanteinferno/platforms/android/build/intermediates/
+apps/crossdanteparadiso/platforms/android/build/intermediates/
+apps/crossdantepurgatorio/platforms/android/build/intermediates/
