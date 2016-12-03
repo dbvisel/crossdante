@@ -23,6 +23,7 @@
 
  * Add Cary's notes
  * Add Norton Purgatorio/Paradiso
+ * Need Gutenberg licenses
 
 ## features to add, this version:
 
