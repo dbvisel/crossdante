@@ -1,6 +1,6 @@
 # crossdante
 
-An app for facing-page translation. This still needs a great deal of work! Where things are:
+An app for facing-page translation. Online version here: https://danvisel.net/crossdante/. This still needs a great deal of work! Where things are:
 
  * _src/_ are the raw application files
  	* _src/[bookname]-debug.html_ is the dev version of the page for a particular book
@@ -10,7 +10,7 @@ An app for facing-page translation. This still needs a great deal of work! Where
 	 * _src/js/[bookname]/bookdata.js_ is the spine for a particular book, pointing to translations
 	 * _src/js/[bookname]/translations/_ is where a particular book's translations are
  * _dist/_ are the files for the web
-  * _dist/index.html_ is the main page (online version at https://danvisel.net/crossdante)
+  * _dist/index.html_ is the main page
   * _dist/[bookname].html_ is the page for a particular book
  * _apps/_ contains the Cordova projects (needs to be updated)
 
