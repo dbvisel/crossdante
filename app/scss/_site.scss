@@ -64,9 +64,11 @@ $indentwidth: 1rem;
 		& .listitem {
  			& .linum {
 				display: inline-block;
-				color: $navcolor;
 				position: relative;
 				width: $indentwidth;
+				&.colored {
+					color: $navcolor;
+				}
 			}
 		}
 		& .list {
