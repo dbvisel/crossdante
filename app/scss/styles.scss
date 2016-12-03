@@ -222,6 +222,7 @@ body {
 	overflow-y: scroll;
 }
 
+// text formatting
 
 p.title, p.author {
 	text-align: center;
@@ -256,7 +257,39 @@ p.summary {
 	margin: $textlineheight 2*$textlineheight;
 }
 
+p.slindent {
+	text-indent: 1*$textlineheight;
+}
+p.slindent2em {
+	text-indent: 2*$textlineheight;
+}
+p.slindent4em {
+	text-indent: 4*$textlineheight;
+}
+p.slindent6em {
+	text-indent: 6*$textlineheight;
+}
+p.slindent8em {
+	text-indent: 8*$textlineheight;
+}
+p.slindent10em {
+	text-indent: 10*$textlineheight;
+}
+p.slindent12em {
+	text-indent: 12*$textlineheight;
+}
+p.slindent14em {
+	text-indent: 14*$textlineheight;
+}
 
+
+// spans
+
+.sc {  // small caps
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 0.9em;
+}
 
 // notes
 

@@ -1,4 +1,4 @@
-// cary.js
+// inferno/cary.js
 
 "use strict";
 
@@ -18,7 +18,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto I</p>
 		<div class="stanza">
-		<p>In the midway of this our mortal life,</p>
+		<p><span class="sc">In</span> the midway of this our mortal life,</p>
 		<p>I found me in a gloomy wood, astray</p>
 		<p>Gone from the path direct: and e&rsquo;en to tell</p>
 		<p>It were no easy task, how savage wild</p>
@@ -35,9 +35,7 @@ module.exports = {
 		<p>I look&rsquo;d aloft, and saw his shoulders broad</p>
 		<p>Already vested with that planet&rsquo;s beam,</p>
 		<p>Who leads all wanderers safe through every way.</p>
-		</div>
-		<div class="stanza">
-		<p>Then was a little respite to the fear,</p>
+		<p class="slindent">Then was a little respite to the fear,</p>
 		<p>That in my heart&rsquo;s recesses deep had lain,</p>
 		<p>All of that night, so pitifully pass&rsquo;d:</p>
 		<p>And as a man, with difficult short breath,</p>
@@ -48,17 +46,13 @@ module.exports = {
 		<p>That none hath pass&rsquo;d and liv&rsquo;d. My weary frame</p>
 		<p>After short pause recomforted, again</p>
 		<p>I journey&rsquo;d on over that lonely steep,</p>
-		</div>
-		<div class="stanza">
 		<p>The hinder foot still firmer. Scarce the ascent</p>
 		<p>Began, when, lo! a panther, nimble, light,</p>
 		<p>And cover&rsquo;d with a speckled skin, appear&rsquo;d,</p>
 		<p>Nor, when it saw me, vanish&rsquo;d, rather strove</p>
 		<p>To check my onward going; that ofttimes</p>
 		<p>With purpose to retrace my steps I turn&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>The hour was morning&rsquo;s prime, and on his way</p>
+		<p class="slindent">The hour was morning&rsquo;s prime, and on his way</p>
 		<p>Aloft the sun ascended with those stars,</p>
 		<p>That with him rose, when Love divine first mov&rsquo;d</p>
 		<p>Those its fair works: so that with joyous hope</p>
@@ -67,8 +61,6 @@ module.exports = {
 		<p>And the sweet season. Soon that joy was chas&rsquo;d,</p>
 		<p>And by new dread succeeded, when in view</p>
 		<p>A lion came, &rsquo;gainst me, as it appear&rsquo;d,</p>
-		</div>
-		<div class="stanza">
 		<p>With his head held aloft and hunger-mad,</p>
 		<p>That e&rsquo;en the air was fear-struck. A she-wolf</p>
 		<p>Was at his heels, who in her leanness seem&rsquo;d</p>
@@ -82,17 +74,13 @@ module.exports = {
 		<p>Haunted by that fell beast, never at peace,</p>
 		<p>Who coming o&rsquo;er against me, by degrees</p>
 		<p>Impell&rsquo;d me where the sun in silence rests.</p>
-		</div>
-		<div class="stanza">
-		<p>While to the lower space with backward step</p>
+		<p class="slindent">While to the lower space with backward step</p>
 		<p>I fell, my ken discern&rsquo;d the form one of one,</p>
 		<p>Whose voice seem&rsquo;d faint through long disuse of speech.</p>
 		<p>When him in that great desert I espied,</p>
 		<p>&ldquo;Have mercy on me!&rdquo; cried I out aloud,</p>
 		<p>&ldquo;Spirit! or living man! what e&rsquo;er thou be!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He answer&rsquo;d:&ldquo;ow not man, man once I was,</p>
+		<p class="slindent">He answer&rsquo;d:&ldquo;ow not man, man once I was,</p>
 		<p>And born of Lombard parents, Mantuana both</p>
 		<p>By country, when the power of Julius yet</p>
 		<p>Was scarcely firm. At Rome my life was past</p>
@@ -115,8 +103,6 @@ module.exports = {
 		<p>That style, which for its beauty into fame</p>
 		<p>Exalts me. See the beast, from whom I fled.</p>
 		<p>O save me from her, thou illustrious sage!&rdquo;</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;For every vein and pulse throughout my frame</p>
 		<p>She hath made tremble.&rdquo; He, soon as he saw</p>
 		<p>That I was weeping, answer&rsquo;d, &ldquo;Thou must needs</p>
@@ -163,28 +149,22 @@ module.exports = {
 		<p>I may escape) to lead me, where thou saidst,</p>
 		<p>That I Saint Peter&rsquo;s gate may view, and those</p>
 		<p>Who as thou tell&rsquo;st, are in such dismal plight.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Onward he mov&rsquo;d, I close his steps pursu&rsquo;d.</p>
+		<p class="slindent">Onward he mov&rsquo;d, I close his steps pursu&rsquo;d.</p>
 		</div>`,
 
 		`<p class="cantohead">Canto II</p>
 		<div class="stanza">
-		<p>NOW was the day departing, and the air,</p>
+		<p><span class="sc">Now</span> was the day departing, and the air,</p>
 		<p>Imbrown&rsquo;d with shadows, from their toils releas&rsquo;d</p>
 		<p>All animals on earth; and I alone</p>
 		<p>Prepar&rsquo;d myself the conflict to sustain,</p>
 		<p>Both of sad pity, and that perilous road,</p>
 		<p>Which my unerring memory shall retrace.</p>
-		</div>
-		<div class="stanza">
-		<p>O Muses! O high genius! now vouchsafe</p>
+		<p class="slindent">O Muses! O high genius! now vouchsafe</p>
 		<p>Your aid! O mind! that all I saw hast kept</p>
 		<p>Safe in a written record, here thy worth</p>
 		<p>And eminent endowments come to proof.</p>
-		</div>
-		<div class="stanza">
-		<p>I thus began: &ldquo;Bard! thou who art my guide,</p>
+		<p class="slindent">I thus began: &ldquo;Bard! thou who art my guide,</p>
 		<p>Consider well, if virtue be in me</p>
 		<p>Sufficient, ere to this high enterprise</p>
 		<p>Thou trust me. Thou hast told that Silvius&rsquo; sire,</p>
@@ -245,14 +225,10 @@ module.exports = {
 		<p>Assist him. So to me will comfort spring.</p>
 		<p>I who now bid thee on this errand forth</p>
 		<p>Am Beatrice<span class="note"><span class="noteno">1</span><span class="notetext">I use this word, as it is pronounced in the Italian, as consisting of four syllables, of which the third is a long one.</span></span>; from a place I come</p>
-		</div>
-		<div class="stanza">
 		<p>Revisited with joy. Love brought me thence,</p>
 		<p>Who prompts my speech. When in my Master&rsquo;s sight</p>
 		<p>I stand, thy praise to him I oft will tell.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>She then was silent, and I thus began:</p>
+		<p class="slindent">She then was silent, and I thus began:</p>
 		<p>&ldquo;O Lady! by whose influence alone,</p>
 		<p>Mankind excels whatever is contain&rsquo;d</p>
 		<p>Within that heaven which hath the smallest orb,</p>
@@ -262,9 +238,7 @@ module.exports = {
 		<p>Yet tell the reason, why thou art not loth</p>
 		<p>To leave that ample space, where to return</p>
 		<p>Thou burnest, for this centre here beneath.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>She then: &ldquo;Since thou so deeply wouldst inquire,</p>
+		<p class="slindent">She then: &ldquo;Since thou so deeply wouldst inquire,</p>
 		<p>I will instruct thee briefly, why no dread</p>
 		<p>Hinders my entrance here. Those things alone</p>
 		<p>Are to be fear&rsquo;d, whence evil may proceed,</p>
@@ -295,9 +269,7 @@ module.exports = {
 		<p>Down from my blessed seat, trusting the force</p>
 		<p>Of thy pure eloquence, which thee, and all</p>
 		<p>Who well have mark&rsquo;d it, into honour brings.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;When she had ended, her bright beaming eyes</p>
+		<p class="slindent">&ldquo;When she had ended, her bright beaming eyes</p>
 		<p>Tearful she turn&rsquo;d aside; whereat I felt</p>
 		<p>Redoubled zeal to serve thee. As she will&rsquo;d,</p>
 		<p>Thus am I come: I sav&rsquo;d thee from the beast,</p>
@@ -308,9 +280,7 @@ module.exports = {
 		<p>And noble daring? Since three maids so blest</p>
 		<p>Thy safety plan, e&rsquo;en in the court of heaven;</p>
 		<p>And so much certain good my words forebode.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>As florets, by the frosty air of night</p>
+		<p class="slindent">As florets, by the frosty air of night</p>
 		<p>Bent down and clos&rsquo;d, when day has blanch&rsquo;d their leaves,</p>
 		<p>Rise all unfolded on their spiry stems;</p>
 		<p>So was my fainting vigour new restor&rsquo;d,</p>
@@ -323,15 +293,13 @@ module.exports = {
 		<p>That my first purpose fully is resum&rsquo;d.</p>
 		<p>Lead on: one only will is in us both.</p>
 		<p>Thou art my guide, my master thou, and lord.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>So spake I; and when he had onward mov&rsquo;d,</p>
+		<p class="slindent">So spake I; and when he had onward mov&rsquo;d,</p>
 		<p>I enter&rsquo;d on the deep and woody way.</p>
 		</div>`,
 
 		`<p class="cantohead">Canto III</p>
 		<div class="stanza">
-		<p>&ldquo;THROUGH me you pass into the city of woe:</p>
+		<p>&ldquo;<span class="sc">Through</span> me you pass into the city of woe:</p>
 		<p>Through me you pass into eternal pain:</p>
 		<p>Through me among the people lost for aye.</p>
 		<p>Justice the founder of my fabric mov&rsquo;d:</p>
@@ -339,12 +307,8 @@ module.exports = {
 		<p>Supremest wisdom, and primeval love.</p>
 		<p>Before me things create were none, save things</p>
 		<p>Eternal, and eternal I endure.</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;All hope abandon ye who enter here.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Such characters in colour dim I mark&rsquo;d</p>
+		<p class="slindent">Such characters in colour dim I mark&rsquo;d</p>
 		<p>Over a portal&rsquo;s lofty arch inscrib&rsquo;d:</p>
 		<p>Whereat I thus: &ldquo;Master, these words import</p>
 		<p>Hard meaning.&rdquo; He as one prepar&rsquo;d replied:</p>
@@ -355,9 +319,7 @@ module.exports = {
 		<p>Have lost.&rdquo; And when his hand he had stretch&rsquo;d forth</p>
 		<p>To mine, with pleasant looks, whence I was cheer&rsquo;d,</p>
 		<p>Into that secret place he led me on.</p>
-		</div>
-		<div class="stanza">
-		<p>Here sighs with lamentations and loud moans</p>
+		<p class="slindent">Here sighs with lamentations and loud moans</p>
 		<p>Resounded through the air pierc&rsquo;d by no star,</p>
 		<p>That e&rsquo;en I wept at entering. Various tongues,</p>
 		<p>Horrible languages, outcries of woe,</p>
@@ -366,14 +328,10 @@ module.exports = {
 		<p>Made up a tumult, that for ever whirls</p>
 		<p>Round through that air with solid darkness stain&rsquo;d,</p>
 		<p>Like to the sand that in the whirlwind flies.</p>
-		</div>
-		<div class="stanza">
-		<p>I then, with error yet encompass&rsquo;d, cried:</p>
+		<p class="slindent">I then, with error yet encompass&rsquo;d, cried:</p>
 		<p>&ldquo;O master! What is this I hear? What race</p>
 		<p>Are these, who seem so overcome with woe?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus to me: &ldquo;This miserable fate</p>
+		<p class="slindent">He thus to me: &ldquo;This miserable fate</p>
 		<p>Suffer the wretched souls of those, who liv&rsquo;d</p>
 		<p>Without or praise or blame, with that ill band</p>
 		<p>Of angels mix&rsquo;d, who nor rebellious prov&rsquo;d</p>
@@ -382,9 +340,7 @@ module.exports = {
 		<p>Not to impair his lustre, nor the depth</p>
 		<p>Of Hell receives them, lest th&rsquo; accursed tribe</p>
 		<p>Should glory thence with exultation vain.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then: &ldquo;Master! what doth aggrieve them thus,</p>
+		<p class="slindent">I then: &ldquo;Master! what doth aggrieve them thus,</p>
 		<p>That they lament so loud?&rdquo; He straight replied:</p>
 		<p>&ldquo;That will I tell thee briefly. These of death</p>
 		<p>No hope may entertain: and their blind life</p>
@@ -392,16 +348,12 @@ module.exports = {
 		<p>They envy. Fame of them the world hath none,</p>
 		<p>Nor suffers; mercy and justice scorn them both.</p>
 		<p>Speak not of them, but look, and pass them by.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>And I, who straightway look&rsquo;d, beheld a flag,</p>
+		<p class="slindent">And I, who straightway look&rsquo;d, beheld a flag,</p>
 		<p>Which whirling ran around so rapidly,</p>
 		<p>That it no pause obtain&rsquo;d: and following came</p>
 		<p>Such a long train of spirits, I should ne&rsquo;er</p>
 		<p>Have thought, that death so many had despoil&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>When some of these I recogniz&rsquo;d, I saw</p>
+		<p class="slindent">When some of these I recogniz&rsquo;d, I saw</p>
 		<p>And knew the shade of him, who to base fear</p>
 		<p>Yielding, abjur&rsquo;d his high estate. Forthwith</p>
 		<p>I understood for certain this the tribe</p>
@@ -411,9 +363,7 @@ module.exports = {
 		<p>By wasps and hornets, which bedew&rsquo;d their cheeks</p>
 		<p>With blood, that mix&rsquo;d with tears dropp&rsquo;d to their feet,</p>
 		<p>And by disgustful worms was gather&rsquo;d there.</p>
-		</div>
-		<div class="stanza">
-		<p>Then looking farther onwards I beheld</p>
+		<p class="slindent">Then looking farther onwards I beheld</p>
 		<p>A throng upon the shore of a great stream:</p>
 		<p>Whereat I thus: &ldquo;Sir! grant me now to know</p>
 		<p>Whom here we view, and whence impell&rsquo;d they seem</p>
@@ -421,15 +371,11 @@ module.exports = {
 		<p>Through the blear light?&rdquo; He thus to me in few:</p>
 		<p>&ldquo;This shalt thou know, soon as our steps arrive</p>
 		<p>Beside the woeful tide of Acheron.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then with eyes downward cast and fill&rsquo;d with shame,</p>
+		<p class="slindent">Then with eyes downward cast and fill&rsquo;d with shame,</p>
 		<p>Fearing my words offensive to his ear,</p>
 		<p>Till we had reach&rsquo;d the river, I from speech</p>
 		<p>Abstain&rsquo;d. And lo! toward us in a bark</p>
 		<p>Comes on an old man hoary white with eld,</p>
-		</div>
-		<div class="stanza">
 		<p>Crying, &ldquo;Woe to you wicked spirits! hope not</p>
 		<p>Ever to see the sky again. I come</p>
 		<p>To take you to the other shore across,</p>
@@ -443,9 +389,7 @@ module.exports = {
 		<p>Must carry.&rdquo; Then to him thus spake my guide:</p>
 		<p>&ldquo;Charon! thyself torment not: so &rsquo;t is will&rsquo;d,</p>
 		<p>Where will and power are one: ask thou no more.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Straightway in silence fell the shaggy cheeks</p>
+		<p class="slindent">Straightway in silence fell the shaggy cheeks</p>
 		<p>Of him the boatman o&rsquo;er the livid lake,</p>
 		<p>Around whose eyes glar&rsquo;d wheeling flames. Meanwhile</p>
 		<p>Those spirits, faint and naked, color chang&rsquo;d,</p>
@@ -453,9 +397,7 @@ module.exports = {
 		<p>They heard. God and their parents they blasphem&rsquo;d,</p>
 		<p>The human kind, the place, the time, and seed</p>
 		<p>That did engender them and give them birth.</p>
-		</div>
-		<div class="stanza">
-		<p>Then all together sorely wailing drew</p>
+		<p class="slindent">Then all together sorely wailing drew</p>
 		<p>To the curs&rsquo;d strand, that every man must pass</p>
 		<p>Who fears not God. Charon, demoniac form,</p>
 		<p>With eyes of burning coal, collects them all,</p>
@@ -463,14 +405,10 @@ module.exports = {
 		<p>Strikes. As fall off the light autumnal leaves,</p>
 		<p>One still another following, till the bough</p>
 		<p>Strews all its honours on the earth beneath;</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en in like manner Adam&rsquo;s evil brood</p>
+		<p>E&rsquo;en in like manner Adam&rsquo;s evil brood</p>
 		<p>Cast themselves one by one down from the shore,</p>
 		<p>Each at a beck, as falcon at his call.</p>
-		</div>
-		<div class="stanza">
-		<p>Thus go they over through the umber&rsquo;d wave,</p>
+		<p class="slindent">Thus go they over through the umber&rsquo;d wave,</p>
 		<p>And ever they on the opposing bank</p>
 		<p>Be landed, on this side another throng</p>
 		<p>Still gathers. &ldquo;Son,&rdquo; thus spake the courteous guide,</p>
@@ -481,9 +419,7 @@ module.exports = {
 		<p>Is turn&rsquo;d into desire. Hence ne&rsquo;er hath past</p>
 		<p>Good spirit. If of thee Charon complain,</p>
 		<p>Now mayst thou know the import of his words.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said, the gloomy region trembling shook</p>
+		<p class="slindent">This said, the gloomy region trembling shook</p>
 		<p>So terribly, that yet with clammy dews</p>
 		<p>Fear chills my brow. The sad earth gave a blast,</p>
 		<p>That, lightening, shot forth a vermilion flame,</p>
@@ -493,7 +429,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto IV</p>
 		<div class="stanza">
-		<p>BROKE the deep slumber in my brain a crash</p>
+		<p><span class="sc">Broke</span> the deep slumber in my brain a crash</p>
 		<p>Of heavy thunder, that I shook myself,</p>
 		<p>As one by main force rous&rsquo;d. Risen upright,</p>
 		<p>My rested eyes I mov&rsquo;d around, and search&rsquo;d</p>
@@ -504,19 +440,13 @@ module.exports = {
 		<p>Of plaints innumerable. Dark and deep,</p>
 		<p>And thick with clouds o&rsquo;erspread, mine eye in vain</p>
 		<p>Explor&rsquo;d its bottom, nor could aught discern.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Now let us to the blind world there beneath</p>
+		<p class="slindent">&ldquo;Now let us to the blind world there beneath</p>
 		<p>Descend;&rdquo; the bard began all pale of look:</p>
 		<p>&ldquo;I go the first, and thou shalt follow next.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then I his alter&rsquo;d hue perceiving, thus:</p>
+		<p class="slindent">Then I his alter&rsquo;d hue perceiving, thus:</p>
 		<p>&ldquo;How may I speed, if thou yieldest to dread,</p>
 		<p>Who still art wont to comfort me in doubt?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He then: &ldquo;The anguish of that race below</p>
+		<p class="slindent">He then: &ldquo;The anguish of that race below</p>
 		<p>With pity stains my cheek, which thou for fear</p>
 		<p>Mistakest. Let us on. Our length of way</p>
 		<p>Urges to haste.&rdquo; Onward, this said, he mov&rsquo;d;</p>
@@ -536,8 +466,6 @@ module.exports = {
 		<p>The Gospel liv&rsquo;d, they serv&rsquo;d not God aright;</p>
 		<p>And among such am I. For these defects,</p>
 		<p>And for no other evil, we are lost;&rdquo;</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Only so far afflicted, that we live</p>
 		<p>Desiring without hope.&rdquo; So grief assail&rsquo;d</p>
 		<p>My heart at hearing this, for well I knew</p>
@@ -548,9 +476,7 @@ module.exports = {
 		<p>Which vanquishes all error; &ldquo;say, did e&rsquo;er</p>
 		<p>Any, or through his own or other&rsquo;s merit,</p>
 		<p>Come forth from thence, whom afterward was blest?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Piercing the secret purport of my speech,</p>
+		<p class="slindent">Piercing the secret purport of my speech,</p>
 		<p>He answer&rsquo;d: &ldquo;I was new to that estate,</p>
 		<p>When I beheld a puissant one arrive</p>
 		<p>Amongst us, with victorious trophy crown&rsquo;d.</p>
@@ -563,9 +489,7 @@ module.exports = {
 		<p>And others many more, whom he to bliss</p>
 		<p>Exalted. Before these, be thou assur&rsquo;d,</p>
 		<p>No spirit of human kind was ever sav&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>We, while he spake, ceas&rsquo;d not our onward road,</p>
+		<p class="slindent">We, while he spake, ceas&rsquo;d not our onward road,</p>
 		<p>Still passing through the wood; for so I name</p>
 		<p>Those spirits thick beset. We were not far</p>
 		<p>On this side from the summit, when I kenn&rsquo;d</p>
@@ -576,9 +500,7 @@ module.exports = {
 		<p>That place possess&rsquo;d. &ldquo;O thou, who every art</p>
 		<p>And science valu&rsquo;st! who are these, that boast</p>
 		<p>Such honour, separate from all the rest?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He answer&rsquo;d: &ldquo;The renown of their great names</p>
+		<p class="slindent">He answer&rsquo;d: &ldquo;The renown of their great names</p>
 		<p>That echoes through your world above, acquires</p>
 		<p>Favour in heaven, which holds them thus advanc&rsquo;d.&rdquo;</p>
 		<p>Meantime a voice I heard: &ldquo;Honour the bard</p>
@@ -586,9 +508,7 @@ module.exports = {
 		<p>No sooner ceas&rsquo;d the sound, than I beheld</p>
 		<p>Four mighty spirits toward us bend their steps,</p>
 		<p>Of semblance neither sorrowful nor glad.</p>
-		</div>
-		<div class="stanza">
-		<p>When thus my master kind began: &ldquo;Mark him,</p>
+		<p class="slindent">When thus my master kind began: &ldquo;Mark him,</p>
 		<p>Who in his right hand bears that falchion keen,</p>
 		<p>The other three preceding, as their lord.</p>
 		<p>This is that Homer, of all bards supreme:</p>
@@ -597,9 +517,7 @@ module.exports = {
 		<p>Because they all that appellation own,</p>
 		<p>With which the voice singly accosted me,</p>
 		<p>Honouring they greet me thus, and well they judge.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>So I beheld united the bright school</p>
+		<p class="slindent">So I beheld united the bright school</p>
 		<p>Of him the monarch of sublimest song,</p>
 		<p>That o&rsquo;er the others like an eagle soars.</p>
 		<p>When they together short discourse had held,</p>
@@ -608,9 +526,7 @@ module.exports = {
 		<p>Nor was this all; but greater honour still</p>
 		<p>They gave me, for they made me of their tribe;</p>
 		<p>And I was sixth amid so learn&rsquo;d a band.</p>
-		</div>
-		<div class="stanza">
-		<p>Far as the luminous beacon on we pass&rsquo;d</p>
+		<p class="slindent">Far as the luminous beacon on we pass&rsquo;d</p>
 		<p>Speaking of matters, then befitting well</p>
 		<p>To speak, now fitter left untold. At foot</p>
 		<p>Of a magnificent castle we arriv&rsquo;d,</p>
@@ -619,23 +535,17 @@ module.exports = {
 		<p>As o&rsquo;er dry land we pass&rsquo;d. Next through seven gates</p>
 		<p>I with those sages enter&rsquo;d, and we came</p>
 		<p>Into a mead with lively verdure fresh.</p>
-		</div>
-		<div class="stanza">
-		<p>There dwelt a race, who slow their eyes around</p>
+		<p class="slindent">There dwelt a race, who slow their eyes around</p>
 		<p>Majestically mov&rsquo;d, and in their port</p>
 		<p>Bore eminent authority; they spake</p>
 		<p>Seldom, but all their words were tuneful sweet.</p>
-		</div>
-		<div class="stanza">
-		<p>We to one side retir&rsquo;d, into a place</p>
+		<p class="slindent">We to one side retir&rsquo;d, into a place</p>
 		<p>Open and bright and lofty, whence each one</p>
 		<p>Stood manifest to view. Incontinent</p>
 		<p>There on the green enamel of the plain</p>
 		<p>Were shown me the great spirits, by whose sight</p>
 		<p>I am exalted in my own esteem.</p>
-		</div>
-		<div class="stanza">
-		<p>Electra there I saw accompanied</p>
+		<p class="slindent">Electra there I saw accompanied</p>
 		<p>By many, among whom Hector I knew,</p>
 		<p>Anchises&rsquo; pious son, and with hawk&rsquo;s eye</p>
 		<p>Caesar all arm&rsquo;d, and by Camilla there</p>
@@ -645,9 +555,7 @@ module.exports = {
 		<p>Who Tarquin chas&rsquo;d, Lucretia, Cato&rsquo;s wife</p>
 		<p>Marcia, with Julia and Cornelia there;</p>
 		<p>And sole apart retir&rsquo;d, the Soldan fierce.</p>
-		</div>
-		<div class="stanza">
-		<p>Then when a little more I rais&rsquo;d my brow,</p>
+		<p class="slindent">Then when a little more I rais&rsquo;d my brow,</p>
 		<p>I spied the master of the sapient throng,</p>
 		<p>Seated amid the philosophic train.</p>
 		<p>Him all admire, all pay him rev&rsquo;rence due.</p>
@@ -662,9 +570,7 @@ module.exports = {
 		<p>Euclid and Ptolemy, Hippocrates,</p>
 		<p>Galenus, Avicen, and him who made</p>
 		<p>That commentary vast, Averroes.</p>
-		</div>
-		<div class="stanza">
-		<p>Of all to speak at full were vain attempt;</p>
+		<p class="slindent">Of all to speak at full were vain attempt;</p>
 		<p>For my wide theme so urges, that ofttimes</p>
 		<p>My words fall short of what bechanc&rsquo;d. In two</p>
 		<p>The six associates part. Another way</p>
@@ -675,14 +581,12 @@ module.exports = {
 
 		`<p class="cantohead">Canto V</p>
 		<div class="stanza">
-		<p>FROM the first circle I descended thus</p>
+		<p><span class="sc">From</span> the first circle I descended thus</p>
 		<p>Down to the second, which, a lesser space</p>
 		<p>Embracing, so much more of grief contains</p>
 		<p>Provoking bitter moans. There, Minos stands</p>
 		<p>Grinning with ghastly feature: he, of all</p>
 		<p>Who enter, strict examining the crimes,</p>
-		</div>
-		<div class="stanza">
 		<p>Gives sentence, and dismisses them beneath,</p>
 		<p>According as he foldeth him around:</p>
 		<p>For when before him comes th&rsquo; ill fated soul,</p>
@@ -694,9 +598,7 @@ module.exports = {
 		<p>Always a num&rsquo;rous throng; and in his turn</p>
 		<p>Each one to judgment passing, speaks, and hears</p>
 		<p>His fate, thence downward to his dwelling hurl&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O thou! who to this residence of woe</p>
+		<p class="slindent">&ldquo;O thou! who to this residence of woe</p>
 		<p>Approachest?&rdquo; when he saw me coming, cried</p>
 		<p>Minos, relinquishing his dread employ,</p>
 		<p>&ldquo;Look how thou enter here; beware in whom</p>
@@ -705,9 +607,7 @@ module.exports = {
 		<p>&ldquo;Wherefore exclaimest? Hinder not his way</p>
 		<p>By destiny appointed; so &rsquo;tis will&rsquo;d</p>
 		<p>Where will and power are one. Ask thou no more.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Now &rsquo;gin the rueful wailings to be heard.</p>
+		<p class="slindent">Now &rsquo;gin the rueful wailings to be heard.</p>
 		<p>Now am I come where many a plaining voice</p>
 		<p>Smites on mine ear. Into a place I came</p>
 		<p>Where light was silent all. Bellowing there groan&rsquo;d</p>
@@ -715,14 +615,10 @@ module.exports = {
 		<p>By warring winds. The stormy blast of hell</p>
 		<p>With restless fury drives the spirits on</p>
 		<p>Whirl&rsquo;d round and dash&rsquo;d amain with sore annoy.</p>
-		</div>
-		<div class="stanza">
 		<p>When they arrive before the ruinous sweep,</p>
 		<p>There shrieks are heard, there lamentations, moans,</p>
 		<p>And blasphemies &rsquo;gainst the good Power in heaven.</p>
-		</div>
-		<div class="stanza">
-		<p>I understood that to this torment sad</p>
+		<p class="slindent">I understood that to this torment sad</p>
 		<p>The carnal sinners are condemn&rsquo;d, in whom</p>
 		<p>Reason by lust is sway&rsquo;d. As in large troops</p>
 		<p>And multitudinous, when winter reigns,</p>
@@ -747,25 +643,19 @@ module.exports = {
 		<p>The next in amorous fury slew herself,</p>
 		<p>And to Sicheus&rsquo; ashes broke her faith:</p>
 		<p>Then follows Cleopatra, lustful queen.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>There mark&rsquo;d I Helen, for whose sake so long</p>
+		<p class="slindent">There mark&rsquo;d I Helen, for whose sake so long</p>
 		<p>The time was fraught with evil; there the great</p>
 		<p>Achilles, who with love fought to the end.</p>
 		<p>Paris I saw, and Tristan; and beside</p>
 		<p>A thousand more he show&rsquo;d me, and by name</p>
 		<p>Pointed them out, whom love bereav&rsquo;d of life.</p>
-		</div>
-		<div class="stanza">
-		<p>When I had heard my sage instructor name</p>
+		<p class="slindent">When I had heard my sage instructor name</p>
 		<p>Those dames and knights of antique days, o&rsquo;erpower&rsquo;d</p>
 		<p>By pity, well-nigh in amaze my mind</p>
 		<p>Was lost; and I began: &ldquo;Bard! willingly</p>
 		<p>I would address those two together coming,</p>
 		<p>Which seem so light before the wind.&rdquo; He thus:</p>
 		<p>&ldquo;Note thou, when nearer they to us approach.&rdquo;</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Then by that love which carries them along,</p>
 		<p>Entreat; and they will come.&rdquo; Soon as the wind</p>
 		<p>Sway&rsquo;d them toward us, I thus fram&rsquo;d my speech:</p>
@@ -777,9 +667,7 @@ module.exports = {
 		<p>Thus issu&rsquo;d from that troop, where Dido ranks,</p>
 		<p>They through the ill air speeding; with such force</p>
 		<p>My cry prevail&rsquo;d by strong affection urg&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O gracious creature and benign! who go&rsquo;st</p>
+		<p class="slindent">&ldquo;O gracious creature and benign! who go&rsquo;st</p>
 		<p>Visiting, through this element obscure,</p>
 		<p>Us, who the world with bloody stain imbru&rsquo;d;</p>
 		<p>If for a friend the King of all we own&rsquo;d,</p>
@@ -791,16 +679,12 @@ module.exports = {
 		<p>As now, is mute. The land, that gave me birth,</p>
 		<p>Is situate on the coast, where Po descends</p>
 		<p>To rest in ocean with his sequent streams.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Love, that in gentle heart is quickly learnt,</p>
+		<p class="slindent">&ldquo;Love, that in gentle heart is quickly learnt,</p>
 		<p>Entangled him by that fair form, from me</p>
 		<p>Ta&rsquo;en in such cruel sort, as grieves me still:</p>
 		<p>Love, that denial takes from none belov&rsquo;d,</p>
 		<p>Caught me with pleasing him so passing well,</p>
 		<p>That, as thou see&rsquo;st, he yet deserts me not.</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Love brought us to one death: Caina waits</p>
 		<p>The soul, who spilt our life.&rdquo; Such were their words;</p>
 		<p>At hearing which downward I bent my looks,</p>
@@ -808,9 +692,7 @@ module.exports = {
 		<p>&ldquo;What art thou pond&rsquo;ring?&rdquo; I in answer thus:</p>
 		<p>&ldquo;Alas! by what sweet thoughts, what fond desire</p>
 		<p>Must they at length to that ill pass have reach&rsquo;d!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then turning, I to them my speech address&rsquo;d.</p>
+		<p class="slindent">Then turning, I to them my speech address&rsquo;d.</p>
 		<p>And thus began: &ldquo;Francesca! your sad fate</p>
 		<p>Even to tears my grief and pity moves.</p>
 		<p>But tell me; in the time of your sweet sighs,</p>
@@ -841,7 +723,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto VI</p>
 		<div class="stanza">
-		<p>MY sense reviving, that erewhile had droop&rsquo;d</p>
+		<p><span class="sc">My</span> sense reviving, that erewhile had droop&rsquo;d</p>
 		<p>With pity for the kindred shades, whence grief</p>
 		<p>O&rsquo;ercame me wholly, straight around I see</p>
 		<p>New torments, new tormented souls, which way</p>
@@ -852,9 +734,7 @@ module.exports = {
 		<p>Large hail, discolour&rsquo;d water, sleety flaw</p>
 		<p>Through the dun midnight air stream&rsquo;d down amain:</p>
 		<p>Stank all the land whereon that tempest fell.</p>
-		</div>
-		<div class="stanza">
-		<p>Cerberus, cruel monster, fierce and strange,</p>
+		<p class="slindent">Cerberus, cruel monster, fierce and strange,</p>
 		<p>Through his wide threefold throat barks as a dog</p>
 		<p>Over the multitude immers&rsquo;d beneath.</p>
 		<p>His eyes glare crimson, black his unctuous beard,</p>
@@ -869,22 +749,16 @@ module.exports = {
 		<p>Of him but trembled. Then my guide, his palms</p>
 		<p>Expanding on the ground, thence filled with earth</p>
 		<p>Rais&rsquo;d them, and cast it in his ravenous maw.</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en as a dog, that yelling bays for food</p>
+		<p>E&rsquo;en as a dog, that yelling bays for food</p>
 		<p>His keeper, when the morsel comes, lets fall</p>
 		<p>His fury, bent alone with eager haste</p>
 		<p>To swallow it; so dropp&rsquo;d the loathsome cheeks</p>
 		<p>Of demon Cerberus, who thund&rsquo;ring stuns</p>
 		<p>The spirits, that they for deafness wish in vain.</p>
-		</div>
-		<div class="stanza">
-		<p>We, o&rsquo;er the shades thrown prostrate by the brunt</p>
+		<p class="slindent">We, o&rsquo;er the shades thrown prostrate by the brunt</p>
 		<p>Of the heavy tempest passing, set our feet</p>
 		<p>Upon their emptiness, that substance seem&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>They all along the earth extended lay</p>
+		<p class="slindent">They all along the earth extended lay</p>
 		<p>Save one, that sudden rais&rsquo;d himself to sit,</p>
 		<p>Soon as that way he saw us pass. &ldquo;O thou!&rdquo;</p>
 		<p>He cried, &ldquo;who through the infernal shades art led,</p>
@@ -897,28 +771,22 @@ module.exports = {
 		<p>Art set, and in such torment, that although</p>
 		<p>Other be greater, more disgustful none</p>
 		<p>Can be imagin&rsquo;d.&rdquo; He in answer thus:</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Thy city heap&rsquo;d with envy to the brim,</p>
 		<p>Ay that the measure overflows its bounds,</p>
 		<p>Held me in brighter days. Ye citizens</p>
 		<p>Were wont to name me Ciacco. For the sin</p>
 		<p>Of glutt&rsquo;ny, damned vice, beneath this rain,</p>
-		<p>e&rsquo;en as thou see&rsquo;st, I with fatigue am worn;</p>
+		<p>E&rsquo;en as thou see&rsquo;st, I with fatigue am worn;</p>
 		<p>Nor I sole spirit in this woe: all these</p>
 		<p>Have by like crime incurr&rsquo;d like punishment.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>No more he said, and I my speech resum&rsquo;d:</p>
+		<p class="slindent">No more he said, and I my speech resum&rsquo;d:</p>
 		<p>&ldquo;Ciacco! thy dire affliction grieves me much,</p>
 		<p>Even to tears. But tell me, if thou know&rsquo;st,</p>
 		<p>What shall at length befall the citizens</p>
 		<p>Of the divided city; whether any just one</p>
 		<p>Inhabit there: and tell me of the cause,</p>
 		<p>Whence jarring discord hath assail&rsquo;d it thus?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He then: &ldquo;After long striving they will come</p>
+		<p class="slindent">He then: &ldquo;After long striving they will come</p>
 		<p>To blood; and the wild party from the woods</p>
 		<p>Will chase the other with much injury forth.</p>
 		<p>Then it behoves, that this must fall, within</p>
@@ -947,14 +815,10 @@ module.exports = {
 		<p>But to the pleasant world when thou return&rsquo;st,</p>
 		<p>Of me make mention, I entreat thee, there.</p>
 		<p>No more I tell thee, answer thee no more.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said, his fixed eyes he turn&rsquo;d askance,</p>
+		<p class="slindent">This said, his fixed eyes he turn&rsquo;d askance,</p>
 		<p>A little ey&rsquo;d me, then bent down his head,</p>
 		<p>And &rsquo;midst his blind companions with it fell.</p>
-		</div>
-		<div class="stanza">
-		<p>When thus my guide: &ldquo;No more his bed he leaves,</p>
+		<p class="slindent">When thus my guide: &ldquo;No more his bed he leaves,</p>
 		<p>Ere the last angel-trumpet blow. The Power</p>
 		<p>Adverse to these shall then in glory come,</p>
 		<p>Each one forthwith to his sad tomb repair,</p>
@@ -966,9 +830,7 @@ module.exports = {
 		<p>For thus I question&rsquo;d: &ldquo;Shall these tortures, Sir!</p>
 		<p>When the great sentence passes, be increas&rsquo;d,</p>
 		<p>Or mitigated, or as now severe?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He then: &ldquo;Consult thy knowledge; that decides</p>
+		<p class="slindent">He then: &ldquo;Consult thy knowledge; that decides</p>
 		<p>That as each thing to more perfection grows,</p>
 		<p>It feels more sensibly both good and pain.</p>
 		<p>Though ne&rsquo;er to true perfection may arrive</p>
@@ -982,36 +844,28 @@ module.exports = {
 
 		`<p class="cantohead">Canto VII</p>
 		<div class="stanza">
-		<p>&ldquo;AH me! O Satan! Satan!&rdquo; loud exclaim&rsquo;d</p>
+		<p>&ldquo;<span class="sc">Ah</span> me! O Satan! Satan!&rdquo; loud exclaim&rsquo;d</p>
 		<p>Plutus, in accent hoarse of wild alarm:</p>
 		<p>And the kind sage, whom no event surpris&rsquo;d,</p>
 		<p>To comfort me thus spake: &ldquo;Let not thy fear</p>
 		<p>Harm thee, for power in him, be sure, is none</p>
 		<p>To hinder down this rock thy safe descent.&rdquo;</p>
 		<p>Then to that sworn lip turning, &ldquo;Peace!&rdquo; he cried,</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Curs&rsquo;d wolf! thy fury inward on thyself</p>
 		<p>Prey, and consume thee! Through the dark profound</p>
 		<p>Not without cause he passes. So &rsquo;t is will&rsquo;d</p>
 		<p>On high, there where the great Archangel pour&rsquo;d</p>
 		<p>Heav&rsquo;n&rsquo;s vengeance on the first adulterer proud.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>As sails full spread and bellying with the wind</p>
+		<p class="slindent">As sails full spread and bellying with the wind</p>
 		<p>Drop suddenly collaps&rsquo;d, if the mast split;</p>
 		<p>So to the ground down dropp&rsquo;d the cruel fiend.</p>
-		</div>
-		<div class="stanza">
-		<p>Thus we, descending to the fourth steep ledge,</p>
+		<p class="slindent">Thus we, descending to the fourth steep ledge,</p>
 		<p>Gain&rsquo;d on the dismal shore, that all the woe</p>
 		<p>Hems in of all the universe. Ah me!</p>
 		<p>Almighty Justice! in what store thou heap&rsquo;st</p>
 		<p>New pains, new troubles, as I here beheld!</p>
 		<p>Wherefore doth fault of ours bring us to this?</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en as a billow, on Charybdis rising,</p>
+		<p class="slindent">E&rsquo;en as a billow, on Charybdis rising,</p>
 		<p>Against encounter&rsquo;d billow dashing breaks;</p>
 		<p>Such is the dance this wretched race must lead,</p>
 		<p>Whom more than elsewhere numerous here I found,</p>
@@ -1029,9 +883,7 @@ module.exports = {
 		<p>I, stung with grief, thus spake: &ldquo;O say, my guide!</p>
 		<p>What race is this? Were these, whose heads are shorn,</p>
 		<p>On our left hand, all sep&rsquo;rate to the church?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He straight replied: &ldquo;In their first life these all</p>
+		<p class="slindent">He straight replied: &ldquo;In their first life these all</p>
 		<p>In mind were so distorted, that they made,</p>
 		<p>According to due measure, of their wealth,</p>
 		<p>No use. This clearly from their words collect,</p>
@@ -1041,9 +893,7 @@ module.exports = {
 		<p>Were separate those, that with no hairy cowls</p>
 		<p>Are crown&rsquo;d, both Popes and Cardinals, o&rsquo;er whom</p>
 		<p>Av&rsquo;rice dominion absolute maintains.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then: &ldquo;Mid such as these some needs must be,</p>
+		<p class="slindent">I then: &ldquo;Mid such as these some needs must be,</p>
 		<p>Whom I shall recognize, that with the blot</p>
 		<p>Of these foul sins were stain&rsquo;d.&rdquo; He answering thus:</p>
 		<p>&ldquo;Vain thought conceiv&rsquo;st thou. That ignoble life,</p>
@@ -1061,14 +911,10 @@ module.exports = {
 		<p>Not all the gold, that is beneath the moon,</p>
 		<p>Or ever hath been, of these toil-worn souls</p>
 		<p>Might purchase rest for one.&rdquo; I thus rejoin&rsquo;d:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;My guide! of thee this also would I learn;</p>
+		<p class="slindent">&ldquo;My guide! of thee this also would I learn;</p>
 		<p>This fortune, that thou speak&rsquo;st of, what it is,</p>
 		<p>Whose talons grasp the blessings of the world?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus: &ldquo;O beings blind! what ignorance</p>
+		<p class="slindent">He thus: &ldquo;O beings blind! what ignorance</p>
 		<p>Besets you? Now my judgment hear and mark.</p>
 		<p>He, whose transcendent wisdom passes all,</p>
 		<p>The heavens creating, gave them ruling powers</p>
@@ -1115,9 +961,7 @@ module.exports = {
 		<p>Betok&rsquo;ning rage. They with their hands alone</p>
 		<p>Struck not, but with the head, the breast, the feet,</p>
 		<p>Cutting each other piecemeal with their fangs.</p>
-		</div>
-		<div class="stanza">
-		<p>The good instructor spake; &ldquo;Now seest thou, son!</p>
+		<p class="slindent">The good instructor spake; &ldquo;Now seest thou, son!</p>
 		<p>The souls of those, whom anger overcame.</p>
 		<p>This too for certain know, that underneath</p>
 		<p>The water dwells a multitude, whose sighs</p>
@@ -1138,7 +982,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto VIII</p>
 		<div class="stanza">
-		<p>MY theme pursuing, I relate that ere</p>
+		<p><<span class="sc">My</span> theme pursuing, I relate that ere</p>
 		<p>We reach&rsquo;d the lofty turret&rsquo;s base, our eyes</p>
 		<p>Its height ascended, where two cressets hung</p>
 		<p>We mark&rsquo;d, and from afar another light</p>
@@ -1147,14 +991,10 @@ module.exports = {
 		<p>To the deep source of knowledge, thus inquir&rsquo;d:</p>
 		<p>&ldquo;Say what this means? and what that other light</p>
 		<p>In answer set? what agency doth this?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;There on the filthy waters,&rdquo; he replied,</p>
+		<p class="slindent">&ldquo;There on the filthy waters,&rdquo; he replied,</p>
 		<p>&ldquo;e&rsquo;en now what next awaits us mayst thou see,</p>
 		<p>If the marsh-gender&rsquo;d fog conceal it not.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Never was arrow from the cord dismiss&rsquo;d,</p>
+		<p class="slindent">Never was arrow from the cord dismiss&rsquo;d,</p>
 		<p>That ran its way so nimbly through the air,</p>
 		<p>As a small bark, that through the waves I spied</p>
 		<p>Toward us coming, under the sole sway</p>
@@ -1171,27 +1011,17 @@ module.exports = {
 		<p>The vessel freighted. Soon as both embark&rsquo;d,</p>
 		<p>Cutting the waves, goes on the ancient prow,</p>
 		<p>More deeply than with others it is wont.</p>
-		</div>
-		<div class="stanza">
-		<p>While we our course o&rsquo;er the dead channel held.</p>
+		<p class="slindent">While we our course o&rsquo;er the dead channel held.</p>
 		<p>One drench&rsquo;d in mire before me came, and said;</p>
 		<p>&ldquo;Who art thou, that thou comest ere thine hour?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I answer&rsquo;d: &ldquo;Though I come, I tarry not;</p>
+		<p class="slindent">I answer&rsquo;d: &ldquo;Though I come, I tarry not;</p>
 		<p>But who art thou, that art become so foul?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;One, as thou seest, who mourn:&rdquo; he straight replied.</p>
-		</div>
-		<div class="stanza">
-		<p>To which I thus: &ldquo;In mourning and in woe,</p>
+		<p class="slindent">&ldquo;One, as thou seest, who mourn:&rdquo; he straight replied.</p>
+		<p class="slindent">To which I thus: &ldquo;In mourning and in woe,</p>
 		<p>Curs&rsquo;d spirit! tarry thou.g I know thee well,</p>
-		<p>e&rsquo;en thus in filth disguis&rsquo;d.&rdquo; Then stretch&rsquo;d he forth</p>
+		<p>E&rsquo;en thus in filth disguis&rsquo;d.&rdquo; Then stretch&rsquo;d he forth</p>
 		<p>Hands to the bark; whereof my teacher sage</p>
 		<p>Aware, thrusting him back: &ldquo;Away! down there;</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;To the&rsquo; other dogs!&rdquo; then, with his arms my neck</p>
 		<p>Encircling, kiss&rsquo;d my cheek, and spake: &ldquo;O soul</p>
 		<p>Justly disdainful! blest was she in whom</p>
@@ -1202,13 +1032,9 @@ module.exports = {
 		<p>How many now hold themselves mighty kings</p>
 		<p>Who here like swine shall wallow in the mire,</p>
 		<p>Leaving behind them horrible dispraise!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then: &ldquo;Master! him fain would I behold</p>
+		<p class="slindent">I then: &ldquo;Master! him fain would I behold</p>
 		<p>Whelm&rsquo;d in these dregs, before we quit the lake.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus: &ldquo;Or ever to thy view the shore</p>
+		<p class="slindent">He thus: &ldquo;Or ever to thy view the shore</p>
 		<p>Be offer&rsquo;d, satisfied shall be that wish,</p>
 		<p>Which well deserves completion.&rdquo; Scarce his words</p>
 		<p>Were ended, when I saw the miry tribes</p>
@@ -1220,22 +1046,16 @@ module.exports = {
 		<p>Nor speak I of him more. But on mine ear</p>
 		<p>Sudden a sound of lamentation smote,</p>
 		<p>Whereat mine eye unbarr&rsquo;d I sent abroad.</p>
-		</div>
-		<div class="stanza">
-		<p>And thus the good instructor: &ldquo;Now, my son!</p>
+		<p class="slindent">And thus the good instructor: &ldquo;Now, my son!</p>
 		<p>Draws near the city, that of Dis is nam&rsquo;d,</p>
 		<p>With its grave denizens, a mighty throng.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I thus: &ldquo;The minarets already, Sir!</p>
+		<p class="slindent">I thus: &ldquo;The minarets already, Sir!</p>
 		<p>There certes in the valley I descry,</p>
 		<p>Gleaming vermilion, as if they from fire</p>
 		<p>Had issu&rsquo;d.&rdquo; He replied: &ldquo;Eternal fire,</p>
 		<p>That inward burns, shows them with ruddy flame</p>
 		<p>Illum&rsquo;d; as in this nether hell thou seest.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>We came within the fosses deep, that moat</p>
+		<p class="slindent">We came within the fosses deep, that moat</p>
 		<p>This region comfortless. The walls appear&rsquo;d</p>
 		<p>As they were fram&rsquo;d of iron. We had made</p>
 		<p>Wide circuit, ere a place we reach&rsquo;d, where loud</p>
@@ -1255,31 +1075,23 @@ module.exports = {
 		<p>Hast been his escort.&rdquo; Now bethink thee, reader!</p>
 		<p>What cheer was mine at sound of those curs&rsquo;d words.</p>
 		<p>I did believe I never should return.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O my lov&rsquo;d guide! who more than seven times</p>
+		<p class="slindent">&ldquo;O my lov&rsquo;d guide! who more than seven times</p>
 		<p>Security hast render&rsquo;d me, and drawn</p>
 		<p>From peril deep, whereto I stood expos&rsquo;d,</p>
 		<p>Desert me not,&rdquo; I cried, &ldquo;in this extreme.</p>
 		<p>And if our onward going be denied,</p>
 		<p>Together trace we back our steps with speed.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>My liege, who thither had conducted me,</p>
+		<p class="slindent">My liege, who thither had conducted me,</p>
 		<p>Replied: &ldquo;Fear not: for of our passage none</p>
 		<p>Hath power to disappoint us, by such high</p>
 		<p>Authority permitted. But do thou</p>
 		<p>Expect me here; meanwhile thy wearied spirit</p>
 		<p>Comfort, and feed with kindly hope, assur&rsquo;d</p>
 		<p>I will not leave thee in this lower world.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said, departs the sire benevolent,</p>
+		<p class="slindent">This said, departs the sire benevolent,</p>
 		<p>And quits me. Hesitating I remain</p>
 		<p>At war &rsquo;twixt will and will not in my thoughts.</p>
-		</div>
-		<div class="stanza">
-		<p>I could not hear what terms he offer&rsquo;d them,</p>
+		<p class="slindent">I could not hear what terms he offer&rsquo;d them,</p>
 		<p>But they conferr&rsquo;d not long, for all at once</p>
 		<p>To trial fled within. Clos&rsquo;d were the gates</p>
 		<p>By those our adversaries on the breast</p>
@@ -1302,7 +1114,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto IX</p>
 		<div class="stanza">
-		<p>THE hue, which coward dread on my pale cheeks</p>
+		<p><span class="sc">The</span> hue, which coward dread on my pale cheeks</p>
 		<p>Imprinted, when I saw my guide turn back,</p>
 		<p>Chas&rsquo;d that from his which newly they had worn,</p>
 		<p>And inwardly restrain&rsquo;d it. He, as one</p>
@@ -1312,9 +1124,7 @@ module.exports = {
 		<p>We win this fight&rdquo;&mdash;thus he began&mdash;&ldquo;if not&mdash;</p>
 		<p>Such aid to us is offer&rsquo;d.&mdash;Oh, how long</p>
 		<p>Me seems it, ere the promis&rsquo;d help arrive!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I noted, how the sequel of his words</p>
+		<p class="slindent">I noted, how the sequel of his words</p>
 		<p>Clok&rsquo;d their beginning; for the last he spake</p>
 		<p>Agreed not with the first. But not the less</p>
 		<p>My fear was at his saying; sith I drew</p>
@@ -1323,9 +1133,7 @@ module.exports = {
 		<p>Into this rueful concave&rsquo;s extreme depth</p>
 		<p>Descend, out of the first degree, whose pain</p>
 		<p>Is deprivation merely of sweet hope?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Thus I inquiring. &ldquo;Rarely,&rdquo; he replied,</p>
+		<p class="slindent">Thus I inquiring. &ldquo;Rarely,&rdquo; he replied,</p>
 		<p>&ldquo;It chances, that among us any makes</p>
 		<p>This journey, which I wend. Erewhile &rsquo;tis true</p>
 		<p>Once came I here beneath, conjur&rsquo;d by fell</p>
@@ -1349,12 +1157,8 @@ module.exports = {
 		<p>Around them greenest hydras twisting roll&rsquo;d</p>
 		<p>Their volumes; adders and cerastes crept</p>
 		<p>Instead of hair, and their fierce temples bound.</p>
-		</div>
-		<div class="stanza">
-		<p>He knowing well the miserable hags</p>
+		<p class="slindent">He knowing well the miserable hags</p>
 		<p>Who tend the queen of endless woe, thus spake:</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Mark thou each dire Erinnys. To the left</p>
 		<p>This is Megaera; on the right hand she,</p>
 		<p>Who wails, Alecto; and Tisiphone</p>
@@ -1374,9 +1178,7 @@ module.exports = {
 		<p>He also hid me. Ye of intellect</p>
 		<p>Sound and entire, mark well the lore conceal&rsquo;d</p>
 		<p>Under close texture of the mystic strain!</p>
-		</div>
-		<div class="stanza">
-		<p>And now there came o&rsquo;er the perturbed waves</p>
+		<p class="slindent">And now there came o&rsquo;er the perturbed waves</p>
 		<p>Loud-crashing, terrible, a sound that made</p>
 		<p>Either shore tremble, as if of a wind</p>
 		<p>Impetuous, from conflicting vapours sprung,</p>
@@ -1384,9 +1186,7 @@ module.exports = {
 		<p>Plucks off the branches, beats them down and hurls</p>
 		<p>Afar; then onward passing proudly sweeps</p>
 		<p>Its whirlwind rage, while beasts and shepherds fly.</p>
-		</div>
-		<div class="stanza">
-		<p>Mine eyes he loos&rsquo;d, and spake: &ldquo;And now direct</p>
+		<p class="slindent">Mine eyes he loos&rsquo;d, and spake: &ldquo;And now direct</p>
 		<p>Thy visual nerve along that ancient foam,</p>
 		<p>There, thickest where the smoke ascends.&rdquo; As frogs</p>
 		<p>Before their foe the serpent, through the wave</p>
@@ -1403,9 +1203,7 @@ module.exports = {
 		<p>Of noble anger seem&rsquo;d he! To the gate</p>
 		<p>He came, and with his wand touch&rsquo;d it, whereat</p>
 		<p>Open without impediment it flew.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Outcasts of heav&rsquo;n! O abject race and scorn&rsquo;d!&rdquo;</p>
+		<p class="slindent">&ldquo;Outcasts of heav&rsquo;n! O abject race and scorn&rsquo;d!&rdquo;</p>
 		<p>Began he on the horrid grunsel standing,</p>
 		<p>&ldquo;Whence doth this wild excess of insolence</p>
 		<p>Lodge in you? wherefore kick you &rsquo;gainst that will</p>
@@ -1414,9 +1212,7 @@ module.exports = {
 		<p>What profits at the fays to but the horn?</p>
 		<p>Your Cerberus, if ye remember, hence</p>
 		<p>Bears still, peel&rsquo;d of their hair, his throat and maw.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said, he turn&rsquo;d back o&rsquo;er the filthy way,</p>
+		<p class="slindent">This said, he turn&rsquo;d back o&rsquo;er the filthy way,</p>
 		<p>And syllable to us spake none, but wore</p>
 		<p>The semblance of a man by other care</p>
 		<p>Beset, and keenly press&rsquo;d, than thought of him</p>
@@ -1428,9 +1224,7 @@ module.exports = {
 		<p>I soon as enter&rsquo;d throw mine eye around,</p>
 		<p>And see on every part wide-stretching space</p>
 		<p>Replete with bitter pain and torment ill.</p>
-		</div>
-		<div class="stanza">
-		<p>As where Rhone stagnates on the plains of Arles,</p>
+		<p class="slindent">As where Rhone stagnates on the plains of Arles,</p>
 		<p>Or as at Pola, near Quarnaro&rsquo;s gulf,</p>
 		<p>That closes Italy and laves her bounds,</p>
 		<p>The place is all thick spread with sepulchres;</p>
@@ -1438,19 +1232,13 @@ module.exports = {
 		<p>Excell&rsquo;d: for &rsquo;midst the graves were scattered flames,</p>
 		<p>Wherewith intensely all throughout they burn&rsquo;d,</p>
 		<p>That iron for no craft there hotter needs.</p>
-		</div>
-		<div class="stanza">
-		<p>Their lids all hung suspended, and beneath</p>
+		<p class="slindent">Their lids all hung suspended, and beneath</p>
 		<p>From them forth issu&rsquo;d lamentable moans,</p>
 		<p>Such as the sad and tortur&rsquo;d well might raise.</p>
-		</div>
-		<div class="stanza">
-		<p>I thus: &ldquo;Master! say who are these, interr&rsquo;d</p>
+		<p class="slindent">I thus: &ldquo;Master! say who are these, interr&rsquo;d</p>
 		<p>Within these vaults, of whom distinct we hear</p>
 		<p>The dolorous sighs?&rdquo; He answer thus return&rsquo;d:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The arch-heretics are here, accompanied</p>
+		<p class="slindent">&ldquo;The arch-heretics are here, accompanied</p>
 		<p>By every sect their followers; and much more,</p>
 		<p>Than thou believest, tombs are freighted: like</p>
 		<p>With like is buried; and the monuments</p>
@@ -1461,7 +1249,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto X</p>
 		<div class="stanza">
-		<p>NOW by a secret pathway we proceed,</p>
+		<p><span class="sc">Now</span> by a secret pathway we proceed,</p>
 		<p>Between the walls, that hem the region round,</p>
 		<p>And the tormented souls: my master first,</p>
 		<p>I close behind his steps. &ldquo;Virtue supreme!&rdquo;</p>
@@ -1483,9 +1271,7 @@ module.exports = {
 		<p>&ldquo;I keep not, guide belov&rsquo;d! from thee my heart</p>
 		<p>Secreted, but to shun vain length of words,</p>
 		<p>A lesson erewhile taught me by thyself.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O Tuscan! thou who through the city of fire</p>
+		<p class="slindent">&ldquo;O Tuscan! thou who through the city of fire</p>
 		<p>Alive art passing, so discreet of speech!</p>
 		<p>Here please thee stay awhile. Thy utterance</p>
 		<p>Declares the place of thy nativity</p>
@@ -1499,17 +1285,13 @@ module.exports = {
 		<p>Expos&rsquo;d behold him.&rdquo; On his face was mine</p>
 		<p>Already fix&rsquo;d; his breast and forehead there</p>
 		<p>Erecting, seem&rsquo;d as in high scorn he held</p>
-		<p>e&rsquo;en hell. Between the sepulchres to him</p>
+		<p>E&rsquo;en hell. Between the sepulchres to him</p>
 		<p>My guide thrust me with fearless hands and prompt,</p>
 		<p>This warning added: &ldquo;See thy words be clear!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He, soon as there I stood at the tomb&rsquo;s foot,</p>
+		<p class="slindent">He, soon as there I stood at the tomb&rsquo;s foot,</p>
 		<p>Ey&rsquo;d me a space, then in disdainful mood</p>
 		<p>Address&rsquo;d me: &ldquo;Say, what ancestors were thine?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I, willing to obey him, straight reveal&rsquo;d</p>
+		<p class="slindent">I, willing to obey him, straight reveal&rsquo;d</p>
 		<p>The whole, nor kept back aught: whence he, his brow</p>
 		<p>Somewhat uplifting, cried: &ldquo;Fiercely were they</p>
 		<p>Adverse to me, my party, and the blood</p>
@@ -1517,9 +1299,7 @@ module.exports = {
 		<p>Scatter&rsquo;d them.&rdquo; &ldquo;Though driv&rsquo;n out, yet they each time</p>
 		<p>From all parts,&rdquo; answer&rsquo;d I, &ldquo;return&rsquo;d; an art</p>
 		<p>Which yours have shown, they are not skill&rsquo;d to learn.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then, peering forth from the unclosed jaw,</p>
+		<p class="slindent">Then, peering forth from the unclosed jaw,</p>
 		<p>Rose from his side a shade, high as the chin,</p>
 		<p>Leaning, methought, upon its knees uprais&rsquo;d.</p>
 		<p>It look&rsquo;d around, as eager to explore</p>
@@ -1528,9 +1308,7 @@ module.exports = {
 		<p>Thus spake: &ldquo;If thou through this blind prison go&rsquo;st.</p>
 		<p>Led by thy lofty genius and profound,</p>
 		<p>Where is my son? and wherefore not with thee?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I straight replied: &ldquo;Not of myself I come,</p>
+		<p class="slindent">I straight replied: &ldquo;Not of myself I come,</p>
 		<p>By him, who there expects me, through this clime</p>
 		<p>Conducted, whom perchance Guido thy son</p>
 		<p>Had in contempt.&rdquo; Already had his words</p>
@@ -1541,9 +1319,7 @@ module.exports = {
 		<p>The blessed daylight?&rdquo; Then of some delay</p>
 		<p>I made ere my reply aware, down fell</p>
 		<p>Supine, not after forth appear&rsquo;d he more.</p>
-		</div>
-		<div class="stanza">
-		<p>Meanwhile the other, great of soul, near whom</p>
+		<p class="slindent">Meanwhile the other, great of soul, near whom</p>
 		<p>I yet was station&rsquo;d, chang&rsquo;d not count&rsquo;nance stern,</p>
 		<p>Nor mov&rsquo;d the neck, nor bent his ribbed side.</p>
 		<p>&ldquo;And if,&rdquo; continuing the first discourse,</p>
@@ -1555,9 +1331,7 @@ module.exports = {
 		<p>So to the pleasant world mayst thou return,</p>
 		<p>As thou shalt tell me, why in all their laws,</p>
 		<p>Against my kin this people is so fell?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The slaughter and great havoc,&rdquo; I replied,</p>
+		<p class="slindent">&ldquo;The slaughter and great havoc,&rdquo; I replied,</p>
 		<p>&ldquo;That colour&rsquo;d Arbia&rsquo;s flood with crimson stain&mdash;</p>
 		<p>To these impute, that in our hallow&rsquo;d dome</p>
 		<p>Such orisons ascend.&rdquo; Sighing he shook</p>
@@ -1567,16 +1341,12 @@ module.exports = {
 		<p>But singly there I stood, when by consent</p>
 		<p>Of all, Florence had to the ground been raz&rsquo;d,</p>
 		<p>The one who openly forbad the deed.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;So may thy lineage find at last repose,&rdquo;</p>
+		<p class="slindent">&ldquo;So may thy lineage find at last repose,&rdquo;</p>
 		<p>I thus adjur&rsquo;d him, &ldquo;as thou solve this knot,</p>
 		<p>Which now involves my mind. If right I hear,</p>
 		<p>Ye seem to view beforehand, that which time</p>
 		<p>Leads with him, of the present uninform&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;We view, as one who hath an evil sight,&rdquo;</p>
+		<p class="slindent">&ldquo;We view, as one who hath an evil sight,&rdquo;</p>
 		<p>He answer&rsquo;d, &ldquo;plainly, objects far remote:</p>
 		<p>So much of his large spendour yet imparts</p>
 		<p>The&rsquo; Almighty Ruler; but when they approach</p>
@@ -1586,24 +1356,18 @@ module.exports = {
 		<p>Hence therefore mayst thou understand, that all</p>
 		<p>Our knowledge in that instant shall expire,</p>
 		<p>When on futurity the portals close.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then conscious of my fault, and by remorse</p>
+		<p class="slindent">Then conscious of my fault, and by remorse</p>
 		<p>Smitten, I added thus: &ldquo;Now shalt thou say</p>
 		<p>To him there fallen, that his offspring still</p>
 		<p>Is to the living join&rsquo;d; and bid him know,</p>
 		<p>That if from answer silent I abstain&rsquo;d,</p>
 		<p>&rsquo;Twas that my thought was occupied intent</p>
 		<p>Upon that error, which thy help hath solv&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>But now my master summoning me back</p>
+		<p class="slindent">But now my master summoning me back</p>
 		<p>I heard, and with more eager haste besought</p>
 		<p>The spirit to inform me, who with him</p>
 		<p>Partook his lot. He answer thus return&rsquo;d:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;More than a thousand with me here are laid</p>
+		<p class="slindent">&ldquo;More than a thousand with me here are laid</p>
 		<p>Within is Frederick, second of that name,</p>
 		<p>And the Lord Cardinal, and of the rest</p>
 		<p>I speak not.&rdquo; He, this said, from sight withdrew.</p>
@@ -1616,14 +1380,10 @@ module.exports = {
 		<p>&ldquo;Let thy safe memory store what thou hast heard</p>
 		<p>To thee importing harm; and note thou this,&rdquo;</p>
 		<p>With his rais&rsquo;d finger bidding me take heed,</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;When thou shalt stand before her gracious beam,</p>
+		<p class="slindent">&ldquo;When thou shalt stand before her gracious beam,</p>
 		<p>Whose bright eye all surveys, she of thy life</p>
 		<p>The future tenour will to thee unfold.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Forthwith he to the left hand turn&rsquo;d his feet:</p>
+		<p class="slindent">Forthwith he to the left hand turn&rsquo;d his feet:</p>
 		<p>We left the wall, and tow&rsquo;rds the middle space</p>
 		<p>Went by a path, that to a valley strikes;</p>
 		<p>Which e&rsquo;en thus high exhal&rsquo;d its noisome steam.</p>
@@ -1631,15 +1391,13 @@ module.exports = {
 
 		`<p class="cantohead">Canto XI</p>
 		<div class="stanza">
-		<p>UPON the utmost verge of a high bank,</p>
+		<p><span class="sc">Upon</span> the utmost verge of a high bank,</p>
 		<p>By craggy rocks environ&rsquo;d round, we came,</p>
 		<p>Where woes beneath more cruel yet were stow&rsquo;d:</p>
 		<p>And here to shun the horrible excess</p>
 		<p>Of fetid exhalation, upward cast</p>
 		<p>From the profound abyss, behind the lid</p>
 		<p>Of a great monument we stood retir&rsquo;d,</p>
-		</div>
-		<div class="stanza">
 		<p>Whereon this scroll I mark&rsquo;d: &ldquo;I have in charge</p>
 		<p>Pope Anastasius, whom Photinus drew</p>
 		<p>From the right path.&mdash;Ere our descent behooves</p>
@@ -1655,9 +1413,7 @@ module.exports = {
 		<p>Of spirits accurs&rsquo;d; but that the sight alone</p>
 		<p>Hereafter may suffice thee, listen how</p>
 		<p>And for what cause in durance they abide.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Of all malicious act abhorr&rsquo;d in heaven,</p>
+		<p class="slindent">&ldquo;Of all malicious act abhorr&rsquo;d in heaven,</p>
 		<p>The end is injury; and all such end</p>
 		<p>Either by force or fraud works other&rsquo;s woe</p>
 		<p>But fraud, because of man peculiar evil,</p>
@@ -1689,9 +1445,7 @@ module.exports = {
 		<p>And thence the inmost round marks with its seal</p>
 		<p>Sodom and Cahors, and all such as speak</p>
 		<p>Contemptuously&rsquo; of the Godhead in their hearts.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Fraud, that in every conscience leaves a sting,</p>
+		<p class="slindent">&ldquo;Fraud, that in every conscience leaves a sting,</p>
 		<p>May be by man employ&rsquo;d on one, whose trust</p>
 		<p>He wins, or on another who withholds</p>
 		<p>Strict confidence. Seems as the latter way</p>
@@ -1706,9 +1460,7 @@ module.exports = {
 		<p>To special faith. Whence in the lesser circle,</p>
 		<p>Point of the universe, dread seat of Dis,</p>
 		<p>The traitor is eternally consum&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I thus: &ldquo;Instructor, clearly thy discourse</p>
+		<p class="slindent">I thus: &ldquo;Instructor, clearly thy discourse</p>
 		<p>Proceeds, distinguishing the hideous chasm</p>
 		<p>And its inhabitants with skill exact.</p>
 		<p>But tell me this: they of the dull, fat pool,</p>
@@ -1731,9 +1483,7 @@ module.exports = {
 		<p>Thou shalt discern why they apart are plac&rsquo;d</p>
 		<p>From these fell spirits, and less wreakful pours</p>
 		<p>Justice divine on them its vengeance down.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O Sun! who healest all imperfect sight,</p>
+		<p class="slindent">&ldquo;O Sun! who healest all imperfect sight,</p>
 		<p>Thou so content&rsquo;st me, when thou solv&rsquo;st my doubt,</p>
 		<p>That ignorance not less than knowledge charms.</p>
 		<p>Yet somewhat turn thee back,&rdquo; I in these words</p>
@@ -1766,12 +1516,10 @@ module.exports = {
 
 		`<p class="cantohead">Canto XII</p>
 		<div class="stanza">
-		<p>THE place where to descend the precipice</p>
+		<p><span class="sc">The</span> place where to descend the precipice</p>
 		<p>We came, was rough as Alp, and on its verge</p>
 		<p>Such object lay, as every eye would shun.</p>
-		</div>
-		<div class="stanza">
-		<p>As is that ruin, which Adice&rsquo;s stream</p>
+		<p class="slindent">As is that ruin, which Adice&rsquo;s stream</p>
 		<p>On this side Trento struck, should&rsquo;ring the wave,</p>
 		<p>Or loos&rsquo;d by earthquake or for lack of prop;</p>
 		<p>For from the mountain&rsquo;s summit, whence it mov&rsquo;d</p>
@@ -1783,16 +1531,12 @@ module.exports = {
 		<p>The infamy of Crete, detested brood</p>
 		<p>Of the feign&rsquo;d heifer: and at sight of us</p>
 		<p>It gnaw&rsquo;d itself, as one with rage distract.</p>
-		</div>
-		<div class="stanza">
 		<p>To him my guide exclaim&rsquo;d: &ldquo;Perchance thou deem&rsquo;st</p>
 		<p>The King of Athens here, who, in the world</p>
 		<p>Above, thy death contriv&rsquo;d. Monster! avaunt!</p>
 		<p>He comes not tutor&rsquo;d by thy sister&rsquo;s art,</p>
 		<p>But to behold your torments is he come.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Like to a bull, that with impetuous spring</p>
+		<p class="slindent">Like to a bull, that with impetuous spring</p>
 		<p>Darts, at the moment when the fatal blow</p>
 		<p>Hath struck him, but unable to proceed</p>
 		<p>Plunges on either side; so saw I plunge</p>
@@ -1802,9 +1546,7 @@ module.exports = {
 		<p>Through those dilapidated crags, that oft</p>
 		<p>Mov&rsquo;d underneath my feet, to weight like theirs</p>
 		<p>Unus&rsquo;d. I pond&rsquo;ring went, and thus he spake:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Perhaps thy thoughts are of this ruin&rsquo;d steep,</p>
+		<p class="slindent">&ldquo;Perhaps thy thoughts are of this ruin&rsquo;d steep,</p>
 		<p>Guarded by the brute violence, which I</p>
 		<p>Have vanquish&rsquo;d now. Know then, that when I erst</p>
 		<p>Hither descended to the nether hell,</p>
@@ -1828,22 +1570,16 @@ module.exports = {
 		<p>Had told. Between it and the rampart&rsquo;s base</p>
 		<p>On trail ran Centaurs, with keen arrows arm&rsquo;d,</p>
 		<p>As to the chase they on the earth were wont.</p>
-		</div>
-		<div class="stanza">
-		<p>At seeing us descend they each one stood;</p>
+		<p class="slindent">At seeing us descend they each one stood;</p>
 		<p>And issuing from the troop, three sped with bows</p>
 		<p>And missile weapons chosen first; of whom</p>
 		<p>One cried from far: &ldquo;Say to what pain ye come</p>
 		<p>Condemn&rsquo;d, who down this steep have journied? Speak</p>
 		<p>From whence ye stand, or else the bow I draw.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>To whom my guide: &ldquo;Our answer shall be made</p>
+		<p class="slindent">To whom my guide: &ldquo;Our answer shall be made</p>
 		<p>To Chiron, there, when nearer him we come.</p>
 		<p>Ill was thy mind, thus ever quick and rash.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then me he touch&rsquo;d, and spake: &ldquo;Nessus is this,</p>
+		<p class="slindent">Then me he touch&rsquo;d, and spake: &ldquo;Nessus is this,</p>
 		<p>Who for the fair Deianira died,</p>
 		<p>And wrought himself revenge for his own fate.</p>
 		<p>He in the midst, that on his breast looks down,</p>
@@ -1852,9 +1588,7 @@ module.exports = {
 		<p>The foss these go by thousands, aiming shafts</p>
 		<p>At whatsoever spirit dares emerge</p>
 		<p>From out the blood, more than his guilt allows.</p>
-		</div>
-		<div class="stanza">
-		<p>We to those beasts, that rapid strode along,</p>
+		<p class="slindent">We to those beasts, that rapid strode along,</p>
 		<p>Drew near, when Chiron took an arrow forth,</p>
 		<p>And with the notch push&rsquo;d back his shaggy beard</p>
 		<p>To the cheek-bone, then his great mouth to view</p>
@@ -1876,18 +1610,14 @@ module.exports = {
 		<p>Who to the ford may lead us, and convey</p>
 		<p>Across, him mounted on his back; for he</p>
 		<p>Is not a spirit that may walk the air.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then on his right breast turning, Chiron thus</p>
+		<p class="slindent">Then on his right breast turning, Chiron thus</p>
 		<p>To Nessus spake: &ldquo;Return, and be their guide.</p>
 		<p>And if ye chance to cross another troop,</p>
 		<p>Command them keep aloof.&rdquo; Onward we mov&rsquo;d,</p>
 		<p>The faithful escort by our side, along</p>
 		<p>The border of the crimson-seething flood,</p>
 		<p>Whence from those steep&rsquo;d within loud shrieks arose.</p>
-		</div>
-		<div class="stanza">
-		<p>Some there I mark&rsquo;d, as high as to their brow</p>
+		<p class="slindent">Some there I mark&rsquo;d, as high as to their brow</p>
 		<p>Immers&rsquo;d, of whom the mighty Centaur thus:</p>
 		<p>&ldquo;These are the souls of tyrants, who were given</p>
 		<p>To blood and rapine. Here they wail aloud</p>
@@ -1906,17 +1636,13 @@ module.exports = {
 		<p>A spirit by itself apart retir&rsquo;d,</p>
 		<p>Exclaim&rsquo;d: &ldquo;He in God&rsquo;s bosom smote the heart,</p>
 		<p>Which yet is honour&rsquo;d on the bank of Thames.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>A race I next espied, who held the head,</p>
+		<p class="slindent">A race I next espied, who held the head,</p>
 		<p>And even all the bust above the stream.</p>
 		<p>&rsquo;Midst these I many a face remember&rsquo;d well.</p>
 		<p>Thus shallow more and more the blood became,</p>
 		<p>So that at last it but imbru&rsquo;d the feet;</p>
 		<p>And there our passage lay athwart the foss.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;As ever on this side the boiling wave</p>
+		<p class="slindent">&ldquo;As ever on this side the boiling wave</p>
 		<p>Thou seest diminishing,&rdquo; the Centaur said,</p>
 		<p>&ldquo;So on the other, be thou well assur&rsquo;d,</p>
 		<p>It lower still and lower sinks its bed,</p>
@@ -1934,7 +1660,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XIII</p>
 		<div class="stanza">
-		<p>ERE Nessus yet had reach&rsquo;d the other bank,</p>
+		<p><span class="sc">Ere</span> Nessus yet had reach&rsquo;d the other bank,</p>
 		<p>We enter&rsquo;d on a forest, where no track</p>
 		<p>Of steps had worn a way. Not verdant there</p>
 		<p>The foliage, but of dusky hue; not light</p>
@@ -1944,18 +1670,14 @@ module.exports = {
 		<p>Less intricate the brakes, wherein abide</p>
 		<p>Those animals, that hate the cultur&rsquo;d fields,</p>
 		<p>Betwixt Corneto and Cecina&rsquo;s stream.</p>
-		</div>
-		<div class="stanza">
-		<p>Here the brute Harpies make their nest, the same</p>
+		<p class="slindent">Here the brute Harpies make their nest, the same</p>
 		<p>Who from the Strophades the Trojan band</p>
 		<p>Drove with dire boding of their future woe.</p>
 		<p>Broad are their pennons, of the human form</p>
 		<p>Their neck and count&rsquo;nance, arm&rsquo;d with talons keen</p>
 		<p>The feet, and the huge belly fledge with wings</p>
 		<p>These sit and wail on the drear mystic wood.</p>
-		</div>
-		<div class="stanza">
-		<p>The kind instructor in these words began:</p>
+		<p class="slindent">The kind instructor in these words began:</p>
 		<p>&ldquo;Ere farther thou proceed, know thou art now</p>
 		<p>I&rsquo; th&rsquo; second round, and shalt be, till thou come</p>
 		<p>Upon the horrid sand: look therefore well</p>
@@ -1969,13 +1691,9 @@ module.exports = {
 		<p>And thus his speech resum&rsquo;d: &ldquo;If thou lop off</p>
 		<p>A single twig from one of those ill plants,</p>
 		<p>The thought thou hast conceiv&rsquo;d shall vanish quite.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Thereat a little stretching forth my hand,</p>
+		<p class="slindent">Thereat a little stretching forth my hand,</p>
 		<p>From a great wilding gather&rsquo;d I a branch,</p>
 		<p>And straight the trunk exclaim&rsquo;d: &ldquo;Why pluck&rsquo;st thou me?&rdquo;</p>
-		</div>
-		<div class="stanza">
 		<p>Then as the dark blood trickled down its side,</p>
 		<p>These words it added: &ldquo;Wherefore tear&rsquo;st me thus?</p>
 		<p>Is there no touch of mercy in thy breast?</p>
@@ -1986,9 +1704,7 @@ module.exports = {
 		<p>A groaning sound, and hisses with the wind</p>
 		<p>That forces out its way, so burst at once,</p>
 		<p>Forth from the broken splinter words and blood.</p>
-		</div>
-		<div class="stanza">
-		<p>I, letting fall the bough, remain&rsquo;d as one</p>
+		<p class="slindent">I, letting fall the bough, remain&rsquo;d as one</p>
 		<p>Assail&rsquo;d by terror, and the sage replied:</p>
 		<p>&ldquo;If he, O injur&rsquo;d spirit! could have believ&rsquo;d</p>
 		<p>What he hath seen but in my verse describ&rsquo;d,</p>
@@ -1999,9 +1715,7 @@ module.exports = {
 		<p>That, for this wrong to do thee some amends,</p>
 		<p>In the upper world (for thither to return</p>
 		<p>Is granted him) thy fame he may revive.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;That pleasant word of thine,&rdquo; the trunk replied</p>
+		<p class="slindent">&ldquo;That pleasant word of thine,&rdquo; the trunk replied</p>
 		<p>&ldquo;Hath so inveigled me, that I from speech</p>
 		<p>Cannot refrain, wherein if I indulge</p>
 		<p>A little longer, in the snare detain&rsquo;d,</p>
@@ -2026,30 +1740,22 @@ module.exports = {
 		<p>If any to the world indeed return,</p>
 		<p>Clear he from wrong my memory, that lies</p>
 		<p>Yet prostrate under envy&rsquo;s cruel blow.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>First somewhat pausing, till the mournful words</p>
+		<p class="slindent">First somewhat pausing, till the mournful words</p>
 		<p>Were ended, then to me the bard began:</p>
 		<p>&ldquo;Lose not the time; but speak and of him ask,</p>
 		<p>If more thou wish to learn.&rdquo; Whence I replied:</p>
 		<p>&ldquo;Question thou him again of whatsoe&rsquo;er</p>
 		<p>Will, as thou think&rsquo;st, content me; for no power</p>
 		<p>Have I to ask, such pity&rsquo; is at my heart.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus resum&rsquo;d; &ldquo;So may he do for thee</p>
+		<p class="slindent">He thus resum&rsquo;d; &ldquo;So may he do for thee</p>
 		<p>Freely what thou entreatest, as thou yet</p>
 		<p>Be pleas&rsquo;d, imprison&rsquo;d Spirit! to declare,</p>
 		<p>How in these gnarled joints the soul is tied;</p>
 		<p>And whether any ever from such frame</p>
 		<p>Be loosen&rsquo;d, if thou canst, that also tell.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Thereat the trunk breath&rsquo;d hard, and the wind soon</p>
+		<p class="slindent">Thereat the trunk breath&rsquo;d hard, and the wind soon</p>
 		<p>Chang&rsquo;d into sounds articulate like these;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Briefly ye shall be answer&rsquo;d. When departs</p>
+		<p class="slindent">&ldquo;Briefly ye shall be answer&rsquo;d. When departs</p>
 		<p>The fierce soul from the body, by itself</p>
 		<p>Thence torn asunder, to the seventh gulf</p>
 		<p>By Minos doom&rsquo;d, into the wood it falls,</p>
@@ -2065,9 +1771,7 @@ module.exports = {
 		<p>Here we perforce shall drag them; and throughout</p>
 		<p>The dismal glade our bodies shall be hung,</p>
 		<p>Each on the wild thorn of his wretched shade.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Attentive yet to listen to the trunk</p>
+		<p class="slindent">Attentive yet to listen to the trunk</p>
 		<p>We stood, expecting farther speech, when us</p>
 		<p>A noise surpris&rsquo;d, as when a man perceives</p>
 		<p>The wild boar and the hunt approach his place</p>
@@ -2076,8 +1780,6 @@ module.exports = {
 		<p>Two naked, torn with briers, in headlong flight,</p>
 		<p>That they before them broke each fan o&rsquo; th&rsquo; wood.</p>
 		<p>&ldquo;Haste now,&rdquo; the foremost cried, &ldquo;now haste thee death!&rdquo;</p>
-		</div>
-		<div class="stanza">
 		<p>The&rsquo; other, as seem&rsquo;d, impatient of delay</p>
 		<p>Exclaiming, &ldquo;Lano! not so bent for speed</p>
 		<p>Thy sinews, in the lists of Toppo&rsquo;s field.&rdquo;</p>
@@ -2094,14 +1796,10 @@ module.exports = {
 		<p>Of Sant&rsquo; Andrea! what avails it thee,&rdquo;</p>
 		<p>It cried, &ldquo;that of me thou hast made thy screen?</p>
 		<p>For thy ill life what blame on me recoils?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>When o&rsquo;er it he had paus&rsquo;d, my master spake:</p>
+		<p class="slindent">When o&rsquo;er it he had paus&rsquo;d, my master spake:</p>
 		<p>&ldquo;Say who wast thou, that at so many points</p>
 		<p>Breath&rsquo;st out with blood thy lamentable speech?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He answer&rsquo;d: &ldquo;Oh, ye spirits: arriv&rsquo;d in time</p>
+		<p class="slindent">He answer&rsquo;d: &ldquo;Oh, ye spirits: arriv&rsquo;d in time</p>
 		<p>To spy the shameful havoc, that from me</p>
 		<p>My leaves hath sever&rsquo;d thus, gather them up,</p>
 		<p>And at the foot of their sad parent-tree</p>
@@ -2118,7 +1816,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XIV</p>
 		<div class="stanza">
-		<p>SOON as the charity of native land</p>
+		<p><span class="sc">Soon</span> as the charity of native land</p>
 		<p>Wrought in my bosom, I the scatter&rsquo;d leaves</p>
 		<p>Collected, and to him restor&rsquo;d, who now</p>
 		<p>Was hoarse with utt&rsquo;rance. To the limit thence</p>
@@ -2133,22 +1831,16 @@ module.exports = {
 		<p>Our steps we stay&rsquo;d. It was an area wide</p>
 		<p>Of arid sand and thick, resembling most</p>
 		<p>The soil that erst by Cato&rsquo;s foot was trod.</p>
-		</div>
-		<div class="stanza">
-		<p>Vengeance of Heav&rsquo;n! Oh! how shouldst thou be fear&rsquo;d</p>
+		<p class="slindent">Vengeance of Heav&rsquo;n! Oh! how shouldst thou be fear&rsquo;d</p>
 		<p>By all, who read what here my eyes beheld!</p>
-		</div>
-		<div class="stanza">
-		<p>Of naked spirits many a flock I saw,</p>
+		<p class="slindent">Of naked spirits many a flock I saw,</p>
 		<p>All weeping piteously, to different laws</p>
 		<p>Subjected: for on the&rsquo; earth some lay supine,</p>
 		<p>Some crouching close were seated, others pac&rsquo;d</p>
 		<p>Incessantly around; the latter tribe,</p>
 		<p>More numerous, those fewer who beneath</p>
 		<p>The torment lay, but louder in their grief.</p>
-		</div>
-		<div class="stanza">
-		<p>O&rsquo;er all the sand fell slowly wafting down</p>
+		<p class="slindent">O&rsquo;er all the sand fell slowly wafting down</p>
 		<p>Dilated flakes of fire, as flakes of snow</p>
 		<p>On Alpine summit, when the wind is hush&rsquo;d.</p>
 		<p>As in the torrid Indian clime, the son</p>
@@ -2160,8 +1852,6 @@ module.exports = {
 		<p>So fell the eternal fiery flood, wherewith</p>
 		<p>The marble glow&rsquo;d underneath, as under stove</p>
 		<p>The viands, doubly to augment the pain.</p>
-		</div>
-		<div class="stanza">
 		<p>Unceasing was the play of wretched hands,</p>
 		<p>Now this, now that way glancing, to shake off</p>
 		<p>The heat, still falling fresh. I thus began:</p>
@@ -2171,9 +1861,7 @@ module.exports = {
 		<p>Is yon huge spirit, that, as seems, heeds not</p>
 		<p>The burning, but lies writhen in proud scorn,</p>
 		<p>As by the sultry tempest immatur&rsquo;d?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Straight he himself, who was aware I ask&rsquo;d</p>
+		<p class="slindent">Straight he himself, who was aware I ask&rsquo;d</p>
 		<p>My guide of him, exclaim&rsquo;d: &ldquo;Such as I was</p>
 		<p>When living, dead such now I am. If Jove</p>
 		<p>Weary his workman out, from whom in ire</p>
@@ -2185,16 +1873,12 @@ module.exports = {
 		<p>In the Phlegraean warfare, and the bolts</p>
 		<p>Launch he full aim&rsquo;d at me with all his might,</p>
 		<p>He never should enjoy a sweet revenge.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then thus my guide, in accent higher rais&rsquo;d</p>
+		<p class="slindent">Then thus my guide, in accent higher rais&rsquo;d</p>
 		<p>Than I before had heard him: &ldquo;Capaneus!</p>
 		<p>Thou art more punish&rsquo;d, in that this thy pride</p>
 		<p>Lives yet unquench&rsquo;d: no torrent, save thy rage,</p>
 		<p>Were to thy fury pain proportion&rsquo;d full.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Next turning round to me with milder lip</p>
+		<p class="slindent">Next turning round to me with milder lip</p>
 		<p>He spake: &ldquo;This of the seven kings was one,</p>
 		<p>Who girt the Theban walls with siege, and held,</p>
 		<p>As still he seems to hold, God in disdain,</p>
@@ -2212,21 +1896,15 @@ module.exports = {
 		<p>Down through the sand, its bottom and each bank</p>
 		<p>Stone-built, and either margin at its side,</p>
 		<p>Whereon I straight perceiv&rsquo;d our passage lay.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Of all that I have shown thee, since that gate</p>
+		<p class="slindent">&ldquo;Of all that I have shown thee, since that gate</p>
 		<p>We enter&rsquo;d first, whose threshold is to none</p>
 		<p>Denied, nought else so worthy of regard,</p>
 		<p>As is this river, has thine eye discern&rsquo;d,</p>
 		<p>O&rsquo;er which the flaming volley all is quench&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>So spake my guide; and I him thence besought,</p>
+		<p class="slindent">So spake my guide; and I him thence besought,</p>
 		<p>That having giv&rsquo;n me appetite to know,</p>
 		<p>The food he too would give, that hunger crav&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;In midst of ocean,&rdquo; forthwith he began,</p>
+		<p class="slindent">&ldquo;In midst of ocean,&rdquo; forthwith he began,</p>
 		<p>&ldquo;A desolate country lies, which Crete is nam&rsquo;d,</p>
 		<p>Under whose monarch in old times the world</p>
 		<p>Liv&rsquo;d pure and chaste. A mountain rises there,</p>
@@ -2253,9 +1931,7 @@ module.exports = {
 		<p>Beneath, e&rsquo;en to the lowest depth of all,</p>
 		<p>Form there Cocytus, of whose lake (thyself</p>
 		<p>Shall see it) I here give thee no account.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then I to him: &ldquo;If from our world this sluice</p>
+		<p class="slindent">Then I to him: &ldquo;If from our world this sluice</p>
 		<p>Be thus deriv&rsquo;d; wherefore to us but now</p>
 		<p>Appears it at this edge?&rdquo; He straight replied:</p>
 		<p>&ldquo;The place, thou know&rsquo;st, is round; and though great part</p>
@@ -2264,9 +1940,7 @@ module.exports = {
 		<p>Hast thou the circuit made of the whole orb.</p>
 		<p>Wherefore if aught of new to us appear,</p>
 		<p>It needs not bring up wonder in thy looks.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then I again inquir&rsquo;d: &ldquo;Where flow the streams</p>
+		<p class="slindent">Then I again inquir&rsquo;d: &ldquo;Where flow the streams</p>
 		<p>Of Phlegethon and Lethe? for of one</p>
 		<p>Thou tell&rsquo;st not, and the other of that shower,</p>
 		<p>Thou say&rsquo;st, is form&rsquo;d.&rdquo; He answer thus return&rsquo;d:</p>
@@ -2284,7 +1958,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XV</p>
 		<div class="stanza">
-		<p>One of the solid margins bears us now</p>
+		<p><span class="sc">One</span> of the solid margins bears us now</p>
 		<p>Envelop&rsquo;d in the mist, that from the stream</p>
 		<p>Arising, hovers o&rsquo;er, and saves from fire</p>
 		<p>Both piers and water. As the Flemings rear</p>
@@ -2300,65 +1974,45 @@ module.exports = {
 		<p>Were not so far remov&rsquo;d, that turning round</p>
 		<p>I might not have discern&rsquo;d it, when we met</p>
 		<p>A troop of spirits, who came beside the pier.</p>
-		</div>
-		<div class="stanza">
-		<p>They each one ey&rsquo;d us, as at eventide</p>
+		<p class="slindent">They each one ey&rsquo;d us, as at eventide</p>
 		<p>One eyes another under a new moon,</p>
 		<p>And toward us sharpen&rsquo;d their sight as keen,</p>
 		<p>As an old tailor at his needle&rsquo;s eye.</p>
-		</div>
-		<div class="stanza">
-		<p>Thus narrowly explor&rsquo;d by all the tribe,</p>
+		<p class="slindent">Thus narrowly explor&rsquo;d by all the tribe,</p>
 		<p>I was agniz&rsquo;d of one, who by the skirt</p>
 		<p>Caught me, and cried, &ldquo;What wonder have we here!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>And I, when he to me outstretch&rsquo;d his arm,</p>
+		<p class="slindent">And I, when he to me outstretch&rsquo;d his arm,</p>
 		<p>Intently fix&rsquo;d my ken on his parch&rsquo;d looks,</p>
 		<p>That although smirch&rsquo;d with fire, they hinder&rsquo;d not</p>
 		<p>But I remember&rsquo;d him; and towards his face</p>
 		<p>My hand inclining, answer&rsquo;d: &ldquo;Sir! Brunetto!</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;And art thou here?&rdquo; He thus to me: &ldquo;My son!</p>
 		<p>Oh let it not displease thee, if Brunetto</p>
 		<p>Latini but a little space with thee</p>
 		<p>Turn back, and leave his fellows to proceed.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I thus to him replied: &ldquo;Much as I can,</p>
+		<p class="slindent">I thus to him replied: &ldquo;Much as I can,</p>
 		<p>I thereto pray thee; and if thou be willing,</p>
 		<p>That I here seat me with thee, I consent;</p>
 		<p>His leave, with whom I journey, first obtain&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O son!&rdquo; said he, &ldquo;whoever of this throng</p>
+		<p class="slindent">&ldquo;O son!&rdquo; said he, &ldquo;whoever of this throng</p>
 		<p>One instant stops, lies then a hundred years,</p>
 		<p>No fan to ventilate him, when the fire</p>
 		<p>Smites sorest. Pass thou therefore on. I close</p>
 		<p>Will at thy garments walk, and then rejoin</p>
 		<p>My troop, who go mourning their endless doom.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I dar&rsquo;d not from the path descend to tread</p>
+		<p class="slindent">I dar&rsquo;d not from the path descend to tread</p>
 		<p>On equal ground with him, but held my head</p>
 		<p>Bent down, as one who walks in reverent guise.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;What chance or destiny,&rdquo; thus he began,</p>
+		<p class="slindent">&ldquo;What chance or destiny,&rdquo; thus he began,</p>
 		<p>&ldquo;Ere the last day conducts thee here below?</p>
 		<p>And who is this, that shows to thee the way?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;There up aloft,&rdquo; I answer&rsquo;d, &ldquo;in the life</p>
+		<p class="slindent">&ldquo;There up aloft,&rdquo; I answer&rsquo;d, &ldquo;in the life</p>
 		<p>Serene, I wander&rsquo;d in a valley lost,</p>
 		<p>Before mine age had to its fullness reach&rsquo;d.</p>
 		<p>But yester-morn I left it: then once more</p>
 		<p>Into that vale returning, him I met;</p>
 		<p>And by this path homeward he leads me back.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If thou,&rdquo; he answer&rsquo;d, &ldquo;follow but thy star,</p>
+		<p class="slindent">&ldquo;If thou,&rdquo; he answer&rsquo;d, &ldquo;follow but thy star,</p>
 		<p>Thou canst not miss at last a glorious haven:</p>
 		<p>Unless in fairer days my judgment err&rsquo;d.</p>
 		<p>And if my fate so early had not chanc&rsquo;d,</p>
@@ -2382,9 +2036,7 @@ module.exports = {
 		<p>In which the holy seed revives, transmitted</p>
 		<p>From those true Romans, who still there remain&rsquo;d,</p>
 		<p>When it was made the nest of so much ill.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Were all my wish fulfill&rsquo;d,&rdquo; I straight replied,</p>
+		<p class="slindent">&ldquo;Were all my wish fulfill&rsquo;d,&rdquo; I straight replied,</p>
 		<p>&ldquo;Thou from the confines of man&rsquo;s nature yet</p>
 		<p>Hadst not been driven forth; for in my mind</p>
 		<p>Is fix&rsquo;d, and now strikes full upon my heart</p>
@@ -2403,19 +2055,13 @@ module.exports = {
 		<p>Not new or strange such earnest to mine ear.</p>
 		<p>Speed fortune then her wheel, as likes her best,</p>
 		<p>The clown his mattock; all things have their course.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Thereat my sapient guide upon his right</p>
+		<p class="slindent">Thereat my sapient guide upon his right</p>
 		<p>Turn&rsquo;d himself back, then look&rsquo;d at me and spake:</p>
 		<p>&ldquo;He listens to good purpose who takes note.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I not the less still on my way proceed,</p>
+		<p class="slindent">I not the less still on my way proceed,</p>
 		<p>Discoursing with Brunetto, and inquire</p>
 		<p>Who are most known and chief among his tribe.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;To know of some is well;&rdquo; thus he replied,</p>
+		<p class="slindent">&ldquo;To know of some is well;&rdquo; thus he replied,</p>
 		<p>&ldquo;But of the rest silence may best beseem.</p>
 		<p>Time would not serve us for report so long.</p>
 		<p>In brief I tell thee, that all these were clerks,</p>
@@ -2434,9 +2080,7 @@ module.exports = {
 		<p>A company, with whom I may not sort,</p>
 		<p>Approaches. I commend my TREASURE to thee,</p>
 		<p>Wherein I yet survive; my sole request.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said he turn&rsquo;d, and seem&rsquo;d as one of those,</p>
+		<p class="slindent">This said he turn&rsquo;d, and seem&rsquo;d as one of those,</p>
 		<p>Who o&rsquo;er Verona&rsquo;s champain try their speed</p>
 		<p>For the green mantle, and of them he seem&rsquo;d,</p>
 		<p>Not he who loses but who gains the prize.</p>
@@ -2444,7 +2088,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XVI</p>
 		<div class="stanza">
-		<p>NOW came I where the water&rsquo;s din was heard,</p>
+		<p><span class="sc">Now</span> came I where the water&rsquo;s din was heard,</p>
 		<p>As down it fell into the other round,</p>
 		<p>Resounding like the hum of swarming bees:</p>
 		<p>When forth together issu&rsquo;d from a troop,</p>
@@ -2453,22 +2097,16 @@ module.exports = {
 		<p>And each one cried aloud, &ldquo;Oh do thou stay!</p>
 		<p>Whom by the fashion of thy garb we deem</p>
 		<p>To be some inmate of our evil land.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Ah me! what wounds I mark&rsquo;d upon their limbs,</p>
+		<p class="slindent">Ah me! what wounds I mark&rsquo;d upon their limbs,</p>
 		<p>Recent and old, inflicted by the flames!</p>
-		<p>e&rsquo;en the remembrance of them grieves me yet.</p>
-		</div>
-		<div class="stanza">
-		<p>Attentive to their cry my teacher paus&rsquo;d,</p>
+		<p>E&rsquo;en the remembrance of them grieves me yet.</p>
+		<p class="slindent">Attentive to their cry my teacher paus&rsquo;d,</p>
 		<p>And turn&rsquo;d to me his visage, and then spake;</p>
 		<p>&ldquo;Wait now! our courtesy these merit well:</p>
 		<p>And were &rsquo;t not for the nature of the place,</p>
 		<p>Whence glide the fiery darts, I should have said,</p>
 		<p>That haste had better suited thee than them.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>They, when we stopp&rsquo;d, resum&rsquo;d their ancient wail,</p>
+		<p class="slindent">They, when we stopp&rsquo;d, resum&rsquo;d their ancient wail,</p>
 		<p>And soon as they had reach&rsquo;d us, all the three</p>
 		<p>Whirl&rsquo;d round together in one restless wheel.</p>
 		<p>As naked champions, smear&rsquo;d with slippery oil,</p>
@@ -2477,9 +2115,7 @@ module.exports = {
 		<p>Thus each one, as he wheel&rsquo;d, his countenance</p>
 		<p>At me directed, so that opposite</p>
 		<p>The neck mov&rsquo;d ever to the twinkling feet.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If misery of this drear wilderness,&rdquo;</p>
+		<p class="slindent">&ldquo;If misery of this drear wilderness,&rdquo;</p>
 		<p>Thus one began, &ldquo;added to our sad cheer</p>
 		<p>And destitute, do call forth scorn on us</p>
 		<p>And our entreaties, let our great renown</p>
@@ -2504,9 +2140,7 @@ module.exports = {
 		<p>Would have restrain&rsquo;d my going; but that fear</p>
 		<p>Of the dire burning vanquish&rsquo;d the desire,</p>
 		<p>Which made me eager of their wish&rsquo;d embrace.</p>
-		</div>
-		<div class="stanza">
-		<p>I then began: &ldquo;Not scorn, but grief much more,</p>
+		<p class="slindent">I then began: &ldquo;Not scorn, but grief much more,</p>
 		<p>Such as long time alone can cure, your doom</p>
 		<p>Fix&rsquo;d deep within me, soon as this my lord</p>
 		<p>Spake words, whose tenour taught me to expect</p>
@@ -2517,9 +2151,7 @@ module.exports = {
 		<p>For the sweet fruit I go, that a sure guide</p>
 		<p>Hath promis&rsquo;d to me. But behooves, that far</p>
 		<p>As to the centre first I downward tend.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;So may long space thy spirit guide thy limbs,&rdquo;</p>
+		<p class="slindent">&ldquo;So may long space thy spirit guide thy limbs,&rdquo;</p>
 		<p>He answer straight return&rsquo;d; &ldquo;and so thy fame</p>
 		<p>Shine bright, when thou art gone; as thou shalt tell,</p>
 		<p>If courtesy and valour, as they wont,</p>
@@ -2527,9 +2159,7 @@ module.exports = {
 		<p>For one amidst us late condemn&rsquo;d to wail,</p>
 		<p>Borsiere, yonder walking with his peers,</p>
 		<p>Grieves us no little by the news he brings.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;An upstart multitude and sudden gains,</p>
+		<p class="slindent">&ldquo;An upstart multitude and sudden gains,</p>
 		<p>Pride and excess, O Florence! have in thee</p>
 		<p>Engender&rsquo;d, so that now in tears thou mourn&rsquo;st!&rdquo;</p>
 		<p>Thus cried I with my face uprais&rsquo;d, and they</p>
@@ -2543,21 +2173,15 @@ module.exports = {
 		<p>Returning to behold the radiant stars,</p>
 		<p>When thou with pleasure shalt retrace the past,</p>
 		<p>See that of us thou speak among mankind.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>This said, they broke the circle, and so swift</p>
+		<p class="slindent">This said, they broke the circle, and so swift</p>
 		<p>Fled, that as pinions seem&rsquo;d their nimble feet.</p>
-		</div>
-		<div class="stanza">
-		<p>Not in so short a time might one have said</p>
+		<p class="slindent">Not in so short a time might one have said</p>
 		<p>&ldquo;Amen,&rdquo; as they had vanish&rsquo;d. Straight my guide</p>
 		<p>Pursu&rsquo;d his track. I follow&rsquo;d; and small space</p>
 		<p>Had we pass&rsquo;d onward, when the water&rsquo;s sound</p>
 		<p>Was now so near at hand, that we had scarce</p>
 		<p>Heard one another&rsquo;s speech for the loud din.</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en as the river, that holds on its course</p>
+		<p class="slindent">E&rsquo;en as the river, that holds on its course</p>
 		<p>Unmingled, from the mount of Vesulo,</p>
 		<p>On the left side of Apennine, toward</p>
 		<p>The east, which Acquacheta higher up</p>
@@ -2569,9 +2193,7 @@ module.exports = {
 		<p>Thus downward from a craggy steep we found,</p>
 		<p>That this dark wave resounded, roaring loud,</p>
 		<p>So that the ear its clamour soon had stunn&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>I had a cord that brac&rsquo;d my girdle round,</p>
+		<p class="slindent">I had a cord that brac&rsquo;d my girdle round,</p>
 		<p>Wherewith I erst had thought fast bound to take</p>
 		<p>The painted leopard. This when I had all</p>
 		<p>Unloosen&rsquo;d from me (so my master bade)</p>
@@ -2584,9 +2206,7 @@ module.exports = {
 		<p>Thus follows.&rdquo; Ah! what caution must men use</p>
 		<p>With those who look not at the deed alone,</p>
 		<p>But spy into the thoughts with subtle skill!</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Quickly shall come,&rdquo; he said, &ldquo;what I expect,</p>
+		<p class="slindent">&ldquo;Quickly shall come,&rdquo; he said, &ldquo;what I expect,</p>
 		<p>Thine eye discover quickly, that whereof</p>
 		<p>Thy thought is dreaming.&rdquo; Ever to that truth,</p>
 		<p>Which but the semblance of a falsehood wears,</p>
@@ -2606,15 +2226,13 @@ module.exports = {
 
 		`<p class="cantohead">Canto XVII</p>
 		<div class="stanza">
-		<p>&ldquo;LO! the fell monster with the deadly sting!</p>
+		<p>&ldquo;<span class="sc">Lo</span>! the fell monster with the deadly sting!</p>
 		<p>Who passes mountains, breaks through fenced walls</p>
 		<p>And firm embattled spears, and with his filth</p>
 		<p>Taints all the world!&rdquo; Thus me my guide address&rsquo;d,</p>
 		<p>And beckon&rsquo;d him, that he should come to shore,</p>
 		<p>Near to the stony causeway&rsquo;s utmost edge.</p>
-		</div>
-		<div class="stanza">
-		<p>Forthwith that image vile of fraud appear&rsquo;d,</p>
+		<p class="slindent">Forthwith that image vile of fraud appear&rsquo;d,</p>
 		<p>His head and upper part expos&rsquo;d on land,</p>
 		<p>But laid not on the shore his bestial train.</p>
 		<p>His face the semblance of a just man&rsquo;s wore,</p>
@@ -2636,9 +2254,7 @@ module.exports = {
 		<p>With sting like scorpion&rsquo;s arm&rsquo;d. Then thus my guide:</p>
 		<p>&ldquo;Now need our way must turn few steps apart,</p>
 		<p>Far as to that ill beast, who couches there.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Thereat toward the right our downward course</p>
+		<p class="slindent">Thereat toward the right our downward course</p>
 		<p>We shap&rsquo;d, and, better to escape the flame</p>
 		<p>And burning marle, ten paces on the verge</p>
 		<p>Proceeded. Soon as we to him arrive,</p>
@@ -2659,17 +2275,13 @@ module.exports = {
 		<p>Thus use the dogs in summer still to ply</p>
 		<p>Their jaws and feet by turns, when bitten sore</p>
 		<p>By gnats, or flies, or gadflies swarming round.</p>
-		</div>
-		<div class="stanza">
-		<p>Noting the visages of some, who lay</p>
+		<p class="slindent">Noting the visages of some, who lay</p>
 		<p>Beneath the pelting of that dolorous fire,</p>
 		<p>One of them all I knew not; but perceiv&rsquo;d,</p>
 		<p>That pendent from his neck each bore a pouch</p>
 		<p>With colours and with emblems various mark&rsquo;d,</p>
 		<p>On which it seem&rsquo;d as if their eye did feed.</p>
-		</div>
-		<div class="stanza">
-		<p>And when amongst them looking round I came,</p>
+		<p class="slindent">And when amongst them looking round I came,</p>
 		<p>A yellow purse I saw with azure wrought,</p>
 		<p>That wore a lion&rsquo;s countenance and port.</p>
 		<p>Then still my sight pursuing its career,</p>
@@ -2688,46 +2300,34 @@ module.exports = {
 		<p>That licks his nostrils. I, lest longer stay</p>
 		<p>He ill might brook, who bade me stay not long,</p>
 		<p>Backward my steps from those sad spirits turn&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>My guide already seated on the haunch</p>
+		<p class="slindent">My guide already seated on the haunch</p>
 		<p>Of the fierce animal I found; and thus</p>
 		<p>He me encourag&rsquo;d. &ldquo;Be thou stout; be bold.</p>
 		<p>Down such a steep flight must we now descend!</p>
 		<p>Mount thou before: for that no power the tail</p>
 		<p>May have to harm thee, I will be i&rsquo; th&rsquo; midst.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>As one, who hath an ague fit so near,</p>
+		<p class="slindent">As one, who hath an ague fit so near,</p>
 		<p>His nails already are turn&rsquo;d blue, and he</p>
 		<p>Quivers all o&rsquo;er, if he but eye the shade;</p>
 		<p>Such was my cheer at hearing of his words.</p>
 		<p>But shame soon interpos&rsquo;d her threat, who makes</p>
 		<p>The servant bold in presence of his lord.</p>
-		</div>
-		<div class="stanza">
-		<p>I settled me upon those shoulders huge,</p>
+		<p class="slindent">I settled me upon those shoulders huge,</p>
 		<p>And would have said, but that the words to aid</p>
 		<p>My purpose came not, &ldquo;Look thou clasp me firm!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>But he whose succour then not first I prov&rsquo;d,</p>
+		<p class="slindent">But he whose succour then not first I prov&rsquo;d,</p>
 		<p>Soon as I mounted, in his arms aloft,</p>
 		<p>Embracing, held me up, and thus he spake:</p>
 		<p>&ldquo;Geryon! now move thee! be thy wheeling gyres</p>
 		<p>Of ample circuit, easy thy descent.</p>
 		<p>Think on th&rsquo; unusual burden thou sustain&rsquo;st.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>As a small vessel, back&rsquo;ning out from land,</p>
+		<p class="slindent">As a small vessel, back&rsquo;ning out from land,</p>
 		<p>Her station quits; so thence the monster loos&rsquo;d,</p>
 		<p>And when he felt himself at large, turn&rsquo;d round</p>
 		<p>There where the breast had been, his forked tail.</p>
 		<p>Thus, like an eel, outstretch&rsquo;d at length he steer&rsquo;d,</p>
 		<p>Gath&rsquo;ring the air up with retractile claws.</p>
-		</div>
-		<div class="stanza">
-		<p>Not greater was the dread when Phaeton</p>
+		<p class="slindent">Not greater was the dread when Phaeton</p>
 		<p>The reins let drop at random, whence high heaven,</p>
 		<p>Whereof signs yet appear, was wrapt in flames;</p>
 		<p>Nor when ill-fated Icarus perceiv&rsquo;d,</p>
@@ -2743,16 +2343,12 @@ module.exports = {
 		<p>I heard the cataract beneath us leap</p>
 		<p>With hideous crash; whence bending down to&rsquo; explore,</p>
 		<p>New terror I conceiv&rsquo;d at the steep plunge:</p>
-		</div>
-		<div class="stanza">
 		<p>For flames I saw, and wailings smote mine ear:</p>
 		<p>So that all trembling close I crouch&rsquo;d my limbs,</p>
 		<p>And then distinguish&rsquo;d, unperceiv&rsquo;d before,</p>
 		<p>By the dread torments that on every side</p>
 		<p>Drew nearer, how our downward course we wound.</p>
-		</div>
-		<div class="stanza">
-		<p>As falcon, that hath long been on the wing,</p>
+		<p class="slindent">As falcon, that hath long been on the wing,</p>
 		<p>But lure nor bird hath seen, while in despair</p>
 		<p>The falconer cries, &ldquo;Ah me! thou stoop&rsquo;st to earth!&rdquo;</p>
 		<p>Wearied descends, and swiftly down the sky</p>
@@ -2766,7 +2362,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XVIII</p>
 		<div class="stanza">
-		<p>THERE is a place within the depths of hell</p>
+		<p><span class="sc">There</span> is a place within the depths of hell</p>
 		<p>Call&rsquo;d Malebolge, all of rock dark-stain&rsquo;d</p>
 		<p>With hue ferruginous, e&rsquo;en as the steep</p>
 		<p>That round it circling winds. Right in the midst</p>
@@ -2776,13 +2372,11 @@ module.exports = {
 		<p>Throughout its round, between the gulf and base</p>
 		<p>Of the high craggy banks, successive forms</p>
 		<p>Ten trenches, in its hollow bottom sunk.</p>
-		</div>
-		<div class="stanza">
-		<p>As where to guard the walls, full many a foss</p>
+		<p class="slindent">As where to guard the walls, full many a foss</p>
 		<p>Begirds some stately castle, sure defence</p>
 		<p>Affording to the space within, so here</p>
 		<p>Were model&rsquo;d these; and as like fortresses</p>
-		<p>e&rsquo;en from their threshold to the brink without,</p>
+		<p>E&rsquo;en from their threshold to the brink without,</p>
 		<p>Are flank&rsquo;d with bridges; from the rock&rsquo;s low base</p>
 		<p>Thus flinty paths advanc&rsquo;d, that &rsquo;cross the moles</p>
 		<p>And dikes, struck onward far as to the gulf,</p>
@@ -2790,32 +2384,24 @@ module.exports = {
 		<p>Such was the place, wherein we found ourselves</p>
 		<p>From Geryon&rsquo;s back dislodg&rsquo;d. The bard to left</p>
 		<p>Held on his way, and I behind him mov&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>On our right hand new misery I saw,</p>
+		<p class="slindent">On our right hand new misery I saw,</p>
 		<p>New pains, new executioners of wrath,</p>
 		<p>That swarming peopled the first chasm. Below</p>
 		<p>Were naked sinners. Hitherward they came,</p>
 		<p>Meeting our faces from the middle point,</p>
 		<p>With us beyond but with a larger stride.</p>
-		<p>e&rsquo;en thus the Romans, when the year returns</p>
+		<p>E&rsquo;en thus the Romans, when the year returns</p>
 		<p>Of Jubilee, with better speed to rid</p>
 		<p>The thronging multitudes, their means devise</p>
 		<p>For such as pass the bridge; that on one side</p>
 		<p>All front toward the castle, and approach</p>
 		<p>Saint Peter&rsquo;s fane, on th&rsquo; other towards the mount.</p>
-		</div>
-		<div class="stanza">
-		<p>Each divers way along the grisly rock,</p>
+		<p class="slindent">Each divers way along the grisly rock,</p>
 		<p>Horn&rsquo;d demons I beheld, with lashes huge,</p>
 		<p>That on their back unmercifully smote.</p>
 		<p>Ah! how they made them bound at the first stripe!</p>
-		</div>
-		<div class="stanza">
 		<p>None for the second waited nor the third.</p>
-		</div>
-		<div class="stanza">
-		<p>Meantime as on I pass&rsquo;d, one met my sight</p>
+		<p class="slindent">Meantime as on I pass&rsquo;d, one met my sight</p>
 		<p>Whom soon as view&rsquo;d; &ldquo;Of him,&rdquo; cried I, &ldquo;not yet</p>
 		<p>Mine eye hath had his fill.&rdquo; With fixed gaze</p>
 		<p>I therefore scann&rsquo;d him. Straight the teacher kind</p>
@@ -2840,9 +2426,7 @@ module.exports = {
 		<p>To answer SIPA in their country&rsquo;s phrase.</p>
 		<p>And if of that securer proof thou need,</p>
 		<p>Remember but our craving thirst for gold.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Him speaking thus, a demon with his thong</p>
+		<p class="slindent">Him speaking thus, a demon with his thong</p>
 		<p>Struck, and exclaim&rsquo;d, &ldquo;Away! corrupter! here</p>
 		<p>Women are none for sale.&rdquo; Forthwith I join&rsquo;d</p>
 		<p>My escort, and few paces thence we came</p>
@@ -2855,9 +2439,7 @@ module.exports = {
 		<p>&ldquo;And let these others miserable, now</p>
 		<p>Strike on thy ken, faces not yet beheld,</p>
 		<p>For that together they with us have walk&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>From the old bridge we ey&rsquo;d the pack, who came</p>
+		<p class="slindent">From the old bridge we ey&rsquo;d the pack, who came</p>
 		<p>From th&rsquo; other side towards us, like the rest,</p>
 		<p>Excoriate from the lash. My gentle guide,</p>
 		<p>By me unquestion&rsquo;d, thus his speech resum&rsquo;d:</p>
@@ -2880,17 +2462,13 @@ module.exports = {
 		<p>Whom its keen torments urge.&rdquo; Now had we come</p>
 		<p>Where, crossing the next pier, the straighten&rsquo;d path</p>
 		<p>Bestrides its shoulders to another arch.</p>
-		</div>
-		<div class="stanza">
-		<p>Hence in the second chasm we heard the ghosts,</p>
+		<p class="slindent">Hence in the second chasm we heard the ghosts,</p>
 		<p>Who jibber in low melancholy sounds,</p>
 		<p>With wide-stretch&rsquo;d nostrils snort, and on themselves</p>
 		<p>Smite with their palms. Upon the banks a scurf</p>
 		<p>From the foul steam condens&rsquo;d, encrusting hung,</p>
 		<p>That held sharp combat with the sight and smell.</p>
-		</div>
-		<div class="stanza">
-		<p>So hollow is the depth, that from no part,</p>
+		<p class="slindent">So hollow is the depth, that from no part,</p>
 		<p>Save on the summit of the rocky span,</p>
 		<p>Could I distinguish aught. Thus far we came;</p>
 		<p>And thence I saw, within the foss below,</p>
@@ -2901,26 +2479,18 @@ module.exports = {
 		<p>If he were clerk or layman. Loud he cried:</p>
 		<p>&ldquo;Why greedily thus bendest more on me,</p>
 		<p>Than on these other filthy ones, thy ken?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Because if true my mem&rsquo;ry,&rdquo; I replied,</p>
+		<p class="slindent">&ldquo;Because if true my mem&rsquo;ry,&rdquo; I replied,</p>
 		<p>&ldquo;I heretofore have seen thee with dry locks,</p>
 		<p>And thou Alessio art of Lucca sprung.</p>
 		<p>Therefore than all the rest I scan thee more.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then beating on his brain these words he spake:</p>
+		<p class="slindent">Then beating on his brain these words he spake:</p>
 		<p>&ldquo;Me thus low down my flatteries have sunk,</p>
 		<p>Wherewith I ne&rsquo;er enough could glut my tongue.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>My leader thus: &ldquo;A little further stretch</p>
+		<p class="slindent">My leader thus: &ldquo;A little further stretch</p>
 		<p>Thy face, that thou the visage well mayst note</p>
 		<p>Of that besotted, sluttish courtezan,</p>
 		<p>Who there doth rend her with defiled nails,</p>
 		<p>Now crouching down, now risen on her feet.</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Thais is this, the harlot, whose false lip</p>
 		<p>Answer&rsquo;d her doting paramour that ask&rsquo;d,</p>
 		<p>&lsquo;Thankest me much!&rsquo;&mdash;&lsquo;say rather wondrously,&rsquo;</p>
@@ -2929,7 +2499,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XIX</p>
 		<div class="stanza">
-		<p>WOE to thee, Simon Magus! woe to you,</p>
+		<p><span class="sc">Woe</span> to thee, Simon Magus! woe to you,</p>
 		<p>His wretched followers! who the things of God,</p>
 		<p>Which should be wedded unto goodness, them,</p>
 		<p>Rapacious as ye are, do prostitute</p>
@@ -2938,15 +2508,11 @@ module.exports = {
 		<p>Is the third chasm. Upon the following vault</p>
 		<p>We now had mounted, where the rock impends</p>
 		<p>Directly o&rsquo;er the centre of the foss.</p>
-		</div>
-		<div class="stanza">
-		<p>Wisdom Supreme! how wonderful the art,</p>
+		<p class="slindent">Wisdom Supreme! how wonderful the art,</p>
 		<p>Which thou dost manifest in heaven, in earth,</p>
 		<p>And in the evil world, how just a meed</p>
 		<p>Allotting by thy virtue unto all!</p>
-		</div>
-		<div class="stanza">
-		<p>I saw the livid stone, throughout the sides</p>
+		<p class="slindent">I saw the livid stone, throughout the sides</p>
 		<p>And in its bottom full of apertures,</p>
 		<p>All equal in their width, and circular each,</p>
 		<p>Nor ample less nor larger they appear&rsquo;d</p>
@@ -2965,19 +2531,13 @@ module.exports = {
 		<p>Feeding on unctuous matter, glides along</p>
 		<p>The surface, scarcely touching where it moves;</p>
 		<p>So here, from heel to point, glided the flames.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Master! say who is he, than all the rest</p>
+		<p class="slindent">&ldquo;Master! say who is he, than all the rest</p>
 		<p>Glancing in fiercer agony, on whom</p>
 		<p>A ruddier flame doth prey?&rdquo; I thus inquir&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If thou be willing,&rdquo; he replied, &ldquo;that I</p>
+		<p class="slindent">&ldquo;If thou be willing,&rdquo; he replied, &ldquo;that I</p>
 		<p>Carry thee down, where least the slope bank falls,</p>
 		<p>He of himself shall tell thee and his wrongs.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then: &ldquo;As pleases thee to me is best.</p>
+		<p class="slindent">I then: &ldquo;As pleases thee to me is best.</p>
 		<p>Thou art my lord; and know&rsquo;st that ne&rsquo;er I quit</p>
 		<p>Thy will: what silence hides that knowest thou.&rdquo;</p>
 		<p>Thereat on the fourth pier we came, we turn&rsquo;d,</p>
@@ -2989,32 +2549,22 @@ module.exports = {
 		<p>Sad spirit! thus revers&rsquo;d, and as a stake</p>
 		<p>Driv&rsquo;n in the soil!&rdquo; I in these words began,</p>
 		<p>&ldquo;If thou be able, utter forth thy voice.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>There stood I like the friar, that doth shrive</p>
+		<p class="slindent">There stood I like the friar, that doth shrive</p>
 		<p>A wretch for murder doom&rsquo;d, who e&rsquo;en when fix&rsquo;d,</p>
 		<p>Calleth him back, whence death awhile delays.</p>
-		</div>
-		<div class="stanza">
-		<p>He shouted: &ldquo;Ha! already standest there?</p>
+		<p class="slindent">He shouted: &ldquo;Ha! already standest there?</p>
 		<p>Already standest there, O Boniface!</p>
 		<p>By many a year the writing play&rsquo;d me false.</p>
 		<p>So early dost thou surfeit with the wealth,</p>
 		<p>For which thou fearedst not in guile to take</p>
 		<p>The lovely lady, and then mangle her?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I felt as those who, piercing not the drift</p>
+		<p class="slindent">I felt as those who, piercing not the drift</p>
 		<p>Of answer made them, stand as if expos&rsquo;d</p>
 		<p>In mockery, nor know what to reply,</p>
 		<p>When Virgil thus admonish&rsquo;d: &ldquo;Tell him quick,</p>
 		<p>I am not he, not he, whom thou believ&rsquo;st.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>And I, as was enjoin&rsquo;d me, straight replied.</p>
-		</div>
-		<div class="stanza">
-		<p>That heard, the spirit all did wrench his feet,</p>
+		<p class="slindent">And I, as was enjoin&rsquo;d me, straight replied.</p>
+		<p class="slindent">That heard, the spirit all did wrench his feet,</p>
 		<p>And sighing next in woeful accent spake:</p>
 		<p>&ldquo;What then of me requirest? If to know</p>
 		<p>So much imports thee, who I am, that thou</p>
@@ -3040,9 +2590,7 @@ module.exports = {
 		<p>In Maccabees we read; and favour such</p>
 		<p>As to that priest his king indulgent show&rsquo;d,</p>
 		<p>Shall be of France&rsquo;s monarch shown to him.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I know not if I here too far presum&rsquo;d,</p>
+		<p class="slindent">I know not if I here too far presum&rsquo;d,</p>
 		<p>But in this strain I answer&rsquo;d: &ldquo;Tell me now,</p>
 		<p>What treasures from St. Peter at the first</p>
 		<p>Our Lord demanded, when he put the keys</p>
@@ -3071,9 +2619,7 @@ module.exports = {
 		<p>Ah, Constantine! to how much ill gave birth,</p>
 		<p>Not thy conversion, but that plenteous dower,</p>
 		<p>Which the first wealthy Father gain&rsquo;d from thee!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Meanwhile, as thus I sung, he, whether wrath</p>
+		<p class="slindent">Meanwhile, as thus I sung, he, whether wrath</p>
 		<p>Or conscience smote him, violent upsprang</p>
 		<p>Spinning on either sole. I do believe</p>
 		<p>My teacher well was pleas&rsquo;d, with so compos&rsquo;d</p>
@@ -3081,22 +2627,18 @@ module.exports = {
 		<p>Of the true words I utter&rsquo;d. In both arms</p>
 		<p>He caught, and to his bosom lifting me</p>
 		<p>Upward retrac&rsquo;d the way of his descent.</p>
-		</div>
-		<div class="stanza">
-		<p>Nor weary of his weight he press&rsquo;d me close,</p>
+		<p class="slindent">Nor weary of his weight he press&rsquo;d me close,</p>
 		<p>Till to the summit of the rock we came,</p>
 		<p>Our passage from the fourth to the fifth pier.</p>
 		<p>His cherish&rsquo;d burden there gently he plac&rsquo;d</p>
 		<p>Upon the rugged rock and steep, a path</p>
 		<p>Not easy for the clamb&rsquo;ring goat to mount.</p>
-		</div>
-		<div class="stanza">
-		<p>Thence to my view another vale appear&rsquo;d</p>
+		<p class="slindent">Thence to my view another vale appear&rsquo;d</p>
 		</div>`,
 
 		`<p class="cantohead">Canto XX</p>
 		<div class="stanza">
-		<p>AND now the verse proceeds to torments new,</p>
+		<p><span class="sc">And</span> now the verse proceeds to torments new,</p>
 		<p>Fit argument of this the twentieth strain</p>
 		<p>Of the first song, whose awful theme records</p>
 		<p>The spirits whelm&rsquo;d in woe. Earnest I look&rsquo;d</p>
@@ -3105,9 +2647,7 @@ module.exports = {
 		<p>A tribe, that came along the hollow vale,</p>
 		<p>In silence weeping: such their step as walk</p>
 		<p>Quires chanting solemn litanies on earth.</p>
-		</div>
-		<div class="stanza">
-		<p>As on them more direct mine eye descends,</p>
+		<p class="slindent">As on them more direct mine eye descends,</p>
 		<p>Each wondrously seem&rsquo;d to be revers&rsquo;d</p>
 		<p>At the neck-bone, so that the countenance</p>
 		<p>Was from the reins averted: and because</p>
@@ -3115,9 +2655,7 @@ module.exports = {
 		<p>To&rsquo; advance with backward gait. Thus one perhaps</p>
 		<p>Hath been by force of palsy clean transpos&rsquo;d,</p>
 		<p>But I ne&rsquo;er saw it nor believe it so.</p>
-		</div>
-		<div class="stanza">
-		<p>Now, reader! think within thyself, so God</p>
+		<p class="slindent">Now, reader! think within thyself, so God</p>
 		<p>Fruit of thy reading give thee! how I long</p>
 		<p>Could keep my visage dry, when I beheld</p>
 		<p>Near me our form distorted in such guise,</p>
@@ -3142,16 +2680,12 @@ module.exports = {
 		<p>Once more behov&rsquo;d him with his rod to strike</p>
 		<p>The two entwining serpents, ere the plumes,</p>
 		<p>That mark&rsquo;d the better sex, might shoot again.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Aruns, with more his belly facing, comes.</p>
+		<p class="slindent">&ldquo;Aruns, with more his belly facing, comes.</p>
 		<p>On Luni&rsquo;s mountains &rsquo;midst the marbles white,</p>
 		<p>Where delves Carrara&rsquo;s hind, who wons beneath,</p>
 		<p>A cavern was his dwelling, whence the stars</p>
 		<p>And main-sea wide in boundless view he held.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The next, whose loosen&rsquo;d tresses overspread</p>
+		<p class="slindent">&ldquo;The next, whose loosen&rsquo;d tresses overspread</p>
 		<p>Her bosom, which thou seest not (for each hair</p>
 		<p>On that side grows) was Manto, she who search&rsquo;d</p>
 		<p>Through many regions, and at length her seat</p>
@@ -3202,17 +2736,13 @@ module.exports = {
 		<p>Henceforth another origin assign&rsquo;d</p>
 		<p>Of that my country, I forewarn thee now,</p>
 		<p>That falsehood none beguile thee of the truth.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I answer&rsquo;d: &ldquo;Teacher, I conclude thy words</p>
+		<p class="slindent">I answer&rsquo;d: &ldquo;Teacher, I conclude thy words</p>
 		<p>So certain, that all else shall be to me</p>
 		<p>As embers lacking life. But now of these,</p>
 		<p>Who here proceed, instruct me, if thou see</p>
 		<p>Any that merit more especial note.</p>
 		<p>For thereon is my mind alone intent.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He straight replied: &ldquo;That spirit, from whose cheek</p>
+		<p class="slindent">He straight replied: &ldquo;That spirit, from whose cheek</p>
 		<p>The beard sweeps o&rsquo;er his shoulders brown, what time</p>
 		<p>Graecia was emptied of her males, that scarce</p>
 		<p>The cradles were supplied, the seer was he</p>
@@ -3223,14 +2753,10 @@ module.exports = {
 		<p>Who know&rsquo;st it all. That other, round the loins</p>
 		<p>So slender of his shape, was Michael Scot,</p>
 		<p>Practis&rsquo;d in ev&rsquo;ry slight of magic wile.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Guido Bonatti see: Asdente mark,</p>
+		<p class="slindent">&ldquo;Guido Bonatti see: Asdente mark,</p>
 		<p>Who now were willing, he had tended still</p>
 		<p>The thread and cordwain; and too late repents.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;See next the wretches, who the needle left,</p>
+		<p class="slindent">&ldquo;See next the wretches, who the needle left,</p>
 		<p>The shuttle and the spindle, and became</p>
 		<p>Diviners: baneful witcheries they wrought</p>
 		<p>With images and herbs. But onward now:</p>
@@ -3244,17 +2770,13 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXI</p>
 		<div class="stanza">
-		<p>THUS we from bridge to bridge, with other talk,</p>
+		<p><span class="sc">Thus</span> we from bridge to bridge, with other talk,</p>
 		<p>The which my drama cares not to rehearse,</p>
 		<p>Pass&rsquo;d on; and to the summit reaching, stood</p>
 		<p>To view another gap, within the round</p>
 		<p>Of Malebolge, other bootless pangs.</p>
-		</div>
-		<div class="stanza">
-		<p>Marvelous darkness shadow&rsquo;d o&rsquo;er the place.</p>
-		</div>
-		<div class="stanza">
-		<p>In the Venetians&rsquo; arsenal as boils</p>
+		<p class="slindent">Marvelous darkness shadow&rsquo;d o&rsquo;er the place.</p>
+		<p class="slindent">In the Venetians&rsquo; arsenal as boils</p>
 		<p>Through wintry months tenacious pitch, to smear</p>
 		<p>Their unsound vessels; for th&rsquo; inclement time</p>
 		<p>Sea-faring men restrains, and in that while</p>
@@ -3283,17 +2805,13 @@ module.exports = {
 		<p>His shoulder proudly eminent and sharp</p>
 		<p>Was with a sinner charg&rsquo;d; by either haunch</p>
 		<p>He held him, the foot&rsquo;s sinew griping fast.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Ye of our bridge!&rdquo; he cried, &ldquo;keen-talon&rsquo;d fiends!</p>
+		<p class="slindent">&ldquo;Ye of our bridge!&rdquo; he cried, &ldquo;keen-talon&rsquo;d fiends!</p>
 		<p>Lo! one of Santa Zita&rsquo;s elders! Him</p>
 		<p>Whelm ye beneath, while I return for more.</p>
 		<p>That land hath store of such. All men are there,</p>
 		<p>Except Bonturo, barterers: of &lsquo;no&rsquo;</p>
 		<p>For lucre there an &lsquo;aye&rsquo; is quickly made.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Him dashing down, o&rsquo;er the rough rock he turn&rsquo;d,</p>
+		<p class="slindent">Him dashing down, o&rsquo;er the rough rock he turn&rsquo;d,</p>
 		<p>Nor ever after thief a mastiff loos&rsquo;d</p>
 		<p>Sped with like eager haste. That other sank</p>
 		<p>And forthwith writing to the surface rose.</p>
@@ -3305,14 +2823,10 @@ module.exports = {
 		<p>They grappled him with more than hundred hooks,</p>
 		<p>And shouted: &ldquo;Cover&rsquo;d thou must sport thee here;</p>
 		<p>So, if thou canst, in secret mayst thou filch.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en thus the cook bestirs him, with his grooms,</p>
+		<p>E&rsquo;en thus the cook bestirs him, with his grooms,</p>
 		<p>To thrust the flesh into the caldron down</p>
 		<p>With flesh-hooks, that it float not on the top.</p>
-		</div>
-		<div class="stanza">
-		<p>Me then my guide bespake: &ldquo;Lest they descry,</p>
+		<p class="slindent">Me then my guide bespake: &ldquo;Lest they descry,</p>
 		<p>That thou art here, behind a craggy rock</p>
 		<p>Bend low and screen thee; and whate&rsquo;er of force</p>
 		<p>Be offer&rsquo;d me, or insult, fear thou not:</p>
@@ -3320,57 +2834,43 @@ module.exports = {
 		<p>In the like fray.&rdquo; Beyond the bridge&rsquo;s head</p>
 		<p>Therewith he pass&rsquo;d, and reaching the sixth pier,</p>
 		<p>Behov&rsquo;d him then a forehead terror-proof.</p>
-		</div>
-		<div class="stanza">
-		<p>With storm and fury, as when dogs rush forth</p>
+		<p class="slindent">With storm and fury, as when dogs rush forth</p>
 		<p>Upon the poor man&rsquo;s back, who suddenly</p>
 		<p>From whence he standeth makes his suit; so rush&rsquo;d</p>
 		<p>Those from beneath the arch, and against him</p>
 		<p>Their weapons all they pointed. He aloud:</p>
 		<p>&ldquo;Be none of you outrageous: ere your time</p>
 		<p>Dare seize me, come forth from amongst you one,</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Who having heard my words, decide he then</p>
 		<p>If he shall tear these limbs.&rdquo; They shouted loud,</p>
 		<p>&ldquo;Go, Malacoda!&rdquo; Whereat one advanc&rsquo;d,</p>
 		<p>The others standing firm, and as he came,</p>
 		<p>&ldquo;What may this turn avail him?&rdquo; he exclaim&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Believ&rsquo;st thou, Malacoda! I had come</p>
+		<p class="slindent">&ldquo;Believ&rsquo;st thou, Malacoda! I had come</p>
 		<p>Thus far from all your skirmishing secure,&rdquo;</p>
 		<p>My teacher answered, &ldquo;without will divine</p>
 		<p>And destiny propitious? Pass we then</p>
 		<p>For so Heaven&rsquo;s pleasure is, that I should lead</p>
 		<p>Another through this savage wilderness.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Forthwith so fell his pride, that he let drop</p>
+		<p class="slindent">Forthwith so fell his pride, that he let drop</p>
 		<p>The instrument of torture at his feet,</p>
 		<p>And to the rest exclaim&rsquo;d: &ldquo;We have no power</p>
 		<p>To strike him.&rdquo; Then to me my guide: &ldquo;O thou!</p>
 		<p>Who on the bridge among the crags dost sit</p>
 		<p>Low crouching, safely now to me return.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I rose, and towards him moved with speed: the fiends</p>
+		<p class="slindent">I rose, and towards him moved with speed: the fiends</p>
 		<p>Meantime all forward drew: me terror seiz&rsquo;d</p>
 		<p>Lest they should break the compact they had made.</p>
 		<p>Thus issuing from Caprona, once I saw</p>
 		<p>Th&rsquo; infantry dreading, lest his covenant</p>
 		<p>The foe should break; so close he hemm&rsquo;d them round.</p>
-		</div>
-		<div class="stanza">
-		<p>I to my leader&rsquo;s side adher&rsquo;d, mine eyes</p>
+		<p class="slindent">I to my leader&rsquo;s side adher&rsquo;d, mine eyes</p>
 		<p>With fixt and motionless observance bent</p>
 		<p>On their unkindly visage. They their hooks</p>
 		<p>Protruding, one the other thus bespake:</p>
 		<p>&ldquo;Wilt thou I touch him on the hip?&rdquo; To whom</p>
 		<p>Was answer&rsquo;d: &ldquo;Even so; nor miss thy aim.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>But he, who was in conf&rsquo;rence with my guide,</p>
+		<p class="slindent">But he, who was in conf&rsquo;rence with my guide,</p>
 		<p>Turn&rsquo;d rapid round, and thus the demon spake:</p>
 		<p>&ldquo;Stay, stay thee, Scarmiglione!&rdquo; Then to us</p>
 		<p>He added: &ldquo;Further footing to your step</p>
@@ -3394,9 +2894,7 @@ module.exports = {
 		<p>Search ye around the bubbling tar. For these,</p>
 		<p>In safety lead them, where the other crag</p>
 		<p>Uninterrupted traverses the dens.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then: &ldquo;O master! what a sight is there!</p>
+		<p class="slindent">I then: &ldquo;O master! what a sight is there!</p>
 		<p>Ah! without escort, journey we alone,</p>
 		<p>Which, if thou know the way, I covet not.</p>
 		<p>Unless thy prudence fail thee, dost not mark</p>
@@ -3405,9 +2903,7 @@ module.exports = {
 		<p>&ldquo;I charge thee fear not: let them, as they will,</p>
 		<p>Gnarl on: &rsquo;t is but in token of their spite</p>
 		<p>Against the souls, who mourn in torment steep&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>To leftward o&rsquo;er the pier they turn&rsquo;d; but each</p>
+		<p class="slindent">To leftward o&rsquo;er the pier they turn&rsquo;d; but each</p>
 		<p>Had first between his teeth prest close the tongue,</p>
 		<p>Toward their leader for a signal looking,</p>
 		<p>Which he with sound obscene triumphant gave.</p>
@@ -3415,7 +2911,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXII</p>
 		<div class="stanza">
-		<p>IT hath been heretofore my chance to see</p>
+		<p><span class="sc">It</span> hath been heretofore my chance to see</p>
 		<p>Horsemen with martial order shifting camp,</p>
 		<p>To onset sallying, or in muster rang&rsquo;d,</p>
 		<p>Or in retreat sometimes outstretch&rsquo;d for flight;</p>
@@ -3429,14 +2925,10 @@ module.exports = {
 		<p>To such a strange recorder I beheld,</p>
 		<p>In evolution moving, horse nor foot,</p>
 		<p>Nor ship, that tack&rsquo;d by sign from land or star.</p>
-		</div>
-		<div class="stanza">
-		<p>With the ten demons on our way we went;</p>
+		<p class="slindent">With the ten demons on our way we went;</p>
 		<p>Ah fearful company! but in the church</p>
 		<p>With saints, with gluttons at the tavern&rsquo;s mess.</p>
-		</div>
-		<div class="stanza">
-		<p>Still earnest on the pitch I gaz&rsquo;d, to mark</p>
+		<p class="slindent">Still earnest on the pitch I gaz&rsquo;d, to mark</p>
 		<p>All things whate&rsquo;er the chasm contain&rsquo;d, and those</p>
 		<p>Who burn&rsquo;d within. As dolphins, that, in sign</p>
 		<p>To mariners, heave high their arched backs,</p>
@@ -3444,9 +2936,7 @@ module.exports = {
 		<p>Their threaten&rsquo;d vessels; so, at intervals,</p>
 		<p>To ease the pain his back some sinner show&rsquo;d,</p>
 		<p>Then hid more nimbly than the lightning glance.</p>
-		</div>
-		<div class="stanza">
-		<p>e&rsquo;en as the frogs, that of a wat&rsquo;ry moat</p>
+		<p class="slindent">E&rsquo;en as the frogs, that of a wat&rsquo;ry moat</p>
 		<p>Stand at the brink, with the jaws only out,</p>
 		<p>Their feet and of the trunk all else concealed,</p>
 		<p>Thus on each part the sinners stood, but soon</p>
@@ -3463,9 +2953,7 @@ module.exports = {
 		<p>How one the other call&rsquo;d. &ldquo;O Rubicant!</p>
 		<p>See that his hide thou with thy talons flay,&rdquo;</p>
 		<p>Shouted together all the cursed crew.</p>
-		</div>
-		<div class="stanza">
-		<p>Then I: &ldquo;Inform thee, master! if thou may,</p>
+		<p class="slindent">Then I: &ldquo;Inform thee, master! if thou may,</p>
 		<p>What wretched soul is this, on whom their hand</p>
 		<p>His foes have laid.&rdquo; My leader to his side</p>
 		<p>Approach&rsquo;d, and whence he came inquir&rsquo;d, to whom</p>
@@ -3476,9 +2964,7 @@ module.exports = {
 		<p>The good king Thibault after that I serv&rsquo;d,</p>
 		<p>To peculating here my thoughts were turn&rsquo;d,</p>
 		<p>Whereof I give account in this dire heat.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Straight Ciriatto, from whose mouth a tusk</p>
+		<p class="slindent">Straight Ciriatto, from whose mouth a tusk</p>
 		<p>Issued on either side, as from a boar,</p>
 		<p>Ript him with one of these. &rsquo;Twixt evil claws</p>
 		<p>The mouse had fall&rsquo;n: but Barbariccia cried,</p>
@@ -3493,9 +2979,7 @@ module.exports = {
 		<p>&ldquo;But now from one, who sojourn&rsquo;d not far thence;</p>
 		<p>So were I under shelter now with him!</p>
 		<p>Nor hook nor talon then should scare me more.&rdquo;&mdash;.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Too long we suffer,&rdquo; Libicocco cried,</p>
+		<p class="slindent">&ldquo;Too long we suffer,&rdquo; Libicocco cried,</p>
 		<p>Then, darting forth a prong, seiz&rsquo;d on his arm,</p>
 		<p>And mangled bore away the sinewy part.</p>
 		<p>Him Draghinazzo by his thighs beneath</p>
@@ -3506,9 +2990,7 @@ module.exports = {
 		<p>My teacher thus without delay inquir&rsquo;d:</p>
 		<p>&ldquo;Who was the spirit, from whom by evil hap</p>
 		<p>Parting, as thou has told, thou cam&rsquo;st to shore?&rdquo;&mdash;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;It was the friar Gomita,&rdquo; he rejoin&rsquo;d,</p>
+		<p class="slindent">&ldquo;It was the friar Gomita,&rdquo; he rejoin&rsquo;d,</p>
 		<p>&ldquo;He of Gallura, vessel of all guile,</p>
 		<p>Who had his master&rsquo;s enemies in hand,</p>
 		<p>And us&rsquo;d them so that they commend him well.</p>
@@ -3521,14 +3003,10 @@ module.exports = {
 		<p>Is never weary. Out! alas! behold</p>
 		<p>That other, how he grins! More would I say,</p>
 		<p>But tremble lest he mean to maul me sore.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Their captain then to Farfarello turning,</p>
+		<p class="slindent">Their captain then to Farfarello turning,</p>
 		<p>Who roll&rsquo;d his moony eyes in act to strike,</p>
 		<p>Rebuk&rsquo;d him thus: &ldquo;Off! cursed bird! Avaunt!&rdquo;&mdash;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If ye desire to see or hear,&rdquo; he thus</p>
+		<p class="slindent">&ldquo;If ye desire to see or hear,&rdquo; he thus</p>
 		<p>Quaking with dread resum&rsquo;d, &ldquo;or Tuscan spirits</p>
 		<p>Or Lombard, I will cause them to appear.</p>
 		<p>Meantime let these ill talons bate their fury,</p>
@@ -3537,46 +3015,32 @@ module.exports = {
 		<p>Will for myself but one, make sev&rsquo;n appear,</p>
 		<p>When my shrill whistle shall be heard; for so</p>
 		<p>Our custom is to call each other up.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Cagnazzo at that word deriding grinn&rsquo;d,</p>
+		<p class="slindent">Cagnazzo at that word deriding grinn&rsquo;d,</p>
 		<p>Then wagg&rsquo;d the head and spake: &ldquo;Hear his device,</p>
 		<p>Mischievous as he is, to plunge him down.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Whereto he thus, who fail&rsquo;d not in rich store</p>
+		<p class="slindent">Whereto he thus, who fail&rsquo;d not in rich store</p>
 		<p>Of nice-wove toils; &ldquo;Mischief forsooth extreme,</p>
 		<p>Meant only to procure myself more woe!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>No longer Alichino then refrain&rsquo;d,</p>
+		<p class="slindent">No longer Alichino then refrain&rsquo;d,</p>
 		<p>But thus, the rest gainsaying, him bespake:</p>
 		<p>&ldquo;If thou do cast thee down, I not on foot</p>
 		<p>Will chase thee, but above the pitch will beat</p>
 		<p>My plumes. Quit we the vantage ground, and let</p>
 		<p>The bank be as a shield, that we may see</p>
 		<p>If singly thou prevail against us all.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Now, reader, of new sport expect to hear!</p>
-		</div>
-		<div class="stanza">
-		<p>They each one turn&rsquo;d his eyes to the&rsquo; other shore,</p>
+		<p class="slindent">Now, reader, of new sport expect to hear!</p>
+		<p class="slindent">They each one turn&rsquo;d his eyes to the&rsquo; other shore,</p>
 		<p>He first, who was the hardest to persuade.</p>
 		<p>The spirit of Navarre chose well his time,</p>
 		<p>Planted his feet on land, and at one leap</p>
 		<p>Escaping disappointed their resolve.</p>
-		</div>
-		<div class="stanza">
-		<p>Them quick resentment stung, but him the most,</p>
+		<p class="slindent">Them quick resentment stung, but him the most,</p>
 		<p>Who was the cause of failure; in pursuit</p>
 		<p>He therefore sped, exclaiming; &ldquo;Thou art caught.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>But little it avail&rsquo;d: terror outstripp&rsquo;d</p>
+		<p class="slindent">But little it avail&rsquo;d: terror outstripp&rsquo;d</p>
 		<p>His following flight: the other plung&rsquo;d beneath,</p>
 		<p>And he with upward pinion rais&rsquo;d his breast:</p>
-		<p>e&rsquo;en thus the water-fowl, when she perceives</p>
+		<p>E&rsquo;en thus the water-fowl, when she perceives</p>
 		<p>The falcon near, dives instant down, while he</p>
 		<p>Enrag&rsquo;d and spent retires. That mockery</p>
 		<p>In Calcabrina fury stirr&rsquo;d, who flew</p>
@@ -3585,8 +3049,6 @@ module.exports = {
 		<p>His talons on his comrade. O&rsquo;er the dyke</p>
 		<p>In grapple close they join&rsquo;d; but the&rsquo; other prov&rsquo;d</p>
 		<p>A goshawk able to rend well his foe;</p>
-		</div>
-		<div class="stanza">
 		<p>And in the boiling lake both fell. The heat</p>
 		<p>Was umpire soon between them, but in vain</p>
 		<p>To lift themselves they strove, so fast were glued</p>
@@ -3601,12 +3063,10 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXIII</p>
 		<div class="stanza">
-		<p>IN silence and in solitude we went,</p>
+		<p><span class="sc">In</span> silence and in solitude we went,</p>
 		<p>One first, the other following his steps,</p>
 		<p>As minor friars journeying on their road.</p>
-		</div>
-		<div class="stanza">
-		<p>The present fray had turn&rsquo;d my thoughts to muse</p>
+		<p class="slindent">The present fray had turn&rsquo;d my thoughts to muse</p>
 		<p>Upon old Aesop&rsquo;s fable, where he told</p>
 		<p>What fate unto the mouse and frog befell.</p>
 		<p>For language hath not sounds more like in sense,</p>
@@ -3621,20 +3081,14 @@ module.exports = {
 		<p>Be to their evil will conjoin&rsquo;d, more fell</p>
 		<p>They shall pursue us, than the savage hound</p>
 		<p>Snatches the leveret, panting &rsquo;twixt his jaws.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Already I perceiv&rsquo;d my hair stand all</p>
+		<p class="slindent">Already I perceiv&rsquo;d my hair stand all</p>
 		<p>On end with terror, and look&rsquo;d eager back.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Teacher,&rdquo; I thus began, &ldquo;if speedily</p>
+		<p class="slindent">&ldquo;Teacher,&rdquo; I thus began, &ldquo;if speedily</p>
 		<p>Thyself and me thou hide not, much I dread</p>
 		<p>Those evil talons. Even now behind</p>
 		<p>They urge us: quick imagination works</p>
 		<p>So forcibly, that I already feel them.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He answer&rsquo;d: &ldquo;Were I form&rsquo;d of leaded glass,</p>
+		<p class="slindent">He answer&rsquo;d: &ldquo;Were I form&rsquo;d of leaded glass,</p>
 		<p>I should not sooner draw unto myself</p>
 		<p>Thy outward image, than I now imprint</p>
 		<p>That from within. This moment came thy thoughts</p>
@@ -3644,9 +3098,7 @@ module.exports = {
 		<p>Incline so much, that we may thence descend</p>
 		<p>Into the other chasm, we shall escape</p>
 		<p>Secure from this imagined pursuit.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He had not spoke his purpose to the end,</p>
+		<p class="slindent">He had not spoke his purpose to the end,</p>
 		<p>When I from far beheld them with spread wings</p>
 		<p>Approach to take us. Suddenly my guide</p>
 		<p>Caught me, ev&rsquo;n as a mother that from sleep</p>
@@ -3657,24 +3109,18 @@ module.exports = {
 		<p>Clings round her limbs. Down from the jutting beach</p>
 		<p>Supine he cast him, to that pendent rock,</p>
 		<p>Which closes on one part the other chasm.</p>
-		</div>
-		<div class="stanza">
-		<p>Never ran water with such hurrying pace</p>
+		<p class="slindent">Never ran water with such hurrying pace</p>
 		<p>Adown the tube to turn a landmill&rsquo;s wheel,</p>
 		<p>When nearest it approaches to the spokes,</p>
 		<p>As then along that edge my master ran,</p>
 		<p>Carrying me in his bosom, as a child,</p>
 		<p>Not a companion. Scarcely had his feet</p>
 		<p>Reach&rsquo;d to the lowest of the bed beneath,</p>
-		</div>
-		<div class="stanza">
 		<p>When over us the steep they reach&rsquo;d; but fear</p>
 		<p>In him was none; for that high Providence,</p>
 		<p>Which plac&rsquo;d them ministers of the fifth foss,</p>
 		<p>Power of departing thence took from them all.</p>
-		</div>
-		<div class="stanza">
-		<p>There in the depth we saw a painted tribe,</p>
+		<p class="slindent">There in the depth we saw a painted tribe,</p>
 		<p>Who pac&rsquo;d with tardy steps around, and wept,</p>
 		<p>Faint in appearance and o&rsquo;ercome with toil.</p>
 		<p>Caps had they on, with hoods, that fell low down</p>
@@ -3684,50 +3130,34 @@ module.exports = {
 		<p>But leaden all within, and of such weight,</p>
 		<p>That Frederick&rsquo;s compar&rsquo;d to these were straw.</p>
 		<p>Oh, everlasting wearisome attire!</p>
-		</div>
-		<div class="stanza">
-		<p>We yet once more with them together turn&rsquo;d</p>
+		<p class="slindent">We yet once more with them together turn&rsquo;d</p>
 		<p>To leftward, on their dismal moan intent.</p>
 		<p>But by the weight oppress&rsquo;d, so slowly came</p>
 		<p>The fainting people, that our company</p>
 		<p>Was chang&rsquo;d at every movement of the step.</p>
-		</div>
-		<div class="stanza">
-		<p>Whence I my guide address&rsquo;d: &ldquo;See that thou find</p>
+		<p class="slindent">Whence I my guide address&rsquo;d: &ldquo;See that thou find</p>
 		<p>Some spirit, whose name may by his deeds be known,</p>
 		<p>And to that end look round thee as thou go&rsquo;st.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then one, who understood the Tuscan voice,</p>
+		<p class="slindent">Then one, who understood the Tuscan voice,</p>
 		<p>Cried after us aloud: &ldquo;Hold in your feet,</p>
 		<p>Ye who so swiftly speed through the dusk air.</p>
 		<p>Perchance from me thou shalt obtain thy wish.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Whereat my leader, turning, me bespake:</p>
+		<p class="slindent">Whereat my leader, turning, me bespake:</p>
 		<p>&ldquo;Pause, and then onward at their pace proceed.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I staid, and saw two Spirits in whose look</p>
+		<p class="slindent">I staid, and saw two Spirits in whose look</p>
 		<p>Impatient eagerness of mind was mark&rsquo;d</p>
 		<p>To overtake me; but the load they bare</p>
 		<p>And narrow path retarded their approach.</p>
-		</div>
-		<div class="stanza">
-		<p>Soon as arriv&rsquo;d, they with an eye askance</p>
+		<p class="slindent">Soon as arriv&rsquo;d, they with an eye askance</p>
 		<p>Perus&rsquo;d me, but spake not: then turning each</p>
 		<p>To other thus conferring said: &ldquo;This one</p>
 		<p>Seems, by the action of his throat, alive.</p>
 		<p>And, be they dead, what privilege allows</p>
 		<p>They walk unmantled by the cumbrous stole?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then thus to me: &ldquo;Tuscan, who visitest</p>
+		<p class="slindent">Then thus to me: &ldquo;Tuscan, who visitest</p>
 		<p>The college of the mourning hypocrites,</p>
 		<p>Disdain not to instruct us who thou art.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;By Arno&rsquo;s pleasant stream,&rdquo; I thus replied,</p>
+		<p class="slindent">&ldquo;By Arno&rsquo;s pleasant stream,&rdquo; I thus replied,</p>
 		<p>&ldquo;In the great city I was bred and grew,</p>
 		<p>And wear the body I have ever worn.</p>
 		<p>but who are ye, from whom such mighty grief,</p>
@@ -3743,16 +3173,12 @@ module.exports = {
 		<p>A single and indifferent arbiter,</p>
 		<p>To reconcile their strifes. How there we sped,</p>
 		<p>Gardingo&rsquo;s vicinage can best declare.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O friars!&rdquo; I began, &ldquo;your miseries&mdash;&rdquo;</p>
+		<p class="slindent">&ldquo;O friars!&rdquo; I began, &ldquo;your miseries&mdash;&rdquo;</p>
 		<p>But there brake off, for one had caught my eye,</p>
 		<p>Fix&rsquo;d to a cross with three stakes on the ground:</p>
 		<p>He, when he saw me, writh&rsquo;d himself, throughout</p>
 		<p>Distorted, ruffling with deep sighs his beard.</p>
 		<p>And Catalano, who thereof was &rsquo;ware,</p>
-		</div>
-		<div class="stanza">
 		<p>Thus spake: &ldquo;That pierced spirit, whom intent</p>
 		<p>Thou view&rsquo;st, was he who gave the Pharisees</p>
 		<p>Counsel, that it were fitting for one man</p>
@@ -3780,23 +3206,19 @@ module.exports = {
 		<p>Rises below.&rdquo; With head bent down awhile</p>
 		<p>My leader stood, then spake: &ldquo;He warn&rsquo;d us ill,</p>
 		<p>Who yonder hangs the sinners on his hook.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>To whom the friar: At Bologna erst</p>
+		<p class="slindent">To whom the friar: At Bologna erst</p>
 		<p>&ldquo;I many vices of the devil heard,</p>
 		<p>Among the rest was said, &lsquo;He is a liar,</p>
 		<p>And the father of lies!&rsquo;&nbsp;&rdquo; When he had spoke,</p>
 		<p>My leader with large strides proceeded on,</p>
 		<p>Somewhat disturb&rsquo;d with anger in his look.</p>
-		</div>
-		<div class="stanza">
-		<p>I therefore left the spirits heavy laden,</p>
+		<p class="slindent">I therefore left the spirits heavy laden,</p>
 		<p>And following, his beloved footsteps mark&rsquo;d.</p>
 		</div>`,
 
 		`<p class="cantohead">Canto XXIV</p>
 		<div class="stanza">
-		<p>IN the year&rsquo;s early nonage, when the sun</p>
+		<p><span class="sc">In</span> the year&rsquo;s early nonage, when the sun</p>
 		<p>Tempers his tresses in Aquarius&rsquo; urn,</p>
 		<p>And now towards equal day the nights recede,</p>
 		<p>When as the rime upon the earth puts on</p>
@@ -3836,15 +3258,11 @@ module.exports = {
 		<p>Inclining of the nethermost abyss,</p>
 		<p>The site of every valley hence requires,</p>
 		<p>That one side upward slope, the other fall.</p>
-		</div>
-		<div class="stanza">
-		<p>At length the point of our descent we reach&rsquo;d</p>
+		<p class="slindent">At length the point of our descent we reach&rsquo;d</p>
 		<p>From the last flag: soon as to that arriv&rsquo;d,</p>
 		<p>So was the breath exhausted from my lungs,</p>
 		<p>I could no further, but did seat me there.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Now needs thy best of man;&rdquo; so spake my guide:</p>
+		<p class="slindent">&ldquo;Now needs thy best of man;&rdquo; so spake my guide:</p>
 		<p>&ldquo;For not on downy plumes, nor under shade</p>
 		<p>Of canopy reposing, fame is won,</p>
 		<p>Without which whosoe&rsquo;er consumes his days</p>
@@ -3857,9 +3275,7 @@ module.exports = {
 		<p>A longer ladder yet remains to scale.</p>
 		<p>From these to have escap&rsquo;d sufficeth not.</p>
 		<p>If well thou note me, profit by my words.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I straightway rose, and show&rsquo;d myself less spent</p>
+		<p class="slindent">I straightway rose, and show&rsquo;d myself less spent</p>
 		<p>Than I in truth did feel me. &ldquo;On,&rdquo; I cried,</p>
 		<p>&ldquo;For I am stout and fearless.&rdquo; Up the rock</p>
 		<p>Our way we held, more rugged than before,</p>
@@ -3878,9 +3294,7 @@ module.exports = {
 		<p>Beneath, and naught discern.&rdquo;&mdash;&ldquo;I answer not,&rdquo;</p>
 		<p>Said he, &ldquo;but by the deed. To fair request</p>
 		<p>Silent performance maketh best return.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>We from the bridge&rsquo;s head descended, where</p>
+		<p class="slindent">We from the bridge&rsquo;s head descended, where</p>
 		<p>To the eighth mound it joins, and then the chasm</p>
 		<p>Opening to view, I saw a crowd within</p>
 		<p>Of serpents terrible, so strange of shape</p>
@@ -3892,9 +3306,7 @@ module.exports = {
 		<p>Or in such numbers swarming ne&rsquo;er she shew&rsquo;d,</p>
 		<p>Not with all Ethiopia, and whate&rsquo;er</p>
 		<p>Above the Erythraean sea is spawn&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>Amid this dread exuberance of woe</p>
+		<p class="slindent">Amid this dread exuberance of woe</p>
 		<p>Ran naked spirits wing&rsquo;d with horrid fear,</p>
 		<p>Nor hope had they of crevice where to hide,</p>
 		<p>Or heliotrope to charm them out of view.</p>
@@ -3922,9 +3334,7 @@ module.exports = {
 		<p>Bewilder&rsquo;d with the monstrous agony</p>
 		<p>He hath endur&rsquo;d, and wildly staring sighs;</p>
 		<p>So stood aghast the sinner when he rose.</p>
-		</div>
-		<div class="stanza">
-		<p>Oh! how severe God&rsquo;s judgment, that deals out</p>
+		<p class="slindent">Oh! how severe God&rsquo;s judgment, that deals out</p>
 		<p>Such blows in stormy vengeance! Who he was</p>
 		<p>My teacher next inquir&rsquo;d, and thus in few</p>
 		<p>He answer&rsquo;d: &ldquo;Vanni Fucci am I call&rsquo;d,</p>
@@ -3932,14 +3342,10 @@ module.exports = {
 		<p>To this dire gullet. Me the beastial life</p>
 		<p>And not the human pleas&rsquo;d, mule that I was,</p>
 		<p>Who in Pistoia found my worthy den.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I then to Virgil: &ldquo;Bid him stir not hence,</p>
+		<p class="slindent">I then to Virgil: &ldquo;Bid him stir not hence,</p>
 		<p>And ask what crime did thrust him hither: once</p>
 		<p>A man I knew him choleric and bloody.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>The sinner heard and feign&rsquo;d not, but towards me</p>
+		<p class="slindent">The sinner heard and feign&rsquo;d not, but towards me</p>
 		<p>His mind directing and his face, wherein</p>
 		<p>Was dismal shame depictur&rsquo;d, thus he spake:</p>
 		<p>&ldquo;It grieves me more to have been caught by thee</p>
@@ -3966,7 +3372,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXV</p>
 		<div class="stanza">
-		<p>WHEN he had spoke, the sinner rais&rsquo;d his hands</p>
+		<p><span class="sc">When</span> he had spoke, the sinner rais&rsquo;d his hands</p>
 		<p>Pointed in mockery, and cried: &ldquo;Take them, God!</p>
 		<p>I level them at thee!&rdquo; From that day forth</p>
 		<p>The serpents were my friends; for round his neck</p>
@@ -3974,9 +3380,7 @@ module.exports = {
 		<p>&ldquo;Be silent, tongue!&rdquo; Another to his arms</p>
 		<p>Upgliding, tied them, riveting itself</p>
 		<p>So close, it took from them the power to move.</p>
-		</div>
-		<div class="stanza">
-		<p>Pistoia! Ah Pistoia! why dost doubt</p>
+		<p class="slindent">Pistoia! Ah Pistoia! why dost doubt</p>
 		<p>To turn thee into ashes, cumb&rsquo;ring earth</p>
 		<p>No longer, since in evil act so far</p>
 		<p>Thou hast outdone thy seed? I did not mark,</p>
@@ -3999,9 +3403,7 @@ module.exports = {
 		<p>His felon deeds their end, beneath the mace</p>
 		<p>Of stout Alcides, that perchance laid on</p>
 		<p>A hundred blows, and not the tenth was felt.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>While yet he spake, the centaur sped away:</p>
+		<p class="slindent">While yet he spake, the centaur sped away:</p>
 		<p>And under us three spirits came, of whom</p>
 		<p>Nor I nor he was ware, till they exclaim&rsquo;d;</p>
 		<p>&ldquo;Say who are ye?&rdquo; We then brake off discourse,</p>
@@ -4031,8 +3433,6 @@ module.exports = {
 		<p>And the clean white expires. The other two</p>
 		<p>Look&rsquo;d on exclaiming: &ldquo;Ah, how dost thou change,</p>
 		<p>Agnello! See! Thou art nor double now,</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Nor only one.&rdquo; The two heads now became</p>
 		<p>One, and two figures blended in one form</p>
 		<p>Appear&rsquo;d, where both were lost. Of the four lengths</p>
@@ -4056,9 +3456,7 @@ module.exports = {
 		<p>He ey&rsquo;d the serpent, and the serpent him.</p>
 		<p>One from the wound, the other from the mouth</p>
 		<p>Breath&rsquo;d a thick smoke, whose vap&rsquo;ry columns join&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>Lucan in mute attention now may hear,</p>
+		<p class="slindent">Lucan in mute attention now may hear,</p>
 		<p>Nor thy disastrous fate, Sabellus! tell,</p>
 		<p>Nor shine, Nasidius! Ovid now be mute.</p>
 		<p>What if in warbling fiction he record</p>
@@ -4105,16 +3503,12 @@ module.exports = {
 		<p>His new-grown shoulders on him, and in few</p>
 		<p>Thus to another spake: &ldquo;Along this path</p>
 		<p>Crawling, as I have done, speed Buoso now!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>So saw I fluctuate in successive change</p>
+		<p class="slindent">So saw I fluctuate in successive change</p>
 		<p>Th&rsquo; unsteady ballast of the seventh hold:</p>
 		<p>And here if aught my tongue have swerv&rsquo;d, events</p>
 		<p>So strange may be its warrant. O&rsquo;er mine eyes</p>
 		<p>Confusion hung, and on my thoughts amaze.</p>
-		</div>
-		<div class="stanza">
-		<p>Yet &rsquo;scap&rsquo;d they not so covertly, but well</p>
+		<p class="slindent">Yet &rsquo;scap&rsquo;d they not so covertly, but well</p>
 		<p>I mark&rsquo;d Sciancato: he alone it was</p>
 		<p>Of the three first that came, who chang&rsquo;d not: thou,</p>
 		<p>The other&rsquo;s fate, Gaville, still dost rue.</p>
@@ -4122,41 +3516,33 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXVI</p>
 		<div class="stanza">
-		<p>FLORENCE exult! for thou so mightily</p>
+		<p><span class="sc">Florence</span> exult! for thou so mightily</p>
 		<p>Hast thriven, that o&rsquo;er land and sea thy wings</p>
 		<p>Thou beatest, and thy name spreads over hell!</p>
 		<p>Among the plund&rsquo;rers such the three I found</p>
 		<p>Thy citizens, whence shame to me thy son,</p>
 		<p>And no proud honour to thyself redounds.</p>
-		</div>
-		<div class="stanza">
-		<p>But if our minds, when dreaming near the dawn,</p>
+		<p class="slindent">But if our minds, when dreaming near the dawn,</p>
 		<p>Are of the truth presageful, thou ere long</p>
 		<p>Shalt feel what Prato, (not to say the rest)</p>
 		<p>Would fain might come upon thee; and that chance</p>
 		<p>Were in good time, if it befell thee now.</p>
 		<p>Would so it were, since it must needs befall!</p>
 		<p>For as time wears me, I shall grieve the more.</p>
-		</div>
-		<div class="stanza">
-		<p>We from the depth departed; and my guide</p>
+		<p class="slindent">We from the depth departed; and my guide</p>
 		<p>Remounting scal&rsquo;d the flinty steps, which late</p>
 		<p>We downward trac&rsquo;d, and drew me up the steep.</p>
 		<p>Pursuing thus our solitary way</p>
 		<p>Among the crags and splinters of the rock,</p>
 		<p>Sped not our feet without the help of hands.</p>
-		</div>
-		<div class="stanza">
-		<p>Then sorrow seiz&rsquo;d me, which e&rsquo;en now revives,</p>
+		<p class="slindent">Then sorrow seiz&rsquo;d me, which e&rsquo;en now revives,</p>
 		<p>As my thought turns again to what I saw,</p>
 		<p>And, more than I am wont, I rein and curb</p>
 		<p>The powers of nature in me, lest they run</p>
 		<p>Where Virtue guides not; that if aught of good</p>
 		<p>My gentle star, or something better gave me,</p>
 		<p>I envy not myself the precious boon.</p>
-		</div>
-		<div class="stanza">
-		<p>As in that season, when the sun least veils</p>
+		<p class="slindent">As in that season, when the sun least veils</p>
 		<p>His face that lightens all, what time the fly</p>
 		<p>Gives way to the shrill gnat, the peasant then</p>
 		<p>Upon some cliff reclin&rsquo;d, beneath him sees</p>
@@ -4170,17 +3556,13 @@ module.exports = {
 		<p>Rais&rsquo;d their steep flight for heav&rsquo;n; his eyes meanwhile,</p>
 		<p>Straining pursu&rsquo;d them, till the flame alone</p>
 		<p>Upsoaring like a misty speck he kenn&rsquo;d;</p>
-		<p>e&rsquo;en thus along the gulf moves every flame,</p>
+		<p>E&rsquo;en thus along the gulf moves every flame,</p>
 		<p>A sinner so enfolded close in each,</p>
 		<p>That none exhibits token of the theft.</p>
-		</div>
-		<div class="stanza">
-		<p>Upon the bridge I forward bent to look,</p>
+		<p class="slindent">Upon the bridge I forward bent to look,</p>
 		<p>And grasp&rsquo;d a flinty mass, or else had fall&rsquo;n,</p>
 		<p>Though push&rsquo;d not from the height. The guide, who mark&rsquo;d</p>
 		<p>How I did gaze attentive, thus began:</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Within these ardours are the spirits, each</p>
 		<p>Swath&rsquo;d in confining fire.&rdquo;&mdash;&ldquo;Master, thy word,&rdquo;</p>
 		<p>I answer&rsquo;d, &ldquo;hath assur&rsquo;d me; yet I deem&rsquo;d</p>
@@ -4205,16 +3587,12 @@ module.exports = {
 		<p>In repetition urg&rsquo;d, that thou vouchsafe</p>
 		<p>To pause, till here the horned flame arrive.</p>
 		<p>See, how toward it with desire I bend.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus: &ldquo;Thy prayer is worthy of much praise,</p>
+		<p class="slindent">He thus: &ldquo;Thy prayer is worthy of much praise,</p>
 		<p>And I accept it therefore: but do thou</p>
 		<p>Thy tongue refrain: to question them be mine,</p>
 		<p>For I divine thy wish: and they perchance,</p>
 		<p>For they were Greeks, might shun discourse with thee.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>When there the flame had come, where time and place</p>
+		<p class="slindent">When there the flame had come, where time and place</p>
 		<p>Seem&rsquo;d fitting to my guide, he thus began:</p>
 		<p>&ldquo;O ye, who dwell two spirits in one fire!</p>
 		<p>If living I of you did merit aught,</p>
@@ -4222,9 +3600,7 @@ module.exports = {
 		<p>When in the world my lofty strain I pour&rsquo;d,</p>
 		<p>Move ye not on, till one of you unfold</p>
 		<p>In what clime death o&rsquo;ertook him self-destroy&rsquo;d.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Of the old flame forthwith the greater horn</p>
+		<p class="slindent">Of the old flame forthwith the greater horn</p>
 		<p>Began to roll, murmuring, as a fire</p>
 		<p>That labours with the wind, then to and fro</p>
 		<p>Wagging the top, as a tongue uttering sounds,</p>
@@ -4249,8 +3625,6 @@ module.exports = {
 		<p>The bound&rsquo;ries not to be o&rsquo;erstepp&rsquo;d by man.</p>
 		<p>The walls of Seville to my right I left,</p>
 		<p>On the&rsquo; other hand already Ceuta past.</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;O brothers!&rdquo; I began, &ldquo;who to the west</p>
 		<p>Through perils without number now have reach&rsquo;d,</p>
 		<p>To this the short remaining watch, that yet</p>
@@ -4281,14 +3655,12 @@ module.exports = {
 
 		`<p class="cantohead">Canto XVII</p>
 		<div class="stanza">
-		<p>NOW upward rose the flame, and still&rsquo;d its light</p>
+		<p><span class="sc">Now</span> upward rose the flame, and still&rsquo;d its light</p>
 		<p>To speak no more, and now pass&rsquo;d on with leave</p>
 		<p>From the mild poet gain&rsquo;d, when following came</p>
 		<p>Another, from whose top a sound confus&rsquo;d,</p>
 		<p>Forth issuing, drew our eyes that way to look.</p>
-		</div>
-		<div class="stanza">
-		<p>As the Sicilian bull, that rightfully</p>
+		<p class="slindent">As the Sicilian bull, that rightfully</p>
 		<p>His cries first echoed, who had shap&rsquo;d its mould,</p>
 		<p>Did so rebellow, with the voice of him</p>
 		<p>Tormented, that the brazen monster seem&rsquo;d</p>
@@ -4300,9 +3672,7 @@ module.exports = {
 		<p>Their motion at the tongue, these sounds we heard:</p>
 		<p>&ldquo;O thou! to whom I now direct my voice!</p>
 		<p>That lately didst exclaim in Lombard phrase,</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Depart thou, I solicit thee no more,</p>
+		<p class="slindent">&ldquo;Depart thou, I solicit thee no more,</p>
 		<p>Though somewhat tardy I perchance arrive</p>
 		<p>Let it not irk thee here to pause awhile,</p>
 		<p>And with me parley: lo! it irks not me</p>
@@ -4313,15 +3683,11 @@ module.exports = {
 		<p>Have peace or war. For of the mountains there</p>
 		<p>Was I, betwixt Urbino and the height,</p>
 		<p>Whence Tyber first unlocks his mighty flood.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Leaning I listen&rsquo;d yet with heedful ear,</p>
+		<p class="slindent">Leaning I listen&rsquo;d yet with heedful ear,</p>
 		<p>When, as he touch&rsquo;d my side, the leader thus:</p>
 		<p>&ldquo;Speak thou: he is a Latian.&rdquo; My reply</p>
 		<p>Was ready, and I spake without delay:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O spirit! who art hidden here below!</p>
+		<p class="slindent">&ldquo;O spirit! who art hidden here below!</p>
 		<p>Never was thy Romagna without war</p>
 		<p>In her proud tyrants&rsquo; bosoms, nor is now:</p>
 		<p>But open war there left I none. The state,</p>
@@ -4331,28 +3697,20 @@ module.exports = {
 		<p>O&rsquo;ershadows Cervia. The green talons grasp</p>
 		<p>The land, that stood erewhile the proof so long,</p>
 		<p>And pil&rsquo;d in bloody heap the host of France.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The&rsquo; old mastiff of Verruchio and the young,</p>
+		<p class="slindent">&ldquo;The&rsquo; old mastiff of Verruchio and the young,</p>
 		<p>That tore Montagna in their wrath, still make,</p>
 		<p>Where they are wont, an augre of their fangs.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Lamone&rsquo;s city and Santerno&rsquo;s range</p>
+		<p class="slindent">&ldquo;Lamone&rsquo;s city and Santerno&rsquo;s range</p>
 		<p>Under the lion of the snowy lair.</p>
 		<p>Inconstant partisan! that changeth sides,</p>
 		<p>Or ever summer yields to winter&rsquo;s frost.</p>
 		<p>And she, whose flank is wash&rsquo;d of Savio&rsquo;s wave,</p>
 		<p>As &rsquo;twixt the level and the steep she lies,</p>
 		<p>Lives so &rsquo;twixt tyrant power and liberty.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Now tell us, I entreat thee, who art thou?</p>
+		<p class="slindent">&ldquo;Now tell us, I entreat thee, who art thou?</p>
 		<p>Be not more hard than others. In the world,</p>
 		<p>So may thy name still rear its forehead high.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then roar&rsquo;d awhile the fire, its sharpen&rsquo;d point</p>
+		<p class="slindent">Then roar&rsquo;d awhile the fire, its sharpen&rsquo;d point</p>
 		<p>On either side wav&rsquo;d, and thus breath&rsquo;d at last:</p>
 		<p>&ldquo;If I did think, my answer were to one,</p>
 		<p>Who ever could return unto the world,</p>
@@ -4360,9 +3718,7 @@ module.exports = {
 		<p>If true be told me, any from this depth</p>
 		<p>Has found his upward way, I answer thee,</p>
 		<p>Nor fear lest infamy record the words.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;A man of arms at first, I cloth&rsquo;d me then</p>
+		<p class="slindent">&ldquo;A man of arms at first, I cloth&rsquo;d me then</p>
 		<p>In good Saint Francis&rsquo; girdle, hoping so</p>
 		<p>T&rsquo; have made amends. And certainly my hope</p>
 		<p>Had fail&rsquo;d not, but that he, whom curses light on,</p>
@@ -4400,17 +3756,13 @@ module.exports = {
 		<p>Heav&rsquo;n, as thou knowest, I have power to shut</p>
 		<p>And open: and the keys are therefore twain,</p>
 		<p>The which my predecessor meanly priz&rsquo;d.&rsquo;&nbsp;&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then, yielding to the forceful arguments,</p>
+		<p class="slindent">Then, yielding to the forceful arguments,</p>
 		<p>Of silence as more perilous I deem&rsquo;d,</p>
 		<p>And answer&rsquo;d: &ldquo;Father! since thou washest me</p>
 		<p>Clear of that guilt wherein I now must fall,</p>
 		<p>Large promise with performance scant, be sure,</p>
 		<p>Shall make thee triumph in thy lofty seat.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;When I was number&rsquo;d with the dead, then came</p>
+		<p class="slindent">&ldquo;When I was number&rsquo;d with the dead, then came</p>
 		<p>Saint Francis for me; but a cherub dark</p>
 		<p>He met, who cried: &lsquo;Wrong me not; he is mine,</p>
 		<p>And must below to join the wretched crew,</p>
@@ -4428,9 +3780,7 @@ module.exports = {
 		<p>&ldquo;This is a guilty soul, that in the fire</p>
 		<p>Must vanish. Hence perdition-doom&rsquo;d I rove</p>
 		<p>A prey to rankling sorrow in this garb.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>When he had thus fulfill&rsquo;d his words, the flame</p>
+		<p class="slindent">When he had thus fulfill&rsquo;d his words, the flame</p>
 		<p>In dolour parted, beating to and fro,</p>
 		<p>And writhing its sharp horn. We onward went,</p>
 		<p>I and my leader, up along the rock,</p>
@@ -4441,7 +3791,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXVIII</p>
 		<div class="stanza">
-		<p>WHO, e&rsquo;en in words unfetter&rsquo;d, might at full</p>
+		<p><span class="sc">Who</span>, e&rsquo;en in words unfetter&rsquo;d, might at full</p>
 		<p>Tell of the wounds and blood that now I saw,</p>
 		<p>Though he repeated oft the tale? No tongue</p>
 		<p>So vast a theme could equal, speech and thought</p>
@@ -4468,13 +3818,9 @@ module.exports = {
 		<p>Dangling his entrails hung, the midriff lay</p>
 		<p>Open to view, and wretched ventricle,</p>
 		<p>That turns th&rsquo; englutted aliment to dross.</p>
-		</div>
-		<div class="stanza">
-		<p>Whilst eagerly I fix on him my gaze,</p>
+		<p class="slindent">Whilst eagerly I fix on him my gaze,</p>
 		<p>He ey&rsquo;d me, with his hands laid his breast bare,</p>
 		<p>And cried; &ldquo;Now mark how I do rip me! lo!</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;How is Mohammed mangled! before me</p>
 		<p>Walks Ali weeping, from the chin his face</p>
 		<p>Cleft to the forelock; and the others all</p>
@@ -4493,9 +3839,7 @@ module.exports = {
 		<p>Full trial of your state, I who am dead</p>
 		<p>Must through the depths of hell, from orb to orb,</p>
 		<p>Conduct him. Trust my words, for they are true.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>More than a hundred spirits, when that they heard,</p>
+		<p class="slindent">More than a hundred spirits, when that they heard,</p>
 		<p>Stood in the foss to mark me, through amazed,</p>
 		<p>Forgetful of their pangs. &ldquo;Thou, who perchance</p>
 		<p>Shalt shortly view the sun, this warning thou</p>
@@ -4507,7 +3851,7 @@ module.exports = {
 		<p>For stepping, spake Mohammed, on the ground</p>
 		<p>Then fix&rsquo;d it to depart. Another shade,</p>
 		<p>Pierc&rsquo;d in the throat, his nostrils mutilate</p>
-		<p>e&rsquo;en from beneath the eyebrows, and one ear</p>
+		<p>E&rsquo;en from beneath the eyebrows, and one ear</p>
 		<p>Lopt off, who with the rest through wonder stood</p>
 		<p>Gazing, before the rest advanc&rsquo;d, and bar&rsquo;d</p>
 		<p>His wind-pipe, that without was all o&rsquo;ersmear&rsquo;d</p>
@@ -4518,8 +3862,6 @@ module.exports = {
 		<p>Piero of Medicina, if again</p>
 		<p>Returning, thou behold&rsquo;st the pleasant land</p>
 		<p>That from Vercelli slopes to Mercabo;</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;And there instruct the twain, whom Fano boasts</p>
 		<p>Her worthiest sons, Guido and Angelo,</p>
 		<p>That if &rsquo;t is giv&rsquo;n us here to scan aright</p>
@@ -4535,14 +3877,10 @@ module.exports = {
 		<p>To conf&rsquo;rence with him, then so shape his end,</p>
 		<p>That they shall need not &rsquo;gainst Focara&rsquo;s wind</p>
 		<p>Offer up vow nor pray&rsquo;r.&rdquo; I answering thus:</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Declare, as thou dost wish that I above</p>
+		<p class="slindent">&ldquo;Declare, as thou dost wish that I above</p>
 		<p>May carry tidings of thee, who is he,</p>
 		<p>In whom that sight doth wake such sad remembrance?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Forthwith he laid his hand on the cheek-bone</p>
+		<p class="slindent">Forthwith he laid his hand on the cheek-bone</p>
 		<p>Of one, his fellow-spirit, and his jaws</p>
 		<p>Expanding, cried: &ldquo;Lo! this is he I wot of;</p>
 		<p>He speaks not for himself: the outcast this</p>
@@ -4557,12 +3895,8 @@ module.exports = {
 		<p>Of Mosca, too, I who, alas! exclaim&rsquo;d,</p>
 		<p>&rsquo;The deed once done there is an end,&rsquo; that prov&rsquo;d</p>
 		<p>A seed of sorrow to the Tuscan race.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I added: &ldquo;Ay, and death to thine own tribe.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Whence heaping woe on woe he hurried off,</p>
+		<p class="slindent">I added: &ldquo;Ay, and death to thine own tribe.&rdquo;</p>
+		<p class="slindent">Whence heaping woe on woe he hurried off,</p>
 		<p>As one grief stung to madness. But I there</p>
 		<p>Still linger&rsquo;d to behold the troop, and saw</p>
 		<p>Things, such as I may fear without more proof</p>
@@ -4575,14 +3909,10 @@ module.exports = {
 		<p>Of the sad flock pac&rsquo;d onward. By the hair</p>
 		<p>It bore the sever&rsquo;d member, lantern-wise</p>
 		<p>Pendent in hand, which look&rsquo;d at us and said,</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Woe&rsquo;s me!&rdquo; The spirit lighted thus himself,</p>
 		<p>And two there were in one, and one in two.</p>
 		<p>How that may be he knows who ordereth so.</p>
-		</div>
-		<div class="stanza">
-		<p>When at the bridge&rsquo;s foot direct he stood,</p>
+		<p class="slindent">When at the bridge&rsquo;s foot direct he stood,</p>
 		<p>His arm aloft he rear&rsquo;d, thrusting the head</p>
 		<p>Full in our view, that nearer we might hear</p>
 		<p>The words, which thus it utter&rsquo;d: &ldquo;Now behold</p>
@@ -4603,12 +3933,10 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXIX</p>
 		<div class="stanza">
-		<p>SO were mine eyes inebriate with view</p>
+		<p><span class="sc">So</span> were mine eyes inebriate with view</p>
 		<p>Of the vast multitude, whom various wounds</p>
 		<p>Disfigur&rsquo;d, that they long&rsquo;d to stay and weep.</p>
-		</div>
-		<div class="stanza">
-		<p>But Virgil rous&rsquo;d me: &ldquo;What yet gazest on?</p>
+		<p class="slindent">But Virgil rous&rsquo;d me: &ldquo;What yet gazest on?</p>
 		<p>Wherefore doth fasten yet thy sight below</p>
 		<p>Among the maim&rsquo;d and miserable shades?</p>
 		<p>Thou hast not shewn in any chasm beside</p>
@@ -4617,9 +3945,7 @@ module.exports = {
 		<p>Its circuit, and already is the moon</p>
 		<p>Beneath our feet: the time permitted now</p>
 		<p>Is short, and more not seen remains to see.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If thou,&rdquo; I straight replied, &ldquo;hadst weigh&rsquo;d the cause</p>
+		<p class="slindent">&ldquo;If thou,&rdquo; I straight replied, &ldquo;hadst weigh&rsquo;d the cause</p>
 		<p>For which I look&rsquo;d, thou hadst perchance excus&rsquo;d</p>
 		<p>The tarrying still.&rdquo; My leader part pursu&rsquo;d</p>
 		<p>His way, the while I follow&rsquo;d, answering him,</p>
@@ -4627,9 +3953,7 @@ module.exports = {
 		<p>Whereon so fixedly I held my ken,</p>
 		<p>There is a spirit dwells, one of my blood,</p>
 		<p>Wailing the crime that costs him now so dear.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then spake my master: &ldquo;Let thy soul no more</p>
+		<p class="slindent">Then spake my master: &ldquo;Let thy soul no more</p>
 		<p>Afflict itself for him. Direct elsewhere</p>
 		<p>Its thought, and leave him. At the bridge&rsquo;s foot</p>
 		<p>I mark&rsquo;d how he did point with menacing look</p>
@@ -4643,37 +3967,29 @@ module.exports = {
 		<p>Made him contemptuous: therefore, as I think,</p>
 		<p>He pass&rsquo;d me speechless by; and doing so</p>
 		<p>Hath made me more compassionate his fate.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>So we discours&rsquo;d to where the rock first show&rsquo;d</p>
+		<p class="slindent">So we discours&rsquo;d to where the rock first show&rsquo;d</p>
 		<p>The other valley, had more light been there,</p>
-		<p>e&rsquo;en to the lowest depth. Soon as we came</p>
+		<p>E&rsquo;en to the lowest depth. Soon as we came</p>
 		<p>O&rsquo;er the last cloister in the dismal rounds</p>
 		<p>Of Malebolge, and the brotherhood</p>
 		<p>Were to our view expos&rsquo;d, then many a dart</p>
 		<p>Of sore lament assail&rsquo;d me, headed all</p>
 		<p>With points of thrilling pity, that I clos&rsquo;d</p>
 		<p>Both ears against the volley with mine hands.</p>
-		</div>
-		<div class="stanza">
-		<p>As were the torment, if each lazar-house</p>
+		<p class="slindent">As were the torment, if each lazar-house</p>
 		<p>Of Valdichiana, in the sultry time</p>
 		<p>&rsquo;Twixt July and September, with the isle</p>
 		<p>Sardinia and Maremma&rsquo;s pestilent fen,</p>
 		<p>Had heap&rsquo;d their maladies all in one foss</p>
 		<p>Together; such was here the torment: dire</p>
 		<p>The stench, as issuing steams from fester&rsquo;d limbs.</p>
-		</div>
-		<div class="stanza">
-		<p>We on the utmost shore of the long rock</p>
+		<p class="slindent">We on the utmost shore of the long rock</p>
 		<p>Descended still to leftward. Then my sight</p>
 		<p>Was livelier to explore the depth, wherein</p>
 		<p>The minister of the most mighty Lord,</p>
 		<p>All-searching Justice, dooms to punishment</p>
 		<p>The forgers noted on her dread record.</p>
-		</div>
-		<div class="stanza">
-		<p>More rueful was it not methinks to see</p>
+		<p class="slindent">More rueful was it not methinks to see</p>
 		<p>The nation in Aegina droop, what time</p>
 		<p>Each living thing, e&rsquo;en to the little worm,</p>
 		<p>All fell, so full of malice was the air</p>
@@ -4698,39 +4014,29 @@ module.exports = {
 		<p>Of ne&rsquo;er abated pruriency. The crust</p>
 		<p>Came drawn from underneath in flakes, like scales</p>
 		<p>Scrap&rsquo;d from the bream or fish of broader mail.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O thou, who with thy fingers rendest off</p>
+		<p class="slindent">&ldquo;O thou, who with thy fingers rendest off</p>
 		<p>Thy coat of proof,&rdquo; thus spake my guide to one,</p>
 		<p>&ldquo;And sometimes makest tearing pincers of them,</p>
 		<p>Tell me if any born of Latian land</p>
 		<p>Be among these within: so may thy nails</p>
 		<p>Serve thee for everlasting to this toil.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Both are of Latium,&rdquo; weeping he replied,</p>
+		<p class="slindent">&ldquo;Both are of Latium,&rdquo; weeping he replied,</p>
 		<p>&ldquo;Whom tortur&rsquo;d thus thou seest: but who art thou</p>
 		<p>That hast inquir&rsquo;d of us?&rdquo; To whom my guide:</p>
 		<p>&ldquo;One that descend with this man, who yet lives,</p>
 		<p>From rock to rock, and show him hell&rsquo;s abyss.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then started they asunder, and each turn&rsquo;d</p>
+		<p class="slindent">Then started they asunder, and each turn&rsquo;d</p>
 		<p>Trembling toward us, with the rest, whose ear</p>
 		<p>Those words redounding struck. To me my liege</p>
 		<p>Address&rsquo;d him: &ldquo;Speak to them whate&rsquo;er thou list.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>And I therewith began: &ldquo;So may no time</p>
+		<p class="slindent">And I therewith began: &ldquo;So may no time</p>
 		<p>Filch your remembrance from the thoughts of men</p>
 		<p>In th&rsquo; upper world, but after many suns</p>
 		<p>Survive it, as ye tell me, who ye are,</p>
 		<p>And of what race ye come. Your punishment,</p>
 		<p>Unseemly and disgustful in its kind,</p>
 		<p>Deter you not from opening thus much to me.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Arezzo was my dwelling,&rdquo; answer&rsquo;d one,</p>
+		<p class="slindent">&ldquo;Arezzo was my dwelling,&rdquo; answer&rsquo;d one,</p>
 		<p>&ldquo;And me Albero of Sienna brought</p>
 		<p>To die by fire; but that, for which I died,</p>
 		<p>Leads me not here. True is in sport I told him,</p>
@@ -4743,14 +4049,10 @@ module.exports = {
 		<p>But Minos to this chasm last of the ten,</p>
 		<p>For that I practis&rsquo;d alchemy on earth,</p>
 		<p>Has doom&rsquo;d me. Him no subterfuge eludes.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then to the bard I spake: &ldquo;Was ever race</p>
+		<p class="slindent">Then to the bard I spake: &ldquo;Was ever race</p>
 		<p>Light as Sienna&rsquo;s? Sure not France herself</p>
 		<p>Can show a tribe so frivolous and vain.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>The other leprous spirit heard my words,</p>
+		<p class="slindent">The other leprous spirit heard my words,</p>
 		<p>And thus return&rsquo;d: &ldquo;Be Stricca from this charge</p>
 		<p>Exempted, he who knew so temp&rsquo;rately</p>
 		<p>To lay out fortune&rsquo;s gifts; and Niccolo</p>
@@ -4773,7 +4075,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXX</p>
 		<div class="stanza">
-		<p>WHAT time resentment burn&rsquo;d in Juno&rsquo;s breast</p>
+		<p><span class="sc">What</span> time resentment burn&rsquo;d in Juno&rsquo;s breast</p>
 		<p>For Semele against the Theban blood,</p>
 		<p>As more than once in dire mischance was rued,</p>
 		<p>Such fatal frenzy seiz&rsquo;d on Athamas,</p>
@@ -4807,25 +4109,19 @@ module.exports = {
 		<p>He of Arezzo, there left trembling, spake;</p>
 		<p>&ldquo;That sprite of air is Schicchi; in like mood</p>
 		<p>Of random mischief vent he still his spite.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>To whom I answ&rsquo;ring: &ldquo;Oh! as thou dost hope,</p>
+		<p class="slindent">To whom I answ&rsquo;ring: &ldquo;Oh! as thou dost hope,</p>
 		<p>The other may not flesh its jaws on thee,</p>
 		<p>Be patient to inform us, who it is,</p>
 		<p>Ere it speed hence.&rdquo;&mdash;&ldquo;That is the ancient soul</p>
 		<p>Of wretched Myrrha,&rdquo; he replied, &ldquo;who burn&rsquo;d</p>
 		<p>With most unholy flame for her own sire,</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;And a false shape assuming, so perform&rsquo;d</p>
 		<p>The deed of sin; e&rsquo;en as the other there,</p>
 		<p>That onward passes, dar&rsquo;d to counterfeit</p>
 		<p>Donati&rsquo;s features, to feign&rsquo;d testament</p>
 		<p>The seal affixing, that himself might gain,</p>
 		<p>For his own share, the lady of the herd.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>When vanish&rsquo;d the two furious shades, on whom</p>
+		<p class="slindent">When vanish&rsquo;d the two furious shades, on whom</p>
 		<p>Mine eye was held, I turn&rsquo;d it back to view</p>
 		<p>The other cursed spirits. One I saw</p>
 		<p>In fashion like a lute, had but the groin</p>
@@ -4835,9 +4131,7 @@ module.exports = {
 		<p>Suits not the visage, open&rsquo;d wide his lips</p>
 		<p>Gasping as in the hectic man for drought,</p>
 		<p>One towards the chin, the other upward curl&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O ye, who in this world of misery,</p>
+		<p class="slindent">&ldquo;O ye, who in this world of misery,</p>
 		<p>Wherefore I know not, are exempt from pain,&rdquo;</p>
 		<p>Thus he began, &ldquo;attentively regard</p>
 		<p>Adamo&rsquo;s woe. When living, full supply</p>
@@ -4869,9 +4163,7 @@ module.exports = {
 		<p>Than half of one across. They brought me down</p>
 		<p>Among this tribe; induc&rsquo;d by them I stamp&rsquo;d</p>
 		<p>The florens with three carats of alloy.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Who are that abject pair,&rdquo; I next inquir&rsquo;d,</p>
+		<p class="slindent">&ldquo;Who are that abject pair,&rdquo; I next inquir&rsquo;d,</p>
 		<p>&ldquo;That closely bounding thee upon thy right</p>
 		<p>Lie smoking, like a band in winter steep&rsquo;d</p>
 		<p>In the chill stream?&rdquo;&mdash;&ldquo;When to this gulf I dropt,&rdquo;</p>
@@ -4887,32 +4179,22 @@ module.exports = {
 		<p>That like a drum resounded: but forthwith</p>
 		<p>Adamo smote him on the face, the blow</p>
 		<p>Returning with his arm, that seem&rsquo;d as hard.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Though my o&rsquo;erweighty limbs have ta&rsquo;en from me</p>
+		<p class="slindent">&ldquo;Though my o&rsquo;erweighty limbs have ta&rsquo;en from me</p>
 		<p>The power to move,&rdquo; said he, &ldquo;I have an arm</p>
 		<p>At liberty for such employ.&rdquo; To whom</p>
 		<p>Was answer&rsquo;d: &ldquo;When thou wentest to the fire,</p>
 		<p>Thou hadst it not so ready at command,</p>
 		<p>Then readier when it coin&rsquo;d th&rsquo; impostor gold.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>And thus the dropsied: &ldquo;Ay, now speak&rsquo;st thou true.</p>
+		<p class="slindent">And thus the dropsied: &ldquo;Ay, now speak&rsquo;st thou true.</p>
 		<p>But there thou gav&rsquo;st not such true testimony,</p>
 		<p>When thou wast question&rsquo;d of the truth, at Troy.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;If I spake false, thou falsely stamp&rsquo;dst the coin,&rdquo;</p>
+		<p class="slindent">&ldquo;If I spake false, thou falsely stamp&rsquo;dst the coin,&rdquo;</p>
 		<p>Said Sinon; &ldquo;I am here but for one fault,</p>
 		<p>And thou for more than any imp beside.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Remember,&rdquo; he replied, &ldquo;O perjur&rsquo;d one,</p>
+		<p class="slindent">&ldquo;Remember,&rdquo; he replied, &ldquo;O perjur&rsquo;d one,</p>
 		<p>The horse remember, that did teem with death,</p>
 		<p>And all the world be witness to thy guilt.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;To thine,&rdquo; return&rsquo;d the Greek, &ldquo;witness the thirst</p>
+		<p class="slindent">&ldquo;To thine,&rdquo; return&rsquo;d the Greek, &ldquo;witness the thirst</p>
 		<p>Whence thy tongue cracks, witness the fluid mound,</p>
 		<p>Rear&rsquo;d by thy belly up before thine eyes,</p>
 		<p>A mass corrupt.&rdquo; To whom the coiner thus:</p>
@@ -4921,9 +4203,7 @@ module.exports = {
 		<p>Yet I am stuff&rsquo;d with moisture. Thou art parch&rsquo;d,</p>
 		<p>Pains rack thy head, no urging would&rsquo;st thou need</p>
 		<p>To make thee lap Narcissus&rsquo; mirror up.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I was all fix&rsquo;d to listen, when my guide</p>
+		<p class="slindent">I was all fix&rsquo;d to listen, when my guide</p>
 		<p>Admonish&rsquo;d: &ldquo;Now beware: a little more.</p>
 		<p>And I do quarrel with thee.&rdquo; I perceiv&rsquo;d</p>
 		<p>How angrily he spake, and towards him turn&rsquo;d</p>
@@ -4934,9 +4214,7 @@ module.exports = {
 		<p>Such then was I, who wanting power to speak</p>
 		<p>Wish&rsquo;d to excuse myself, and all the while</p>
 		<p>Excus&rsquo;d me, though unweeting that I did.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;More grievous fault than thine has been, less shame,&rdquo;</p>
+		<p class="slindent">&ldquo;More grievous fault than thine has been, less shame,&rdquo;</p>
 		<p>My master cried, &ldquo;might expiate. Therefore cast</p>
 		<p>All sorrow from thy soul; and if again</p>
 		<p>Chance bring thee, where like conference is held,</p>
@@ -4946,14 +4224,12 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXXI</p>
 		<div class="stanza">
-		<p>THE very tongue, whose keen reproof before</p>
+		<p><span class="sc">The</span> very tongue, whose keen reproof before</p>
 		<p>Had wounded me, that either cheek was stain&rsquo;d,</p>
 		<p>Now minister&rsquo;d my cure. So have I heard,</p>
 		<p>Achilles and his father&rsquo;s javelin caus&rsquo;d</p>
 		<p>Pain first, and then the boon of health restor&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>Turning our back upon the vale of woe,</p>
+		<p class="slindent">Turning our back upon the vale of woe,</p>
 		<p>W cross&rsquo;d th&rsquo; encircled mound in silence. There</p>
 		<p>Was twilight dim, that far long the gloom</p>
 		<p>Mine eye advanc&rsquo;d not: but I heard a horn</p>
@@ -4972,34 +4248,26 @@ module.exports = {
 		<p>In thy imagining. Thither arriv&rsquo;d</p>
 		<p>Thou well shalt see, how distance can delude</p>
 		<p>The sense. A little therefore urge thee on.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then tenderly he caught me by the hand;</p>
+		<p class="slindent">Then tenderly he caught me by the hand;</p>
 		<p>&ldquo;Yet know,&rdquo; said he, &ldquo;ere farther we advance,</p>
 		<p>That it less strange may seem, these are not towers,</p>
 		<p>But giants. In the pit they stand immers&rsquo;d,</p>
 		<p>Each from his navel downward, round the bank.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>As when a fog disperseth gradually,</p>
+		<p class="slindent">As when a fog disperseth gradually,</p>
 		<p>Our vision traces what the mist involves</p>
 		<p>Condens&rsquo;d in air; so piercing through the gross</p>
 		<p>And gloomy atmosphere, as more and more</p>
 		<p>We near&rsquo;d toward the brink, mine error fled,</p>
 		<p>And fear came o&rsquo;er me. As with circling round</p>
 		<p>Of turrets, Montereggion crowns his walls,</p>
-		<p>e&rsquo;en thus the shore, encompassing th&rsquo; abyss,</p>
+		<p>E&rsquo;en thus the shore, encompassing th&rsquo; abyss,</p>
 		<p>Was turreted with giants, half their length</p>
 		<p>Uprearing, horrible, whom Jove from heav&rsquo;n</p>
 		<p>Yet threatens, when his mutt&rsquo;ring thunder rolls.</p>
-		</div>
-		<div class="stanza">
-		<p>Of one already I descried the face,</p>
+		<p class="slindent">Of one already I descried the face,</p>
 		<p>Shoulders, and breast, and of the belly huge</p>
 		<p>Great part, and both arms down along his ribs.</p>
-		</div>
-		<div class="stanza">
-		<p>All-teeming nature, when her plastic hand</p>
+		<p class="slindent">All-teeming nature, when her plastic hand</p>
 		<p>Left framing of these monsters, did display</p>
 		<p>Past doubt her wisdom, taking from mad War</p>
 		<p>Such slaves to do his bidding; and if she</p>
@@ -5019,8 +4287,6 @@ module.exports = {
 		<p>&ldquo;Raphel bai ameth sabi almi,&rdquo;</p>
 		<p>So shouted his fierce lips, which sweeter hymns</p>
 		<p>Became not; and my guide address&rsquo;d him thus:</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;O senseless spirit! let thy horn for thee</p>
 		<p>Interpret: therewith vent thy rage, if rage</p>
 		<p>Or other passion wring thee. Search thy neck,</p>
@@ -5032,9 +4298,7 @@ module.exports = {
 		<p>One tongue prevails. But pass we on, nor waste</p>
 		<p>Our words; for so each language is to him,</p>
 		<p>As his to others, understood by none.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then to the leftward turning sped we forth,</p>
+		<p class="slindent">Then to the leftward turning sped we forth,</p>
 		<p>And at a sling&rsquo;s throw found another shade</p>
 		<p>Far fiercer and more huge. I cannot say</p>
 		<p>What master hand had girt him; but he held</p>
@@ -5045,8 +4309,6 @@ module.exports = {
 		<p>Would of his strength against almighty Jove</p>
 		<p>Make trial,&rdquo; said my guide; &ldquo;whence he is thus</p>
 		<p>Requited: Ephialtes him they call.</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Great was his prowess, when the giants brought</p>
 		<p>Fear on the gods: those arms, which then he piled,</p>
 		<p>Now moves he never.&rdquo; Forthwith I return&rsquo;d:</p>
@@ -5066,9 +4328,7 @@ module.exports = {
 		<p>That held him fast. We, straightway journeying on,</p>
 		<p>Came to Antaeus, who five ells complete</p>
 		<p>Without the head, forth issued from the cave.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O thou, who in the fortunate vale, that made</p>
+		<p class="slindent">&ldquo;O thou, who in the fortunate vale, that made</p>
 		<p>Great Scipio heir of glory, when his sword</p>
 		<p>Drove back the troop of Hannibal in flight,</p>
 		<p>Who thence of old didst carry for thy spoil</p>
@@ -5104,7 +4364,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXXII</p>
 		<div class="stanza">
-		<p>COULD I command rough rhimes and hoarse, to suit</p>
+		<p><span class="sc">Could</span> I command rough rhimes and hoarse, to suit</p>
 		<p>That hole of sorrow, o&rsquo;er which ev&rsquo;ry rock</p>
 		<p>His firm abutment rears, then might the vein</p>
 		<p>Of fancy rise full springing: but not mine</p>
@@ -5133,8 +4393,6 @@ module.exports = {
 		<p>O&rsquo;er his still course, nor Tanais far remote</p>
 		<p>Under the chilling sky. Roll&rsquo;d o&rsquo;er that mass</p>
 		<p>Had Tabernich or Pietrapana fall&rsquo;n,</p>
-		</div>
-		<div class="stanza">
 		<p>Not e&rsquo;en its rim had creak&rsquo;d. As peeps the frog</p>
 		<p>Croaking above the wave, what time in dreams</p>
 		<p>The village gleaner oft pursues her toil,</p>
@@ -5143,9 +4401,7 @@ module.exports = {
 		<p>Moving their teeth in shrill note like the stork.</p>
 		<p>His face each downward held; their mouth the cold,</p>
 		<p>Their eyes express&rsquo;d the dolour of their heart.</p>
-		</div>
-		<div class="stanza">
-		<p>A space I look&rsquo;d around, then at my feet</p>
+		<p class="slindent">A space I look&rsquo;d around, then at my feet</p>
 		<p>Saw two so strictly join&rsquo;d, that of their head</p>
 		<p>The very hairs were mingled. &ldquo;Tell me ye,</p>
 		<p>Whose bosoms thus together press,&rdquo; said I,</p>
@@ -5157,9 +4413,7 @@ module.exports = {
 		<p>Plank unto plank hath never cramp clos&rsquo;d up</p>
 		<p>So stoutly. Whence like two enraged goats</p>
 		<p>They clash&rsquo;d together; them such fury seiz&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>And one, from whom the cold both ears had reft,</p>
+		<p class="slindent">And one, from whom the cold both ears had reft,</p>
 		<p>Exclaim&rsquo;d, still looking downward: &ldquo;Why on us</p>
 		<p>Dost speculate so long? If thou wouldst know</p>
 		<p>Who are these two, the valley, whence his wave</p>
@@ -5188,14 +4442,10 @@ module.exports = {
 		<p>If will it were or destiny, or chance,</p>
 		<p>But, passing &rsquo;midst the heads, my foot did strike</p>
 		<p>With violent blow against the face of one.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Wherefore dost bruise me?&rdquo; weeping, he exclaim&rsquo;d,</p>
+		<p class="slindent">&ldquo;Wherefore dost bruise me?&rdquo; weeping, he exclaim&rsquo;d,</p>
 		<p>&ldquo;Unless thy errand be some fresh revenge</p>
 		<p>For Montaperto, wherefore troublest me?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I thus: &ldquo;Instructor, now await me here,</p>
+		<p class="slindent">I thus: &ldquo;Instructor, now await me here,</p>
 		<p>That I through him may rid me of my doubt.</p>
 		<p>Thenceforth what haste thou wilt.&rdquo; The teacher paus&rsquo;d,</p>
 		<p>And to that shade I spake, who bitterly</p>
@@ -5204,28 +4454,18 @@ module.exports = {
 		<p>&ldquo;Now who art thou, that smiting others&rsquo; cheeks</p>
 		<p>Through Antenora roamest, with such force</p>
 		<p>As were past suff&rsquo;rance, wert thou living still?&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;And I am living, to thy joy perchance,&rdquo;</p>
+		<p class="slindent">&ldquo;And I am living, to thy joy perchance,&rdquo;</p>
 		<p>Was my reply, &ldquo;if fame be dear to thee,</p>
 		<p>That with the rest I may thy name enrol.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The contrary of what I covet most,&rdquo;</p>
+		<p class="slindent">&ldquo;The contrary of what I covet most,&rdquo;</p>
 		<p>Said he, &ldquo;thou tender&rsquo;st: hence; nor vex me more.</p>
 		<p>Ill knowest thou to flatter in this vale.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then seizing on his hinder scalp, I cried:</p>
+		<p class="slindent">Then seizing on his hinder scalp, I cried:</p>
 		<p>&ldquo;Name thee, or not a hair shall tarry here.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Rend all away,&rdquo; he answer&rsquo;d, &ldquo;yet for that</p>
+		<p class="slindent">&ldquo;Rend all away,&rdquo; he answer&rsquo;d, &ldquo;yet for that</p>
 		<p>I will not tell nor show thee who I am,</p>
 		<p>Though at my head thou pluck a thousand times.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Now I had grasp&rsquo;d his tresses, and stript off</p>
+		<p class="slindent">Now I had grasp&rsquo;d his tresses, and stript off</p>
 		<p>More than one tuft, he barking, with his eyes</p>
 		<p>Drawn in and downward, when another cried,</p>
 		<p>&ldquo;What ails thee, Bocca? Sound not loud enough</p>
@@ -5244,9 +4484,7 @@ module.exports = {
 		<p>If I misdeem not, Soldanieri bides,</p>
 		<p>With Ganellon, and Tribaldello, him</p>
 		<p>Who op&rsquo;d Faenza when the people slept.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>We now had left him, passing on our way,</p>
+		<p class="slindent">We now had left him, passing on our way,</p>
 		<p>When I beheld two spirits by the ice</p>
 		<p>Pent in one hollow, that the head of one</p>
 		<p>Was cowl unto the other; and as bread</p>
@@ -5255,9 +4493,7 @@ module.exports = {
 		<p>Where the spine joins it. Not more furiously</p>
 		<p>On Menalippus&rsquo; temples Tydeus gnaw&rsquo;d,</p>
 		<p>Than on that skull and on its garbage he.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;O thou who show&rsquo;st so beastly sign of hate</p>
+		<p class="slindent">&ldquo;O thou who show&rsquo;st so beastly sign of hate</p>
 		<p>&rsquo;Gainst him thou prey&rsquo;st on, let me hear,&rdquo; said I</p>
 		<p>&ldquo;The cause, on such condition, that if right</p>
 		<p>Warrant thy grievance, knowing who ye are,</p>
@@ -5268,7 +4504,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXXIII</p>
 		<div class="stanza">
-		<p>HIS jaws uplifting from their fell repast,</p>
+		<p><span class="sc">His</span> jaws uplifting from their fell repast,</p>
 		<p>That sinner wip&rsquo;d them on the hairs o&rsquo; th&rsquo; head,</p>
 		<p>Which he behind had mangled, then began:</p>
 		<p>&ldquo;Thy will obeying, I call up afresh</p>
@@ -5328,8 +4564,6 @@ module.exports = {
 		<p>O&rsquo; th&rsquo; sudden, and cried, &lsquo;Father, we should grieve</p>
 		<p>Far less, if thou wouldst eat of us: thou gav&rsquo;st</p>
 		<p>These weeds of miserable flesh we wear,</p>
-		</div>
-		<div class="stanza">
 		<p>&rsquo;And do thou strip them off from us again.&rsquo;</p>
 		<p>Then, not to make them sadder, I kept down</p>
 		<p>My spirit in stillness. That day and the next</p>
@@ -5340,14 +4574,10 @@ module.exports = {
 		<p>For me, my father!&rsquo; There he died, and e&rsquo;en</p>
 		<p>Plainly as thou seest me, saw I the three</p>
 		<p>Fall one by one &rsquo;twixt the fifth day and sixth:</p>
-		</div>
-		<div class="stanza">
 		<p>&ldquo;Whence I betook me now grown blind to grope</p>
 		<p>Over them all, and for three days aloud</p>
 		<p>Call&rsquo;d on them who were dead. Then fasting got</p>
 		<p>The mastery of grief.&rdquo; Thus having spoke,</p>
-		</div>
-		<div class="stanza">
 		<p>Once more upon the wretched skull his teeth</p>
 		<p>He fasten&rsquo;d, like a mastiff&rsquo;s &rsquo;gainst the bone</p>
 		<p>Firm and unyielding. Oh thou Pisa! shame</p>
@@ -5367,26 +4597,20 @@ module.exports = {
 		<p>Uncapable of guilt. Onward we pass&rsquo;d,</p>
 		<p>Where others skarf&rsquo;d in rugged folds of ice</p>
 		<p>Not on their feet were turn&rsquo;d, but each revers&rsquo;d.</p>
-		</div>
-		<div class="stanza">
-		<p>There very weeping suffers not to weep;</p>
+		<p class="slindent">There very weeping suffers not to weep;</p>
 		<p>For at their eyes grief seeking passage finds</p>
 		<p>Impediment, and rolling inward turns</p>
 		<p>For increase of sharp anguish: the first tears</p>
 		<p>Hang cluster&rsquo;d, and like crystal vizors show,</p>
 		<p>Under the socket brimming all the cup.</p>
-		</div>
-		<div class="stanza">
-		<p>Now though the cold had from my face dislodg&rsquo;d</p>
+		<p class="slindent">Now though the cold had from my face dislodg&rsquo;d</p>
 		<p>Each feeling, as &rsquo;t were callous, yet me seem&rsquo;d</p>
 		<p>Some breath of wind I felt. &ldquo;Whence cometh this,&rdquo;</p>
 		<p>Said I, &ldquo;my master? Is not here below</p>
 		<p>All vapour quench&rsquo;d?&rdquo;&mdash;&ldquo;Thou shalt be speedily,&rdquo;</p>
 		<p>He answer&rsquo;d, &ldquo;where thine eye shall tell thee whence</p>
 		<p>The cause descrying of this airy shower.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>Then cried out one in the chill crust who mourn&rsquo;d:</p>
+		<p class="slindent">Then cried out one in the chill crust who mourn&rsquo;d:</p>
 		<p>&ldquo;O souls so cruel! that the farthest post</p>
 		<p>Hath been assign&rsquo;d you, from this face remove</p>
 		<p>The harden&rsquo;d veil, that I may vent the grief</p>
@@ -5395,9 +4619,7 @@ module.exports = {
 		<p>&ldquo;Say who thou wast, if thou wouldst have mine aid;</p>
 		<p>And if I extricate thee not, far down</p>
 		<p>As to the lowest ice may I descend!&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;The friar Alberigo,&rdquo; answered he,</p>
+		<p class="slindent">&ldquo;The friar Alberigo,&rdquo; answered he,</p>
 		<p>&ldquo;Am I, who from the evil garden pluck&rsquo;d</p>
 		<p>Its fruitage, and am here repaid, the date</p>
 		<p>More luscious for my fig.&rdquo;&mdash;&ldquo;Hah!&rdquo; I exclaim&rsquo;d,</p>
@@ -5418,15 +4640,11 @@ module.exports = {
 		<p>If thou but newly art arriv&rsquo;d below.</p>
 		<p>The years are many that have pass&rsquo;d away,</p>
 		<p>Since to this fastness Branca Doria came.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Now,&rdquo; answer&rsquo;d I, &ldquo;methinks thou mockest me,</p>
+		<p class="slindent">&ldquo;Now,&rdquo; answer&rsquo;d I, &ldquo;methinks thou mockest me,</p>
 		<p>For Branca Doria never yet hath died,</p>
 		<p>But doth all natural functions of a man,</p>
 		<p>Eats, drinks, and sleeps, and putteth raiment on.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>He thus: &ldquo;Not yet unto that upper foss</p>
+		<p class="slindent">He thus: &ldquo;Not yet unto that upper foss</p>
 		<p>By th&rsquo; evil talons guarded, where the pitch</p>
 		<p>Tenacious boils, had Michael Zanche reach&rsquo;d,</p>
 		<p>When this one left a demon in his stead</p>
@@ -5434,9 +4652,7 @@ module.exports = {
 		<p>Who with him treachery wrought. But now put forth</p>
 		<p>Thy hand, and ope mine eyes.&rdquo; I op&rsquo;d them not.</p>
 		<p>Ill manners were best courtesy to him.</p>
-		</div>
-		<div class="stanza">
-		<p>Ah Genoese! men perverse in every way,</p>
+		<p class="slindent">Ah Genoese! men perverse in every way,</p>
 		<p>With every foulness stain&rsquo;d, why from the earth</p>
 		<p>Are ye not cancel&rsquo;d? Such an one of yours</p>
 		<p>I with Romagna&rsquo;s darkest spirit found,</p>
@@ -5447,20 +4663,16 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXXIV</p>
 		<div class="stanza">
-		<p>&ldquo;THE banners of Hell&rsquo;s Monarch do come forth</p>
+		<p>&ldquo;<span class="sc">The</span> banners of Hell&rsquo;s Monarch do come forth</p>
 		<p>Towards us; therefore look,&rdquo; so spake my guide,</p>
 		<p>&ldquo;If thou discern him.&rdquo; As, when breathes a cloud</p>
 		<p>Heavy and dense, or when the shades of night</p>
 		<p>Fall on our hemisphere, seems view&rsquo;d from far</p>
 		<p>A windmill, which the blast stirs briskly round,</p>
 		<p>Such was the fabric then methought I saw,</p>
-		</div>
-		<div class="stanza">
-		<p>To shield me from the wind, forthwith I drew</p>
+		<p class="slindent">To shield me from the wind, forthwith I drew</p>
 		<p>Behind my guide: no covert else was there.</p>
-		</div>
-		<div class="stanza">
-		<p>Now came I (and with fear I bid my strain</p>
+		<p class="slindent">Now came I (and with fear I bid my strain</p>
 		<p>Record the marvel) where the souls were all</p>
 		<p>Whelm&rsquo;d underneath, transparent, as through glass</p>
 		<p>Pellucid the frail stem. Some prone were laid,</p>
@@ -5470,13 +4682,9 @@ module.exports = {
 		<p>Whereat my guide was pleas&rsquo;d that I should see</p>
 		<p>The creature eminent in beauty once,</p>
 		<p>He from before me stepp&rsquo;d and made me pause.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Lo!&rdquo; he exclaim&rsquo;d, &ldquo;lo Dis! and lo the place,</p>
+		<p class="slindent">&ldquo;Lo!&rdquo; he exclaim&rsquo;d, &ldquo;lo Dis! and lo the place,</p>
 		<p>Where thou hast need to arm thy heart with strength.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>How frozen and how faint I then became,</p>
+		<p class="slindent">How frozen and how faint I then became,</p>
 		<p>Ask me not, reader! for I write it not,</p>
 		<p>Since words would fail to tell thee of my state.</p>
 		<p>I was not dead nor living. Think thyself</p>
@@ -5519,24 +4727,18 @@ module.exports = {
 		<p>And speaks not! Th&rsquo; other Cassius, that appears</p>
 		<p>So large of limb. But night now re-ascends,</p>
 		<p>And it is time for parting. All is seen.&rdquo;</p>
-		</div>
-		<div class="stanza">
-		<p>I clipp&rsquo;d him round the neck, for so he bade;</p>
+		<p class="slindent">I clipp&rsquo;d him round the neck, for so he bade;</p>
 		<p>And noting time and place, he, when the wings</p>
 		<p>Enough were op&rsquo;d, caught fast the shaggy sides,</p>
 		<p>And down from pile to pile descending stepp&rsquo;d</p>
 		<p>Between the thick fell and the jagged ice.</p>
-		</div>
-		<div class="stanza">
-		<p>Soon as he reach&rsquo;d the point, whereat the thigh</p>
+		<p class="slindent">Soon as he reach&rsquo;d the point, whereat the thigh</p>
 		<p>Upon the swelling of the haunches turns,</p>
 		<p>My leader there with pain and struggling hard</p>
 		<p>Turn&rsquo;d round his head, where his feet stood before,</p>
 		<p>And grappled at the fell, as one who mounts,</p>
 		<p>That into hell methought we turn&rsquo;d again.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Expect that by such stairs as these,&rdquo; thus spake</p>
+		<p class="slindent">&ldquo;Expect that by such stairs as these,&rdquo; thus spake</p>
 		<p>The teacher, panting like a man forespent,</p>
 		<p>&ldquo;We must depart from evil so extreme.&rdquo;</p>
 		<p>Then at a rocky opening issued forth,</p>
@@ -5547,9 +4749,7 @@ module.exports = {
 		<p>With legs held upward. Let the grosser sort,</p>
 		<p>Who see not what the point was I had pass&rsquo;d,</p>
 		<p>Bethink them if sore toil oppress&rsquo;d me then.</p>
-		</div>
-		<div class="stanza">
-		<p>&ldquo;Arise,&rdquo; my master cried, &ldquo;upon thy feet.</p>
+		<p class="slindent">&ldquo;Arise,&rdquo; my master cried, &ldquo;upon thy feet.</p>
 		<p>The way is long, and much uncouth the road;</p>
 		<p>And now within one hour and half of noon</p>
 		<p>The sun returns.&rdquo; It was no palace-hall</p>

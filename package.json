@@ -4,15 +4,15 @@
   "description": "multi-language dante",
   "main": "index.js",
 	"config" : {
-		"sourcejs" : "app/js/paradiso.js",
-		"distjs": "dist/js/paradiso.js",
-		"distmapjs" : "dist/js/paradiso.map.js",
-		"distminjs" : "dist/js/paradiso.min.js",
-		"translationsdir": "app/js/paradiso/translations/*.js"
+		"sourcejs" : "app/js/purgatorio.js",
+		"distjs": "dist/js/purgatorio.js",
+		"distmapjs" : "dist/js/purgatorio.map.js",
+		"distminjs" : "dist/js/purgatorio.min.js",
+		"translationsdir": "app/js/purgatorio/*.js"
 	},
   "scripts": {
-    "scss": "node-sass --output-style compressed -o dist/css app/scss && cp dist/css/* app/css/*",
-    "watch-scss": "node-sass app/scss -wo dist/css",
+    "scss": "node-sass --output-style compressed -o dist/css app/scss & node-sass --output-style compressed -o app/css app/scss",
+    "watch-scss": "node-sass app/scss -wo dist/css & node-sass app/scss -wo app/css",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '> 5%, ie 9' -r dist/css/*",
     "build-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs",
 		"production": "npm run production-css && npm run production-js",
