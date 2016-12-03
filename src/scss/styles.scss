@@ -92,6 +92,8 @@ body {
 		display: inline-block;
 		height: $navheight;
 		padding-top: $navheight / 5; //8px
+		overflow-x: scroll;
+		white-space: nowrap;
 	}
 }
 
@@ -165,6 +167,7 @@ body {
 // 	transition:all 1.0s ease-in-out;
 }
 
+
 .basic {
 	font-family: $headerfamily;
 	font-size: $textfontsize;
@@ -177,7 +180,6 @@ body {
 		font-weight: bold;
 		margin-bottom: $textlineheight;
 		text-align: center;
-		margin-bottom: $textlineheight;
 	}
 	& a {
 		font-weight: bold;
@@ -257,31 +259,6 @@ p.summary {
 	margin: $textlineheight 2*$textlineheight;
 }
 
-p.slindent {
-	text-indent: 1*$textlineheight;
-}
-p.slindent2em {
-	text-indent: 2*$textlineheight;
-}
-p.slindent4em {
-	text-indent: 4*$textlineheight;
-}
-p.slindent6em {
-	text-indent: 6*$textlineheight;
-}
-p.slindent8em {
-	text-indent: 8*$textlineheight;
-}
-p.slindent10em {
-	text-indent: 10*$textlineheight;
-}
-p.slindent12em {
-	text-indent: 12*$textlineheight;
-}
-p.slindent14em {
-	text-indent: 14*$textlineheight;
-}
-
 
 // spans
 
@@ -329,6 +306,40 @@ p.slindent14em {
 .poetry {
 	& p {
 		hanging-punctuation: first; // does not actually do anything!
+		margin-left: $textlineheight;
+		text-indent: -$textlineheight;
+	}
+	& p.slindent {
+		margin-left: 2*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent2em {
+		margin-left: 3*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent4em {
+		margin-left: 5*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent6em {
+		margin-left: 6*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent8em {
+		margin-left: 9*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent10em {
+		margin-left: 11*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent12em {
+		margin-left: 13*$textlineheight;
+		text-indent: -1*$textlineheight;
+	}
+	& p.slindent14em {
+		margin-left: 15*$textlineheight;
+		text-indent: -1*$textlineheight;
 	}
 }
 

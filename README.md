@@ -2,17 +2,17 @@
 
 An app for facing-page translation. This still needs a great deal of work! Where things are:
 
- * _app/_ are the raw application files
- 	* _app/[bookname]-debug.html_ is the dev version of the page for a particular book
-  * _app/js/modules/_ is the general code – _app.js_ is the entry point.
-  * _app/js/[bookname].js_ is the main JavaScript file for a particular book. These files are identical, but they point to different _[bookname]/bookdata.js_ files.
-  * _app/js/[bookname]_/ is where individual book files live right now
-	 * _app/js/[bookname]/bookdata.js_ is the spine for a particular book, pointing to translations
-	 * _app/js/[bookname]/translations/_ is where a particular book's translations are
+ * _src/_ are the raw application files
+ 	* _src/[bookname]-debug.html_ is the dev version of the page for a particular book
+  * _src/js/modules/_ is the general code – _app.js_ is the entry point.
+  * _src/js/[bookname].js_ is the main JavaScript file for a particular book. These files are identical, but they point to different _[bookname]/bookdata.js_ files.
+  * _src/js/[bookname]_/ is where individual book files live right now
+	 * _src/js/[bookname]/bookdata.js_ is the spine for a particular book, pointing to translations
+	 * _src/js/[bookname]/translations/_ is where a particular book's translations are
  * _dist/_ are the files for the web
   * _dist/index.html_ is the main page (online version at https://danvisel.net/crossdante)
   * _dist/[bookname].html_ is the page for a particular book
- * _crossdante/_ is the Cordova project (needs to be updated)
+ * _apps/_ contains the Cordova projects (needs to be updated)
 
 Current books are _inferno_, _purgatorio_, and _paradiso_. More soon!
 

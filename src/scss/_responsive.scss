@@ -1,0 +1,412 @@
+// responsive.scss
+
+$textfontsize: 18px;
+$textlineheight: 24px;
+
+// media queries!
+
+@media only screen and (max-width: 640px) {
+	$textfontsize: 15px;
+	$textlineheight: 20px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textframe {
+		padding: 0px 0px;
+	}
+	.page.landscape .textframe {
+		padding: 0px 0px;
+	}
+	.page.portrait .textinsideframe {
+		padding: 8px 8px;
+	}
+	.page.landscape .textinsideframe {
+		padding: 8px 8px;
+	}
+
+	.basic {
+		font-size: $textfontsize;
+		padding-top: $textlineheight;
+		line-height: $textlineheight;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		& h1 {
+			margin-bottom: $textlineheight;
+		}
+		& .backtosettings {
+			margin: $textlineheight 0;
+		}
+	}
+
+	p.title, p.author {
+		font-size: $textfontsize * 1.5;
+		line-height: $textlineheight * 2;
+	}
+
+	div.stanza, p.cantohead {
+		margin-bottom: $textlineheight;
+	}
+
+	p.summary {
+		margin: $textlineheight 2*$textlineheight;
+	}
+
+	.poetry {
+		& p {
+			margin-left: $textlineheight;
+			text-indent: -$textlineheight;
+		}
+		& p.slindent {
+			margin-left: 2*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent2em {
+			margin-left: 3*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent4em {
+			margin-left: 5*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent6em {
+			margin-left: 6*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent8em {
+			margin-left: 9*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent10em {
+			margin-left: 11*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent12em {
+			margin-left: 13*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent14em {
+			margin-left: 15*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+	}
+
+	.prose {
+		& p + p {
+			text-indent: $textlineheight;
+		}
+	}
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+	$textfontsize: 18px;
+	$textlineheight: 24px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textframe {
+		padding: 0;
+	}
+	.page.landscape .textframe {
+		padding: 0;
+	}
+	.page.portrait .textinsideframe {
+		max-width: 512px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page.landscape .textinsideframe {
+		max-width: 512px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.basic {
+		font-size: $textfontsize;
+		padding-top: $textlineheight;
+		line-height: $textlineheight;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		& h1 {
+			margin-bottom: $textlineheight;
+		}
+		& .backtosettings {
+			margin: $textlineheight 0;
+		}
+	}
+
+	p.title, p.author {
+		font-size: $textfontsize * 1.5;
+		line-height: $textlineheight * 2;
+	}
+
+	div.stanza, p.cantohead {
+		margin-bottom: $textlineheight;
+	}
+
+	p.summary {
+		margin: $textlineheight 2*$textlineheight;
+	}
+
+	.poetry {
+		& p {
+			margin-left: $textlineheight;
+			text-indent: -$textlineheight;
+		}
+		& p.slindent {
+			margin-left: 2*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent2em {
+			margin-left: 3*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent4em {
+			margin-left: 5*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent6em {
+			margin-left: 6*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent8em {
+			margin-left: 9*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent10em {
+			margin-left: 11*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent12em {
+			margin-left: 13*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent14em {
+			margin-left: 15*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+	}
+
+	.prose {
+		& p + p {
+			text-indent: $textlineheight;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+// are these sizes too small?
+
+	$textfontsize: 21px;
+	$textlineheight: 28px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textframe {
+		padding: 0;
+	}
+	.page.landscape .textframe {
+		padding: 0;
+	}
+	.page.portrait .textinsideframe {
+		max-width: 640px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page.landscape .textinsideframe {
+		max-width: 640px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.basic {
+		font-size: $textfontsize;
+		padding-top: $textlineheight;
+		line-height: $textlineheight;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		& h1 {
+			margin-bottom: $textlineheight;
+		}
+		& .backtosettings {
+			margin: $textlineheight 0;
+		}
+	}
+
+	p.title, p.author {
+		font-size: $textfontsize * 1.5;
+		line-height: $textlineheight * 2;
+	}
+
+	div.stanza, p.cantohead {
+		margin-bottom: $textlineheight;
+	}
+
+	p.summary {
+		margin: $textlineheight 2*$textlineheight;
+	}
+
+	.poetry {
+		& p {
+			margin-left: $textlineheight;
+			text-indent: -$textlineheight;
+		}
+		& p.slindent {
+			margin-left: 2*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent2em {
+			margin-left: 3*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent4em {
+			margin-left: 5*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent6em {
+			margin-left: 6*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent8em {
+			margin-left: 9*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent10em {
+			margin-left: 11*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent12em {
+			margin-left: 13*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent14em {
+			margin-left: 15*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+	}
+
+	.prose {
+		& p + p {
+			text-indent: $textlineheight;
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	$textfontsize: 24px;
+	$textlineheight: 32px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textframe {
+		padding: 0;
+	}
+	.page.landscape .textframe {
+		padding: 0;
+	}
+	.page.portrait .textinsideframe {
+		max-width: 768px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page.landscape .textinsideframe {
+		max-width: 768px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.basic {
+		font-size: $textfontsize;
+		padding-top: $textlineheight;
+		line-height: $textlineheight;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		& h1 {
+			margin-bottom: $textlineheight;
+		}
+		& .backtosettings {
+			margin: $textlineheight 0;
+		}
+	}
+
+	p.title, p.author {
+		font-size: $textfontsize * 1.5;
+		line-height: $textlineheight * 2;
+	}
+
+	div.stanza, p.cantohead {
+		margin-bottom: $textlineheight;
+	}
+
+	p.summary {
+		margin: $textlineheight 2*$textlineheight;
+	}
+
+	.poetry {
+		& p {
+			margin-left: $textlineheight;
+			text-indent: -$textlineheight;
+		}
+		& p.slindent {
+			margin-left: 2*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent2em {
+			margin-left: 3*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent4em {
+			margin-left: 5*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent6em {
+			margin-left: 6*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent8em {
+			margin-left: 9*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent10em {
+			margin-left: 11*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent12em {
+			margin-left: 13*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+		& p.slindent14em {
+			margin-left: 15*$textlineheight;
+			text-indent: -1*$textlineheight;
+		}
+	}
+
+	.prose {
+		& p + p {
+			text-indent: $textlineheight;
+		}
+	}
+}
+
+
+
+// ipad in portrait
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) { /* STYLES GO HERE */ }
+
+// ipad in landscape
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) { /* STYLES GO HERE */}

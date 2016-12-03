@@ -259,8 +259,10 @@ var app = {
 		}
 	},
 	resize: function() {
+		document.getElementById("navtitle").style.width =
 		appdata.windowwidth = window.innerWidth;
 		appdata.windowheight = window.innerHeight;
+		document.getElementById("navtitle").style.width = `${appdata.windowwidth - (5 * 40)}px`;
 		console.log(`The window has been resized! New width: ${appdata.windowwidth},${appdata.windowheight}`);
 		appdata.lenswidth = appdata.windowwidth;
 		appdata.lensheight = appdata.windowheight - document.getElementById("navbar").clientHeight;
@@ -525,9 +527,14 @@ var app = {
 			appdata.elements.text.style.paddingRight = 0;
 			appdata.elements.textinsideframe.style.marginLeft = 0;
 			appdata.elements.textinsideframe.style.marginRight = 0;
+			appdata.elements.textinsideframe.style.paddingLeft = 0;
+			appdata.elements.textinsideframe.style.paddingRight = 0;
 			for(let i=0; i<divs.length; i++) {
 				div = divs[i];
 				div.style.display = "inline-block";
+
+				// this is not picking up indents, I think – maybe div.clientWidth + (div.style.marginLeft + div.style.textIndent)
+
 				if(div.clientWidth > maxwidth) {
 					maxwidth = div.clientWidth + 90;
 				}
@@ -536,11 +543,13 @@ var app = {
 
 
 			if((appdata.textwidth -16 ) > maxwidth) {
-				console.log(`Text width: ${appdata.textwidth}; max line width: ${maxwidth}; calculated padding: ${(appdata.textwidth - maxwidth)/2}px`);
+				console.log(`Text width: ${appdata.textwidth}; max line width: ${maxwidth}; calculated padding: ${(appdata.textwidth - maxwidth-16-16)/2}px`);
 				appdata.elements.text.style.paddingLeft = 0;
 				appdata.elements.text.style.paddingRight = 0;
-				appdata.elements.textinsideframe.style.marginLeft = (appdata.textwidth - maxwidth)/2+"px";
-				appdata.elements.textinsideframe.style.marginRight = (appdata.textwidth - maxwidth)/2+"px";
+				appdata.elements.textinsideframe.style.paddingLeft = 0;
+				appdata.elements.textinsideframe.style.paddingRight = 0;
+				appdata.elements.textinsideframe.style.marginLeft = (appdata.textwidth - maxwidth - 16 - 16)/2+"px";
+				appdata.elements.textinsideframe.style.marginRight = (appdata.textwidth - maxwidth-16 - 16)/2+"px";
 			} else {
 				console.log(`Too wide! Text width: ${appdata.textwidth}; max line width: ${maxwidth}.`)
 				appdata.elements.text.style.paddingLeft = 8+"px";
