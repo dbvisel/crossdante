@@ -11,10 +11,12 @@
 		"translationsdir": "app/js/paradiso/translations/*.js"
 	},
   "scripts": {
-    "scss": "node-sass --output-style compressed -o dist/css app/scss",
+    "scss": "node-sass --output-style compressed -o dist/css app/scss && cp dist/css/* app/css/*",
     "watch-scss": "node-sass app/scss -wo dist/css",
-    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '> 5%, ie 9' -r dist/css/*",
     "build-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs",
+		"production": "npm run production-css && npm run production-js",
+		"production-css": "npm run scss & npm run autoprefixer",
     "production-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs && uglifyjs $npm_package_config_distjs -m -o $npm_package_config_distminjs --source-map $npm_package_config_distmapjs -p relative",
     "lint": "eslint app/js/*.js || true && eslint app/js/modules/*.js || true && eslint $npm_package_config_translationsdir || true",
     "watch-js": "watchify $npm_package_config_sourcejs -o $npm_package_config_distjs -dv",
