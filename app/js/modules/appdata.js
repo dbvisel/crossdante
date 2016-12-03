@@ -16,4 +16,5 @@ module.exports = {
 	currentlines: 0,       // this is the number of lines calculated to be on the page
 	elements: {},
 	delay: 300,
+	responsive: true
 };

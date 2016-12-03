@@ -20,6 +20,7 @@ var app = {
 		appdata.elements.main = document.getElementById("main");
 		appdata.elements.content = document.getElementById("content");
 		appdata.elements.text = document.getElementById("text");
+		appdata.elements.textinsideframe = document.getElementById("textinsideframe");
 		appdata.elements.slider = document.getElementById("slider");
 
 
@@ -272,7 +273,24 @@ var app = {
 		appdata.elements.content.style.width = appdata.lenswidth+"px";
 		appdata.elements.content.style.height = appdata.lensheight+"px";
 
-		appdata.lineheight = appdata.windowwidth/25;
+		if(appdata.responsive) {
+			if(appdata.windowwidth < 640) {
+				appdata.lineheight = 20;
+			} else {
+				if(appdata.windowwidth < 768) {
+					appdata.lineheight = 24;
+				} else {
+					if(appdata.windowwidth < 1024) {
+						appdata.lineheight = 28;
+					} else {
+						appdata.lineheight = 32;
+					}
+				}
+			}
+		} else {
+			appdata.lineheight = appdata.windowwidth/25;
+		}
+
 		appdata.textwidth = appdata.windowwidth;
 		app.setlens(appdata.currenttranslation,appdata.currentcanto);
 	},
@@ -343,6 +361,7 @@ var app = {
 				// console.log("Change in translation!");
 
 				appdata.elements.text.id = "oldtext";
+				appdata.elements.textinsideframe.id = "oldtextinsideframe";
 
 				// if new is bigger than old AND ( old is not 0 OR new is not the last one )
 				// OR if new is 0 and old is the last one
@@ -351,7 +370,7 @@ var app = {
 
 					// console.log("Going right");  // we are inserting to the right
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:100%;">${ appdata.textdata[newdata].text[newcanto] }</div>`);
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:100%;"><div class="textinsideframe" id="textinsideframe">${ appdata.textdata[newdata].text[newcanto] }</div></div>`);
 					appdata.elements.slider.appendChild(insert);
 					Velocity(appdata.elements.slider, {'left':"-100%"}, {
 						duration: appdata.delay,
@@ -366,7 +385,7 @@ var app = {
 
 					// console.log("Going left"); // we are inserting to the left
 
-					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:-100%;">${ appdata.textdata[newdata].text[newcanto] }</div>`);
+					let insert = dom.create(`<div id="text" class="textframe ${ appdata.translationdata[newdata].translationclass }" style="left:-100%;"><div class="textinsideframe" id="textinsideframe">${ appdata.textdata[newdata].text[newcanto] }</div></div>`);
 					appdata.elements.slider.insertBefore(insert, appdata.elements.slider.childNodes[0]);
 					Velocity(appdata.elements.slider, {'left':"100%"}, {
 						duration: appdata.delay,
@@ -379,6 +398,7 @@ var app = {
 					});
 				}
 				appdata.elements.text = document.getElementById("text");
+				appdata.elements.textinsideframe = document.getElementById("textinsideframe");
 			} else {
 
 				// console.log("No change in translation!"); // not shift left/shift right – do normal thing
@@ -392,7 +412,8 @@ var app = {
 					}
 				}
 
-				appdata.elements.text.innerHTML = appdata.textdata[newdata].text[newcanto];
+
+				appdata.elements.textinsideframe.innerHTML = appdata.textdata[newdata].text[newcanto];
 				dom.removeclass("#text",appdata.translationdata[olddata].translationclass); // is this not working for multiple classes?
 				dom.addclass("#text",appdata.translationdata[newdata].translationclass); // is this not working for multiple classes?
 			}
@@ -402,7 +423,11 @@ var app = {
 			appdata.currentcanto = newcanto;
 
 
-			app.fixpadding();
+			if(appdata.responsive) {
+				app.fixpaddingresponsive();
+			} else {
+				app.fixpadding();
+			}
 
 			// set percentage: this is terrible! fix this!
 			// first: try to figure out how many lines we have? Can we do that?
@@ -484,6 +509,47 @@ var app = {
 			appdata.elements.text.style.paddingLeft = padding+"vw";
 			appdata.elements.text.style.paddingRight = padding+"vw";
 			//		}
+		}
+
+	},
+	fixpaddingresponsive: function() {
+		const divs = document.querySelectorAll("#text p");
+		var div, padding, desiredwidth;
+		let maxwidth = 0;
+
+		if(dom.hasclass(appdata.elements.text,"poetry")) {
+
+			// this is poetry, figure out longest line
+
+			appdata.elements.text.style.paddingLeft = 0;
+			appdata.elements.text.style.paddingRight = 0;
+			appdata.elements.textinsideframe.style.marginLeft = 0;
+			appdata.elements.textinsideframe.style.marginRight = 0;
+			for(let i=0; i<divs.length; i++) {
+				div = divs[i];
+				div.style.display = "inline-block";
+				if(div.clientWidth > maxwidth) {
+					maxwidth = div.clientWidth + 90;
+				}
+				div.style.display = "block";
+			}
+
+
+			if((appdata.textwidth -16 ) > maxwidth) {
+				console.log(`Text width: ${appdata.textwidth}; max line width: ${maxwidth}; calculated padding: ${(appdata.textwidth - maxwidth)/2}px`);
+				appdata.elements.text.style.paddingLeft = 0;
+				appdata.elements.text.style.paddingRight = 0;
+				appdata.elements.textinsideframe.style.marginLeft = (appdata.textwidth - maxwidth)/2+"px";
+				appdata.elements.textinsideframe.style.marginRight = (appdata.textwidth - maxwidth)/2+"px";
+			} else {
+				console.log(`Too wide! Text width: ${appdata.textwidth}; max line width: ${maxwidth}.`)
+				appdata.elements.text.style.paddingLeft = 8+"px";
+				appdata.elements.text.style.paddingRight = 8+"px";
+				appdata.elements.textinsideframe.style.marginLeft = 0;
+				appdata.elements.textinsideframe.style.marginRight = 0;
+			}
+		} else {
+			console.log("Prose, not doing anything.");
 		}
 
 	},

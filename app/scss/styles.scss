@@ -136,7 +136,7 @@ body {
 		& .textframe {
 //			width: 640px;
 //			height: 864px;
-			padding: 64px 64px; // left/right padding is never actually applied
+			padding: 16px 16px; // left/right padding is never actually applied
 			&:last-child {
 				margin-bottom: 64px;
 			}
@@ -321,6 +321,7 @@ p.slindent14em {
 	border: 5px solid $navcolor;
 	font-size: $textfontsize * 0.75;
 	line-height: $textlineheight * 0.75;
+	overflow-y: scroll;
 }
 
 // poetry
@@ -357,24 +358,4 @@ p.slindent14em {
 // deal with the site
 
 @import "site";
-
-// media queries!
-
-@media (max-width: 500px) {
-//    font-size: 14px; // is this killing us?
-}
-
-
-// ipad in portrait
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) { /* STYLES GO HERE */ }
-
-// ipad in landscape
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) { /* STYLES GO HERE */}
+@import "responsive"; // don't include this for non-responsive version

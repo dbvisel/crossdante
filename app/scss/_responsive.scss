@@ -1,0 +1,94 @@
+// responsive.scss
+
+$textfontsize: 18px;
+$textlineheight: 24px;
+
+// media queries!
+
+@media (max-width: 640px) {
+	$textfontsize: 15px;
+	$textlineheight: 20px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textinsideframe {
+		padding: 8px 8px;
+	}
+	.page.landscape .textinsideframe {
+		padding: 8px 8px;
+	}
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+	$textfontsize: 18px;
+	$textlineheight: 24px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textinsideframe {
+		padding: 8px 16px;
+	}
+	.page.landscape .textinsideframe {
+		padding: 8px 16px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	$textfontsize: 21px;
+	$textlineheight: 28px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textinsideframe {
+		max-width: 640px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page.landscape .textinsideframe {
+		max-width: 640px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	$textfontsize: 24px;
+	$textlineheight: 32px;
+	.textpage {
+		font-size: $textfontsize;
+		line-height: $textlineheight;
+	}
+	.page.portrait .textinsideframe {
+		max-width: 768px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.page.landscape .textinsideframe {
+		max-width: 768px;
+		padding: 16px 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+
+// ipad in portrait
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) { /* STYLES GO HERE */ }
+
+// ipad in landscape
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) { /* STYLES GO HERE */}

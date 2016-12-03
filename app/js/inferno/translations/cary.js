@@ -982,7 +982,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto VIII</p>
 		<div class="stanza">
-		<p><<span class="sc">My</span> theme pursuing, I relate that ere</p>
+		<p><span class="sc">My</span> theme pursuing, I relate that ere</p>
 		<p>We reach&rsquo;d the lofty turret&rsquo;s base, our eyes</p>
 		<p>Its height ascended, where two cressets hung</p>
 		<p>We mark&rsquo;d, and from afar another light</p>
@@ -992,7 +992,7 @@ module.exports = {
 		<p>&ldquo;Say what this means? and what that other light</p>
 		<p>In answer set? what agency doth this?&rdquo;</p>
 		<p class="slindent">&ldquo;There on the filthy waters,&rdquo; he replied,</p>
-		<p>&ldquo;e&rsquo;en now what next awaits us mayst thou see,</p>
+		<p>&ldquo;E&rsquo;en now what next awaits us mayst thou see,</p>
 		<p>If the marsh-gender&rsquo;d fog conceal it not.&rdquo;</p>
 		<p class="slindent">Never was arrow from the cord dismiss&rsquo;d,</p>
 		<p>That ran its way so nimbly through the air,</p>
