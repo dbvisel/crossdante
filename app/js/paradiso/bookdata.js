@@ -18,7 +18,9 @@ module.exports = {
 		{"translationid":"dante",
 			"order":0},
 		{"translationid":"longfellow",
-			"order":1}/*,
+			"order":1},
+		{"translationid":"cary",
+			"order":2}/*,
 		{"translationid":"wright",
 			"order":3},
 		{"translationid":"carlyle",
@@ -27,9 +29,9 @@ module.exports = {
 
 	textdata: [	// set up translations
 		require("./translations/dante"),
-		require("./translations/longfellow"),/*
+		require("./translations/longfellow"),
+		require("./translations/cary")/*,
 		require("./translations/norton"),
-		require("./translations/cary"),
 		require("./translations/wright"),
 		require("./translations/carlyle")*/
 	]
