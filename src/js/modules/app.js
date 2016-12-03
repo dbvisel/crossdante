@@ -350,7 +350,7 @@ var app = {
 			let newdata = 0;
 			let olddata = 0;
 
-			for(var j in appdata.translationdata) {
+			for(let j in appdata.translationdata) {
 				if(newtrans == appdata.translationdata[j].translationid) {
 					newdata = j;
 				}
@@ -406,7 +406,7 @@ var app = {
 
 				// console.log("No change in translation!"); // not shift left/shift right – do normal thing
 
-				for(var j in appdata.translationdata) {
+				for(let j in appdata.translationdata) {
 					if(newtrans == appdata.translationdata[j].translationid) {
 						newdata = j;
 					}
@@ -517,7 +517,7 @@ var app = {
 	},
 	fixpaddingresponsive: function() {
 		const divs = document.querySelectorAll("#text p");
-		var div, padding, desiredwidth;
+		var div;
 		let maxwidth = 0;
 
 		if(dom.hasclass(appdata.elements.text,"poetry")) {
@@ -552,7 +552,7 @@ var app = {
 				appdata.elements.textinsideframe.style.marginLeft = (appdata.textwidth - maxwidth - 16 - 16)/2+"px";
 				appdata.elements.textinsideframe.style.marginRight = (appdata.textwidth - maxwidth-16 - 16)/2+"px";
 			} else {
-				console.log(`Too wide! Text width: ${appdata.textwidth}; max line width: ${maxwidth}.`)
+				console.log(`Too wide! Text width: ${appdata.textwidth}; max line width: ${maxwidth}.`);
 				appdata.elements.text.style.paddingLeft = 8+"px";
 				appdata.elements.text.style.paddingRight = 8+"px";
 				appdata.elements.textinsideframe.style.marginLeft = 0;
