@@ -54,44 +54,43 @@ var app = {
 			}, false);
 		}
 
-		// attempt to fix android pull down to refresh
-		// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
+		if(!appdata.oncordova) {
+			// attempt to fix android pull down to refresh
+			// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
+			window.addEventListener('load', function() {
+				var maybePreventPullToRefresh = false;
+				var lastTouchY = 0;
+				var touchstartHandler = function(e) {
+					if (e.touches.length != 1) return;
+					lastTouchY = e.touches[0].clientY;
+					// Pull-to-refresh will only trigger if the scroll begins when the
+					// document's Y offset is zero.
+					maybePreventPullToRefresh = window.pageYOffset == 0;
+				};
 
-		window.addEventListener('load', function() {
-			var maybePreventPullToRefresh = false;
-			var lastTouchY = 0;
-			var touchstartHandler = function(e) {
-				if (e.touches.length != 1) return;
-				lastTouchY = e.touches[0].clientY;
-				// Pull-to-refresh will only trigger if the scroll begins when the
-				// document's Y offset is zero.
-				maybePreventPullToRefresh = window.pageYOffset == 0;
-			};
+				var touchmoveHandler = function(e) {
+					var touchY = e.touches[0].clientY;
+					var touchYDelta = touchY - lastTouchY;
+					lastTouchY = touchY;
 
-			var touchmoveHandler = function(e) {
-				var touchY = e.touches[0].clientY;
-				var touchYDelta = touchY - lastTouchY;
-				lastTouchY = touchY;
+					if (maybePreventPullToRefresh) {
+						// To suppress pull-to-refresh it is sufficient to preventDefault the
+						// first overscrolling touchmove.
+						maybePreventPullToRefresh = false;
+						if (touchYDelta > 0) {
+							e.preventDefault();
 
-				if (maybePreventPullToRefresh) {
-					// To suppress pull-to-refresh it is sufficient to preventDefault the
-					// first overscrolling touchmove.
-					maybePreventPullToRefresh = false;
-					if (touchYDelta > 0) {
-						e.preventDefault();
-
-						if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
-							app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
+							if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
+								app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
+							}
+							return;
 						}
-						return;
 					}
-				}
-			};
-
-			document.addEventListener('touchstart', touchstartHandler, false);
-			document.addEventListener('touchmove', touchmoveHandler, false);
-		});
-
+				};
+				document.addEventListener('touchstart', touchstartHandler, false);
+				document.addEventListener('touchmove', touchmoveHandler, false);
+			});
+		}
 	},
 	helpers: {
 
@@ -575,20 +574,18 @@ var app = {
 		document.getElementById("translationchoose").appendChild(insert);
 		const translatorlist = document.querySelector("#translatorlist");
 		for(let i in appdata.translationdata) {
-			insert = dom.create(`<li>
-					<input type="checkbox" id="check-${appdata.translationdata[i].translationid}" />
-					<span id="${appdata.translationdata[i].translationid}" >${appdata.translationdata[i].translationfullname}</span>
-				</li>`);
+				insert = dom.create(`<li>
+						<input type="checkbox" id="check-${appdata.translationdata[i].translationid}" />
+						<label for="${appdata.translationdata[i].translationid}" id="${appdata.translationdata[i].translationid}" ><span><span></span></span>${appdata.translationdata[i].translationfullname}</label>
+					</li>`);
 			translatorlist.appendChild(insert);
 			document.getElementById("check-"+appdata.translationdata[i].translationid).checked = (appdata.currenttranslationlist.indexOf(appdata.translationdata[i].translationid) > -1);
 		}
 
-		// document.querySelectorAll("#translatorlist input[type=checkbox]").forEach(app.helpers.checkboxgo);
 		for(let i of document.querySelectorAll("#translatorlist input[type=checkbox]")) {
 			app.helpers.checkboxgo(i);
 		}
-		// document.querySelectorAll("#translatorlist span").forEach(app.helpers.checkboxspango);
-		for(let i of document.querySelectorAll("#translatorlist span")) {
+		for(let i of document.querySelectorAll("#translatorlist label")) {
 			app.helpers.checkboxspango(i);
 		}
 

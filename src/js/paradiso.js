@@ -30,7 +30,9 @@ for(let i in appdata.textdata) {
 }
 
 app.initialize();
-if (!('onDeviceReady' in document)) {
+if (('onDeviceReady' in document)) {
+	appdata.oncordova = true;
+} else {
 	console.log("Running non-Cordova code!");
 	app.setup(); // (hopefully this doesn't fire in real version?)
 }
