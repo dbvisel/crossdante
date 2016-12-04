@@ -687,6 +687,8 @@ var app = {
 	setup: function() {
 		app.setupnotes();
 		app.setupcontrols();
+		dom.addclass("body",appdata.bookname);
+		dom.removebyselector("#loadingscrim");
 		app.setpage("lens");
 	}
 };

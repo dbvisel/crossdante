@@ -47,4 +47,15 @@ body.nightmode {
       }
     }
   }
+	& input[type=checkbox]:not(old) + label > span, input[type=radio]:not(old) + label > span{
+		background: $nightnavtext;
+	}
+
+	& input[type=checkbox]:not(old):checked + label > span:before{
+		color: $nightnavcolor;
+	}
+
+	& input[type=radio]:not(old):checked + label > span > span{
+		background: $nightnavtext;
+	}
 }

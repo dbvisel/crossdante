@@ -77,6 +77,19 @@ $indentwidth: 1rem;
 	}
 }
 
+#slidingdante {
+	text-align:center;
+	margin-bottom: 2rem;
+	& img {
+		border-radius: 0.5rem;
+		background-color: $navcolor;
+		width: 256px;
+		height: 256px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
 // make this legible on a phone
 
 @media only screen and (max-width : 480px) {

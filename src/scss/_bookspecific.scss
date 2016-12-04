@@ -1,0 +1,221 @@
+// bookspecific.scss
+// n.b. this should be separate from color-theming / night mode which should override this!
+
+// INFERNO
+
+.inferno {
+
+	$navcolor: midnightblue;
+
+	& #loadingscrim {
+		background-color: $navcolor;
+		animation-name: loadinganimationinferno;
+	}
+	& #navbar {
+		@include notouch;
+		background-color: $navcolor;
+		border-bottom: 1px solid $navcolor;
+		color: $navtext;
+		& .button {
+			&:hover, &.on {
+				color: $navtexton;
+			}
+		}
+	}
+	& .basic {
+		& a {
+			color: $navcolor;
+		}
+	}
+
+	& #translationgo {
+		& p {
+			& select {
+				background-color: $navcolor;
+				color: $navtext;
+			}
+		}
+		& #selectgo {
+			background-color: $navcolor;
+			color: $navtext;
+			&:hover {
+				color: $navtexton;
+			}
+		}
+	}
+
+	& input[type=checkbox]:not(old) + label > span, input[type=radio]:not(old) + label > span{
+	  background: $navcolor;
+	}
+
+	& input[type=checkbox]:not(old):checked + label > span:before{
+	  color: $navtext;
+	}
+
+	& input[type=radio]:not(old):checked + label > span > span{
+	  background: $navcolor;
+	}
+
+	& .note {
+		& .noteno {
+			color: $navcolor;
+		}
+	}
+	& .notewindow {
+		background-color: $pagebackground;
+		border: 5px solid $navcolor;
+	}
+}
+
+@keyframes loadinganimationinferno {
+	0% {background-color: $navcolor;}
+	50% {background-color: black;}
+	100% {background-color: $navcolor;}
+}
+
+
+
+// PURGATORIO
+
+.purgatorio {
+	$navcolor: darkred;
+
+
+	& #loadingscrim {
+		background-color: $navcolor;
+		animation-name: loadinganimationpurgatorio;
+	}
+	& #navbar {
+		@include notouch;
+		background-color: $navcolor;
+		border-bottom: 1px solid $navcolor;
+		color: $navtext;
+		& .button {
+			&:hover, &.on {
+				color: $navtexton;
+			}
+		}
+	}
+	& .basic {
+		& a {
+			color: $navcolor;
+		}
+	}
+
+	& #translationgo {
+		& p {
+			& select {
+				background-color: $navcolor;
+				color: $navtext;
+			}
+		}
+		& #selectgo {
+			background-color: $navcolor;
+			color: $navtext;
+			&:hover {
+				color: $navtexton;
+			}
+		}
+	}
+
+	& input[type=checkbox]:not(old) + label > span, input[type=radio]:not(old) + label > span{
+	  background: $navcolor;
+	}
+
+	& input[type=checkbox]:not(old):checked + label > span:before{
+	  color: $navtext;
+	}
+
+	& input[type=radio]:not(old):checked + label > span > span{
+	  background: $navcolor;
+	}
+
+	& .note {
+		& .noteno {
+			color: $navcolor;
+		}
+	}
+	& .notewindow {
+		background-color: $pagebackground;
+		border: 5px solid $navcolor;
+	}
+}
+
+@keyframes loadinganimationpurgatorio {
+	0% {background-color: $navcolor;}
+	50% {background-color: white;}
+	100% {background-color: $navcolor;}
+}
+
+
+
+// PARADISO
+
+.paradiso {
+	$navcolor: goldenrod;
+
+	& #loadingscrim {
+		background-color: $navcolor;
+		animation-name: loadinganimationparadiso;
+	}
+	& #navbar {
+		@include notouch;
+		background-color: $navcolor;
+		border-bottom: 1px solid $navcolor;
+		color: $navtext;
+		& .button {
+			&:hover, &.on {
+				color: $navtexton;
+			}
+		}
+	}
+	& .basic {
+		& a {
+			color: $navcolor;
+		}
+	}
+
+	& #translationgo {
+		& p {
+			& select {
+				background-color: $navcolor;
+				color: $navtext;
+			}
+		}
+		& #selectgo {
+			background-color: $navcolor;
+			color: $navtext;
+			&:hover {
+				color: $navtexton;
+			}
+		}
+	}
+
+	& input[type=checkbox]:not(old) + label > span, input[type=radio]:not(old) + label > span{
+	  background: $navcolor;
+	}
+
+	& input[type=checkbox]:not(old):checked + label > span:before{
+	  color: $navtext;
+	}
+
+	& input[type=radio]:not(old):checked + label > span > span{
+	  background: $navcolor;
+	}
+
+	& .note {
+		& .noteno {
+			color: $navcolor;
+		}
+	}
+	& .notewindow {
+		background-color: $pagebackground;
+		border: 5px solid $navcolor;
+	}
+}
+
+@keyframes loadinganimationparadiso {
+	0% {background-color: $navcolor;}
+	50% {background-color: white;}
+	100% {background-color: $navcolor;}
+}

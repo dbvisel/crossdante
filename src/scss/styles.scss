@@ -50,6 +50,23 @@ body {
 	overflow-y: hidden; // attempt to fix android swipe down issue
 }
 
+#loadingscrim {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: $navcolor;
+	animation-name: loadinganimation;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes loadinganimation {
+    0% {background-color: $navcolor;}
+    50% {background-color: black;}
+		100% {background-color: $navcolor;}
+}
+
 
 //
 // navigation
@@ -362,11 +379,13 @@ p.summary {
 
 @import "poets";
 
+// deal with the site
+
+@import "site";
+@import "bookspecific";
+
 // night mode
 
 @import "nightmode";
 
-// deal with the site
-
-@import "site";
 @import "responsive"; // don't include this for non-responsive version
