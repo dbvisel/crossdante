@@ -29,14 +29,26 @@ $textlineheight: 24px;
 		font-size: $textfontsize;
 		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 10vw;
-		padding-right: 10vw;
+		padding-left: 1em;
+		padding-right: 1em;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
 		& .backtosettings {
 			margin: $textlineheight 0;
 		}
+	}
+
+	#translationchoose, #translationgo {
+		width: 100%;
+		left: 0;
+	}
+
+	#translationchoose #translatorlist {
+			margin-left: 0;
+			width:100%;
+			left:0;
+			margin-top:1em;
 	}
 
 	p.title, p.author {

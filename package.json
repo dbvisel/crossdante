@@ -4,13 +4,13 @@
   "description": "multi-language dante",
   "main": "index.js",
 	"config" : {
-		"sourcejs" : "src/js/purgatorio.js",
-		"distjs": "dist/js/purgatorio.js",
-		"distmapjs" : "dist/js/purgatorio.map.js",
-		"distminjs" : "dist/js/purgatorio.min.js",
-		"translationsdir": "src/js/purgatorio/*.js",
-		"cordovajs": "apps/crossdanteinferno/www/js/inferno.min.js",
-		"cordovabuildjs": "apps/crossdanteinferno/platforms/android/assets/www/js/inferno.min.js"
+		"sourcejs" : "src/js/inferno.js",
+		"distjs": "dist/js/inferno.js",
+		"distmapjs" : "dist/js/inferno.map.js",
+		"distminjs" : "dist/js/inferno.min.js",
+		"translationsdir": "src/js/inferno/*.js",
+		"cordovajs": "apps/crossdanteinferno/www/js/inferno.js",
+		"cordovabuildjs": "apps/crossdanteinferno/platforms/android/assets/www/js/inferno.js"
 	},
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss & node-sass --output-style compressed -o src/css src/scss",
@@ -25,7 +25,7 @@
     "watch": "npm run watch-scss & npm run watch-js",
     "map": "madge $npm_package_config_sourcejs --image dependencies.jpeg",
     "serve": "browser-sync start --server 'dist' --files 'dist/css/*.css, dist/js/*.js' --index 'index-debug.html' --browser 'google chrome'",
-		"cordovaupdate": "cp $npm_package_config_distminjs $npm_package_config_cordovajs & cp $npm_package_config_distminjs $npm_package_config_cordovabuildjs"
+		"cordovaupdate": "cp $npm_package_config_distjs $npm_package_config_cordovajs & cp $npm_package_config_distminjs $npm_package_config_cordovabuildjs"
   },
   "author": "Dan Visel",
   "license": "ISC",

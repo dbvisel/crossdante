@@ -166,17 +166,23 @@ var app = {
 		};
 
 		// document.querySelectorAll(".backtosettings").forEach(app.helpers.gosettings);
-		for(let i of document.querySelectorAll(".backtosettings")) {
-			app.helpers.gosettings(i);
+
+		// or try something like this: Array.from(querySelectorAll('img')).forEach(img => doStuff);
+
+
+		let backtosettings = document.querySelectorAll(".backtosettings");
+		for (let i = 0; i < backtosettings.length; ++i) {
+			app.helpers.gosettings(backtosettings[i]);
 		}
 
 		// swipe controls
 
 		let hammertime = new Hammer(appdata.elements.lens); // does this need to be a global?
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		hammertime.on('swipeleft',() => {
+		hammertime.on('swipeleft',(e) => {
+			e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			app.setlens(app.nexttrans(appdata.currenttranslation),appdata.currentcanto);
-		}).on('swiperight',() => {
+		}).on('swiperight',(e) => {
 			app.setlens(app.prevtrans(appdata.currenttranslation),appdata.currentcanto);
 		});
 
@@ -185,12 +191,10 @@ var app = {
 			if(appdata.elements.text.scollTop === 0) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);  // this needs to be at the bottom!
 			}
-		}).on('swipeup',() => {
+		}).on('swipeup',(e) => {
 			// if difference between current scroll position + height of frame & complete height
 			// of column is less than 8, go to the next one
-
-
-			if(Math.abs(appdata.elements.text.scrollTop + appdata.elements.text.clientHeight - appdata.elements.text.scrollHeight) < 8) {
+			if(Math.abs(appdata.elements.text.scrollTop + appdata.elements.text.clientHeight - appdata.elements.text.scrollHeight) < 4) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto+1);
 			}
 		});
@@ -258,10 +262,20 @@ var app = {
 		}
 	},
 	resize: function() {
-		document.getElementById("navtitle").style.width =
+
+console.log("Navbar: " + document.getElementById("navbar").clientWidth);
+console.log("Navtitle: " + document.getElementById("navtitle").clientWidth);
+console.log("button width: " + document.getElementById("navprev").clientWidth);
+
 		appdata.windowwidth = window.innerWidth;
 		appdata.windowheight = window.innerHeight;
-		document.getElementById("navtitle").style.width = `${appdata.windowwidth - (5 * 40)}px`;
+		let titlewidth = document.getElementById("navbar").clientWidth - (5 * 40);
+
+console.log("titlewidth: " + titlewidth);
+
+		document.getElementById("navtitle").style.width = `${titlewidth}px`;
+		document.getElementById("navtitle").setAttribute("style",`width:${titlewidth}px`);
+
 		console.log(`The window has been resized! New width: ${appdata.windowwidth},${appdata.windowheight}`);
 		appdata.lenswidth = appdata.windowwidth;
 		appdata.lensheight = appdata.windowheight - document.getElementById("navbar").clientHeight;
@@ -582,11 +596,15 @@ var app = {
 			document.getElementById("check-"+appdata.translationdata[i].translationid).checked = (appdata.currenttranslationlist.indexOf(appdata.translationdata[i].translationid) > -1);
 		}
 
-		for(let i of document.querySelectorAll("#translatorlist input[type=checkbox]")) {
-			app.helpers.checkboxgo(i);
+//		for(let i of document.querySelectorAll("#translatorlist input[type=checkbox]")) {
+		let inputcheckbox = document.querySelectorAll("#translatorlist input[type=checkbox]");
+		for(let i = 0; i < inputcheckbox.length; i++) {
+			app.helpers.checkboxgo(inputcheckbox[i]);
 		}
-		for(let i of document.querySelectorAll("#translatorlist label")) {
-			app.helpers.checkboxspango(i);
+		let translatorlistlabel = document.querySelectorAll("#translatorlist label");
+//		for(let i of document.querySelectorAll("#translatorlist label")) {
+		for(let i = 0; i < translatorlistlabel.length; i++) {
+			app.helpers.checkboxspango(translatorlistlabel[i]);
 		}
 
 		// add in toc

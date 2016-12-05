@@ -31,6 +31,12 @@ html {
 	height: 100%; // put in for site, does this break anything?
 }
 
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+
 body {
 	font-size: $fontsize;
 	line-height: $lineheight;
@@ -109,8 +115,13 @@ body {
 		display: inline-block;
 		height: $navheight;
 		padding-top: $navheight / 5; //8px
-		overflow-x: scroll;
+		overflow-x: auto;
+		overflow-y: hidden;
 		white-space: nowrap;
+		float: left;
+		&::-webkit-scrollbar {
+			display:none;
+		}
 	}
 }
 
