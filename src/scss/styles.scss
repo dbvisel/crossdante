@@ -393,10 +393,19 @@ p.summary {
 // deal with the site
 
 @import "site";
+
+// book-specific fixes
+
 @import "bookspecific";
+
+// cordova-specific fixes
+
+@import "cordova";
 
 // night mode
 
 @import "nightmode";
+
+
 
 @import "responsive"; // don't include this for non-responsive version

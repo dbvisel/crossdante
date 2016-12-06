@@ -15,7 +15,7 @@ module.exports = {
 	currentpercentage: 0, // this is current percentage of page (maybe this should be in terms of lines on page?)
 	currentlines: 0,       // this is the number of lines calculated to be on the page
 	elements: {},
-	delay: 300,
+	delay: 600,
 	responsive: true,
 	oncordova: false
 };

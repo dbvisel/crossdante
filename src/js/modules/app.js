@@ -14,36 +14,19 @@ var app = {
 		console.log("initializing!");
 		this.bindEvents();
 
-		// basic doc setup
-
-		appdata.elements.lens = document.getElementById("lens");
-		appdata.elements.main = document.getElementById("main");
-		appdata.elements.content = document.getElementById("content");
-		appdata.elements.text = document.getElementById("text");
-		appdata.elements.textinsideframe = document.getElementById("textinsideframe");
-		appdata.elements.slider = document.getElementById("slider");
-
-
-		// set up about page
-
-		document.title = "Cross Dante " + appdata.booktitle;
-		document.getElementById("abouttext").innerHTML = appdata.description;
-
-		// set up current translation list (initially use all of them)
-
-		for(let i in appdata.translationdata) {
-			appdata.currenttranslationlist.push(appdata.translationdata[i].translationid);
-			document.getElementById("textsources").innerHTML += `<li>${appdata.translationdata[i].translationfullname}, <em>${appdata.translationdata[i].title}:</em> ${appdata.translationdata[i].source}</li>`;
-		}
-
-		appdata.currenttranslation = appdata.currenttranslationlist[0];
-
 		// check to see if there are saved localstorage, if so, take those values
 
 	},
 	bindEvents: function() {
 		console.log("binding events!");
-		document.addEventListener('deviceready', this.onDeviceReady, false);
+		var testapp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+		var testcordova = !(window.cordova === undefined); // need this as well for dev
+		if(testapp && testcordova) {
+			document.addEventListener('deviceready', app.onDeviceReady, false);
+		} else {
+			app.setup();
+		}
+
 		window.addEventListener("resize", this.resize, false);
 
 		// start fastclick
@@ -52,44 +35,6 @@ var app = {
 			document.addEventListener('DOMContentLoaded', () => {
 				Fastclick(document.body);
 			}, false);
-		}
-
-		if(!appdata.oncordova) {
-			// attempt to fix android pull down to refresh
-			// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
-			window.addEventListener('load', function() {
-				var maybePreventPullToRefresh = false;
-				var lastTouchY = 0;
-				var touchstartHandler = function(e) {
-					if (e.touches.length != 1) return;
-					lastTouchY = e.touches[0].clientY;
-					// Pull-to-refresh will only trigger if the scroll begins when the
-					// document's Y offset is zero.
-					maybePreventPullToRefresh = window.pageYOffset == 0;
-				};
-
-				var touchmoveHandler = function(e) {
-					var touchY = e.touches[0].clientY;
-					var touchYDelta = touchY - lastTouchY;
-					lastTouchY = touchY;
-
-					if (maybePreventPullToRefresh) {
-						// To suppress pull-to-refresh it is sufficient to preventDefault the
-						// first overscrolling touchmove.
-						maybePreventPullToRefresh = false;
-						if (touchYDelta > 0) {
-							e.preventDefault();
-
-							if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
-								app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
-							}
-							return;
-						}
-					}
-				};
-				document.addEventListener('touchstart', touchstartHandler, false);
-				document.addEventListener('touchmove', touchmoveHandler, false);
-			});
 		}
 	},
 	helpers: {
@@ -699,13 +644,79 @@ console.log("titlewidth: " + titlewidth);
 		}
 	},
 	onDeviceReady: function() {
-		console.log("device ready!");
+		appdata.oncordova = true; // we're running on cordova
+		console.log("Device ready fired!");
+		console.log(device.cordova);
 		app.setup();
 	},
 	setup: function() {
+		console.log("In setup");
+
+		// basic doc setup
+
+		appdata.elements.lens = document.getElementById("lens");
+		appdata.elements.main = document.getElementById("main");
+		appdata.elements.content = document.getElementById("content");
+		appdata.elements.text = document.getElementById("text");
+		appdata.elements.textinsideframe = document.getElementById("textinsideframe");
+		appdata.elements.slider = document.getElementById("slider");
+
+		// set up about page
+
+		document.title = "Cross Dante " + appdata.booktitle;
+		document.getElementById("abouttext").innerHTML = appdata.description;
+
+		// set up current translation list (initially use all of them)
+
+		for(let i in appdata.translationdata) {
+			appdata.currenttranslationlist.push(appdata.translationdata[i].translationid);
+			document.getElementById("textsources").innerHTML += `<li>${appdata.translationdata[i].translationfullname}, <em>${appdata.translationdata[i].title}:</em> ${appdata.translationdata[i].source}</li>`;
+		}
+
+		appdata.currenttranslation = appdata.currenttranslationlist[0];
+
+		if(!appdata.oncordova) {
+			// attempt to fix android pull down to refresh
+			// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
+			window.addEventListener('load', function() {
+				var maybePreventPullToRefresh = false;
+				var lastTouchY = 0;
+				var touchstartHandler = function(e) {
+					if (e.touches.length != 1) return;
+					lastTouchY = e.touches[0].clientY;
+					// Pull-to-refresh will only trigger if the scroll begins when the
+					// document's Y offset is zero.
+					maybePreventPullToRefresh = window.pageYOffset == 0;
+				};
+
+				var touchmoveHandler = function(e) {
+					var touchY = e.touches[0].clientY;
+					var touchYDelta = touchY - lastTouchY;
+					lastTouchY = touchY;
+
+					if (maybePreventPullToRefresh) {
+						// To suppress pull-to-refresh it is sufficient to preventDefault the
+						// first overscrolling touchmove.
+						maybePreventPullToRefresh = false;
+						if (touchYDelta > 0) {
+							e.preventDefault();
+
+							if(appdata.currentpage == "lens" && appdata.elements.text.scrollTop === 0) {
+								app.setlens(appdata.currenttranslation, appdata.currentcanto-1,1);
+							}
+							return;
+						}
+					}
+				};
+				document.addEventListener('touchstart', touchstartHandler, false);
+				document.addEventListener('touchmove', touchmoveHandler, false);
+			});
+		}
+
 		app.setupnotes();
 		app.setupcontrols();
 		dom.addclass("body",appdata.bookname);
+		dom.addclass("body",appdata.oncordova ? "cordova" : "web");
 		dom.removebyselector("#loadingscrim");
 		app.setpage("lens");
 	}

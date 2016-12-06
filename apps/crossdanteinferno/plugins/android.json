@@ -7,7 +7,7 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
         },
         "cordova-plugin-inappbrowser": {
@@ -17,6 +17,17 @@
             "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
         },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "22+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
         }
     },

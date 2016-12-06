@@ -1,0 +1,26 @@
+// fixes for cordova
+
+.web {
+	text-rendering: optimizeLegibility;
+}
+
+.cordova {
+	text-rendering: optimizeSpeed;
+	touch-action: initial;
+	& #main {
+		touch-action: initial;
+	}
+	& #content {
+		touch-action: initial;
+	}
+	& #slider {
+		touch-action: initial;
+	}
+	& #lens {
+		touch-action: initial;
+	}
+	& #text {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+}
