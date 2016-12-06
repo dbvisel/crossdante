@@ -1,7 +1,6 @@
 // help page
 
 #help {
-	overflow-y: scroll;
 	& p + p {
 		text-indent: $lineheight;
 	}

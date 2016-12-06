@@ -197,6 +197,7 @@ body {
 
 
 .basic {
+	overflow-y: scroll;
 	font-family: $headerfamily;
 	font-size: $textfontsize;
 //	padding: $textlineheight;
