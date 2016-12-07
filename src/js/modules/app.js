@@ -122,21 +122,27 @@ var app = {
 
 		// swipe controls
 
-		let hammertime = new Hammer(appdata.elements.lens); // does this need to be a global?
+		let hammertime = new Hammer(appdata.elements.lens, {
+		    touchAction : 'auto'
+		}); // does this need to be a global?
 		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 		hammertime.on('swipeleft',(e) => {
 			e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			app.setlens(app.nexttrans(appdata.currenttranslation),appdata.currentcanto);
 		}).on('swiperight',(e) => {
+			e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			app.setlens(app.prevtrans(appdata.currenttranslation),appdata.currentcanto);
 		});
 
 		hammertime.on('swipedown',(e) => {
 			e.preventDefault(); // attempt to fix android swipe down = reload behavior
+			console.log("swipe down called");
 			if(appdata.elements.text.scollTop === 0) {
 				app.setlens(appdata.currenttranslation,appdata.currentcanto-1,1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup',(e) => {
+			e.preventDefault(); // attempt to fix android swipe down = reload behavior
+			console.log("swipe up called");
 			// if difference between current scroll position + height of frame & complete height
 			// of column is less than 8, go to the next one
 			if(Math.abs(appdata.elements.text.scrollTop + appdata.elements.text.clientHeight - appdata.elements.text.scrollHeight) < 4) {
@@ -359,6 +365,7 @@ console.log("titlewidth: " + titlewidth);
 					});
 				}
 				appdata.elements.text = document.getElementById("text");
+				dom.addclass("#text", "makescroll");
 				appdata.elements.textinsideframe = document.getElementById("textinsideframe");
 			} else {
 
@@ -647,6 +654,12 @@ console.log("titlewidth: " + titlewidth);
 		appdata.oncordova = true; // we're running on cordova
 		console.log("Device ready fired!");
 		console.log(device.cordova);
+//		var platform = device.platform;
+//		console.log(platform);
+//		if(device.platform === "iOS") {
+//			var mytop = document.getElementById("navbar");
+//			mytop.style.backgroundColor = green;
+//		}
 		app.setup();
 	},
 	setup: function() {

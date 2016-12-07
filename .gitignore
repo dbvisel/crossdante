@@ -11,3 +11,7 @@ node_modules/**/*
 apps/crossdanteinferno/platforms/android/build/intermediates/
 apps/crossdanteparadiso/platforms/android/build/intermediates/
 apps/crossdantepurgatorio/platforms/android/build/intermediates/
+
+apps/crossdanteinferno/platforms/ios/build/emulator/
+apps/crossdanteparadiso/platforms/ios/build/emulator/
+apps/crossdantepurgatorio/platforms/ios/build/emulator/

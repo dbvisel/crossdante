@@ -32,10 +32,13 @@ html {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px;  // remove scrollbar space
+    background: transparent;  // optional: just make scrollbar invisible
 }
 
+.makescroll {
+	-webkit-overflow-scrolling: touch;
+}
 
 body {
 	font-size: $fontsize;
@@ -198,6 +201,7 @@ body {
 
 .basic {
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	font-family: $headerfamily;
 	font-size: $textfontsize;
 //	padding: $textlineheight;
@@ -219,6 +223,10 @@ body {
 		margin: $textlineheight 0;
 		display: block;
 	}
+}
+
+#textinsideframe {
+	height: calc(100% + 1px);
 }
 
 @import "settings";
@@ -251,6 +259,7 @@ body {
 	display: block;
 	position: absolute;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 // text formatting
@@ -328,6 +337,7 @@ p.summary {
 	font-size: $textfontsize * 0.75;
 	line-height: $textlineheight * 0.75;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 // poetry
