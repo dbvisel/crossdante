@@ -7,7 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "22+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "net.danvisel.crossdanteparadiso"
         },
         "cordova-plugin-device": {
@@ -22,12 +27,7 @@
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "net.danvisel.crossdanteparadiso"
         },
-        "cordova-plugin-crosswalk-webview": {
-            "XWALK_VERSION": "22+",
-            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-            "XWALK_MODE": "embedded",
-            "XWALK_MULTIPLEAPK": "true",
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "net.danvisel.crossdanteparadiso"
         }
     },
