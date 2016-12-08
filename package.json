@@ -25,7 +25,7 @@
     "watch": "npm run watch-scss & npm run watch-js",
     "map": "madge $npm_package_config_sourcejs --image dependencies.jpeg",
     "serve": "browser-sync start --server 'dist' --files 'dist/css/*.css, dist/js/*.js' --index 'index-debug.html' --browser 'google chrome'",
-		"cordovaupdate": "cp $npm_package_config_distjs $npm_package_config_cordovajs & cp $npm_package_config_distminjs $npm_package_config_cordovabuildjs"
+		"cordovaupdate": "cp $npm_package_config_distjs $npm_package_config_cordovajs & cp $npm_package_config_distjs $npm_package_config_cordovabuildjs"
   },
   "author": "Dan Visel",
   "license": "ISC",
