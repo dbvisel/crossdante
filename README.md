@@ -12,8 +12,10 @@ An app for facing-page translation. Online version here: https://danvisel.net/cr
  * _dist/_ are the files for the web
   * _dist/index.html_ is the main page
   * _dist/[bookname].html_ is the page for a particular book
- * _apps/_ contains the Cordova projects (needs to be updated)
+ * _apps/_ contains the Cordova projects for Android/iOS apps
 
 Current books are _inferno_, _purgatorio_, and _paradiso_. More soon!
 
 NPM build scripts are in _package.json_. Change variables in the "config" section to make build scripts for different books. It would be nice to have a smarter build system, but this works.
+
+To build for Cordova: _npm run cordova[bookname]_
