@@ -15,3 +15,6 @@ apps/crossdantepurgatorio/platforms/android/build/intermediates/
 apps/crossdanteinferno/platforms/ios/build/emulator/
 apps/crossdanteparadiso/platforms/ios/build/emulator/
 apps/crossdantepurgatorio/platforms/ios/build/emulator/
+
+release-signing.properties
+*.keystore
