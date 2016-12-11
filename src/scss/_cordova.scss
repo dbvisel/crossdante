@@ -2,6 +2,9 @@
 
 .web {
 	text-rendering: optimizeLegibility;
+	& .oncordova {
+		display: none;
+	}
 }
 
 .cordova {
@@ -26,5 +29,14 @@
 	& .basic {
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
+	}
+	& .onweb {
+		display: none;
+	}
+	& span.oncordova {
+		display: inline-block;
+	}
+	& div.oncordova {
+		display: block;
 	}
 }

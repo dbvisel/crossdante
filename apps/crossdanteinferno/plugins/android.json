@@ -29,6 +29,9 @@
             "XWALK_MODE": "embedded",
             "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
         }
     },
     "dependent_plugins": {}

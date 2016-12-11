@@ -65,6 +65,14 @@
 			font-weight: normal;
 		}
   }
+	& .modeselector {
+		margin-left: $textlineheight / 4;
+    margin-right: $textlineheight / 4;
+		& a {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
 }
 
 // NEW CHECKBOXES

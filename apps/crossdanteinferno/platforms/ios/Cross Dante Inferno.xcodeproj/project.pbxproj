@@ -5,7 +5,6 @@
 	};
 	objectVersion = 48;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		0E8CECC024A14E92A29305E5 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AF02E026541AC9645A92B /* CDVViewController+SplashScreen.m */; };
@@ -20,6 +19,7 @@
 		D2C1D776B59A4CB0A808DD97 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F991B809E04DE880F44736 /* CDVInAppBrowser.m */; };
 		E49DB0FB25D74F00AAF6E25F /* CDVViewController+UpdateSupportedOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB207756C7744AB93B99DC4 /* CDVViewController+UpdateSupportedOrientations.m */; };
 		FE68E0511A944DCB80CAD9BB /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0358BEBA805F462B975B780A /* YoikScreenOrientation.m */; };
+		42C345F2071940C4AF6C7F44 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE2ADDD6924724B248B369 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +72,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Cross Dante Inferno/config.xml"; sourceTree = "<group>"; };
+		3BAE2ADDD6924724B248B369 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		71B53A06E18446BEAD974D49 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,8 @@
 				528AF02E026541AC9645A92B /* CDVViewController+SplashScreen.m */,
 				592C6455FDBA4446B0B0FEDF /* CDVSplashScreen.h */,
 				A7049FBECD1147F29D5EA24E /* CDVViewController+SplashScreen.h */,
+				3BAE2ADDD6924724B248B369 /* CDVStatusBar.m */,
+				71B53A06E18446BEAD974D49 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "Cross Dante Inferno/Plugins";
@@ -229,7 +233,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 810;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Cross Dante Inferno" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -308,6 +312,7 @@
 				E49DB0FB25D74F00AAF6E25F /* CDVViewController+UpdateSupportedOrientations.m in Sources */,
 				39B9ED8C093B4185BB778950 /* CDVSplashScreen.m in Sources */,
 				0E8CECC024A14E92A29305E5 /* CDVViewController+SplashScreen.m in Sources */,
+				42C345F2071940C4AF6C7F44 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

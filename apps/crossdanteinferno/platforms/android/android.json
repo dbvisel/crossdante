@@ -55,6 +55,10 @@
                         {
                             "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -97,6 +101,9 @@
             "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
             "XWALK_MODE": "embedded",
             "XWALK_MULTIPLEAPK": "true",
+            "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.danvisel.crossdanteinferno"
         }
     },
@@ -142,6 +149,14 @@
             "clobbers": [
                 "navigator.splashscreen"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -150,6 +165,7 @@
         "cordova-plugin-screen-orientation": "1.4.2",
         "cordova-plugin-splashscreen": "4.0.0",
         "cordova-plugin-whitelist": "1.3.0",
-        "cordova-plugin-crosswalk-webview": "2.2.0"
+        "cordova-plugin-crosswalk-webview": "2.2.0",
+        "cordova-plugin-statusbar": "2.2.0"
     }
 }

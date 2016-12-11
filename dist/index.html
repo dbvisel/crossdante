@@ -16,15 +16,16 @@
 	<div id="sitebox">
 		<div id="textbox">
 			<h1>Cross Dante</h1>
-			<div id="slidingdante"><img src="img/slidingdante.gif" alt="Dante keeps going and going." /></div>
+			<div class="imagediv"><img src="img/slidingdante.gif" alt="Dante keeps going and going." /></div>
 			<p>This project is designed to present texts in multiple translations. I wanted to read Dante, but I wasn&rsquo;t sure which translation to read, so I made this so that I could read them all at once.</p>
 			<h2>Texts:</h2>
 			<p>Choose one to start reading:</p>
 			<div class="list">
-				<div class="listitem"><span class="linum colored">¶</span><a href="inferno.html">Inferno</a></div>
-				<div class="listitem"><span class="linum colored">¶</span><a href="purgatorio.html">Purgatorio</a></div>
-				<div class="listitem"><span class="linum colored">¶</span><a href="paradiso.html">Paradiso</a></div>
+				<div class="listitem"><span class="linum colored">¶</span>Inferno: <a href="inferno.html">online</a>, <a href="https://play.google.com/store/apps/details?id=net.danvisel.crossdanteinferno">Android app</a></div>
+				<div class="listitem"><span class="linum colored">¶</span>Purgatorio: <a href="purgatorio.html">online</a>, <a href="https://play.google.com/store/apps/details?id=net.danvisel.crossdantepurgatorio">Android app</a></div>
+				<div class="listitem"><span class="linum colored">¶</span>Paradiso: <a href="paradiso.html">online</a>, <a href="https://play.google.com/store/apps/details?id=net.danvisel.crossdanteparadiso">Android app</a></div>
 			</div>
+			<p>(iOS apps are coming soon!)</p>
 			<h2>How does this work?</h2>
 			<div class="list"><div class="listitem"><span class="linum">1.</span>Choose a text.</div>
 				<div class="listitem"><span class="linum">2.</span>Change translations by:</div>
@@ -41,11 +42,32 @@
 			<p>Most electronic books are really terrible! Most of the time what people think of when they think about electronic books is something with about the complexity of a Microsoft Word document, a long scroll of text which is hacked into randomly sized pages with capricious formatting. This works for some things; it&rsquo;s terrible for others. But it&rsquo;s cheap and easy to make electronic books like that, so that&rsquo;s what most of them are. That&rsquo;s a shame because we could actually be making things informed by some thought about what the reader is doing when reading, electronic books that actually improve the reading experience.</p>
 			<p>I like facing-page translations, especially of poetry: it&rsquo;s nice to move back and forth between an original (even if you only understand a tiny amount of the language) and a translation. It&rsquo;s also nice to compare translations. This is generally a clumsy process with paper books; it&rsquo;s something that can be done relatively easily in an electronic environment if people bothered to try.</p>
 			<p>I wanted to make something I could read on my phone with one hand while riding on the subway, like you can with a paperback; and this is the result.</p>
+			<h2>Explain all of this in exhaustive detail?</h2>
+			<p>Okay, let&rsquo;s start with how we think about texts. Texts are generally made of sentences in order, and those sentences are made of words in order. (Yes. There are <em>huge numbers</em> of exceptions to this.) But this linear conception of a text mimics the way words come out of our mouths, ordered by time. So you might think of a text as looking something like this, starting at the top with the first section and making its way down the page:</p>
+			<div class="imagediv"><img src="img/bookscroll.png" alt="A book as a long scroll of paper, poorly drawn." /></div>
+			<p>This is basically how most electronic text documents work: something written in Microsoft Word, for example. That&rsquo;s basically how Microsoft Word shows text documents; that&rsquo;s how this very web page works.</p>
+			<p>A book is a little bit different, because a book has pages. Pages chop up the scroll of text into equally sized units:</p>
+			<div class="imagediv"><img src="img/codex.png" alt="The left and right pages of a book, poorly drawn." /></div>
+			<p>The reader starts on the first page, goes on to the next page, turns the page when appropriate.</p>
+			<p>We also have electronic books. The creators of electronic books realized that there are advantages of using pages over an endless scroll: most notably, it&rsquo;s easy to lose your place in a scroll. And so most electronic reading environments chop texts up into pages. This is done mechanically and according to the reader&rsquo;s whim: if you make the type bigger, your page size will have less words on it than the page of a reader who like smaller type.</p>
+			<div class="imagediv"><img src="img/bookscrollchopped.png" alt="A scroll of text, roughly chopped into pages, poorly drawn." /></div>
+			<p>(Page numbers in electronic books is a sad subject: it&rsquo;s hard to point another reader at exactly what you were reading because their edition may look entirely different from yours. But I digress.) Most electronic book reading environments present pages left to right, kind of like this:</p>
+			<div class="imagediv"><img src="img/bookscrollchoppedleftright.png" alt="A scroll of text, chopped into pages, assembled left to right, poorly drawn." /></div>
+			<p>Superficially, this looks like a printed book. The correspondence breaks down if you think about it for more than a minute, but we are creatures of habit when we consume technology. A lot of the time, this is good enough for what we want to do.</p>
+			<p><em>But!</em> There are other things that you can do with a printed book. One very good example is facing-page translations. There, you might have the original text on the recto and a translation on the verso, like this:</p>
+			<div class="imagediv"><img src="img/codexleftright.png" alt="The left and right pages of a book with facing page translation, poorly drawn." /></div>
+			<p>The way this kind of book works is different from the way our simple scroll of text works: instead, we have two parallel scrolls of text:</p>
+			<div class="imagediv"><img src="img/twoscrolls.png" alt="Two texts scroll downwards, poorly drawn." /></div>
+			<p>This isn&rsquo;t something you can do very well with a traditional electronic book, because this text has a second dimension. But it&rsquo;s not that tricky to put together an electronic reading enviroment for something like this! And when you start thinking about the text in this way, it&rsquo;s easy to complicate it even further by adding a third translation:</p>
+			<div class="imagediv"><img src="img/threescrolls.png" alt="Three texts scroll downwards, poorly drawn." /></div>
+			<p>Or even more! Because we&rsquo;re not confined physically, we could have an infinite number of translations, all side by side. The problem then becomes the way to navigate them.</p>
+			<div class="imagediv"><img src="img/threescrollslens.png" alt="The left and right pages of a book." /></div>
+			<p>Here, you can think of your screen as a lens that moves around: swiping left or right goes to another translation, swiping up or down goes to a different point in the text. It&rsquo;s not perfect by any means, but it lets us access translation in a different way.</p>
 			<h2>Caveats</h2>
 			<p>Please note that the translations here aren&rsquo;t being presented as the best available! Rather, they&rsquo;re here by virtue of being in the public domain, which makes it easier to do something like this. In a better world, we&rsquo;d have every single translation of Dante that&rsquo;s ever been published in here, but rights issues complicate that dream.</p>
 			<p>A further caveat: the texts were not perfect even when found, and probably more mistakes were added in markup conversion. But mistakes can be fixed.</p>
 			<p>And there are a ton of bugs in this, some I know about and some I have no idea of. If you find something that&rsquo;s going wrong, let me know?</p>
-			<p>I&rsquo;m currently working the bugs out of apps for Android and iOS devices; for the time being, these pages should work on mobile devices. Let me know if you&rsquo;re interested in testing the apps.</p>
+			<p>I&rsquo;m currently working the bugs out of iOS apps; for the time being, the online versions should work on mobile devices. Let me know if you&rsquo;re interested in testing the apps!</p>
 			<h2>Contact</h2>
 			<p>This was made by <a href="https://danvisel.net">Dan Visel</a>. Please let him know if there are any bugs or if you have suggestions for future versions. If you&rsquo;re working on translation issues, and you&rsquo;d like to do something similar, let me know!</p>
 			<div class="list">
