@@ -16,19 +16,23 @@
 
 .twinmode {
 	& #navbarleft {
+		position: fixed;
+		top: 0;
+		left: 0;
 		display: inline-block;
 		width: 50%;
 	}
 	& #navbarright {
+		position: fixed;
+		top: 0;
+		left: 50%;
 		width: 50%;
 		border-left: 1px solid white;
 	}
 	& #sliderleft {
 		left: 0;
-		width: 50%;
 	}
 	& #sliderright {
 		left: 50%;
-		width: 50%;
 	}
 }

@@ -77,18 +77,25 @@ var app = {
 	setupcontrols: function() {
 
 		// button controls
-		document.getElementById("navprev").onclick = () => {
+		document.querySelector("#navbarright .navprev").onclick = () => {
 			app.setlens(app.nexttrans(data.lens.right.translation),data.canto,"right");
 		};
-		document.getElementById("navnext").onclick = () => {
+		document.querySelector("#navbarright .navnext").onclick = () => {
 			app.setlens(app.prevtrans(data.lens.right.translation),data.canto,"right");
 		};
-		document.getElementById("navup").onclick = () => {
+		document.querySelector("#navbarright .navup").onclick = () => {
 			app.setlens(data.lens.right.translation,data.canto-1,"right",0);
 		};
-		document.getElementById("navdown").onclick = () => {
+		document.querySelector("#navbarright .navdown").onclick = () => {
 			app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
+		document.getElementById("backbutton").onclick = () => {
+			if(data.currentpage == "help" || data.currentpage == "about") {
+				app.setpage("settings");
+			} else {
+				app.setpage("lens");
+			}
+		}
 		// initial settings
 
 		document.getElementById("aboutlink").onclick = () => {
@@ -114,34 +121,25 @@ var app = {
 				dom.removeclass("body","twinmode");
 				dom.addclass("#twinmode","off");
 				dom.removeclass("#singlemode","off");
-				data.usersettings.nightmode = false;
+				data.usersettings.twinmode = false;
 			};
 			document.querySelector("#twinmode").onclick = () => {
 				dom.addclass("body","twinmode");
 				dom.removeclass("#twinmode","off");
 				dom.addclass("#singlemode","off");
-				data.usersettings.nightmode = true;
+				data.usersettings.twinmode = true;
 			};
-		}
-
-		// document.querySelectorAll(".backtosettings").forEach(app.helpers.gosettings);
-
-		// or try something like this: Array.from(querySelectorAll('img')).forEach(img => doStuff);
-
-
-		let backtosettings = document.querySelectorAll(".backtosettings");
-		for (let i = 0; i < backtosettings.length; ++i) {
-			app.helpers.gosettings(backtosettings[i]);
 		}
 
 		// swipe controls
 		// should this actually be on the slider?
 
-		let hammertime = new Hammer(data.elements.lens, {
+		let hammerright = new Hammer(data.lens.right.slider, {
+//		let hammertime = new Hammer(data.elements.lens, {
 		    touchAction : 'auto'
 		}); // does this need to be a global?
-		hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		hammertime.on('swipeleft',(e) => {
+		hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		hammerright.on('swipeleft',(e) => {
 			e.preventDefault();
 			app.setlens(app.nexttrans(data.lens.right.translation),data.canto,"right");
 		}).on('swiperight',(e) => {
@@ -149,7 +147,7 @@ var app = {
 			app.setlens(app.prevtrans(data.lens.right.translation),data.canto,"right");
 		});
 
-		hammertime.on('swipedown',(e) => {
+		hammerright.on('swipedown',(e) => {
 //			e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			if(data.lens.right.text.scrollTop === 0) {
 				app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
@@ -191,17 +189,12 @@ var app = {
 
 		// page controls
 
-		data.lens.right.titlebar.onclick = () => {
+		data.elements.titlebar.onclick = () => {
 			app.setpage("lens");
 		};
-		document.querySelector("#navsettings").onclick = () => {
-			if(data.currentpage == "settings") {
-				//      if(data.currenttranslationlist.indexOf(data.translationdata[data.lens.right.translation].translationid) > -1 ) {}
-				app.setpage("lens");
-			} else {
-				app.updatesettings();
-				app.setpage("settings");
-			}
+		document.querySelector("#navbarright .navsettings").onclick = () => {
+			app.updatesettings();
+			app.setpage("settings");
 		};
 		data.elements.main.onclick = () => {
 			app.hidenotes();
@@ -229,11 +222,12 @@ var app = {
 
 console.log("Navbar: " + document.getElementById("navbar").clientWidth);
 console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
-console.log("button width: " + document.getElementById("navprev").clientWidth);
+console.log("button width: " + document.querySelector(".navprev").clientWidth);
 
 		data.windowwidth = window.innerWidth;
 		data.windowheight = window.innerHeight;
 		let titlewidth = document.getElementById("navbar").clientWidth - (5 * 40) - 1;
+
 		if(data.usersettings.twinmode) {
 			titlewidth = (document.getElementById("navbar").clientWidth / 2) - (5 * 40) - 1;
 			console.log("In twin mode! width will be: "+ titlewidth);
@@ -242,6 +236,7 @@ console.log("button width: " + document.getElementById("navprev").clientWidth);
 		}
 
 console.log("titlewidth: " + titlewidth);
+console.log(data.usersettings.twinmode);
 
 		data.lens.right.titlebar.style.width = `${titlewidth}px`;
 		data.lens.right.titlebar.setAttribute("style",`width:${titlewidth}px`);
@@ -666,8 +661,22 @@ console.log("titlewidth: " + titlewidth);
 			// set title to be whatever the h1 is
 
 			let newtitle = document.querySelector("#" + newpage + " h1").innerHTML;
-			data.lens.right.titlebar.innerHTML = newtitle;
+			data.elements.titlebar.innerHTML = newtitle;
+			dom.addclass("nav#navbarleft","off");
+			dom.addclass("nav#navbarright","off");
+
+			dom.addclass("#navbarother","on");
+
+			// make back button on left of nav bar visible!
+
 		} else {
+			dom.removeclass("nav#navbarleft","off");
+			dom.removeclass("nav#navbarright","off");
+
+			dom.removeclass("#navbarother","on");
+
+			// hide back button on left of nav bar!
+
 			app.resize();
 		}
 	},
@@ -686,6 +695,7 @@ console.log("titlewidth: " + titlewidth);
 		data.elements.lens = document.getElementById("lens");
 		data.elements.main = document.getElementById("main");
 		data.elements.content = document.getElementById("content");
+		data.elements.titlebar = document.querySelector("#navbarother .navtitle");
 		data.lens.left.slider = document.getElementById("sliderleft");
 		data.lens.right.slider = document.getElementById("sliderright");
 		data.lens.right.text = document.querySelector("#sliderright .textframe");

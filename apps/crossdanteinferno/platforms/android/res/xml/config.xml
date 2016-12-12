@@ -17,6 +17,10 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Cross Dante Inferno</name>
     <description>Cross Dante Inferno</description>
     <author email="dbvisel@gmail.com" href="https://danvisel.net/crossdante">Dan Visel</author>
@@ -37,8 +41,4 @@
     <preference name="xwalkMode" value="embedded" />
     <preference name="xwalkMultipleApk" value="false" />
     <preference name="android-minSdkVersion" value="16" />
-    <feature name="StatusBar">
-        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
-        <param name="onload" value="true" />
-    </feature>
 </widget>
