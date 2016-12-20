@@ -3,7 +3,7 @@
 An app for facing-page translation. Online version here: https://danvisel.net/crossdante/. This still needs a great deal of work! Where things are:
 
  * _src/_ are the raw application files
- 	* _src/[bookname]-debug.html_ is the dev version of the page for a particular book
+ 	* _src/[bookname]-debug.html_ is the dev version of the page for a particular book (uses non-minned scripts, nothing else special)
   * _src/js/modules/_ is the general code – _app.js_ is the entry point.
   * _src/js/[bookname].js_ is the main JavaScript file for a particular book. These files are identical, but they point to different _[bookname]/bookdata.js_ files.
   * _src/js/[bookname]_/ is where individual book files live right now
