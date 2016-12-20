@@ -72,11 +72,30 @@ var app = {
 				document.getElementById(`check-${this.id}`).checked = !document.getElementById(`check-${this.id}`).checked;
 				app.changetranslation(this.id,document.getElementById(`check-${this.id}`).checked);
 			};
+		},
+		gettranslationindex: function(transid) {
+			for(let j = 0; j < data.translationdata.length; j++) {
+				if(transid == data.translationdata[j].translationid) {
+					return j;
+				}
+			}
 		}
 	},
 	setupcontrols: function() {
 
 		// button controls
+		document.querySelector("#navbarleft .navprev").onclick = () => {
+			app.setlens(app.nexttrans(data.lens.left.translation),data.canto,"left");
+		};
+		document.querySelector("#navbarleft .navnext").onclick = () => {
+			app.setlens(app.prevtrans(data.lens.left.translation),data.canto,"left");
+		};
+		document.querySelector("#navbarleft .navup").onclick = () => {
+			app.setlens(data.lens.right.translation,data.canto-1,"right",0);
+		};
+		document.querySelector("#navbarleft .navdown").onclick = () => {
+			app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+		};
 		document.querySelector("#navbarright .navprev").onclick = () => {
 			app.setlens(app.nexttrans(data.lens.right.translation),data.canto,"right");
 		};
@@ -89,13 +108,23 @@ var app = {
 		document.querySelector("#navbarright .navdown").onclick = () => {
 			app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
+		document.querySelector("#navbarleft .navclose").onclick = () => {
+			dom.removeclass("body","twinmode");
+			dom.addclass("#twinmode","off");
+			dom.removeclass("#singlemode","off");
+			data.usersettings.twinmode = false;
+			app.resize();
+		};
 		document.getElementById("backbutton").onclick = () => {
 			if(data.currentpage == "help" || data.currentpage == "about") {
 				app.setpage("settings");
 			} else {
 				app.setpage("lens");
 			}
-		}
+		};
+
+
+
 		// initial settings
 
 		document.getElementById("aboutlink").onclick = () => {
@@ -134,12 +163,14 @@ var app = {
 		// swipe controls
 		// should this actually be on the slider?
 
-		let hammerright = new Hammer(data.lens.right.slider, {
-//		let hammertime = new Hammer(data.elements.lens, {
+		data.elements.hammerright = new Hammer(data.lens.right.slider, {
 		    touchAction : 'auto'
-		}); // does this need to be a global?
-		hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		hammerright.on('swipeleft',(e) => {
+		});
+		data.elements.hammerleft = new Hammer(data.lens.left.slider, {
+		    touchAction : 'auto'
+		});
+		data.elements.hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		data.elements.hammerright.on('swipeleft',(e) => {
 			e.preventDefault();
 			app.setlens(app.nexttrans(data.lens.right.translation),data.canto,"right");
 		}).on('swiperight',(e) => {
@@ -147,8 +178,8 @@ var app = {
 			app.setlens(app.prevtrans(data.lens.right.translation),data.canto,"right");
 		});
 
-		hammerright.on('swipedown',(e) => {
-//			e.preventDefault(); // attempt to fix android swipe down = reload behavior
+		data.elements.hammerright.on('swipedown',(e) => {
+			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			if(data.lens.right.text.scrollTop === 0) {
 				app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
 			}
@@ -157,6 +188,28 @@ var app = {
 			// if difference between current scroll position + height of frame & complete height
 			// of column is less than 8, go to the next one
 			if(Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
+				app.setlens(data.lens.right.translation,data.canto+1,"right");
+			}
+		});
+		data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+		data.elements.hammerleft.on('swipeleft',(e) => {
+			e.preventDefault();
+			app.setlens(app.nexttrans(data.lens.left.translation),data.canto,"left");
+		}).on('swiperight',(e) => {
+			e.preventDefault();
+			app.setlens(app.prevtrans(data.lens.left.translation),data.canto,"left");
+		});
+
+		data.elements.hammerleft.on('swipedown',(e) => {
+			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
+			if(data.lens.left.text.scrollTop === 0) {
+				app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
+			}
+		}).on('swipeup',(e) => {
+			e.preventDefault();
+			// if difference between current scroll position + height of frame & complete height
+			// of column is less than 8, go to the next one
+			if(Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
 				app.setlens(data.lens.right.translation,data.canto+1,"right");
 			}
 		});
@@ -220,60 +273,85 @@ var app = {
 	},
 	resize: function() {
 
-console.log("Navbar: " + document.getElementById("navbar").clientWidth);
-console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
-console.log("button width: " + document.querySelector(".navprev").clientWidth);
+		//console.log("Navbar: " + document.getElementById("navbar").clientWidth);
+		//console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
+		//console.log("button width: " + document.querySelector(".navprev").clientWidth);
 
 		data.windowwidth = window.innerWidth;
 		data.windowheight = window.innerHeight;
 		let titlewidth = document.getElementById("navbar").clientWidth - (5 * 40) - 1;
 
-		if(data.usersettings.twinmode) {
+		if(data.usersettings.twinmode && data.windowwidth > 768) {
+			dom.addclass("body","twinmode");
 			titlewidth = (document.getElementById("navbar").clientWidth / 2) - (5 * 40) - 1;
-			console.log("In twin mode! width will be: "+ titlewidth);
+			console.log("Twin mode!");
+			data.lens.left.translation = app.nexttrans(data.lens.right.translation);
+
+			let thistrans = app.helpers.gettranslationindex(data.lens.left.translation);
+
+			dom.addclass("#sliderleft .textframe", data.translationdata[thistrans].translationclass);
+			let insert = dom.create(data.textdata[thistrans].text[data.canto]);
+			data.lens.left.textinside.appendChild(insert);
+
+			data.lens.left.slider.style.width = "50%";
+			data.lens.right.slider.style.width = "50%";
+			app.setlens(data.lens.left.translation,data.canto,"left");
 		} else {
-			console.log("Not twin mode!");
+			console.log("Single mode!");
+			dom.removeclass("body","twinmode");
+
+			data.lens.left.slider.style.width = "0";
+			data.lens.right.slider.style.width = "100%";
 		}
 
-console.log("titlewidth: " + titlewidth);
-console.log(data.usersettings.twinmode);
-
+		data.lens.left.titlebar.style.width = `${titlewidth}px`;
+		data.lens.left.titlebar.setAttribute("style",`width:${titlewidth}px`);
 		data.lens.right.titlebar.style.width = `${titlewidth}px`;
 		data.lens.right.titlebar.setAttribute("style",`width:${titlewidth}px`);
 
 		console.log(`The window has been resized! New width: ${data.windowwidth},${data.windowheight}`);
 		data.lens.width = data.windowwidth;
-		data.lens.height = data.windowheight - document.getElementById("navbar").clientHeight;
+		data.lens.height = data.windowheight - document.getElementById("navbar").clientHeight; // is this accurate on iOS?
 
 		dom.addclass(".page",data.lens.width > data.lens.height ? "landscape" : "portrait");
 		dom.removeclass(".page",data.lens.width > data.lens.height ? "portrait" : "landscape");
-/*
+		/*
 		data.elements.main.style.width = data.lens.width+"px";
 		data.elements.content.style.width = data.lens.width+"px";
-*/
+		*/
 		data.elements.main.style.height = data.windowheight+"px";
 		data.elements.content.style.height = data.lens.height+"px";
 
 		if(data.system.responsive) {
 			// are these numbers actually synched to what's in the CSS? check!
-			if(data.windowwidth < 640) {
+
+			let actualwidth = data.usersettings.twinmode ? (data.windowwidth / 2) : data.windowwidth;
+
+			if(actualwidth < 640) {
+				data.lens.left.lineheight = 20;
 				data.lens.right.lineheight = 20;
 			} else {
-				if(data.windowwidth < 768) {
+				if(actualwidth < 768) {
+					data.lens.left.lineheight = 24;
 					data.lens.right.lineheight = 24;
 				} else {
-					if(data.windowwidth < 1024) {
+					if(actualwidth < 1024) {
+						data.lens.left.lineheight = 28;
 						data.lens.right.lineheight = 28;
 					} else {
+						data.lens.left.lineheight = 32;
 						data.lens.right.lineheight = 32;
 					}
 				}
 			}
 		} else {
+			data.lens.left.lineheight = data.windowwidth/25;
 			data.lens.right.lineheight = data.windowwidth/25;
 		}
 
-		data.lens.right.width = data.windowwidth;
+		data.lens.left.width = data.usersettings.twinmode ? data.windowwidth / 2 : 0;
+		data.lens.right.width = data.usersettings.twinmode ? data.windowwidth / 2 : data.windowwidth;
+
 		app.setlens(data.lens.right.translation,data.canto,"right");
 	},
 	nexttrans: function(giventranslation) {
@@ -300,144 +378,191 @@ console.log(data.usersettings.twinmode);
 	},
 	setlens: function(newtrans, newcanto, side, percentage) {
 		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}, ${side}`);
-		let thisside = data.lens[side];
-		dom.removebyselector("#oldtext"); // attempt to fix flickering if too fast change
 
-		let changetrans = false;
-		let oldindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation
-		let newindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to
+		// if page isn't set to "lens" this doesn't do anything
 
 		if(data.currentpage == "lens") {
 
-			// if page isn't set to "lens" this doesn't do anything
+			let changetrans, changecanto = false;
+			let thisside = data.lens[side];
+			let otherside = (side == "right") ? data.lens.left : data.lens.right;
+			let other = (side == "right") ? "left" : "right";
+			//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
+			//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
 
-			if((newindex - oldindex) !== 0) {
+			let oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
+			let newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
+
+			if(newcanto !== data.canto) {
+				changecanto = true;
+				if(newcanto >= data.cantocount) {
+					newcanto = 0;
+				} else {
+					if(newcanto < 0) {
+						newcanto = data.cantocount-1;
+					}
+				}
+			}
+
+			if((newtransindex - oldtransindex) !== 0) {
 				changetrans = true;
 				percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
 				console.log(`—>Current percentage: ${percentage}`);
 			}
 
-			if(newcanto >= data.cantocount) {
-				newcanto = 0;
-			} else {
-				if(newcanto < 0) {
-					newcanto = data.cantocount-1;
-				}
+			// need to figure which translationdata we need from master list of translations
+
+			let othertranslationindex = 0;
+			let newtranslationindex = app.helpers.gettranslationindex(newtrans);
+			let oldtranslationindex = app.helpers.gettranslationindex(thisside.translation);
+			if(data.usersettings.twinmode) {
+				othertranslationindex = app.helpers.gettranslationindex(otherside.translation);
 			}
 
-			// need to figure which translationdata we need
 
-			let newdata = 0;
-			let olddata = 0;
+			if(changetrans) {
 
-			for(let j in data.translationdata) {
-				if(newtrans == data.translationdata[j].translationid) {
-					newdata = j;
-				}
-				if(thisside.translation == data.translationdata[j].translationid) {
-					olddata = j;
-				}
-			}
+				console.log("Changing translation!");
 
-			if(newindex !== oldindex) {
+				// changing translation
 
-				// console.log("Change in translation!");
-
-				thisside.text.id = "oldtext";
-				thisside.textinside.id = "oldtextinsideframe";
+				thisside.text.id = `oldtext${side}`;
+				let direction = 0;
 
 				// if new is bigger than old AND ( old is not 0 OR new is not the last one )
 				// OR if new is 0 and old is the last one
 
-				if( ((newindex > oldindex) && (oldindex > 0 || newindex !== (data.currenttranslationlist.length - 1 ))) || (newindex == 0 && oldindex == (data.currenttranslationlist.length-1)) ) {
+				if( ((newtransindex > oldtransindex) && (oldtransindex > 0 || newtransindex !== (data.currenttranslationlist.length - 1 ))) || (newtransindex == 0 && oldtransindex == (data.currenttranslationlist.length-1)) ) {
 
-					// console.log("Going right");  // we are inserting to the right
+					// we are inserting to the right
 
-					let insert = dom.create(`<div id="text" class="textframe ${ data.translationdata[newdata].translationclass }" style="left:100%;"><div class="textinsideframe" id="textinsideframe">${ data.textdata[newdata].text[newcanto] }</div></div>`);
+					let insert = dom.create(`<div id="newtext${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 					thisside.slider.appendChild(insert);
-					Velocity(thisside.slider, {'left':"-100%"}, {
-						duration: data.system.delay,
-						mobileHA: false,
-						complete: function() {
-							dom.removebyselector("#oldtext");
-							thisside.slider.style.left = "0";
-							thisside.text.style.left = "0";
-						}
-					});
+					if(data.usersettings.twinmode) {
+						direction = "-50%";
+					} else {
+						direction = "-100%";
+					}
 				} else {
 
-					// console.log("Going left"); // we are inserting to the left
+					// we are inserting to the left
 
-					let insert = dom.create(`<div id="text" class="textframe ${ data.translationdata[newdata].translationclass }" style="left:-100%;"><div class="textinsideframe" id="textinsideframe">${ data.textdata[newdata].text[newcanto] }</div></div>`);
+					let insert = dom.create(`<div id="newtext${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:-100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 					thisside.slider.insertBefore(insert, thisside.slider.childNodes[0]);
-					Velocity(thisside.slider, {'left':"100%"}, {
-						duration: data.system.delay,
-						mobileHA: false,
-						complete: function() {
-							dom.removebyselector("#oldtext");
-							thisside.slider.style.left = "0";
-							thisside.text.style.left = "0";
-						}
-					});
-				}
-				thisside.text = document.getElementById("text");
-				dom.addclass("#text", "makescroll");
-				thisside.textinside = document.getElementById("textinsideframe");
-			} else {
-
-				// console.log("No change in translation!"); // not shift left/shift right – do normal thing
-
-				for(let j in data.translationdata) {
-					if(newtrans == data.translationdata[j].translationid) {
-						newdata = j;
-					}
-					if(thisside.translation == data.translationdata[j].translationid) {
-						olddata = j;
+					if(data.usersettings.twinmode) {
+						direction = "50%";
+					} else {
+						direction = "100%";
 					}
 				}
 
-
-				thisside.textinside.innerHTML = data.textdata[newdata].text[newcanto];
-				dom.removeclass("#text",data.translationdata[olddata].translationclass); // is this not working for multiple classes?
-				dom.addclass("#text",data.translationdata[newdata].translationclass); // is this not working for multiple classes?
-			}
-
-			app.setupnotes();
-			thisside.translation = newtrans;
-			data.canto = newcanto;
-
-
-			if(data.system.responsive) {
-				app.fixpaddingresponsive(thisside);
-			} else {
-				app.fixpadding(thisside);
-			}
-
-			// set percentage: this is terrible! fix this!
-			// first: try to figure out how many lines we have? Can we do that?
-
-			if(changetrans) {
+				otherside.slider.style.zIndex = 500;
+				Velocity(thisside.slider, {'left':direction}, {
+					duration: data.system.delay,
+					mobileHA: false,
+					complete: function() {
+						dom.removebyselector(`#oldtext${side}`);
+						otherside.slider.style.zIndex = 1;
+						thisside.slider.style.left = "0";
+						thisside.text.style.left = "0";
+						dom.addclass(`#slider${side} .textframe`, "makescroll");
+					}
+				});
+				thisside.text = document.querySelector(`#newtext${side}`);
+				thisside.textinside = document.querySelector(`#newtext${side} .textinsideframe`);
+				thisside.translation = newtrans;
 
 				// this method still isn't great! it tries to round to current lineheight
 				// to avoid cutting off lines
 
-				let scrollto = app.rounded(percentage * thisside.text.scrollHeight);
-				thisside.text.scrollTop = scrollto;
-			} else {
-				if(percentage > 0) {
-					thisside.text.scrollTop = thisside.text.scrollHeight;
-				} else {
-					thisside.text.scrollTop = 0;
+				let scrollto = app.rounded(percentage * document.querySelector(`#newtext${side}`).scrollHeight);
+				document.querySelector(`#newtext${side}`).scrollTop = scrollto;
+				if(data.usersettings.twinmode) {
+					let scrollto = app.rounded(percentage * document.querySelector(`#newtext${other}`).scrollHeight);
+					document.querySelector(`#newtext${other}`).scrollTop = scrollto;
+				}
+				console.log("Scrolling to:" + scrollto);
+				if(data.usersettings.twinmode) {
+					app.turnonsynchscrolling();
 				}
 			}
 
+			if(changecanto || !changetrans) {
+
+				// we are either changing canto OR this is the first run
+
+				if(data.usersettings.twinmode) {
+					document.querySelector(`#slider${other} .textinsideframe`).innerHTML = data.textdata[othertranslationindex].text[newcanto];
+					dom.removeclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
+					dom.addclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
+					document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
+					dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass);
+					dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass);
+				} else {
+					document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
+					dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass); // is this not working for multiple classes?
+					dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass); // is this not working for multiple classes?
+				}
+				data.canto = newcanto;
+
+				if(percentage > 0) {
+					document.querySelector(`#newtext${side}`).scrollTop = document.querySelector(`#newtext${side}`).scrollHeight;
+					if(data.usersettings.twinmode) {
+						document.querySelector(`#newtext${other}`).scrollTop = document.querySelector(`#newtext${other}`).scrollHeight;
+					}
+				} else {
+					document.querySelector(`#newtext${side}`).scrollTop = 0;
+					if(data.usersettings.twinmode) {
+						document.querySelector(`#newtext${other}`).scrollTop = 0;
+					}
+				}
+			}
+
+			if(data.system.responsive) {
+				app.fixpaddingresponsive(thisside);
+				if(data.usersettings.twinmode) {
+					app.fixpaddingresponsive(otherside);
+				}
+			} else {
+				app.fixpadding(thisside);
+				if(data.usersettings.twinmode) {
+					app.fixpadding(otherside);
+				}
+			}
+
+			// deal with title bar
+
 			if(data.canto > 0) {
-				thisside.titlebar.innerHTML = `${data.translationdata[newdata].translationshortname} · <strong>Canto ${data.canto}</strong>`;
+				thisside.titlebar.innerHTML = `${data.translationdata[newtranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
+				if(data.usersettings.twinmode) {
+					if(data.usersettings.twinmode) {
+						otherside.titlebar.innerHTML = `${data.translationdata[othertranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
+					}
+				}
 			} else {
 				thisside.titlebar.innerHTML = "&nbsp;";
+				if(data.usersettings.twinmode) {
+					otherside.titlebar.innerHTML = "&nbsp;";
+				}
 			}
+
+			// set up notes
+
+			app.setupnotes();
+
+			// turn on synch scrolling
+
+			if(data.usersettings.twinmode) {
+				app.turnonsynchscrolling();
+			}
+
+			// record changes
+
+			app.savecurrentdata();
 		}
-		app.savecurrentdata();
+	},
+	setcanto: function(canto) {
+
 	},
 	rounded: function(pixels) {
 
@@ -497,7 +622,7 @@ console.log(data.usersettings.twinmode);
 
 	},
 	fixpaddingresponsive: function(thisside) {
-		const divs = document.querySelectorAll("#text p");
+		const divs = document.querySelectorAll(`#${thisside.slider.id} .textframe p`);
 		var div;
 		let maxwidth = 0;
 
@@ -542,10 +667,19 @@ console.log(data.usersettings.twinmode);
 		} else {
 			console.log("Prose, not doing anything.");
 		}
-
 	},
 	hidenotes: function() {
 		dom.removebyselector(".notewindow");
+	},
+	turnonsynchscrolling: function() {
+		document.querySelector("#sliderleft .textframe").onscroll = function() {
+			let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderright .textframe").scrollHeight;
+			document.querySelector("#sliderright .textframe").scrollTop = percentage;
+		};
+		document.querySelector("#sliderright .textframe").onscroll = function() {
+			let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderleft .textframe").scrollHeight;
+			document.querySelector("#sliderleft .textframe").scrollTop = percentage;
+		};
 	},
 	updatesettings: function() {
 
@@ -564,13 +698,11 @@ console.log(data.usersettings.twinmode);
 			document.getElementById("check-"+data.translationdata[i].translationid).checked = (data.currenttranslationlist.indexOf(data.translationdata[i].translationid) > -1);
 		}
 
-//		for(let i of document.querySelectorAll("#translatorlist input[type=checkbox]")) {
 		let inputcheckbox = document.querySelectorAll("#translatorlist input[type=checkbox]");
 		for(let i = 0; i < inputcheckbox.length; i++) {
 			app.helpers.checkboxgo(inputcheckbox[i]);
 		}
 		let translatorlistlabel = document.querySelectorAll("#translatorlist label");
-//		for(let i of document.querySelectorAll("#translatorlist label")) {
 		for(let i = 0; i < translatorlistlabel.length; i++) {
 			app.helpers.checkboxspango(translatorlistlabel[i]);
 		}
@@ -696,7 +828,12 @@ console.log(data.usersettings.twinmode);
 		data.elements.main = document.getElementById("main");
 		data.elements.content = document.getElementById("content");
 		data.elements.titlebar = document.querySelector("#navbarother .navtitle");
+
 		data.lens.left.slider = document.getElementById("sliderleft");
+		data.lens.left.text = document.querySelector("#sliderleft .textframe");
+		data.lens.left.textinside = document.querySelector("#sliderleft .textinsideframe");
+		data.lens.left.titlebar = document.querySelector("#navbarleft .navtitle");
+
 		data.lens.right.slider = document.getElementById("sliderright");
 		data.lens.right.text = document.querySelector("#sliderright .textframe");
 		data.lens.right.textinside = document.querySelector("#sliderright .textinsideframe");
@@ -715,7 +852,6 @@ console.log(data.usersettings.twinmode);
 		}
 
 		data.lens.right.translation = data.currenttranslationlist[0];
-
 		if(!data.system.oncordova) {
 			// attempt to fix android pull down to refresh
 			// code from http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature

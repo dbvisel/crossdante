@@ -20,7 +20,7 @@
 			<nav id="navbarleft">
 				<nav class="left"><nav class="button navprev">◀</nav><nav class="button navup">▲</nav></nav>
 				<nav class="navtitle"></nav>
-				<nav class="right"><nav class="button navdown">▼</nav><nav class="button navnext">▶</nav></nav>
+				<nav class="right"><nav class="button navclose">×</nav><nav class="button navdown">▼</nav><nav class="button navnext">▶</nav></nav>
 			</nav>
 			<nav id="navbarright">
 				<nav class="left"><nav class="button navprev">◀</nav><nav class="button navup">▲</nav></nav>
@@ -30,8 +30,8 @@
 		</nav>
 		<div id="content">
 			<div class="page textpage" id="lens">
-				<div id="sliderleft"></div>
-				<div id="sliderright"><div class="textframe" id="text"><div class="textinsideframe"></div></div></div>
+				<div id="sliderleft"><div class="textframe" id="newtextleft"><div class="textinsideframe"></div></div></div>
+				<div id="sliderright"><div class="textframe" id="newtextright"><div class="textinsideframe"></div></div></div>
 			</div>
 			<div class="page basic" id="help">
 				<h1>Help</h1>
@@ -40,6 +40,7 @@
 				<p>Tap on the gear in the upper right to go to <strong>settings</strong>. When you are in settings:</p>
 				<ul><li>Check or uncheck a translation to select the translations that you want to read.</li>
 					<li>Choose a canto and a translation to go directly to a point in the text.</li>
+					<li>If you turn <em>Twin mode</em> on, you'll see side-by-side translations if your screen is wide enough.</li>
 					<li>Choosing <em>Night mode</em> makes the text light and the background dark. <em>Day mode</em> (the default) makes the text dark and the background light.</li>
 					<li>Clicking on the title bar will take you back to the text.</li>
 				</ul>
@@ -53,7 +54,8 @@
 				<h2>Text sources</h2>
 				<ul id="textsources"></ul>
 				<h2 id="versionhistory">Version history</h2>
-				<ul><li>0.0.1: first release</li></ul>
+				<ul><li>0.0.2: support for twin mode</li>
+					<li>0.0.1: first release</li></ul>
 				<h2 id="comingsoon">Coming soon</h2>
 				<p>More translations!</p>
 			</div>

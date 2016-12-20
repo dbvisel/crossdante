@@ -12,6 +12,9 @@ body.nightmode {
     background-color: $nightbackground;
     color: $nightpagetext;
   }
+	& .textframe {
+		background-color: $nightbackground;
+	}
   & .note .noteno {
     color: $nightnavtext;
   }

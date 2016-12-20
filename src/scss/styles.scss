@@ -131,12 +131,6 @@ body {
 	}
 }
 
-.textframe {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-// 	transition:all 1.0s ease-in-out;
-}
 
 
 .basic {
@@ -181,7 +175,7 @@ body {
 		width: 100%;
 		height: 100%;
 		touch-action: none; // attempt to fix android swipe down reloads page
-	  //	overflow-y: hidden; // attempt to fix android swipe down issue (removed, this was making new div invisible)
+	  //	overflow-y: hidden; // attempt to fix android swipe down issue (removed, this was making left/right div invisible)
 	}
 }
 
@@ -195,6 +189,10 @@ body {
 	position: absolute;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+	background-color: $pagebackground;
+	height: 100%;
+	width: 100%;
+// 	transition:all 1.0s ease-in-out;
 }
 
 // text formatting

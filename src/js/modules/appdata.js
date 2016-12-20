@@ -9,7 +9,9 @@ module.exports = {
 	elements: {
 		lens: document.getElementById("lens"),
 		main: document.getElementById("main"),
-		content: document.getElementById("content")
+		content: document.getElementById("content"),
+		hammerleft: "",
+		hammerright: ""
 	},
 	lens: {
 		width: window.innerWidth,		// do these numbers dynamically update? This could be screwing us up.
@@ -44,7 +46,7 @@ module.exports = {
 		delay: 600  	// this is the amount of time swiping takes, in ms
 	},
 	usersettings: {
-		twinmode: false,
+		twinmode: false,  // set this to true to default to twin mode (needs a little debugging)
 		nightmode: false
 	}
 };

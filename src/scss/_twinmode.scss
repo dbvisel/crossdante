@@ -30,9 +30,17 @@
 		border-left: 1px solid white;
 	}
 	& #sliderleft {
-		left: 0;
+		display: block;
+		position: relative;
+		height: 100%;
+		touch-action: none;
+		width: 50%;
+		float: left;
+		overflow: hidden;
 	}
 	& #sliderright {
-		left: 50%;
+		width: 50%;
+		float: right;
+		overflow: hidden;
 	}
 }
