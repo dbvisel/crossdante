@@ -45,8 +45,8 @@ module.exports = {
 		platform: "",
 		delay: 600  	// this is the amount of time swiping takes, in ms
 	},
-	usersettings: {
-		twinmode: false,  // set this to true to default to twin mode (needs a little debugging)
+	usersettings: {	// these can be overridden by previously saved user settings
+		twinmode: false,
 		nightmode: false
 	}
 };

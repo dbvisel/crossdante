@@ -250,6 +250,7 @@ p.summary {
 	  font-size: 75%;
 	  font-weight: bold;
 	  line-height: normal;
+		cursor: pointer;
 	}
 	& .notetext {
 		display: none;
@@ -271,6 +272,7 @@ p.summary {
 	line-height: $textlineheight * 0.75;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+	cursor: pointer;
 }
 
 // poetry
