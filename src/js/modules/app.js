@@ -153,7 +153,16 @@ var app = {
 				let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderleft .textframe").scrollHeight;
 				document.querySelector("#sliderleft .textframe").scrollTop = percentage;
 			};
-		}
+		},
+		getUrlVars: function() {
+			let vars = {};
+			/*eslint-disable no-unused-vars*/
+			let parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+				vars[key] = value;
+			});
+			/*eslint-endable no-unused-vars*/
+			return vars;
+		},
 	},
 	notes: {
 		setup: function() {
@@ -329,11 +338,64 @@ var app = {
 
 			*/
 
+			// save current location as hash
+
+			if (history.pushState) {
+				let newurl = window.location.origin + window.location.pathname + `?canto=${data.canto}&trans=${data.lens.right.translation}`;
+				if(data.usersettings.twinmode) {
+					newurl += `&lefttrans=${data.lens.left.translation}`
+				}
+				if (window.location.protocol !== "file:") {
+					window.history.pushState({path:newurl},'',newurl);
+				} else {
+					console.log(newurl);
+				}
+			}
 		},
 		read: function() {
 
+			let gotocanto = 0;
+			let gototrans = "";
+			let gotolefttrans = "";
+			let gototwinmode = false;
+			let cantoflag = false;
+			let transflag = false;
+
 			// this should take localstorage and replace the values in data with it
 
+			// first, read local storage
+
+
+
+			// second, read hash
+
+			if(app.helpers.getUrlVars().canto) {
+				gotocanto = app.helpers.getUrlVars().canto;
+				cantoflag = true;
+			}
+			if(app.helpers.getUrlVars().trans) {
+				gototrans = app.helpers.getUrlVars().trans;
+				transflag = true;
+			}
+			if(app.helpers.getUrlVars().lefttrans) {
+				gotolefttrans = app.helpers.getUrlVars().lefttrans;
+				gototwinmode = true;
+			}
+
+			if(cantoflag && transflag) {
+				console.log("We have canto & trans from URL!");
+				if(gototwinmode) {
+					console.log("We have left trans from URL!");
+					data.usersettings.twinmode = true;
+					dom.addclass("body","twinmode");
+					dom.removeclass("#twinmode","off");
+					dom.addclass("#singlemode","off");
+					data.lens.left.translation = gotolefttrans;
+				}
+				app.setlens(data.currenttranslationlist[app.helpers.gettranslationindex(gototrans)],gotocanto,"right",0);
+			} else {
+				console.log("No canto/translation found in URL.");
+			}
 		},
 	},
 	setupcontrols: function() {
@@ -489,7 +551,28 @@ var app = {
 				dom.addclass("#navdown","on");
 				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 			}
+
+			if((e.keyCode || e.which) === 33) {	// pageup: right now this goes to the previous canto
+				dom.addclass("#navup","on");
+				app.setlens(data.lens.right.translation,data.canto-1,"right");
+			}
+			if((e.keyCode || e.which) === 34) {	// pagedown: right now this goes to the next canto
+				dom.addclass("#navdown","on");
+				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+			}
+
+			if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
+				dom.addclass("#navup","on");
+				app.setlens(data.lens.right.translation,0,"right");
+			}
+			if((e.keyCode || e.which) === 35) {	// end: right now this goes to the last canto
+				dom.addclass("#navdown","on");
+				app.setlens(data.lens.right.translation,data.cantocount-1,"right",0);
+			}
 		};
+
+
+
 		document.body.onkeyup = (e) => {
 			e.preventDefault();
 			dom.removeclass(".button","on");
@@ -522,7 +605,9 @@ var app = {
 			dom.addclass("body","twinmode");
 			titlewidth = (document.getElementById("navbar").clientWidth / 2) - (5 * 40) - 1;
 			console.log("Twin mode!");
-			data.lens.left.translation = app.helpers.nexttrans(data.lens.right.translation);
+			if(data.lens.left.translation === "") {
+				data.lens.left.translation = app.helpers.nexttrans(data.lens.right.translation);
+			}
 
 			let thistrans = app.helpers.gettranslationindex(data.lens.left.translation);
 
@@ -857,8 +942,6 @@ var app = {
 		data.lens.right.textinside = document.querySelector("#sliderright .textinsideframe");
 		data.lens.right.titlebar = document.querySelector("#navbarright .navtitle");
 
-		app.localdata.read();
-
 		// set up about page
 
 		document.title = "Cross Dante " + data.booktitle;
@@ -931,6 +1014,7 @@ var app = {
 		}
 
 		app.setupcontrols();
+		app.localdata.read();
 		dom.addclass("body",data.bookname);
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");
 		dom.removebyselector("#loadingscrim");

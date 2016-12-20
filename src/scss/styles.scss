@@ -239,42 +239,6 @@ p.summary {
 	font-size: 0.9em;
 }
 
-// notes
-
-.note {
-	& .noteno {
-		color: $navcolor;
-		font-family: $headerfamily;
-		position: relative;
-		bottom: 1vw;
-	  font-size: 75%;
-	  font-weight: bold;
-	  line-height: normal;
-		cursor: pointer;
-	}
-	& .notetext {
-		display: none;
-	}
-}
-
-.notewindow {
-	position: fixed;
-	background-color: $pagebackground;
-	font-family: $headerfamily;
-	z-index: 999;
-	width: 50vw;
-	left: 25vw;
-	top: 25vh;
-	padding: $textlineheight;
-	border-radius: 5px;
-	border: 5px solid $navcolor;
-	font-size: $textfontsize * 0.75;
-	line-height: $textlineheight * 0.75;
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
-	cursor: pointer;
-}
-
 // poetry
 
 .poetry {
@@ -330,6 +294,10 @@ p.summary {
 		text-indent: 0;
 	}
 }
+
+// notes
+
+@import "notes";
 
 // twin mode
 

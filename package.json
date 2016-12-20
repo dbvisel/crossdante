@@ -4,11 +4,11 @@
   "description": "multi-language dante",
   "main": "index.js",
   "config": {
-    "sourcejs": "src/js/inferno.js",
-    "distjs": "dist/js/inferno.js",
-    "distmapjs": "dist/js/inferno.map.js",
-    "distminjs": "dist/js/inferno.min.js",
-    "translationsdir": "src/js/inferno/*.js"
+    "sourcejs": "src/js/paradiso.js",
+    "distjs": "dist/js/paradiso.js",
+    "distmapjs": "dist/js/paradiso.map.js",
+    "distminjs": "dist/js/paradiso.min.js",
+    "translationsdir": "src/js/paradiso/*.js"
   },
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss & node-sass --output-style compressed -o src/css src/scss",
@@ -17,7 +17,7 @@
     "build-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs",
     "production": "npm run production-css && npm run production-js",
     "production-css": "npm run scss & npm run autoprefixer",
-    "production-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs && uglifyjs $npm_package_config_distjs -m -o $npm_package_config_distminjs --source-map $npm_package_config_distmapjs -p relative",
+    "production-js": "browserify --debug -d $npm_package_config_sourcejs -t babelify > $npm_package_config_distjs && uglifyjs $npm_package_config_distjs -m -o $npm_package_config_distminjs",
     "lint": "eslint src/js/*.js || true && eslint src/js/modules/*.js || true && eslint $npm_package_config_translationsdir || true",
     "watch-js": "watchify $npm_package_config_sourcejs -o $npm_package_config_distjs -dv",
     "watch": "npm run watch-scss & npm run watch-js",
