@@ -1,7 +1,7 @@
 "use strict";
 
 const app = require("./modules/app");
-const bookdata = require("./inferno/bookdata");
+let bookdata = require("./inferno/bookdata");
 let appdata = require("./modules/appdata");
 
 appdata.textdata = bookdata.textdata;
