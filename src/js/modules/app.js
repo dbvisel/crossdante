@@ -268,10 +268,10 @@ var app = {
 			document.getElementById("translationchoose").appendChild(insert);
 			const translatorlist = document.querySelector("#translatorlist");
 			for(let i in data.translationdata) {
-					insert = dom.create(`<li>
-							<input type="checkbox" id="check-${data.translationdata[i].translationid}" />
-							<label for="${data.translationdata[i].translationid}" id="${data.translationdata[i].translationid}" ><span><span></span></span>${data.translationdata[i].translationfullname}</label>
-						</li>`);
+				insert = dom.create(`<li>
+						<input type="checkbox" id="check-${data.translationdata[i].translationid}" />
+						<label for="${data.translationdata[i].translationid}" id="${data.translationdata[i].translationid}" ><span><span></span></span>${data.translationdata[i].translationfullname}</label>
+					</li>`);
 				translatorlist.appendChild(insert);
 				document.getElementById("check-"+data.translationdata[i].translationid).checked = (data.currenttranslationlist.indexOf(data.translationdata[i].translationid) > -1);
 			}
@@ -343,7 +343,7 @@ var app = {
 			if (history.pushState) {
 				let newurl = window.location.origin + window.location.pathname + `?canto=${data.canto}&trans=${data.lens.right.translation}`;
 				if(data.usersettings.twinmode) {
-					newurl += `&lefttrans=${data.lens.left.translation}`
+					newurl += `&lefttrans=${data.lens.left.translation}`;
 				}
 				if (window.location.protocol !== "file:") {
 					window.history.pushState({path:newurl},'',newurl);
@@ -481,10 +481,10 @@ var app = {
 		// should this actually be on the slider?
 
 		data.elements.hammerright = new Hammer(data.lens.right.slider, {
-		    touchAction : 'auto'
+			touchAction : 'auto'
 		});
 		data.elements.hammerleft = new Hammer(data.lens.left.slider, {
-		    touchAction : 'auto'
+			touchAction : 'auto'
 		});
 		data.elements.hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 		data.elements.hammerright.on('swipeleft',(e) => {
@@ -916,10 +916,10 @@ var app = {
 		}
 	},
 	onDeviceReady: function() {
-		data.system.oncordova = true; // we're running on cordova
-		data.system.platform = device.plaform; // should be either "iOS" or "Android"
+		data.system.oncordova = true; 					// we're running on cordova
+		data.system.platform = device.plaform;	// should be either "iOS" or "Android"
 		console.log(device.cordova);
-		console.log("Cordova running. Platform: "+data.system.platform);
+		console.log("Cordova running. Platform: " + data.system.platform);
 		app.setup();
 	},
 	setup: function() {

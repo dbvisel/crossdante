@@ -13,6 +13,8 @@ appdata.description = bookdata.description;
 appdata.bookname = bookdata.bookname;
 appdata.booktitle = bookdata.booktitle;
 appdata.bookauthor = bookdata.bookauthor;
+appdata.versionhistory = bookdata.versionhistory;
+appdata.comingsoon = bookdata.comingsoon;
 
 for(let i in appdata.textdata) {
 	for(let j in appdata.translationdata) {

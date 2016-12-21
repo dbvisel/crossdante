@@ -6,6 +6,12 @@ module.exports = {
 	booktitle: "Paradiso",
 	bookauthor: "Dante Alighieri",
 	description: `<p>The thrilling conclusion to <em>The Divine Comedy</em>.`,
+	versionhistory: [ // this is the version history for a particular book, a list
+		"0.0.1: first release","0.0.2: support for twin mode, remembers location"
+	],
+	comingsoon:  // this is what goes in the coming soon section, a single chunk of HTML
+		"<p>More translations!</p>",
+
 
 	cantotitles: [	// this is canto sequence
 		"Title page","Canto 1","Canto 2","Canto 3","Canto 4","Canto 5","Canto 6","Canto 7","Canto 8","Canto 9",
