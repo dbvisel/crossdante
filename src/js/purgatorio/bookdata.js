@@ -7,7 +7,9 @@ module.exports = {
 	bookauthor: "Dante Alighieri",
 	description: `<p>The adventure-packed sequel to <em>Inferno</em>.`,
 	versionhistory: [ // this is the version history for a particular book, a list
-		"0.0.1: first release","0.0.2: support for twin mode, remembers location"
+		"0.0.1: first release",
+		"0.0.2: support for twin mode, remembers location",
+		"0.0.3: Includes the Norton prose translation, packed with his notes."
 	],
 
 	comingsoon:  // this is what goes in the coming soon section, a single chunk of HTML
@@ -26,9 +28,9 @@ module.exports = {
 		{"translationid":"longfellow",
 			"order":1},
 		{"translationid":"cary",
-			"order":2}/*,
-		{"translationid":"wright",
-			"order":3},
+			"order":2},
+		{"translationid":"norton",
+			"order":3}/*,
 		{"translationid":"carlyle",
 			"order":4}*/
 	],
@@ -36,8 +38,8 @@ module.exports = {
 	textdata: [	// set up translations
 		require("./translations/dante"),
 		require("./translations/longfellow"),
-		require("./translations/cary")/*,
-		require("./translations/norton"),
+		require("./translations/cary"),
+		require("./translations/norton")/*,
 		require("./translations/wright"),
 		require("./translations/carlyle")*/
 	]

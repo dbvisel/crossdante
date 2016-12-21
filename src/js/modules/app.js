@@ -524,11 +524,10 @@ var app = {
 				app.notes.hide();
 			};
 
-			console.log("Inserting notes . . .");
 			for(let i = 0; i < data.textdata.length; i++) {
 				let thisnotes = data.textdata[i].notes;
 				if(typeof thisnotes !== "undefined") {
-					console.log(data.textdata[i].translationid);
+					console.log("Inserting notes for " + data.textdata[i].translationid);
 					for(let j = 0; j < thisnotes.length; j++) {
 						for(let k = 0; k < thisnotes[j].length; k++) {
 							let thisnote = thisnotes[j][k];
@@ -1050,9 +1049,6 @@ var app = {
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");
 		dom.removebyselector("#loadingscrim");
 		app.setpage("lens"); // this could feasibly be set to what's in data.currentpage if we wanted to save that locally?
-
-console.log(data);
-
 	}
 };
 
