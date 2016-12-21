@@ -259,7 +259,7 @@ var app = {
 
 			app.settings.update();
 		},
-		update: function() {
+		update: function() {	// fired whenever we go to settings page
 
 			// add in translation chooser
 
@@ -398,198 +398,225 @@ var app = {
 			}
 		},
 	},
-	setupcontrols: function() {
-
-		// button controls
-		document.querySelector("#navbarleft .navprev").onclick = () => {
-			app.setlens(app.helpers.nexttrans(data.lens.left.translation),data.canto,"left");
-		};
-		document.querySelector("#navbarleft .navnext").onclick = () => {
-			app.setlens(app.helpers.prevtrans(data.lens.left.translation),data.canto,"left");
-		};
-		document.querySelector("#navbarleft .navup").onclick = () => {
-			app.setlens(data.lens.right.translation,data.canto-1,"right",0);
-		};
-		document.querySelector("#navbarleft .navdown").onclick = () => {
-			app.setlens(data.lens.right.translation,data.canto+1,"right",0);
-		};
-		document.querySelector("#navbarright .navprev").onclick = () => {
-			app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
-		};
-		document.querySelector("#navbarright .navnext").onclick = () => {
-			app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
-		};
-		document.querySelector("#navbarright .navup").onclick = () => {
-			app.setlens(data.lens.right.translation,data.canto-1,"right",0);
-		};
-		document.querySelector("#navbarright .navdown").onclick = () => {
-			app.setlens(data.lens.right.translation,data.canto+1,"right",0);
-		};
-		document.querySelector("#navbarleft .navclose").onclick = () => {
-			dom.removeclass("body","twinmode");
-			dom.addclass("#twinmode","off");
-			dom.removeclass("#singlemode","off");
-			data.usersettings.twinmode = false;
-			app.resize();
-		};
-		document.getElementById("backbutton").onclick = () => {
-			if(data.currentpage == "help" || data.currentpage == "about") {
-				app.setpage("settings");
-			} else {
-				app.setpage("lens");
-			}
-		};
-
-
-
-		// initial settings
-
-		document.getElementById("aboutlink").onclick = () => {
-			app.setpage("about");
-		};
-		document.getElementById("helplink").onclick = () => {
-			app.setpage("help");
-		};
-		document.getElementById("daymode").onclick = () => {
-			dom.removeclass("body","nightmode");
-			dom.addclass("#nightmode","off");
-			dom.removeclass("#daymode","off");
-			data.usersettings.nightmode = false;
-		};
-		document.querySelector("#nightmode").onclick = () => {
-			dom.addclass("body","nightmode");
-			dom.removeclass("#nightmode","off");
-			dom.addclass("#daymode","off");
-			data.usersettings.nightmode = true;
-		};
-		if(document.getElementById("singlemode") !== null) {
-			document.getElementById("singlemode").onclick = () => {
+	controls: {
+		start: function() {
+			app.controls.navbar();
+			app.controls.settings();
+			app.controls.swiping();
+			app.controls.notes();
+			app.controls.keys();
+		},
+		navbar: function() {
+			// button controls
+			document.querySelector("#navbarleft .navprev").onclick = () => {
+				app.setlens(app.helpers.nexttrans(data.lens.left.translation),data.canto,"left");
+			};
+			document.querySelector("#navbarleft .navnext").onclick = () => {
+				app.setlens(app.helpers.prevtrans(data.lens.left.translation),data.canto,"left");
+			};
+			document.querySelector("#navbarleft .navup").onclick = () => {
+				app.setlens(data.lens.right.translation,data.canto-1,"right",0);
+			};
+			document.querySelector("#navbarleft .navdown").onclick = () => {
+				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+			};
+			document.querySelector("#navbarright .navprev").onclick = () => {
+				app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
+			};
+			document.querySelector("#navbarright .navnext").onclick = () => {
+				app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
+			};
+			document.querySelector("#navbarright .navup").onclick = () => {
+				app.setlens(data.lens.right.translation,data.canto-1,"right",0);
+			};
+			document.querySelector("#navbarright .navdown").onclick = () => {
+				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+			};
+			document.querySelector("#navbarleft .navclose").onclick = () => {
 				dom.removeclass("body","twinmode");
 				dom.addclass("#twinmode","off");
 				dom.removeclass("#singlemode","off");
 				data.usersettings.twinmode = false;
+				app.resize();
 			};
-			document.querySelector("#twinmode").onclick = () => {
-				dom.addclass("body","twinmode");
+			data.elements.titlebar.onclick = () => {
+				app.setpage("lens");
+			};
+			document.querySelector("#navbarright .navsettings").onclick = () => {
+				app.settings.update();
+				app.setpage("settings");
+			};
+
+			document.body.onkeyup = (e) => {	// maybe this is screwing us on mobile?
+				e.preventDefault();
+				dom.removeclass(".button","on");
+			};
+		},
+		settings: function() {
+			document.getElementById("aboutlink").onclick = () => {
+				app.setpage("about");
+			};
+			document.getElementById("helplink").onclick = () => {
+				app.setpage("help");
+			};
+
+			if(data.usersettings.twinmode) {
 				dom.removeclass("#twinmode","off");
 				dom.addclass("#singlemode","off");
-				data.usersettings.twinmode = true;
+			} else {
+				dom.addclass("#twinmode","off");
+				dom.removeclass("#singlemode","off");
+			}
+
+			if(data.usersettings.nightmode) {
+				dom.removeclass("#nightmode","off");
+				dom.addclass("#daymode","off");
+			} else {
+				dom.addclass("#nightmode","off");
+				dom.removeclass("#daymode","off");
+			}
+			document.getElementById("daymode").onclick = () => {
+				dom.removeclass("body","nightmode");
+				dom.addclass("#nightmode","off");
+				dom.removeclass("#daymode","off");
+				data.usersettings.nightmode = false;
+			};
+			document.querySelector("#nightmode").onclick = () => {
+				dom.addclass("body","nightmode");
+				dom.removeclass("#nightmode","off");
+				dom.addclass("#daymode","off");
+				data.usersettings.nightmode = true;
+			};
+			if(document.getElementById("singlemode") !== null) {
+				document.getElementById("singlemode").onclick = () => {
+					dom.removeclass("body","twinmode");
+					dom.addclass("#twinmode","off");
+					dom.removeclass("#singlemode","off");
+					data.usersettings.twinmode = false;
+				};
+				document.querySelector("#twinmode").onclick = () => {
+					dom.addclass("body","twinmode");
+					dom.removeclass("#twinmode","off");
+					dom.addclass("#singlemode","off");
+					data.usersettings.twinmode = true;
+				};
+			}
+			document.getElementById("backbutton").onclick = () => {
+				if(data.currentpage == "help" || data.currentpage == "about") {
+					app.setpage("settings");
+				} else {
+					app.setpage("lens");
+				}
+			};
+
+			// set up about page
+
+			document.getElementById("abouttext").innerHTML = data.description; 		// set up about page
+
+			for(let i in data.versionhistory) {
+				document.getElementById("versionhistory").innerHTML += `<li>${data.versionhistory[i]}</li>`;
+			}
+			document.getElementById("comingsoon").innerHTML = data.comingsoon;
+
+		},
+		notes: function() {
+			data.elements.main.onclick = () => {
+				app.notes.hide();
+			};
+		},
+		swiping: function() {			// swipe controls
+			data.elements.hammerright = new Hammer(data.lens.right.slider, {
+				touchAction : 'auto'
+			});
+			data.elements.hammerleft = new Hammer(data.lens.left.slider, {
+				touchAction : 'auto'
+			});
+			data.elements.hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+			data.elements.hammerright.on('swipeleft',(e) => {
+				e.preventDefault();
+				app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
+			}).on('swiperight',(e) => {
+				e.preventDefault();
+				app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
+			});
+
+			data.elements.hammerright.on('swipedown',(e) => {
+				// e.preventDefault(); // attempt to fix android swipe down = reload behavior
+				if(data.lens.right.text.scrollTop === 0) {
+					app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
+				}
+			}).on('swipeup',(e) => {
+				e.preventDefault();
+				// if difference between current scroll position + height of frame & complete height
+				// of column is less than 8, go to the next one
+				if(Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
+					app.setlens(data.lens.right.translation,data.canto+1,"right");
+				}
+			});
+			data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+			data.elements.hammerleft.on('swipeleft',(e) => {
+				e.preventDefault();
+				app.setlens(app.helpers.nexttrans(data.lens.left.translation),data.canto,"left");
+			}).on('swiperight',(e) => {
+				e.preventDefault();
+				app.setlens(app.helpers.prevtrans(data.lens.left.translation),data.canto,"left");
+			});
+
+			data.elements.hammerleft.on('swipedown',(e) => {
+				// e.preventDefault(); // attempt to fix android swipe down = reload behavior
+				if(data.lens.left.text.scrollTop === 0) {
+					app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
+				}
+			}).on('swipeup',(e) => {
+				e.preventDefault();
+				// if difference between current scroll position + height of frame & complete height
+				// of column is less than 8, go to the next one
+				if(Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
+					app.setlens(data.lens.right.translation,data.canto+1,"right");
+				}
+			});
+		},
+		keys: function() {
+			// key controls
+
+			document.body.onkeydown = (e) => {
+				e.preventDefault();
+				if((e.keyCode || e.which) === 37) {
+					dom.addclass("#navprev","on");
+					app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
+				}
+				if((e.keyCode || e.which) === 39) {
+					dom.addclass("#navnext","on");
+					app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
+				}
+				if((e.keyCode || e.which) === 38) {
+					dom.addclass("#navup","on");
+					app.setlens(data.lens.right.translation,data.canto-1,"right");
+				}
+				if((e.keyCode || e.which) === 40) {
+					dom.addclass("#navdown","on");
+					app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+				}
+
+				if((e.keyCode || e.which) === 33) {	// pageup: right now this goes to the previous canto
+					dom.addclass("#navup","on");
+					app.setlens(data.lens.right.translation,data.canto-1,"right");
+				}
+				if((e.keyCode || e.which) === 34) {	// pagedown: right now this goes to the next canto
+					dom.addclass("#navdown","on");
+					app.setlens(data.lens.right.translation,data.canto+1,"right",0);
+				}
+
+				if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
+					dom.addclass("#navup","on");
+					app.setlens(data.lens.right.translation,0,"right");
+				}
+				if((e.keyCode || e.which) === 35) {	// end: right now this goes to the last canto
+					dom.addclass("#navdown","on");
+					app.setlens(data.lens.right.translation,data.cantocount-1,"right",0);
+				}
 			};
 		}
-
-		// swipe controls
-		// should this actually be on the slider?
-
-		data.elements.hammerright = new Hammer(data.lens.right.slider, {
-			touchAction : 'auto'
-		});
-		data.elements.hammerleft = new Hammer(data.lens.left.slider, {
-			touchAction : 'auto'
-		});
-		data.elements.hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		data.elements.hammerright.on('swipeleft',(e) => {
-			e.preventDefault();
-			app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
-		}).on('swiperight',(e) => {
-			e.preventDefault();
-			app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
-		});
-
-		data.elements.hammerright.on('swipedown',(e) => {
-			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
-			if(data.lens.right.text.scrollTop === 0) {
-				app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
-			}
-		}).on('swipeup',(e) => {
-			e.preventDefault();
-			// if difference between current scroll position + height of frame & complete height
-			// of column is less than 8, go to the next one
-			if(Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
-				app.setlens(data.lens.right.translation,data.canto+1,"right");
-			}
-		});
-		data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-		data.elements.hammerleft.on('swipeleft',(e) => {
-			e.preventDefault();
-			app.setlens(app.helpers.nexttrans(data.lens.left.translation),data.canto,"left");
-		}).on('swiperight',(e) => {
-			e.preventDefault();
-			app.setlens(app.helpers.prevtrans(data.lens.left.translation),data.canto,"left");
-		});
-
-		data.elements.hammerleft.on('swipedown',(e) => {
-			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
-			if(data.lens.left.text.scrollTop === 0) {
-				app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
-			}
-		}).on('swipeup',(e) => {
-			e.preventDefault();
-			// if difference between current scroll position + height of frame & complete height
-			// of column is less than 8, go to the next one
-			if(Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
-				app.setlens(data.lens.right.translation,data.canto+1,"right");
-			}
-		});
-
-		// key controls
-
-		document.body.onkeydown = (e) => {
-			e.preventDefault();
-			if((e.keyCode || e.which) === 37) {
-				dom.addclass("#navprev","on");
-				app.setlens(app.helpers.prevtrans(data.lens.right.translation),data.canto,"right");
-			}
-			if((e.keyCode || e.which) === 39) {
-				dom.addclass("#navnext","on");
-				app.setlens(app.helpers.nexttrans(data.lens.right.translation),data.canto,"right");
-			}
-			if((e.keyCode || e.which) === 38) {
-				dom.addclass("#navup","on");
-				app.setlens(data.lens.right.translation,data.canto-1,"right");
-			}
-			if((e.keyCode || e.which) === 40) {
-				dom.addclass("#navdown","on");
-				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
-			}
-
-			if((e.keyCode || e.which) === 33) {	// pageup: right now this goes to the previous canto
-				dom.addclass("#navup","on");
-				app.setlens(data.lens.right.translation,data.canto-1,"right");
-			}
-			if((e.keyCode || e.which) === 34) {	// pagedown: right now this goes to the next canto
-				dom.addclass("#navdown","on");
-				app.setlens(data.lens.right.translation,data.canto+1,"right",0);
-			}
-
-			if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
-				dom.addclass("#navup","on");
-				app.setlens(data.lens.right.translation,0,"right");
-			}
-			if((e.keyCode || e.which) === 35) {	// end: right now this goes to the last canto
-				dom.addclass("#navdown","on");
-				app.setlens(data.lens.right.translation,data.cantocount-1,"right",0);
-			}
-		};
-
-
-
-		document.body.onkeyup = (e) => {
-			e.preventDefault();
-			dom.removeclass(".button","on");
-		};
-
-		// page controls
-
-		data.elements.titlebar.onclick = () => {
-			app.setpage("lens");
-		};
-		document.querySelector("#navbarright .navsettings").onclick = () => {
-			app.settings.update();
-			app.setpage("settings");
-		};
-		data.elements.main.onclick = () => {
-			app.notes.hide();
-		};
 	},
 	resize: function() {
 
@@ -942,29 +969,13 @@ var app = {
 		data.lens.right.textinside = document.querySelector("#sliderright .textinsideframe");
 		data.lens.right.titlebar = document.querySelector("#navbarright .navtitle");
 
-		// set up about page
 
 		document.title = "Cross Dante " + data.booktitle;
-		document.getElementById("abouttext").innerHTML = data.description;
-
-		// set up settings
-
-		if(data.usersettings.twinmode) {
-			dom.removeclass("#twinmode","off");
-			dom.addclass("#singlemode","off");
-		} else {
-			dom.addclass("#twinmode","off");
-			dom.removeclass("#singlemode","off");
-		}
 
 		if(data.usersettings.nightmode) {
 			dom.addclass("body","nightmode");
-			dom.removeclass("#nightmode","off");
-			dom.addclass("#daymode","off");
 		} else {
 			dom.removeclass("body","nightmode");
-			dom.addclass("#nightmode","off");
-			dom.removeclass("#daymode","off");
 		}
 
 		// set up current translation list (initially use all of them)
@@ -1013,12 +1024,12 @@ var app = {
 			});
 		}
 
-		app.setupcontrols();
-		app.localdata.read();
+		app.controls.start();		// this sets up controls
+		app.localdata.read();		// this reads in locally saved data
 		dom.addclass("body",data.bookname);
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");
 		dom.removebyselector("#loadingscrim");
-		app.setpage("lens");
+		app.setpage("lens"); // this could feasibly be set to what's in data.currentpage if we wanted to save that locally?
 	}
 };
 
