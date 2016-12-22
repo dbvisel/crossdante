@@ -33,10 +33,8 @@ $textlineheight: 24px;
 
 	.basic {
 		font-size: $textfontsize;
-		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 1em;
-		padding-right: 1em;
+		padding: $textlineheight 1em;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
@@ -145,10 +143,8 @@ $textlineheight: 24px;
 
 	.basic {
 		font-size: $textfontsize;
-		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 2em;
-		padding-right: 2em;
+		padding: $textlineheight 2em;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
@@ -261,10 +257,8 @@ $textlineheight: 24px;
 	}
 	.basic {
 		font-size: $textfontsize;
-		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 10vw;
-		padding-right: 10vw;
+		padding: $textlineheight 10vw;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
@@ -368,10 +362,8 @@ $textlineheight: 24px;
 	}
 	.basic {
 		font-size: $textfontsize;
-		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 10vw;
-		padding-right: 10vw;
+		padding: $textlineheight 10vw;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
@@ -472,10 +464,8 @@ $textlineheight: 24px;
 	}
 	.basic {
 		font-size: $textfontsize;
-		padding-top: $textlineheight;
 		line-height: $textlineheight;
-		padding-left: 10vw;
-		padding-right: 10vw;
+		padding: $textlineheight 10vw;
 		& h1 {
 			margin-bottom: $textlineheight;
 		}
