@@ -17,7 +17,10 @@
 				<preference name="xwalkMultipleApk" value="false" />
     </platform>
     <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
+			<allow-intent href="itms:*" />
+			<allow-intent href="itms-apps:*" />
+			<preference name="StatusBarOverlaysWebView" value="false" />
+			<preference name="StatusBarBackgroundColor" value="#000000" />
+			<preference name="StatusBarStyle" value="lightcontent" />
     </platform>
 </widget>

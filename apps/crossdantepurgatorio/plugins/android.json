@@ -29,6 +29,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "net.danvisel.crossdantepurgatorio"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "net.danvisel.crossdantepurgatorio"
         }
     },
     "dependent_plugins": {}

@@ -4,11 +4,11 @@
   "description": "multi-language dante",
   "main": "index.js",
   "config": {
-    "sourcejs": "src/js/paradiso.js",
-    "distjs": "dist/js/paradiso.js",
-    "distmapjs": "dist/js/paradiso.map.js",
-    "distminjs": "dist/js/paradiso.min.js",
-    "translationsdir": "src/js/paradiso/*.js"
+    "sourcejs": "src/js/purgatorio.js",
+    "distjs": "dist/js/purgatorio.js",
+    "distmapjs": "dist/js/purgatorio.map.js",
+    "distminjs": "dist/js/purgatorio.min.js",
+    "translationsdir": "src/js/purgatorio/*.js"
   },
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss & node-sass --output-style compressed -o src/css src/scss",
