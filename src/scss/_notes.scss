@@ -5,7 +5,7 @@
 		color: $navcolor;
 		font-family: $headerfamily;
 		position: relative;
-		bottom: 1vw;
+		bottom: 0.5em;
 	  font-size: 75%;
 	  font-weight: bold;
 	  line-height: normal;
@@ -24,12 +24,17 @@
 	width: 50vw;
 	left: 25vw;
 	top: 25vh;
+	max-height: 70vh;
 	padding: $textlineheight;
-	border-radius: 5px;
+	border-radius: 10px;
 	border: 5px solid $navcolor;
 	font-size: $textfontsize * 0.75;
 	line-height: $textlineheight * 0.75;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 	cursor: pointer;
+	& .indent {
+		display: inline-block;
+		width: 0.75*$textlineheight;
+	}
 }

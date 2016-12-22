@@ -13,16 +13,22 @@ $textlineheight: 24px;
 		line-height: $textlineheight;
 	}
 	.page.portrait .textframe {
-		padding: 0px 0px;
+		padding: 0;
 	}
 	.page.landscape .textframe {
-		padding: 0px 0px;
+		padding: 0;
 	}
 	.page.portrait .textinsideframe {
 		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 16px;
+		}
 	}
 	.page.landscape .textinsideframe {
 		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 16px;
+		}
 	}
 
 	.basic {
@@ -119,16 +125,22 @@ $textlineheight: 24px;
 		line-height: $textlineheight;
 	}
 	.page.portrait .textframe {
-		padding: 0px 0px;
+		padding: 0;
 	}
 	.page.landscape .textframe {
-		padding: 0px 0px;
+		padding: 0;
 	}
 	.page.portrait .textinsideframe {
 		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 16px;
+		}
 	}
 	.page.landscape .textinsideframe {
 		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 16px;
+		}
 	}
 
 	.basic {
@@ -231,15 +243,21 @@ $textlineheight: 24px;
 	}
 	.page.portrait .textinsideframe {
 		max-width: 512px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.page.landscape .textinsideframe {
 		max-width: 512px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 8px 8px;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.basic {
 		font-size: $textfontsize;
@@ -332,15 +350,21 @@ $textlineheight: 24px;
 	}
 	.page.portrait .textinsideframe {
 		max-width: 640px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 16px 16px;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.page.landscape .textinsideframe {
 		max-width: 640px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 16px 16px;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.basic {
 		font-size: $textfontsize;
@@ -430,15 +454,21 @@ $textlineheight: 24px;
 	}
 	.page.portrait .textinsideframe {
 		max-width: 768px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 16px 0;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.page.landscape .textinsideframe {
 		max-width: 768px;
-		padding: 16px 0;
 		margin-left: auto;
 		margin-right: auto;
+		padding: 16px 0;
+		& > *:last-child {
+			margin-bottom: 32px;
+		}
 	}
 	.basic {
 		font-size: $textfontsize;

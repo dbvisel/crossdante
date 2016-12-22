@@ -518,7 +518,7 @@ module.exports = {
 			{noteno: 1, notetext: "In 1271, Prince Henry, son of Richard of Cornwall, was stabbed during the mass, in a church at Viterbo, by Guy of Montfort, to avenge the death of his father, Simon, Earl of Leicester, in 1261. The heart of the young Prince was placed in a golden cup, as Villani (vii. 39) reports, on a column, at the head of a bridge in London"}],
 
 			[{noteno: 1, notetext: "Things which if told would seem incredible."},
-			{noteno: 1, notetext: "In the story of Polydorus, in the third book of the Aeneid."},
+			{noteno: 1, notetext: "In the story of Polydorus, in the third book of the <em>Aeneid</em>."},
 			{noteno: 1, notetext: "The spirit who speaks is Pier delle Vigne, the Chancellor of Frederick II.; of low birth, he rose to the first place in the state; he was one of the earliest writers of Italian verse. Dante has placed his master as well as him in Hell. See Canto X."},
 			{noteno: 2, notetext: "Envie ys lavendere of the court alway;<br />For she ne parteth neither nyght ne day<br />Out of the house of Cesar, thus saith Daunte.<br /><em>Legende of Goode Women</em>, 358.60."},
 			{noteno: 1, notetext: "The tearing of the leaves gives an outlet to the woe."},
@@ -708,7 +708,7 @@ module.exports = {
 			[{noteno: 1, notetext: "Probably from Ovid, who more than once refers to the magic power of the spear which had been given to Peleus by Chiron. Shakespeare too had heard of it, and applies it, precisely as Dante does, to one<br /><br />Whose smile and frown, like to Achilles’ spear,<br />Is able with the charge to kill and cure.<br />(2 Henry VI. v. i.)"},
 			{noteno: 2, notetext: "The tenth and last pit."},
 			{noteno: 3, notetext: "My eyes went in the direction whence the sound came."},
-			{noteno: 1, notetext: "At Roncesvalles.<br /><br />Rollanz ad mis l’olifan a sa buche,<br />Empeint le bien, par grant vertut le sunet.<br />Halt sunt li pui e la voiz est mult lunge,<br />Granz xxx. liwes l’oirent-il respundre,<br />Carles l’oit e ses cumpaignes tutes.<br />(Chanson de Roland, 1753&ndash;57.)"},
+			{noteno: 1, notetext: "At Roncesvalles.<br /><br /><em>Rollanz ad mis l’olifan a sa buche,<br />Empeint le bien, par grant vertut le sunet.<br />Halt sunt li pui e la voiz est mult lunge,<br />Granz xxx. liwes l’oirent-il respundre,<br />Carles l’oit e ses cumpaignes tutes.</em><br />(<em>Chanson de Roland</em>, 1753&ndash;57.)"},
 			{noteno: 2, notetext: "The central deep of Hell, dividing the eighth circle from the ninth,&mdash;the lowest."},
 			{noteno: 1, notetext: "The towers of Montereggione in ruin still crown its broken wall, and may be seen from the railroad not far from Siena, on the way to Florence."},
 			{noteno: 1, notetext: "For no longer creating giants."},
@@ -718,7 +718,7 @@ module.exports = {
 			{noteno: 2, notetext: "Because he took no part in the war of his brethren against the Gods. What Dante tells of him is derived from Lucan, <em>Pharsalia</em>, iv. 597 sqq."},
 			{noteno: 1, notetext: "Lucan (<em>Phars.</em> iv. 600), naming these giants, says they were less strong than Antaeus; wherefore there is subtle flattery in these words of Virgil."},
 			{noteno: 2, notetext: "To be remembered on earth."},
-			{noteno: 3, notetext: "The more inclined of the two famous leaning towers at Bologna. As the cloud goes over it, the tower seems to bend to meet it. So Coleridge in his Ode to Dejection:<br /><br />And those thin clouds above, in flakes and bars,<br /> That give sway their motion to the stars."}],
+			{noteno: 3, notetext: "The more inclined of the two famous leaning towers at Bologna. As the cloud goes over it, the tower seems to bend to meet it. So Coleridge in his “Ode to Dejection”:<br /><br />And those thin clouds above, in flakes and bars,<br /> That give sway their motion to the stars."}],
 
 			[{noteno: 1, notetext: "Rest their weight."},
 			{noteno: 1, notetext: "On earth."},

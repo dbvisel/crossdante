@@ -110,9 +110,6 @@ body {
 //			width: 640px;
 //			height: 864px;
 			padding: 16px 16px; // left/right padding is never actually applied
-			&:last-child {
-				margin-bottom: 64px;
-			}
 		}
 	}
 	&.landscape {
@@ -120,9 +117,6 @@ body {
 //			width: 480px;
 //			height: 648px;
 			padding: 40px 128px; // left/right padding is never actually applied
-			&:last-child {
-				margin-bottom: 40px;
-			}
 			&.verso {
 			}
 			&.recto {

@@ -532,7 +532,7 @@ var app = {
 						for(let k = 0; k < thisnotes[j].length; k++) {
 							let thisnote = thisnotes[j][k];
 							if(data.textdata[i].text[j].indexOf("{{"+thisnote.noteno+"}}") > 0) {
-								let copy = data.textdata[i].text[j].replace("{{"+thisnote.noteno+"}}", `<span class="note"><span class="noteno">${thisnote.noteno}</span><span class="notetext">${thisnote.notetext}</span></span>`);
+								let copy = data.textdata[i].text[j].replace("{{"+thisnote.noteno+"}}", `<span class="note"><span class="noteno">${k+1}</span><span class="notetext">${thisnote.notetext}</span></span>`);
 								data.textdata[i].text[j] = copy;
 							} else {
 								console.log("Not found in canto "+j+": "+thisnote.noteno+": "+thisnote.notetext);
