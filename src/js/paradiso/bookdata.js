@@ -5,9 +5,11 @@ module.exports = {
 	bookname: 'paradiso',
 	booktitle: "Paradiso",
 	bookauthor: "Dante Alighieri",
-	description: `<p>The thrilling conclusion to <em>The Divine Comedy</em>.`,
+	description: `<p>The thrilling conclusion to <em>The Divine Comedy</em>. Please note that these texts seem to be fairly corrupt!`,
 	versionhistory: [ // this is the version history for a particular book, a list
-		"0.0.1: first release","0.0.2: support for twin mode, remembers location"
+		"0.0.1: first release",
+		"0.0.2: support for twin mode, remembers location",
+		"0.0.3: added Norton translation"
 	],
 	comingsoon:  // this is what goes in the coming soon section, a single chunk of HTML
 		"<p>More translations!</p>",
@@ -26,9 +28,9 @@ module.exports = {
 		{"translationid":"longfellow",
 			"order":1},
 		{"translationid":"cary",
-			"order":2}/*,
-		{"translationid":"wright",
-			"order":3},
+			"order":2},
+		{"translationid":"norton",
+			"order":3}/*,
 		{"translationid":"carlyle",
 			"order":4}*/
 	],
@@ -36,8 +38,8 @@ module.exports = {
 	textdata: [	// set up translations
 		require("./translations/dante"),
 		require("./translations/longfellow"),
-		require("./translations/cary")/*,
-		require("./translations/norton"),
+		require("./translations/cary"),
+		require("./translations/norton")/*,
 		require("./translations/wright"),
 		require("./translations/carlyle")*/
 	]

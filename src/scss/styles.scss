@@ -233,6 +233,18 @@ p.summary {
 	font-size: 0.9em;
 }
 
+span.italian { // using span so as not to make italian texts entirely italic
+	font-style: italic;
+}
+
+span.latin {
+	font-style: italic;
+}
+
+span.greek {
+	font-style: italic;
+}
+
 // poetry
 
 .poetry {
