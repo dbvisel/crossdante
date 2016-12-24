@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.danvisel.crossdantepurgatorio" version="0.0.10" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.danvisel.crossdantepurgatorio" version="0.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cross Dante Purgatorio</name>
 		<description>Cross Dante Purgatorio</description>
     <author email="dbvisel@gmail.com" href="https://danvisel.net/crossdante">Dan Visel</author>

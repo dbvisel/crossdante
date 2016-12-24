@@ -475,6 +475,15 @@ var app = {
 				dom.addclass("#nightmode","off");
 				dom.removeclass("#daymode","off");
 			}
+
+			if(data.usersettings.shownotes) {
+				dom.removeclass("#shownotes","off");
+				dom.addclass("#hidenotes","off");
+			} else {
+				dom.addclass("#shownotes","off");
+				dom.removeclass("#hidenotes","off");
+			}
+
 			document.getElementById("daymode").onclick = () => {
 				dom.removeclass("body","nightmode");
 				dom.addclass("#nightmode","off");
@@ -501,6 +510,20 @@ var app = {
 					data.usersettings.twinmode = true;
 				};
 			}
+
+			// show/hide notes
+
+			document.querySelector("#hidenotes").onclick = () => {
+				dom.addclass("body","hidenotes");
+				dom.addclass("#shownotes","off");
+				dom.removeclass("#hidenotes","off");
+			}
+			document.querySelector("#shownotes").onclick = () => {
+				dom.removeclass("body","hidenotes");
+				dom.addclass("#hidenotes","off");
+				dom.removeclass("#shownotes","off");
+			}
+
 			document.getElementById("backbutton").onclick = () => {
 				if(data.currentpage == "help" || data.currentpage == "about") {
 					app.setpage("settings");

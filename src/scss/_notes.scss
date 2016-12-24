@@ -1,5 +1,9 @@
 // notes.scss
 
+.hidenotes .note {
+	display: none;
+}
+
 .note {
 	& .noteno {
 		color: $navcolor;

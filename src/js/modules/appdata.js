@@ -47,7 +47,8 @@ module.exports = {
 	},
 	usersettings: {			// these can be overridden by previously saved user settings
 		twinmode: false,	// whether or not twin mode is turned on
-		nightmode: false	// whether or not night mode is turned on
+		nightmode: false,	// whether or not night mode is turned on
+		shownotes: true		// whether or not notes are shown
 	},
 
 	// things that come from the bookfile (all of these are overwritten:)
