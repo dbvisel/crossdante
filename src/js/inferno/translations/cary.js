@@ -1399,7 +1399,7 @@ module.exports = {
 		<p>From the profound abyss, behind the lid</p>
 		<p>Of a great monument we stood retir&rsquo;d,</p>
 		<p>Whereon this scroll I mark&rsquo;d: &ldquo;I have in charge</p>
-		<p>Pope Anastasius, whom Photinus drew</p>
+		<p>Pope Anastasius{{1}}, whom Photinus drew</p>
 		<p>From the right path.&mdash;Ere our descent behooves</p>
 		<p>We make delay, that somewhat first the sense,</p>
 		<p>To the dire breath accustom&rsquo;d, afterward</p>
@@ -1407,7 +1407,7 @@ module.exports = {
 		<p>Answering I spake: &ldquo;Some compensation find</p>
 		<p>That the time past not wholly lost.&rdquo; He then:</p>
 		<p>&ldquo;Lo! how my thoughts e&rsquo;en to thy wishes tend!</p>
-		<p>My son! within these rocks,&rdquo; he thus began,</p>
+		<p>My son{{2}}! within these rocks,&rdquo; he thus began,</p>
 		<p>&ldquo;Are three close circles in gradation plac&rsquo;d,</p>
 		<p>As these which now thou leav&rsquo;st. Each one is full</p>
 		<p>Of spirits accurs&rsquo;d; but that the sight alone</p>
@@ -1438,12 +1438,12 @@ module.exports = {
 		<p>With unavailing penitence his crime,</p>
 		<p>Whoe&rsquo;er deprives himself of life and light,</p>
 		<p>In reckless lavishment his talent wastes,</p>
-		<p>And sorrows there where he should dwell in joy.</p>
+		<p>And sorrows{{3}} there where he should dwell in joy.</p>
 		<p>To God may force be offer&rsquo;d, in the heart</p>
 		<p>Denying and blaspheming his high power,</p>
 		<p>And nature with her kindly law contemning.</p>
 		<p>And thence the inmost round marks with its seal</p>
-		<p>Sodom and Cahors, and all such as speak</p>
+		<p>Sodom and Cahors{{4}}, and all such as speak</p>
 		<p>Contemptuously&rsquo; of the Godhead in their hearts.</p>
 		<p class="slindent">&ldquo;Fraud, that in every conscience leaves a sting,</p>
 		<p>May be by man employ&rsquo;d on one, whose trust</p>
@@ -1473,7 +1473,7 @@ module.exports = {
 		<p>&ldquo;Wherefore in dotage wanders thus thy mind,</p>
 		<p>Not so accustom&rsquo;d? or what other thoughts</p>
 		<p>Possess it? Dwell not in thy memory</p>
-		<p>The words, wherein thy ethic page describes</p>
+		<p>The words, wherein thy ethic page{{5}} describes</p>
 		<p>Three dispositions adverse to Heav&rsquo;n&rsquo;s will,</p>
 		<p>Incont&rsquo;nence, malice, and mad brutishness,</p>
 		<p>And how incontinence the least offends</p>
@@ -1494,14 +1494,14 @@ module.exports = {
 		<p>Clearly points out, not in one part alone,</p>
 		<p>How imitative nature takes her course</p>
 		<p>From the celestial mind and from its art:</p>
-		<p>And where her laws the Stagyrite unfolds,</p>
+		<p>And where her laws{{6}} the Stagyrite unfolds,</p>
 		<p>Not many leaves scann&rsquo;d o&rsquo;er, observing well</p>
 		<p>Thou shalt discover, that your art on her</p>
 		<p>Obsequious follows, as the learner treads</p>
 		<p>In his instructor&rsquo;s step, so that your art</p>
 		<p>Deserves the name of second in descent</p>
 		<p>From God. These two, if thou recall to mind</p>
-		<p>Creation&rsquo;s holy book, from the beginning</p>
+		<p>Creation&rsquo;s holy book{{7}}, from the beginning</p>
 		<p>Were the right source of life and excellence</p>
 		<p>To human kind. But in another path</p>
 		<p>The usurer walks; and Nature in herself</p>
@@ -1509,7 +1509,7 @@ module.exports = {
 		<p>Placing elsewhere his hope. But follow now</p>
 		<p>My steps on forward journey bent; for now</p>
 		<p>The Pisces play with undulating glance</p>
-		<p>Along the&rsquo; horizon, and the Wain lies all</p>
+		<p>Along the&rsquo; horizon, and the Wain{{8}} lies all</p>
 		<p>O&rsquo;er the north-west; and onward there a space</p>
 		<p>Is our steep passage down the rocky height.&rdquo;</p>
 		</div>`,
@@ -1532,11 +1532,11 @@ module.exports = {
 		<p>Of the feign&rsquo;d heifer: and at sight of us</p>
 		<p>It gnaw&rsquo;d itself, as one with rage distract.</p>
 		<p>To him my guide exclaim&rsquo;d: &ldquo;Perchance thou deem&rsquo;st</p>
-		<p>The King of Athens here, who, in the world</p>
+		<p>The King of Athens{{1}} here, who, in the world</p>
 		<p>Above, thy death contriv&rsquo;d. Monster! avaunt!</p>
 		<p>He comes not tutor&rsquo;d by thy sister&rsquo;s art,</p>
 		<p>But to behold your torments is he come.&rdquo;</p>
-		<p class="slindent">Like to a bull, that with impetuous spring</p>
+		<p class="slindent">Like to a bull{{2}}, that with impetuous spring</p>
 		<p>Darts, at the moment when the fatal blow</p>
 		<p>Hath struck him, but unable to proceed</p>
 		<p>Plunges on either side; so saw I plunge</p>
@@ -1551,7 +1551,7 @@ module.exports = {
 		<p>Have vanquish&rsquo;d now. Know then, that when I erst</p>
 		<p>Hither descended to the nether hell,</p>
 		<p>This rock was not yet fallen. But past doubt</p>
-		<p>(If well I mark) not long ere He arrived,</p>
+		<p>(If well I mark) not long ere He arrived{{3}},</p>
 		<p>Who carried off from Dis the mighty spoil</p>
 		<p>Of the highest circle, then through all its bounds</p>
 		<p>Such trembling seiz&rsquo;d the deep concave and foul,</p>
@@ -1579,7 +1579,7 @@ module.exports = {
 		<p class="slindent">To whom my guide: &ldquo;Our answer shall be made</p>
 		<p>To Chiron, there, when nearer him we come.</p>
 		<p>Ill was thy mind, thus ever quick and rash.&rdquo;</p>
-		<p class="slindent">Then me he touch&rsquo;d, and spake: &ldquo;Nessus is this,</p>
+		<p class="slindent">Then me he touch&rsquo;d, and spake: &ldquo;Nessus{{4}} is this,</p>
 		<p>Who for the fair Deianira died,</p>
 		<p>And wrought himself revenge for his own fate.</p>
 		<p>He in the midst, that on his breast looks down,</p>
@@ -1625,8 +1625,8 @@ module.exports = {
 		<p>And Dionysius fell, who many a year</p>
 		<p>Of woe wrought for fair Sicily. That brow</p>
 		<p>Whereon the hair so jetty clust&rsquo;ring hangs,</p>
-		<p>Is Azzolino; that with flaxen locks</p>
-		<p>Obizzo&rsquo; of Este, in the world destroy&rsquo;d</p>
+		<p>Is Ezzolino{{5}}; that with flaxen locks</p>
+		<p>Obizzo&rsquo; of Este{{6}}, in the world destroy&rsquo;d</p>
 		<p>By his foul step-son.&rdquo; To the bard rever&rsquo;d</p>
 		<p>I turned me round, and thus he spake; &ldquo;Let him</p>
 		<p>Be to thee now first leader, me but next</p>
@@ -1634,7 +1634,7 @@ module.exports = {
 		<p>The Centaur paus&rsquo;d, near some, who at the throat</p>
 		<p>Were extant from the wave; and showing us</p>
 		<p>A spirit by itself apart retir&rsquo;d,</p>
-		<p>Exclaim&rsquo;d: &ldquo;He in God&rsquo;s bosom smote the heart,</p>
+		<p>Exclaim&rsquo;d: &ldquo;He{{7}} in God&rsquo;s bosom smote the heart,</p>
 		<p>Which yet is honour&rsquo;d on the bank of Thames.&rdquo;</p>
 		<p class="slindent">A race I next espied, who held the head,</p>
 		<p>And even all the bust above the stream.</p>
@@ -1650,10 +1650,10 @@ module.exports = {
 		<p>Where &rsquo;t is the lot of tyranny to mourn.</p>
 		<p>There Heav&rsquo;n&rsquo;s stern justice lays chastising hand</p>
 		<p>On Attila, who was the scourge of earth,</p>
-		<p>On Sextus, and on Pyrrhus, and extracts</p>
+		<p>On Sextus, and on Pyrrhus{{8}}, and extracts</p>
 		<p>Tears ever by the seething flood unlock&rsquo;d</p>
 		<p>From the Rinieri, of Corneto this,</p>
-		<p>Pazzo the other nam&rsquo;d, who fill&rsquo;d the ways</p>
+		<p>Pazzo the other nam&rsquo;d{{9}}, who fill&rsquo;d the ways</p>
 		<p>With violence and war.&rdquo; This said, he turn&rsquo;d,</p>
 		<p>And quitting us, alone repass&rsquo;d the ford.</p>
 		</div>`,
@@ -1669,11 +1669,11 @@ module.exports = {
 		<p>Instead, with venom fill&rsquo;d. Less sharp than these,</p>
 		<p>Less intricate the brakes, wherein abide</p>
 		<p>Those animals, that hate the cultur&rsquo;d fields,</p>
-		<p>Betwixt Corneto and Cecina&rsquo;s stream.</p>
+		<p>Betwixt Corneto and Cecina&rsquo;s stream{{1}}.</p>
 		<p class="slindent">Here the brute Harpies make their nest, the same</p>
-		<p>Who from the Strophades the Trojan band</p>
+		<p>Who from the Strophades{{2}} the Trojan band</p>
 		<p>Drove with dire boding of their future woe.</p>
-		<p>Broad are their pennons, of the human form</p>
+		<p>Broad are their pennons{{3}}, of the human form</p>
 		<p>Their neck and count&rsquo;nance, arm&rsquo;d with talons keen</p>
 		<p>The feet, and the huge belly fledge with wings</p>
 		<p>These sit and wail on the drear mystic wood.</p>
@@ -1707,7 +1707,7 @@ module.exports = {
 		<p class="slindent">I, letting fall the bough, remain&rsquo;d as one</p>
 		<p>Assail&rsquo;d by terror, and the sage replied:</p>
 		<p>&ldquo;If he, O injur&rsquo;d spirit! could have believ&rsquo;d</p>
-		<p>What he hath seen but in my verse describ&rsquo;d,</p>
+		<p>What he hath seen but in my verse describ&rsquo;d{{4}},</p>
 		<p>He never against thee had stretch&rsquo;d his hand.</p>
 		<p>But I, because the thing surpass&rsquo;d belief,</p>
 		<p>Prompted him to this deed, which even now</p>
@@ -1715,18 +1715,18 @@ module.exports = {
 		<p>That, for this wrong to do thee some amends,</p>
 		<p>In the upper world (for thither to return</p>
 		<p>Is granted him) thy fame he may revive.&rdquo;</p>
-		<p class="slindent">&ldquo;That pleasant word of thine,&rdquo; the trunk replied</p>
+		<p class="slindent">&ldquo;That pleasant word of thine{{5}},&rdquo; the trunk replied</p>
 		<p>&ldquo;Hath so inveigled me, that I from speech</p>
 		<p>Cannot refrain, wherein if I indulge</p>
 		<p>A little longer, in the snare detain&rsquo;d,</p>
-		<p>Count it not grievous. I it was, who held</p>
+		<p>Count it not grievous. I it was{{6}}, who held</p>
 		<p>Both keys to Frederick&rsquo;s heart, and turn&rsquo;d the wards,</p>
 		<p>Opening and shutting, with a skill so sweet,</p>
 		<p>That besides me, into his inmost breast</p>
 		<p>Scarce any other could admittance find.</p>
 		<p>The faith I bore to my high charge was such,</p>
 		<p>It cost me the life-blood that warm&rsquo;d my veins.</p>
-		<p>The harlot, who ne&rsquo;er turn&rsquo;d her gloating eyes</p>
+		<p>The harlot{{7}}, who ne&rsquo;er turn&rsquo;d her gloating eyes</p>
 		<p>From Caesar&rsquo;s household, common vice and pest</p>
 		<p>Of courts, &rsquo;gainst me inflam&rsquo;d the minds of all;</p>
 		<p>And to Augustus they so spread the flame,</p>
@@ -1778,10 +1778,10 @@ module.exports = {
 		<p>Of station&rsquo;d watch, who of the beasts and boughs</p>
 		<p>Loud rustling round him hears. And lo! there came</p>
 		<p>Two naked, torn with briers, in headlong flight,</p>
-		<p>That they before them broke each fan o&rsquo; th&rsquo; wood.</p>
+		<p>That they before them broke each fan o&rsquo; th&rsquo; wood{{8}}.</p>
 		<p>&ldquo;Haste now,&rdquo; the foremost cried, &ldquo;now haste thee death!&rdquo;</p>
 		<p>The&rsquo; other, as seem&rsquo;d, impatient of delay</p>
-		<p>Exclaiming, &ldquo;Lano! not so bent for speed</p>
+		<p>Exclaiming, &ldquo;Lano!{{9}} not so bent for speed</p>
 		<p>Thy sinews, in the lists of Toppo&rsquo;s field.&rdquo;</p>
 		<p>And then, for that perchance no longer breath</p>
 		<p>Suffic&rsquo;d him, of himself and of a bush</p>
@@ -1793,7 +1793,7 @@ module.exports = {
 		<p>The tortur&rsquo;d limbs. My guide then seiz&rsquo;d my hand,</p>
 		<p>And led me to the thicket, which in vain</p>
 		<p>Mourn&rsquo;d through its bleeding wounds: &ldquo;O Giacomo</p>
-		<p>Of Sant&rsquo; Andrea! what avails it thee,&rdquo;</p>
+		<p>Of Sant&rsquo; Andrea{{10}}! what avails it thee,&rdquo;</p>
 		<p>It cried, &ldquo;that of me thou hast made thy screen?</p>
 		<p>For thy ill life what blame on me recoils?&rdquo;</p>
 		<p class="slindent">When o&rsquo;er it he had paus&rsquo;d, my master spake:</p>
@@ -1803,7 +1803,7 @@ module.exports = {
 		<p>To spy the shameful havoc, that from me</p>
 		<p>My leaves hath sever&rsquo;d thus, gather them up,</p>
 		<p>And at the foot of their sad parent-tree</p>
-		<p>Carefully lay them. In that city&rsquo; I dwelt,</p>
+		<p>Carefully lay them. In that city{{11}}&rsquo; I dwelt,</p>
 		<p>Who for the Baptist her first patron chang&rsquo;d,</p>
 		<p>Whence he for this shall cease not with his art</p>
 		<p>To work her woe: and if there still remain&rsquo;d not</p>
@@ -1811,7 +1811,7 @@ module.exports = {
 		<p>Those citizens, who rear&rsquo;d once more her walls</p>
 		<p>Upon the ashes left by Attila,</p>
 		<p>Had labour&rsquo;d without profit of their toil.</p>
-		<p>I slung the fatal noose from my own roof.&rdquo;</p>
+		<p>I slung the fatal noose{{12}} from my own roof.&rdquo;</p>
 		</div>`,
 
 		`<p class="cantohead">Canto XIV</p>
@@ -1830,7 +1830,7 @@ module.exports = {
 		<p>Spreads the sad foss. There, on the very edge,</p>
 		<p>Our steps we stay&rsquo;d. It was an area wide</p>
 		<p>Of arid sand and thick, resembling most</p>
-		<p>The soil that erst by Cato&rsquo;s foot was trod.</p>
+		<p>The soil that erst by Cato&rsquo;s foot{{1}} was trod.</p>
 		<p class="slindent">Vengeance of Heav&rsquo;n! Oh! how shouldst thou be fear&rsquo;d</p>
 		<p>By all, who read what here my eyes beheld!</p>
 		<p class="slindent">Of naked spirits many a flock I saw,</p>
@@ -1841,9 +1841,9 @@ module.exports = {
 		<p>More numerous, those fewer who beneath</p>
 		<p>The torment lay, but louder in their grief.</p>
 		<p class="slindent">O&rsquo;er all the sand fell slowly wafting down</p>
-		<p>Dilated flakes of fire, as flakes of snow</p>
+		<p>Dilated flakes of fire{{2}}, as flakes of snow</p>
 		<p>On Alpine summit, when the wind is hush&rsquo;d.</p>
-		<p>As in the torrid Indian clime, the son</p>
+		<p>As in the torrid Indian clime{{3}}, the son</p>
 		<p>Of Ammon saw upon his warrior band</p>
 		<p>Descending, solid flames, that to the ground</p>
 		<p>Came down: whence he bethought him with his troop</p>
@@ -1868,7 +1868,7 @@ module.exports = {
 		<p>He snatch&rsquo;d the lightnings, that at my last day</p>
 		<p>Transfix&rsquo;d me, if the rest be weary out</p>
 		<p>At their black smithy labouring by turns</p>
-		<p>In Mongibello, while he cries aloud;</p>
+		<p>In Mongibello{{4}}, while he cries aloud;</p>
 		<p>&ldquo;Help, help, good Mulciber!&rdquo; as erst he cried</p>
 		<p>In the Phlegraean warfare, and the bolts</p>
 		<p>Launch he full aim&rsquo;d at me with all his might,</p>
@@ -1879,7 +1879,7 @@ module.exports = {
 		<p>Lives yet unquench&rsquo;d: no torrent, save thy rage,</p>
 		<p>Were to thy fury pain proportion&rsquo;d full.&rdquo;</p>
 		<p class="slindent">Next turning round to me with milder lip</p>
-		<p>He spake: &ldquo;This of the seven kings was one,</p>
+		<p>He spake: &ldquo;This of the seven kings was one{{5}},</p>
 		<p>Who girt the Theban walls with siege, and held,</p>
 		<p>As still he seems to hold, God in disdain,</p>
 		<p>And sets his high omnipotence at nought.</p>
@@ -1891,7 +1891,7 @@ module.exports = {
 		<p>To where there gushes from the forest&rsquo;s bound</p>
 		<p>A little brook, whose crimson&rsquo;d wave yet lifts</p>
 		<p>My hair with horror. As the rill, that runs</p>
-		<p>From Bulicame, to be portion&rsquo;d out</p>
+		<p>From Bulicame{{6}}, to be portion&rsquo;d out</p>
 		<p>Among the sinful women; so ran this</p>
 		<p>Down through the sand, its bottom and each bank</p>
 		<p>Stone-built, and either margin at its side,</p>
@@ -1906,7 +1906,7 @@ module.exports = {
 		<p>The food he too would give, that hunger crav&rsquo;d.</p>
 		<p class="slindent">&ldquo;In midst of ocean,&rdquo; forthwith he began,</p>
 		<p>&ldquo;A desolate country lies, which Crete is nam&rsquo;d,</p>
-		<p>Under whose monarch in old times the world</p>
+		<p>Under whose monarch{{7}} in old times the world</p>
 		<p>Liv&rsquo;d pure and chaste. A mountain rises there,</p>
 		<p>Call&rsquo;d Ida, joyous once with leaves and streams,</p>
 		<p>Deserted now like a forbidden thing.</p>
@@ -1917,7 +1917,7 @@ module.exports = {
 		<p>An ancient form there stands and huge, that turns</p>
 		<p>His shoulders towards Damiata, and at Rome</p>
 		<p>As in his mirror looks. Of finest gold</p>
-		<p>His head is shap&rsquo;d, pure silver are the breast</p>
+		<p>His head{{8}} is shap&rsquo;d, pure silver are the breast</p>
 		<p>And arms; thence to the middle is of brass.</p>
 		<p>And downward all beneath well-temper&rsquo;d steel,</p>
 		<p>Save the right foot of potter&rsquo;s clay, on which</p>
@@ -1948,7 +1948,7 @@ module.exports = {
 		<p>Yet the red seething wave might have resolv&rsquo;d</p>
 		<p>One thou proposest. Lethe thou shalt see,</p>
 		<p>But not within this hollow, in the place,</p>
-		<p>Whither to lave themselves the spirits go,</p>
+		<p>Whither{{9}} to lave themselves the spirits go,</p>
 		<p>Whose blame hath been by penitence remov&rsquo;d.&rdquo;</p>
 		<p>He added: &ldquo;Time is now we quit the wood.</p>
 		<p>Look thou my steps pursue: the margins give</p>
@@ -1967,7 +1967,7 @@ module.exports = {
 		<p>That drives toward them, or the Paduans theirs</p>
 		<p>Along the Brenta, to defend their towns</p>
 		<p>And castles, ere the genial warmth be felt</p>
-		<p>On Chiarentana&rsquo;s top; such were the mounds,</p>
+		<p>On Chiarentana&rsquo;s{{1}} top; such were the mounds,</p>
 		<p>So fram&rsquo;d, though not in height or bulk to these</p>
 		<p>Made equal, by the master, whosoe&rsquo;er</p>
 		<p>He was, that rais&rsquo;d them here. We from the wood</p>
@@ -1985,7 +1985,7 @@ module.exports = {
 		<p>Intently fix&rsquo;d my ken on his parch&rsquo;d looks,</p>
 		<p>That although smirch&rsquo;d with fire, they hinder&rsquo;d not</p>
 		<p>But I remember&rsquo;d him; and towards his face</p>
-		<p>My hand inclining, answer&rsquo;d: &ldquo;Sir! Brunetto!</p>
+		<p>My hand inclining, answer&rsquo;d: &ldquo;Sir! Brunetto{{2}}!</p>
 		<p>&ldquo;And art thou here?&rdquo; He thus to me: &ldquo;My son!</p>
 		<p>Oh let it not displease thee, if Brunetto</p>
 		<p>Latini but a little space with thee</p>
@@ -2019,7 +2019,7 @@ module.exports = {
 		<p>Seeing the heav&rsquo;ns thus bounteous to thee, I</p>
 		<p>Had gladly giv&rsquo;n thee comfort in thy work.</p>
 		<p>But that ungrateful and malignant race,</p>
-		<p>Who in old times came down from Fesole,</p>
+		<p>Who in old times came down from Fesole{{3}},</p>
 		<p>Ay and still smack of their rough mountain-flint,</p>
 		<p>Will for thy good deeds shew thee enmity.</p>
 		<p>Nor wonder; for amongst ill-savour&rsquo;d crabs</p>
@@ -2046,7 +2046,7 @@ module.exports = {
 		<p>And how I priz&rsquo;d the lesson, it behooves,</p>
 		<p>That, long as life endures, my tongue should speak,</p>
 		<p>What of my fate thou tell&rsquo;st, that write I down:</p>
-		<p>And with another text to comment on</p>
+		<p>And with another text{{4}} to comment on</p>
 		<p>For her I keep it, the celestial dame,</p>
 		<p>Who will know all, if I to her arrive.</p>
 		<p>This only would I have thee clearly note:</p>
@@ -2067,18 +2067,18 @@ module.exports = {
 		<p>In brief I tell thee, that all these were clerks,</p>
 		<p>Men of great learning and no less renown,</p>
 		<p>By one same sin polluted in the world.</p>
-		<p>With them is Priscian, and Accorso&rsquo;s son</p>
-		<p>Francesco herds among that wretched throng:</p>
+		<p>With them is Priscian{{5}}, and Accorso&rsquo;s son</p>
+		<p>Francesco{{6}} herds among that wretched throng:</p>
 		<p>And, if the wish of so impure a blotch</p>
-		<p>Possess&rsquo;d thee, him thou also might&rsquo;st have seen,</p>
-		<p>Who by the servants&rsquo; servant was transferr&rsquo;d</p>
+		<p>Possess&rsquo;d thee, him{{7}} thou also might&rsquo;st have seen,</p>
+		<p>Who by the servants&rsquo; servant{{8}} was transferr&rsquo;d</p>
 		<p>From Arno&rsquo;s seat to Bacchiglione, where</p>
 		<p>His ill-strain&rsquo;d nerves he left. I more would add,</p>
 		<p>But must from farther speech and onward way</p>
 		<p>Alike desist, for yonder I behold</p>
 		<p>A mist new-risen on the sandy plain.</p>
 		<p>A company, with whom I may not sort,</p>
-		<p>Approaches. I commend my TREASURE to thee,</p>
+		<p>Approaches. I commend my <span class="sc">TREASURE</span> to thee{{9}},</p>
 		<p>Wherein I yet survive; my sole request.&rdquo;</p>
 		<p class="slindent">This said he turn&rsquo;d, and seem&rsquo;d as one of those,</p>
 		<p>Who o&rsquo;er Verona&rsquo;s champain try their speed</p>
@@ -2125,14 +2125,14 @@ module.exports = {
 		<p>My steps pursuing, naked though he be</p>
 		<p>And reft of all, was of more high estate</p>
 		<p>Than thou believest; grandchild of the chaste</p>
-		<p>Gualdrada, him they Guidoguerra call&rsquo;d,</p>
-		<p>Who in his lifetime many a noble act</p>
+		<p>Gualdrada{{1}}, him they Guidoguerra call&rsquo;d,</p>
+		<p>Who in his lifetime many a noble act{{2}}</p>
 		<p>Achiev&rsquo;d, both by his wisdom and his sword.</p>
 		<p>The other, next to me that beats the sand,</p>
-		<p>Is Aldobrandi, name deserving well,</p>
+		<p>Is Aldobrandi{{3}}, name deserving well,</p>
 		<p>In the&rsquo; upper world, of honour; and myself</p>
 		<p>Who in this torment do partake with them,</p>
-		<p>Am Rusticucci, whom, past doubt, my wife</p>
+		<p>Am Rusticucci{{4}}, whom, past doubt, my wife</p>
 		<p>Of savage temper, more than aught beside</p>
 		<p>Hath to this evil brought.&rdquo; If from the fire</p>
 		<p>I had been shelter&rsquo;d, down amidst them straight</p>
@@ -2157,7 +2157,7 @@ module.exports = {
 		<p>If courtesy and valour, as they wont,</p>
 		<p>Dwell in our city, or have vanish&rsquo;d clean?</p>
 		<p>For one amidst us late condemn&rsquo;d to wail,</p>
-		<p>Borsiere, yonder walking with his peers,</p>
+		<p>Borsiere{{5}}, yonder walking with his peers,</p>
 		<p>Grieves us no little by the news he brings.&rdquo;</p>
 		<p class="slindent">&ldquo;An upstart multitude and sudden gains,</p>
 		<p>Pride and excess, O Florence! have in thee</p>
@@ -2171,7 +2171,7 @@ module.exports = {
 		<p>Gifted with words, so apt to speak thy thought!</p>
 		<p>Wherefore if thou escape this darksome clime,</p>
 		<p>Returning to behold the radiant stars,</p>
-		<p>When thou with pleasure shalt retrace the past,</p>
+		<p>When thou with pleasure shalt retrace the past{{6}},</p>
 		<p>See that of us thou speak among mankind.&rdquo;</p>
 		<p class="slindent">This said, they broke the circle, and so swift</p>
 		<p>Fled, that as pinions seem&rsquo;d their nimble feet.</p>
@@ -2208,7 +2208,7 @@ module.exports = {
 		<p>But spy into the thoughts with subtle skill!</p>
 		<p class="slindent">&ldquo;Quickly shall come,&rdquo; he said, &ldquo;what I expect,</p>
 		<p>Thine eye discover quickly, that whereof</p>
-		<p>Thy thought is dreaming.&rdquo; Ever to that truth,</p>
+		<p>Thy thought is dreaming.&rdquo; Ever to that truth{{7}},</p>
 		<p>Which but the semblance of a falsehood wears,</p>
 		<p>A man, if possible, should bar his lip;</p>
 		<p>Since, although blameless, he incurs reproach.</p>
@@ -2226,7 +2226,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XVII</p>
 		<div class="stanza">
-		<p>&ldquo;<span class="sc">Lo</span>! the fell monster with the deadly sting!</p>
+		<p>&ldquo;<span class="sc">Lo</span>! the fell monster{{1}} with the deadly sting!</p>
 		<p>Who passes mountains, breaks through fenced walls</p>
 		<p>And firm embattled spears, and with his filth</p>
 		<p>Taints all the world!&rdquo; Thus me my guide address&rsquo;d,</p>
@@ -2278,23 +2278,23 @@ module.exports = {
 		<p class="slindent">Noting the visages of some, who lay</p>
 		<p>Beneath the pelting of that dolorous fire,</p>
 		<p>One of them all I knew not; but perceiv&rsquo;d,</p>
-		<p>That pendent from his neck each bore a pouch</p>
+		<p>That pendent from his neck each bore a pouch{{2}}</p>
 		<p>With colours and with emblems various mark&rsquo;d,</p>
 		<p>On which it seem&rsquo;d as if their eye did feed.</p>
 		<p class="slindent">And when amongst them looking round I came,</p>
-		<p>A yellow purse I saw with azure wrought,</p>
+		<p>A yellow purse{{3}} I saw with azure wrought,</p>
 		<p>That wore a lion&rsquo;s countenance and port.</p>
 		<p>Then still my sight pursuing its career,</p>
-		<p>Another I beheld, than blood more red.</p>
+		<p>Another{{4}} I beheld, than blood more red.</p>
 		<p>A goose display of whiter wing than curd.</p>
-		<p>And one, who bore a fat and azure swine</p>
+		<p>And one, who bore a fat and azure swine{{5}}</p>
 		<p>Pictur&rsquo;d on his white scrip, addressed me thus:</p>
 		<p>&ldquo;What dost thou in this deep? Go now and know,</p>
 		<p>Since yet thou livest, that my neighbour here</p>
-		<p>Vitaliano on my left shall sit.</p>
+		<p>Vitaliano{{6}} on my left shall sit.</p>
 		<p>A Paduan with these Florentines am I.</p>
 		<p>Ofttimes they thunder in mine ears, exclaiming</p>
-		<p>&rsquo;O haste that noble knight! he who the pouch</p>
+		<p>&rsquo;O haste that noble knight{{7}}! he who the pouch</p>
 		<p>With the three beaks will bring!&rsquo;&nbsp;&rdquo; This said, he writh&rsquo;d</p>
 		<p>The mouth, and loll&rsquo;d the tongue out, like an ox</p>
 		<p>That licks his nostrils. I, lest longer stay</p>
@@ -2389,8 +2389,8 @@ module.exports = {
 		<p>That swarming peopled the first chasm. Below</p>
 		<p>Were naked sinners. Hitherward they came,</p>
 		<p>Meeting our faces from the middle point,</p>
-		<p>With us beyond but with a larger stride.</p>
-		<p>E&rsquo;en thus the Romans, when the year returns</p>
+		<p>With us beyond{{1}} but with a larger stride.</p>
+		<p>E&rsquo;en thus the Romans{{2}}, when the year returns</p>
 		<p>Of Jubilee, with better speed to rid</p>
 		<p>The thronging multitudes, their means devise</p>
 		<p>For such as pass the bridge; that on one side</p>
@@ -2411,7 +2411,7 @@ module.exports = {
 		<p>But it avail&rsquo;d him nought; for I exclaim&rsquo;d:</p>
 		<p>&ldquo;Thou who dost cast thy eye upon the ground,</p>
 		<p>Unless thy features do belie thee much,</p>
-		<p>Venedico art thou. But what brings thee</p>
+		<p>Venedico{{3}} art thou. But what brings thee</p>
 		<p>Into this bitter seas&rsquo;ning?&rdquo; He replied:</p>
 		<p>&ldquo;Unwillingly I answer to thy words.</p>
 		<p>But thy clear speech, that to my mind recalls</p>
@@ -2423,7 +2423,7 @@ module.exports = {
 		<p>Rather with us the place is so o&rsquo;erthrong&rsquo;d</p>
 		<p>That not so many tongues this day are taught,</p>
 		<p>Betwixt the Reno and Savena&rsquo;s stream,</p>
-		<p>To answer SIPA in their country&rsquo;s phrase.</p>
+		<p>To answer <span class="italian">sipa</span>{{4}} in their country&rsquo;s phrase.</p>
 		<p>And if of that securer proof thou need,</p>
 		<p>Remember but our craving thirst for gold.&rdquo;</p>
 		<p class="slindent">Him speaking thus, a demon with his thong</p>
@@ -2451,7 +2451,7 @@ module.exports = {
 		<p>His passage thither led him, when those bold</p>
 		<p>And pitiless women had slain all their males.</p>
 		<p>There he with tokens and fair witching words</p>
-		<p>Hypsipyle beguil&rsquo;d, a virgin young,</p>
+		<p>Hypsipyle{{5}} beguil&rsquo;d, a virgin young,</p>
 		<p>Who first had all the rest herself beguil&rsquo;d.</p>
 		<p>Impregnated he left her there forlorn.</p>
 		<p>Such is the guilt condemns him to this pain.</p>
@@ -2481,7 +2481,7 @@ module.exports = {
 		<p>Than on these other filthy ones, thy ken?&rdquo;</p>
 		<p class="slindent">&ldquo;Because if true my mem&rsquo;ry,&rdquo; I replied,</p>
 		<p>&ldquo;I heretofore have seen thee with dry locks,</p>
-		<p>And thou Alessio art of Lucca sprung.</p>
+		<p>And thou Alessio{{6}} art of Lucca sprung.</p>
 		<p>Therefore than all the rest I scan thee more.&rdquo;</p>
 		<p class="slindent">Then beating on his brain these words he spake:</p>
 		<p>&ldquo;Me thus low down my flatteries have sunk,</p>
@@ -2491,7 +2491,7 @@ module.exports = {
 		<p>Of that besotted, sluttish courtezan,</p>
 		<p>Who there doth rend her with defiled nails,</p>
 		<p>Now crouching down, now risen on her feet.</p>
-		<p>&ldquo;Thais is this, the harlot, whose false lip</p>
+		<p>&ldquo;Thais{{7}} is this, the harlot, whose false lip</p>
 		<p>Answer&rsquo;d her doting paramour that ask&rsquo;d,</p>
 		<p>&lsquo;Thankest me much!&rsquo;&mdash;&lsquo;say rather wondrously,&rsquo;</p>
 		<p>And seeing this here satiate be our view.&rdquo;</p>
@@ -2516,7 +2516,7 @@ module.exports = {
 		<p>And in its bottom full of apertures,</p>
 		<p>All equal in their width, and circular each,</p>
 		<p>Nor ample less nor larger they appear&rsquo;d</p>
-		<p>Than in Saint John&rsquo;s fair dome of me belov&rsquo;d</p>
+		<p>Than in Saint John&rsquo;s fair dome{{1}} of me belov&rsquo;d</p>
 		<p>Those fram&rsquo;d to hold the pure baptismal streams,</p>
 		<p>One of the which I brake, some few years past,</p>
 		<p>To save a whelming infant; and be this</p>
@@ -2546,17 +2546,17 @@ module.exports = {
 		<p>Nor from his side my leader set me down,</p>
 		<p>Till to his orifice he brought, whose limb</p>
 		<p>Quiv&rsquo;ring express&rsquo;d his pang. &ldquo;Whoe&rsquo;er thou art,</p>
-		<p>Sad spirit! thus revers&rsquo;d, and as a stake</p>
+		<p>Sad spirit! thus revers&rsquo;d{{1}}, and as a stake</p>
 		<p>Driv&rsquo;n in the soil!&rdquo; I in these words began,</p>
 		<p>&ldquo;If thou be able, utter forth thy voice.&rdquo;</p>
 		<p class="slindent">There stood I like the friar, that doth shrive</p>
 		<p>A wretch for murder doom&rsquo;d, who e&rsquo;en when fix&rsquo;d,</p>
 		<p>Calleth him back, whence death awhile delays.</p>
 		<p class="slindent">He shouted: &ldquo;Ha! already standest there?</p>
-		<p>Already standest there, O Boniface!</p>
+		<p>Already standest there, O Boniface!{{2}}</p>
 		<p>By many a year the writing play&rsquo;d me false.</p>
 		<p>So early dost thou surfeit with the wealth,</p>
-		<p>For which thou fearedst not in guile to take</p>
+		<p>For which thou fearedst not in guile{{3}} to take</p>
 		<p>The lovely lady, and then mangle her?&rdquo;</p>
 		<p class="slindent">I felt as those who, piercing not the drift</p>
 		<p>Of answer made them, stand as if expos&rsquo;d</p>
@@ -2569,7 +2569,7 @@ module.exports = {
 		<p>&ldquo;What then of me requirest? If to know</p>
 		<p>So much imports thee, who I am, that thou</p>
 		<p>Hast therefore down the bank descended, learn</p>
-		<p>That in the mighty mantle I was rob&rsquo;d,</p>
+		<p>That in the mighty mantle I was rob&rsquo;d{{4}},</p>
 		<p>And of a she-bear was indeed the son,</p>
 		<p>So eager to advance my whelps, that there</p>
 		<p>My having in my purse above I stow&rsquo;d,</p>
@@ -2584,9 +2584,9 @@ module.exports = {
 		<p>Upturn&rsquo;d have stood, than is his doom to stand</p>
 		<p>Planted with fiery feet. For after him,</p>
 		<p>One yet of deeds more ugly shall arrive,</p>
-		<p>From forth the west, a shepherd without law,</p>
+		<p>From forth the west, a shepherd without law{{5}},</p>
 		<p>Fated to cover both his form and mine.</p>
-		<p>He a new Jason shall be call&rsquo;d, of whom</p>
+		<p>He a new Jason{{6}} shall be call&rsquo;d, of whom</p>
 		<p>In Maccabees we read; and favour such</p>
 		<p>As to that priest his king indulgent show&rsquo;d,</p>
 		<p>Shall be of France&rsquo;s monarch shown to him.&rdquo;</p>
@@ -2595,19 +2595,19 @@ module.exports = {
 		<p>What treasures from St. Peter at the first</p>
 		<p>Our Lord demanded, when he put the keys</p>
 		<p>Into his charge? Surely he ask&rsquo;d no more</p>
-		<p>But, Follow me! Nor Peter nor the rest</p>
+		<p>But, Follow me! Nor Peter{{7}} nor the rest</p>
 		<p>Or gold or silver of Matthias took,</p>
 		<p>When lots were cast upon the forfeit place</p>
-		<p>Of the condemned soul. Abide thou then;</p>
+		<p>Of the condemned soul{{8}}. Abide thou then;</p>
 		<p>Thy punishment of right is merited:</p>
 		<p>And look thou well to that ill-gotten coin,</p>
-		<p>Which against Charles thy hardihood inspir&rsquo;d.</p>
+		<p>Which against Charles{{9}} thy hardihood inspir&rsquo;d.</p>
 		<p>If reverence of the keys restrain&rsquo;d me not,</p>
 		<p>Which thou in happier time didst hold, I yet</p>
 		<p>Severer speech might use. Your avarice</p>
 		<p>O&rsquo;ercasts the world with mourning, under foot</p>
 		<p>Treading the good, and raising bad men up.</p>
-		<p>Of shepherds, like to you, th&rsquo; Evangelist</p>
+		<p>Of shepherds, like to you, th&rsquo; Evangelist{{10}}</p>
 		<p>Was ware, when her, who sits upon the waves,</p>
 		<p>With kings in filthy whoredom he beheld,</p>
 		<p>She who with seven heads tower&rsquo;d at her birth,</p>
@@ -2616,7 +2616,7 @@ module.exports = {
 		<p>Of gold and silver ye have made your god,</p>
 		<p>Diff&rsquo;ring wherein from the idolater,</p>
 		<p>But he that worships one, a hundred ye?</p>
-		<p>Ah, Constantine! to how much ill gave birth,</p>
+		<p>Ah, Constantine{{11}}! to how much ill gave birth,</p>
 		<p>Not thy conversion, but that plenteous dower,</p>
 		<p>Which the first wealthy Father gain&rsquo;d from thee!&rdquo;</p>
 		<p class="slindent">Meanwhile, as thus I sung, he, whether wrath</p>
@@ -2648,7 +2648,7 @@ module.exports = {
 		<p>In silence weeping: such their step as walk</p>
 		<p>Quires chanting solemn litanies on earth.</p>
 		<p class="slindent">As on them more direct mine eye descends,</p>
-		<p>Each wondrously seem&rsquo;d to be revers&rsquo;d</p>
+		<p>Each wondrously seem&rsquo;d to be revers&rsquo;d{{1}}</p>
 		<p>At the neck-bone, so that the countenance</p>
 		<p>Was from the reins averted: and because</p>
 		<p>None might before him look, they were compell&rsquo;d</p>
@@ -2667,27 +2667,27 @@ module.exports = {
 		<p>When she is dead. What guilt exceedeth his,</p>
 		<p>Who with Heaven&rsquo;s judgment in his passion strives?</p>
 		<p>Raise up thy head, raise up, and see the man,</p>
-		<p>Before whose eyes earth gap&rsquo;d in Thebes, when all</p>
+		<p>Before whose eyes{{2}} earth gap&rsquo;d in Thebes, when all</p>
 		<p>Cried out, &lsquo;Amphiaraus, whither rushest?</p>
 		<p>&lsquo;Why leavest thou the war?&rsquo; He not the less</p>
 		<p>Fell ruining far as to Minos down,</p>
 		<p>Whose grapple none eludes. Lo! how he makes</p>
 		<p>The breast his shoulders, and who once too far</p>
 		<p>Before him wish&rsquo;d to see, now backward looks,</p>
-		<p>And treads reverse his path. Tiresias note,</p>
+		<p>And treads reverse his path. Tiresias{{3}} note,</p>
 		<p>Who semblance chang&rsquo;d, when woman he became</p>
 		<p>Of male, through every limb transform&rsquo;d, and then</p>
 		<p>Once more behov&rsquo;d him with his rod to strike</p>
 		<p>The two entwining serpents, ere the plumes,</p>
 		<p>That mark&rsquo;d the better sex, might shoot again.</p>
-		<p class="slindent">&ldquo;Aruns, with more his belly facing, comes.</p>
+		<p class="slindent">&ldquo;Aruns{{4}}, with more his belly facing, comes.</p>
 		<p>On Luni&rsquo;s mountains &rsquo;midst the marbles white,</p>
 		<p>Where delves Carrara&rsquo;s hind, who wons beneath,</p>
 		<p>A cavern was his dwelling, whence the stars</p>
 		<p>And main-sea wide in boundless view he held.</p>
 		<p class="slindent">&ldquo;The next, whose loosen&rsquo;d tresses overspread</p>
 		<p>Her bosom, which thou seest not (for each hair</p>
-		<p>On that side grows) was Manto, she who search&rsquo;d</p>
+		<p>On that side grows) was Manto{{5}}, she who search&rsquo;d</p>
 		<p>Through many regions, and at length her seat</p>
 		<p>Fix&rsquo;d in my native land, whence a short space</p>
 		<p>My words detain thy audience. When her sire</p>
@@ -2698,15 +2698,15 @@ module.exports = {
 		<p>A lake there lies, at foot of that proud Alp,</p>
 		<p>That o&rsquo;er the Tyrol locks Germania in,</p>
 		<p>Its name Benacus, which a thousand rills,</p>
-		<p>Methinks, and more, water between the vale</p>
+		<p>Methinks, and more, water between the vale{{6}}</p>
 		<p>Camonica and Garda and the height</p>
-		<p>Of Apennine remote. There is a spot</p>
+		<p>Of Apennine remote. There is a spot{{7}}</p>
 		<p>At midway of that lake, where he who bears</p>
 		<p>Of Trento&rsquo;s flock the past&rsquo;ral staff, with him</p>
 		<p>Of Brescia, and the Veronese, might each</p>
 		<p>Passing that way his benediction give.</p>
 		<p>A garrison of goodly site and strong</p>
-		<p>Peschiera stands, to awe with front oppos&rsquo;d</p>
+		<p>Peschiera{{8}} stands, to awe with front oppos&rsquo;d</p>
 		<p>The Bergamese and Brescian, whence the shore</p>
 		<p>More slope each way descends. There, whatsoev&rsquo;er</p>
 		<p>Benacus&rsquo; bosom holds not, tumbling o&rsquo;er</p>
@@ -2731,7 +2731,7 @@ module.exports = {
 		<p>Calling it Mantua, who first chose the spot,</p>
 		<p>Nor ask&rsquo;d another omen for the name,</p>
 		<p>Wherein more numerous the people dwelt,</p>
-		<p>Ere Casalodi&rsquo;s madness by deceit</p>
+		<p>Ere Casalodi&rsquo;s{{9}} madness by deceit</p>
 		<p>Was wrong&rsquo;d of Pinamonte. If thou hear</p>
 		<p>Henceforth another origin assign&rsquo;d</p>
 		<p>Of that my country, I forewarn thee now,</p>
@@ -2748,19 +2748,19 @@ module.exports = {
 		<p>The cradles were supplied, the seer was he</p>
 		<p>In Aulis, who with Calchas gave the sign</p>
 		<p>When first to cut the cable. Him they nam&rsquo;d</p>
-		<p>Eurypilus: so sings my tragic strain,</p>
+		<p>Eurypilus: so sings my tragic strain{{10}},</p>
 		<p>In which majestic measure well thou know&rsquo;st,</p>
 		<p>Who know&rsquo;st it all. That other, round the loins</p>
-		<p>So slender of his shape, was Michael Scot,</p>
+		<p>So slender of his shape, was Michael Scot{{11}},</p>
 		<p>Practis&rsquo;d in ev&rsquo;ry slight of magic wile.</p>
-		<p class="slindent">&ldquo;Guido Bonatti see: Asdente mark,</p>
+		<p class="slindent">&ldquo;Guido Bonatti{{12}} see: Asdente{{13}} mark,</p>
 		<p>Who now were willing, he had tended still</p>
 		<p>The thread and cordwain; and too late repents.</p>
 		<p class="slindent">&ldquo;See next the wretches, who the needle left,</p>
 		<p>The shuttle and the spindle, and became</p>
 		<p>Diviners: baneful witcheries they wrought</p>
 		<p>With images and herbs. But onward now:</p>
-		<p>For now doth Cain with fork of thorns confine</p>
+		<p>For now doth Cain with fork of thorns{{14}} confine</p>
 		<p>On either hemisphere, touching the wave</p>
 		<p>Beneath the towers of Seville. Yesternight</p>
 		<p>The moon was round. Thou mayst remember well:</p>
@@ -2776,7 +2776,7 @@ module.exports = {
 		<p>To view another gap, within the round</p>
 		<p>Of Malebolge, other bootless pangs.</p>
 		<p class="slindent">Marvelous darkness shadow&rsquo;d o&rsquo;er the place.</p>
-		<p class="slindent">In the Venetians&rsquo; arsenal as boils</p>
+		<p class="slindent">In the Venetians&rsquo; arsenal{{1}} as boils</p>
 		<p>Through wintry months tenacious pitch, to smear</p>
 		<p>Their unsound vessels; for th&rsquo; inclement time</p>
 		<p>Sea-faring men restrains, and in that while</p>
@@ -2806,10 +2806,10 @@ module.exports = {
 		<p>Was with a sinner charg&rsquo;d; by either haunch</p>
 		<p>He held him, the foot&rsquo;s sinew griping fast.</p>
 		<p class="slindent">&ldquo;Ye of our bridge!&rdquo; he cried, &ldquo;keen-talon&rsquo;d fiends!</p>
-		<p>Lo! one of Santa Zita&rsquo;s elders! Him</p>
+		<p>Lo! one of Santa Zita&rsquo;s elders{{2}}! Him</p>
 		<p>Whelm ye beneath, while I return for more.</p>
 		<p>That land hath store of such. All men are there,</p>
-		<p>Except Bonturo, barterers: of &lsquo;no&rsquo;</p>
+		<p>Except Bonturo, barterers{{3}}: of &lsquo;no&rsquo;</p>
 		<p>For lucre there an &lsquo;aye&rsquo; is quickly made.&rdquo;</p>
 		<p class="slindent">Him dashing down, o&rsquo;er the rough rock he turn&rsquo;d,</p>
 		<p>Nor ever after thief a mastiff loos&rsquo;d</p>
@@ -2817,7 +2817,7 @@ module.exports = {
 		<p>And forthwith writing to the surface rose.</p>
 		<p>But those dark demons, shrouded by the bridge,</p>
 		<p>Cried &ldquo;Here the hallow&rsquo;d visage saves not: here</p>
-		<p>Is other swimming than in Serchio&rsquo;s wave.</p>
+		<p>Is other swimming than in Serchio&rsquo;s wave{{4}}.</p>
 		<p>Wherefore if thou desire we rend thee not,</p>
 		<p>Take heed thou mount not o&rsquo;er the pitch.&rdquo; This said,</p>
 		<p>They grappled him with more than hundred hooks,</p>
@@ -2861,7 +2861,7 @@ module.exports = {
 		<p class="slindent">I rose, and towards him moved with speed: the fiends</p>
 		<p>Meantime all forward drew: me terror seiz&rsquo;d</p>
 		<p>Lest they should break the compact they had made.</p>
-		<p>Thus issuing from Caprona, once I saw</p>
+		<p>Thus issuing from Caprona{{5}}, once I saw</p>
 		<p>Th&rsquo; infantry dreading, lest his covenant</p>
 		<p>The foe should break; so close he hemm&rsquo;d them round.</p>
 		<p class="slindent">I to my leader&rsquo;s side adher&rsquo;d, mine eyes</p>
@@ -2878,7 +2878,7 @@ module.exports = {
 		<p>Of the sixth arch. But would you still proceed,</p>
 		<p>Up by this cavern go: not distant far,</p>
 		<p>Another rock will yield you passage safe.</p>
-		<p>Yesterday, later by five hours than now,</p>
+		<p>Yesterday{{6}}, later by five hours than now,</p>
 		<p>Twelve hundred threescore years and six had fill&rsquo;d</p>
 		<p>The circuit of their course, since here the way</p>
 		<p>Was broken. Thitherward I straight dispatch</p>
@@ -2926,7 +2926,7 @@ module.exports = {
 		<p>In evolution moving, horse nor foot,</p>
 		<p>Nor ship, that tack&rsquo;d by sign from land or star.</p>
 		<p class="slindent">With the ten demons on our way we went;</p>
-		<p>Ah fearful company! but in the church</p>
+		<p>Ah fearful company! but in the church{{1}}</p>
 		<p>With saints, with gluttons at the tavern&rsquo;s mess.</p>
 		<p class="slindent">Still earnest on the pitch I gaz&rsquo;d, to mark</p>
 		<p>All things whate&rsquo;er the chasm contain&rsquo;d, and those</p>
@@ -2957,11 +2957,11 @@ module.exports = {
 		<p>What wretched soul is this, on whom their hand</p>
 		<p>His foes have laid.&rdquo; My leader to his side</p>
 		<p>Approach&rsquo;d, and whence he came inquir&rsquo;d, to whom</p>
-		<p>Was answer&rsquo;d thus: &ldquo;Born in Navarre&rsquo;s domain</p>
+		<p>Was answer&rsquo;d thus: &ldquo;Born in Navarre&rsquo;s domain{{2}}</p>
 		<p>My mother plac&rsquo;d me in a lord&rsquo;s retinue,</p>
 		<p>For she had borne me to a losel vile,</p>
 		<p>A spendthrift of his substance and himself.</p>
-		<p>The good king Thibault after that I serv&rsquo;d,</p>
+		<p>The good king Thibault{{3}} after that I serv&rsquo;d,</p>
 		<p>To peculating here my thoughts were turn&rsquo;d,</p>
 		<p>Whereof I give account in this dire heat.&rdquo;</p>
 		<p class="slindent">Straight Ciriatto, from whose mouth a tusk</p>
@@ -2990,7 +2990,7 @@ module.exports = {
 		<p>My teacher thus without delay inquir&rsquo;d:</p>
 		<p>&ldquo;Who was the spirit, from whom by evil hap</p>
 		<p>Parting, as thou has told, thou cam&rsquo;st to shore?&rdquo;&mdash;</p>
-		<p class="slindent">&ldquo;It was the friar Gomita,&rdquo; he rejoin&rsquo;d,</p>
+		<p class="slindent">&ldquo;It was the friar Gomita{{4}},&rdquo; he rejoin&rsquo;d,</p>
 		<p>&ldquo;He of Gallura, vessel of all guile,</p>
 		<p>Who had his master&rsquo;s enemies in hand,</p>
 		<p>And us&rsquo;d them so that they commend him well.</p>
@@ -2998,7 +2998,7 @@ module.exports = {
 		<p>So he reports: and in each other charge</p>
 		<p>Committed to his keeping, play&rsquo;d the part</p>
 		<p>Of barterer to the height: with him doth herd</p>
-		<p>The chief of Logodoro, Michel Zanche.</p>
+		<p>The chief of Logodoro, Michel Zanche{{5}}.</p>
 		<p>Sardinia is a theme, whereof their tongue</p>
 		<p>Is never weary. Out! alas! behold</p>
 		<p>That other, how he grins! More would I say,</p>
@@ -3067,7 +3067,7 @@ module.exports = {
 		<p>One first, the other following his steps,</p>
 		<p>As minor friars journeying on their road.</p>
 		<p class="slindent">The present fray had turn&rsquo;d my thoughts to muse</p>
-		<p>Upon old Aesop&rsquo;s fable, where he told</p>
+		<p>Upon old Aesop&rsquo;s fable{{1}}, where he told</p>
 		<p>What fate unto the mouse and frog befell.</p>
 		<p>For language hath not sounds more like in sense,</p>
 		<p>Than are these chances, if the origin</p>
@@ -3125,10 +3125,10 @@ module.exports = {
 		<p>Faint in appearance and o&rsquo;ercome with toil.</p>
 		<p>Caps had they on, with hoods, that fell low down</p>
 		<p>Before their eyes, in fashion like to those</p>
-		<p>Worn by the monks in Cologne. Their outside</p>
+		<p>Worn by the monks in Cologne{{2}}. Their outside</p>
 		<p>Was overlaid with gold, dazzling to view,</p>
 		<p>But leaden all within, and of such weight,</p>
-		<p>That Frederick&rsquo;s compar&rsquo;d to these were straw.</p>
+		<p>That Frederick&rsquo;s{{3}} compar&rsquo;d to these were straw.</p>
 		<p>Oh, everlasting wearisome attire!</p>
 		<p class="slindent">We yet once more with them together turn&rsquo;d</p>
 		<p>To leftward, on their dismal moan intent.</p>
@@ -3163,30 +3163,30 @@ module.exports = {
 		<p>but who are ye, from whom such mighty grief,</p>
 		<p>As now I witness, courseth down your cheeks?</p>
 		<p>What torment breaks forth in this bitter woe?&rdquo;</p>
-		<p>&ldquo;Our bonnets gleaming bright with orange hue,&rdquo;</p>
+		<p>&ldquo;Our bonnets gleaming bright with orange hue{{4}},&rdquo;</p>
 		<p>One of them answer&rsquo;d, &ldquo;are so leaden gross,</p>
 		<p>That with their weight they make the balances</p>
-		<p>To crack beneath them. Joyous friars we were,</p>
+		<p>To crack beneath them. Joyous friars{{5}} we were,</p>
 		<p>Bologna&rsquo;s natives, Catalano I,</p>
 		<p>He Loderingo nam&rsquo;d, and by thy land</p>
 		<p>Together taken, as men used to take</p>
 		<p>A single and indifferent arbiter,</p>
 		<p>To reconcile their strifes. How there we sped,</p>
-		<p>Gardingo&rsquo;s vicinage can best declare.&rdquo;</p>
+		<p>Gardingo&rsquo;s vicinage{{6}} can best declare.&rdquo;</p>
 		<p class="slindent">&ldquo;O friars!&rdquo; I began, &ldquo;your miseries&mdash;&rdquo;</p>
 		<p>But there brake off, for one had caught my eye,</p>
 		<p>Fix&rsquo;d to a cross with three stakes on the ground:</p>
 		<p>He, when he saw me, writh&rsquo;d himself, throughout</p>
 		<p>Distorted, ruffling with deep sighs his beard.</p>
 		<p>And Catalano, who thereof was &rsquo;ware,</p>
-		<p>Thus spake: &ldquo;That pierced spirit, whom intent</p>
+		<p>Thus spake: &ldquo;That pierced spirit{{7}}, whom intent</p>
 		<p>Thou view&rsquo;st, was he who gave the Pharisees</p>
 		<p>Counsel, that it were fitting for one man</p>
 		<p>To suffer for the people. He doth lie</p>
 		<p>Transverse; nor any passes, but him first</p>
 		<p>Behoves make feeling trial how each weighs.</p>
 		<p>In straits like this along the foss are plac&rsquo;d</p>
-		<p>The father of his consort, and the rest</p>
+		<p>The father of his consort{{8}}, and the rest</p>
 		<p>Partakers in that council, seed of ill</p>
 		<p>And sorrow to the Jews.&rdquo; I noted then,</p>
 		<p>How Virgil gaz&rsquo;d with wonder upon him,</p>
@@ -3208,7 +3208,7 @@ module.exports = {
 		<p>Who yonder hangs the sinners on his hook.&rdquo;</p>
 		<p class="slindent">To whom the friar: At Bologna erst</p>
 		<p>&ldquo;I many vices of the devil heard,</p>
-		<p>Among the rest was said, &lsquo;He is a liar,</p>
+		<p>Among the rest was said, &lsquo;He is a liar{{9}},</p>
 		<p>And the father of lies!&rsquo;&nbsp;&rdquo; When he had spoke,</p>
 		<p>My leader with large strides proceeded on,</p>
 		<p>Somewhat disturb&rsquo;d with anger in his look.</p>
@@ -3218,7 +3218,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXIV</p>
 		<div class="stanza">
-		<p><span class="sc">In</span> the year&rsquo;s early nonage, when the sun</p>
+		<p><span class="sc">In</span> the year&rsquo;s early nonage{{1}}, when the sun</p>
 		<p>Tempers his tresses in Aquarius&rsquo; urn,</p>
 		<p>And now towards equal day the nights recede,</p>
 		<p>When as the rime upon the earth puts on</p>
@@ -3268,7 +3268,7 @@ module.exports = {
 		<p>Without which whosoe&rsquo;er consumes his days</p>
 		<p>Leaveth such vestige of himself on earth,</p>
 		<p>As smoke in air or foam upon the wave.</p>
-		<p>Thou therefore rise: vanish thy weariness</p>
+		<p>Thou therefore rise: vanish thy weariness{{2}}</p>
 		<p>By the mind&rsquo;s effort, in each struggle form&rsquo;d</p>
 		<p>To vanquish, if she suffer not the weight</p>
 		<p>Of her corporeal frame to crush her down.</p>
@@ -3299,7 +3299,7 @@ module.exports = {
 		<p>Opening to view, I saw a crowd within</p>
 		<p>Of serpents terrible, so strange of shape</p>
 		<p>And hideous, that remembrance in my veins</p>
-		<p>Yet shrinks the vital current. Of her sands</p>
+		<p>Yet shrinks the vital current. Of her sands{{3}}</p>
 		<p>Let Lybia vaunt no more: if Jaculus,</p>
 		<p>Pareas and Chelyder be her brood,</p>
 		<p>Cenchris and Amphisboena, plagues so dire</p>
@@ -3309,7 +3309,7 @@ module.exports = {
 		<p class="slindent">Amid this dread exuberance of woe</p>
 		<p>Ran naked spirits wing&rsquo;d with horrid fear,</p>
 		<p>Nor hope had they of crevice where to hide,</p>
-		<p>Or heliotrope to charm them out of view.</p>
+		<p>Or heliotrope{{4}} to charm them out of view.</p>
 		<p>With serpents were their hands behind them bound,</p>
 		<p>Which through their reins infix&rsquo;d the tail and head</p>
 		<p>Twisted in folds before. And lo! on one</p>
@@ -3321,7 +3321,7 @@ module.exports = {
 		<p>When there dissolv&rsquo;d he lay, the dust again</p>
 		<p>Uproll&rsquo;d spontaneous, and the self-same form</p>
 		<p>Instant resumed. So mighty sages tell,</p>
-		<p>The&rsquo; Arabian Phoenix, when five hundred years</p>
+		<p>The&rsquo; Arabian Phoenix{{5}}, when five hundred years</p>
 		<p>Have well nigh circled, dies, and springs forthwith</p>
 		<p>Renascent. Blade nor herb throughout his life</p>
 		<p>He tastes, but tears of frankincense alone</p>
@@ -3337,11 +3337,11 @@ module.exports = {
 		<p class="slindent">Oh! how severe God&rsquo;s judgment, that deals out</p>
 		<p>Such blows in stormy vengeance! Who he was</p>
 		<p>My teacher next inquir&rsquo;d, and thus in few</p>
-		<p>He answer&rsquo;d: &ldquo;Vanni Fucci am I call&rsquo;d,</p>
+		<p>He answer&rsquo;d: &ldquo;Vanni Fucci{{6}} am I call&rsquo;d,</p>
 		<p>Not long since rained down from Tuscany</p>
 		<p>To this dire gullet. Me the beastial life</p>
 		<p>And not the human pleas&rsquo;d, mule that I was,</p>
-		<p>Who in Pistoia found my worthy den.&rdquo;</p>
+		<p>Who in Pistoia{{7}} found my worthy den.&rdquo;</p>
 		<p class="slindent">I then to Virgil: &ldquo;Bid him stir not hence,</p>
 		<p>And ask what crime did thrust him hither: once</p>
 		<p>A man I knew him choleric and bloody.&rdquo;</p>
@@ -3361,7 +3361,7 @@ module.exports = {
 		<p>Open thine ears and hear what I forebode.</p>
 		<p>Reft of the Neri first Pistoia pines,</p>
 		<p>Then Florence changeth citizens and laws.</p>
-		<p>From Valdimagra, drawn by wrathful Mars,</p>
+		<p>From Valdimagra{{8}}, drawn by wrathful Mars,</p>
 		<p>A vapour rises, wrapt in turbid mists,</p>
 		<p>And sharp and eager driveth on the storm</p>
 		<p>With arrowy hurtling o&rsquo;er Piceno&rsquo;s field,</p>
@@ -3372,7 +3372,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXV</p>
 		<div class="stanza">
-		<p><span class="sc">When</span> he had spoke, the sinner rais&rsquo;d his hands</p>
+		<p><span class="sc">When</span> he had spoke, the sinner{{1}} rais&rsquo;d his hands</p>
 		<p>Pointed in mockery, and cried: &ldquo;Take them, God!</p>
 		<p>I level them at thee!&rdquo; From that day forth</p>
 		<p>The serpents were my friends; for round his neck</p>
@@ -3383,26 +3383,26 @@ module.exports = {
 		<p class="slindent">Pistoia! Ah Pistoia! why dost doubt</p>
 		<p>To turn thee into ashes, cumb&rsquo;ring earth</p>
 		<p>No longer, since in evil act so far</p>
-		<p>Thou hast outdone thy seed? I did not mark,</p>
+		<p>Thou hast outdone thy seed{{2}}? I did not mark,</p>
 		<p>Through all the gloomy circles of the&rsquo; abyss,</p>
 		<p>Spirit, that swell&rsquo;d so proudly &rsquo;gainst his God,</p>
-		<p>Not him, who headlong fell from Thebes. He fled,</p>
+		<p>Not him{{3}}, who headlong fell from Thebes. He fled,</p>
 		<p>Nor utter&rsquo;d more; and after him there came</p>
 		<p>A centaur full of fury, shouting, &ldquo;Where</p>
-		<p>Where is the caitiff?&rdquo; On Maremma&rsquo;s marsh</p>
+		<p>Where is the caitiff?&rdquo; On Maremma&rsquo;s marsh{{4}}</p>
 		<p>Swarm not the serpent tribe, as on his haunch</p>
 		<p>They swarm&rsquo;d, to where the human face begins.</p>
 		<p>Behind his head upon the shoulders lay,</p>
 		<p>With open wings, a dragon breathing fire</p>
 		<p>On whomsoe&rsquo;er he met. To me my guide:</p>
-		<p>&ldquo;Cacus is this, who underneath the rock</p>
+		<p>&ldquo;Cacus{{5}} is this, who underneath the rock</p>
 		<p>Of Aventine spread oft a lake of blood.</p>
 		<p>He, from his brethren parted, here must tread</p>
 		<p>A different journey, for his fraudful theft</p>
 		<p>Of the great herd, that near him stall&rsquo;d; whence found</p>
 		<p>His felon deeds their end, beneath the mace</p>
 		<p>Of stout Alcides, that perchance laid on</p>
-		<p>A hundred blows, and not the tenth was felt.&rdquo;</p>
+		<p>A hundred blows{{6}}, and not the tenth was felt.&rdquo;</p>
 		<p class="slindent">While yet he spake, the centaur sped away:</p>
 		<p>And under us three spirits came, of whom</p>
 		<p>Nor I nor he was ware, till they exclaim&rsquo;d;</p>
@@ -3410,7 +3410,7 @@ module.exports = {
 		<p>Intent on these alone. I knew them not;</p>
 		<p>But, as it chanceth oft, befell, that one</p>
 		<p>Had need to name another. &ldquo;Where,&rdquo; said he,</p>
-		<p>&ldquo;Doth Cianfa lurk?&rdquo; I, for a sign my guide</p>
+		<p>&ldquo;Doth Cianfa{{7}} lurk?&rdquo; I, for a sign my guide</p>
 		<p>Should stand attentive, plac&rsquo;d against my lips</p>
 		<p>The finger lifted. If, O reader! now</p>
 		<p>Thou be not apt to credit what I tell,</p>
@@ -3428,11 +3428,11 @@ module.exports = {
 		<p>Then, as they both had been of burning wax,</p>
 		<p>Each melted into other, mingling hues,</p>
 		<p>That which was either now was seen no more.</p>
-		<p>Thus up the shrinking paper, ere it burns,</p>
+		<p>Thus up the shrinking paper{{8}}, ere it burns,</p>
 		<p>A brown tint glides, not turning yet to black,</p>
 		<p>And the clean white expires. The other two</p>
 		<p>Look&rsquo;d on exclaiming: &ldquo;Ah, how dost thou change,</p>
-		<p>Agnello! See! Thou art nor double now,</p>
+		<p>Agnello{{9}}! See! Thou art nor double now,</p>
 		<p>&ldquo;Nor only one.&rdquo; The two heads now became</p>
 		<p>One, and two figures blended in one form</p>
 		<p>Appear&rsquo;d, where both were lost. Of the four lengths</p>
@@ -3448,17 +3448,17 @@ module.exports = {
 		<p>So toward th&rsquo; entrails of the other two</p>
 		<p>Approaching seem&rsquo;d, an adder all on fire,</p>
 		<p>As the dark pepper-grain, livid and swart.</p>
-		<p>In that part, whence our life is nourish&rsquo;d first,</p>
+		<p>In that part{{10}}, whence our life is nourish&rsquo;d first,</p>
 		<p>One he transpierc&rsquo;d; then down before him fell</p>
 		<p>Stretch&rsquo;d out. The pierced spirit look&rsquo;d on him</p>
 		<p>But spake not; yea stood motionless and yawn&rsquo;d,</p>
-		<p>As if by sleep or fev&rsquo;rous fit assail&rsquo;d.</p>
+		<p>As if by sleep or fev&rsquo;rous fit assail&rsquo;d{{11}}.</p>
 		<p>He ey&rsquo;d the serpent, and the serpent him.</p>
 		<p>One from the wound, the other from the mouth</p>
 		<p>Breath&rsquo;d a thick smoke, whose vap&rsquo;ry columns join&rsquo;d.</p>
-		<p class="slindent">Lucan in mute attention now may hear,</p>
+		<p class="slindent">Lucan{{12}} in mute attention now may hear,</p>
 		<p>Nor thy disastrous fate, Sabellus! tell,</p>
-		<p>Nor shine, Nasidius! Ovid now be mute.</p>
+		<p>Nor shine, Nasidius! Ovid{{13}} now be mute.</p>
 		<p>What if in warbling fiction he record</p>
 		<p>Cadmus and Arethusa, to a snake</p>
 		<p>Him chang&rsquo;d, and her into a fountain clear,</p>
@@ -3492,7 +3492,7 @@ module.exports = {
 		<p>Of its excess did shape the nose; and swell&rsquo;d</p>
 		<p>Into due size protuberant the lips.</p>
 		<p>He, on the earth who lay, meanwhile extends</p>
-		<p>His sharpen&rsquo;d visage, and draws down the ears</p>
+		<p>His sharpen&rsquo;d visage{{14}}, and draws down the ears</p>
 		<p>Into the head, as doth the slug his horns.</p>
 		<p>His tongue continuous before and apt</p>
 		<p>For utt&rsquo;rance, severs; and the other&rsquo;s fork</p>
@@ -3502,16 +3502,16 @@ module.exports = {
 		<p>The other talking sputters; but soon turn&rsquo;d</p>
 		<p>His new-grown shoulders on him, and in few</p>
 		<p>Thus to another spake: &ldquo;Along this path</p>
-		<p>Crawling, as I have done, speed Buoso now!&rdquo;</p>
+		<p>Crawling, as I have done, speed Buoso{{15}} now!&rdquo;</p>
 		<p class="slindent">So saw I fluctuate in successive change</p>
 		<p>Th&rsquo; unsteady ballast of the seventh hold:</p>
 		<p>And here if aught my tongue have swerv&rsquo;d, events</p>
 		<p>So strange may be its warrant. O&rsquo;er mine eyes</p>
 		<p>Confusion hung, and on my thoughts amaze.</p>
 		<p class="slindent">Yet &rsquo;scap&rsquo;d they not so covertly, but well</p>
-		<p>I mark&rsquo;d Sciancato: he alone it was</p>
+		<p>I mark&rsquo;d Sciancato{{16}}: he alone it was</p>
 		<p>Of the three first that came, who chang&rsquo;d not: thou,</p>
-		<p>The other&rsquo;s fate, Gaville, still dost rue.</p>
+		<p>The other&rsquo;s fate, Gaville{{17}}, still dost rue.</p>
 		</div>`,
 
 		`<p class="cantohead">Canto XXVI</p>
@@ -3522,9 +3522,9 @@ module.exports = {
 		<p>Among the plund&rsquo;rers such the three I found</p>
 		<p>Thy citizens, whence shame to me thy son,</p>
 		<p>And no proud honour to thyself redounds.</p>
-		<p class="slindent">But if our minds, when dreaming near the dawn,</p>
+		<p class="slindent">But if our minds{{1}}, when dreaming near the dawn,</p>
 		<p>Are of the truth presageful, thou ere long</p>
-		<p>Shalt feel what Prato, (not to say the rest)</p>
+		<p>Shall feel what Prato{{2}}, (not to say the rest)</p>
 		<p>Would fain might come upon thee; and that chance</p>
 		<p>Were in good time, if it befell thee now.</p>
 		<p>Would so it were, since it must needs befall!</p>
@@ -3537,7 +3537,7 @@ module.exports = {
 		<p>Sped not our feet without the help of hands.</p>
 		<p class="slindent">Then sorrow seiz&rsquo;d me, which e&rsquo;en now revives,</p>
 		<p>As my thought turns again to what I saw,</p>
-		<p>And, more than I am wont, I rein and curb</p>
+		<p>And, more than I am wont{{3}}, I rein and curb</p>
 		<p>The powers of nature in me, lest they run</p>
 		<p>Where Virtue guides not; that if aught of good</p>
 		<p>My gentle star, or something better gave me,</p>
@@ -3550,7 +3550,7 @@ module.exports = {
 		<p>Vineyard or tilth, where his day-labour lies:</p>
 		<p>With flames so numberless throughout its space</p>
 		<p>Shone the eighth chasm, apparent, when the depth</p>
-		<p>Was to my view expos&rsquo;d. As he, whose wrongs</p>
+		<p>Was to my view expos&rsquo;d. As he, whose wrongs{{4}}</p>
 		<p>The bears aveng&rsquo;d, at its departure saw</p>
 		<p>Elijah&rsquo;s chariot, when the steeds erect</p>
 		<p>Rais&rsquo;d their steep flight for heav&rsquo;n; his eyes meanwhile,</p>
@@ -3569,13 +3569,13 @@ module.exports = {
 		<p>Already of the truth, already wish&rsquo;d</p>
 		<p>To ask thee, who is in yon fire, that comes</p>
 		<p>So parted at the summit, as it seem&rsquo;d</p>
-		<p>Ascending from that funeral pile, where lay</p>
+		<p>Ascending from that funeral pile{{5}}, where lay</p>
 		<p>The Theban brothers?&rdquo; He replied: &ldquo;Within</p>
 		<p>Ulysses there and Diomede endure</p>
 		<p>Their penal tortures, thus to vengeance now</p>
 		<p>Together hasting, as erewhile to wrath.</p>
 		<p>These in the flame with ceaseless groans deplore</p>
-		<p>The ambush of the horse, that open&rsquo;d wide</p>
+		<p>The ambush of the horse{{6}}, that open&rsquo;d wide</p>
 		<p>A portal for that goodly seed to pass,</p>
 		<p>Which sow&rsquo;d imperial Rome; nor less the guile</p>
 		<p>Lament they, whence of her Achilles &rsquo;reft</p>
@@ -3606,9 +3606,9 @@ module.exports = {
 		<p>Wagging the top, as a tongue uttering sounds,</p>
 		<p>Threw out its voice, and spake: &ldquo;When I escap&rsquo;d</p>
 		<p>From Circe, who beyond a circling year</p>
-		<p>Had held me near Caieta, by her charms,</p>
+		<p>Had held me near Caieta{{7}}, by her charms,</p>
 		<p>Ere thus Aeneas yet had nam&rsquo;d the shore,</p>
-		<p>Nor fondness for my son, nor reverence</p>
+		<p>Nor fondness for my son{{8}}, nor reverence</p>
 		<p>Of my old father, nor return of love,</p>
 		<p>That should have crown&rsquo;d Penelope with joy,</p>
 		<p>Could overcome in me the zeal I had</p>
@@ -3621,7 +3621,7 @@ module.exports = {
 		<p>And the Sardinian and each isle beside</p>
 		<p>Which round that ocean bathes. Tardy with age</p>
 		<p>Were I and my companions, when we came</p>
-		<p>To the strait pass, where Hercules ordain&rsquo;d</p>
+		<p>To the strait pass{{9}}, where Hercules ordain&rsquo;d</p>
 		<p>The bound&rsquo;ries not to be o&rsquo;erstepp&rsquo;d by man.</p>
 		<p>The walls of Seville to my right I left,</p>
 		<p>On the&rsquo; other hand already Ceuta past.</p>
@@ -3637,13 +3637,13 @@ module.exports = {
 		<p>The mind of my associates, that I then</p>
 		<p>Could scarcely have withheld them. To the dawn</p>
 		<p>Our poop we turn&rsquo;d, and for the witless flight</p>
-		<p>Made our oars wings, still gaining on the left.</p>
+		<p>Made our oars wings{{10}}, still gaining on the left.</p>
 		<p>Each star of the&rsquo; other pole night now beheld,</p>
 		<p>And ours so low, that from the ocean-floor</p>
 		<p>It rose not. Five times re-illum&rsquo;d, as oft</p>
 		<p>Vanish&rsquo;d the light from underneath the moon</p>
 		<p>Since the deep way we enter&rsquo;d, when from far</p>
-		<p>Appear&rsquo;d a mountain dim, loftiest methought</p>
+		<p>Appear&rsquo;d a mountain dim{{11}}, loftiest methought</p>
 		<p>Of all I e&rsquo;er beheld. Joy seiz&rsquo;d us straight,</p>
 		<p>But soon to mourning changed. From the new land</p>
 		<p>A whirlwind sprung, and at her foremost side</p>
@@ -3660,7 +3660,7 @@ module.exports = {
 		<p>From the mild poet gain&rsquo;d, when following came</p>
 		<p>Another, from whose top a sound confus&rsquo;d,</p>
 		<p>Forth issuing, drew our eyes that way to look.</p>
-		<p class="slindent">As the Sicilian bull, that rightfully</p>
+		<p class="slindent">As the Sicilian bull{{1}}, that rightfully</p>
 		<p>His cries first echoed, who had shap&rsquo;d its mould,</p>
 		<p>Did so rebellow, with the voice of him</p>
 		<p>Tormented, that the brazen monster seem&rsquo;d</p>
@@ -3680,7 +3680,7 @@ module.exports = {
 		<p>into this blind world, from that pleasant land</p>
 		<p>Of Latium, whence I draw my sum of guilt,</p>
 		<p>Tell me if those, who in Romagna dwell,</p>
-		<p>Have peace or war. For of the mountains there</p>
+		<p>Have peace or war. For of the mountains there{{2}}</p>
 		<p>Was I, betwixt Urbino and the height,</p>
 		<p>Whence Tyber first unlocks his mighty flood.&rdquo;</p>
 		<p class="slindent">Leaning I listen&rsquo;d yet with heedful ear,</p>
@@ -3692,19 +3692,19 @@ module.exports = {
 		<p>In her proud tyrants&rsquo; bosoms, nor is now:</p>
 		<p>But open war there left I none. The state,</p>
 		<p>Ravenna hath maintain&rsquo;d this many a year,</p>
-		<p>Is steadfast. There Polenta&rsquo;s eagle broods,</p>
+		<p>Is steadfast. There Polenta&rsquo;s eagle{{3}} broods,</p>
 		<p>And in his broad circumference of plume</p>
 		<p>O&rsquo;ershadows Cervia. The green talons grasp</p>
-		<p>The land, that stood erewhile the proof so long,</p>
+		<p>The land{{4}}, that stood erewhile the proof so long,</p>
 		<p>And pil&rsquo;d in bloody heap the host of France.</p>
-		<p class="slindent">&ldquo;The&rsquo; old mastiff of Verruchio and the young,</p>
-		<p>That tore Montagna in their wrath, still make,</p>
+		<p class="slindent">&ldquo;The&rsquo; old mastiff of Verruchio and the young{{5}},</p>
+		<p>That tore Montagna{{6}} in their wrath, still make,</p>
 		<p>Where they are wont, an augre of their fangs.</p>
-		<p class="slindent">&ldquo;Lamone&rsquo;s city and Santerno&rsquo;s range</p>
-		<p>Under the lion of the snowy lair.</p>
+		<p class="slindent">&ldquo;Lamone&rsquo;s city and Santerno&rsquo;s{{7}} range</p>
+		<p>Under the lion of the snowy lair{{8}}.</p>
 		<p>Inconstant partisan! that changeth sides,</p>
 		<p>Or ever summer yields to winter&rsquo;s frost.</p>
-		<p>And she, whose flank is wash&rsquo;d of Savio&rsquo;s wave,</p>
+		<p>And she, whose flank is wash&rsquo;d of Savio&rsquo;s wave{{9}},</p>
 		<p>As &rsquo;twixt the level and the steep she lies,</p>
 		<p>Lives so &rsquo;twixt tyrant power and liberty.</p>
 		<p class="slindent">&ldquo;Now tell us, I entreat thee, who art thou?</p>
@@ -3718,15 +3718,15 @@ module.exports = {
 		<p>If true be told me, any from this depth</p>
 		<p>Has found his upward way, I answer thee,</p>
 		<p>Nor fear lest infamy record the words.</p>
-		<p class="slindent">&ldquo;A man of arms at first, I cloth&rsquo;d me then</p>
+		<p class="slindent">&ldquo;A man of arms{{10}} at first, I cloth&rsquo;d me then</p>
 		<p>In good Saint Francis&rsquo; girdle, hoping so</p>
 		<p>T&rsquo; have made amends. And certainly my hope</p>
 		<p>Had fail&rsquo;d not, but that he, whom curses light on,</p>
-		<p>The&rsquo; high priest again seduc&rsquo;d me into sin.</p>
+		<p>The&rsquo; high priest{{11}} again seduc&rsquo;d me into sin.</p>
 		<p>And how and wherefore listen while I tell.</p>
 		<p>Long as this spirit mov&rsquo;d the bones and pulp</p>
 		<p>My mother gave me, less my deeds bespake</p>
-		<p>The nature of the lion than the fox.</p>
+		<p>The nature of the lion than the fox{{12}}.</p>
 		<p>All ways of winding subtlety I knew,</p>
 		<p>And with such art conducted, that the sound</p>
 		<p>Reach&rsquo;d the world&rsquo;s limit. Soon as to that part</p>
@@ -3735,15 +3735,15 @@ module.exports = {
 		<p>That which before had pleased me then I rued,</p>
 		<p>And to repentance and confession turn&rsquo;d;</p>
 		<p>Wretch that I was! and well it had bested me!</p>
-		<p>The chief of the new Pharisees meantime,</p>
+		<p>The chief of the new Pharisees{{13}} meantime,</p>
 		<p>Waging his warfare near the Lateran,</p>
 		<p>Not with the Saracens or Jews (his foes</p>
 		<p>All Christians were, nor against Acre one</p>
-		<p>Had fought, nor traffic&rsquo;d in the Soldan&rsquo;s land),</p>
+		<p>Had fought{{14}}, nor traffic&rsquo;d in the Soldan&rsquo;s land),</p>
 		<p>He his great charge nor sacred ministry</p>
 		<p>In himself, rev&rsquo;renc&rsquo;d, nor in me that cord,</p>
 		<p>Which us&rsquo;d to mark with leanness whom it girded.</p>
-		<p>As in Socrate, Constantine besought</p>
+		<p>As in Socrate, Constantine besought{{15}}</p>
 		<p>To cure his leprosy Sylvester&rsquo;s aid,</p>
 		<p>So me to cure the fever of his pride</p>
 		<p>This man besought: my counsel to that end</p>
@@ -3755,7 +3755,7 @@ module.exports = {
 		<p>That Penestrino cumber earth no more.</p>
 		<p>Heav&rsquo;n, as thou knowest, I have power to shut</p>
 		<p>And open: and the keys are therefore twain,</p>
-		<p>The which my predecessor meanly priz&rsquo;d.&rsquo;&nbsp;&rdquo;</p>
+		<p>The which my predecessor{{16}} meanly priz&rsquo;d.&rsquo;&nbsp;&rdquo;</p>
 		<p class="slindent">Then, yielding to the forceful arguments,</p>
 		<p>Of silence as more perilous I deem&rsquo;d,</p>
 		<p>And answer&rsquo;d: &ldquo;Father! since thou washest me</p>
@@ -3798,15 +3798,15 @@ module.exports = {
 		<p>Both impotent alike. If in one band</p>
 		<p>Collected, stood the people all, who e&rsquo;er</p>
 		<p>Pour&rsquo;d on Apulia&rsquo;s happy soil their blood,</p>
-		<p>Slain by the Trojans, and in that long war</p>
+		<p>Slain by the Trojans, and in that long war{{1}}</p>
 		<p>When of the rings the measur&rsquo;d booty made</p>
 		<p>A pile so high, as Rome&rsquo;s historian writes</p>
 		<p>Who errs not, with the multitude, that felt</p>
-		<p>The grinding force of Guiscard&rsquo;s Norman steel,</p>
-		<p>And those the rest, whose bones are gather&rsquo;d yet</p>
+		<p>The grinding force of Guiscard&rsquo;s Norman steel{{2}},</p>
+		<p>And those the rest{{3}}, whose bones are gather&rsquo;d yet</p>
 		<p>At Ceperano, there where treachery</p>
 		<p>Branded th&rsquo; Apulian name, or where beyond</p>
-		<p>Thy walls, O Tagliacozzo, without arms</p>
+		<p>Thy walls, O Tagliacozzo{{4}}, without arms</p>
 		<p>The old Alardo conquer&rsquo;d; and his limbs</p>
 		<p>One were to show transpierc&rsquo;d, another his</p>
 		<p>Clean lopt away; a spectacle like this</p>
@@ -3822,7 +3822,7 @@ module.exports = {
 		<p>He ey&rsquo;d me, with his hands laid his breast bare,</p>
 		<p>And cried; &ldquo;Now mark how I do rip me! lo!</p>
 		<p>&ldquo;How is Mohammed mangled! before me</p>
-		<p>Walks Ali weeping, from the chin his face</p>
+		<p>Walks Ali{{5}} weeping, from the chin his face</p>
 		<p>Cleft to the forelock; and the others all</p>
 		<p>Whom here thou seest, while they liv&rsquo;d, did sow</p>
 		<p>Scandal and schism, and therefore thus are rent.</p>
@@ -3843,7 +3843,7 @@ module.exports = {
 		<p>Stood in the foss to mark me, through amazed,</p>
 		<p>Forgetful of their pangs. &ldquo;Thou, who perchance</p>
 		<p>Shalt shortly view the sun, this warning thou</p>
-		<p>Bear to Dolcino: bid him, if he wish not</p>
+		<p>Bear to Dolcino{{6}}: bid him, if he wish not</p>
 		<p>Here soon to follow me, that with good store</p>
 		<p>Of food he arm him, lest impris&rsquo;ning snows</p>
 		<p>Yield him a victim to Novara&rsquo;s power,</p>
@@ -3859,10 +3859,10 @@ module.exports = {
 		<p>Condemns not, and whom erst (unless too near</p>
 		<p>Resemblance do deceive me) I aloft</p>
 		<p>Have seen on Latian ground, call thou to mind</p>
-		<p>Piero of Medicina, if again</p>
-		<p>Returning, thou behold&rsquo;st the pleasant land</p>
+		<p>Piero of Medicina{{7}}, if again</p>
+		<p>Returning, thou behold&rsquo;st the pleasant land{{8}}</p>
 		<p>That from Vercelli slopes to Mercabo;</p>
-		<p>&ldquo;And there instruct the twain, whom Fano boasts</p>
+		<p>&ldquo;And there instruct the twain{{9}}, whom Fano boasts</p>
 		<p>Her worthiest sons, Guido and Angelo,</p>
 		<p>That if &rsquo;t is giv&rsquo;n us here to scan aright</p>
 		<p>The future, they out of life&rsquo;s tenement</p>
@@ -3875,7 +3875,7 @@ module.exports = {
 		<p>(Whose realm there is a spirit here were fain</p>
 		<p>His eye had still lack&rsquo;d sight of) them shall bring</p>
 		<p>To conf&rsquo;rence with him, then so shape his end,</p>
-		<p>That they shall need not &rsquo;gainst Focara&rsquo;s wind</p>
+		<p>That they shall need not &rsquo;gainst Focara&rsquo;s wind{{10}}</p>
 		<p>Offer up vow nor pray&rsquo;r.&rdquo; I answering thus:</p>
 		<p class="slindent">&ldquo;Declare, as thou dost wish that I above</p>
 		<p>May carry tidings of thee, who is he,</p>
@@ -3884,7 +3884,7 @@ module.exports = {
 		<p>Of one, his fellow-spirit, and his jaws</p>
 		<p>Expanding, cried: &ldquo;Lo! this is he I wot of;</p>
 		<p>He speaks not for himself: the outcast this</p>
-		<p>Who overwhelm&rsquo;d the doubt in Caesar&rsquo;s mind,</p>
+		<p>Who overwhelm&rsquo;d the doubt in Caesar&rsquo;s mind{{11}},</p>
 		<p>Affirming that delay to men prepar&rsquo;d</p>
 		<p>Was ever harmful.&rdquo; Oh how terrified</p>
 		<p>Methought was Curio, from whose throat was cut</p>
@@ -3892,7 +3892,7 @@ module.exports = {
 		<p>Maim&rsquo;d of each hand, uplifted in the gloom</p>
 		<p>The bleeding stumps, that they with gory spots</p>
 		<p>Sullied his face, and cried: &ldquo;&nbsp;&lsquo;Remember thee</p>
-		<p>Of Mosca, too, I who, alas! exclaim&rsquo;d,</p>
+		<p>Of Mosca{{12}}, too, I who, alas! exclaim&rsquo;d,</p>
 		<p>&rsquo;The deed once done there is an end,&rsquo; that prov&rsquo;d</p>
 		<p>A seed of sorrow to the Tuscan race.&rdquo;</p>
 		<p class="slindent">I added: &ldquo;Ay, and death to thine own tribe.&rdquo;</p>
@@ -3901,7 +3901,7 @@ module.exports = {
 		<p>Still linger&rsquo;d to behold the troop, and saw</p>
 		<p>Things, such as I may fear without more proof</p>
 		<p>To tell of, but that conscience makes me firm,</p>
-		<p>The boon companion, who her strong breast-plate</p>
+		<p>The boon companion{{13}}, who her strong breast-plate</p>
 		<p>Buckles on him, that feels no guilt within</p>
 		<p>And bids him on and fear not. Without doubt</p>
 		<p>I saw, and yet it seems to pass before me,</p>
@@ -3920,7 +3920,7 @@ module.exports = {
 		<p>To spy the dead; behold if any else</p>
 		<p>Be terrible as this. And that on earth</p>
 		<p>Thou mayst bear tidings of me, know that I</p>
-		<p>Am Bertrand, he of Born, who gave King John</p>
+		<p>Am Bertrand{{14}}, he of Born, who gave King John</p>
 		<p>The counsel mischievous. Father and son</p>
 		<p>I set at mutual war. For Absalom</p>
 		<p>And David more did not Ahitophel,</p>
@@ -3958,7 +3958,7 @@ module.exports = {
 		<p>Its thought, and leave him. At the bridge&rsquo;s foot</p>
 		<p>I mark&rsquo;d how he did point with menacing look</p>
 		<p>At thee, and heard him by the others nam&rsquo;d</p>
-		<p>Geri of Bello. Thou so wholly then</p>
+		<p>Geri of Bello{{1}}. Thou so wholly then</p>
 		<p>Wert busied with his spirit, who once rul&rsquo;d</p>
 		<p>The towers of Hautefort, that thou lookedst not</p>
 		<p>That way, ere he was gone.&rdquo;&mdash;&ldquo;O guide belov&rsquo;d!</p>
@@ -3976,10 +3976,10 @@ module.exports = {
 		<p>Of sore lament assail&rsquo;d me, headed all</p>
 		<p>With points of thrilling pity, that I clos&rsquo;d</p>
 		<p>Both ears against the volley with mine hands.</p>
-		<p class="slindent">As were the torment, if each lazar-house</p>
-		<p>Of Valdichiana, in the sultry time</p>
+		<p class="slindent">As were the torment{{2}}, if each lazar-house</p>
+		<p>Of Valdichiana{{3}}, in the sultry time</p>
 		<p>&rsquo;Twixt July and September, with the isle</p>
-		<p>Sardinia and Maremma&rsquo;s pestilent fen,</p>
+		<p>Sardinia and Maremma&rsquo;s pestilent fen{{4}},</p>
 		<p>Had heap&rsquo;d their maladies all in one foss</p>
 		<p>Together; such was here the torment: dire</p>
 		<p>The stench, as issuing steams from fester&rsquo;d limbs.</p>
@@ -3990,7 +3990,7 @@ module.exports = {
 		<p>All-searching Justice, dooms to punishment</p>
 		<p>The forgers noted on her dread record.</p>
 		<p class="slindent">More rueful was it not methinks to see</p>
-		<p>The nation in Aegina droop, what time</p>
+		<p>The nation in Aegina{{5}} droop, what time</p>
 		<p>Each living thing, e&rsquo;en to the little worm,</p>
 		<p>All fell, so full of malice was the air</p>
 		<p>(And afterward, as bards of yore have told,</p>
@@ -4036,7 +4036,7 @@ module.exports = {
 		<p>And of what race ye come. Your punishment,</p>
 		<p>Unseemly and disgustful in its kind,</p>
 		<p>Deter you not from opening thus much to me.&rdquo;</p>
-		<p class="slindent">&ldquo;Arezzo was my dwelling,&rdquo; answer&rsquo;d one,</p>
+		<p class="slindent">&ldquo;Arezzo was my dwelling{{6}},&rdquo; answer&rsquo;d one,</p>
 		<p>&ldquo;And me Albero of Sienna brought</p>
 		<p>To die by fire; but that, for which I died,</p>
 		<p>Leads me not here. True is in sport I told him,</p>
@@ -4050,14 +4050,14 @@ module.exports = {
 		<p>For that I practis&rsquo;d alchemy on earth,</p>
 		<p>Has doom&rsquo;d me. Him no subterfuge eludes.&rdquo;</p>
 		<p class="slindent">Then to the bard I spake: &ldquo;Was ever race</p>
-		<p>Light as Sienna&rsquo;s? Sure not France herself</p>
+		<p>Light as Sienna{{7}}&rsquo;s? Sure not France herself</p>
 		<p>Can show a tribe so frivolous and vain.&rdquo;</p>
 		<p class="slindent">The other leprous spirit heard my words,</p>
-		<p>And thus return&rsquo;d: &ldquo;Be Stricca from this charge</p>
+		<p>And thus return&rsquo;d: &ldquo;Be Stricca{{8}} from this charge</p>
 		<p>Exempted, he who knew so temp&rsquo;rately</p>
 		<p>To lay out fortune&rsquo;s gifts; and Niccolo</p>
 		<p>Who first the spice&rsquo;s costly luxury</p>
-		<p>Discover&rsquo;d in that garden, where such seed</p>
+		<p>Discover&rsquo;d in that garden{{9}}, where such seed</p>
 		<p>Roots deepest in the soil: and be that troop</p>
 		<p>Exempted, with whom Caccia of Asciano</p>
 		<p>Lavish&rsquo;d his vineyards and wide-spreading woods,</p>
@@ -4066,7 +4066,7 @@ module.exports = {
 		<p>Who seconds thee against the Siennese</p>
 		<p>Thus gladly, bend this way thy sharpen&rsquo;d sight,</p>
 		<p>That well my face may answer to thy ken;</p>
-		<p>So shalt thou see I am Capocchio&rsquo;s ghost,</p>
+		<p>So shalt thou see I am Capocchio&rsquo;s ghost{{10}},</p>
 		<p>Who forg&rsquo;d transmuted metals by the power</p>
 		<p>Of alchemy; and if I scan thee right,</p>
 		<p>Thus needs must well remember how I aped</p>
@@ -4078,7 +4078,7 @@ module.exports = {
 		<p><span class="sc">What</span> time resentment burn&rsquo;d in Juno&rsquo;s breast</p>
 		<p>For Semele against the Theban blood,</p>
 		<p>As more than once in dire mischance was rued,</p>
-		<p>Such fatal frenzy seiz&rsquo;d on Athamas,</p>
+		<p>Such fatal frenzy seiz&rsquo;d on Athamas{{1}},</p>
 		<p>That he his spouse beholding with a babe</p>
 		<p>Laden on either arm, &ldquo;Spread out,&rdquo; he cried,</p>
 		<p>&ldquo;The meshes, that I take the lioness</p>
@@ -4090,7 +4090,7 @@ module.exports = {
 		<p>The hapless mother plung&rsquo;d: and when the pride</p>
 		<p>Of all-presuming Troy fell from its height,</p>
 		<p>By fortune overwhelm&rsquo;d, and the old king</p>
-		<p>With his realm perish&rsquo;d, then did Hecuba,</p>
+		<p>With his realm perish&rsquo;d, then did Hecuba{{2}},</p>
 		<p>A wretch forlorn and captive, when she saw</p>
 		<p>Polyxena first slaughter&rsquo;d, and her son,</p>
 		<p>Her Polydorus, on the wild sea-beach</p>
@@ -4107,13 +4107,13 @@ module.exports = {
 		<p>Dragg&rsquo;d him, that o&rsquo;er the solid pavement rubb&rsquo;d</p>
 		<p>His belly stretch&rsquo;d out prone. The other shape,</p>
 		<p>He of Arezzo, there left trembling, spake;</p>
-		<p>&ldquo;That sprite of air is Schicchi; in like mood</p>
+		<p>&ldquo;That sprite of air is Schicchi{{3}}; in like mood</p>
 		<p>Of random mischief vent he still his spite.&rdquo;</p>
 		<p class="slindent">To whom I answ&rsquo;ring: &ldquo;Oh! as thou dost hope,</p>
 		<p>The other may not flesh its jaws on thee,</p>
 		<p>Be patient to inform us, who it is,</p>
 		<p>Ere it speed hence.&rdquo;&mdash;&ldquo;That is the ancient soul</p>
-		<p>Of wretched Myrrha,&rdquo; he replied, &ldquo;who burn&rsquo;d</p>
+		<p>Of wretched Myrrha{{4}},&rdquo; he replied, &ldquo;who burn&rsquo;d</p>
 		<p>With most unholy flame for her own sire,</p>
 		<p>&ldquo;And a false shape assuming, so perform&rsquo;d</p>
 		<p>The deed of sin; e&rsquo;en as the other there,</p>
@@ -4134,11 +4134,11 @@ module.exports = {
 		<p class="slindent">&ldquo;O ye, who in this world of misery,</p>
 		<p>Wherefore I know not, are exempt from pain,&rdquo;</p>
 		<p>Thus he began, &ldquo;attentively regard</p>
-		<p>Adamo&rsquo;s woe. When living, full supply</p>
+		<p>Adamo&rsquo;s woe{{5}}. When living, full supply</p>
 		<p>Ne&rsquo;er lack&rsquo;d me of what most I coveted;</p>
 		<p>One drop of water now, alas! I crave.</p>
 		<p>The rills, that glitter down the grassy slopes</p>
-		<p>Of Casentino, making fresh and soft</p>
+		<p>Of Casentino{{6}}, making fresh and soft</p>
 		<p>The banks whereby they glide to Arno&rsquo;s stream,</p>
 		<p>Stand ever in my view; and not in vain;</p>
 		<p>For more the pictur&rsquo;d semblance dries me up,</p>
@@ -4151,7 +4151,7 @@ module.exports = {
 		<p>For which on earth I left my body burnt.</p>
 		<p>But if I here might see the sorrowing soul</p>
 		<p>Of Guido, Alessandro, or their brother,</p>
-		<p>For Branda&rsquo;s limpid spring I would not change</p>
+		<p>For Branda&rsquo;s limpid spring{{7}} I would not change</p>
 		<p>The welcome sight. One is e&rsquo;en now within,</p>
 		<p>If truly the mad spirits tell, that round</p>
 		<p>Are wand&rsquo;ring. But wherein besteads me that?</p>
@@ -4162,7 +4162,7 @@ module.exports = {
 		<p>Although eleven miles it wind, not more</p>
 		<p>Than half of one across. They brought me down</p>
 		<p>Among this tribe; induc&rsquo;d by them I stamp&rsquo;d</p>
-		<p>The florens with three carats of alloy.&rdquo;</p>
+		<p>The florens with three carats of alloy{{8}}.&rdquo;</p>
 		<p class="slindent">&ldquo;Who are that abject pair,&rdquo; I next inquir&rsquo;d,</p>
 		<p>&ldquo;That closely bounding thee upon thy right</p>
 		<p>Lie smoking, like a band in winter steep&rsquo;d</p>
@@ -4170,7 +4170,7 @@ module.exports = {
 		<p>He answer&rsquo;d, &ldquo;here I found them; since that hour</p>
 		<p>They have not turn&rsquo;d, nor ever shall, I ween,</p>
 		<p>Till time hath run his course. One is that dame</p>
-		<p>The false accuser of the Hebrew youth;</p>
+		<p>The false accuser{{9}} of the Hebrew youth;</p>
 		<p>Sinon the other, that false Greek from Troy.</p>
 		<p>Sharp fever drains the reeky moistness out,</p>
 		<p>In such a cloud upsteam&rsquo;d.&rdquo; When that he heard,</p>
@@ -4224,7 +4224,7 @@ module.exports = {
 
 		`<p class="cantohead">Canto XXXI</p>
 		<div class="stanza">
-		<p><span class="sc">The</span> very tongue, whose keen reproof before</p>
+		<p><span class="sc">The</span> very tongue{{1}}, whose keen reproof before</p>
 		<p>Had wounded me, that either cheek was stain&rsquo;d,</p>
 		<p>Now minister&rsquo;d my cure. So have I heard,</p>
 		<p>Achilles and his father&rsquo;s javelin caus&rsquo;d</p>
@@ -4237,7 +4237,7 @@ module.exports = {
 		<p>The thunder feeble. Following its course</p>
 		<p>The adverse way, my strained eyes were bent</p>
 		<p>On that one spot. So terrible a blast</p>
-		<p>Orlando blew not, when that dismal rout</p>
+		<p>Orlando{{2}} blew not, when that dismal rout</p>
 		<p>O&rsquo;erthrew the host of Charlemagne, and quench&rsquo;d</p>
 		<p>His saintly warfare. Thitherward not long</p>
 		<p>My head was rais&rsquo;d, when many lofty towers</p>
@@ -4259,7 +4259,7 @@ module.exports = {
 		<p>And gloomy atmosphere, as more and more</p>
 		<p>We near&rsquo;d toward the brink, mine error fled,</p>
 		<p>And fear came o&rsquo;er me. As with circling round</p>
-		<p>Of turrets, Montereggion crowns his walls,</p>
+		<p>Of turrets, Montereggion{{3}} crowns his walls,</p>
 		<p>E&rsquo;en thus the shore, encompassing th&rsquo; abyss,</p>
 		<p>Was turreted with giants, half their length</p>
 		<p>Uprearing, horrible, whom Jove from heav&rsquo;n</p>
@@ -4328,7 +4328,7 @@ module.exports = {
 		<p>That held him fast. We, straightway journeying on,</p>
 		<p>Came to Antaeus, who five ells complete</p>
 		<p>Without the head, forth issued from the cave.</p>
-		<p class="slindent">&ldquo;O thou, who in the fortunate vale, that made</p>
+		<p class="slindent">&ldquo;O thou, who in the fortunate vale{{4}}, that made</p>
 		<p>Great Scipio heir of glory, when his sword</p>
 		<p>Drove back the troop of Hannibal in flight,</p>
 		<p>Who thence of old didst carry for thy spoil</p>
@@ -4346,12 +4346,12 @@ module.exports = {
 		<p>For life yet longer, if before the time</p>
 		<p>Grace call him not unto herself.&rdquo; Thus spake</p>
 		<p>The teacher. He in haste forth stretch&rsquo;d his hands,</p>
-		<p>And caught my guide. Alcides whilom felt</p>
+		<p>And caught my guide. Alcides{{5}} whilom felt</p>
 		<p>That grapple straighten&rsquo;d score. Soon as my guide</p>
 		<p>Had felt it, he bespake me thus: &ldquo;This way</p>
 		<p>That I may clasp thee;&rdquo; then so caught me up,</p>
 		<p>That we were both one burden. As appears</p>
-		<p>The tower of Carisenda, from beneath</p>
+		<p>The tower of Carisenda{{6}}, from beneath</p>
 		<p>Where it doth lean, if chance a passing cloud</p>
 		<p>So sail across, that opposite it hangs,</p>
 		<p>Such then Antaeus seem&rsquo;d, as at mine ease</p>
@@ -4372,7 +4372,7 @@ module.exports = {
 		<p>The mighty theme; for to describe the depth</p>
 		<p>Of all the universe, is no emprize</p>
 		<p>To jest with, and demands a tongue not us&rsquo;d</p>
-		<p>To infant babbling. But let them assist</p>
+		<p>To infant babbling{{1}}. But let them assist</p>
 		<p>My song, the tuneful maidens, by whose aid</p>
 		<p>Amphion wall&rsquo;d in Thebes, so with the truth</p>
 		<p>My speech shall best accord. Oh ill-starr&rsquo;d folk,</p>
@@ -4392,13 +4392,13 @@ module.exports = {
 		<p>In winter e&rsquo;er hath Austrian Danube spread</p>
 		<p>O&rsquo;er his still course, nor Tanais far remote</p>
 		<p>Under the chilling sky. Roll&rsquo;d o&rsquo;er that mass</p>
-		<p>Had Tabernich or Pietrapana fall&rsquo;n,</p>
+		<p>Had Tabernich or Pietrapana{{2}} fall&rsquo;n,</p>
 		<p>Not e&rsquo;en its rim had creak&rsquo;d. As peeps the frog</p>
 		<p>Croaking above the wave, what time in dreams</p>
 		<p>The village gleaner oft pursues her toil,</p>
-		<p>So, to where modest shame appears, thus low</p>
+		<p>So, to where modest shame appears{{3}}, thus low</p>
 		<p>Blue pinch&rsquo;d and shrin&rsquo;d in ice the spirits stood,</p>
-		<p>Moving their teeth in shrill note like the stork.</p>
+		<p>Moving their teeth in shrill note like the stork{{4}}.</p>
 		<p>His face each downward held; their mouth the cold,</p>
 		<p>Their eyes express&rsquo;d the dolour of their heart.</p>
 		<p class="slindent">A space I look&rsquo;d around, then at my feet</p>
@@ -4416,21 +4416,21 @@ module.exports = {
 		<p class="slindent">And one, from whom the cold both ears had reft,</p>
 		<p>Exclaim&rsquo;d, still looking downward: &ldquo;Why on us</p>
 		<p>Dost speculate so long? If thou wouldst know</p>
-		<p>Who are these two, the valley, whence his wave</p>
+		<p>Who are these two{{5}}, the valley, whence his wave</p>
 		<p>Bisenzio slopes, did for its master own</p>
 		<p>Their sire Alberto, and next him themselves.</p>
 		<p>They from one body issued; and throughout</p>
 		<p>Caina thou mayst search, nor find a shade</p>
 		<p>More worthy in congealment to be fix&rsquo;d,</p>
-		<p>Not him, whose breast and shadow Arthur&rsquo;s land</p>
-		<p>At that one blow dissever&rsquo;d, not Focaccia,</p>
+		<p>Not him{{6}}, whose breast and shadow Arthur&rsquo;s land</p>
+		<p>At that one blow dissever&rsquo;d, not Focaccia{{7}},</p>
 		<p>No not this spirit, whose o&rsquo;erjutting head</p>
 		<p>Obstructs my onward view: he bore the name</p>
-		<p>Of Mascheroni: Tuscan if thou be,</p>
+		<p>Of Mascheroni{{8}}: Tuscan if thou be,</p>
 		<p>Well knowest who he was: and to cut short</p>
 		<p>All further question, in my form behold</p>
-		<p>What once was Camiccione. I await</p>
-		<p>Carlino here my kinsman, whose deep guilt</p>
+		<p>What once was Camiccione{{9}}. I await</p>
+		<p>Carlino{{10}} here my kinsman, whose deep guilt</p>
 		<p>Shall wash out mine.&rdquo; A thousand visages</p>
 		<p>Then mark&rsquo;d I, which the keen and eager cold</p>
 		<p>Had shap&rsquo;d into a doggish grin; whence creeps</p>
@@ -4444,7 +4444,7 @@ module.exports = {
 		<p>With violent blow against the face of one.</p>
 		<p class="slindent">&ldquo;Wherefore dost bruise me?&rdquo; weeping, he exclaim&rsquo;d,</p>
 		<p>&ldquo;Unless thy errand be some fresh revenge</p>
-		<p>For Montaperto, wherefore troublest me?&rdquo;</p>
+		<p>For Montaperto{{11}}, wherefore troublest me?&rdquo;</p>
 		<p class="slindent">I thus: &ldquo;Instructor, now await me here,</p>
 		<p>That I through him may rid me of my doubt.</p>
 		<p>Thenceforth what haste thou wilt.&rdquo; The teacher paus&rsquo;d,</p>
@@ -4476,13 +4476,13 @@ module.exports = {
 		<p>&ldquo;Tell what thou list; but as thou escape from hence</p>
 		<p>To speak of him whose tongue hath been so glib,</p>
 		<p>Forget not: here he wails the Frenchman&rsquo;s gold.</p>
-		<p>&rsquo;Him of Duera,&rsquo; thou canst say, &lsquo;I mark&rsquo;d,</p>
+		<p>&rsquo;Him of Duera{{12}},&rsquo; thou canst say, &lsquo;I mark&rsquo;d,</p>
 		<p>Where the starv&rsquo;d sinners pine.&rsquo; If thou be ask&rsquo;d</p>
 		<p>What other shade was with them, at thy side</p>
-		<p>Is Beccaria, whose red gorge distain&rsquo;d</p>
+		<p>Is Beccaria{{13}}, whose red gorge distain&rsquo;d</p>
 		<p>The biting axe of Florence. Farther on,</p>
-		<p>If I misdeem not, Soldanieri bides,</p>
-		<p>With Ganellon, and Tribaldello, him</p>
+		<p>If I misdeem not, Soldanieri{{14}} bides,</p>
+		<p>With Ganellon{{15}}, and Tribaldello{{16}}, him</p>
 		<p>Who op&rsquo;d Faenza when the people slept.&rdquo;</p>
 		<p class="slindent">We now had left him, passing on our way,</p>
 		<p>When I beheld two spirits by the ice</p>
@@ -4491,7 +4491,7 @@ module.exports = {
 		<p>Is raven&rsquo;d up through hunger, th&rsquo; uppermost</p>
 		<p>Did so apply his fangs to th&rsquo; other&rsquo;s brain,</p>
 		<p>Where the spine joins it. Not more furiously</p>
-		<p>On Menalippus&rsquo; temples Tydeus gnaw&rsquo;d,</p>
+		<p>On Menalippus&rsquo; temples Tydeus{{17}} gnaw&rsquo;d,</p>
 		<p>Than on that skull and on its garbage he.</p>
 		<p class="slindent">&ldquo;O thou who show&rsquo;st so beastly sign of hate</p>
 		<p>&rsquo;Gainst him thou prey&rsquo;st on, let me hear,&rdquo; said I</p>
@@ -4517,7 +4517,7 @@ module.exports = {
 		<p>I know not, nor how here below art come:</p>
 		<p>But Florentine thou seemest of a truth,</p>
 		<p>When I do hear thee. Know I was on earth</p>
-		<p>Count Ugolino, and th&rsquo; Archbishop he</p>
+		<p>Count Ugolino{{1}}, and th&rsquo; Archbishop he</p>
 		<p>Ruggieri. Why I neighbour him so close,</p>
 		<p>Now list. That through effect of his ill thoughts</p>
 		<p>In him my trust reposing, I was ta&rsquo;en</p>
@@ -4532,7 +4532,7 @@ module.exports = {
 		<p>That from the future tore the curtain off.</p>
 		<p>This one, methought, as master of the sport,</p>
 		<p>Rode forth to chase the gaunt wolf and his whelps</p>
-		<p>Unto the mountain, which forbids the sight</p>
+		<p>Unto the mountain{{2}}, which forbids the sight</p>
 		<p>Of Lucca to the Pisan. With lean brachs</p>
 		<p>Inquisitive and keen, before him rang&rsquo;d</p>
 		<p>Lanfranchi with Sismondi and Gualandi.</p>
@@ -4562,7 +4562,7 @@ module.exports = {
 		<p>Through agony I bit, and they who thought</p>
 		<p>I did it through desire of feeding, rose</p>
 		<p>O&rsquo; th&rsquo; sudden, and cried, &lsquo;Father, we should grieve</p>
-		<p>Far less, if thou wouldst eat of us: thou gav&rsquo;st</p>
+		<p>Far less, if thou wouldst eat of us: thou gav&rsquo;st{{3}}</p>
 		<p>These weeds of miserable flesh we wear,</p>
 		<p>&rsquo;And do thou strip them off from us again.&rsquo;</p>
 		<p>Then, not to make them sadder, I kept down</p>
@@ -4582,10 +4582,10 @@ module.exports = {
 		<p>He fasten&rsquo;d, like a mastiff&rsquo;s &rsquo;gainst the bone</p>
 		<p>Firm and unyielding. Oh thou Pisa! shame</p>
 		<p>Of all the people, who their dwelling make</p>
-		<p>In that fair region, where th&rsquo; Italian voice</p>
+		<p>In that fair region{{4}}, where th&rsquo; Italian voice</p>
 		<p>Is heard, since that thy neighbours are so slack</p>
 		<p>To punish, from their deep foundations rise</p>
-		<p>Capraia and Gorgona, and dam up</p>
+		<p>Capraia and Gorgona{{5}}, and dam up</p>
 		<p>The mouth of Arno, that each soul in thee</p>
 		<p>May perish in the waters! What if fame</p>
 		<p>Reported that thy castles were betray&rsquo;d</p>
@@ -4597,7 +4597,7 @@ module.exports = {
 		<p>Uncapable of guilt. Onward we pass&rsquo;d,</p>
 		<p>Where others skarf&rsquo;d in rugged folds of ice</p>
 		<p>Not on their feet were turn&rsquo;d, but each revers&rsquo;d.</p>
-		<p class="slindent">There very weeping suffers not to weep;</p>
+		<p class="slindent">There very weeping suffers not to weep{{6}};</p>
 		<p>For at their eyes grief seeking passage finds</p>
 		<p>Impediment, and rolling inward turns</p>
 		<p>For increase of sharp anguish: the first tears</p>
@@ -4626,10 +4626,10 @@ module.exports = {
 		<p>&ldquo;Art thou too dead!&rdquo;&mdash;&ldquo;How in the world aloft</p>
 		<p>It fareth with my body,&rdquo; answer&rsquo;d he,</p>
 		<p>&ldquo;I am right ignorant. Such privilege</p>
-		<p>Hath Ptolomea, that ofttimes the soul</p>
+		<p>Hath Ptolomea{{7}}, that ofttimes the soul</p>
 		<p>Drops hither, ere by Atropos divorc&rsquo;d.</p>
 		<p>And that thou mayst wipe out more willingly</p>
-		<p>The glazed tear-drops that o&rsquo;erlay mine eyes,</p>
+		<p>The glazed tear-drops{{8}} that o&rsquo;erlay mine eyes,</p>
 		<p>Know that the soul, that moment she betrays,</p>
 		<p>As I did, yields her body to a fiend</p>
 		<p>Who after moves and governs it at will,</p>
@@ -4639,7 +4639,7 @@ module.exports = {
 		<p>Who here behind me winters. Him thou know&rsquo;st,</p>
 		<p>If thou but newly art arriv&rsquo;d below.</p>
 		<p>The years are many that have pass&rsquo;d away,</p>
-		<p>Since to this fastness Branca Doria came.&rdquo;</p>
+		<p>Since to this fastness Branca Doria{{9}} came.&rdquo;</p>
 		<p class="slindent">&ldquo;Now,&rdquo; answer&rsquo;d I, &ldquo;methinks thou mockest me,</p>
 		<p>For Branca Doria never yet hath died,</p>
 		<p>But doth all natural functions of a man,</p>
@@ -4655,7 +4655,7 @@ module.exports = {
 		<p class="slindent">Ah Genoese! men perverse in every way,</p>
 		<p>With every foulness stain&rsquo;d, why from the earth</p>
 		<p>Are ye not cancel&rsquo;d? Such an one of yours</p>
-		<p>I with Romagna&rsquo;s darkest spirit found,</p>
+		<p>I with Romagna&rsquo;s darkest spirit{{10}} found,</p>
 		<p>As for his doings even now in soul</p>
 		<p>Is in Cocytus plung&rsquo;d, and yet doth seem</p>
 		<p>In body still alive upon the earth.</p>
@@ -4668,7 +4668,7 @@ module.exports = {
 		<p>&ldquo;If thou discern him.&rdquo; As, when breathes a cloud</p>
 		<p>Heavy and dense, or when the shades of night</p>
 		<p>Fall on our hemisphere, seems view&rsquo;d from far</p>
-		<p>A windmill, which the blast stirs briskly round,</p>
+		<p>A windmill{{1}}, which the blast stirs briskly round,</p>
 		<p>Such was the fabric then methought I saw,</p>
 		<p class="slindent">To shield me from the wind, forthwith I drew</p>
 		<p>Behind my guide: no covert else was there.</p>
@@ -4699,14 +4699,14 @@ module.exports = {
 		<p>To scowl upon his Maker, well from him</p>
 		<p>May all our mis&rsquo;ry flow. Oh what a sight!</p>
 		<p>How passing strange it seem&rsquo;d, when I did spy</p>
-		<p>Upon his head three faces: one in front</p>
+		<p>Upon his head three faces{{2}}: one in front</p>
 		<p>Of hue vermilion, th&rsquo; other two with this</p>
 		<p>Midway each shoulder join&rsquo;d and at the crest;</p>
 		<p>The right &rsquo;twixt wan and yellow seem&rsquo;d: the left</p>
 		<p>To look on, such as come from whence old Nile</p>
 		<p>Stoops to the lowlands. Under each shot forth</p>
 		<p>Two mighty wings, enormous as became</p>
-		<p>A bird so vast. Sails never such I saw</p>
+		<p>A bird so vast. Sails{{3}} never such I saw</p>
 		<p>Outstretch&rsquo;d on the wide sea. No plumes had they,</p>
 		<p>But were in texture like a bat, and these</p>
 		<p>He flapp&rsquo;d i&rsquo; th&rsquo; air, that from him issued still</p>
@@ -4723,7 +4723,7 @@ module.exports = {
 		<p>&ldquo;Is Judas, he that hath his head within</p>
 		<p>And plies the feet without. Of th&rsquo; other two,</p>
 		<p>Whose heads are under, from the murky jaw</p>
-		<p>Who hangs, is Brutus: lo! how he doth writhe</p>
+		<p>Who hangs, is Brutus{{4}}: lo! how he doth writhe</p>
 		<p>And speaks not! Th&rsquo; other Cassius, that appears</p>
 		<p>So large of limb. But night now re-ascends,</p>
 		<p>And it is time for parting. All is seen.&rdquo;</p>
@@ -4751,7 +4751,7 @@ module.exports = {
 		<p>Bethink them if sore toil oppress&rsquo;d me then.</p>
 		<p class="slindent">&ldquo;Arise,&rdquo; my master cried, &ldquo;upon thy feet.</p>
 		<p>The way is long, and much uncouth the road;</p>
-		<p>And now within one hour and half of noon</p>
+		<p>And now within one hour and half of noon{{5}}</p>
 		<p>The sun returns.&rdquo; It was no palace-hall</p>
 		<p>Lofty and luminous wherein we stood,</p>
 		<p>But natural dungeon where ill footing was</p>
@@ -4782,10 +4782,10 @@ module.exports = {
 		<p>Through fear of him did veil her with the sea,</p>
 		<p>And to our hemisphere retir&rsquo;d. Perchance</p>
 		<p>To shun him was the vacant space left here</p>
-		<p>By what of firm land on this side appears,</p>
+		<p>By what of firm land on this side appears{{6}},</p>
 		<p>That sprang aloof.&rdquo; There is a place beneath,</p>
 		<p>From Belzebub as distant, as extends</p>
-		<p>The vaulted tomb, discover&rsquo;d not by sight,</p>
+		<p>The vaulted tomb{{7}}, discover&rsquo;d not by sight,</p>
 		<p>But by the sound of brooklet, that descends</p>
 		<p>This way along the hollow of a rock,</p>
 		<p>Which, as it winds with no precipitous course,</p>
@@ -4849,7 +4849,7 @@ notes: [
 ],
 [
 	{noteno: 1, notetext: `The three persons of the blessed Trinity.`},
-	{noteno: 2, notetext: `<span class="italian">Lasciate ogni speranza voi ch'entrate</span>. So Berni, <em>Orl. Inn.</em> lib. i. c. 8. st. 53. <span class="italian">Lascia pur della vita ogni speranza.</span>`},
+	{noteno: 2, notetext: `<span class="italian">Lasciate ogni speranza voi ch’entrate</span>. So Berni, <em>Orl. Inn.</em> lib. i. c. 8. st. 53. <span class="italian">Lascia pur della vita ogni speranza.</span>`},
 	{noteno: 3, notetext: `Unnumber’d as the sands<br />
 		Of Barca or Cyrene’s torrid soil<br />
 		Levied to side with warring winds, and poise<br />
@@ -4894,7 +4894,7 @@ notes: [
 	{noteno: 5, notetext: `Homer.`},
 	{noteno: 6, notetext: `<span class="italian">Che’l tacere e bello<span>,<br /><br />
 		So our Poet, in Canzone 14.<br /><br />
-		<span class="italian">La vide in parte che'l tacere e bello,<br /><br />
+		<span class="italian">La vide in parte che’l tacere e bello,<br /><br />
 		Ruccellai, Le Api, 789.<br /><br />
 		<span class="italian">Ch’a dire e brutto ed a tacerlo e bello</span><br /><br />
 		And Bembo, “<span class="italian">Vie pui bello e il tacerle, che il favellarne</span>.” Gli. Asol. lib. 1.`},
@@ -4904,7 +4904,7 @@ notes: [
 	{noteno: 10, notetext: `<span class="italian">Maestro di color che sanno.</span> Aristotle&mdash; Petrarch assigns the first place to Plato. See <em>Triumph of Fame,</em> c. iii. Pulci, in his <em>Morgante Maggiore</em>, c. xviii. says,<br /><br />
 		<span class="italian">Tu se’il maestro di color che sanno.</span>`},
 	{noteno: 11, notetext: `Democritus, who maintained the world to have been formed by the fortuitous concourse of atoms.`},
-	{noteno: 12, notetext: `See D'Herbelot <em>Bibl. Orient.</em> article Sina. He died in 1050. Pulci here again imitates our poet:<br /><br />
+	{noteno: 12, notetext: `See D’Herbelot <em>Bibl. Orient.</em> article Sina. He died in 1050. Pulci here again imitates our poet:<br /><br />
 		<span class="italian">Avicenna quel che il sentimento<br />
 		Intese di Aristotile e i segreti,<br />
 		Averrois che fece il gran comento.</span><br /><br />
@@ -4920,7 +4920,7 @@ notes: [
     Marking the tracts of air, the clamorous cranes<br />
     Wheel their due flight in varied ranks descried:<br />
     And each with outstretch’d neck his rank maintains<br />
-    In marshal’d order through th' ethereal void.<br /><br />
+    In marshal’d order through th’ ethereal void.<br /><br />
 		Roscoe, v. i. c. v. p. 257. 4to edit. Compare Homer. <em>Il.</em> iii. 3. Virgil. <em>Aeneid.</em> 1 x. 264, and	Ruccellai, <em>Le Api</em>, 942, and Dante’s <em>Purgatory</em>, Canto XXIV. 63.`},
 	{noteno: 3, notetext: `Ravenna.`},
 	{noteno: 4, notetext: `<span class="italian">Amor, Ch’ al cor gentil ratto s’apprende.</span> A line taken by Marino, <em>Adone</em>, c. cxli. st. 251.`},
@@ -4950,7 +4950,7 @@ notes: [
 ],
 [
 	{noteno: 1, notetext: `<span class="italian">Al tornar della mente, che si chiuse<br />
-		Dinanzi alla pieta de' duo cognati.<br /><br />
+		Dinanzi alla pieta de’ duo cognati.<br /><br />
 		Berni has made a sportive application of these lines, in his <em>Orl. Inn.</em> l. iii. c. viii. st. 1.`},
 	{noteno: 2, notetext: `So in Canto XXXIV Lucifer is called<br /><br />
 		Th’ abhorred worm, that boreth through the world.<br /><br />
@@ -4982,7 +4982,7 @@ notes: [
 		Spenser, <em>F.Q.</em> b. iv. c. 1. st. 42.`},
 	{noteno: 4, notetext: `Ariosto, having personified Avarice as a strange and hideous monster, says of her&mdash;<br /><br />
 		<span class="italian">Peggio facea nella Romana corte<br />
-		Che v'avea uccisi Cardinali e Papi.</span><br /><br />
+		Che v’avea uccisi Cardinali e Papi.</span><br /><br />
 		<em>Orl. Fur.</em> c. xxvi. st. 32.<br /><br />
 		Worse did she in the court of Rome, for there<br />
 		She had slain Popes and Cardinals.`},
@@ -5001,7 +5001,7 @@ notes: [
 	{noteno: 4, notetext: `The commentators, says Venturi, perplex themselves with the inquiry what seven perils these were from which Dante had been delivered by Virgil. Reckoning the beasts in the first Canto as one of them, and adding Charon, Minos, Cerberus, Plutus, Phlegyas and Filippo Argenti, as so many others, we shall have the number, and if this be not satisfactory, we may suppose a determinate to have been put for an indeterminate number.`},
 	{noteno: 5, notetext: `<span class="italian">Che si, e no nel capo mi tenzona.</em> So Boccaccio, <em>Ninf. Fiesol.</em> st. 233.<br /><br />
 		<span class="italian">Il si e il no nel capo gli contende.</span><br /><br />
-		The words I have adopted as a translation, are Shakespeare's, <em>Measure for Measure</em>. a. ii. s. 1.`},
+		The words I have adopted as a translation, are Shakespeare’s, <em>Measure for Measure</em>. a. ii. s. 1.`},
 	{noteno: 6, notetext: `Virgil assures our poet, that these evil spirits had formerly shown the same insolence when our Savior descended into hell. They attempted to prevent him from entering at the gate, over which Dante had read the fatal inscription. “That gate which,” says the Roman poet, “an angel has just passed, by whose aid we shall overcome this opposition, and gain admittance into the city.”`}
 ],
 [
@@ -5016,7 +5016,7 @@ notes: [
 		Et gravis in geminum vergens eaput amphisbaena.</span><br /><br />
 		Lucan. <em>Pharsal.</em> l. ix. 719. So Milton:<br /><br />
 		Scorpion and asp, and amphisbaena dire,<br />
-		Cerastes horn'd, hydrus and elops drear,<br />
+		Cerastes horn’d, hydrus and elops drear,<br />
 		And dipsas.<br /><br />
 		<em>P. L.</em> b. x. 524.`},
 	{noteno: 5, notetext: `Imitated by Berni, <em>Orl. Inn.</em> l. 1. e. ii. st. 6.`},
@@ -5037,8 +5037,8 @@ notes: [
 	{noteno: 6, notetext: `In Aeschylus, the shade of Darius is represented as inquiring with similar anxiety after the fate of his son Xerxes.<br /><br />
 	Atossa. <span class="greek">Mονάδα δέ Ξέρξην ἔρημόν φασιν ου πολλῶν μέτα</span>&mdash;<br />
 Darius. <span class="greek">Πῶσ δε δὴ καὶ ποῖ τελεντφγ; ἐστι τισ σωτηρία</span><br /><br />
-	<span class="greek">ΠΕΡΣΑΙ.</span> 741. Bloomfield's Edit.</br /><br />
-	Atossa: Xerxes astonish'd, desolate, alone—<br />
+	<span class="greek">ΠΕΡΣΑΙ.</span> 741. Bloomfield’s Edit.</br /><br />
+	Atossa: Xerxes astonish’d, desolate, alone—<br />
 	Ghost of Dar: How will this end? Nay, pause not. Is he safe?<br />
 	               <em>The Persians.</em> Potter’s Translation.`},
 	{noteno: 7, notetext: `“Not fifty months shall be passed, before thou shalt learn, by woeful experience, the difficulty of returning from banishment to thy native city”`},
@@ -5051,6 +5051,454 @@ Darius. <span class="greek">Πῶσ δε δὴ καὶ ποῖ τελεντφγ;
 	{noteno: 14, notetext: `Beatrice.`}
 ],
 [
+	{noteno: 1, notetext: `The commentators are not agreed concerning the identity of the person, who is here mentioned as a follower of the heretical Photinus. By some he is supposed to have been Anastasius the Second, by others, the Fourth of that name; while a third set, jealous of the integrity of the papal faith, contend that our poet has confounded him with Anastasius 1. Emperor of the East.`},
+	{noteno: 2, notetext: `The remainder of the present Canto may be considered as a syllabus of the whole of this part of the poem.`},
+	{noteno: 3, notetext: `This fine moral, that not to enjoy our being is to be ungrateful to the Author of it, is well expressed in Spenser, <em>F. Q.</em> b. iv. c. viii. st. 15.<br /><br />
+		For he whose daies in wilful woe are worne<br />
+		The grace of his Creator doth despise,<br />
+		That will not use his gifts for thankless nigardise.`},
+	{noteno: 4, notetext: `A city in Guienne, much frequented by usurers.`},
+	{noteno: 5, notetext: `He refers to Aristotle’s <em>Ethics</em>.<br /><br />
+		”<span class=“greek”>Μετὰ δὲ ταὒτα λεκτέον ἄλλην ποιησαμένους ἀρχἠν, ὄτι τὤν περἲ τὰ ἤθη φενκτὢν τρία ἐστὶν εἴδη, κακία, ἀκρασία, θηριότης</span>” <em>Ethic. Nichomach.</em> 1. vii. c. i.<br /><br />
+		”In the next place, entering, on another division of the subject, let it be defined. that respecting morals there are three sorts of things to be avoided, malice, incontinence, and brutishness.”`},
+	{noteno: 6, notetext: `Aristotle’s <em>Physics</em>.<br /><br />
+		“<span class=“greek”>ή τέχνη, ὄτι τὢν περἲ τὰ ἤθη φενκτὢν</span><br /><br />
+		Arist. <span class=“greek”>ΦΥΣ</span>. AKP. 1. ii. c. ii.<br /><br />
+		“Art imitates nature.”<br /><br />
+		—See the <em>Coltivazione</em> of Alamanni, l. i.<br />
+		<span class="italian">&mdash;l’arte umana,</span> &c.`},
+	{noteno: 7, notetext: `Genesis, c. iii. v. 19. “In the sweat of thy face shalt thou eat bread.”`},
+	{noteno: 8, notetext: `The constellation Bootes, or Charles’s wain.`}
+],
+[
+	{noteno: 1, notetext: `Theseus, who was enabled, by the instructions of Ariadne, the sister of the Minotaur, to destroy that monster.`},
+	{noteno: 2, notetext: `<span class=“greek”>Ως δ´ὄταν ὀξυν ἔχων πέλεκυν βοὸς ἀγραύλοιο,<br />
+		Κόψας ἐξόπιθεν κεράων βοὸς ἀγραύλοιο,<br />
+		Ίνα τἄμη διὰ πἂσαν, ὀ δὲ προθορὼν ὲρίπησιν.</span><br /><br />
+		Homer, <em>Il.</em> l. xvii. 522.<br /><br />
+		As when some vig’rous youth with sharpen’d axe<br />
+		A pastur’d bullock smites behind the horns<br />
+		And hews the muscle through; he, at the stroke<br />
+		Springs forth and falls.<br /><br />
+		Cowper’s Translation.`},
+	{noteno: 3, notetext: `Our Saviour, who, according to Dante, when he ascended from hell, carried with him the souls of the patriarchs, and other just men, out of the first circle. See Canto IV.`},
+	{noteno: 4, notetext: `Our poet was probably induced, by the following line in Ovid, to assign to Nessus the task of conducting them over the ford:<br /><br />
+		<span class="latin">Nessus edit membrisque valens scitusque vadorum.</span><br /><br />
+		<em>Metam.</em>, l. ix. And Ovid’s authority was Sophocles, who says of this Centaur&mdash;<br />br />
+		Ος τὸν βαθὐῤῤουν ποταμὸν Εὔηνον βροτοὐς<br />
+		Μισθοὒ πόρενε χερσὶν οὔτε πομπίμοις<br />
+		Κώπαις ἐρέσσων, οὔτε λαιίφεσιν νεώς.<br /><br />
+		<em>Trach.</em> 570<br /><br />
+		He in his arms, Evenus’ stream<br />
+		Deep flowing, bore the passenger for hire<br />
+		Without or sail or billow cleaving oar.`},
+	{noteno: 5, notetext: `Ezzolino, or Azzolino di Romano, a most cruel tyrant in the Marca Trivigiana, Lord of Padua, Vicenza, Verona, and Brescia, who died in 1260. His atrocities form the subject of a Latin tragedy, called <em>Eccerinis</em>, by Albertino Mussato, of Padua, the contemporary of Dante, and the most elegant writer of Latin verse of that age. See also the <em>Paradise</em>, Canto IX. Berni <em>Orl. Inn.</em> l ii c. xxv. st. 50. Ariosto. <em>Orl. Fur.</em> c. iii. st. 33. and Tassoni <em>Secchia Rapita</em>, c. viii. st 11.`},
+	{noteno: 6, notetext: `Marquis of Ferrara and of the Marca d’Ancona, was murdered by his own son (whom, for the most unnatural act Dante calls his step-son), for the sake of the treasures which his rapacity had amassed. See Ariosto. <em>Orl. Fur.</em> c. iii. st 32. He died in 1293 according to Gibbon. Ant. of the House of Brunswick. <em>Posth. Works</em>, v. ii. 4to.`},
+	{noteno: 7, notetext: `“Henrie, the brother of this Edmund, and son to the foresaid king of Almaine (Richard, brother of Henry III. of England) as he returned from Affrike, where he had been with Prince Edward, was slain at Viterbo in Italy (whither he was come about business which he had to do with the Pope) by the hand of Guy de Montfort, the son of Simon de Montfort, Earl of Leicester, in revenge of the same Simon’s death. The murther was committed afore the high altar, as the same Henrie kneeled there to hear divine service." <span class="sc">A.D.</span> 1272, Holinshed’s chronicles p 275. See also Giov. Villani <em>Hist.</em> I. vii. c. 40.`},
+	{noteno: 8, notetext: `Sextus either the son of Tarquin the Proud, or of Pompey the Great: or as Vellutelli conjectures, Sextus Claudius Nero, and Pyrrhus king of Epirus.`},
+	{noteno: 9, notetext: `Two noted marauders, by whose depredations the public ways in Italy were infested. The latter was of the noble family of Pazzi	in Florence.`}
+],
+[
+	{noteno: 1, notetext: `A wild and woody tract of country, abounding in deer, goats, and wild boars. Cecina is a river not far to the south of Leghorn, Corneto, a small city on the same coast in the patrimony of the church.`},
+	{noteno: 2, notetext: `See Virg. <em>Aen.</em> l. iii. 210.`},
+	{noteno: 3, notetext: `From Virg. <em>Aen.</em> l. iii. 216.`},
+	{noteno: 4, notetext: `The commentators explain this, “If he could have believed, in consequence of my assurances alone, that of which he hath now had ocular proof, he would not have stretched forth his hand against thee.” But I am of opinion that Dante makes Virgil allude to his own story of Polydorus in the third book of the <em>Aeneid</em>.`},
+	{noteno: 5, notetext: `“Since you have inveigled me to speak my holding forth so gratifying an expectation, let it not displease you if I am as it were detained in the snare you have spread for me, so as to be somewhat prolix in my answer.”`},
+	{noteno: 6, notetext: `Pietro delle Vigne, a native of Capua, who, from a low condition, raised himself by his eloquence and legal knowledge to the office of Chancellor to the Emperor Frederick II. whose confidence in him was such, that his influence in the empire became unbounded. The courtiers, envious of his exalted situation, contrived, by means of forged letters, to make Frederick believe that he held a secret and traitorous intercourse with the Pope, who was then at enmity with the Emperor. In consequence of this supposed crime he was cruelly condemned by his too credulous sovereign to lose his eyes, and, being driven to despair by his unmerited calamity and disgrace, he put an end to his life by dashing out his brains against the walls of a church, in the year 1245. Both Frederick and Pietro delle Vigne composed verses in the Sicilian dialect which are yet extant.`},
+	{noteno: 7, notetext: `Envy. Chaucer alludes to this in the <em>Prologue to the Legende of Good women.</em><br /><br />
+		Envie is lavender to the court alway,<br />
+		For she ne parteth neither night ne day<br />
+		Out of the house of Cesar; thus saith Dant.`},
+	{noteno: 8, notetext: `Hence perhaps Milton:<br /><br />
+		Leaves and fuming rills, Aurora’s fan.<br /><br />
+		<em>P. L.</em> b. v. 6.`},
+	{noteno: 9, notetext: `Lano, a Siennese, who, being reduced by prodigality to a state of extreme want, found his existence no longer supportable; and, having been sent by his countrymen on a military expedition, to assist the Florentine against the Aretini, took that opportunity of exposing himself to certain death, in the engagement which took place at Toppo near Arezzo. See G. Villani, <em>Hist.</em> l. 7. c. cxix.`},
+	{noteno: 10, notetext: `Jacopo da Sant’ Andrea, a Paduan, who, having wasted his property in the most wanton acts of profusion, killed himself in despair.`},
+	{noteno: 11, notetext: `“I was an inhabitant of Florence, that city which changed her first patron Mars for St. John the Baptist, for which reason the vengeance of the deity thus slighted will never be appeased: and, if some remains of his status were not still visible on the bridge over the Arno, she would have been already leveled to the ground; and thus the citizens, who raised her again from the ashes to which Attila had reduced her, would have laboured in vain.” See <em>Paradise</em>, Canto XVI. 44. The relic of antiquity to which the superstition of Florence attached so high an importance, was carried away by a flood, that destroyed the bridge on which it stood, in the year 1337, but without the ill effects that were apprehended from the loss of their fancied Palladium.`},
+	{noteno: 12, notetext: `We are not informed who this suicide was.`}
+],
+[
+	{noteno: 1, notetext: `See Lucan, <em>Phars.</em>, l. 9.`},
+	{noteno: 2, notetext: `Compare Tasso. <em>G. L.</em> c. x. st. 61.`},
+	{noteno: 3, notetext: `Landino refers to Albertus Magnus for the circumstance here alluded to.`},
+	{noteno: 4, notetext: `More hot than Aetn’ or flaming Mongibell.<br /><br />
+		Spenser, <em>F. Q.</em> b. ii. c. ix. st. 29. See Virg. <em>Aen.</em> 1. viii. 416. and Berni. <em>Orl. Inn.</em> 1. i. c. xvi. st. 21. It would be endless to refer to parallel passages in the Greek writers.`},
+	{noteno: 5, notetext: `Compare Aesch. <em>Seven Chiefs</em>, 425. Euripides, <em>Phoen.</em> 1179 and Statius, <em>Theb.</em> l. x. 821.`},
+	{noteno: 6, notetext: `A warm medicinal spring near Viterbo, the waters of which, as Landino and Vellutelli affirm, passed by a place of ill fame. Venturi, with less probability, conjectures that Dante would imply, that it was the scene of much licentious merriment among those who frequented its baths.`},
+	{noteno: 7, notetext: `<span class="latin">Credo pudicitiam Saturno rege moratam<br />
+		In terris.</span><br /><br />
+		Juv. <em>Satir.</em> vi.`},
+	{noteno: 8, notetext: `Daniel, ch. ii. 32, 33.`},
+	{noteno: 9, notetext: `On the other side of Purgatory.`}
+],
+[
+	{noteno: 1, notetext: `A part of the Alps where the Brenta rises, which river is much swoln as soon as the snow begins to dissolve on the mountains.`},
+	{noteno: 2, notetext: `“Ser Brunetto, a Florentine, the secretary or chancellor of the city, and Dante’s preceptor, hath left us a work so little read, that both the subject of it and the language of it have been mistaken. It is in the French spoken in the reign of St. Louis,under the title of Tresor, and contains a species of philosophical course of lectures divided into theory and practice, or, as he expresses it, ‘<span class="french">un enchaussement des choses divines et humaines</span>,’” &c. Sir R. Clayton’s Translation of Tenhove’s <em>Memoirs of the Medici</em>, vol. i. ch. ii. p. 104. The Tresor has never been printed in the original language. There is a fine manuscript of it in the British Museum, with an illuminated portrait of Brunetto in his study prefixed. Mus. Brit. MSS. 17, E. 1. Tesor. It is divided into four books, the first, on Cosmogony and Theology, the second, a translation of Aristotle’s <em>Ethics</em>; the third on Virtues and Vices; the fourth, on Rhetoric. For an interesting memoir relating to this work, see <em>Hist. de l’Acad. des Inscriptions</em>, tom. vii. 296. His Tesoretto, one of the earliest productions of Italian poetry, is a curious work, not unlike the writings of Chaucer in style and numbers, though Bembo remarks, that his pupil, however largely he had stolen from it, could not have much enriched himself. As it is perhaps but little known, I will here add a slight sketch of it.<br />
+		<span class="indent"></span>Brunetto describes himself as returning from an embassy to the King of Spain, on which he had been sent by the Guelph party from Florence. On the plain of Roncesvalles he meets a scholar on a bay mule, who tells him that the Guelfi are driven out of the city with great loss.<br />
+		<span class="indent"></span>Struck with grief at these mournful tidings, and musing with his head bent downwards, he loses his road, and wanders into a wood. Here Nature, whose figure is described with sublimity, appears, and discloses to him the secrets of her operations. After this he wanders into a desert; but at length proceeds on his way, under the protection of a banner, with which Nature had furnished him, till on the third day he finds himself in a large pleasant champaign, where are assembled many emperors, kings, and sages. It is the habitation of Virtue and her daughters, the four Cardinal Virtues. Here Brunetto sees also Courtesy, Bounty, Loyalty, and Prowess, and hears the instructions they give to a knight, which occupy about a fourth part of the poem. Leaving this territory, he passes over valleys, mountains, woods, forests, and bridges, till he arrives in a beautiful valley covered with flowers on all sides, and the richest in the world; but which was continually shifting its appearance from a round figure to a square, from obscurity to light, and from populousness to solitude. This is the region of Pleasure, or Cupid, who is accompanied by four ladies, Love, Hope, Fear, and Desire. In one part of it he meets with Ovid, and is instructed by him how to conquer the passion of love, and to escape from that place. After his escape he makes his confession to a friar, and then returns to the forest of visions: and ascending a mountain, he meets with Ptolemy, a venerable old man. Here the narrative breaks off. The poem ends, as it began, with an address to Rustico di Filippo, on whom he lavishes every sort of praise.<br />
+		<span class="indent"></span>It has been observed, that Dante derived the idea of opening his poem by describing himself as lost in a wood, from the Tesoretto of his master. I know not whether it has been remarked, that the crime of usury is branded by both these poets as offensive to God and Nature: or that the sin for which Brunetto is condemned by his pupil, is mentioned in the Tesoretto with great horror. Dante’s twenty-fifth sonnet is a jocose one, addressed to Brunetto. He died in 1295.`},
+	{noteno: 3, notetext: `See G. Villani <em>Hist.</em> l. iv. c. 5. and Macchiavelli <em>Hist. of Flor.</em> b. ii.`},
+	{noteno: 4, notetext: `He refers to the prediction of Farinata, in Canto X.`},
+	{noteno: 5, notetext: `There is no reason to believe, as the commentators observe that the grammarian of this name was stained with the vice imputed to him; and we must therefore suppose that Dante puts the individual for the species, and implies the frequency of the crime among those who abused the opportunities which the education of youth afforded them, to so abominable a purpose.`},
+	{noteno: 6, notetext: `Son of Accorso, a Florentine, celebrated for his skill in jurisprudence, and commonly known by the name of Accursius.`},
+	{noteno: 7, notetext: `Andrea de’ Mozzi, who, that his scandalous life might be less exposed to observation, was translated either by Nicholas III, or Boniface VIII from the see of Florence to that of Vicenza, through which passes the river Baccchiglione. At the latter of these places he died.`},
+	{noteno: 8, notetext: `<span class="italian">Servo de’ servi.</span> So Ariosto, <em>Sat.</em> 3.<br /><br />
+		<span class="italian">Degli servi<br />
+		Io sia il gran servo.</span>`},
+	{noteno: 9, notetext: `Brunetto’s great work, the <em>Tresor</em>.<br /><br />
+		<span class="italian">Sieti raccomandato ’l mio Tesoro.</span><br /><br />
+		So Giusto de’ Conti, in his <em>Bella Mano</em>, Son. "Occhi:"<br /><br />
+		<span class="italian">Siavi raccommandato il mio Tesoro.</span>`}
+],
+[
+	{noteno: 1, notetext: `Gualdrada was the daughter of Bellincione Berti, of whom mention is made in the Paradise, Canto XV, and XVI. He was of the family of Ravignani, a branch of the Adimari.<br /><br />
+		<span class="indent"></span>The Emperor Otho IV. being at a festival in Florence, where Gualdrada was present, was struck with her beauty; and inquiring who she was, was answered by Bellincione, that she was the daughter of one who, if it was his Majesty’s pleasure, would make her admit the honour of his salute. On overhearing this, she arose from her seat, and blushing, in an animated tone of voice, desired her father that he would not be so liberal in his offers, for that no man should ever be allowed that freedom, except him who should be her lawful husband. The Emperor was not less delighted by her resolute modesty than he had before been by the loveliness of her person, and calling to him Guido, one of his barons, gave her to him in marriage, at the same time raising him to the rank of a count, and bestowing on her the whole of Casentino, and a part of the territory of Romagna, as her portion. Two sons were the offspring of this union, Guglielmo and Ruggieri, the latter of whom was father of Guidoguerra, a man of great military skill and prowess who, at the head of four hundred Florentines of the Guelph party, was signally instrumental to the victory obtained at Benevento by Charles of Anjou, over Manfredi, King of Naples, in 1265. One of the consequences of this victory was the expulsion of the Ghibellini, and the re-establishment of the Guelfi at Florence.`},
+	{noteno: 2, notetext: `Compare Tasso, <em>G. L.</em> c. i. st. 1.`},
+	{noteno: 3, notetext: `Tegghiaio Aldobrandi was of the noble family of Adimari, and much esteemed for his military talents. He endeavored to dissuade the Florentines from the attack, which they meditated against the Siennese, and the rejection of his counsel occasioned the memorable defeat, which the former sustained at Montaperto, and the consequent banishment of the Guelfi from Florence.`},
+	{noteno: 4, notetext: `Giacopo Rusticucci, a Florentine, remarkable for his opulence and the generosity of his spirit.`},
+	{noteno: 5, notetext: `Guglielmo Borsiere, another Florentine, whom Boccaccio, in a story which he relates of him, terms “a man of courteous and elegant manners, and of great readiness in conversation.” <em>Dec.</em> Giorn. i. Nov. 8.`},
+	{noteno: 6, notetext: `<span class="italian">Quando ti giovera dicere io fui.</span><br /><br />
+		So Tasso, <em>G. L.</em> c. xv. st. 38.<br /><br />
+		<span class="italian">Quando mi giovera narrar altrui<br />
+		Le novita vedute, e dire; io fui.</span>`},
+	{noteno: 7, notetext: `This memorable apophthegm is repeated by Luigi Pulci and Trissino.<br /><br />
+		<span class="italian">Sempre a quel ver, ch’ ha faccia di menzogna<br />
+	  E piu senno tacer la lingua cheta<br />
+	  Che spesso senza colpa fa vergogna.</span><br /><br />
+	  <em>Morgante. Magg.</em> c. xxiv.<br /><br />
+	  <span class="italian">La verita, che par mensogna<br />
+	  Si dovrebbe tacer dall’ uom ch’e saggio.</span><br /><br />
+		<em>Italia. Lib.</em> C. xvi.`},
+],
+[
+	{noteno: 1, notetext: `Fraud.`},
+	{noteno: 2, notetext: `A purse, whereon the armorial bearings of each were emblazoned. According to Landino, our poet implies that the usurer can pretend to no other honour, than such as he derives from his purse and his family.`},
+	{noteno: 3, notetext: `The arms of the Gianfigliazzi of Florence.`},
+	{noteno: 4, notetext: `Those of the Ubbriachi, another Florentine family of high distinction.`},
+	{noteno: 5, notetext: `The arms of the Scrovigni a noble family of Padua.`},
+	{noteno: 6, notetext: `Vitaliano del Dente, a Paduan.`},
+	{noteno: 7, notetext: `Giovanni Bujamonti, a Florentine usurer, the most infamous of his time.`}
+],
+[
+	{noteno: 1, notetext: `Beyond the middle point they tended the same way with us, but their pace was quicker than ours.`},
+	{noteno: 2, notetext: `In the year 1300, Pope Boniface VIII., to remedy the inconvenience occasioned by the press of people who were passing over the bridge of St. Angelo during the time of the Jubilee, caused it to be divided length wise by a partition, and ordered, that all those who were going to St. Peter’s should keep one side, and those returning the other.`},
+	{noteno: 3, notetext: `Venedico Caccianimico, a Bolognese, who prevailed on his sister Ghisola to prostitute herself to Obizzo da Este, Marquis of Ferrara, whom we have seen among the tyrants, Canto XII.`},
+	{noteno: 4, notetext: `He denotes Bologna by its situation between the rivers Savena to the east, and Reno to the west of that city; and by a peculiarity of dialect, the use of the affirmative <span class="italian">sipa</span> instead of <span class="italian">si</span>.`},
+	{noteno: 5, notetext: `See Appolonius Rhodius, l. i. and Valerius Flaccus l.ii. Hypsipyle deceived the other women by concealing her father Thoas, when they had agreed to put all their males to death.`},
+	{noteno: 6, notetext: `Alessio, of an ancient and considerable family in Lucca, called the Interminei.`},
+	{noteno: 7, notetext: `He alludes to that passage in the <em>Eunuchus</em> of Terence where Thraso asks if Thais was obliged to him for the present he had sent her, and Gnatho replies, that she had expressed her obligation in the most forcible terms. <span class="latin">T. Magnas vero agere gratias Thais mihi?</span> <em>G. Ingentes. Eun.</em> a. iii. s. i.`},
+],
+[
+	{noteno: 1, notetext: `The apertures in the rock were of the same dimensions as the fonts of St. John the Baptist at Florence, one of which, Dante says he had broken, to rescue a child that was playing near and fell in. He intimates that the motive of his breaking the font had been maliciously represented by his enemies.`},
+	{noteno: 2, notetext: `The spirit mistakes Dante for Boniface VIII. who was then alive, and who he did not expect would have arrived so soon, in consequence, as it should seem, of a prophecy, which predicted the death of that Pope at a later period. Boniface died in 1303.`},
+	{noteno: 3, notetext: `“Thou didst presume to arrive by fraudulent means at the papal power, and afterwards to abuse it.”`},
+	{noteno: 4, notetext: `Nicholas III, of the Orsini family, whom the poet therefore calls “<span class="italian">figliuol dell’ orsa,</span>” “son of the she-bear.” He died in 1281.`},
+	{noteno: 5, notetext: `Bertrand de Got Archbishop of Bordeaux, who succeeded to the pontificate in 1305, and assumed the title of Clement V. He transferred the holy see to Avignon in 1308 (where it remained till 1376), and died in 1314.`},
+	{noteno: 6, notetext: `See Maccabees, b. ii. c. iv. 7, 8.`},
+	{noteno: 7, notetext: `Acts of the Apostles, c. i. 26.`},
+	{noteno: 8, notetext: `Judas.`},
+	{noteno: 9, notetext: `Nicholas III. was enraged against Charles I, King of Sicily, because he rejected with scorn a proposition made by that Pope for an alliance between their families. See G. Villani, <em>Hist.</em> l. vii. c. liv.`},
+	{noteno: 10, notetext: `Rev. c. xvii. 1, 2, 3. Compare Petrarch. <em>Opera fol.</em> ed. Basil. 1551. <em>Epist. sine titulo liber.</em> ep. xvi. p. 729.`},
+	{noteno: 11, notetext: `He alludes to the pretended gift of the Lateran by Constantine to Silvester, of which Dante himself seems to imply a doubt, in his treatise “De Monarchia.”—“<span class="latin">Ergo scindere Imperium, Imperatori non licet. Si ergo aliquae, dignitates per Constantinum essent alienatae, (ut dicunt) ab Imperio,</span>” &c. l. iii. The gift is by Ariosto very humorously placed in the moon, among the things lost or abused on earth. <em>Di varj fiori,<e/m> &c. <em>O. F.</em> c. xxxiv. st. 80.<br />
+<span class="indent"></span>Milton has translated both this passage and that in the text. <em>Prose works</em>, vol. i. p. 11. ed. 1753.`}
+],
+[
+	{noteno: 1, notetext: `Compare Spenser, <em>F. Q.</em> b. i. c. viii. st. 31`},
+	{noteno: 2, notetext: `Amphiaraus, one of the seven kings who besieged Thebes. He is said to have been swallowed up by an opening of the earth. See Lidgate’s <em>Storie of Thebes<e/m>, Part III where it is told how the “Bishop Amphiaraus” fell down to hell.<br /><br />
+		And thus the devill for his outrages,
+		Like his desert payed him his wages.<br /><br />
+		A different reason for his being doomed thus to perish is assigned by Pindar.<br /><br />
+		<span class=“greek”>ό δ´ Άμφιάρηἴ</span>, &c. <em>Nem</em> ix.<br /><br />
+		For thee, Amphiaraus, earth,<br />
+		By Jove’s all-riving thunder cleft<br />
+		Her mighty bosom open’d wide,<br />
+		Thee and thy plunging steeds to hide,<br />
+		Or ever on thy back the spear<br />
+		Of Periclymenus impress’d<br />
+		A wound to shame thy warlike breast<br />
+		For struck with panic fear<br />
+		The gods’ own children flee.`},
+	{noteno: 3, notetext: `<span class="latin">Duo magnorum viridi coeuntia sylva</br />
+		Corpora serpentum baculi violaverat ictu,</span> &c.<br /><br />
+		Ovid. <em>Met.</em> iii.`},
+	{noteno: 4, notetext: `Aruns is said to have dwelt in the mountains of Luni (from whence that territory is still called Lunigiana), above Carrara, celebrated for its marble. Lucan. <em>Phars.</em> l. i. 575. So Boccaccio in the <em>Fiammetta</em>, l. iii. “Quale Arunte,” &c.<br /><br />
+	“Like Aruns, who amidst the white marbles of Luni, contemplated the celestial bodies and their motions.”`},
+	{noteno: 5, notetext: `The daughter of Tiresias of Thebes, a city dedicated to Bacchus. From Manto Mantua, the country of Virgil derives its name. The Poet proceeds to describe the situation of that place.`},
+	{noteno: 6, notetext: `The lake Benacus, now called the Lago di Garda, though here said to lie between Garda, Val Camonica, and the Apennine, is, however, very distant from the latter two.`},
+	{noteno: 7, notetext: `Prato di Fame, where the dioceses of Trento, Verona, and Brescia met.`},
+	{noteno: 8, notetext: `A garrison situated to the south of the lake, where it empties itself and forms the Mincius.`},
+	{noteno: 9, notetext: `Alberto da Casalodi, who had got possession of Mantua, was persuaded by Pinamonte Buonacossi, that he might ingratiate himself with the people by banishing to their own castles the nobles, who were obnoxious to them. No sooner was this done, than Pinamonte put himself at the head of the populace, drove out Casalodi and his adherents, and obtained the sovereignty for himself.`},
+	{noteno: 10, notetext: `<span class="latin">Suspensi Eurypilum scitatum oracula Phoebi<br />
+		Mittimus.</span><br /><br />
+		Virg. <em>Aeneid.</em> ii. 14.`},
+	{noteno: 11, notetext: `Sir Michael Scott, of Balwearie, astrologer to the Emperor Frederick II. lived in the thirteenth century. For further particulars relating to this singular man, see Warton’s <em>History of English Poetry</em>, vol. i. diss. ii. and sect. ix. p 292, and the <em>Notes</em> to Mr. Scott’s “Lay of the Last Minstrel,” a poem in which a happy use is made of the traditions that are still current in North Britain concerning him. He is mentioned by G. Villani. <em>Hist.</em> l. x. c. cv. and cxli. and l. xii. c. xviii. and by Boccaccio, <em>Dec.</em> Giorn. viii. Nov. 9.`},
+	{noteno: 12, notetext: `An astrologer of Forli, on whose skill Guido da Montefeltro, lord of that place, so much relied, that he is reported never to have gone into battle, except in the hour recommended to him as fortunate by Bonatti. Landino and Vellutello, speak of a book, which he composed on the subject of his art.`},
+	{noteno: 13, notetext: `A shoemaker at Parma, who deserted his business to practice the arts of divination.`},
+	{noteno: 14, notetext: `By Cain and the thorns, or what is still vulgarly called the Man in the Moon, the Poet denotes that luminary. The same superstition is alluded to in the <em>Paradise</em>, Canto II. 52. The curious reader may consult Brand on <em>Popular Antiquities</em>, 4to. 1813. vol. ii. p. 476.`}
+],
+[
+	{noteno: 1, notetext: `Compare Ruccellai, <em>Le Api</em>, 165, and Dryden’s <em>Annus Mirabilis</em>, st. 146, &c.`},
+	{noteno: 2, notetext: `The elders or chief magistrates of Lucca, where Santa Zita was held in especial veneration. The name of this sinner is supposed to have been Martino Botaio.`},
+	{noteno: 3, notetext: `This is said ironically of Bonturo de’ Dati. By barterers are meant peculators, of every description; all who traffic the interests of the public for their own private advantage.`},
+	{noteno: 4, notetext: `<span class="italian">Qui si nuota altrimenti che nel Serchio.</span><br /><br />
+		Serchio is the river that flows by Lucca. So Pulci, <em>Morg. Mag.</em> c. xxiv.<br /><br />
+		<span class="italian">Qui si nuota nel sangue, e non nel Serchio.</span>`},
+	{noteno: 5, notetext: `The surrender of the castle of Caprona to the combined forces of Florence and Lucca, on condition that the garrison should march out in safety, to which event Dante was a witness, took place in 1290. See G. Villani, <em>Hist.</em> l. vii. c. 136.`},
+	{noteno: 6, notetext: `This passage fixes the era of Dante’s descent at Good Friday, in the year 1300 (34 years from our blessed Lord’s incarnation being added to 1266), and at the thirty-fifth year of our poet’s age. See Canto I. v. 1.<br /><br />
+		<span class="indent"></span>The awful event alluded to, the Evangelists inform us, happened “at the ninth hour,” that is, our sixth, when “the rocks were rent,” and the convulsion, according to Dante, was felt even in the depths in Hell. See Canto XII. 38.`}
+],
+[
+	{noteno: 1, notetext: `This proverb is repeated by Pulci, <em>Morg. Magg.</em> c. xvii.`},
+	{noteno: 2, notetext: `The name of this peculator is said to have been Ciampolo.`},
+	{noteno: 3, notetext: `"Thibault I. king of Navarre, died on the 8th of June, 1233, as much to be commended for the desire he showed of aiding the war in the Holy Land, as reprehensible and faulty for his design of oppressing the rights and privileges of the church, on which account it is said that the whole kingdom was under an interdict for the space of three entire years. Thibault undoubtedly merits praise, as for his other endowments, so especially for his cultivation of the liberal arts, his exercise and knowledge of music and poetry in which he much excelled, that he was accustomed to compose verses and sing them to the viol, and to exhibit his poetical compositions publicly in his palace, that they might be criticized by all.” Mariana, <em>History of Spain</em>, b. xiii. c. 9.<br /><br />
+	<span class="indent"></span>An account of Thibault, and two of his songs, with what were probably the original melodies, may be seen in Dr. Burney’s <em>History of Music</em>, v. ii. c. iv. His poems, which are in the French language, were edited by M. l’Eveque de la Ravalliere. Paris. 1742. 2 vol. 12mo. Dante twice quotes one of his verses in the <em>Treatise de Vulg. Eloq.</em> l. i. c. ix. and l. ii. c. v. and refers to him again, l. ii. c. vi.<br /><br />
+	<span class="indent"></span>From “the good king Thibault” are descended the good, but more unfortunate monarch, Louis XVI. of France, and consequently the present legitimate sovereign of that realm. See Henault, <em>Abrege Chron.</em> 1252, 2, 4.`},
+	{noteno: 4, notetext: `He was entrusted by Nino de’ Visconti with the government of Gallura, one of the four jurisdictions into which Sardinia was divided. Having his master’s enemies in his power, he took a bribe from them, and allowed them to escape. Mention of Nino will recur in the Notes to Canto XXXIII. and in the <em>Purgatory</em>, Canto VIII.`},
+	{noteno: 5, notetext: `The president of Logodoro, another of the four Sardinian jurisdictions. See Canto XXXIII.`}
+],
+[
+	{noteno: 1, notetext: `The fable of the frog, who offered to carry the mouse across a ditch, with the intention of drowning him when both were carried off by a kite. It is not among those Greek <em>Fables</em> which go under the name of Aesop.`},
+	{noteno: 2, notetext: `They wore their cowls unusually large. `},
+	{noteno: 3, notetext: `The Emperor Frederick II. is said to have punished those who were guilty of high treason, by wrapping them up in lead, and casting them into a furnace.`},
+	{noteno: 4, notetext: `It is observed by Venturi, that the word “rance” does not here signify “rancid or disgustful,” as it is explained by the old commentators, but “orange-coloured,” in which sense it occurs in the <em>Purgatory</em>, Canto II. 9.`},
+	{noteno: 5, notetext: `“Those who ruled the city of Florence on the part of the Ghibillines, perceiving this discontent and murmuring, which they were fearful might produce a rebellion against themselves, in order to satisfy the people, made choice of two knights, Frati Godenti (joyous friars) of Bologna, on whom they conferred the chief power in Florence. One named M. Catalano de’ Malavolti, the other M. Loderingo di Liandolo; one an adherent of the Guelph, the other of the Ghibelline party. It is to be remarked, that the Joyous Friars were called Knights of St. Mary, and became knights on taking that habit: their robes were white, the mantle sable, and the arms a white field and red cross with two stars. Their office was to defend widows and orphans; they were to act as mediators; they had internal regulations like other religious bodies. The above-mentioned M. Loderingo was the founder of that order. But it was not long before they too well deserved the appellation given them, and were found to be more bent on enjoying themselves than on any other subject. These two friars were called in by the Florentines, and had a residence assigned them in the palace belonging to the people over against the Abbey. Such was the dependence placed on the character of their order that it was expected they would be impartial, and would save the commonwealth any unnecessary expense; instead of which, though inclined to opposite parties, they secretly and hypocritically concurred in promoting their own advantage rather than the public good.” G. Villani, b. vii. c.13. This happened in 1266.`},
+	{noteno: 6, notetext: `The name of that part of the city which was inhabited by the powerful Ghibelline family of Uberti, and destroyed under the partial and iniquitous administration of Catalano and Loderingo.`},
+	{noteno: 7, notetext: `Caiaphas.`},
+	{noteno: 8, notetext: `Annas, father-in-law to Caiaphas.`},
+	{noteno: 9, notetext: `John, c. viii. 44. Dante had perhaps heard this text from one of the pulpits in Bologna.`}
+],
+[
+	{noteno: 1, notetext: `“At the latter part of January, when the sun enters into Aquarius, and the equinox is drawing near, when the hoar-frosts in the morning often wear the appearance of snow but are melted by the rising sun.”`},
+	{noteno: 2, notetext: `<span class="latin">Quin corpus onustum<br />
+		Hesternis vitiis animum quoque praegravat una,<br />
+		Atque affigit humi divinae particulam aurae.</span><br /><br />
+		Hor. <em>Sat.</em> ii. l. ii. 78.`},
+	{noteno: 3, notetext: `Compare Lucan, <em>Phars.</em> l. ix. 703.`},
+	{noteno: 4, notetext: `The occult properties of this stone are described by Solinus, c. xl, and by Boccaccio, in his humorous tale of Calandrino. <em>Decam.</em> G. viii. N. 3. In Chiabrera’s <em>Ruggiero</em>, Scaltrimento begs of Sofia, who is sending him on a perilous errand, to lend him the heliotrope.<br /><br />
+		<span class="latin">In mia man fida<br />
+		L’elitropia, per cui possa involarmi<br />
+		Secondo il mio talento agli occhi altrui.</span> c. vi.<br /><br />
+		Trust to my hand the heliotrope, by which<br />
+		I may at will from others’ eyes conceal me<br /><br />
+		Compare Ariosto, <em>II Negromante</em>, a. 3. s. 3. Pulci, <em>Morg. Magg.</em> c xxv. and Fortiguerra, <em>Ricciardetto</em>, c. x. st. 17. Gower in his <em>Confessio Amantis</em>, lib. vii, enumerates it among the jewels in the diadem of the sun.<br /><br />
+		Jaspis and helitropius.
+`},
+	{noteno: 5, notetext: `This is translated from Ovid, <em>Metam</em>. l. xv.<br /><br />
+	<span class="latin">Una est quae reparat, seque ipsa reseminat ales,</span> &c.<br /><br />
+	See also Petrarch, Canzone: “<span class="italian">Qual piu</span>,” &c.`},
+	{noteno: 6, notetext: `He is said to have been an illegitimate offspring of the family of Lazari in Pistoia, and, having robbed the sacristy of the church of St. James in that city, to have charged Vanni della Nona with the sacrilege, in consequence of which accusation the latter suffered death.`},
+	{noteno: 7, notetext: `“In May 1301, the Bianchi party, of Pistoia, with the assistance and favor of the Bianchi who ruled Florence, drove out the Neri party from the former place, destroying their houses, Palaces and farms.” Giov. Villani, <em>Hist.</em> l. viii. e xliv.`},
+	{noteno: 8, notetext: `The commentators explain this prophetical threat to allude to the victory obtained by the Marquis Marcello Malaspina of Valdimagra (a tract of country now called the Lunigiana) who put himself at the head of the Neri and defeated their opponents the Bianchi, in the Campo Piceno near Pistoia, soon after the occurrence related in the preceding note.<br /><br />
+	<span class="indent"></span>Of this engagement I find no mention in Villani. Currado Malaspina is introduced in the eighth Canto of Purgatory; where it appears that, although on the present occaision they espoused contrary sides, some important favours were nevertheless conferred by that family on our poet at a subsequent perid of his exile in 1307.`}
+],
+[
+	{noteno: 1, notetext: `So Trissino<br /><br />
+		<span class="italian">Poi facea con le man le fiche al cielo<br />
+	  Dicendo: Togli, Iddio; che puoi piu farmi?</span><br /><br />
+	  <em>L’ital.</em> Lib. c. xii`},
+	{noteno: 2, notetext: `Thy ancestry.`},
+	{noteno: 3, notetext: `Capanaeus. Canto XIV.`},
+	{noteno: 4, notetext: `An extensive tract near the sea-shore in Tuscany.`},
+	{noteno: 5, notetext: `Virgil, <em>Aen.</em> l. viii. 193.`},
+	{noteno: 6, notetext: `Less than ten blows, out of the hundred Hercules gave him, deprived him of feeling.`},
+	{noteno: 7, notetext: `He is said to have been of the family of Donati at Florence.`},
+	{noteno: 8, notetext: `—All my bowels crumble up to dust.<br />
+		I am a scribbled form, drawn up with a pen<br />
+		Upon a parchment; and against this fire<br />
+		Do I shrink up.<br /><br />
+		Shakespeare, <em>K. John</em>, a. v. s. 7.`},
+	{noteno: 9, notetext: `Agnello Brunelleschi.`},
+	{noteno: 10, notetext: `The navel.`},
+	{noteno: 11, notetext: `O Rome! thy head<br />
+		Is drown’d in sleep, and all thy body fev’ry.<br /><br />
+		Ben Jonson’s <em>Catiline</em>.`},
+	{noteno: 12, notetext: `<em>Phars.</em> l. ix. 766 and 793.`},
+	{noteno: 13, notetext: `<em>Metam.</em> l. iv. and v.`},
+	{noteno: 14, notetext: `Compare Milton, <em>P. L.</em> b. x. 511 &c.`},
+	{noteno: 15, notetext: `He is said to have been of the Donati family.`},
+	{noteno: 16, notetext: `Puccio Sciancato, a noted robber, whose familly, Venturi says, he has not been able to discover.`},
+	{noteno: 17, notetext: `Francesco Guercio Cavalcante was killed at Gaville, near Florence; and in revenge of his death several inhabitants of that district were put to death.`}
+],
+[
+	{noteno: 1, notetext: `<span class="latin">Namque sub Auroram, jam dormitante lucerna,<br />
+		Somnia quo cerni tempore vera solent.</span><br />
+		Ovid, Epist. xix<br /><br />
+		The same poetical superstition is alluded to in the <em>Purgatory</em>, Cant. IX. and XXVII.`},
+	{noteno: 2, notetext: `The poet prognosticates the calamities which were soon to befal his native city, and which he says, even her nearest neighbor, Prato, would wish her. The calamities more particularly pointed at, are said to be the fall of a wooden bridge over the Arno, in May, 1304, where a large multitude were assembled to witness a representation of hell nnd the infernal torments, in consequence of which accident many lives were lost; and a conflagration that in the following month destroyed more than seventeen hundred houses, many ofthem sumptuous buildings. See G. Villani, <em>Hist.</em> l. viii. c. 70 and 71.`},
+	{noteno: 3, notetext: `“When I reflect on the punishment allotted to those who do not give sincere and upright advice to others I am more anxious than ever not to abuse to so bad a purpose those talents, whatever they may be, which Nature, or rather Providence, has conferred on me.” It is probable that this declaration was the result of real feeling Textd have given great weight to any opinion or party he had espoused, and to whom indigence and exile might have offerred strong temptations to deviate from that line of conduct which a strict sense of duty prescribed.`},
+	{noteno: 4, notetext: `Kings, b. ii. c. ii.`},
+	{noteno: 5, notetext: `The flame is said to have divided on the funeral pile which consumed tile bodies of Eteocles and Polynices, as if conscious of the enmity that actuated them while living.<br /><br />
+		<span class="latin">Ecce iterum fratris,</span> &c.<br />
+		Statius, <em>Theb.</em> l. xii.<br /><br />
+		<span class="latin">Ostendens confectas flamma,</span> &c.<br /><br />
+		Lucan, <em>Pharsal.</em> l. 1. 145.`},
+	{noteno: 6, notetext: `“The ambush of the wooden horse, that caused Aeneas to quit the city of Troy and seek his fortune in Italy, where his descendants founded the Roman empire.”`},
+	{noteno: 7, notetext: `Virgil, <em>Aeneid.</em> l. vii. 1.`},
+	{noteno: 8, notetext: `Imitated by Tasso, <em>G. L.</em> c. viii.<br /><br />
+		<span class="latin">Ne timor di fatica o di periglio,<br />
+		Ne vaghezza del regno, ne pietade<br />
+		Del vecchio genitor, si degno affetto<br />
+		Intiepedir nel generoso petto.</span><br /><br />
+		This imagined voyage of Ulysses into the Atlantic is alluded to by Pulci.<br /><br />
+		<span class="italian">E sopratutto commendava Ulisse,<br />
+		Che per veder nell’ altro mondo gisse.</span><br />
+		<em>Morg. Magg.</em> c. xxv. And by Tasso, <em>G. L.</em> c. xv. 25.`},
+	{noteno: 9, notetext: `The straits of Gibraltar.`},
+	{noteno: 10, notetext: `So Chiabrera, <em>Cant. Eroiche.</em> xiii <span class="italian">Faro de’remi un volo</span>. And Tasso Ibid. 26.`},
+	{noteno: 11, notetext: `The mountain of Purgatory.`}
+],
+[
+	{noteno: 1, notetext: `The engine of torture invented by Perillus, for the tyrant Phalaris.`},
+	{noteno: 2, notetext: `Montefeltro.`},
+	{noteno: 3, notetext: `Guido Novello da Polenta, who bore an eagle for his coat of arms. The name of Polenta was derived from a castle so called in the neighbourhood of Brittonoro. Cervia is a small maritime city, about fifteen miles to the south of Ravenna. Guido was the son of Ostasio da Polenta, and made himself master of Ravenna, in 1265. In 1322 he was deprived of his sovereignty, and died at Bologna in the year following. This last and most munificent patron of Dante is himself enumerated, by the historian of Italian literature, among the poets of his time. Tiraboschi, <em>Storia della Lett. Ital.</em> t. v. 1. iii. c. ii. 13. The passnge in the text might have removed the uncertainty wwhich Tiraboschi expressed, respecting the duration of Guido’s absence from Ravenna, when he was driven from that city in 1295, by the arms of Pietro, archbishop of Monreale. It must evidently have been very short, since his government is here represented (in 1300) as not having suffered any material disturbance for many years.`},
+	{noteno: 4, notetext: `The territory of Forli, the inhabitants of which, in 1282, mere enabled, hy the strategem of Guido da Montefeltro, who then governed it, to defeat with great slaughter the French army by which it had been besieged. See G. Villani, l. vii. c. 81. The poet informs Guido, its former ruler, that it is now in the possession of Sinibaldo Ordolaffi, or Ardelaffi, whom he designates by his coat of arms, a lion vert.`},
+	{noteno: 5, notetext: `Malatesta and Malatestino his son, lords of Rimini, called, from their ferocity, the mastiffs of Verruchio, which was the name of their castle.`},
+	{noteno: 6, notetext: `Montagna de’Parcitati, a noble knight, and leader of the Ghibelline party at Rimini, murdered by Malatestino.`},
+	{noteno: 7, notetext: `Lamone is the river at Faenza, and Santerno at Imola.`},
+	{noteno: 8, notetext: `Machinardo Pagano, whose arms were a lion azure on a field argent; mentioned again in the <em>Purgatory</em>, Canto XIV. 122. See G. Villani <em>passim</em>, where he is called Machinardo da Susinana.`},
+	{noteno: 9, notetext: `Cesena, situated at the foot of a mountain, and washed by the river Savio, that often descends with a swoln and rapid stream from the Appenine.`},
+	{noteno: 10, notetext: `Guido da Montefeltro.`},
+	{noteno: 11, notetext: `Boniface VIII.`},
+	{noteno: 12, notetext: `<span class="italian">Non furon leonine ma di volpe.</span> So Pulci, <em>Morg. Magg.</em> c. xix.<br /><br />
+		<span class="italian">E furon le sua opre e le sue colpe<br />
+		Non creder leonine ma di volpe.</span>`},
+	{noteno: 13, notetext: `Boniface VIII. whose enmity to the family of Colonna prompted him to destroy their houses near the Lateran. Wishing to obtain possession of their other seat, Penestrino, he consulted with Guido da Montefeltro how he might accomplish his purpose, offering him at the same time absolution for his past sins, as well as for that which he was then tempting him to commit. Guido’s advice was, that kind words and fair promises nonld put his enemies into his power; and they accordingly soon aftermards fell into the snare laid for them, <span class="sc">A.D.</span> 1298. See G. Villani, l. viii. c. 23.`},
+	{noteno: 14, notetext: `He alludes to the renegade Christians, by whom the Saracens, in Apri., 1291, were assisted to recover St.John d’Acre, the last possession of the Christians in the Holy Land. The regret expressed by the Florentine annalist G. Villani, for the loss of this valuable fortress, is well worthy of observation, l. vii. c. 144.`},
+	{noteno: 15, notetext: `So in Dante’s treatise <em>De Monarchia</em>: “<span class="latin">Dicunt quidam adhue, quod Constantinus Imperator, mundatus a lepra intercessione Syvestri, tunc summni pontificis imperii sedem, scilicet Romam, donavit ecclesiae, cum multis allis imperii dignitatibus.</span>” Lib.iii.`},
+	{noteno: 16, notetext: `Celestine V. See Notes to Canto III.`}
+],
+[
+	{noteno: 1, notetext: `The war of Hannibal in Italy. “When Mago brought news of his victories to Carthage, in order to make his successes more easily credited, he commanded the golden rings to be poured out in the senate house, which made so large a heap, that, as some relate, they filled three modii and a half. A more probable account represents them not to have exceeded one modius.” Livy, <em>Hist.</em>`},
+	{noteno: 2, notetext: `Robert Guiscard, who conquered the kingdom of Naples, and died in 1110. G. Villani, l. iv. c. 18. He is introduced in the <em>Paradise</em>, Canto XVIII.`},
+	{noteno: 3, notetext: `The army of Manfredi, which, through the treachery of the Apulian troops, wns overcome by Charles of Anjou in 1205, and fell in such numbers that the bones of the slain were still gathered near Ceperano. G. Villani, l. vii. c. 9. See the <em>Purgatory</em>, Canto III.`},
+	{noteno: 4, notetext: `He alludes to tile victory which Charles gained over Conradino, by the sage advice of the Sieur de Valeri, in 1208. G. Villani, l. vii. c. 27.`},
+	{noteno: 5, notetext: `The disciple of Mohammed.`},
+	{noteno: 6, notetext: `“In 1305, a friar, called Dolcino, who belonged to no regular order, contrived to raise in Novarra, in Lombardy, a large company of the meaner sort of people, declaring himself to be a true apostle of Christ, and promulgating a community of property and of wives, with many other such heretical doctrines. He blamed the pope, cardinals, and other prelates of the holy church, for not observing their duty, nor leading the angelic life, and affirmed that he ought to be pope. He was followed by more than three thousand men and women, who lived promiscuously on the mountains together, like beasts, and, when they wanted provisions, supplied themselves by depredation and rapine. This lasted for two years till, many being struck with compunction at the dissolute life they led, his sect was much diminished; and through failure of food, and the severity of the snows, he was taken by the people of Novarra, and burnt, with Margarita his companion and many other men and women whom his errors had seduced.” G. Villanni, l. viii. c. 84.<br />
+		<span class="indent"></span>Landino observes, that he was possessed of singular eloquence, and that both he and Margarita endored their fate with a firmness worthy of a better cause. For a further account of him, see Muratori <em>Rer. Ital. Script.</em> t. ix. p. 427.`},
+	{noteno: 7, notetext: `A place in the territory of Bologna. Piero fomented dissensions among the inhabitants of that city, and among the leaders of the neighbouring states.`},
+	{noteno: 8, notetext: `Lombardy.`},
+	{noteno: 9, notetext: `Guido dal Cassero and Angiolello da Cagnano, two of the worthiest and most distinguished citizens of Fano, were invited by Malatestino da Rimini to an entertainment on pretence that he had some important business to transact with them: and, according to instructions given by him, they mere drowned in their passage near Catolica, between Rimini and Fano.`},
+	{noteno: 10, notetext: `Focara is a mountain, from which a wind blows that is peculiarly dangerous to the navigators of that coast.`},
+	{noteno: 11, notetext: `Curio, whose speech (according to Lucan) determined Julius Caesar to proceed when he had arrived at Rimini (the ancient Ariminum), and doubted whether he should prosecute the civil war. <span class="latin">Tolle moras: semper nocuit differre paratis</span> <em>Pharsal.</em> l. i. 281.`},
+	{noteno: 12, notetext: `Buondelmonte was engaged to marry a lady of the Amidei family, but broke his promise and united himself to one of the Donati. This was so much resented by the former, that a meeting of themselves and their kinsmen was held, to consider of the best means of revenging the insult. Mosca degli Uberti persuaded them to resolve on the assassination of Buondelmonte, exclaiming to them “the thing once done, there is an end.” The counsel and its effects were the source of many terrible calamities to the state of Florence. “This murder,” says G. Villani, l. v. c. 38, “was the cause and beginning of the accursed Guelph and Ghibelline parties in Florence.” It happened in 1215. See the <em>Paradise</em>, Canto XVI. 139.`},
+	{noteno: 13, notetext: `What stronger breastplate than a heart untainted? Shakespeare, <em>2 Hen. VI.</em> a. iii. s. 2.`},
+	{noteno: 14, notetext: `Bertrand de Born, Vicomte de Hautefort, near Perigueux in Guienne, who incited John to rebel against his father, Henry II. of England. Bertrand holds a distinguished place among the Provencal poets. He is quoted in Dante, "De Vulg. Eloq." l. ii. c. 2. For the translation of some extracts from his poems, see Millot, <em>Hist. Litteraire des Troubadors</em> t. i. p. 210; but the historical parts of that work are, I believe, not to be relied on.`},
+],
+[
+	{noteno: 1, notetext: `A kinsman of the Poet’s, who was murdered by one of the Sacchetti family. His being placed here, may be considered as a proof that Dante was more impartial in the allotment of his punishments than has generally been supposed.`},
+	{noteno: 2, notetext: `It is very probable that these lines gave Milton the idea of his celebrated description:<br /><br />
+		Immediately a place<br />
+		Before their eyes appear’d, sad, noisome, dark,<br />
+		A lasar-house it seem’d, wherein were laid<br />
+		Numbers of all diseas’d, all maladies, &c.<br /><br />
+		<em>P. L.</em> b. xi. 477.`},
+	{noteno: 3, notetext: `The valley through which passes the river Chiana, bounded by Arezzo, Cortona, Montepulciano, and Chiusi. In the heat of autumn it was formerly rendered unwholesome by the stagnation of the water, but has since been drained by the Emperor Leopold II. The Chiana is mentioned as a remarkably sluggish stream, in the <em>Paradise</em>, Canto XIII. 21.`},
+	{noteno: 4, notetext: `See Note to Canto XXV. v. 18.`},
+	{noteno: 5, notetext: `He alludes to the fable of the ants changed into Myrmidons. Ovid, <em>Met.</em> 1. vii.`},
+	{noteno: 6, notetext: `Grifolino of Arezzo, who promised Albero, son of the Bishop of Sienna, that he would teach him the art of flying; and because be did not keep his promise, Albero prevailed on his father to have him burnt for a necromancer.`},
+	{noteno: 7, notetext: `The same imputation is again cast on the Siennese, <em>Purg.</em> Canto XIII. 141.`},
+	{noteno: 8, notetext: `This is said ironically. Stricca, Niccolo Salimbeni, Caccia of Asciano, and Abbagliato, or Meo de Folcacchieri, belonged to a company of prodigal and luxurious young men in Sienna, called the “<span class="italian">brigata godereccia.</span>” Niccolo was the inventor of a new manner of using cloves in cookery, not very well understood by the commentators, and which was termed the “<span class="italian">costuma ricca</span>.”`},
+	{noteno: 9, notetext: `Sienna.`},
+	{noteno: 10, notetext: `Capocchio of Sienna, who is said to have been a fellow-student of Dante’s in natural philosophy.`},
+],
+[
+	{noteno: 1, notetext: `From Ovid, <em>Metam.</em> 1. iv. <span class="latin">Protinos Aelides</span>, &c.`},
+	{noteno: 2, notetext: `See Euripedes, <em<Hecuba</em>; and Ovid, <em>Metam.</em> l. xiii.`},
+	{noteno: 3, notetext: `Gianni Schicci, who was of the family of Cavalcanti, possessed such a faculty of moulding his features to the resemblance of others, that he was employed by Simon Donati to personate Buoso Donati, then recently deceased, and to make a will, leaving Simon his heir; for which service he was renumerated with a mare of extraordinary value, here called “the lady of the herd.”`},
+	{noteno: 4, notetext: `See Ovid, <em>Metam.</em> l. x.`},
+	{noteno: 5, notetext: `Adamo of Breschia, at the instigation of Cuido Alessandro, and their brother Aghinulfo, lords of Romena, coonterfeited the coin of Florence; for which crime he was burnt. Landino says, that in his time the peasants still pointed out a pile of stones near Romena as the place of his execution.`},
+	{noteno: 6, notetext: `Romena is a part of Casentino.`},
+	{noteno: 7, notetext: `A fountain in Sienna.`},
+	{noteno: 8, notetext: `The floren was a coin that ought to have had tmenty-four carats of pure gold. Villani relates, that it was first used at Florence in 1253, an aera of great prosperity in the annals of the republic; before which time their most valuable coinage was of silver. <em>Hist.</em> l. vi. c. 54.`},
+	{noteno: 9, notetext: `Potiphar’s wife.`},
+],
+[
+	{noteno: 1, notetext: `<span class="latin">Vulnus in Herculeo quae quondam fecerat hoste Vulneris auxilium Pellas hasta fuit.</span> Ovid, <em>Rem. Amor.</em> 47. The same allusion was made by Bernard de Ventadour, a Provencal poet in the middle of the twelfth century: and Millot observes, that it was a singular instance of erudition in a Troubadour. But it is not impossible, as Warton remarks, (<em>Hist. of Engl. Poetry</em>, vol. ii. sec. x. p 215.) but that he might have been indebted for it to some of the early romances. In Chaucer’s Squier’s Tale, a sword of similar quality is introduced:<br /><br />
+	And other folk have wondred on the sweard,<br />
+	That could so piercen through every thing;<br />
+	And fell in speech of Telephus the king,<br />
+	And of Achillcs for his queint spere,<br />
+	For he couth with it both heale and dere.<br /><br />
+	So Shakspeare, <em>Henry VI.</em> p. ii. a. 5. s. 1.<br /><br />
+	Whose smile and frown like to Achilles’ spear<br />
+	Is able with the change to kill and cure.`},
+	{noteno: 2, notetext: `When Charlemain with all his peerage fell At Fontarabia Milton, <em>P. L.</em> b. i. 586. See Warton’s <em>Hist. of Eng. Poetry</em>, v. i. sect. iii. p. 132. “This is the horn which Orlando won from the giant Jatmund, and which as Turpin and the Islandic bards report, was endued with magical power, and might be heard at the distance of twenty miles.” Charlemain and Orlando are introduced in the <em>Paradise</em>, Canto XVIII.`},
+	{noteno: 3, notetext: `A castle near Sienna.`},
+	{noteno: 4, notetext: `The country near Carthage. See Liv. <em>Hist.</em> l. xxx. and Lucan, <em>Phars.</em> l. iv. 590. Dante has kept the latter of these writers in his eye throughout all this passage.`},
+	{noteno: 5, notetext: `The combat between Hercules Antaeus is adduced by the Poet in his treatise “De Monarchia,” l. ii. as a proof of the judgment of God displayed in the duel, according to the singular superstition of those times.`},
+	{noteno: 6, notetext: `The leaning tower at Bologna.`}
+],
+[
+	{noteno: 1, notetext: `<span class="italian">Ne da lingua, che chiami mamma, o babbo.</span> Dante in his treatise " De Vulg. Eloq." speaking of words not admissble in the loftier, or as he calls it, tragic style of poetry, says&mdash;“<span class="latin">In quorum numero nec puerilia propter suam simplicitatem ut Mamma et Babbo,</span>” l. ii. c. vii.`},
+	{noteno: 2, notetext: `The one a mountain in Sclavonia, the other in that tract of country called the Garfagnana, not far from Lucca.`},
+	{noteno: 3, notetext: `“As high as to the face.”`},
+	{noteno: 4, notetext: `<span class="italian">Mettendo i denti in nota di cicogna.</span> So Boccaccio, <em>G.</em> viii. n. 7. “<span class="italian">Lo scolar cattivello quasi cicogna divenuto si forte batteva i denti.</span>”`},
+	{noteno: 5, notetext: `Alessandro and Napoleone, sons of Alberto Alberti, who murdered each other. They were proprietors of the valley of Falterona, where the Bisenzio has its source, a river that falls into the Arno about six miles from Florence.`},
+	{noteno: 6, notetext: `Mordrec, son of King Arthur.`},
+	{noteno: 7, notetext: `Focaccia of Cancellieri, (the Pistoian family) whose atrocious act of revenge against his uncle is said to have given rise to the parties of the Bianchi and Neri, in the year 1300. See G. Villani, <em>Hist.</em> l, viii. c. 37. and Macchiavelli, <em>Hist.</em> l. ii. The account of the latter writer differs much from that given by Landino in his <em>Commentary</em>.`},
+	{noteno: 8, notetext: `Sassol Mascheroni, a Florentine, who also murdered his uncle.`},
+	{noteno: 9, notetext: `Camiccione de’ Pazzi of Valdarno, by whom his kinsman Ubertino was treacherously pnt to death.`},
+	{noteno: 10, notetext: `One of the same family. He betrayed the Castel di Piano Travigne, in Valdarno, to the Florentines, after the refugees of the Bianca and Ghibelline party had defended it against a siege for twenty-nine days, in the summer of 1302. See G. Villani, l. viii. c. 52 and Dino Compagni, l. ii.`},
+	{noteno: 11, notetext: `The defeat of the Guelfi at Montaperto, occasioned by the treachery of Bocca degli Abbati, who, during the engagement, cut off the hand of Giacopo del Vacca de’Pazzi, bearer of the Florentine standard. G. Villani, l. vi. c. 80, and Notes to Canto X. This event happened in 1260.`},
+	{noteno: 12, notetext: `Buoso of Cremona, of the family of Duera, who was bribed by Guy de Montfort, to leave a pass between Piedmont and Parma, with the defence of which he had been entrusted by the Ghibellines, open to the army of Charles of Anjou, A.D. 1265, at which the people of Cremona were so enraged, that they extirpated the whole family. G. Villani, l. vii. c. 4.`},
+	{noteno: 13, notetext: `Abbot of Vallombrosa, who was the Pope’s Legate at Florence, where his intrigues in favour of the Ghibellines being discovered, he was beheaded. I do not find the occurrence in Vallini, nor do the commentators say to what pope he was legate. By Landino he is reported to have been from Parma, by Vellutello from Pavia.`},
+	{noteno: 14, notetext: `“Gianni Soldanieri,” says Villani, <em>Hist.</em> l. vii. c14, "put himself at the head of the people, in the hopes of rising into power, not aware that the result would be mischief to the Ghibelline party, and his own ruin; an event which seems ever to have befallen him, who has headed the populace in Florence." <span class="sc">A.D.</span> 1266.`},
+	{noteno: 15, notetext: `The betrayer of Charlemain, mentioned by Archbishop Turpin. He is a common instance of treachery with the poets of the middle ages. <span class="french">Trop son fol e mal pensant, Pis valent que Guenelon. Thibaut, roi de Navarre</span> O new Scariot, and new Ganilion, O false dissembler, &c. Chaucer, Nonne’s Prieste’s Tale and in the Monke’s Tale, Peter of Spaine.`},
+	{noteno: 16, notetext: `Tribaldello de’ Manfredi, who was bribed to betray the city of Faonza, <span class="sc">A.D.</span> 1282. G. Villani, l. vii. c. 80.`},
+	{noteno: 17, notetext: `See Statius, <em>Theb.</em> l. viii. ad finem.`},
+],
+[
+	{noteno: 1, notetext: `“In the year 1288, in the month of July, Pisa was much divided by competitors for the sovereignty; one party, composed of certain of the Guelphi, being headed by the Judge Nino di Gallura de’Visconti; another, consisting of others of the same faction, by the Count Ugolino de’ Gherardeschi; and the third by the Archbishop Ruggieri degli Ubaldini, with the Lanfranchi, Sismondi, Gualandi, and other Ghibelline houses. The Count Ugolino,to effect his purpose, united with the Archbishop and his party, and having betrayed Nino, his sister’s son, they contrived that he and his followers should either be driven out of Pisa, or their persons seized. Nino hearing this, and not seeing any means of defending himself, retired to Calci, his castle, and formed an alliance with the Florentines and people of Lucca, against the Pisans. The Count, before Nino was gone, in order to cover his treachery, when everything was settled for his expulsion, quitted Pisa, and repaired to a manor of his called Settimo; whence, as soon as he was informed of Nino’s departure, he returned to Pisa with great rejoicing and festivity, and was elevated to the supreme power with every demonstration of triumph and honour. But his greatness was not of long continuauce. It pleased the Almighty that a total reverse of fortune should ensue, as a punishment for his acts of treachery and guilt: for he was said to have poisoned the Count Anselmo da Capraia, his sister’s son, on account of the envy and fear excited in his mind by the high esteem in which the gracious manners of Anselmo were held by the Pisans. The power of the Guelphi being so much diminished, the Archbishop devised means to betray the Count Uglino and caused him to be suddenly attacked in his palace by the fury of the people, whom he had exasperated, by telling them that Ugolino had betrayed Pisa, and given up their castles to the citizens of Florence and of Lucca. He was immediately compelled to surrender; his bastard son and his grandson fell in the assault; and two of his sons, with their two sons also, were conveyed to prison.” G. Villani l. vii. c. 120.<br />
+	<span class="indent"></span>“In the following march, the Pisans, who had imprisoned the Count Uglino, with two of his sons and two of his grandchildren, the offspring of his son the Count Guelfo, in a tower on the Piazza of the Anzania, caused the tower to be locked, the key thrown into the Arno, and all food to be withheld from them. In a few days they died of hunger; but the Count first with loud cries declared his penitence, and yet neither priest nor friar was allowed to shrive him. All the five, when dead, were dragged out of the prison, and meanly interred; and from thence forward the tower was called the tower of famine, and so shall ever be.” <em>Ibid.</em> c. 127.<br />
+	<span class="indent"></span>Chancer has briefly told Ugolino’s story. See Monke’s Tale, Hugeline of Pise.`},
+	{noteno: 2, notetext: `The mountain S. Giuliano, between Pisa and Lucca.`},
+	{noteno: 3, notetext: `<span class="italian">Tu ne vestisti<br />
+	Queste misere carni, e tu le spoglia.</span><br /><br />
+	Imitated by Filicaja, Canz. iii.<br /><br />
+	<span class="italian">Di questa imperial caduca spoglia<br />
+	Tu, Signor, me vestisti e tu mi spoglia:<br />
+	Ben puoi’l Regno me tor tu che me’l desti.<br />
+	And by Maffei, in the <em>Merope</em>:<br />
+	<span class="italian">Tu disciogleste<br />
+	Queste misere membra e tu le annodi.</span>`},
+	{noteno: 4, notetext: `<span class="italian">Del bel paese la, dove’l si suona.</span> Italy as explained by Dante himself, in his treatise <em>De Vulg. Eloq.</em> l. i. c. 8. “<span class="latin">Qui autem Si dicunt a praedictis finibus. (Januensiem) Oreintalem (Meridionalis Europae partem) tenent; videlicet usque ad promontorium illud Italiae, qua sinus Adriatici maris incipit et Siciliam.</span>”`},
+	{noteno: 5, notetext: `Small islands near the mouth of the Arno.`},
+	{noteno: 6, notetext: `<span class="italian">Lo pianto stesso li pianger non lascia.</span> So Giusto de’Conti, Bella Mano. Son. ”Quanto il ciel” <span class="italian">Che il troppo pianto a me pianger non lassa.</span> v. 116. The friar Albigero.] Alberigo de’Manfredi, of Faenza, one of the Frati Godenti, Joyons Friars who having quarrelled with some of his brotherhood, under pretence of wishing to be reconciled, invited them to a banquet, at the conclusion of which he called for the fruit, a signal for the assassins to rush in and dispatch those whom he had marked for destruction. Hence, adds Landino, it is said proverbially of one who has been stabbed, that he has had some of the friar Alberigo’s fruit. Thus Pulci, <em>Morg. Magg.<e/m> c. xxv. <span class="italian">Le frutte amare di frate Alberico.</span>`},
+	{noteno: 7, notetext: `This circle is named Ptolomea from Ptolemy, the son of Abubus, by whom Simon and his sons were murdered, at a great banquet he had made for them. See Maccabees, ch xvi.`},
+	{noteno: 8, notetext: `&mdash;sorrow’s eye, glazed with blinding tears. Shakspeare, <em>Rich. II.</em> a. 2. s. 2.`},
+	{noteno: 9, notetext: `The family of Doria was possessed of great influence in Genoa. Branca is said to have murdered his father-in-law, Michel Zanche, introduced in Canto XXII.`},
+	{noteno: 10, notetext: `The friar Alberigo.`}
+],
+[
+	{noteno: 1, notetext: `The author of the Caliph Vathek, in the notes to that tale, justly observes, that it is more than probable that Don Quixote’s mistake of the wind-mills for giants was suggested to Cervantes by this simile.`},
+	{noteno: 2, notetext: `It can scarcely be doubted but that Milton derived his description of Satan in those lines,<br /><br />
+	Each passion dimm’d his face<br />
+	Thrice chang’d with pale, ire, envy, and despair.<br /><br />
+	<em>P. L.</em> b. iv. 114. from this passage, coupled with the remark of Vellutello upon it:<br /><br />
+	“The first of these sins is anger which he signifies by the red face; the second, represented by that between pale and yellow is envy and not, as others have said, avarice; and the third, denoted by the black, is a melancholy humour that causes a man’s thoughts to be dark and evil, and averse from all joy and tranquillity.”`},
+	{noteno: 3, notetext: `&mdash;His sail-broad vans<br />
+	He spreads for flight.<br /><br />
+	Milton, <em>P. L.</em> b. ii. 927. Compare Spenser, <em>F. Q.</em> b. i. c. xi. st. 10; Ben Jonson’s <em>Every Man out of his humour</em>, v. 7; and Fletcher’s <em>Prophetess</em>, a. 2. s. 3.
 
+	v. 46. Like a bat.] The description of an imaginary being, who is called Typhurgo, in the <em>Zodiacus Vitae</em>, has some touches very like this of Dante’s Lucifer.<br /><br />
+	<span class="latin">Ingentem vidi regem ingentique sedentem<br />
+	In solio, crines flammanti stemmate cinctum<br />
+	—-utrinque patentes<br />
+	Alae humeris magnae, quales vespertilionum<br />
+	Membranis contextae amplis—<br />
+	Nudus erat longis sed opertus corpora villis.</span><br /><br />
+	M. Palingenii, <em>Zod. Vit.</em> l. ix.<br /><br />
+	A mighty king I might discerne,<br />
+	Plac’d hie on lofty chaire,<br />
+	His haire with fyry garland deckt<br />
+	Puft up in fiendish wise.<br />
+	x x x x x x<br />
+	Large wings on him did grow<br />
+	Framde like the wings of flinder mice, &c.<br />
+	Googe’s Translation`},
+	{noteno: 4, notetext: `Landino struggles, but I fear in vain, to extricate Brutus from the unworthy lot which is here assigned him. He maintains, that by Brutus and Cassius are not meant the individuals known by those names, but any who put a lawful monarch to death. Yet if Caesar was such, the conspirators might be regarded as deserving of their doom.`},
+	{noteno: 5, notetext: `The poet uses the Hebrew manner of computing the day, according to which the third hour answers to our twelve o’clock at noon.`},
+	{noteno: 6, notetext: `The mountain of Purgatory.`},
+	{noteno: 7, notetext: `“La tomba.” This word is used to express the whole depth of the infernal region.`}
 ]
 ]};

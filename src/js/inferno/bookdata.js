@@ -7,7 +7,9 @@ module.exports = {
 	bookauthor: "Dante Alighieri",
 	description: `<p>What can one say about Dante’s <em>Inferno</em> that hasn’t already been said? Not very much. Obviously, there are better places to learn about Dante than the about page of an app; and you are probably smart enough to find them. Please note that the translations here aren’t being presented as the best translations of the <em>Inferno</em> available: rather, they’re here by virtue of being in the public domain.</p>`,
 	versionhistory: [ // this is the version history for a particular book, a list
-		"0.0.1: first release","0.0.2: support for twin mode, remembers location"
+		"0.0.1: first release",
+		"0.0.2: support for twin mode, remembers location",
+		"0.0.3: added notes to the Cary translation"
 	],
 
 	comingsoon:  // this is what goes in the coming soon section, a single chunk of HTML
