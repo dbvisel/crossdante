@@ -322,21 +322,20 @@ var app = {
 		}
 	},
 	localdata: {
-		save: function() {
+		save: function() {	// this should store appdate on localstorage
 
-			// this should store appdate on localstorage (does that work for mobile?)
-			// also if we're not on mobile, set canto/translation in hash
+			let tostore = JSON.stringify({
+				currentcanto: 			data.canto,
+				currenttransright: 	data.lens.right.translation,
+				currenttransleft: 	data.lens.left.translation,
+				translationset: 		data.currenttranslationlist,
+				twinmode: 					data.usersettings.twinmode,
+				nightmode: 					data.usersettings.nightmode,
+				shownotes: 					data.usersettings.shownotes
+			});
 
-			/*
-
-			bookname:
-			currentcanto:
-			currenttranslation:
-			translationset:
-			twinmode
-			nightmode
-
-			*/
+			let storage = window.localStorage;
+			storage.setItem(data.bookname, tostore);
 
 			// save current location as hash
 
@@ -354,6 +353,12 @@ var app = {
 		},
 		read: function() {
 
+			if(app.helpers.getUrlVars().reset) {
+				console.log("Resetting local storage!");
+				let storage = window.localStorage;
+				storage.removeItem(data.bookname);
+			}
+
 			let gotocanto = 0;
 			let gototrans = "";
 			let gotolefttrans = "";
@@ -365,7 +370,49 @@ var app = {
 
 			// first, read local storage
 
+			let storage = window.localStorage;
+			let toread = storage.getItem(data.bookname);
 
+			if(toread !== null) {
+				console.log("What's in local storage: "+ toread);
+				let storedvalues = JSON.parse(toread);
+				console.log(storedvalues);
+				data.currentcanto = storedvalues.currentcanto;
+				data.lens.right.translation = storedvalues.currenttransright;
+				data.lens.left.translation = storedvalues.currenttransleft;
+				data.usersettings.twinmode = storedvalues.twinmode;
+				data.usersettings.nightmode = storedvalues.nightmode;
+				data.usersettings.shownotes = storedvalues.shownotes;
+				data.currenttranslationlist = storedvalues.translationset;
+				if(data.usersettings.twinmode) {
+					dom.addclass("body","twinmode");
+					dom.removeclass("#twinmode","off");
+					dom.addclass("#singlemode","off");
+				} else {
+					dom.removeclass("body","twinmode");
+					dom.addclass("#twinmode","off");
+					dom.removeclass("#singlemode","off");
+				}
+				if(data.usersettings.nightmode) {
+					dom.addclass("body","nightmode");
+					dom.removeclass("#nightmode","off");
+					dom.addclass("#daymode","off");
+				} else {
+					dom.removeclass("body","nightmode");
+					dom.addclass("#nightmode","off");
+					dom.removeclass("#daymode","off");
+				}
+				if(data.usersettings.shownotes) {
+					dom.addclass("body","hidenotes");
+					dom.removeclass("#shownotes","off");
+					dom.addclass("#hidenotes","off");
+				} else {
+					dom.removeclass("body","hidenotes");
+					dom.addclass("#shownotes","off");
+					dom.removeclass("#hidenotes","off");
+				}
+				app.setlens(data.currenttranslationlist[app.helpers.gettranslationindex(data.lens.right.translation)],data.currentcanto,"right",0);
+			}
 
 			// second, read hash
 
