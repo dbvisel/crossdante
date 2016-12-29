@@ -403,11 +403,11 @@ var app = {
 					dom.removeclass("#daymode","off");
 				}
 				if(data.usersettings.shownotes) {
-					dom.addclass("body","hidenotes");
+					dom.removeclass("body","hidenotes");
 					dom.removeclass("#shownotes","off");
 					dom.addclass("#hidenotes","off");
 				} else {
-					dom.removeclass("body","hidenotes");
+					dom.addclass("body","hidenotes");
 					dom.addclass("#shownotes","off");
 					dom.removeclass("#hidenotes","off");
 				}

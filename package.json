@@ -25,7 +25,9 @@
     "serve": "browser-sync start --server 'dist' --files 'dist/css/*.css, dist/js/*.js' --index 'index-debug.html' --browser 'google chrome'",
     "cordovainferno": "shjs scripts/cordovainferno.js",
 		"cordovapurgatorio": "shjs scripts/cordovapurgatorio.js",
-		"cordovaparadiso": "shjs scripts/cordovaparadiso.js"
+		"cordovaparadiso": "shjs scripts/cordovaparadiso.js",
+		"cordovaall": "shjs scripts/cordovaall.js",
+		"buildall": "shjs scripts/buildall.js"
   },
   "author": "Dan Visel",
   "license": "ISC",
