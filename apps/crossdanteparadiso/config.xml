@@ -1,26 +1,27 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="net.danvisel.crossdanteparadiso" version="0.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Cross Dante Paradiso</name>
-		<description>Cross Dante Paradiso</description>
-    <author email="dbvisel@gmail.com" href="https://danvisel.net/crossdante">Dan Visel</author>
-    <content src="paradiso.html" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <platform name="android">
-        <allow-intent href="market:*" />
-				<preference name="xwalkMultipleApk" value="false" />
-    </platform>
-    <platform name="ios">
-			<allow-intent href="itms:*" />
-			<allow-intent href="itms-apps:*" />
-			<preference name="StatusBarOverlaysWebView" value="false" />
-			<preference name="StatusBarBackgroundColor" value="#000000" />
-			<preference name="StatusBarStyle" value="lightcontent" />
-    </platform>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="net.danvisel.crossdanteparadiso" version="0.0.13" android-versionCode="13" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<name>Cross Dante Paradiso</name>
+	<description>Cross Dante Paradiso</description>
+	<author email="dbvisel@gmail.com" href="https://danvisel.net/crossdante">Dan Visel</author>
+	<content src="paradiso.html"/>
+	<plugin name="cordova-plugin-whitelist" spec="1"/>
+	<access origin="*"/>
+	<allow-intent href="http://*/*"/>
+	<allow-intent href="https://*/*"/>
+	<allow-intent href="tel:*"/>
+	<allow-intent href="sms:*"/>
+	<allow-intent href="mailto:*"/>
+	<allow-intent href="geo:*"/>
+	<platform name="android">
+		<allow-intent href="market:*"/>
+		<preference name="xwalkMultipleApk" value="false"/>
+	</platform>
+	<platform name="ios">
+		<allow-intent href="itms:*"/>
+		<allow-intent href="itms-apps:*"/>
+		<preference name="StatusBarOverlaysWebView" value="false"/>
+		<preference name="StatusBarBackgroundColor" value="#000000"/>
+		<preference name="StatusBarStyle" value="lightcontent"/>
+	</platform>
+	<hook src="scripts/incrementBuildNum.js" type="after_build"/>
 </widget>

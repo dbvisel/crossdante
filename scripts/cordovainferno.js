@@ -29,5 +29,5 @@ if(incordovadir > -1) {
 	shell.exec("cordova build android --release");
 } else {
 	// assuming that we are in the main directory
-	shell.exec("cd apps/crossdante"+bookname+" && cordova build android --release");
+	shell.exec("cd apps/crossdante"+bookname+" && cordova build android --release --inc-version");
 }

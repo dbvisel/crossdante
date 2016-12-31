@@ -8,7 +8,7 @@ $textlineheight: 24px;
 @media only screen and (max-width: 399px) {
 	$textfontsize: 15px;
 	$textlineheight: 20px;
-	.textpage {
+	.textpage, .notewindow {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
 	}
@@ -30,7 +30,11 @@ $textlineheight: 24px;
 			margin-bottom: 16px;
 		}
 	}
-
+	.notewindow {
+		width: 80vw;
+		left: 10vw;
+		top: 20vw;
+	}
 	.basic {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
@@ -118,7 +122,7 @@ $textlineheight: 24px;
 @media only screen and (min-width: 400px) and (max-width: 639px) {
 	$textfontsize: 18px;
 	$textlineheight: 24px;
-	.textpage {
+	.textpage, .notewindow {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
 	}
@@ -139,6 +143,11 @@ $textlineheight: 24px;
 		& > *:last-child {
 			margin-bottom: 16px;
 		}
+	}
+	.notewindow {
+		width: 80vw;
+		left: 10vw;
+		top: 20vw;
 	}
 
 	.basic {
@@ -227,7 +236,7 @@ $textlineheight: 24px;
 @media only screen and (min-width: 640px) and (max-width: 767px) {
 	$textfontsize: 18px;
 	$textlineheight: 24px;
-	.textpage {
+	.textpage, .notewindow {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
 	}
@@ -332,7 +341,7 @@ $textlineheight: 24px;
 
 	$textfontsize: 21px;
 	$textlineheight: 28px;
-	.textpage {
+	.textpage, .notewindow {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
 	}
@@ -434,7 +443,7 @@ $textlineheight: 24px;
 @media only screen and (min-width: 1024px) {
 	$textfontsize: 24px;
 	$textlineheight: 32px;
-	.textpage {
+	.textpage, .notewindow {
 		font-size: $textfontsize;
 		line-height: $textlineheight;
 	}

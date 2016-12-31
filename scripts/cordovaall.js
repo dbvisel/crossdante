@@ -2,7 +2,9 @@
 //
 // shjs cordovaall.js
 //
-// this must be run from top of project!
+// this must be run from top of project! builds all android cordova apps for release
+//
+// note that this DOES NOT update version numbers or do anything to the iOS versions
 
 "use strict";
 
@@ -28,9 +30,9 @@ for(let i = 0; i < booknames.length; i++) {
 	shell.echo("Building "+bookname+"...")
 	if(incordovadir > -1) {
 		// assuming that we're in the cordova directory
-		shell.exec("cordova build android --release");
+		shell.exec("cordova build android --release --inc-version");
 	} else {
 		// assuming that we are in the main directory
-		shell.exec("cd apps/crossdante"+bookname+" && cordova build android --release");
+		shell.exec("cd apps/crossdante"+bookname+" && cordova build android --release --inc-version");
 	}
 }
