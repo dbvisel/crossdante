@@ -9,7 +9,8 @@ module.exports = {
 	versionhistory: [ // this is the version history for a particular book, a list
 		"0.0.1: first release",
 		"0.0.2: support for twin mode, remembers location",
-		"0.0.3: Includes the Norton prose translation, packed with his notes."
+		"0.0.3: Includes the Norton prose translation, packed with his notes.",
+		"0.0.4: Added in the notes to the Cary translation, erudite but not very useful."
 	],
 
 	comingsoon:  // this is what goes in the coming soon section, a single chunk of HTML

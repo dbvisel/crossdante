@@ -16,6 +16,6 @@ An app for facing-page translation. Online version here: https://danvisel.net/cr
 
 Current books are _inferno_, _purgatorio_, and _paradiso_. More soon!
 
-NPM build scripts are in _package.json_. Change variables in the "config" section to make build scripts for different books. It would be nice to have a smarter build system, but this works.
+NPM build scripts are in _package.json_. Change variables in the "config" section to make build scripts for different books. It would be nice to have a smarter build system, but this works. _npm run buildall_ will build all current books.
 
-To build for Cordova: _npm run cordova[bookname]_
+To build for Cordova: _npm run cordova[bookname]_ or _npm run cordovaall_
