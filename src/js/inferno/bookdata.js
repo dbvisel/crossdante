@@ -31,7 +31,7 @@ module.exports = {
 		{"translationid":"norton",
 			"order":2},
 		{"translationid":"cary",
-			"order":2},
+			"order":3},
 			/*,
 		{"translationid":"wright",
 			"order":3},
