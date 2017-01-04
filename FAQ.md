@@ -70,7 +70,7 @@ There's some more metadata that should probably be added in here (translation da
 
 Now. Next up is _text_, which is an array where each member is a canto. The first entry is the title page and is treated as special (probably this should be generated automatically?); after that the regular cantos proceed.
 
-I've used ES6 syntax so that everything can be put inside of ugly single back quotes (`); what's inside is HTML. For Norton, this is pretty straightforward! There are display classes that are defined in SCSS; most everything, however, is just inside of `<p>` tags. Because this has been defined as "prose", the paragraphs show up as prose; if it were defined as "poetry" the paragraphs would show up as properly-formatted poetry. A couple of special things. First, paragraph styles:
+I've used ES6 syntax so that everything can be put inside of ugly single back quotes (\`); what's inside is HTML. For Norton, this is pretty straightforward! There are display classes that are defined in SCSS; most everything, however, is just inside of `<p>` tags. Because this has been defined as "prose", the paragraphs show up as prose; if it were defined as "poetry" the paragraphs would show up as properly-formatted poetry. A couple of special things. First, paragraph styles:
 
  * `<p class="cantohead">` makes a canto header.
  * `<p class="summary">` makes an italicized summary – this is specific to Norton so far. 
@@ -84,7 +84,7 @@ Next, character styles:
 And other things:
 
  * In poetry with stanzas, stanzas are wrapped with a `<div class="stanza">`; div.stanzas are separated by a blank line.
- * The numbers in mustaches ({{1}}) are callouts to notes which get replaced by superscripted numbers by the app itself. 
+ * The numbers in mustaches (`{{1}}`) are callouts to notes which get replaced by superscripted numbers by the app itself. 
  * To include a 1-em space inside a line, use `<span class="indent"></span>`
    
 There is more complicated formatting in poetry! I'll come back and describe those later.
@@ -110,10 +110,13 @@ Once you have a translation (probably while you're making that!) you need to mak
 
 Point that at your new book (instead of at "inferno"). That's the only thing you need to change. Save it with a new name; make a copy of _src/template-debug.html_ and _dist/template.html_  and change the references in them: 
 
-    <script type="text/javascript" src="../dist/js/template.js"></script> _(in template-debug.html)_
-     <script type="text/javascript" src="js/template.min.js"></script> _(in template.html)_
+    <script type="text/javascript" src="../dist/js/template.js"></script>
+
+(for _template-debug.html_) and 
+
+     <script type="text/javascript" src="js/template.min.js"></script>
   
-to your new JavaScript file. (The debug version makes it a little easier to track down problems in your text markup.)
+(for _template.html_) to your new JavaScript file. (The debug version makes it a little easier to track down problems in your text markup.)
 
 And you're almost ready! Go to _package.json_ and change the variables in "config" to match your new bookname. Then to build your book:
 
