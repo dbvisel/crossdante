@@ -70,22 +70,22 @@ There's some more metadata that should probably be added in here (translation da
 
 Now. Next up is _text_, which is an array where each member is a canto. The first entry is the title page and is treated as special (probably this should be generated automatically?); after that the regular cantos proceed.
 
-I've used ES6 syntax so that everything can be put inside of ugly single back quotes (`); what's inside is HTML. For Norton, this is pretty straightforward! There are display classes that are defined in SCSS; most everything, however, is just inside of <p> tags. Because this has been defined as "prose", the paragraphs show up as prose; if it were defined as "poetry" the paragraphs would show up as properly-formatted poetry. A couple of special things. First, paragraph styles:
+I've used ES6 syntax so that everything can be put inside of ugly single back quotes (`); what's inside is HTML. For Norton, this is pretty straightforward! There are display classes that are defined in SCSS; most everything, however, is just inside of `<p>` tags. Because this has been defined as "prose", the paragraphs show up as prose; if it were defined as "poetry" the paragraphs would show up as properly-formatted poetry. A couple of special things. First, paragraph styles:
 
- * <p class="cantohead"> makes a canto header.
- * <p class="summary"> makes an italicized summary – this is specific to Norton so far. 
- * For poetry, <p class="slindent"> indents a line by 1 em; I think you can also use <p class="slindent2em"> for a 2-em indent (and so on). 
+ * `<p class="cantohead">` makes a canto header.
+ * `<p class="summary">` makes an italicized summary – this is specific to Norton so far. 
+ * For poetry, `<p class="slindent">` indents a line by 1 em; I think you can also use `<p class="slindent2em">` for a 2-em indent (and so on). 
 
 Next, character styles:
 
- * Italics are signaled by <em>, bold by <strong>. I don't remember if it turns up in Norton, but text that is italicized because it is in a foreign language should be wrapped in <span class="italian"> or <span class="latin"> – that seems like useful information to have in the future even if right now it's only being used to italicize.
- * Small caps can be made with <span class="sc">
+ * Italics are signaled by `<em>`, bold by `<strong>`. I don't remember if it turns up in Norton, but text that is italicized because it is in a foreign language should be wrapped in `<span class="italian">` or `<span class="latin">` – that seems like useful information to have in the future even if right now it's only being used to italicize.
+ * Small caps can be made with `<span class="sc">`
 
 And other things:
 
- * In poetry with stanzas, stanzas are wrapped with a <div class="stanza">; div.stanzas are separated by a blank line.
+ * In poetry with stanzas, stanzas are wrapped with a `<div class="stanza">`; div.stanzas are separated by a blank line.
  * The numbers in mustaches ({{1}}) are callouts to notes which get replaced by superscripted numbers by the app itself. 
- * To include a 1-em space inside a line, use <span class="indent"></span>
+ * To include a 1-em space inside a line, use `<span class="indent"></span>`
    
 There is more complicated formatting in poetry! I'll come back and describe those later.
 
@@ -98,7 +98,7 @@ Following all the text are notes, if the translation has any notes. This is an a
 
 If you look at the Norton notes, you'll see that the numbering scheme seems to involves a lot of 1s and 2s; I think it used footnotes and started over on each page. This is not particularly helpful when it's being displayed any other way; so the app renumbers notes for each canto, starting at 1, going to however many notes there are. (Other numbering systems are imaginable!) When a canto is displayed, the app goes through the list of notes and tries to sequentially match each note with something in the text. It does not matter what the number is (it doesn't actually even have to be a number), but it does need to appear in the text or the note won't show up. (Or, if you have a callout and no note with that callout, you'll see the braces in the text.) 
 
-Notes are currently displayed inside a single paragraph; you can have multiple lines by sticking in a <br>.  I don't love this system, but it's what there is right now. The current notes, for what it's worth, are mostly garbage – notes in the Gutenberg texts are even more wildly corrupt than the texts. A lot of Greek, for example, was simply thrown out. 
+Notes are currently displayed inside a single paragraph; you can have multiple lines by sticking in a `<br />`.  I don't love this system, but it's what there is right now. The current notes, for what it's worth, are mostly garbage – notes in the Gutenberg texts are even more wildly corrupt than the texts. A lot of Greek, for example, was simply thrown out. 
 
 ## How do I get from translation files to a text? 
 
@@ -106,26 +106,26 @@ _(This section assumes some knowledge of NPM! I'll explain all of this in more d
 
 Once you have a translation (probably while you're making that!) you need to make a new HTML file and a main JavaScript file. In _src/_, you'll see _template-debug.html_; that's the shell for the application. It calls out _js/template.js_. _template.js_ pulls together the book text modules with the app modules. In there, you'll see the line
 
- >let bookdata = require("./inferno/bookdata");
+    let bookdata = require("./inferno/bookdata");
 
 Point that at your new book (instead of at "inferno"). That's the only thing you need to change. Save it with a new name; make a copy of _src/template-debug.html_ and _dist/template.html_  and change the references in them: 
 
- ><script type="text/javascript" src="../dist/js/template.js"></script> (in template-debug.html)
-  ><script type="text/javascript" src="js/template.min.js"></script> (in template.html)
+    <script type="text/javascript" src="../dist/js/template.js"></script> _(in template-debug.html)_
+     <script type="text/javascript" src="js/template.min.js"></script> _(in template.html)_
   
 to your new JavaScript file. (The debug version makes it a little easier to track down problems in your text markup.)
 
 And you're almost ready! Go to _package.json_ and change the variables in "config" to match your new bookname. Then to build your book:
 
- >npm run build-js
+    npm run build-js
  
  To make it ready to go:
  
- >npm run production
+    npm run production
 
 While you're debugging, you might run the watch task:
 
- >npm run watch
+    npm run watch
 
 to find errors in what you're doing; you could also use the serve task to have the debug version show up in your browser.
 
