@@ -60,9 +60,9 @@ Let's start with the metadata. What's in there?
  * _translationshortname_ is the short version of the author's name ("Norton") which appears in the title bar. The reason for this is that "Charles Eliot Norton" doesn't legibly fit in the title bar on a phone.
  * _translationfullname_ is the full name of the translator. 
  * _translationclass_ contains extra classes that are added to the text; this is a list separated by spaces. For Norton, this is "norton prose". A list of these classes and what they do:
-		* _prose_ tells it to display paragraphs as prose rather than as poem lines.
-		* _poetry_ tells it to display paragraphs as poem lines rather than as prose. This also makes the app center things differently: it attempts to center poetry to the width of the longest line, which prose just runs from margin to margin.
-		* _norton_ and _carlyle_ tell the CSS to apply particular fixes for particular translations. These can be found in _src/scss/_poets.scss_; there were a lot of these rules, but I've tried to get rid of them. Basically, I wanted to provide a way for overrides for weird translations. I don't know if this is sustainable.
+  * _prose_ tells it to display paragraphs as prose rather than as poem lines.
+  * _poetry_ tells it to display paragraphs as poem lines rather than as prose. This also makes the app center things differently: it attempts to center poetry to the width of the longest line, which prose just runs from margin to margin.
+  * _norton_ and _carlyle_ tell the CSS to apply particular fixes for particular translations. These can be found in _src/scss/_poets.scss_; there were a lot of these rules, but I've tried to get rid of them. Basically, I wanted to provide a way for overrides for weird translations. I don't know if this is sustainable.
 
 There's some more metadata that should probably be added in here (translation date, for example, seems important). Maybe I'll put that in at some point.
 
