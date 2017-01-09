@@ -33,8 +33,10 @@
 ## Longer term plans
 
  * Move translations to server
- 		* Make single reader app that lets user download books as desired; books would be saved locally.
-		* Ability to make editable version of original; this could then be uploaded to server as a new translation.
+  * Make single reader app that lets user download books as desired; books would be saved locally.
+  * Ability to make editable version of original; this could then be uploaded to server as a new translation.
+  * This probably requires a conception of users and groups we don't currently have.
  * Better way of dealing with prose: essentially, paginate (pages flow left to right), translations would be stacked vertically.
  * Versioning: ability to include multiple versions of a text in a translation 
  * Image-handling: would be nice to have Gustave Dore illustrations as a translation.
+ * Commenting: ability for users to add comment to specific point in specific translation; comments are probably saved on server.

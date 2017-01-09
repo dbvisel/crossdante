@@ -59,7 +59,7 @@ $textlineheight: 24px;
 			margin-top:1em;
 	}
 
-	p.title, p.author {
+	p.title, p.author, p.subtitle {
 		font-size: $textfontsize * 1.5;
 		line-height: $textlineheight * 2;
 	}
@@ -70,6 +70,14 @@ $textlineheight: 24px;
 
 	p.summary {
 		margin: $textlineheight 2*$textlineheight;
+	}
+	p.cantosubhead {
+		margin-top: -1 * $textlineheight;
+		margin-bottom: $textlineheight;
+	}
+	p.divider {
+		margin-top: $textlineheight;
+		margin-bottom: $textlineheight;
 	}
 
 	.poetry {
@@ -174,7 +182,7 @@ $textlineheight: 24px;
 			margin-top:1em;
 	}
 
-	p.title, p.author {
+	p.title, p.author, p.subtitle {
 		font-size: $textfontsize * 1.5;
 		line-height: $textlineheight * 2;
 	}
@@ -185,6 +193,14 @@ $textlineheight: 24px;
 
 	p.summary {
 		margin: $textlineheight 2*$textlineheight;
+	}
+	p.cantosubhead {
+		margin-top: -1 * $textlineheight;
+		margin-bottom: $textlineheight;
+	}
+	p.divider {
+		margin-top: $textlineheight;
+		margin-bottom: $textlineheight;
 	}
 
 	.poetry {
@@ -276,7 +292,7 @@ $textlineheight: 24px;
 		}
 	}
 
-	p.title, p.author {
+	p.title, p.author, p.subtitle {
 		font-size: $textfontsize * 1.5;
 		line-height: $textlineheight * 2;
 	}
@@ -287,6 +303,14 @@ $textlineheight: 24px;
 
 	p.summary {
 		margin: $textlineheight 2*$textlineheight;
+	}
+	p.cantosubhead {
+		margin-top: -1 * $textlineheight;
+		margin-bottom: $textlineheight;
+	}
+	p.divider {
+		margin-top: $textlineheight;
+		margin-bottom: $textlineheight;
 	}
 
 	.poetry {
@@ -381,7 +405,7 @@ $textlineheight: 24px;
 		}
 	}
 
-	p.title, p.author {
+	p.title, p.author, p.subtitle {
 		font-size: $textfontsize * 1.5;
 		line-height: $textlineheight * 2;
 	}
@@ -392,6 +416,14 @@ $textlineheight: 24px;
 
 	p.summary {
 		margin: $textlineheight 2*$textlineheight;
+	}
+	p.cantosubhead {
+		margin-top: -1 * $textlineheight;
+		margin-bottom: $textlineheight;
+	}
+	p.divider {
+		margin-top: $textlineheight;
+		margin-bottom: $textlineheight;
 	}
 
 	.poetry {
@@ -483,7 +515,7 @@ $textlineheight: 24px;
 		}
 	}
 
-	p.title, p.author {
+	p.title, p.author, p.subtitle {
 		font-size: $textfontsize * 1.5;
 		line-height: $textlineheight * 2;
 	}
@@ -494,6 +526,14 @@ $textlineheight: 24px;
 
 	p.summary {
 		margin: $textlineheight 2*$textlineheight;
+	}
+	p.cantosubhead {
+		margin-top: -1 * $textlineheight;
+		margin-bottom: $textlineheight;
+	}
+	p.divider {
+		margin-top: $textlineheight;
+		margin-bottom: $textlineheight;
 	}
 
 	.poetry {

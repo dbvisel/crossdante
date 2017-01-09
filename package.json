@@ -4,11 +4,11 @@
   "description": "multi-language dante",
   "main": "index.js",
   "config": {
-    "sourcejs": "src/js/purgatorio.js",
-    "distjs": "dist/js/purgatorio.js",
-    "distminjs": "dist/js/purgatorio.min.js",
-    "translationsdir": "src/js/purgatorio/translations/*.js",
-    "htmlfile": "src/purgatorio-debug.html"
+    "sourcejs": "src/js/catulluscarmina.js",
+    "distjs": "dist/js/catulluscarmina.js",
+    "distminjs": "dist/js/catulluscarmina.min.js",
+    "translationsdir": "src/js/catulluscarmina/translations/*.js",
+    "htmlfile": "src/catulluscarmina-debug.html"
   },
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss & node-sass --output-style compressed -o src/css src/scss",

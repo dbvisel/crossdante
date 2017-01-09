@@ -191,7 +191,7 @@ body {
 
 // text formatting
 
-p.title, p.author {
+p.title, p.author, p.subtitle {
 	text-align: center;
 	font-size: $textfontsize * 1.5;
 	line-height: $textlineheight * 2;
@@ -204,6 +204,10 @@ p.title {
 
 p.author {
 	font-weight: bold;
+}
+
+p.subtitle {
+	font-style: italic;
 }
 
 div.stanza {
@@ -224,6 +228,19 @@ p.summary {
 	margin: $textlineheight 2*$textlineheight;
 }
 
+p.cantosubhead {
+	font-style: italic;
+	margin-top: -1 * $textlineheight;
+	margin-bottom: $textlineheight;
+	text-align: center;
+}
+
+p.divider {
+	margin-top: $textlineheight;
+	margin-bottom: $textlineheight;
+	text-align: center;
+	letter-spacing: 1em;
+}
 
 // spans
 
@@ -294,6 +311,9 @@ span.greek {
 		text-indent: $textlineheight;
 	}
 	& p.summary + p {
+		text-indent: 0;
+	}
+	& p.cantosubhead + p {
 		text-indent: 0;
 	}
 	& p + p.summary {
