@@ -1,31 +1,31 @@
 // version 4: now going to ES6 & Babel
+// @flow
 
 "use strict";
 
-const Hammer = require("hammerjs");
-const Fastclick = require("fastclick");
-const Velocity = require("velocity-animate");
+import Hammer from "hammerjs";
+import Fastclick from "fastclick";
+import Velocity from "velocity-animate";
+import dom from "./dom";
+import data from "./appdata";
 
-const dom = require("./dom");
-let data = require("./appdata");
-
-var app = {
+const app = {
 	helpers: {
-		gettranslationindex: function(transid) {
+		gettranslationindex: function(transid: string) {
 			for(let j = 0; j < data.translationdata.length; j++) {
 				if(transid == data.translationdata[j].translationid) {
 					return j;
 				}
 			}
 		},
-		rounded: function(pixels) {
+		rounded: function(pixels: number) {
 
 			// this is still a mess, fix this
 
 			return data.lens.right.lineheight * Math.floor(pixels / data.lens.right.lineheight);
 
 		},
-		nexttrans: function(giventranslation) {
+		nexttrans: function(giventranslation: string) {
 			if(data.currenttranslationlist.length > 1) {
 				if((data.currenttranslationlist.indexOf(giventranslation) + 1) == data.currenttranslationlist.length ) {
 					return data.currenttranslationlist[0];
@@ -36,7 +36,7 @@ var app = {
 				return giventranslation;
 			}
 		},
-		prevtrans: function(giventranslation) {
+		prevtrans: function(giventranslation: string) {
 			if(data.currenttranslationlist.length > 1) {
 				if(data.currenttranslationlist.indexOf(giventranslation) == 0) {
 					return data.currenttranslationlist[data.currenttranslationlist.length - 1];
@@ -47,7 +47,7 @@ var app = {
 				return giventranslation;
 			}
 		},
-		fixpadding: function(thisside) {
+		fixpadding: function(thisside: object) {
 			const divs = document.querySelectorAll("#text p");
 			var div, padding, desiredwidth;
 			let maxwidth = 0;
@@ -97,7 +97,7 @@ var app = {
 			}
 
 		},
-		fixpaddingresponsive: function(thisside) {
+		fixpaddingresponsive: function(thisside: object) {
 			const divs = document.querySelectorAll(`#${thisside.slider.id} .textframe p`);
 			var div;
 			let maxwidth = 0;
@@ -106,12 +106,12 @@ var app = {
 
 				// this is poetry, figure out longest line
 
-				thisside.text.style.paddingLeft = 0;
-				thisside.text.style.paddingRight = 0;
-				thisside.textinside.style.marginLeft = 0;
-				thisside.textinside.style.marginRight = 0;
-				thisside.textinside.style.paddingLeft = 0;
-				thisside.textinside.style.paddingRight = 0;
+				thisside.text.style.paddingLeft = "0";
+				thisside.text.style.paddingRight = "0";
+				thisside.textinside.style.marginLeft = "0";
+				thisside.textinside.style.marginRight = "0";
+				thisside.textinside.style.paddingLeft = "0";
+				thisside.textinside.style.paddingRight = "0";
 				for(let i=0; i<divs.length; i++) {
 					div = divs[i];
 					div.style.display = "inline-block";
@@ -127,18 +127,18 @@ var app = {
 
 				if((thisside.width -16 ) > maxwidth) {
 					console.log(`Text width: ${thisside.width}; max line width: ${maxwidth}; calculated padding: ${(thisside.width - maxwidth-16-16)/2}px`);
-					thisside.text.style.paddingLeft = 0;
-					thisside.text.style.paddingRight = 0;
-					thisside.textinside.style.paddingLeft = 0;
-					thisside.textinside.style.paddingRight = 0;
+					thisside.text.style.paddingLeft = "0";
+					thisside.text.style.paddingRight = "0";
+					thisside.textinside.style.paddingLeft = "0";
+					thisside.textinside.style.paddingRight = "0";
 					thisside.textinside.style.marginLeft = (thisside.width - maxwidth - 16 - 16)/2+"px";
 					thisside.textinside.style.marginRight = (thisside.width - maxwidth-16 - 16)/2+"px";
 				} else {
 					console.log(`Too wide! Text width: ${thisside.width}; max line width: ${maxwidth}.`);
 					thisside.text.style.paddingLeft = 8+"px";
 					thisside.text.style.paddingRight = 8+"px";
-					thisside.textinside.style.marginLeft = 0;
-					thisside.textinside.style.marginRight = 0;
+					thisside.textinside.style.marginLeft = "0";
+					thisside.textinside.style.marginRight = "0";
 				}
 			} else {
 				console.log("Prose, not doing anything.");
@@ -146,11 +146,13 @@ var app = {
 		},
 		turnonsynchscrolling: function() {
 			document.querySelector("#sliderleft .textframe").onscroll = function() {
-				let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderright .textframe").scrollHeight;
+				let percentage: number = this.scrollTop / this.scrollHeight * document.querySelector("#sliderright .textframe").scrollHeight;
+				if(percentage == null) percentage = 0;
 				document.querySelector("#sliderright .textframe").scrollTop = percentage;
 			};
 			document.querySelector("#sliderright .textframe").onscroll = function() {
-				let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderleft .textframe").scrollHeight;
+				let percentage: number = this.scrollTop / this.scrollHeight * document.querySelector("#sliderleft .textframe").scrollHeight;
+				if(percentage == null) percentage = 0;
 				document.querySelector("#sliderleft .textframe").scrollTop = percentage;
 			};
 		},
@@ -173,30 +175,32 @@ var app = {
 				let children = notes[i].children;
 				for(let j=0; j < children.length; j++) {
 					if(dom.hasclass(children[j],"notetext")) {
-						children[j].setAttribute("data-notenumber", count);
+						children[j].setAttribute("data-notenumber", count.toString());
 					}
 					if(dom.hasclass(children[j],"noteno")) {
-						children[j].setAttribute("data-notenumber", count);
+						children[j].setAttribute("data-notenumber", count.toString());
 						app.notes.createclick(children[j]);
 					}
 				}
 				count++;
 			}
 		},
-		createclick: function(el) {
-			el.onclick = function(e) {
+		createclick: function(element: HTMLElement) {
+			element.onclick = (e) => {
 				e.stopPropagation();
 
 				let thisnote = this.getAttribute("data-notenumber");
-				let notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
-				app.notes.hide();
-				let insert = dom.create(`<div class="notewindow" id="notewindow">
-						${notetext}
-					</div>`);
-				data.elements.main.appendChild(insert);
-				document.getElementById("notewindow").onclick = () => {
+				if(document.querySelector(`.notetext[data-notenumber="${thisnote}"]`) !== null) {
+					let notetext = document.querySelector(`.notetext[data-notenumber="${thisnote}"]`).innerHTML;
 					app.notes.hide();
-				};
+					let insert = dom.create(`<div class="notewindow" id="notewindow">
+							${notetext}
+						</div>`);
+					data.elements.main.appendChild(insert);
+					document.getElementById("notewindow").onclick = () => {
+						app.notes.hide();
+					};
+				}
 			};
 		},
 		hide: function() {
@@ -204,7 +208,7 @@ var app = {
 		},
 	},
 	settings: {
-		gosettings: function(element) {
+		gosettings: function(element: HTMLElement) {
 
 			// this is never actually used!
 
@@ -212,19 +216,19 @@ var app = {
 				app.setpage("settings");
 			};
 		},
-		checkboxgo: function(el) {
-			el.onclick = function() {
+		checkboxgo: function(element: HTMLElement) {
+			element.onclick = function() {
 				app.settings.changetranslation(this.id.replace("check-",""),document.getElementById(this.id).checked);
 			};
 		},
-		checkboxspango: function(el) {
-			el.onclick = function() {
+		checkboxspango: function(element: HTMLElement) {
+			element.onclick = () => {
 				document.getElementById(`check-${this.id}`).checked = !document.getElementById(`check-${this.id}`).checked;
 				app.settings.changetranslation(this.id,document.getElementById(`check-${this.id}`).checked);
 			};
 		},
-		changetranslation: function(thisid, isset) {
-			for(let i in data.translationdata) {
+		changetranslation: function(thisid: string, isset: boolean) {
+			for(let i of data.translationdata) {
 				if(thisid == data.translationdata[i].translationid) {
 					if(isset) {
 						data.currenttranslationlist.push(thisid);
@@ -246,7 +250,7 @@ var app = {
 			}
 
 			let newlist = [];
-			for(let i in data.translationdata) {
+			for(let i of data.translationdata) {
 				if(data.currenttranslationlist.indexOf(data.translationdata[i].translationid) > -1) {
 					newlist.push(data.translationdata[i].translationid);
 				}
@@ -264,10 +268,10 @@ var app = {
 			// add in translation chooser
 
 			dom.removebyselector("#translatorlist");
-			let insert = dom.create('<ul id="translatorlist"></ul>');
+			let insert: DocumentFragment = dom.create('<ul id="translatorlist"></ul>');
 			document.getElementById("translationchoose").appendChild(insert);
 			const translatorlist = document.querySelector("#translatorlist");
-			for(let i in data.translationdata) {
+			for(let i of data.translationdata) {
 				insert = dom.create(`<li>
 						<input type="checkbox" id="check-${data.translationdata[i].translationid}" />
 						<label for="${data.translationdata[i].translationid}" id="${data.translationdata[i].translationid}" ><span><span></span></span>${data.translationdata[i].translationfullname}</label>
@@ -298,7 +302,7 @@ var app = {
 				insert = dom.create(`<option id="canto${i}" ${((data.canto == i) ? "selected" : "")}>${data.cantotitles[i]}</option>`);
 				document.getElementById("selectcanto").appendChild(insert);
 			}
-			for(let i in data.currenttranslationlist) {
+			for(let i of data.currenttranslationlist) {
 				for(let j = 0; j < data.translationdata.length; j++) {
 					if(data.translationdata[j].translationid == data.currenttranslationlist[i]) {
 						insert = dom.create(`<option id="tr_${data.translationdata[j].translationid}" ${((data.currenttranslationlist.indexOf(data.lens.right.translation) == i) ? "selected" : "")}>${data.translationdata[j].translationfullname}</option>`);
@@ -377,7 +381,7 @@ var app = {
 				console.log("What's in local storage: "+ toread);
 				let storedvalues = JSON.parse(toread);
 				console.log(storedvalues);
-				data.currentcanto = storedvalues.currentcanto;
+				data.canto = storedvalues.currentcanto;
 				data.lens.right.translation = storedvalues.currenttransright;
 				data.lens.left.translation = storedvalues.currenttransleft;
 				data.usersettings.twinmode = storedvalues.twinmode;
@@ -411,7 +415,7 @@ var app = {
 					dom.addclass("#shownotes","off");
 					dom.removeclass("#hidenotes","off");
 				}
-				app.setlens(data.currenttranslationlist[app.helpers.gettranslationindex(data.lens.right.translation)],data.currentcanto,"right",0);
+				app.setlens(data.currenttranslationlist[app.helpers.gettranslationindex(data.lens.right.translation)],data.canto,"right",0);
 			}
 
 			// second, read hash
@@ -583,7 +587,7 @@ var app = {
 
 			document.getElementById("abouttext").innerHTML = data.description; 		// set up about page
 
-			for(let i in data.versionhistory) {
+			for(let i of data.versionhistory) {
 				document.getElementById("versionhistory").innerHTML += `<li>${data.versionhistory[i]}</li>`;
 			}
 			document.getElementById("comingsoon").innerHTML = data.comingsoon;
@@ -733,7 +737,7 @@ var app = {
 
 			data.lens.left.slider.style.width = "50%";
 			data.lens.right.slider.style.width = "50%";
-			app.setlens(data.lens.left.translation,data.canto,"left");
+			app.setlens(data.lens.left.translation,data.canto,"left",0);
 		} else {
 			console.log("Single mode!");
 			dom.removeclass("body","twinmode");
@@ -790,9 +794,9 @@ var app = {
 		data.lens.left.width = data.usersettings.twinmode ? data.windowwidth / 2 : 0;
 		data.lens.right.width = data.usersettings.twinmode ? data.windowwidth / 2 : data.windowwidth;
 
-		app.setlens(data.lens.right.translation,data.canto,"right");
+		app.setlens(data.lens.right.translation,data.canto,"right",0);
 	},
-	setlens: function(newtrans, newcanto, side, percentage) {
+	setlens: function(newtrans: string, newcanto: number, side: object, percentage?: number) {
 		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}, ${side}`);
 
 		// if page isn't set to "lens" this doesn't do anything
@@ -822,8 +826,8 @@ var app = {
 
 			if((newtransindex - oldtransindex) !== 0) {
 				changetrans = true;
-				percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
-				console.log(`—>Current percentage: ${percentage}`);
+				thisside.percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
+				console.log(`—>Current percentage: ${thisside.percentage}`);
 			}
 
 			// need to figure which translationdata we need from master list of translations
@@ -872,13 +876,13 @@ var app = {
 					}
 				}
 
-				otherside.slider.style.zIndex = 500;
+				otherside.slider.style.zIndex = "500";
 				Velocity(thisside.slider, {'left':direction}, {
 					duration: data.system.delay,
 					mobileHA: false,
 					complete: function() {
 						dom.removebyselector(`#oldtext${side}`);
-						otherside.slider.style.zIndex = 1;
+						otherside.slider.style.zIndex = "1";
 						thisside.slider.style.left = "0";
 						thisside.text.style.left = "0";
 						dom.addclass(`#slider${side} .textframe`, "makescroll");
@@ -891,10 +895,10 @@ var app = {
 				// this method still isn't great! it tries to round to current lineheight
 				// to avoid cutting off lines
 
-				let scrollto = app.helpers.rounded(percentage * document.querySelector(`#newtext${side}`).scrollHeight);
+				let scrollto = app.helpers.rounded(thisside.percentage * document.querySelector(`#newtext${side}`).scrollHeight);
 				document.querySelector(`#newtext${side}`).scrollTop = scrollto;
 				if(data.usersettings.twinmode) {
-					let scrollto = app.helpers.rounded(percentage * document.querySelector(`#newtext${other}`).scrollHeight);
+					let scrollto = app.helpers.rounded(thisside.percentage * document.querySelector(`#newtext${other}`).scrollHeight);
 					document.querySelector(`#newtext${other}`).scrollTop = scrollto;
 				}
 				console.log("Scrolling to:" + scrollto);
@@ -921,7 +925,7 @@ var app = {
 				}
 				data.canto = newcanto;
 
-				if(percentage > 0) {
+				if(thisside.percentage > 0) {
 					document.querySelector(`#newtext${side}`).scrollTop = document.querySelector(`#newtext${side}`).scrollHeight;
 					if(data.usersettings.twinmode) {
 						document.querySelector(`#newtext${other}`).scrollTop = document.querySelector(`#newtext${other}`).scrollHeight;
@@ -977,14 +981,14 @@ var app = {
 			app.localdata.save();
 		}
 	},
-	setpage: function(newpage) {
+	setpage: function(newpage: string) {
 		dom.removeclass(".page","on");
 		dom.addclass(".page#"+newpage,"on");
 		data.currentpage = newpage;
 		if(newpage !== "lens") {
 			// set title to be whatever the h1 is
 
-			let newtitle = document.querySelector("#" + newpage + " h1").innerHTML;
+			let newtitle: HTMLElement = document.querySelector("#" + newpage + " h1").innerHTML;
 			data.elements.titlebar.innerHTML = newtitle;
 			dom.addclass("nav#navbarleft","off");
 			dom.addclass("nav#navbarright","off");
@@ -1069,7 +1073,7 @@ var app = {
 
 		// set up current translation list (initially use all of them)
 
-		for(let i in data.translationdata) {
+		for(let i of data.translationdata) {
 			data.currenttranslationlist.push(data.translationdata[i].translationid);
 			document.getElementById("textsources").innerHTML += `<li>${data.translationdata[i].translationfullname}, <em>${data.translationdata[i].title}:</em> ${data.translationdata[i].source}</li>`;
 		}
@@ -1122,4 +1126,4 @@ var app = {
 	}
 };
 
-module.exports = app;
+export default app;

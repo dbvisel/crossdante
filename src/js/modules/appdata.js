@@ -1,4 +1,5 @@
 // appdata.js
+// @flow
 
 module.exports = {
 	currenttranslationlist: [],    			// list of ids of translations we're currently using
@@ -56,6 +57,7 @@ module.exports = {
 	bookname: "",					// the work's individual code (lowercase, no punctuation, no spaces), e.g. "inferno"
 	booktitle: "",				// the work's title
 	bookauthor: "",				// the work's author (distinct from translator)
+	description: "",			// the work's description (in bookdata)
 	versionhistory: [],		// the version history, an array of texts
 	comingsoon: "",				// the book's coming soon information, a chunk of HTML
 	translationcount: 0,	// this is the number of different translations in the book
