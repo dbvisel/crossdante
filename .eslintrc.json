@@ -18,6 +18,8 @@
             "error",
             "always"
         ],
-        "no-console": 0
-    }
+        "no-console": 0,
+				"compat/compat": 2
+    },
+		"plugins": ["compat"]
 }

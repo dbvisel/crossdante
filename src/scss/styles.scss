@@ -235,10 +235,13 @@ p.cantosubhead {
 	text-align: center;
 }
 
-p.divider {
+p.inthead, p.divider {
 	margin-top: $textlineheight;
 	margin-bottom: $textlineheight;
 	text-align: center;
+}
+
+p.divider {
 	letter-spacing: 1em;
 }
 
@@ -250,15 +253,7 @@ p.divider {
 	font-size: 0.9em;
 }
 
-span.italian { // using span so as not to make italian texts entirely italic
-	font-style: italic;
-}
-
-span.latin {
-	font-style: italic;
-}
-
-span.greek {
+span.italian, span.italian, span.latin, span.greek { // using span so as not to make italian texts entirely italic
 	font-style: italic;
 }
 
@@ -317,6 +312,9 @@ span.greek {
 		text-indent: 0;
 	}
 	& p + p.summary {
+		text-indent: 0;
+	}
+	& p.inthead + p {
 		text-indent: 0;
 	}
 }

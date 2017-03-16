@@ -1,18 +1,81 @@
 // appdata.js
-// @flow
+// @//flow
 
-module.exports = {
+let appdata: {
+	currenttranslationlist: Array<string>,
+	windowwidth: number,
+	windowheight: number,
+	currentpage: string,
+	canto: number,
+	elements: {
+		lens: HTMLElement,
+		main: HTMLElement,
+		content: HTMLElement,
+		hammerleft: HTMLElement,
+		hammerright: HTMLElement,
+		titlebar: HTMLElement
+	},
+	lens: {
+		width: number,
+		height: number,
+		left:  {
+			translation: string,
+			lineheight: number,
+			percentage: number,
+			lines: number,
+			width: number,
+			titlebar: HTMLElement,
+			slider: HTMLElement,
+			textinside: HTMLElement,
+			text: HTMLElement
+		},
+		right:  {
+			translation: string,
+			lineheight: number,
+			percentage: number,
+			lines: number,
+			width: number,
+			titlebar: HTMLElement,
+			slider: HTMLElement,
+			textinside: HTMLElement,
+			text: HTMLElement
+		}
+	},
+	system: {
+		responsive: boolean,
+		oncordova: boolean,
+		platform: string,
+		delay: number
+	},
+	usersettings: {
+		twinmode: boolean,
+		nightmode: boolean,
+		shownotes: boolean,
+	},
+	bookname: string,
+	booktitle: string,
+	bookauthor: string,
+	description: string,
+	versionhistory: Array<string>,
+	comingsoon: string,
+	translationcount: number,
+	cantocount: number,
+	textdata: Array<*>,
+	translationdata: Array<*>,
+	cantotitles: Array<string>
+} = {
 	currenttranslationlist: [],    			// list of ids of translations we're currently using
 	windowwidth: window.innerWidth,			// the window width
 	windowheight: window.innerHeight,		// the window height
 	currentpage: "lens",								// the page that we're currently viewing
 	canto: 0,														// the current canto
 	elements: {
-		lens: document.getElementById("lens"),
-		main: document.getElementById("main"),
-		content: document.getElementById("content"),
-		hammerleft: "",
-		hammerright: ""
+		lens: document.querySelector("html"),
+		main: document.querySelector("html"),
+		content: document.querySelector("html"),
+		titlebar: document.querySelector("html"),
+		hammerleft: document.querySelector("html"),
+		hammerright: document.querySelector("html")
 	},
 	lens: {
 		width: window.innerWidth,					// is this actually needed? same as windowwidth
@@ -64,5 +127,34 @@ module.exports = {
 	cantocount: 0,				// this is the number of cantos in the book
 	textdata: [],
 	translationdata: [],
-	cantotitles: []				// the canonical titles for cantos, used in navbar and in selection
+	cantotitles: [],			// the canonical titles for cantos, used in navbar and in selection
+	watch: {
+		setpage: "",				// this is a string (id of page)
+		setlens: {
+			trigger: false,		// when this changes, the thing is called
+			canto: 0,					// what's fed to app.setlens
+			translation: "",
+			percentage: 0,
+			side: "",
+		},
+		localsave: false		// when this is flipped, localsave happens			
+	},
+	setup: function() {
+		appdata.elements.lens = document.getElementById("lens");
+		appdata.elements.main = document.getElementById("main");
+		appdata.elements.content = document.getElementById("content");
+		appdata.elements.titlebar = document.querySelector("#navbarother .navtitle");
+
+		appdata.lens.left.slider = document.getElementById("sliderleft");
+		appdata.lens.left.text = document.querySelector("#sliderleft .textframe");
+		appdata.lens.left.textinside = document.querySelector("#sliderleft .textinsideframe");
+		appdata.lens.left.titlebar = document.querySelector("#navbarleft .navtitle");
+
+		appdata.lens.right.slider = document.getElementById("sliderright");
+		appdata.lens.right.text = document.querySelector("#sliderright .textframe");
+		appdata.lens.right.textinside = document.querySelector("#sliderright .textinsideframe");
+		appdata.lens.right.titlebar = document.querySelector("#navbarright .navtitle");
+	}
 };
+
+module.exports = appdata;

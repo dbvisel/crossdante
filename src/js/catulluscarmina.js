@@ -1,6 +1,7 @@
+
 "use strict";
 
-const app = require("./modules/app");
+let app = require("./modules/app");
 let bookdata = require("./catulluscarmina/bookdata");
 let appdata = require("./modules/appdata");
 
@@ -30,5 +31,7 @@ for(let i in appdata.textdata) {
 		}
 	}
 }
+
+console.log(app);
 
 app.initialize();
