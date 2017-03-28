@@ -1,10 +1,12 @@
 // controls.js
+//
+// this module sets up controls for the app as a whole
 
 "use strict";
 
 const Hammer = require("hammerjs");
 const settings = require("./settings");
-const helpers = require("./helpers");
+const helpers = require("./helpers"); // .nextrans, .prevtrans
 const resize = require("./resize");
 const dom = require("./dom");
 const notes = require("./notes");

@@ -1,4 +1,8 @@
 // helpers.js
+//
+// These are helper functions used by different modules.
+
+"use strict";
 
 var data = require("./appdata");
 
@@ -18,13 +22,6 @@ const helpers = {
 				return j;
 			}
 		}
-	},
-	rounded: function(pixels: number) {
-
-		// this is still a mess, fix this
-
-		return data.lens.right.lineheight * Math.floor(pixels / data.lens.right.lineheight);
-
 	},
 	nexttrans: function(giventranslation) {
 		if(data.currenttranslationlist.length > 1) {
@@ -47,16 +44,6 @@ const helpers = {
 		} else {
 			return giventranslation;
 		}
-	},
-	turnonsynchscrolling: function() {
-		document.querySelector("#sliderleft .textframe").onscroll = function() {
-			let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderright .textframe").scrollHeight;
-			document.querySelector("#sliderright .textframe").scrollTop = percentage;
-		};
-		document.querySelector("#sliderright .textframe").onscroll = function() {
-			let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderleft .textframe").scrollHeight;
-			document.querySelector("#sliderleft .textframe").scrollTop = percentage;
-		};
 	}
 };
 

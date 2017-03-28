@@ -1,11 +1,19 @@
 //resize.js
+//
+// this is invoked when the screen is resized.
+
+"use strict";
 
 var data = require("./appdata");
 const dom = require("./dom");
-const helpers = require("./helpers");
+const helpers = require("./helpers"); // .nexttrans, .gettranslationindex
 
 const resize = {
-	check: function() {
+	check: function(keeppage) {
+
+		// if this is invoked with keeppage = true, it won't call setlens
+
+		// this needs to be debounced!
 
 		//console.log("Navbar: " + document.getElementById("navbar").clientWidth);
 		//console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
@@ -95,14 +103,15 @@ const resize = {
 		data.lens.left.width = data.usersettings.twinmode ? data.windowwidth / 2 : 0;
 		data.lens.right.width = data.usersettings.twinmode ? data.windowwidth / 2 : data.windowwidth;
 
-		data.watch.setlens = {
-			translation: data.lens.right.translation,
-			canto: data.canto,
-			side: "right",
-			percentage: 999, // is this wrong?
-			trigger: !data.watch.setlens.trigger
-		};
-		// app.setlens(data.lens.right.translation,data.canto,"right");
+		if(!keeppage) {
+			data.watch.setlens = {
+				translation: data.lens.right.translation,
+				canto: data.canto,
+				side: "right",
+				percentage: 999, // is this wrong?
+				trigger: !data.watch.setlens.trigger
+			};
+		}
 	}
 };
 

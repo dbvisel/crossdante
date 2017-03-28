@@ -1,5 +1,7 @@
 // dom.js
 // @flow
+//
+// this module is basic dom manipulation
 
 "use strict";
 

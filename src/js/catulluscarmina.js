@@ -1,4 +1,3 @@
-
 "use strict";
 
 let app = require("./modules/app");
@@ -31,7 +30,5 @@ for(let i in appdata.textdata) {
 		}
 	}
 }
-
-console.log(app);
 
 app.initialize();

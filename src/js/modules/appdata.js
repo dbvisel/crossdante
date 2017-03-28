@@ -1,5 +1,9 @@
 // appdata.js
 // @//flow
+//
+// This module sets up the data model for the text and the app.
+
+"use strict";
 
 let appdata: {
 	currenttranslationlist: Array<string>,
@@ -137,7 +141,7 @@ let appdata: {
 			percentage: 0,
 			side: "",
 		},
-		localsave: false		// when this is flipped, localsave happens			
+		localsave: false		// when this is flipped, localsave happens
 	},
 	setup: function() {
 		appdata.elements.lens = document.getElementById("lens");

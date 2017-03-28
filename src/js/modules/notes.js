@@ -1,4 +1,6 @@
 // notes.js
+//
+// This module contains code for dealing with notes if the translation uses them.
 
 "use strict";
 

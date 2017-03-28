@@ -1,10 +1,12 @@
 // localdata.js
+//
+// This module controls saving data locally
 
 "use strict";
 
 const dom = require("./dom");
 var data = require("./appdata");
-var helpers = require("./helpers");
+var helpers = require("./helpers"); // getUrlVars, .gettranslationindex,
 
 var localdata =  {
 	save: function() {	// this should store appdate on localstorage
@@ -95,6 +97,10 @@ var localdata =  {
 				dom.addclass("#shownotes","off");
 				dom.removeclass("#hidenotes","off");
 			}
+/*
+
+// not going to fire this yet.
+
 			data.watch.setlens = {
 				translation: data.currenttranslationlist[helpers.gettranslationindex(data.lens.right.translation)],
 				canto: data.canto,
@@ -102,6 +108,7 @@ var localdata =  {
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
+*/
 			// app.setlens(data.currenttranslationlist[helpers.gettranslationindex(data.lens.right.translation)],data.canto,"right",0);
 		} else {
 

@@ -1,4 +1,9 @@
 // fixpadding.js
+//
+// this fixes the padding. Could probably be worked into setlens?
+// setlens.regular has not been looked at in a long time.
+
+"use strict";
 
 const dom = require("./dom");
 var data = require("./appdata");
@@ -7,8 +12,6 @@ let fixpadding = {
 	preprocess: function() {
 		// this should calc line lengths before anything else
 
-		console.log("in preprocess");
-
 		let dummynode = document.createElement("div");
 		dummynode.className = "textinsideframe textpage";
 		dummynode.id = "dummynode";
@@ -16,7 +19,12 @@ let fixpadding = {
 		document.body.appendChild(dummynode);
 
 		for(let currenttrans = 0; currenttrans < data.textdata.length; currenttrans++) {
+			let transmaxwidth = 0;
+			let transmaxline = "";
+			let transmaxcanto = 0;
 			if(data.textdata[currenttrans].translationclass == "poetry") {
+
+				console.log(`\nRunning preprocess for ${data.textdata[currenttrans].translationid}:`);
 
 				for(let currentcanto = 0; currentcanto < data.textdata[currenttrans].text.length; currentcanto++) {
 					let workingcanto = data.textdata[currenttrans].text[currentcanto];
@@ -34,12 +42,18 @@ let fixpadding = {
 						if(paragraph.clientWidth > maxwidth) {
 							maxwidth = paragraph.clientWidth;
 							maxline = paragraph.innerHTML;
+							if(maxwidth > transmaxwidth) {
+								transmaxwidth = maxwidth;
+								transmaxcanto = currentcanto;
+								transmaxline = maxline;
+							}
 						}
 					}
-					console.log(`${currenttrans}, ${currentcanto}: ${maxwidth}: ${maxline}`);
+					// console.log(`${currenttrans}, ${currentcanto}: ${maxwidth}: ${maxline}`);
 				}
+				console.log(`Max width: ${transmaxwidth} in canto ${transmaxcanto}: "${transmaxline}"`);
 			} else {
-				console.log("Not poetry:" + data.textdata[currenttrans].translationid);
+				console.log(`\nNot poetry: ${data.textdata[currenttrans].translationid}`);
 			}
 		}
 		dummynode.parentNode.removeChild(dummynode); // get rid of our dummy
