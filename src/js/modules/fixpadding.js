@@ -59,14 +59,6 @@ let fixpadding = {
 	},
 	responsive: function(thisside) {
 
-		if(data.watch.twinmode) {
-			console.log("In twin mode!");
-
-
-
-
-		}
-
 		if(dom.hasclass(thisside.text,"poetry")) {
 
 			const ppadding = 33; // this needs to be greater than the margin-left on p.poetry
@@ -124,6 +116,9 @@ let fixpadding = {
 					thisside.textinside.style.marginLeft, thisside.textinside.style.marginRight = "0";
 				}
 			} else {
+
+				// this is bad! should fix this.
+
 				console.log("Error! No width! Waiting 100ms . . .");
 				setTimeout(function() {
 					fixpadding.responsive(thisside);

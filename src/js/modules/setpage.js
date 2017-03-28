@@ -28,7 +28,6 @@ const setpage = function(newpage) {
 	} else {
 		dom.removeclass("nav#navbarleft","off");
 		dom.removeclass("nav#navbarright","off");
-
 		dom.removeclass("#navbarother","on");
 
 		// hide back button on left of nav bar!

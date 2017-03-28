@@ -2,12 +2,6 @@
 //
 // This module switches to a different translation/canto
 
-// CURRENT BUG:
-//
-// * Going from single mode to twin mode (or reverse) causes big problems
-// * Restarting in twin mode causes problems
-
-
 "use strict";
 
 const Velocity = require("velocity-animate");
@@ -93,22 +87,15 @@ const setlens = {
 
 				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 				thisside.slider.appendChild(insert);
-				if(data.watch.twinmode) {
-					direction = "-50%";
-				} else {
-					direction = "-100%";
-				}
+				direction = data.watch.twinmode ? "-50%" :  "-100%";
+
 			} else {
 
 				// we are inserting to the left
 
 				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:-100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 				thisside.slider.insertBefore(insert, thisside.slider.childNodes[0]);
-				if(data.watch.twinmode) {
-					direction = "50%";
-				} else {
-					direction = "100%";
-				}
+				direction = data.watch.twinmode ? "50%" : "100%";
 			}
 
 			otherside.slider.style.zIndex = 500;
