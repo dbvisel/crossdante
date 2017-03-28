@@ -20,80 +20,89 @@ const controls = {
 		controls.notes();
 		controls.keys();
 	},
+	lefttransplus: function() {
+		data.watch.setlens = {
+			translation: helpers.nexttrans(data.lens.left.translation),
+			canto: data.canto,
+			side: "left",
+			percentage: 999, // is this okay?
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	lefttransminus: function() {
+		data.watch.setlens = {
+			translation: helpers.prevtrans(data.lens.left.translation),
+			canto: data.canto,
+			side: "left",
+			percentage: 999, // is this okay?
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	leftcantominus: function() {
+		data.watch.setlens = {
+			translation: data.lens.right.translation,
+			canto: parseInt(data.canto) - 1,
+			side: "left",
+			percentage: 0,
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	leftcantoplus: function() {
+		data.watch.setlens = {
+			translation: data.lens.right.translation,
+			canto: parseInt(data.canto) + 1,
+			side: "left",
+			percentage: 0,
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	righttransminus: function() {
+		data.watch.setlens = {
+			translation: helpers.prevtrans(data.lens.right.translation),
+			canto: data.canto,
+			side: "right",
+			percentage: 999, // is this okay?
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	righttransplus: function() {
+		data.watch.setlens = {
+			translation: helpers.nexttrans(data.lens.right.translation),
+			canto: data.canto,
+			side: "right",
+			percentage: 999, // is this okay?
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	rightcantominus: function() {
+		data.watch.setlens = {
+			translation: data.lens.right.translation,
+			canto: parseInt(data.canto) - 1,
+			side: "right",
+			percentage: 0,
+			trigger: !data.watch.setlens.trigger
+		};
+	},
+	rightcantoplus: function() {
+		data.watch.setlens = {
+			translation: data.lens.right.translation,
+			canto: parseInt(data.canto) + 1,
+			side: "right",
+			percentage: 0,
+			trigger: !data.watch.setlens.trigger
+		};
+	},
 	navbar: function() {
 		// button controls
-		document.querySelector("#navbarleft .navprev").onclick = function() {
-			data.watch.setlens = {
-				translation: helpers.nexttrans(data.lens.left.translation),
-				canto: data.canto,
-				side: "left",
-				percentage: 999, // is this okay?
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarleft .navnext").onclick = function() {
-			data.watch.setlens = {
-				translation: helpers.prevtrans(data.lens.left.translation),
-				canto: data.canto,
-				side: "left",
-				percentage: 999, // is this okay?
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarleft .navup").onclick = function() {
-			data.watch.setlens = {
-				translation: data.lens.right.translation,
-				canto: parseInt(data.canto) - 1,
-				side: "right",
-				percentage: 0,
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarleft .navdown").onclick = function() {
-			data.watch.setlens = {
-				translation: data.lens.right.translation,
-				canto: parseInt(data.canto) + 1,
-				side: "right",
-				percentage: 0,
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarright .navprev").onclick = function() {
-			data.watch.setlens = {
-				translation: helpers.nexttrans(data.lens.right.translation),
-				canto: data.canto,
-				side: "right",
-				percentage: 999, // is this okay?
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarright .navnext").onclick = function() {
-			data.watch.setlens = {
-				translation: helpers.prevtrans(data.lens.right.translation),
-				canto: data.canto,
-				side: "right",
-				percentage: 999, // is this okay?
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarright .navup").onclick = function() {
-			data.watch.setlens = {
-				translation: data.lens.right.translation,
-				canto: parseInt(data.canto) - 1,
-				side: "right",
-				percentage: 0,
-				trigger: !data.watch.setlens.trigger
-			};
-		};
-		document.querySelector("#navbarright .navdown").onclick = function() {
-			data.watch.setlens = {
-				translation: data.lens.right.translation,
-				canto: parseInt(data.canto) + 1,
-				side: "right",
-				percentage: 0,
-				trigger: !data.watch.setlens.trigger
-			};
-		};
+		document.querySelector("#navbarleft .navprev").onclick = controls.lefttransminus;
+		document.querySelector("#navbarleft .navnext").onclick = controls.lefttransplus;
+		document.querySelector("#navbarleft .navup").onclick = controls.leftcantominus;
+		document.querySelector("#navbarleft .navdown").onclick = controls.leftcantoplus;
+		document.querySelector("#navbarright .navprev").onclick = controls.righttransminus;
+		document.querySelector("#navbarright .navnext").onclick = controls.righttransplus;
+		document.querySelector("#navbarright .navup").onclick = controls.rightcantominus;
+		document.querySelector("#navbarright .navdown").onclick = controls.rightcantoplus;
+
 		document.querySelector("#navbarleft .navclose").onclick = function() {
 			data.watch.twinmode = false;
 		};
@@ -194,93 +203,45 @@ const controls = {
 		data.elements.hammerright.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 		data.elements.hammerright.on('swipeleft',function(e) {
 			e.preventDefault();
-			data.watch.setlens = {
-				translation: helpers.nexttrans(data.lens.right.translation),
-				canto: data.canto,
-				side: "right",
-				percentage: 999,
-				trigger: !data.watch.setlens.trigger
-			};
+			controls.righttransplus();
 		}).on('swiperight',function(e) {
 			e.preventDefault();
-			data.watch.setlens = {
-				translation: helpers.prevtrans(data.lens.right.translation),
-				canto: data.canto,
-				side: "right",
-				percentage: 999,
-				trigger: !data.watch.setlens.trigger
-			};
+			controls.righttranminus();
 		});
 
 		data.elements.hammerright.on('swipedown',function() {
 			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			if(data.lens.right.text.scrollTop === 0) {
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) - 1,
-					side: "right",
-					percentage: 1, // this needs to be at the bottom
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantominus();
 			}
 		}).on('swipeup',(e) => {
 			e.preventDefault();
 			// if difference between current scroll position + height of frame & complete height
 			// of column is less than 8, go to the next one
 			if(Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) + 1,
-					side: "right",
-					percentage: 999,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantoplus();
 			}
 		});
 		data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 		data.elements.hammerleft.on('swipeleft',function(e) {
 			e.preventDefault();
-			data.watch.setlens = {
-				translation: helpers.nexttrans(data.lens.left.translation),
-				canto: data.canto,
-				side: "left",
-				percentage: 999,
-				trigger: !data.watch.setlens.trigger
-			};
+			controls.lefttransplus();
 		}).on('swiperight',(e) => {
 			e.preventDefault();
-			data.watch.setlens = {
-				translation: helpers.prevtrans(data.lens.left.translation),
-				canto: data.canto,
-				side: "left",
-				percentage: 999,
-				trigger: !data.watch.setlens.trigger
-			};
+			controls.lefttransminus();
 		});
 
 		data.elements.hammerleft.on('swipedown',function() {
 			// e.preventDefault(); // attempt to fix android swipe down = reload behavior
 			if(data.lens.left.text.scrollTop === 0) {
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) - 1,
-					side: "right",
-					percentage: 1, // this needs to be at the bottom
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantominus();
 			}
 		}).on('swipeup',function(e) {
 			e.preventDefault();
 			// if difference between current scroll position + height of frame & complete height
 			// of column is less than 8, go to the next one
 			if(Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) + 1,
-					side: "right",
-					percentage: 999,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantoplus();
 			}
 		});
 	},
@@ -291,64 +252,28 @@ const controls = {
 			e.preventDefault();
 			if((e.keyCode || e.which) === 37) {
 				dom.addclass("#navprev","on");
-				data.watch.setlens = {
-					translation: helpers.prevtrans(data.lens.right.translation),
-					canto: data.canto,
-					side: "right",
-					percentage: 999,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.righttransminus();
 			}
 			if((e.keyCode || e.which) === 39) {
 				dom.addclass("#navnext","on");
-				data.watch.setlens = {
-					translation: helpers.nexttrans(data.lens.right.translation),
-					canto: data.canto,
-					side: "right",
-					percentage: 999,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.righttransplus();
 			}
 			if((e.keyCode || e.which) === 38) {
 				dom.addclass("#navup","on");
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) - 1,
-					side: "right",
-					// percentage: 0,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantominus();
 			}
 			if((e.keyCode || e.which) === 40) {
 				dom.addclass("#navdown","on");
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) + 1,
-					side: "right",
-					percentage: 0,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantoplus();
 			}
 
 			if((e.keyCode || e.which) === 33) {	// pageup: right now this goes to the previous canto
 				dom.addclass("#navup","on");
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) - 1,
-					side: "right",
-					percentage: 999,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantominus();
 			}
 			if((e.keyCode || e.which) === 34) {	// pagedown: right now this goes to the next canto
 				dom.addclass("#navdown","on");
-				data.watch.setlens = {
-					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) + 1,
-					side: "right",
-					percentage: 0,
-					trigger: !data.watch.setlens.trigger
-				};
+				controls.rightcantoplus();
 			}
 
 			if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
@@ -365,7 +290,7 @@ const controls = {
 				dom.addclass("#navdown","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: parseInt(data.canto) - 1, // this seems wrong?
+					canto: data.cantocount - 1,
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
