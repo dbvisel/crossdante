@@ -4,32 +4,21 @@
 "use strict";
 
 const Fastclick = require("fastclick");
-const WatchJS = require("melanke-watchjs");
 
 const dom = require("./dom");
-const localdata = require("./localdata");
-const fixpadding = require("./fixpadding");
+// const fixpadding = require("./fixpadding");
 const resize = require("./resize");
 const controls = require("./controls");
-const setlens = require("./setlens");
-const setpage = require("./setpage");
+const watchers = require("./watchers");
 
 let data = require("./appdata");
 let device = {};
-let watch = WatchJS.watch;
-// var unwatch = WatchJS.unwatch;
-let callWatchers = WatchJS.callWatchers;
 
 var app = {
 	initialize: function() {
-		// ("initializing!");
-		this.bindEvents();
 
-		// check to see if there are saved localstorage, if so, take those values
-
-	},
-	bindEvents: function() {
 		// console.log("binding events!");
+
 		var testapp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
 		var testcordova = !(window.cordova === undefined); // need this as well for dev
 		if(testapp && testcordova) {
@@ -63,70 +52,6 @@ var app = {
 		console.log(device.cordova);
 		console.log("Cordova running. Platform: " + data.system.platform);
 		app.setup();
-	},
-	bindwatchers: function() {
-
-		// attach watchers
-
-		watch(data.watch, "setpage", function(){
-			setpage(data.watch.setpage);
-		});
-
-		watch(data.watch, "setlens", function(){
-			setlens.go(data.watch.setlens.translation, data.watch.setlens.canto, data.watch.setlens.side, data.watch.setlens.percentage);
-		});
-
-		watch(data.watch, "localsave", function() {
-			// this is called by inverting the value of data.watch.localsave
-			localdata.save();
-		});
-
-		watch(data.watch, "nightmode", function() {
-			console.log(`Night mode: ${data.watch.nightmode}`);
-			if(data.watch.nightmode) {
-				dom.addclass("body","nightmode");
-				dom.removeclass("#nightmode","off");
-				dom.addclass("#daymode","off");
-			} else {
-				dom.removeclass("body","nightmode");
-				dom.addclass("#nightmode","off");
-				dom.removeclass("#daymode","off");
-			}
-			data.watch.localsave = !data.watch.localsave;
-		});
-
-		watch(data.watch, "twinmode", function() {
-			console.log(`Twin mode: ${data.watch.twinmode}`);
-			if(data.watch.twinmode) {
-				dom.addclass("body","twinmode");
-				dom.removeclass("#twinmode","off");
-				dom.addclass("#singlemode","off");
-			} else {
-				dom.removeclass("body","twinmode");
-				dom.addclass("#twinmode","off");
-				dom.removeclass("#singlemode","off");
-			}
-			resize.check();
-			data.watch.localsave = !data.watch.localsave;
-		});
-
-		watch(data.watch, "shownotes", function() {
-			console.log(`Show notes: ${data.watch.shownotes}`);
-			if(data.watch.shownotes) {
-				dom.removeclass("body","hidenotes");
-				dom.removeclass("#shownotes","off");
-				dom.addclass("#hidenotes","off");
-			} else {
-				dom.addclass("body","hidenotes");
-				dom.addclass("#shownotes","off");
-				dom.removeclass("#hidenotes","off");
-			}
-			data.watch.localsave = !data.watch.localsave;
-		});
-
-		callWatchers(data.watch, "nightmode");
-		callWatchers(data.watch, "shownotes");
-		callWatchers(data.watch, "twinmode");
 	},
 	setup: function() {
 		// console.log("In setup");
@@ -172,14 +97,7 @@ var app = {
 							e.preventDefault();
 
 							if(data.currentpage == "lens" && data.lens.right.text.scrollTop < 1) {
-								data.watch.setlens = {
-									translation: data.lens.right.translation,
-									canto: data.canto - 1,
-									side: "right",
-									percentage: 1,
-									trigger: !data.watch.setlens.trigger
-								};
-								// app.setlens(data.lens.right.translation, data.canto-1,"right",1);
+								controls.rightcantominus();
 							}
 							return;
 						}
@@ -190,11 +108,10 @@ var app = {
 			});
 		}
 
-		fixpadding.preprocess();
+		// fixpadding.preprocess();
 
 		controls.start();		// this sets up controls
-		localdata.read();
-		app.bindwatchers();
+		watchers.setup();
 
 		dom.addclass("body",data.bookname);
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");
