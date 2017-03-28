@@ -18,11 +18,11 @@ let data = require("./appdata");
 let device = {};
 let watch = WatchJS.watch;
 // var unwatch = WatchJS.unwatch;
-// var callWatchers = WatchJS.callWatchers;
+let callWatchers = WatchJS.callWatchers;
 
 var app = {
 	initialize: function() {
-		// console.log("initializing!");
+		// ("initializing!");
 		this.bindEvents();
 
 		// check to see if there are saved localstorage, if so, take those values
@@ -64,14 +64,9 @@ var app = {
 		console.log("Cordova running. Platform: " + data.system.platform);
 		app.setup();
 	},
-	setup: function() {
-		// console.log("In setup");
+	bindwatchers: function() {
 
-		// basic doc setup
-
-		data.setup();
-
-		// attach watchers to data.watch.setpage and data.watch.setlens
+		// attach watchers
 
 		watch(data.watch, "setpage", function(){
 			setpage(data.watch.setpage);
@@ -86,14 +81,61 @@ var app = {
 			localdata.save();
 		});
 
+		watch(data.watch, "nightmode", function() {
+			console.log(`Night mode: ${data.watch.nightmode}`);
+			if(data.watch.nightmode) {
+				dom.addclass("body","nightmode");
+				dom.removeclass("#nightmode","off");
+				dom.addclass("#daymode","off");
+			} else {
+				dom.removeclass("body","nightmode");
+				dom.addclass("#nightmode","off");
+				dom.removeclass("#daymode","off");
+			}
+			data.watch.localsave = !data.watch.localsave;
+		});
+
+		watch(data.watch, "twinmode", function() {
+			console.log(`Twin mode: ${data.watch.twinmode}`);
+			if(data.watch.twinmode) {
+				dom.addclass("body","twinmode");
+				dom.removeclass("#twinmode","off");
+				dom.addclass("#singlemode","off");
+			} else {
+				dom.removeclass("body","twinmode");
+				dom.addclass("#twinmode","off");
+				dom.removeclass("#singlemode","off");
+			}
+			resize.check();
+			data.watch.localsave = !data.watch.localsave;
+		});
+
+		watch(data.watch, "shownotes", function() {
+			console.log(`Show notes: ${data.watch.shownotes}`);
+			if(data.watch.shownotes) {
+				dom.removeclass("body","hidenotes");
+				dom.removeclass("#shownotes","off");
+				dom.addclass("#hidenotes","off");
+			} else {
+				dom.addclass("body","hidenotes");
+				dom.addclass("#shownotes","off");
+				dom.removeclass("#hidenotes","off");
+			}
+			data.watch.localsave = !data.watch.localsave;
+		});
+
+		callWatchers(data.watch, "nightmode");
+		callWatchers(data.watch, "shownotes");
+		callWatchers(data.watch, "twinmode");
+	},
+	setup: function() {
+		// console.log("In setup");
+
+		// basic doc setup
+
+		data.setup();
 
 		document.title = "Cross Dante " + data.booktitle;
-
-		if(data.usersettings.nightmode) {
-			dom.addclass("body","nightmode");
-		} else {
-			dom.removeclass("body","nightmode");
-		}
 
 		// set up current translation list (initially use all of them)
 
@@ -152,6 +194,7 @@ var app = {
 
 		controls.start();		// this sets up controls
 		localdata.read();
+		app.bindwatchers();
 
 		dom.addclass("body",data.bookname);
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");

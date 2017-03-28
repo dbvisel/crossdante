@@ -33,7 +33,7 @@ const setpage = function(newpage) {
 
 		// hide back button on left of nav bar!
 
-		resize.check();
+		resize.check(); // this might be running too often!
 	}
 };
 

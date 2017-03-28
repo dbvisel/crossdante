@@ -111,7 +111,6 @@ const settings = {
 			let thiscanto = selected.options[selected.selectedIndex].id.substr(5);
 			for(let j = 0; j < data.translationdata.length; j++) {
 				if(data.currenttranslationlist[j] == thistrans) {
-					data.watch.setpage = "lens";
 					data.watch.setlens = {
 						translation: data.currenttranslationlist[j],thiscanto,
 						canto: thiscanto,
@@ -119,7 +118,6 @@ const settings = {
 						percentage: 0,
 						trigger: !data.watch.setlens.trigger
 					};
-					// app.setlens(data.currenttranslationlist[j],thiscanto,"right",0);
 				}
 			}
 		};

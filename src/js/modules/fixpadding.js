@@ -19,9 +19,8 @@ let fixpadding = {
 		document.body.appendChild(dummynode);
 
 		for(let currenttrans = 0; currenttrans < data.textdata.length; currenttrans++) {
-			let transmaxwidth = 0;
 			let transmaxline = "";
-			let transmaxcanto = 0;
+			let transmaxcanto, transmaxwidth = 0;
 			if(data.textdata[currenttrans].translationclass == "poetry") {
 
 				console.log(`\nRunning preprocess for ${data.textdata[currenttrans].translationid}:`);
@@ -59,11 +58,12 @@ let fixpadding = {
 		dummynode.parentNode.removeChild(dummynode); // get rid of our dummy
 	},
 	responsive: function(thisside) {
-		const divs = document.querySelectorAll(`#${thisside.slider.id} .textframe p`);
-		var div;
-		let maxwidth = 0;
 
 		if(dom.hasclass(thisside.text,"poetry")) {
+
+			const ppadding = 33; // this needs to be greater than the margin-left on p.poetry
+			var divs, div;
+			let maxwidth = 0;
 
 			// this is poetry, figure out longest line
 
@@ -73,33 +73,53 @@ let fixpadding = {
 			thisside.textinside.style.marginRight = "0";
 			thisside.textinside.style.paddingLeft = "0";
 			thisside.textinside.style.paddingRight = "0";
-			for(let i=0; i<divs.length; i++) {
-				div = divs[i];
-				div.style.display = "inline-block";
 
-				// this is not picking up indents, I think – maybe div.clientWidth + (div.style.marginLeft + div.style.textIndent)
+			if(thisside.textinside.clientWidth > 0) {
 
-				if(div.clientWidth > maxwidth) {
-					maxwidth = div.clientWidth + 90;
+				divs = document.querySelectorAll(`.textframe#${thisside.translation + "-" + thisside.slider.id.substring(6)} p`);
+
+				for(let i=0; i<divs.length; i++) {
+
+					// Bug: this is sometimes getting the old lens as well as the new lens
+
+					div = divs[i];
+
+					// get the amount of left margin that's being added to a line so we can factor that in
+
+					let myindent = parseInt(dom.getStyle(div, "text-indent")) +  parseInt(dom.getStyle(div, "margin-left"));
+
+					// change to inline-block so we can get the width
+
+					div.style.display = "inline-block";
+					let mywidth = div.clientWidth + myindent;
+					console.log(div.innerHTML + ": "+ mywidth);
+
+					if(mywidth > maxwidth) {
+						maxwidth = mywidth + 90; // where is this 90 coming from?
+						maxwidth = mywidth;
+					}
+					div.style.display = "block";
 				}
-				div.style.display = "block";
-			}
 
-
-			if((thisside.width -16 ) > maxwidth) {
-				console.log(`Text width: ${thisside.width}; max line width: ${maxwidth}; calculated padding: ${(thisside.width - maxwidth-16-16)/2}px`);
-				thisside.text.style.paddingLeft = "0";
-				thisside.text.style.paddingRight = "0";
-				thisside.textinside.style.paddingLeft = "0";
-				thisside.textinside.style.paddingRight = "0";
-				thisside.textinside.style.marginLeft = (thisside.width - maxwidth - 16 - 16)/2+"px";
-				thisside.textinside.style.marginRight = (thisside.width - maxwidth-16 - 16)/2+"px";
+				if((thisside.width - ppadding ) > maxwidth) {
+					console.log(`Text width: ${thisside.width}; max line width: ${maxwidth}; calculated padding: ${(thisside.width - maxwidth - ppadding)/2}px`);
+					thisside.text.style.paddingLeft = "0";
+					thisside.text.style.paddingRight = "0";
+					thisside.textinside.style.paddingLeft = "0";
+					thisside.textinside.style.paddingRight = "0";
+					thisside.textinside.style.marginLeft = (thisside.width - maxwidth - ppadding)/2+"px";
+					thisside.textinside.style.marginRight = (thisside.width - maxwidth - ppadding)/2+"px";
+				} else {
+					console.log(`Too wide! Text width: ${thisside.width}; max line width: ${maxwidth}.`);
+					thisside.text.style.paddingLeft = 8+"px";
+					thisside.text.style.paddingRight = 8+"px";
+					thisside.textinside.style.marginLeft, thisside.textinside.style.marginRight = "0";
+				}
 			} else {
-				console.log(`Too wide! Text width: ${thisside.width}; max line width: ${maxwidth}.`);
-				thisside.text.style.paddingLeft = 8+"px";
-				thisside.text.style.paddingRight = 8+"px";
-				thisside.textinside.style.marginLeft = "0";
-				thisside.textinside.style.marginRight = "0";
+				console.log("Error! No width! Waiting 100ms . . .");
+				setTimeout(function() {
+					fixpadding.responsive(thisside);
+				}, 100);
 			}
 		} else {
 			console.log("Prose, not doing anything.");

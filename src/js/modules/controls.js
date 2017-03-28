@@ -7,7 +7,6 @@
 const Hammer = require("hammerjs");
 const settings = require("./settings");
 const helpers = require("./helpers"); // .nextrans, .prevtrans
-const resize = require("./resize");
 const dom = require("./dom");
 const notes = require("./notes");
 var data = require("./appdata");
@@ -31,7 +30,6 @@ const controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.left.translation),data.canto,"left");
 		};
 		document.querySelector("#navbarleft .navnext").onclick = function() {
 			data.watch.setlens = {
@@ -41,27 +39,24 @@ const controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.left.translation),data.canto,"left");
 		};
 		document.querySelector("#navbarleft .navup").onclick = function() {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto-1,
+				canto: parseInt(data.canto) - 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto-1,"right",0);
 		};
 		document.querySelector("#navbarleft .navdown").onclick = function() {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto+1,
+				canto: parseInt(data.canto) + 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
 		document.querySelector("#navbarright .navprev").onclick = function() {
 			data.watch.setlens = {
@@ -71,7 +66,6 @@ const controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 		};
 		document.querySelector("#navbarright .navnext").onclick = function() {
 			data.watch.setlens = {
@@ -81,34 +75,27 @@ const controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			//app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 		};
 		document.querySelector("#navbarright .navup").onclick = function() {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto - 1,
+				canto: parseInt(data.canto) - 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto-1,"right",0);
 		};
 		document.querySelector("#navbarright .navdown").onclick = function() {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto + 1,
+				canto: parseInt(data.canto) + 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
 		document.querySelector("#navbarleft .navclose").onclick = function() {
-			dom.removeclass("body","twinmode");
-			dom.addclass("#twinmode","off");
-			dom.removeclass("#singlemode","off");
-			data.usersettings.twinmode = false;
-			resize.check();
+			data.watch.twinmode = false;
 		};
 		data.elements.titlebar.onclick = function() {
 			data.watch.setpage = "lens";
@@ -131,68 +118,28 @@ const controls = {
 			data.watch.setpage = "help";
 		};
 
-		if(data.usersettings.twinmode) {
-			dom.removeclass("#twinmode","off");
-			dom.addclass("#singlemode","off");
-		} else {
-			dom.addclass("#twinmode","off");
-			dom.removeclass("#singlemode","off");
-		}
-
-		if(data.usersettings.nightmode) {
-			dom.removeclass("#nightmode","off");
-			dom.addclass("#daymode","off");
-		} else {
-			dom.addclass("#nightmode","off");
-			dom.removeclass("#daymode","off");
-		}
-
-		if(data.usersettings.shownotes) {
-			dom.removeclass("#shownotes","off");
-			dom.addclass("#hidenotes","off");
-		} else {
-			dom.addclass("#shownotes","off");
-			dom.removeclass("#hidenotes","off");
-		}
-
 		document.getElementById("daymode").onclick = function() {
-			dom.removeclass("body","nightmode");
-			dom.addclass("#nightmode","off");
-			dom.removeclass("#daymode","off");
-			data.usersettings.nightmode = false;
+			data.watch.nightmode = false;
 		};
 		document.querySelector("#nightmode").onclick = function() {
-			dom.addclass("body","nightmode");
-			dom.removeclass("#nightmode","off");
-			dom.addclass("#daymode","off");
-			data.usersettings.nightmode = true;
+			data.watch.nightmode = true;
 		};
 		if(document.getElementById("singlemode") !== null) {
 			document.getElementById("singlemode").onclick = function() {
-				dom.removeclass("body","twinmode");
-				dom.addclass("#twinmode","off");
-				dom.removeclass("#singlemode","off");
-				data.usersettings.twinmode = false;
+				data.watch.twinmode = false;
 			};
 			document.querySelector("#twinmode").onclick = function() {
-				dom.addclass("body","twinmode");
-				dom.removeclass("#twinmode","off");
-				dom.addclass("#singlemode","off");
-				data.usersettings.twinmode = true;
+				data.watch.twinmode = true;
 			};
 		}
 
 		// show/hide notes
 
 		document.querySelector("#hidenotes").onclick = function() {
-			dom.addclass("body","hidenotes");
-			dom.addclass("#shownotes","off");
-			dom.removeclass("#hidenotes","off");
+			data.watch.shownotes = false;
 		};
 		document.querySelector("#shownotes").onclick = function() {
-			dom.removeclass("body","hidenotes");
-			dom.addclass("#hidenotes","off");
-			dom.removeclass("#shownotes","off");
+			data.watch.shownotes = true;
 		};
 
 		document.getElementById("backbutton").onclick = function() {
@@ -254,7 +201,6 @@ const controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 		}).on('swiperight',function(e) {
 			e.preventDefault();
 			data.watch.setlens = {
@@ -264,7 +210,6 @@ const controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 		});
 
 		data.elements.hammerright.on('swipedown',function() {
@@ -272,12 +217,11 @@ const controls = {
 			if(data.lens.right.text.scrollTop === 0) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 1, // this needs to be at the bottom
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup',(e) => {
 			e.preventDefault();
@@ -286,12 +230,11 @@ const controls = {
 			if(Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right");
 			}
 		});
 		data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -304,7 +247,6 @@ const controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.left.translation),data.canto,"left");
 		}).on('swiperight',(e) => {
 			e.preventDefault();
 			data.watch.setlens = {
@@ -314,7 +256,6 @@ const controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.left.translation),data.canto,"left");
 		});
 
 		data.elements.hammerleft.on('swipedown',function() {
@@ -322,12 +263,11 @@ const controls = {
 			if(data.lens.left.text.scrollTop === 0) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 1, // this needs to be at the bottom
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup',function(e) {
 			e.preventDefault();
@@ -336,12 +276,11 @@ const controls = {
 			if(Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right");
 			}
 		});
 	},
@@ -359,7 +298,6 @@ const controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 			}
 			if((e.keyCode || e.which) === 39) {
 				dom.addclass("#navnext","on");
@@ -370,52 +308,47 @@ const controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 			}
 			if((e.keyCode || e.which) === 38) {
 				dom.addclass("#navup","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					// percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right");
 			}
 			if((e.keyCode || e.which) === 40) {
 				dom.addclass("#navdown","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 			}
 
 			if((e.keyCode || e.which) === 33) {	// pageup: right now this goes to the previous canto
 				dom.addclass("#navup","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right");
 			}
 			if((e.keyCode || e.which) === 34) {	// pagedown: right now this goes to the next canto
 				dom.addclass("#navdown","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 			}
 
 			if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
@@ -427,18 +360,16 @@ const controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,0,"right");
 			}
 			if((e.keyCode || e.which) === 35) {	// end: right now this goes to the last canto
 				dom.addclass("#navdown","on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1, // this seems wrong?
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.cantocount-1,"right",0);
 			}
 		};
 	}

@@ -51,6 +51,19 @@ const dom = {
 	},
 	hasclass: function(element: Element, classname: string) {
 		return (' ' + element.className + ' ').indexOf(' ' + classname + ' ') > -1;
+	},
+	getStyle: function (e: Element, styleName: string) {
+		var styleValue = "";
+		if(document.defaultView && document.defaultView.getComputedStyle) {
+			styleValue = document.defaultView.getComputedStyle(e, "").getPropertyValue(styleName);
+		}
+		else if(e.currentStyle) {
+			styleName = styleName.replace(/\-(\w)/g, function (strMatch, p1) {
+				return p1.toUpperCase();
+			});
+			styleValue = e.currentStyle[styleName];
+		}
+		return styleValue;
 	}
 };
 

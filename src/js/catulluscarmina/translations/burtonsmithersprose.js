@@ -58,7 +58,6 @@ module.exports = {
 
 		`<p class="cantohead">XI.</p>
 		<p class="cantosubhead">A Parting Insult to Lesbia.</p>
-		<p class="cantosubhead">&nbsp;</p>
 		<p>Furius and Aurelius, comrades of Catullus, whether he penetrate to furthest Ind where the strand is lashed by the far-echoing Eoan surge, or whether ’midst the Hyrcans or soft Arabs, or whether the Sacians or quiver-bearing Parthians, or where the seven-mouthed Nile encolours the sea, or whether he traverse the lofty Alps, gazing at the monuments of mighty Caesar, the gallic Rhine, the dismal and remotest Britons, all these, whatever the Heavens’ Will may bear, prepared at once to attempt,&mdash;bear ye to my girl this brief message of no fair speech. May she live and flourish with her swivers, of whom may she hold at once embraced the full three hundred, loving not one in real truth, but bursting again and again the flanks of all: nor may she look upon my love as before, she whose own guile slew it, e’en as a flower on the greensward’s verge, after the touch of the passing plough.</p>`,
 
 		`<p class="cantohead">XII.</p>

@@ -51,11 +51,6 @@ let appdata: {
 		platform: string,
 		delay: number
 	},
-	usersettings: {
-		twinmode: boolean,
-		nightmode: boolean,
-		shownotes: boolean,
-	},
 	bookname: string,
 	booktitle: string,
 	bookauthor: string,
@@ -68,11 +63,11 @@ let appdata: {
 	translationdata: Array<*>,
 	cantotitles: Array<string>
 } = {
-	currenttranslationlist: [],    			// list of ids of translations we're currently using
-	windowwidth: window.innerWidth,			// the window width
-	windowheight: window.innerHeight,		// the window height
-	currentpage: "lens",								// the page that we're currently viewing
-	canto: 0,														// the current canto
+	currenttranslationlist: [],   // list of ids of translations we're currently using
+	windowwidth: 0,								// window.innerWidth, initially 0 so that resize runs
+	windowheight: 0,							// window.innerHeight, initially 0 so that resize runs
+	currentpage: "lens",					// the page that we're currently viewing
+	canto: 0,											// the current canto
 	elements: {
 		lens: document.querySelector("html"),
 		main: document.querySelector("html"),
@@ -113,11 +108,6 @@ let appdata: {
 		platform: "",			// if on cordova, this is the platform for the book
 		delay: 600				// this is the amount of time swiping takes, in ms
 	},
-	usersettings: {			// these can be overridden by previously saved user settings
-		twinmode: false,	// whether or not twin mode is turned on
-		nightmode: false,	// whether or not night mode is turned on
-		shownotes: true		// whether or not notes are shown
-	},
 
 	// things that come from the bookfile (all of these are overwritten:)
 
@@ -141,6 +131,9 @@ let appdata: {
 			percentage: 0,
 			side: "",
 		},
+		twinmode: false,		// whether or not twin mode is turned on
+		nightmode: false,		// whether or not night mode is turned on
+		shownotes: true,		// whether or not notes are shown
 		localsave: false		// when this is flipped, localsave happens
 	},
 	setup: function() {

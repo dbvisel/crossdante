@@ -16,9 +16,9 @@ var localdata =  {
 			currenttransright: 	data.lens.right.translation,
 			currenttransleft: 	data.lens.left.translation,
 			translationset: 		data.currenttranslationlist,
-			twinmode: 					data.usersettings.twinmode,
-			nightmode: 					data.usersettings.nightmode,
-			shownotes: 					data.usersettings.shownotes
+			twinmode: 					data.watch.twinmode,
+			nightmode: 					data.watch.nightmode,
+			shownotes: 					data.watch.shownotes
 		});
 
 		let storage = window.localStorage;
@@ -28,7 +28,7 @@ var localdata =  {
 
 		if (history.pushState) {
 			let newurl = window.location.origin + window.location.pathname + `?canto=${data.canto}&trans=${data.lens.right.translation}`;
-			if(data.usersettings.twinmode) {
+			if(data.watch.twinmode) {
 				newurl += `&lefttrans=${data.lens.left.translation}`;
 			}
 			if (window.location.protocol !== "file:") {
@@ -66,20 +66,19 @@ var localdata =  {
 			data.canto = storedvalues.currentcanto;
 			data.lens.right.translation = storedvalues.currenttransright;
 			data.lens.left.translation = storedvalues.currenttransleft;
-			data.usersettings.twinmode = storedvalues.twinmode;
-			data.usersettings.nightmode = storedvalues.nightmode;
-			data.usersettings.shownotes = storedvalues.shownotes;
+			data.watch.twinmode = storedvalues.twinmode;
+			data.watch.nightmode = storedvalues.nightmode;
+			data.watch.shownotes = storedvalues.shownotes;
 			data.currenttranslationlist = storedvalues.translationset;
-			if(data.usersettings.twinmode) {
-				dom.addclass("body","twinmode");
-				dom.removeclass("#twinmode","off");
-				dom.addclass("#singlemode","off");
+/*
+			if(data.watch.twinmode) {
+//				dom.addclass("body","twinmode");
 			} else {
 				dom.removeclass("body","twinmode");
 				dom.addclass("#twinmode","off");
 				dom.removeclass("#singlemode","off");
 			}
-			if(data.usersettings.nightmode) {
+			if(data.watch.nightmode) {
 				dom.addclass("body","nightmode");
 				dom.removeclass("#nightmode","off");
 				dom.addclass("#daymode","off");
@@ -88,7 +87,7 @@ var localdata =  {
 				dom.addclass("#nightmode","off");
 				dom.removeclass("#daymode","off");
 			}
-			if(data.usersettings.shownotes) {
+			if(data.watch.shownotes) {
 				dom.removeclass("body","hidenotes");
 				dom.removeclass("#shownotes","off");
 				dom.addclass("#hidenotes","off");
@@ -97,6 +96,7 @@ var localdata =  {
 				dom.addclass("#shownotes","off");
 				dom.removeclass("#hidenotes","off");
 			}
+			*/
 /*
 
 // not going to fire this yet.
@@ -117,9 +117,9 @@ var localdata =  {
 			data.canto = 0;
 			data.lens.right.translation = data.currenttranslationlist[0];
 			data.lens.left.translation = data.currenttranslationlist[0];
-			data.usersettings.twinmode = false;
-			data.usersettings.nightmode = false;
-			data.usersettings.shownotes = true;
+			data.watch.twinmode = false;
+			data.watch.nightmode = false;
+			data.watch.shownotes = true;
 			data.watch.setlens = {
 				translation: data.currenttranslationlist[0],
 				canto: 0,
@@ -149,7 +149,7 @@ var localdata =  {
 			console.log("We have canto & trans from URL!");
 			if(gototwinmode) {
 				console.log("We have left trans from URL!");
-				data.usersettings.twinmode = true;
+				data.watch.twinmode = true;
 				dom.addclass("body","twinmode");
 				dom.removeclass("#twinmode","off");
 				dom.addclass("#singlemode","off");

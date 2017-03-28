@@ -80,8 +80,8 @@
 
 var appdata = {
 	currenttranslationlist: [], // list of ids of translations we're currently using
-	windowwidth: window.innerWidth, // the window width
-	windowheight: window.innerHeight, // the window height
+	windowwidth: 0, // window.innerWidth, initially 0 so that resize runs
+	windowheight: 0, // window.innerHeight, initially 0 so that resize runs
 	currentpage: "lens", // the page that we're currently viewing
 	canto: 0, // the current canto
 	elements: {
@@ -124,11 +124,6 @@ var appdata = {
 		platform: "", // if on cordova, this is the platform for the book
 		delay: 600 // this is the amount of time swiping takes, in ms
 	},
-	usersettings: { // these can be overridden by previously saved user settings
-		twinmode: false, // whether or not twin mode is turned on
-		nightmode: false, // whether or not night mode is turned on
-		shownotes: true // whether or not notes are shown
-	},
 
 	// things that come from the bookfile (all of these are overwritten:)
 
@@ -152,6 +147,9 @@ var appdata = {
 			percentage: 0,
 			side: ""
 		},
+		twinmode: false, // whether or not twin mode is turned on
+		nightmode: false, // whether or not night mode is turned on
+		shownotes: true, // whether or not notes are shown
 		localsave: false // when this is flipped, localsave happens
 	},
 	setup: function setup() {
@@ -232,6 +230,18 @@ var dom = {
 	},
 	hasclass: function hasclass(element, classname) {
 		return (' ' + element.className + ' ').indexOf(' ' + classname + ' ') > -1;
+	},
+	getStyle: function getStyle(e, styleName) {
+		var styleValue = "";
+		if (document.defaultView && document.defaultView.getComputedStyle) {
+			styleValue = document.defaultView.getComputedStyle(e, "").getPropertyValue(styleName);
+		} else if (e.currentStyle) {
+			styleName = styleName.replace(/\-(\w)/g, function (strMatch, p1) {
+				return p1.toUpperCase();
+			});
+			styleValue = e.currentStyle[styleName];
+		}
+		return styleValue;
 	}
 };
 
@@ -266,7 +276,7 @@ $exports.store = store;
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP         = __webpack_require__(14)
+var dP         = __webpack_require__(13)
   , createDesc = __webpack_require__(26);
 module.exports = __webpack_require__(8) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
@@ -335,7 +345,7 @@ module.exports = helpers;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(13);
+var isObject = __webpack_require__(12);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
@@ -374,130 +384,6 @@ module.exports = {};
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-//resize.js
-//
-// this is invoked when the screen is resized.
-
-
-
-var data = __webpack_require__(0);
-var dom = __webpack_require__(1);
-var helpers = __webpack_require__(5); // .nexttrans, .gettranslationindex
-
-var resize = {
-	check: function check(keeppage) {
-
-		// if this is invoked with keeppage = true, it won't call setlens
-
-		// this needs to be debounced!
-
-		//console.log("Navbar: " + document.getElementById("navbar").clientWidth);
-		//console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
-		//console.log("button width: " + document.querySelector(".navprev").clientWidth);
-
-		data.windowwidth = window.innerWidth;
-		data.windowheight = window.innerHeight;
-		var titlewidth = document.getElementById("navbar").clientWidth - 5 * 40 - 1;
-
-		if (data.usersettings.twinmode && data.windowwidth > 768) {
-			dom.addclass("body", "twinmode");
-			titlewidth = document.getElementById("navbar").clientWidth / 2 - 5 * 40 - 1;
-			console.log("Twin mode!");
-			if (data.lens.left.translation === "") {
-				data.lens.left.translation = helpers.nexttrans(data.lens.right.translation);
-			}
-
-			var thistrans = helpers.gettranslationindex(data.lens.left.translation);
-
-			dom.addclass("#sliderleft .textframe", data.translationdata[thistrans].translationclass);
-			var insert = dom.create(data.textdata[thistrans].text[data.canto]);
-			data.lens.left.textinside.appendChild(insert);
-
-			data.lens.left.slider.style.width = "50%";
-			data.lens.right.slider.style.width = "50%";
-			data.watch.setlens = {
-				translation: data.lens.left.translation,
-				canto: data.canto,
-				side: "left",
-				percentage: 999, // is this wrong?
-				trigger: !data.watch.setlens.trigger
-			};
-			// app.setlens(data.lens.left.translation,data.canto,"left");
-		} else {
-			console.log("Single mode!");
-			dom.removeclass("body", "twinmode");
-
-			data.lens.left.slider.style.width = "0";
-			data.lens.right.slider.style.width = "100%";
-		}
-
-		data.lens.left.titlebar.style.width = titlewidth + "px";
-		data.lens.left.titlebar.setAttribute("style", "width:" + titlewidth + "px");
-		data.lens.right.titlebar.style.width = titlewidth + "px";
-		data.lens.right.titlebar.setAttribute("style", "width:" + titlewidth + "px");
-
-		console.log("The window has been resized! New width: " + data.windowwidth + "," + data.windowheight);
-		data.lens.width = data.windowwidth;
-		data.lens.height = data.windowheight - document.getElementById("navbar").clientHeight; // is this accurate on iOS?
-
-		dom.addclass(".page", data.lens.width > data.lens.height ? "landscape" : "portrait");
-		dom.removeclass(".page", data.lens.width > data.lens.height ? "portrait" : "landscape");
-		/*
-  data.elements.main.style.width = data.lens.width+"px";
-  data.elements.content.style.width = data.lens.width+"px";
-  */
-		data.elements.main.style.height = data.windowheight + "px";
-		data.elements.content.style.height = data.lens.height + "px";
-
-		if (data.system.responsive) {
-			// are these numbers actually synched to what's in the CSS? check!
-
-			var actualwidth = data.usersettings.twinmode ? data.windowwidth / 2 : data.windowwidth;
-
-			if (actualwidth < 640) {
-				data.lens.left.lineheight = 20;
-				data.lens.right.lineheight = 20;
-			} else {
-				if (actualwidth < 768) {
-					data.lens.left.lineheight = 24;
-					data.lens.right.lineheight = 24;
-				} else {
-					if (actualwidth < 1024) {
-						data.lens.left.lineheight = 28;
-						data.lens.right.lineheight = 28;
-					} else {
-						data.lens.left.lineheight = 32;
-						data.lens.right.lineheight = 32;
-					}
-				}
-			}
-		} else {
-			data.lens.left.lineheight = data.windowwidth / 25;
-			data.lens.right.lineheight = data.windowwidth / 25;
-		}
-
-		data.lens.left.width = data.usersettings.twinmode ? data.windowwidth / 2 : 0;
-		data.lens.right.width = data.usersettings.twinmode ? data.windowwidth / 2 : data.windowwidth;
-
-		if (!keeppage) {
-			data.watch.setlens = {
-				translation: data.lens.right.translation,
-				canto: data.canto,
-				side: "right",
-				percentage: 999, // is this wrong?
-				trigger: !data.watch.setlens.trigger
-			};
-		}
-	}
-};
-
-module.exports = resize;
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -507,7 +393,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -515,7 +401,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject       = __webpack_require__(6)
@@ -536,7 +422,7 @@ exports.f = __webpack_require__(8) ? Object.defineProperty : function defineProp
 };
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(28)('keys')
@@ -546,7 +432,7 @@ module.exports = function(key){
 };
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -557,18 +443,18 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(51)
-  , defined = __webpack_require__(12);
+  , defined = __webpack_require__(11);
 module.exports = function(it){
   return IObject(defined(it));
 };
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -593,9 +479,9 @@ var fixpadding = {
 		document.body.appendChild(dummynode);
 
 		for (var currenttrans = 0; currenttrans < data.textdata.length; currenttrans++) {
-			var transmaxwidth = 0;
 			var transmaxline = "";
-			var transmaxcanto = 0;
+			var transmaxcanto = void 0,
+			    transmaxwidth = 0;
 			if (data.textdata[currenttrans].translationclass == "poetry") {
 
 				console.log("\nRunning preprocess for " + data.textdata[currenttrans].translationid + ":");
@@ -633,11 +519,12 @@ var fixpadding = {
 		dummynode.parentNode.removeChild(dummynode); // get rid of our dummy
 	},
 	responsive: function responsive(thisside) {
-		var divs = document.querySelectorAll("#" + thisside.slider.id + " .textframe p");
-		var div;
-		var maxwidth = 0;
 
 		if (dom.hasclass(thisside.text, "poetry")) {
+
+			var ppadding = 33; // this needs to be greater than the margin-left on p.poetry
+			var divs, div;
+			var maxwidth = 0;
 
 			// this is poetry, figure out longest line
 
@@ -647,32 +534,53 @@ var fixpadding = {
 			thisside.textinside.style.marginRight = "0";
 			thisside.textinside.style.paddingLeft = "0";
 			thisside.textinside.style.paddingRight = "0";
-			for (var i = 0; i < divs.length; i++) {
-				div = divs[i];
-				div.style.display = "inline-block";
 
-				// this is not picking up indents, I think – maybe div.clientWidth + (div.style.marginLeft + div.style.textIndent)
+			if (thisside.textinside.clientWidth > 0) {
 
-				if (div.clientWidth > maxwidth) {
-					maxwidth = div.clientWidth + 90;
+				divs = document.querySelectorAll(".textframe#" + (thisside.translation + "-" + thisside.slider.id.substring(6)) + " p");
+
+				for (var i = 0; i < divs.length; i++) {
+
+					// Bug: this is sometimes getting the old lens as well as the new lens
+
+					div = divs[i];
+
+					// get the amount of left margin that's being added to a line so we can factor that in
+
+					var myindent = parseInt(dom.getStyle(div, "text-indent")) + parseInt(dom.getStyle(div, "margin-left"));
+
+					// change to inline-block so we can get the width
+
+					div.style.display = "inline-block";
+					var mywidth = div.clientWidth + myindent;
+					console.log(div.innerHTML + ": " + mywidth);
+
+					if (mywidth > maxwidth) {
+						maxwidth = mywidth + 90; // where is this 90 coming from?
+						maxwidth = mywidth;
+					}
+					div.style.display = "block";
 				}
-				div.style.display = "block";
-			}
 
-			if (thisside.width - 16 > maxwidth) {
-				console.log("Text width: " + thisside.width + "; max line width: " + maxwidth + "; calculated padding: " + (thisside.width - maxwidth - 16 - 16) / 2 + "px");
-				thisside.text.style.paddingLeft = "0";
-				thisside.text.style.paddingRight = "0";
-				thisside.textinside.style.paddingLeft = "0";
-				thisside.textinside.style.paddingRight = "0";
-				thisside.textinside.style.marginLeft = (thisside.width - maxwidth - 16 - 16) / 2 + "px";
-				thisside.textinside.style.marginRight = (thisside.width - maxwidth - 16 - 16) / 2 + "px";
+				if (thisside.width - ppadding > maxwidth) {
+					console.log("Text width: " + thisside.width + "; max line width: " + maxwidth + "; calculated padding: " + (thisside.width - maxwidth - ppadding) / 2 + "px");
+					thisside.text.style.paddingLeft = "0";
+					thisside.text.style.paddingRight = "0";
+					thisside.textinside.style.paddingLeft = "0";
+					thisside.textinside.style.paddingRight = "0";
+					thisside.textinside.style.marginLeft = (thisside.width - maxwidth - ppadding) / 2 + "px";
+					thisside.textinside.style.marginRight = (thisside.width - maxwidth - ppadding) / 2 + "px";
+				} else {
+					console.log("Too wide! Text width: " + thisside.width + "; max line width: " + maxwidth + ".");
+					thisside.text.style.paddingLeft = 8 + "px";
+					thisside.text.style.paddingRight = 8 + "px";
+					thisside.textinside.style.marginLeft, thisside.textinside.style.marginRight = "0";
+				}
 			} else {
-				console.log("Too wide! Text width: " + thisside.width + "; max line width: " + maxwidth + ".");
-				thisside.text.style.paddingLeft = 8 + "px";
-				thisside.text.style.paddingRight = 8 + "px";
-				thisside.textinside.style.marginLeft = "0";
-				thisside.textinside.style.marginRight = "0";
+				console.log("Error! No width! Waiting 100ms . . .");
+				setTimeout(function () {
+					fixpadding.responsive(thisside);
+				}, 100);
 			}
 		} else {
 			console.log("Prose, not doing anything.");
@@ -731,7 +639,7 @@ var fixpadding = {
 module.exports = fixpadding;
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -760,9 +668,9 @@ var localdata = {
 			currenttransright: data.lens.right.translation,
 			currenttransleft: data.lens.left.translation,
 			translationset: data.currenttranslationlist,
-			twinmode: data.usersettings.twinmode,
-			nightmode: data.usersettings.nightmode,
-			shownotes: data.usersettings.shownotes
+			twinmode: data.watch.twinmode,
+			nightmode: data.watch.nightmode,
+			shownotes: data.watch.shownotes
 		});
 
 		var storage = window.localStorage;
@@ -772,7 +680,7 @@ var localdata = {
 
 		if (history.pushState) {
 			var newurl = window.location.origin + window.location.pathname + ("?canto=" + data.canto + "&trans=" + data.lens.right.translation);
-			if (data.usersettings.twinmode) {
+			if (data.watch.twinmode) {
 				newurl += "&lefttrans=" + data.lens.left.translation;
 			}
 			if (window.location.protocol !== "file:") {
@@ -810,37 +718,37 @@ var localdata = {
 			data.canto = storedvalues.currentcanto;
 			data.lens.right.translation = storedvalues.currenttransright;
 			data.lens.left.translation = storedvalues.currenttransleft;
-			data.usersettings.twinmode = storedvalues.twinmode;
-			data.usersettings.nightmode = storedvalues.nightmode;
-			data.usersettings.shownotes = storedvalues.shownotes;
+			data.watch.twinmode = storedvalues.twinmode;
+			data.watch.nightmode = storedvalues.nightmode;
+			data.watch.shownotes = storedvalues.shownotes;
 			data.currenttranslationlist = storedvalues.translationset;
-			if (data.usersettings.twinmode) {
-				dom.addclass("body", "twinmode");
-				dom.removeclass("#twinmode", "off");
-				dom.addclass("#singlemode", "off");
-			} else {
-				dom.removeclass("body", "twinmode");
-				dom.addclass("#twinmode", "off");
-				dom.removeclass("#singlemode", "off");
-			}
-			if (data.usersettings.nightmode) {
-				dom.addclass("body", "nightmode");
-				dom.removeclass("#nightmode", "off");
-				dom.addclass("#daymode", "off");
-			} else {
-				dom.removeclass("body", "nightmode");
-				dom.addclass("#nightmode", "off");
-				dom.removeclass("#daymode", "off");
-			}
-			if (data.usersettings.shownotes) {
-				dom.removeclass("body", "hidenotes");
-				dom.removeclass("#shownotes", "off");
-				dom.addclass("#hidenotes", "off");
-			} else {
-				dom.addclass("body", "hidenotes");
-				dom.addclass("#shownotes", "off");
-				dom.removeclass("#hidenotes", "off");
-			}
+			/*
+   			if(data.watch.twinmode) {
+   //				dom.addclass("body","twinmode");
+   			} else {
+   				dom.removeclass("body","twinmode");
+   				dom.addclass("#twinmode","off");
+   				dom.removeclass("#singlemode","off");
+   			}
+   			if(data.watch.nightmode) {
+   				dom.addclass("body","nightmode");
+   				dom.removeclass("#nightmode","off");
+   				dom.addclass("#daymode","off");
+   			} else {
+   				dom.removeclass("body","nightmode");
+   				dom.addclass("#nightmode","off");
+   				dom.removeclass("#daymode","off");
+   			}
+   			if(data.watch.shownotes) {
+   				dom.removeclass("body","hidenotes");
+   				dom.removeclass("#shownotes","off");
+   				dom.addclass("#hidenotes","off");
+   			} else {
+   				dom.addclass("body","hidenotes");
+   				dom.addclass("#shownotes","off");
+   				dom.removeclass("#hidenotes","off");
+   			}
+   			*/
 			/*
    
    // not going to fire this yet.
@@ -861,9 +769,9 @@ var localdata = {
 			data.canto = 0;
 			data.lens.right.translation = data.currenttranslationlist[0];
 			data.lens.left.translation = data.currenttranslationlist[0];
-			data.usersettings.twinmode = false;
-			data.usersettings.nightmode = false;
-			data.usersettings.shownotes = true;
+			data.watch.twinmode = false;
+			data.watch.nightmode = false;
+			data.watch.shownotes = true;
 			data.watch.setlens = {
 				translation: data.currenttranslationlist[0],
 				canto: 0,
@@ -893,7 +801,7 @@ var localdata = {
 			console.log("We have canto & trans from URL!");
 			if (gototwinmode) {
 				console.log("We have left trans from URL!");
-				data.usersettings.twinmode = true;
+				data.watch.twinmode = true;
 				dom.addclass("body", "twinmode");
 				dom.removeclass("#twinmode", "off");
 				dom.addclass("#singlemode", "off");
@@ -916,7 +824,7 @@ var localdata = {
 module.exports = localdata;
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -970,6 +878,136 @@ var notes = {
 module.exports = notes;
 
 /***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+//resize.js
+//
+// this is invoked when the screen is resized.
+
+
+
+var data = __webpack_require__(0);
+var dom = __webpack_require__(1);
+var helpers = __webpack_require__(5); // .nexttrans, .gettranslationindex
+
+var resize = {
+	check: function check(keeppage) {
+
+		// if this is invoked with keeppage = true, it won't call setlens
+
+		// this needs to be debounced!
+
+		//console.log("Navbar: " + document.getElementById("navbar").clientWidth);
+		//console.log("Navtitle: " + data.lens.right.titlebar.clientWidth);
+		//console.log("button width: " + document.querySelector(".navprev").clientWidth);
+
+		if (data.windowwidth !== window.innerWidth || data.windowheight !== window.innerHeight) {
+
+			data.windowwidth = window.innerWidth;
+			data.windowheight = window.innerHeight;
+			var titlewidth = document.getElementById("navbar").clientWidth - 5 * 40 - 1;
+
+			if (data.watch.twinmode && data.windowwidth > 768) {
+				dom.addclass("body", "twinmode");
+				titlewidth = document.getElementById("navbar").clientWidth / 2 - 5 * 40 - 1;
+				console.log("Twin mode!");
+				if (data.lens.left.translation === "") {
+					data.lens.left.translation = helpers.nexttrans(data.lens.right.translation);
+				}
+				if (document.getElementById("newtextleft")) {
+					document.getElementById("newtextleft").id = data.lens.left.translation + "-left";
+				}
+
+				var thistrans = helpers.gettranslationindex(data.lens.left.translation);
+
+				dom.addclass("#sliderleft .textframe", data.translationdata[thistrans].translationclass);
+				var insert = dom.create(data.textdata[thistrans].text[data.canto]);
+				data.lens.left.textinside.appendChild(insert);
+
+				data.lens.left.slider.style.width = "50%";
+				data.lens.right.slider.style.width = "50%";
+				data.watch.setlens = {
+					translation: data.lens.left.translation,
+					canto: data.canto,
+					side: "left",
+					percentage: 999, // is this wrong?
+					trigger: !data.watch.setlens.trigger
+				};
+				// app.setlens(data.lens.left.translation,data.canto,"left");
+			} else {
+				console.log("Single mode!");
+				dom.removeclass("body", "twinmode");
+
+				data.lens.left.slider.style.width = "0";
+				data.lens.right.slider.style.width = "100%";
+			}
+
+			data.lens.left.titlebar.style.width = titlewidth + "px";
+			data.lens.left.titlebar.setAttribute("style", "width:" + titlewidth + "px");
+			data.lens.right.titlebar.style.width = titlewidth + "px";
+			data.lens.right.titlebar.setAttribute("style", "width:" + titlewidth + "px");
+
+			console.log("The window has been resized! New width: " + data.windowwidth + "," + data.windowheight);
+			data.lens.width = data.windowwidth;
+			data.lens.height = data.windowheight - document.getElementById("navbar").clientHeight; // is this accurate on iOS?
+
+			dom.addclass(".page", data.lens.width > data.lens.height ? "landscape" : "portrait");
+			dom.removeclass(".page", data.lens.width > data.lens.height ? "portrait" : "landscape");
+			/*
+   data.elements.main.style.width = data.lens.width+"px";
+   data.elements.content.style.width = data.lens.width+"px";
+   */
+			data.elements.main.style.height = data.windowheight + "px";
+			data.elements.content.style.height = data.lens.height + "px";
+
+			if (data.system.responsive) {
+				// are these numbers actually synched to what's in the CSS? check!
+
+				var actualwidth = data.watch.twinmode ? data.windowwidth / 2 : data.windowwidth;
+
+				if (actualwidth < 640) {
+					data.lens.left.lineheight = 20;
+					data.lens.right.lineheight = 20;
+				} else {
+					if (actualwidth < 768) {
+						data.lens.left.lineheight = 24;
+						data.lens.right.lineheight = 24;
+					} else {
+						if (actualwidth < 1024) {
+							data.lens.left.lineheight = 28;
+							data.lens.right.lineheight = 28;
+						} else {
+							data.lens.left.lineheight = 32;
+							data.lens.right.lineheight = 32;
+						}
+					}
+				}
+			} else {
+				data.lens.left.lineheight = data.windowwidth / 25;
+				data.lens.right.lineheight = data.windowwidth / 25;
+			}
+
+			data.lens.left.width = data.watch.twinmode ? data.windowwidth / 2 : 0;
+			data.lens.right.width = data.watch.twinmode ? data.windowwidth / 2 : data.windowwidth;
+
+			if (!keeppage) {
+				data.watch.setlens = {
+					translation: data.lens.right.translation,
+					canto: data.canto,
+					side: "right",
+					percentage: 999, // is this wrong?
+					trigger: !data.watch.setlens.trigger
+				};
+			}
+		}
+	}
+};
+
+module.exports = resize;
+
+/***/ }),
 /* 21 */
 /***/ (function(module, exports) {
 
@@ -983,7 +1021,7 @@ module.exports = function(it){
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(13)
+var isObject = __webpack_require__(12)
   , document = __webpack_require__(2).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
@@ -1105,7 +1143,7 @@ module.exports = function(bitmap, value){
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(14).f
+var def = __webpack_require__(13).f
   , has = __webpack_require__(9)
   , TAG = __webpack_require__(3)('toStringTag');
 
@@ -1181,9 +1219,9 @@ var Fastclick = __webpack_require__(71);
 var WatchJS = __webpack_require__(73);
 
 var dom = __webpack_require__(1);
-var localdata = __webpack_require__(19);
-var fixpadding = __webpack_require__(18);
-var resize = __webpack_require__(11);
+var localdata = __webpack_require__(18);
+var fixpadding = __webpack_require__(17);
+var resize = __webpack_require__(20);
 var controls = __webpack_require__(35);
 var setlens = __webpack_require__(36);
 var setpage = __webpack_require__(37);
@@ -1192,11 +1230,11 @@ var data = __webpack_require__(0);
 var device = {};
 var watch = WatchJS.watch;
 // var unwatch = WatchJS.unwatch;
-// var callWatchers = WatchJS.callWatchers;
+var callWatchers = WatchJS.callWatchers;
 
 var app = {
 	initialize: function initialize() {
-		// console.log("initializing!");
+		// ("initializing!");
 		this.bindEvents();
 
 		// check to see if there are saved localstorage, if so, take those values
@@ -1237,14 +1275,9 @@ var app = {
 		console.log("Cordova running. Platform: " + data.system.platform);
 		app.setup();
 	},
-	setup: function setup() {
-		// console.log("In setup");
+	bindwatchers: function bindwatchers() {
 
-		// basic doc setup
-
-		data.setup();
-
-		// attach watchers to data.watch.setpage and data.watch.setlens
+		// attach watchers
 
 		watch(data.watch, "setpage", function () {
 			setpage(data.watch.setpage);
@@ -1259,13 +1292,61 @@ var app = {
 			localdata.save();
 		});
 
-		document.title = "Cross Dante " + data.booktitle;
+		watch(data.watch, "nightmode", function () {
+			console.log("Night mode: " + data.watch.nightmode);
+			if (data.watch.nightmode) {
+				dom.addclass("body", "nightmode");
+				dom.removeclass("#nightmode", "off");
+				dom.addclass("#daymode", "off");
+			} else {
+				dom.removeclass("body", "nightmode");
+				dom.addclass("#nightmode", "off");
+				dom.removeclass("#daymode", "off");
+			}
+			data.watch.localsave = !data.watch.localsave;
+		});
 
-		if (data.usersettings.nightmode) {
-			dom.addclass("body", "nightmode");
-		} else {
-			dom.removeclass("body", "nightmode");
-		}
+		watch(data.watch, "twinmode", function () {
+			console.log("Twin mode: " + data.watch.twinmode);
+			if (data.watch.twinmode) {
+				dom.addclass("body", "twinmode");
+				dom.removeclass("#twinmode", "off");
+				dom.addclass("#singlemode", "off");
+			} else {
+				dom.removeclass("body", "twinmode");
+				dom.addclass("#twinmode", "off");
+				dom.removeclass("#singlemode", "off");
+			}
+			resize.check();
+			data.watch.localsave = !data.watch.localsave;
+		});
+
+		watch(data.watch, "shownotes", function () {
+			console.log("Show notes: " + data.watch.shownotes);
+			if (data.watch.shownotes) {
+				dom.removeclass("body", "hidenotes");
+				dom.removeclass("#shownotes", "off");
+				dom.addclass("#hidenotes", "off");
+			} else {
+				dom.addclass("body", "hidenotes");
+				dom.addclass("#shownotes", "off");
+				dom.removeclass("#hidenotes", "off");
+			}
+			data.watch.localsave = !data.watch.localsave;
+		});
+
+		callWatchers(data.watch, "nightmode");
+		callWatchers(data.watch, "shownotes");
+		callWatchers(data.watch, "twinmode");
+	},
+	setup: function setup() {
+		// console.log("In setup");
+
+		// basic doc setup
+
+		data.setup();
+
+		document.title = "Cross Dante " + data.booktitle;
 
 		// set up current translation list (initially use all of them)
 
@@ -1324,6 +1405,7 @@ var app = {
 
 		controls.start(); // this sets up controls
 		localdata.read();
+		app.bindwatchers();
 
 		dom.addclass("body", data.bookname);
 		dom.addclass("body", data.system.oncordova ? "cordova" : "web");
@@ -1350,7 +1432,7 @@ module.exports={bookname:'catulluscarmina',author:'Caius Valerius Catullus',tran
 
 "use strict";
 // catulluscarmina/burtonsmithersprose.js
-module.exports={bookname:'catulluscarmina',author:'Caius Valerius Catullus',translationid:"burtonsmithersprose",title:'The Carmina',translation:true,source:'<a href="http://www.gutenberg.org/files/20732/20732-h/20732-h.htm">Project Gutenberg</a>',translationshortname:"Burton/Smithers prose",translationfullname:"Richard Burton & Leonard C. Smithers prose",translationclass:"prose",text:['<p class="title">The Carmina</p>\n\t<p class="author">Richard Burton &amp; Leonard C. Smithers</p>\n\t<p class="subtitle">(prose translation)</p>','<p class="cantohead">I.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>To whom inscribe my dainty tome\u2014just out and with ashen pumice polished? Cornelius, to thee! for thou wert wont to deem my triflings of account, and at a time when thou alone of Italians didst dare unfold the ages\u2019 abstract in three chronicles\u2014learned, by Jupiter!\u2014and most laboriously writ. Wherefore take thou this booklet, such as \u2019tis, and O Virgin Patroness, may it outlive generations more than one.</p>','<p class="cantohead">II.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Sparrow, petling of my girl, with which she wantons, which she presses to her bosom, and whose eager peckings is accustomed to incite by stretching forth her forefinger, when my bright-hued beautiful one is pleased to jest in manner light as (perchance) a solace for her heart ache, thus methinks she allays love\u2019s pressing heats! Would that in manner like, I were able with thee to sport and sad cares of mind to lighten!</p>','<p class="cantohead">III.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Mourn ye, O ye Loves and Cupids and all men of gracious mind. Dead is the sparrow of my girl, sparrow, sweetling of my girl. Which more than her eyes she loved; for sweet as honey was it and its mistress knew, as well as damsel knoweth her own mother nor from her bosom did it rove, but hopping round first one side then the other, to its mistress alone it evermore did chirp. Now does it fare along that path of shadows whence naught may e\u2019er return. Ill be to ye, savage glooms of Orcus, which swallow up all things of fairness: which have snatched away from me the comely sparrow. O deed of bale! O sparrow sad of plight! Now on thy account my girl\u2019s sweet eyes, swollen, do redden with tear-drops.</p>','<p class="cantohead">IIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>That pinnace which ye see, my friends, says that it was the speediest of boats, nor any craft the surface skimming but it could gain the lead, whether the course were gone o\u2019er with plashing oars or bended sail. And this the menacing Adriatic shores may not deny, nor may the Island Cyclades, nor noble Rhodes and bristling Thrace, Propontis nor the gusty Pontic gulf, where itself (afterwards a pinnace to become) erstwhile was a foliaged clump; and oft on Cytorus\u2019 ridge hath this foliage announced itself in vocal rustling. And to thee, Pontic Amastris, and to box-screened Cytorus, the pinnace vows that this was alway and yet is of common knowledge most notorious; states that from its primal being it stood upon thy topmost peak, dipped its oars in thy waters, and bore its master thence through surly seas of number frequent, whether the wind whistled \u2019gainst the starboard quarter or the lee or whether Jove propitious fell on both the sheets at once; nor any vows [from stress of storm] to shore-gods were ever made by it when coming from the uttermost seas unto this glassy lake. But these things were of time gone by: now laid away, it rusts in peace and dedicates its age to thee, twin Castor, and to Castor\u2019s twin.</p>','<p class="cantohead">V.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Let us live, my Lesbia, and let us love, and count all the mumblings of sour age at a penny\u2019s fee. Suns set can rise again: we when once our brief light has set must sleep through a perpetual night. Give me of kisses a thousand, and then a hundred, then another thousand, then a second hundred, then another thousand without resting, then a hundred. Then, when we have made many thousands, we will confuse the count lest we know the numbering, so that no wretch may be able to envy us through knowledge of our kisses\u2019 number.</p>','<p class="cantohead">VI.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>O Flavius, of thy sweetheart to Catullus thou would\u2019st speak, nor could\u2019st thou keep silent, were she not both ill-mannered and ungraceful. In truth thou affectest I know not what hot-blooded whore: this thou art ashamed to own. For that thou dost not lie alone a-nights thy couch, fragrant with garlands and Syrian unguent, in no way mute cries out, and eke the pillow and bolsters indented here and there, and the creakings and joggings of the quivering bed: unless thou canst silence these, nothing and again nothing avails thee to hide thy whoredoms. And why? Thou wouldst not display such drain\xE8d flanks unless occupied in some tomfoolery. Wherefore, whatsoever thou hast, be it good or ill, tell us! I wish to laud thee and thy loves to the sky in joyous verse.</p>','<p class="cantohead">VII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Thou askest, how many kisses of thine, Lesbia, may be enough and to spare for me. As the countless Libyan sands which strew the spicy strand of Cyrene \u2019twixt the oracle of swelt\u2019ring Jove and the sacred sepulchre of ancient Battus, or as the thronging stars which in the hush of darkness witness the furtive loves of mortals, to kiss thee with kisses of so great a number is enough and to spare for passion-driven Catullus: so many that prying eyes may not avail to number, nor ill tongues to ensorcel.</p>','<p class="cantohead">VIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Unhappy Catullus, cease thy trifling and what thou seest lost know to be lost. Once bright days used to shine on thee when thou wert wont to haste whither thy girl didst lead thee, loved by us as never girl will e\u2019er be loved. There those many joys were joyed which thou didst wish, nor was the girl unwilling. In truth bright days used once to shine on thee. Now she no longer wishes: thou too, powerless to avail, must be unwilling, nor pursue the retreating one, nor live unhappy, but with firm-set mind endure, steel thyself. Farewell, girl, now Catullus steels himself, seeks thee not, nor entreats thy acquiescence. But thou wilt pine, when thou hast no entreaty proffered. Faithless, go thy way! what manner of life remaineth to thee? who now will visit thee? who find thee beautiful? whom wilt thou love now? whose girl wilt thou be called? whom wilt thou kiss? whose lips wilt thou bite? But thou, Catullus, remain hardened as steel.</p>','<p class="cantohead">VIIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Veranius, of all my friends standing in the front, owned I three hundred thousands of them, hast thou come home to thy Penates, thy longing brothers and thine aged mother? Thou hast come back. O joyful news to me! I may see thee safe and sound, and may hear thee speak of regions, deeds, and peoples Iberian, as is thy manner; and reclining o\u2019er thy neck shall kiss thy jocund mouth and eyes. O all ye blissfullest of men, who more gladsome or more blissful is than I am?</p>','<p class="cantohead">X.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Varus drew me off to see his mistress as I was strolling from the Forum: a little whore, as it seemed to me at the first glance, neither inelegant nor lacking good looks. When we came in, we fell to discussing various subjects, amongst which, how was Bithynia now, how things had gone there, and whether I had made any money there. I replied, what was true, that neither ourselves nor the pr&aelig;tors nor their suite had brought away anything whereby to flaunt a better-scented poll, especially as our pr&aelig;tor, the irrumating beast, cared not a single hair for his suite. \u201CBut surely,\u201D she said, \u201Cyou got some men to bear your litter, for they are said to grow there?\u201D I, to make myself appear to the girl as one of the fortunate, \u201CNay,\u201D I say, \u201Cit did not go that badly with me, ill as the province turned out, that I could not procure eight strapping knaves to bear me.\u201D (But not a single one was mine either here or there who the fractured foot of my old bedstead could hoist on his neck.) And she, like a pathic girl, \u201CI pray thee,\u201D says she, \u201Clend me, my Catullus, those bearers for a short time, for I wish to be borne to the shrine of Serapis.\u201D \u201CStay,\u201D quoth I to the girl, \u201Cwhen I said I had this, my tongue slipped; my friend, Cinna Gaius, he provided himself with these. In truth, whether his or mine&mdash;what do I trouble? I use them as though I had paid for them. But thou, in ill manner with foolish teasing dost not allow me to be heedless.\u201D</p','<p class="cantohead">XI.</p>\n\t\t<p class="cantosubhead">A Parting Insult to Lesbia.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Furius and Aurelius, comrades of Catullus, whether he penetrate to furthest Ind where the strand is lashed by the far-echoing Eoan surge, or whether \u2019midst the Hyrcans or soft Arabs, or whether the Sacians or quiver-bearing Parthians, or where the seven-mouthed Nile encolours the sea, or whether he traverse the lofty Alps, gazing at the monuments of mighty Caesar, the gallic Rhine, the dismal and remotest Britons, all these, whatever the Heavens\u2019 Will may bear, prepared at once to attempt,&mdash;bear ye to my girl this brief message of no fair speech. May she live and flourish with her swivers, of whom may she hold at once embraced the full three hundred, loving not one in real truth, but bursting again and again the flanks of all: nor may she look upon my love as before, she whose own guile slew it, e\u2019en as a flower on the greensward\u2019s verge, after the touch of the passing plough.</p>','<p class="cantohead">XII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Marrucinius Asinius, thou dost use thy left hand in no fair fashion \u2019midst the jests and wine: thou dost filch away the napkins of the heedless. Dost thou think this a joke? it flies thee, stupid fool, how coarse a thing and unbecoming \u2019tis! Dost not credit me? credit thy brother Pollio who would willingly give a talent to divert thee from thy thefts: for he is a lad skilled in pleasantries and facetiousness. Wherefore, either expect hendecasyllables three hundred, or return me my napkin which I esteem, not for its value but as a pledge of remembrance from my comrade. For Fabullus and Veranius sent me as a gift handkerchiefs from Iberian Saetabis; these must I prize e\u2019en as I do Veraniolus and Fabullus.</p>','<p class="cantohead">XIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Thou shalt feast well with me, my Fabullus, in a few days, if the gods favour thee, provided thou dost bear hither with thee a good and great feast, not forgetting a fair damsel and wine and wit and all kinds of laughter. Provided, I say, thou dost bear hither these, our charming one, thou wilt feast well: for thy Catullus\u2019 purse is brimful of cobwebs. But in return thou may\u2019st receive a perfect love, or whatever is sweeter or more elegant: for I will give thee an unguent which the Loves and Cupids gave unto my girl, which when thou dost smell it, thou wilt entreat the gods to make thee, O Fabullus, one total Nose!</p>','<p class="cantohead">XIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Did I not love thee more than mine eyes, O most jocund Calvus, for thy gift I should abhor thee with Vatinian abhorrence. For what have I done or what have I said that thou shouldst torment me so vilely with these poets? May the gods give that client of thine ills enow, who sent thee so much trash! Yet if, as I suspect, this new and care-picked gift, Sulla, the litterateur, gives thee, it is not ill to me, but well and beatific, that thy labours [in his cause] are not made light of. Great gods, what a horrible and accurst book which, forsooth, thou hast sent to thy Catullus that he might die of boredom the livelong day in the Saturnalia, choicest of days! No, no, my joker, this shall not leave thee so: for at daydawn I will haste to the booksellers\u2019 cases; the Caesii, the Aquini, Suffenus, every poisonous rubbish will I collect that I may repay thee with these tortures. Meantime (farewell ye) hence depart ye from here, whither an ill foot brought ye, pests of the period, puniest of poetasters.</p>\n\t\t\t<p>If by chance ye ever be readers of my triflings and ye will not quake to lay your hands upon us,</p>\n\t\t\t<p>&nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; *</p>','<p class="cantohead">XV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I commend me to thee with my charmer, Aurelius. I come for modest boon that,&mdash;didst thine heart long for aught, which thou desiredst chaste and untouched,&mdash;thou \u2019lt preserve for me the chastity of my boy. I do not say from the public: I fear those naught who hurry along the thoroughfares hither thither occupied on their own business: truth my fear is from thee and thy penis, pestilent eke to fair and to foul. Set it in motion where thou dost please, whenever thou biddest, as much as thou wishest, wherever thou findest the opportunity out of doors: this one object I except, to my thought a reasonable boon. But if thy evil mind and senseless rutting push thee forward, scoundrel, to so great a crime as to assail our head with thy snares, O wretch, calamitous mishap shall happen thee, when with feet taut bound, through the open entrance radishes and mullets shall pierce.</p>','<p class="cantohead">XVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I will paedicate and irrumate you, Aurelius the bardache and Furius the cinaede, who judge me from my verses rich in love-liesse, to be their equal in modesty. For it behoves your devout poet to be chaste himself; his verses&mdash;not of necessity. Which verses, in a word, may have a spice and volupty, may have passion\u2019s cling and such like decency, so that they can incite with ticklings, I do not say boys, but bearded ones whose stiffened limbs amort lack pliancy in movement. You, because of many thousand kisses you have read, think me womanish. I will paedicate and irrumate you!</p>','<p class="cantohead">XVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Colonia, that longest to disport thyself on a long bridge and art prepared for the dance, but that fearest the trembling legs of the bridgelet builded on re-used shavings, lest supine it may lie stretched in the hollow swamp; may a good bridge take its place designed to thy fancy, on which e\u2019en the Salian dances may be sustained: for the which grant to me, Colonia, greatest of gifts glee-exciting. Such an one, townsman of mine, I want from thy bridge to be pitched in the sludge head over heels, right where the lake of all its stinking slime is dankest and most superfluent&mdash;a deep-sunk abyss. The man is a gaping gaby! lacking the sense of a two-years-old baby dozing on its father\u2019s cradling arm. Although to him is wedded a girl flushed with springtide\u2019s bloom (and a girl more dainty than a tender kid, meet to be watched with keener diligence than the lush-black grape-bunch), he leaves her to sport at her list, cares not a single hair, nor bestirs himself with marital office, but lies as an alder felled by Ligurian hatchet in a ditch, as sentient of everything as though no woman were at his side. Such is my booby! he sees not, he hears naught. Who himself is, or whether he be or be not, he also knows not. Now I wish to chuck him head first from thy bridge, so as to suddenly rouse (if possible) this droning dullard and to leave behind in the sticky slush his sluggish spirit, as a mule casts its iron shoe in the tenacious slough.</p>','<p class="cantohead">XVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>This grove I dedicate and consecrate to thee, Priapus, who hast thy home at Lampsacus, and eke thy woodlands, Priapus; for thee especially in its cities worships the coast of the Hellespont, richer in oysters than all other shores.</p>','<p class="cantohead">XVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>This place, youths, and the marshland cot thatched with rushes, osier-twigs and bundles of sedge, I, carved from a dry oak by a rustic axe, now protect, so that they thrive more and more every year. For its owners, the father of the poor hut and his son,&mdash;both husbandmen,&mdash;revere me and salute me as a god; the one labouring with assiduous diligence that the harsh weeds and brambles may be kept away from my sanctuary, the other often bringing me small offerings with open hand. On me is placed a many-tinted wreath of early spring flowers and the soft green blade and ear of the tender corn. Saffron-coloured violets, the orange-hued poppy, wan gourds, sweet-scented apples, and the purpling grape trained in the shade of the vine, [are offered] to me. Sometimes, (but keep silent as to this) even the bearded he-goat, and the horny-footed nanny sprinkle my altar with blood; for which honours Priapus is bound in return to do everything [which lies in his duty], and to keep strict guard over the little garden and vineyard of his master. Wherefore, abstain, O lads, from your evil pilfering here. Our next neighbour is rich and his Priapus is negligent. Take from him; this path then will lead you to his grounds.</p>','<p class="cantohead">XX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I, O traveller, shaped with rustic art from a dry poplar, guard this little field which thou seest on the left, and the cottage and small garden of its indigent owner, and keep off the greedy hands of the robber. In spring a many-tinted wreath is placed upon me; in summer\u2019s heat ruddy grain; [in autumn] a luscious grape cluster with vine-shoots, and in the bitter cold the pale-green olive. The tender she-goat bears from my pasture to the town milk-distended udders; the well-fattened lamb from my sheepfolds sends back [its owner] with a heavy handful of money; and the tender calf, \u2019midst its mother\u2019s lowings, sheds its blood before the temple of the Gods. Hence, wayfarer, thou shalt be in awe of this God, and it will be profitable to thee to keep thy hands off. For a punishment is prepared&mdash;a roughly-shaped mentule. \u201CTruly, I am willing,\u201D thou sayest; then, truly, behold the farmer comes, and that same mentule plucked from my groin will become an apt cudgel in his strong right hand.</p>','<p class="cantohead">XXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aurelius, father of the famished, in ages past in time now present and in future years yet to come, thou art longing to paedicate my love. Nor is\u2019t done secretly: for thou art with him jesting, closely sticking at his side, trying every means. In vain: for, instructed in thy artifice, I\u2019ll strike home beforehand by irrumating thee. Now if thou didst this to work off the results of full-living I would say naught: but what irks me is that my boy must learn to starve and thirst with thee. Wherefore, desist, whilst thou mayst with modesty, lest thou reach the end,&mdash;but by being irrumated.</p>','<p class="cantohead">XXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>That Suffenus, Varus, whom thou know\u2019st right well, is a man fair spoken, witty and urbane, and one who makes of verses lengthy store. I think he has writ at full length ten thousand or more, nor are they set down, as of custom, on palimpsest: regal paper, new boards, unused bosses, red ribands, lead-ruled parchment, and all most evenly pumiced. But when thou readest these, that refined and urbane Suffenus is seen on the contrary to be a mere goatherd or ditcher-lout, so great and shocking is the change. What can we think of this? he who just now was seen a professed droll, or e\u2019en shrewder than such in gay speech, this same becomes more boorish than a country boor immediately he touches poesy, nor is the dolt e\u2019er as self-content as when he writes in verse,&mdash;so greatly is he pleased with himself, so much does he himself admire. Natheless, we all thus go astray, nor is there any man in whom thou canst not see a Suffenus in some one point. Each of us has his assigned delusion: but we see not what\u2019s in the wallet on our back.</p>','<p class="cantohead">XXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Furius, who neither slaves, nor coffer, nor bug, nor spider, nor fire hast, but hast both father and step-dame whose teeth can munch up even flints,&mdash;thou livest finely with thy sire, and with thy sire\u2019s wood-carved spouse. Nor need\u2019s amaze! for in good health are ye all, grandly ye digest, naught fear ye, nor arson nor house-fall, thefts impious nor poison\u2019s furtive cunning, nor aught of perilous happenings whatsoe\u2019er. And ye have bodies drier than horn (or than aught more arid still, if aught there be), parched by sun, frost, and famine. Wherefore shouldst thou not be happy with such weal. Sweat is a stranger to thee, absent also are saliva, phlegm, and evil nose-snivel. Add to this cleanliness the thing that\u2019s still more cleanly, that thy backside is purer than a salt-cellar, nor cackst thou ten times in the total year, and then \u2019tis harder than beans and pebbles; nay, \u2019tis such that if thou dost rub and crumble it in thy hands, not a finger canst thou ever dirty. These goodly gifts and favours, O Furius, spurn not nor think lightly of; and cease thy \u2019customed begging for an hundred sesterces: for thou\u2019rt blest enough!</p>','<p class="cantohead">XXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O thou who art the floweret of Juventian race, not only of these now living, but of those that were of yore and eke of those that will be in the coming years, rather would I that thou hadst given the wealth e\u2019en of Midas to that fellow who owns neither slave nor store, than that thou shouldst suffer thyself to be loved by such an one. \u201CWhat! isn\u2019t he a fine-looking man?\u201D thou askest. He is; but this fine-looking man has neither slaves nor store. Contemn and slight this as it please thee: nevertheless, he has neither slave nor store.</p>','<p class="cantohead">XXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Thallus the catamite, softer than rabbit\u2019s fur, or goose\u2019s marrow, or lowmost ear-lobe, limper than the drooping penis of an oldster, in its cobwebbed must, greedier than the driving storm, such time as the Kite-Goddess shews us the gaping Gulls, give me back my mantle which thou hast pilfered, and the Saetaban napkin and Thynian tablets which, idiot, thou dost openly parade as though they were heirlooms. These now unglue from thy nails and return, lest the stinging scourge shall shamefully score thy downy flanks and delicate hands, and thou unwonted heave and toss like a tiny boat surprised on the vasty sea by a raging storm.</p>','<p class="cantohead">XXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Furius, our villa not \u2019gainst the southern breeze is pitted nor the western wind nor cruel Boreas nor sunny east, but sesterces fifteen thousand two hundred oppose it. O horrible and baleful draught.</p>','<p class="cantohead">XXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Boy cupbearer of old Falernian, pour me fiercer cups as bids the laws of Postumia, mistress of the feast, drunker than a drunken grape. But ye, hence, as far as ye please, crystal waters, bane of wine, hie ye to the sober: here the Thyonian juice is pure.</p>','<p class="cantohead">XXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Piso\u2019s Company, a starveling band, with lightweight knapsacks, scantly packed, most dear Veranius thou, and my Fabullus eke, how fortunes it with you? have ye borne frost and famine enow with that sot? Which in your tablets appear&mdash;the profits or expenses? So with me, who when I followed a praetor, inscribed more gifts than gains. \u201CO Memmius, well and slowly didst thou irrumate me, supine, day by day, with the whole of that beam.\u201D But, from what I see, in like case ye have been; for ye have been crammed with no smaller a poker. Courting friends of high rank! But may the gods and goddesses heap ill upon ye, reproach to Romulus and Remus.</p>','<p class="cantohead">XXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Who can witness this, who can brook it, save a whore-monger, a guzzler, and a gamester, that Mamurra should possess what long-haired Gaul and remotest Britain erstwhile had. Thou catamite Romulus, this thou\u2019lt see and bear? Then thou\u2019rt a whore-monger, a guzzler, and a gamester. And shall he now, superb and o\u2019er replete, saunter o\u2019er each one\u2019s bed, as though he were a snow-plumed dove or an Adonis? Thou catamite Romulus, this thou\u2019lt see and hear? Then thou\u2019rt a whore-monger, a guzzler, and a gamester. For such a name, O general unique, hast thou been to the furthest island of the west, that this thy futtered-out Mentula should squander hundreds of hundreds? What is\u2019t but ill-placed munificence? What trifles has he squandered, or what petty store washed away? First his patrimony was mangled; secondly the Pontic spoils; then thirdly the Iberian, which the golden Tagus-stream knoweth. Do not the Gauls fear this man, do not the Britons quake? Why dost thou foster this scoundrel? What use is he save to devour well-fattened inheritances? Wast for such a name, O most puissant father-in-law and son-in-law, that ye have spoiled the entire world.</p>','<p class="cantohead">XXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Alfenus, unmemoried and unfaithful to thy comrades true, is there now no pity in thee, O hard of heart, for thine sweet loving friend? Dost thou betray me now, and scruplest not to play me false now, dishonourable one? Yet the irreverent deeds of traitorous men please not the dwellers in heaven: this thou takest no heed of, leaving me wretched amongst my ills. Alas, what may men do, I pray you, in whom put trust? In truth thou didst bid me entrust my soul to thee, sans love returned, lulling me to love, as though all [love-returns] were safely mine. Yet now thou dost withdraw thyself, and all thy purposeless words and deeds thou sufferest to be wafted away into winds and nebulous clouds. If thou hast forgotten, yet the gods remember, and in time to come will make thee rue thy doing.</p>','<p class="cantohead">XXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Sirmio! Eyebabe of Islands and Peninsulas, which Neptune holds whether in limpid lakes or on mighty mains, how gladly and how gladsomely do I re-see thee, scarce crediting that I\u2019ve left behind Thynia and the Bithynian champaign, and that safe and sound I gaze on thee. O what\u2019s more blissful than cares released, when the mind casts down its burden, and when wearied with travel-toils we reach our hearth, and sink on the craved-for couch. This and only this repays our labours numerous. Hail, lovely Sirmio, and gladly greet thy lord; and joy ye, wavelets of the Lybian lake; laugh ye the laughters echoing from my home.</p>','<p class="cantohead">XXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I\u2019ll love thee, my sweet Ipsithilla, my delight, my pleasure: an thou bid me come to thee at noontide. And an thou thus biddest, I adjure thee that none makes fast the outer door [against me], nor be thou minded to gad forth, but do thou stay at home and prepare for us nine continuous conjoinings. In truth if thou art minded, give instant summons: for breakfast o\u2019er, I lie supine and ripe, thrusting through both tunic and cloak.</p>','<p class="cantohead">XXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O, chiefest of pilferers, baths frequenting, Vibennius the father and his pathic son (for with the right hand is the sire more in guilt, and with his backside is the son the greedier), why go ye not to exile and ill hours, seeing that the father\u2019s plunderings are known to all folk, and that, son, thou can\u2019st not sell thine hairy buttocks for a doit?</p>','<p class="cantohead">XXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>We, maids and upright youths, are in Diana\u2019s care: upright youths and maids, we sing Diana.</p>\n\t\t\t<p>O Latonia, progeny great of greatest Jove, whom thy mother bare \u2019neath Delian olive,</p>\n\t\t\t<p>That thou mightst be Queen of lofty mounts, of foliaged groves, of remote glens, and of winding streams.</p>\n\t\t\t<p>Thou art called Juno Lucina by the mother in her travail-pangs, thou art named potent Trivia and Luna with an ill-got light.</p>\n\t\t\t<p>Thou, Goddess, with monthly march measuring the yearly course, dost glut with produce the rustic roofs of the farmer.</p>\n\t\t\t<p>Be thou hallowed by whatsoe\u2019er name thou dost prefer; and cherish, with thine good aid, as thou art wont, the ancient race of Romulus.</p>','<p class="cantohead">XXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>To that sweet poet, my comrade, Caecilius, I bid thee, paper, say: that he hie him here to Verona, quitting New Comum\u2019s city-walls and Larius\u2019 shore; for I wish him to give ear to certain counsels from a friend of his and mine. Wherefore, an he be wise, he\u2019ll devour the way, although a milk-white maid doth thousand times retard his going, and flinging both arms around his neck doth supplicate delay&mdash;a damsel who now, if truth be brought me, is undone with immoderate love of him. For, since what time she first read of the Dindymus Queen, flames devour the innermost marrow of the wretched one. I grant thee pardon, damsel, more learned than the Sapphic muse: for charmingly has the Mighty Mother been sung by Caecilius.</p>','<p class="cantohead">XXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Volusius\u2019 Annals, merdous paper, fulfil ye a vow for my girl: for she vowed to sacred Venus and to Cupid that if I were re-united to her and I desisted hurling savage iambics, she would give the most elect writings of the pettiest poet to the tardy-footed God to be burned with ill-omened wood. And <em>this</em> the saucy minx chose, jocosely and drolly to vow to the gods. Now, O Creation of the cerulean main, who art in sacred Idalium, and in Urian haven, and who doth foster Ancona and reedy Cnidos, Amathus and Golgos, and Dyrrhachium, Adriatic tavern, accept and acknowledge this vow if it lack not grace nor charm. But meantime, hence with ye to the flames, crammed with boorish speech and vapid, Annals of Volusius, merdous paper.</p>','<p class="cantohead">XXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Tavern of lust and you its tippling crowd, (at ninth pile sign-post from the Cap-donned Brothers) think ye that ye alone have mentules, that \u2019tis allowed to you alone to touzle whatever may be feminine, and to deem all other men mere goats? But, because ye sit, a row of fools numbering one hundred or haply two hundred, do ye think I dare not irrumate your entire two hundred&mdash;loungers!&mdash;at once! Think it! but I\u2019ll scrawl all over the front of your tavern with scorpion-words. For my girl, who has fled from my embrace (she whom I loved as ne\u2019er a maid shall be beloved&mdash;for whom I fought fierce fights) has seated herself here. All ye, both honest men and rich, and also, (O cursed shame) all ye paltry back-slum fornicators, are making hot love to her; and thou above all, one of the hairy-visaged sons of coney-caverned Celtiberia, Egnatius, whose quality is stamped by dense-grown beard, and teeth with Spanish urine scrubbed.</p>','<p class="cantohead">XXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>\u2019Tis ill, Cornificius, with thy Catullus, \u2019tis ill, by Hercules, and most untoward; and greater, greater ill, each day and hour! And thou, what solace givest thou, e\u2019en the tiniest, the lightest, by thy words? I\u2019m wroth with thee. Is my love but worth this? Yet one little message would cheer me, though more full of sadness than Simonidean tears.</p>','<p class="cantohead">XXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Egnatius, who has milk-white teeth, grins for ever and aye. An he be in court, when counsel excites tears, he grins. An he be at funeral pyre where one mourns a son devoted, where a bereft mother\u2019s tears stream for her only one, he grins. Whatever it may be, wherever he is, whate\u2019er may happen, he grins. Such ill habit has he&mdash;neither in good taste, well assumed, nor refined. Wherefore do thou take note from me, my good Egnatius. Be thou refined Sabine or Tiburtine, paunch-full Umbrian or obese Tuscan, Lanuvian dusky and large-tusked, or Transpadine (to touch upon mine own folk also), or whom thou wilt of those who cleanly wash their teeth, still I\u2019d wish thee not to grin for ever and aye; for than senseless giggling nothing is more senseless. Now thou\u2019rt a Celtiberian! and in the Celtiberian land each wight who has urined is wont each morn to scrub with it his teeth and pinky gums, so that the higher the polish on thy teeth, the greater fund it notes that thou hast drunk of urine.</p>','<p class="cantohead">XXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What mind ill set, O sorry Ravidus, doth thrust thee rashly on to my iambics? What god, none advocate of good for thee, doth stir thee to a senseless contest? That thou may\u2019st be in the people\u2019s mouth? What would\u2019st thou? Dost wish to be famed, no matter in what way? So thou shalt be, since thou hast aspired to our loved one\u2019s love, but by our long-drawn vengeance.</p>','<p class="cantohead">XXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Ametina, out-drain\xE8d maiden, worries me for a whole ten thousand, that damsel with an outspread nose, <span class="french">ch\xE8re amie</span> of Formianus the wildling. Ye near of kin in whose care the maiden is, summon ye both friends and medicals: for the girl\u2019s not sane. Nor ask ye, in what way: she is subject to delusions.</p>','<p class="cantohead">XXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Hither, all ye hendecasyllables, as many as may be, from every part, all of ye, as many soever as there be! A shameless prostitute deems me fair sport, and denies return to me of our writing tablets, if ye are able to endure this. Let\u2019s after her, and claim them back. \u201CWho may she be,\u201D ye ask? That one, whom ye see strutting awkwardly, stagily, and stiffly, and with a laugh on her mouth like a Gallic whelp. Throng round her, and claim them back. \u201CO putrid punk, hand back our writing tablets; hand back, O putrid punk, our writing tablets.\u201D Not a jot dost heed? O Muck, Brothel-Spawn, or e\u2019en loathsomer if it is possible so to be! Yet think not yet that this is enough. For if naught else we can extort a blush on thy brazened bitch\u2019s face. We\u2019ll yell again in heightened tones, \u201CO putrid punk, hand back our writing tablets, hand back, O putrid punk, our writing tablets.\u201D But naught we profit, naught she budges. Changed must your measure and your manner be, an you would further progress make&mdash;\u201CO Virgin pure and spotless, hand back our writing tablets.\u201D</p>','<p class="cantohead">XXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Hail, O maiden with nose not of the tiniest, with foot lacking shape and eyes lacking darkness, with fingers scant of length, and mouth not dry and tongue scant enough of elegance, <em>ch\xE8re amie</em> of Formianus the wildling. And thee the province declares to be lovely? With thee our Lesbia is to be compared? O generation witless and unmannerly!</p>','<p class="cantohead">XXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O, Homestead of ours, whether Sabine or Tiburtine (for that thou\u2019rt Tiburtine folk concur, in whose heart \u2019tis not to wound Catullus; but those in whose heart \u2019tis, will wager anything thou\u2019rt Sabine) but whether Sabine or more truly Tiburtine, o\u2019erjoyed was I to be within thy rural country-home, and to cast off an ill cough from my chest, which&mdash;not unearned&mdash;my belly granted me, for grasping after sumptuous feeds. For, in my wish to be Sestius\u2019 guest, his defence against the plaintiff Antius, crammed with venom and pestilent dulness, did I read through. Hence a chill heavy rheum and fitful cough shattered me continually until I fled to thine asylum, and brought me back to health with rest and nettle-broth. Wherefore, re-manned, I give thee utmost thanks, that thou hast not avenged my fault. Nor do I pray now for aught but that, should I re-take Sestius\u2019 nefarious script, its frigid vapidness may bring a cold and cough to Sestius\u2019 self; for he but invites me when I read dull stuff.</p>','<p class="cantohead">XXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Septumius clasping Acme his adored to his bosom, \u201CAcme mine,\u201D quoth he, \u201Cif thee I love not to perdition, nor am prepared to love through all the future years moreover without cease, as greatly and distractedly as man may,&mdash;alone in Libya or in torrid India may I oppose a steel-eyed lion.\u201D As thus he said, Love, leftwards as before, with approbation rightwards sneezed. Then Acme slightly bending back her head, and the swimming eyes of her sweet boy with rose-red lips a-kissing, \u201CSo,\u201D quoth she, \u201Cmy life, Septumillus, this Lord unique let us serve for aye, as more forceful in me burns the fire greater and keener \u2019midst my soft marrow.\u201D As thus she said, Love, leftwards as before, with approbation rightwards sneezed. Now with good auspice urged along, with mutual minds they love and are beloved. The thrall o\u2019 love Septumius his only Acme far would choose, than Tyrian or Britannian realms: the faithful Acme with Septumius unique doth work her love delights and wantonings. Whoe\u2019er has seen folk blissfuller, whoe\u2019er a more propitious union?</p>','<p class="cantohead">XXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Now springtide brings back its mild and tepid airs, now the heaven\u2019s fury equinoctial is calmed by Zephyr\u2019s benign breath. The Phrygian meadows are left behind, O Catullus, and the teeming fields of sun-scorched Nicaea: to the glorious Asian cities let us haste. Now my palpitating soul craves wander, now my feet grow vigorous with glad zeal. O charming circlet of comrades, fare ye well, who are together met from distant homes to which divers sundered ways lead back.</p>','<p class="cantohead">XXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Porcius and Socration, twins in rascality of Piso, scurf and famisht of the earth, you before my Veraniolus and Fabullus has that prepuce-lacking Priapus placed? Shall you betimes each day in luxurious opulence banquet? And must my cronies quest for dinner invitations, [lounging] where the three cross-roads meet?</p>','<p class="cantohead">XXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Thine honey-sweet eyes, O Juventius, had I the leave to kiss for aye, for aye I\u2019d kiss e\u2019en to three hundred thousand kisses, nor ever should I reach to future plenity, not even if thicker than dried wheat sheaves be the harvest of our kisses.</p>','<p class="cantohead">XXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Most eloquent of Romulus\u2019 descendancy, who are, who have been, O Marcus Tullius, and who shall later be in after time, to thee doth give his greatest gratitude Catullus, pettiest of all the poets,&mdash;and so much pettiest of all the poets as thou art peerless \u2019mongst all pleaders.</p>','<p class="cantohead">L.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Yestreen, Licinius, in restful day, much mirthful verse we flashed upon my tablets, as became us, men of fancy. Each jotting versicles in turn sported first in this metre then in that, exchanging mutual epigrams \u2019midst jokes and wine. But I departed thence, afire, Licinius, with thy wit and drolleries, so that food was useless to my wretched self; nor could sleep close mine eyes in quiet, but all o\u2019er the bed in restless fury did I toss, longing to behold daylight that with thee I might speak, and again we might be together. But afterwards, when my limbs, weakened by my restless labours, lay stretched in semi-death upon the bed, this poem, O jocund one, I made for thee, from which thou mayst perceive my dolour. Now \u2019ware thee of presumptuousness, and our pleadings \u2019ware thee of rejecting, we pray thee, eye-babe of ours, lest Nemesis exact her dues from thee. She is a forceful Goddess; \u2019ware her wrath.</p>','<p class="cantohead">LI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>He to me to be peer to a god doth seem, he, if such were lawful, to o\u2019er-top the gods, who sitting oft a-front of thee doth gaze on thee, and doth listen to thine laughter lovely, which doth snatch away from sombre me mine every sense: for instant falls my glance on thee, Lesbia, naught is left to me [of voice], but my tongue is numbed, a keen-edged flame spreads through my limbs, with sound self-caused my twin ears sing, and mine eyes are enwrapped with night.</p>\n\t\t\t<p>Sloth, O Catullus, to thee is hurtful: in sloth beyond measure dost thou exult and pass thy life. Sloth hath erewhile ruined rulers and gladsome cities.</p>','<p class="cantohead">LII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Prithee Catullus, why delay thine death? Nonius the tumour is seated in the curule chair, Vatinius forswears himself for consul\u2019s rank: prithee Catullus, why delay thine death?</p>','<p class="cantohead">LIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I laughed at I know not whom in the crowded court who, when with admirable art Vatinius\u2019 crimes my Calvus had set forth, with hands uplifted and admiring mien thus quoth \u201CGreat Gods, the fluent little Larydoodle!\u201D</p>','<p class="cantohead">LIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Otho\u2019s head is paltry past all phrase * * * the uncouth semi-soaped shanks of Nerius, the slender soundless fizzlings of Libo * * * if not all things I wish would displease thee and Fuficius, the white-headed and green-tailed.</p>\n\t\t\t<p>Anew thou shalt be enraged at my harmless iambics, emperor unique.</p>','<p class="cantohead">LV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>We beg, if maybe \u2019tis not untoward, thou\u2019lt shew us where may be thine haunt sequestered. Thee did we quest within the Lesser Fields, thee in the Circus, thee in every bookshop, thee in holy fane of highmost Jove. In promenade yclept \u201CThe Great,\u201D the crowd of cocottes straightway did I stop, O friend, accosting those whose looks I noted were unruffled. And for thee loudly did I clamour, \u201CRestore to me Camerius, most giddy girls.\u201D Quoth such-an-one, her bosom bare a-shewing, \u201CLook! \u2019twixt rose-red paps he shelters him.\u201D But labour \u2019tis of Hercules thee now to find. Not were I framed the Cretan guard, nor did I move with Pegasean wing, nor were I Ladas, or Persius with the flying foot, or Rhesus with swift and snowy team: to these add thou the feathery-footed and winged ones, ask likewise fleetness of the winds: which all united, O Camerius, couldst thou me grant, yet exhausted in mine every marrow and with many a faintness consumed should I be in my quest for thee, O friend. Why withdraw thyself in so much pride, O friend? Tell us where thou wilt be found, declare it boldly, give up the secret, trust it to the light. What, do the milk-white maidens hold thee? If thou dost hold thy tongue closed up in mouth, thou squanderest Love\u2019s every fruit: for Venus joys in many-worded babblings. Yet if thou wishest, thou mayst bar thy palate, if I may be a sharer in thy love.</p>','<p class="cantohead">LVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O thing ridiculous, Cato, and facetious, and worthy of thine ears and of thy laughter. Laugh, Cato, the more thou lovest Catullus: the thing is ridiculous, and beyond measure facetious. Just now I caught a boy a-thrusting in a girl: and on him (so please you, Dione) with rigid spear of mine I fell.</p>','<p class="cantohead">LVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>A comely couple of shameless catamites, Mamurra and Caesar, pathics both. Nor needs amaze: they share like stains&mdash;this, Urban, the other, Formian,&mdash;which stay deep-marked nor can they be got rid of. Both morbidly diseased through pathic vice, the pair of twins lie in one bed, alike in erudition, one not more than other the greater greedier adulterer, allied rivals of the girls. A comely couple of shameless catamites.</p>','<p class="cantohead">LVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Caelius, our Lesbia, that Lesbia, the self-same Lesbia whom Catullus more than himself and all his own did worship, now at cross-roads and in alleys husks off the mettlesome descendants of Remus.</p>','<p class="cantohead">LVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Rufa of Bononia lends her lips to Rufulus, she the wife of Menenius, whom oft among the sepulchres ye have seen clutching her meal from the funeral pile, when pursuing the bread which has rolled from the fire, whilst she was being buffeted by a semi-shorn corpse-burner.</p>','<p class="cantohead">LX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Did a lioness of the Libyan Hills, or Scylla yelping from her lowmost groin, thee procreate, with mind so hard and horrid, that thou hast contempt upon a suppliant\u2019s voice in calamity\u2019s newest stress? O heart o\u2019ergreatly cruel.</p>','<p class="cantohead">LXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Fosterer of the Helicon Hill, sprung from Urania, who beareth the gentle virgin to her mate, O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Twine round thy temples sweet-smelling flowerets of marjoram; put on thy gold-tinted veil; light-hearted, hither, hither haste, bearing on snowy foot the golden-yellow sandal:</p>\n\t\t\t<p>And a-fire with the joyous day, chanting wedding melodies with ringing voice, strike the ground with thy feet, with thine hand swing aloft the pine-link.</p>\n\t\t\t<p>For Vinia&mdash;fair as Idalian Venus, when stood before the Phrygian judge&mdash;a virgin fair, weds Manlius \u2019midst happy auspices.</p>\n\t\t\t<p>She, bright-shining as the Asian myrtle florid in branchlets, which the Hamadryads nurture for their pleasure with besprinkled dew.</p>\n\t\t\t<p>Wherefore, hither! leaving the Aonian grot in the Thespian Rock, o\u2019er which flows the chilling stream of Aganippe.</p>\n\t\t\t<p>And summon homewards the mistress, eager for her new yoke, firm-prisoning her soul in love; as tight-clasping ivy, wandering hither, thither, enwraps the tree around.</p>\n\t\t\t<p>And also ye, upright virgins, for whom a like day is nearing, chant ye in cadence, singing \u201CO Hymenaeus Hymen, O Hymen Hymenaeus!\u201D</p>\n\t\t\t<p>That more freely, hearing himself to his duty called, will he bear hither his presence, Lord of true Venus, uniter of true lovers.</p>\n\t\t\t<p>What god is worthier of solicitation by anxious amourists? Whom of the celestials do men worship more greatly? O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Thee for his young the trembling father beseeches, for thee virgins unclasp the zone from their breasts, for thee the fear-full bridegroom harkeneth with eager ear.</p>\n\t\t\t<p>Thou bearest to the youngster\u2019s arms that flower-like damsel, taken from her mother\u2019s bosom, O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Nor lacking thee may Venus take her will with fair Fame\u2019s approbation; but she may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Lacking thee, no house can yield heirs, nor parent be surrounded by offspring; but they may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Nor lacking thy rites may our land be protected e\u2019en to its boundaries; but it may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Gates open wide: the virgin is here. See how the torch-flakes shake their gleaming locks? Let shame retard the modest:</p>\n\t\t\t<p class="divider">* * * * *</p>\n\t\t\t<p>Yet hearing, greater does she weep, that she must onwards go.</p>\n\t\t\t<p>Cease thy tears. For thee there is no peril, Aurunculeia, that any woman more beauteous from Ocean springing shall ever see the light of day.</p>\n\t\t\t<p>Thou art like the hyacinthine flower, wont to stand aloft \u2019midst varied riches of its lordling\u2019s garden. But thou delayest, day slips by: advance, new mated one.</p>\n\t\t\t<p>Advance, new mated, now in sight, and listen to our speech. Note how the torch-flakes shake their glittering tresses: advance, new mated one.</p>\n\t\t\t<p>Nor given to ill adulteries, nor seeking lawless shames, shall thy husband ever wish to lie away from thy soft breasts,</p>\n\t\t\t<p>But as the lithe vine amongst neighbouring trees doth cling, so shall he be enclasped in thine encircled arms. But day slips by: advance, new mated one.</p>\n\t\t\t<p>O nuptial couch * * * * with feet of ivory white.</p>\n\t\t\t<p>What joys are coming to thy lord, in gloom o\u2019 night, in noon of day. Let him rejoice! but day slips by: advance, new mated one.</p>\n\t\t\t<p>High raise, O boys, the torches: I see the gleaming veil approach. Come, chant in cadence, \u201CO Hymen Hymenaeus io, O Hymen Hymenaeus.\u201D</p>\n\t\t\t<p>Nor longer silent is lewd Fescinnine jest, nor to the boys the nuts deny, ingle, hearing thy master\u2019s love has flown.</p>\n\t\t\t<p>Give nuts to the boys, O listless ingle; enough of days thou hast played with nuts: now \u2019tis meet to serve Talassius. O ingle, give the nuts!</p>\n\t\t\t<p>The country lasses slighted were by thee, O ingle, till to-day: now the bride\u2019s tiresman shaves thy face. Wretched, wretched ingle, give the nuts.</p>\n\t\t\t<p>They say that from thy hairless ingles, O sweet-scented bridegroom, thou canst scarce abstain: but abstain thou! O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>We know that these delights were known to thee only when lawful: but to the wedded these same no more are lawful. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Thou also, bride, what thy husband seekest beware of denying, lest he go elsewhere in its search. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Look, thy husband\u2019s home is thine, potent and goodly, and shall be thine for ever more. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Until with trembling movement thine hoary brow nods ever to everything. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Lift o\u2019er the threshold with good omen thy glistening feet, and go through the polished gates. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Look! thy lord within, lying on Tyrian couch, all-expectant waits for thee. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Not less than in thine, in his breast burns an inmost flame, but more deeply inward. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Unloose the damsel\u2019s slender arm, O purple-bordered youth: now let her approach her husband\u2019s couch. O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>Ye good dames of fair renown to aged spouses, put ye the damsel a-bed. O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>Now thou mayst come, O bridegroom: thy wife is in the bridal-bed, with face brightly blushing as white parthenice \u2019midst ruddy poppies.</p>\n\t\t\t<p>But, O bridegroom (so help me the heaven-dwellers) in no way less beautiful art thou, nor doth Venus slight thee. But the day slips by: on! nor more delay.</p>\n\t\t\t<p>Nor long hast thou delayed, thou comest now. May kindly Venus help thee, since what thou dost desire thou takest publicly, and dost not conceal true love.</p>\n\t\t\t<p>Of Afric\u2019s sands and glittering stars the number first let him tell, who wishes to keep count of your many-thousand sports.</p>\n\t\t\t<p>Sport as ye like, and speedily give heirs. It does not become so old a name to be sans heirs, but for similar stock always to be generated.</p>\n\t\t\t<p>A little Torquatus I wish, from his mother\u2019s bosom reaching out his dainty hands, and smiling sweetly at his father with lips apart.</p>\n\t\t\t<p>May he be like his sire Manlius, and easily acknowledged by every stranger, and by his face point out his mother\u2019s faithfulness.</p>\n\t\t\t<p>May such praise confirm his birth from true mother, such fame unique as rests with Telemachus from best of mothers, Penelope.</p>\n\t\t\t<p>Close ye the doors, virgins: enough we\u2019ve sported. But, fair bride and groom, live ye well, and diligently fulfil the office of vigorous youth.</p>','<p class="cantohead">LXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p class="inthead"><em>Youths.</em></p>\n\t\t\t<p>Vesper is here, arise ye youths: Vesper at last has just borne aloft in the heavens his long-looked-for light. Now \u2019tis time to arise, now to leave the fattened tables, now comes the virgin, now is said the Hymenaeus. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>Discern ye, O unwedded girls, the youths? Arise in response: forsooth the Star of Eve displays its Oetaean fires. Thus \u2019tis; see how fleetly have they leapt forth? Nor without intent have they leapt forth, they will sing what \u2019tis meet we surpass. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>Nor easily is for us, O comrades, the palm prepared; see ye how they talk together in deep thought. Nor in vain do they muse, they have what may be worthy of memory. Nor be wonder: for inwardly toil they with whole of their minds. Our minds one way, our ears another, we have divided: wherefore by right are we conquered, for victory loveth solicitude. So now your minds at the least turn ye hither, now their chant they begin, anon ye will have to respond. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>Hesperus! what crueler light is borne aloft in the heavens? Thou who canst pluck the maid from her mother\u2019s enfolding, pluck from her mother\u2019s enfolding the firm-clinging maid, and canst give the chaste girl to the burning youngster. What more cruel could victors in vanquished city contrive? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>Hesperus! what more jocund light is borne aloft in the heavens? Thou who dost confirm with thy flame the marriage betrothals which the men had pledged, the parents had pledged of aforetime, nor may they be joined in completion before thy flame is borne aloft. What can the gods give more gladsome than that happy hour? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>* * * * Hesperus from us, O comrades, has stolen one away * * * * <em>Hymen O Hymenaeus, Hymen hither O Hymenaeus!</em></p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>* * * * For at thy advent a guard always keeps watch. Thieves lie in wait by night, whom often on thy return, O Hesperus, thou hap\u2019st upon, when with thy changed name Eous. Yet it doth please the unwedded girls to carp at thee with plaints fictitious. But what if they carp at that which in close-shut mind they long for? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>As grows the hidden flower in garden closed, to kine unknown, uprooted by no ploughshare, whilst the winds caress it, the sun makes it sturdy, and the shower gives it growth * * * * many a boy and many a girl longs for it: this same when pluckt, deflowered from slender stalklet, never a boy and never a girl doth long for it: so the virgin, while she stays untouched, so long is she dear to her folk; when she hath lost her chaste flower from her body profaned, nor to the boys stays she beauteous, nor is she dear to the girls. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>As the widowed vine which grows in naked field ne\u2019er uplifts itself, ne\u2019er ripens a mellow grape, but bending prone \u2019neath the weight of its tender body now and again its highmost bough touches with its root; this no husbandmen, no herdsmen will foster: but if this same chance to be joined with marital elm, it many husbandmen, many herdsmen will foster: so the virgin, whilst she stays untouched, so long does she age, unfostered; but when fitting union she obtain in meet time, dearer is she to her lord and less of a trouble to parent. <em>Hymen O Hymenaeus, Hymen hither O Hymenaeus!</em></p>\n\t\t\t<p class="inthead"><em>Youths and Maidens</em>.</p>\n\t\t\t<p>But struggle not \u2019gainst such a mate, O virgin. \u2019Tis improper to struggle, thou whose father hath handed thee o\u2019er, that father together with thy mother to whom obedience is needed. Thy maidenhead is not wholly thine, in part \u2019tis thy parents\u2019: a third part is thy father\u2019s, a third part is given to thy mother, a third alone is thine: be unwilling to struggle against two, who to their son-in-law their rights together with dowry have given. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>','<p class="cantohead">LXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Over the vast main borne by swift-sailing ship, Attis, as with hasty hurried foot he reached the Phrygian wood and gained the tree-girt gloomy sanctuary of the Goddess, there roused by rabid rage and mind astray, with sharp-edged flint downwards wards dashed his burden of virility. Then as he felt his limbs were left without their manhood, and the fresh-spilt blood staining the soil, with bloodless hand she hastily hent a tambour light to hold, taborine thine, O Cybebe, thine initiate rite, and with feeble fingers beating the hollowed bullock\u2019s back, she rose up quivering thus to chant to her companions.</p>\n\t\t\t<p>\u201CHaste ye together, she-priests, to Cybebe\u2019s dense woods, together haste, ye vagrant herd of the dame Dindymene, ye who inclining towards strange places as exiles, following in my footsteps, led by me, comrades, ye who have faced the ravening sea and truculent main, and have castrated your bodies in your utmost hate of Venus, make glad our mistress speedily with your minds\u2019 mad wanderings. Let dull delay depart from your thoughts, together haste ye, follow to the Phrygian home of Cybebe, to the Phrygian woods of the Goddess, where sounds the cymbal\u2019s voice, where the tambour resounds, where the Phrygian flautist pipes deep notes on the curved reed, where the ivy-clad Maenades furiously toss their heads, where they enact their sacred orgies with shrill-sounding ululations, where that wandering band of the Goddess is wont to flit about: thither \u2019tis meet to hasten with hurried mystic dance.\u201D</p>\n\t\t\t<p>When Attis, spurious woman, had thus chanted to her comity, the chorus straightway shrills with trembling tongues, the light tambour booms, the concave cymbals clang, and the troop swiftly hastes with rapid feet to verdurous Ida. Then raging wildly, breathless, wandering, with brain distraught, hurrieth Attis with her tambour, their leader through dense woods, like an untamed heifer shunning the burden of the yoke: and the swift Gallae press behind their speedy-footed leader. So when the home of Cybebe they reach, wearied out with excess of toil and lack of food they fall in slumber. Sluggish sleep shrouds their eyes drooping with faintness, and raging fury leaves their minds to quiet ease.</p>\n\t\t\t<p>But when the sun with radiant eyes from face of gold glanced o\u2019er the white heavens, the firm soil, and the savage sea, and drave away the glooms of night with his brisk and clamorous team, then sleep fast-flying quickly sped away from wakening Attis, and goddess Pasithea received Somnus in her panting bosom. Then when from quiet rest torn, her delirium over, Attis at once recalled to mind her deed, and with lucid thought saw what she had lost, and where she stood, with heaving heart she backwards traced her steps to the landing-place. There, gazing o\u2019er the vast main with tear-filled eyes, with saddened voice in tristful soliloquy thus did she lament her land:</p>\n\t\t\t<p>\u201CMother-land, O my creatress, mother-land, O my begetter, which full sadly I\u2019m forsaking, as runaway serfs are wont from their lords, to the woods of Ida I have hasted on foot, to stay \u2019mongst snow and icy dens of ferals, and to wander through the hidden lurking-places of ferocious beasts. Where, or in what part, O mother-land, may I imagine that thou art? My very eyeball craves to fix its glance towards thee, whilst for a brief space my mind is freed from wild ravings. And must I wander o\u2019er these woods far from mine home? From country, goods, friends, and parents, must I be parted? Leave the forum, the palaestra, the race-course, and gymnasium? Wretched, wretched soul, \u2019tis thine to grieve for ever and for aye. For whatso shape is there, whose kind I have not worn? I (now a woman), I a man, a stripling, and a lad; I was the gymnasium\u2019s flower, I was the pride of the oiled wrestlers: my gates, my friendly threshold, were crowded, my home was decked with floral coronals, when I was wont to leave my couch at sunrise. Now shall I live a ministrant of gods and slave to Cybebe? I a Maenad, I a part of me, I a sterile trunk! Must I range o\u2019er the snow-clad spots of verdurous Ida, and wear out my life \u2019neath lofty Phrygian peaks, where stay the sylvan-seeking stag and woodland-wandering boar? Now, now, I grieve the deed I\u2019ve done; now, now, do I repent!\u201D</p>\n\t\t\t<p>As the swift sound left those rosy lips, borne by new messenger to gods\u2019 twinned ears, Cybebe, unloosing her lions from their joined yoke, and goading the left-hand foe of the herd, thus doth speak: \u201CCome,\u201D she says, \u201Cto work, thou fierce one, cause a madness urge him on, let a fury prick him onwards till he return through our woods, he who over-rashly seeks to fly from my empire. On! thrash thy flanks with thy tail, endure thy strokes; make the whole place re-echo with roar of thy bellowings; wildly toss thy tawny mane about thy nervous neck.\u201D Thus ireful Cybebe spoke and loosed the yoke with her hand. The monster, self-exciting, to rapid wrath his heart doth spur, he rushes, he roars, he bursts through the brake with heedless tread. But when he gained the humid verge of the foam-flecked shore, and spied the womanish Attis near the opal sea, he made a bound: the witless wretch fled into the wild wold: there throughout the space of her whole life a bondsmaid did she stay. Great Goddess, Goddess Cybebe, Goddess Dame of Dindymus, far from my home may all thine anger be, O mistress: urge others to such actions, to madness others hound.</p>','<p class="cantohead">LXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Pines aforetimes sprung from Pelion peak floated, so \u2019tis said, through liquid billows of Neptune to the flowing Phasis and the confines Aeetaean, when the picked youth, the vigour of Argive manhood seeking to carry away the Golden Fleece from Colchis, dared to skim o\u2019er salt seas in a swift-sailing ship, sweeping caerulean ocean with paddles shapen from fir-wood. That Goddess who guards the castles in topmost parts of the towns herself fashioned the car, scudding with lightest of winds, uniting the interweaved pines unto the curving keel. That same first instructed untaught Amphitrite with sailing. Scarce had it split with its stem the windy waves, and the billow vext with oars had whitened into foam, when arose from the abyss of the hoary eddies the faces of sea-dwelling Nereids wondering at the marvel. And then on that propitious day mortal eyes gazed on sea-nymphs with naked bodies bare to the breasts outstanding from the foamy abyss. Then \u2019tis said Peleus burned with desire for Thetis, then Thetis contemned not mortal hymenaeals, then Thetis\u2019 sire himself sanctioned her joining to Peleus. O born in the time of joyfuller ages, heroes, hail! sprung from the gods, good progeny of mothers, hail! and favourably be ye inclined. You oft in my song I\u2019ll address, thee too I\u2019ll approach, Peleus, pillar of Thessaly, so increased in importance by thy fortunate wedding-torches, to whom Jupiter himself, the sire of the gods himself, yielded up his beloved. Did not Thetis embrace thee, she most winsome of Nereids born? Did not Tethys consent that thou should\u2019st lead home her grandchild, and Oceanus eke, whose waters girdle the total globe? When in full course of time the longed-for day had dawned, all Thessaly assembled throngs his home, a gladsome company o\u2019erspreading the halls: they bear gifts to the fore, and their joy in their faces they shew. Scyros desert remains, they leave Phthiotic Tempe, Crannon\u2019s homes, and the fortressed walls of Larissa; to Pharsalia they hie, \u2019neath Pharsalian roofs they gather. None tills the soil, the heifers\u2019 necks grow softened, the trailing vine is not cleansed by the curved rake-prongs, nor does the sickle prune the shade of the spreading tree-branches, nor does the bullock up-tear the glebe with the prone-bending ploughshare; squalid rust steals o\u2019er the neglected ploughs.</p>\n\t\t\t<p>But this mansion, throughout its innermost recesses of opulent royalty, glitters with gleaming gold and with silver. Ivory makes white the seats; goblets glint on the boards; the whole house delights in the splendour of royal treasure. Placed in the midst of the mansion is the bridal bed of the goddess, made glossy with Indian tusks and covered with purple, tinted with the shell-fish\u2019s rosy dye. This tapestry embroidered with figures of men of ancient time pourtrays with admirable art the heroes\u2019 valour. For looking forth from Dia\u2019s beach, resounding with crashing of breakers, Theseus hasting from sight with swiftest of fleets, Ariadne watches, her heart swelling with raging passion, nor scarce yet credits she sees what she sees, as, newly-awakened from her deceptive sleep, she perceives herself, deserted and woeful, on the lonely shore. But the heedless youth, flying away, beats the waves with his oars, leaving his perjured vows to the gusty gales. In the dim distance from amidst the sea-weed, the daughter of Minos with sorrowful eyes, like a stone-carved Bacchante, gazes afar, alas! gazes after him, heaving with great waves of grief. No longer does the fragile fillet bind her yellow locks, no more with light veil is her hidden bosom covered, no more with rounded zone the milky breasts are clasped; down fallen from her body everything is scattered, hither, thither, and the salt waves toy with them in front of her very feet. But neither on fillet nor floating veil, but on thee, Theseus, in their stead, was she musing: on thee she bent her heart, her thoughts, her love-lorn mind. Ah, woeful one, with sorrows unending distraught, Erycina sows thorny cares deep in thy bosom, since that time when Theseus fierce in his vigour set out from the curved bay of Piraeus, and gained the Gortynian roofs of the iniquitous ruler.</p>\n\t\t\t<p>For of old \u2019tis narrated, that constrained by plague of the cruelest to expiate the slaughter of Androgeos, both chosen youths and the pick of the unmarried maidens Cecropia was wont to give as a feast to the Minotaur. When thus his strait walls with ills were vexed, Theseus with free will preferred to yield up his body for adored Athens rather than such Cecropian corpses be carried to Crete unobsequied. And therefore borne in a speedy craft by favouring breezes, he came to the imperious Minos and his superb seat. Instant the royal virgin him saw with longing glance, she whom the chaste couch out-breathing sweetest of scents cradled in her mother\u2019s tender enfoldings, like to the myrtle which the rivers of Eurotas produce, or the many-tinted blooms opening with the springtide\u2019s breezes, she bent not down away from him her kindling glance, until the flame spread through her whole body, and burned into her innermost marrow. Ah, hard of heart, urging with misery to madness, O holy boy, who mingles men\u2019s cares and their joyings, and thou queen of Golgos and of foliaged Idalium, on what waves did you heave the mind-kindled maid, sighing full oft for the golden-haired guest! What dreads she bore in her swooning soul! How often did she grow sallower in sheen than gold! When craving to contend against the savage monster Theseus faced death or the palm of praise. Then gifts to the gods not unmeet not idly given, with promise from tight-closed lips did she address her vows. For as an oak waving its boughs on Taurus\u2019 top, or a coniferous pine with sweating stem, is uprooted by savage storm, twisting its trunk with its blast (dragged from its roots prone it falleth afar, breaking all in the line of its fall) so did Theseus fling down the conquered body of the brute, tossing its horns in vain towards the skies. Thence backwards he retraced his steps \u2019midst great laud, guiding his errant footsteps by means of a tenuous thread, lest when outcoming from tortuous labyrinthines his efforts be frustrated by unobservant wandering. But why, turned aside from my first story, should I recount more, how the daughter fleeing her father\u2019s face, her sister\u2019s embrace, and e\u2019en her mother\u2019s, who despairingly bemoaned her lost daughter, preferred to all these the sweet love of Theseus; or how borne by their boat to the spumy shores of Dia she came; or how her yokeman with unmemoried breast forsaking her, left her bound in the shadows of sleep? And oft, so \u2019tis said, with her heart burning with fury she outpoured clarion cries from depths of her bosom, then sadly scaled the rugged mounts, whence she could cast her glance o\u2019er the vasty seething ocean, then ran into the opposing billows of the heaving sea, raising from her bared legs her clinging raiment, and in uttermost plight of woe with tear-stained face and chilly sobs spake she thus:&mdash;</p>\n\t\t\t<p>\u201CIs it thus, O perfidious, when dragged from my motherland\u2019s shores, is it thus, O false Theseus, that thou leavest me on this desolate strand? thus dost depart unmindful of slighted godheads, bearing home thy perjured vows? Was no thought able to bend the intent of thy ruthless mind? hadst thou no clemency there, that thy pitiless bowels might compassionate me? But these were not the promises thou gavest me idly of old, this was not what thou didst bid me hope for, but the blithe bride-bed, hymenaeal happiness: all empty air, blown away by the breezes. Now, now, let no woman give credence to man\u2019s oath, let none hope for faithful vows from mankind; for whilst their eager desire strives for its end, nothing fear they to swear, nothing of promises stint they: but instant their lusting thoughts are satiate with lewdness, nothing of speech they remember, nothing of perjuries reck. In truth I snatched thee from the midst of the whirlpool of death, preferring to suffer the loss of a brother rather than fail thy need in the supreme hour, O ingrate. For the which I shall be a gift as prey to be rent by wild beasts and the carrion-fowl, nor dead shall I be placed in the earth, covered with funeral mound. What lioness bare thee \u2019neath lonely crag? What sea conceived and spued thee from its foamy crest? What Syrtis, what grasping Scylla, what vast Charybdis? O thou repayer with such guerdon for thy sweet life! If \u2019twas not thy heart\u2019s wish to yoke with me, through holding in horror the dread decrees of my stern sire, yet thou couldst have led me to thy home, where as thine handmaid I might have served thee with cheerful service, laving thy snowy feet with clear water, or spreading the purple coverlet o\u2019er thy couch. Yet why, distraught with woe, do I vainly lament to the unknowing winds, which unfurnished with sense, can neither hear uttered complaints nor can return them? For now he has sped away into the midst of the seas, nor doth any mortal appear along this desolate seaboard. Thus with o\u2019erweening scorn doth bitter Fate in my extreme hour even grudge ears to my plaints. All-powerful Jupiter! would that in old time the Cecropian poops had not touched at the Gnossian shores, nor that bearing to the unquelled bull the direful ransom had the false mariner moored his hawser to Crete, nor that yon wretch hiding ruthless designs beneath sweet seemings had reposed as a guest in our halls! For whither may I flee? in what hope, O lost one, take refuge? Shall I climb the Idomenean crags? but the truculent sea stretching amain with its whirlings of waters separates us. Can I quest help from my father, whom I deserted to follow a youth besprinkled with my brother\u2019s blood? Can I crave comfort from the care of a faithful yokeman, who is fleeing with yielding oars, encurving \u2019midst whirling waters. If I turn from the beach there is no roof in this tenantless island, no way sheweth a passage, circled by waves of the sea; no way of flight, no hope; all denotes dumbness, desolation, and death. Natheless mine eyes shall not be dimmed in death, nor my senses secede from my spent frame, until I have besought from the gods a meet mulct for my betrayal, and implored the faith of the celestials with my latest breath. Wherefore ye requiters of men\u2019s deeds with avenging pains, O Eumenides, whose front enwreathed with serpent-locks blazons the wrath exhaled from your bosom, hither, hither haste, hear ye my plainings, which I, sad wretch, am urged to outpour from mine innermost marrow, helpless, burning, and blind with frenzied fury. And since in truth they spring from the veriest depths of my heart, be ye unwilling to allow my agony to pass unheeded, but with such mind as Theseus forsook me, with like mind, O goddesses, may he bring evil on himself and on his kin.\u201D</p>\n\t\t\t<p>After she had poured forth these words from her grief-laden bosom, distractedly clamouring for requital against his heartless deeds, the celestial ruler assented with almighty nod, at whose motion the earth and the awe-full waters quaked, and the world of glittering stars did quiver. But Theseus, self-blinded with mental mist, let slip from forgetful breast all those injunctions which until then he had held firmly in mind, nor bore aloft sweet signals to his sad sire, shewing himself safe when in sight of Erectheus\u2019 haven. For \u2019tis said that aforetime, when Aegeus entrusted his son to the winds, on leaving the walls of the chaste goddess\u2019s city, these commands he gave to the youth with his parting embrace.</p>\n\t\t\t<p>\u201CO mine only son, far dearer to me than long life, lately restored to me at extreme end of my years, O son whom I must perforce dismiss to a doubtful hazard, since my ill fate and thine ardent valour snatch thee from unwilling me, whose dim eyes are not yet sated with my son\u2019s dear form: nor gladly and with joyous breast do I send thee, nor will I suffer thee to bear signs of helpful fortune, but first from my breast many a plaint will I express, sullying my grey hairs with dust and ashes, and then will I hang dusky sails to the swaying mast, so that our sorrow and burning lowe are shewn by Iberian canvas, rustily darkened. Yet if the dweller on holy Itone, who deigns defend our race and Erectheus\u2019 dwellings, grant thee to besprinkle thy right hand in the bull\u2019s blood, then see that in very truth these commandments deep-stored in thine heart\u2019s memory do flourish, nor any time deface them. Instant thine eyes shall see our cliffs, lower their gloomy clothing from every yard, and let the twisted cordage bear aloft snowy sails, where splendent shall shine bright topmast spars, so that, instant discerned, I may know with gladness and lightness of heart that in prosperous hour thou art returned to my face.\u201D</p>\n\t\t\t<p>These charges, at first held in constant mind, from Theseus slipped away as clouds are impelled by the breath of the winds from the ethereal peak of a snow-clad mount. But his father as he betook himself to the castle\u2019s turrets as watchplace, dimming his anxious eyes with continual weeping, when first he spied the discoloured canvas, flung himself headlong from the top of the crags, deeming Theseus lost by harsh fate. Thus as he entered the grief-stricken house, his paternal roof, Theseus savage with slaughter met with like grief as that which with unmemoried mind he had dealt to Minos\u2019 daughter: while she with grieving gaze at his disappearing keel, turned over a tumult of cares in her wounded spirit.</p>\n\t\t\t<p>But on another part [of the tapestry] swift hastened the flushed Iacchus with his train of Satyrs and Nisa-begot Sileni, thee questing, Ariadne, and aflame with love for thee. * * * * These scattered all around, an inspired band, rushed madly with mind all distraught, ranting \u201CEuhoe,\u201D with tossing of heads \u201CEuhoe.\u201D Some with womanish hands shook thyrsi with wreath-covered points; some tossed limbs of a rended steer; some engirt themselves with writhed snakes; some enacted obscure orgies with deep chests, orgies of which the profane vainly crave a hearing; others beat the tambours with outstretched palms, or from the burnished brass provoked shrill tinklings, blew raucous-sounding blasts from many horns, and the barbarous pipe droned forth horrible song.</p>\n\t\t\t<p>With luxury of such figures was the coverlet adorned, enwrapping the bed with its mantling embrace. After the Thessalian youthhood with eager engazing were sated they began to give way to the sacred gods. Hence, as with his morning\u2019s breath brushing the still sea Zephyrus makes the sloping billows uprise, when Aurora mounts \u2019neath the threshold of the wandering sun, which waves heave slowly at first with the breeze\u2019s gentle motion (plashing with the sound as of low laughter) but after, as swells the wind, more and more frequent they crowd and gleam in the purple light as they float away,&mdash;so quitting the royal vestibule did the folk hie them away each to his home with steps wandering hither and thither.</p>\n\t\t\t<p>After they had wended their way, chief from the Pelion vertex Chiron came, the bearer of sylvan spoil: for whatsoever the fields bear, whatso the Thessalian land on its high hills breeds, and what flowers the fecund air of warm Favonius begets near the running streams, these did he bear enwreathed into blended garlands wherewith the house rippled with laughter, caressed by the grateful odour.</p>\n\t\t\t<p>Speedily stands present Penios, for a time his verdant Tempe, Tempe whose overhanging trees encircle, leaving to the Dorian choirs, damsels Magnesian, to frequent; nor empty-handed,&mdash;for he has borne hither lofty beeches uprooted and the tall laurel with straight stem, nor lacks he the nodding plane and the lithe sister of flame-wrapt Phaethon and the aerial cypress. These wreathed in line did he place around the palace so that the vestibule might grow green sheltered with soft fronds.</p>\n\t\t\t<p>After him follows Prometheus of inventive mind, bearing diminishing traces of his punishment of aforetime, which of old he had suffered, with his limbs confined by chains hanging from the rugged Scythian crags. Then came the sire of gods from heaven with his holy consort and offspring, leaving thee alone, Phoebus, with thy twin-sister the fosterer of the mountains of Idrus: for equally with thyself did thy sister disdain Peleus nor was she willing to honour the wedding torches of Thetis. After they had reclined their snow-white forms along the seats, tables were loaded on high with food of various kinds.</p>\n\t\t\t<p>In the meantime with shaking bodies and infirm gesture the Parcae began to intone their veridical chant. Their trembling frames were enwrapped around with white garments, encircled with a purple border at their heels, snowy fillets bound each aged brow, and their hands pursued their never-ending toil, as of custom. The left hand bore the distaff enwrapped in soft wool, the right hand lightly withdrawing the threads with upturned fingers did shape them, then twisting them with the prone thumb it turned the balanced spindle with well-polished whirl. And then with a pluck of their tooth the work was always made even, and the bitten wool-shreds adhered to their dried lips, which shreds at first had stood out from the fine thread. And in front of their feet wicker baskets of osier twigs took charge of the soft white woolly fleece. These, with clear-sounding voice, as they combed out the wool, outpoured fates of such kind in sacred song, in song which none age yet to come could tax with untruth.</p>\n\t\t\t<p>\u201CO with great virtues thine exceeding honour augmenting, stay of Emathia-land, most famous in thine issue, receive what the sisters make known to thee on this gladsome day, a weird veridical! But ye whom the fates do follow:&mdash;Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNow Hesperus shall come unto thee bearing what is longed for by bridegrooms, with that fortunate star shall thy bride come, who ensteeps thy soul with the sway of softening love, and prepares with thee to conjoin in languorous slumber, making her smooth arms thy pillow round \u2019neath thy sinewy neck. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNo house ever yet enclosed such loves, no love bound lovers with such pact, as abideth with Thetis, as is the concord of Peleus. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CTo ye shall Achilles be born, a stranger to fear, to his foemen not by his back, but by his broad breast known, who, oft-times the victor in the uncertain struggle of the foot-race, shall outrun the fire-fleet footsteps of the speedy doe. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNone in war with him may compare as a hero, when the Phrygian streams shall trickle with Trojan blood, and when besieging the walls of Troy with a long-drawn-out warfare perjured Pelops\u2019 third heir shall lay that city waste. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CHis glorious acts and illustrious deeds often shall mothers attest o\u2019er funeral-rites of their sons, when the white locks from their heads are unloosed amid ashes, and they bruise their discoloured breasts with feeble fists. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CFor as the husbandman bestrewing the dense wheat-ears mows the harvest yellowed \u2019neath ardent sun, so shall he cast prostrate the corpses of Troy\u2019s sons with grim swords. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CHis great valour shall be attested by Scamander\u2019s wave, which ever pours itself into the swift Hellespont, narrowing whose course with slaughtered heaps of corpses he shall make tepid its deep stream by mingling warm blood with the water. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CAnd she a witness in fine shall be the captive-maid handed to death, when the heaped-up tomb of earth built in lofty mound shall receive the snowy limbs of the stricken virgin. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CFor instant fortune shall give the means to the war-worn Greeks to break Neptune\u2019s stone bonds of the Dardanian city, the tall tomb shall be made dank with Polyxena\u2019s blood, who as the victim succumbing \u2019neath two-edged sword, with yielding hams shall fall forward a headless corpse. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CWherefore haste ye to conjoin in the longed-for delights of your love. Bridegroom thy goddess receive in felicitous compact; let the bride be given to her eager husband. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNor shall the nurse at orient light returning, with yester-e\u2019en\u2019s thread succeed in circling her neck. [Haste ye, a-weaving the woof, O hasten, ye spindles.] Not need her solicitous mother fear sad discord  shall cause a parted bed for her daughter, nor need she cease to hope for dear grandchildren. Haste ye, a-weaving the woof, O hasten, ye spindles.\u201D</p>\n\t\t\t<p>With such soothsaying songs of yore did the Parcae chant from divine breast the felicitous fate of Peleus. For of aforetime the heaven-dwellers were wont to visit the chaste homes of heroes and to shew themselves in mortal assembly ere yet their worship was scorned. Often the father of the gods, a-resting in his glorious temple, when on the festal days his annual rites appeared, gazed on an hundred bulls strewn prone on the earth. Often wandering Liber on topmost summit of Parnassus led his yelling Thyiads with loosely tossed locks. * * * * When the Delphians tumultuously trooping from the whole of their city joyously acclaimed the god with smoking altars. Often in lethal strife of war Mavors, or swift Triton\u2019s queen, or the Rhamnusian virgin, in person did exhort armed bodies of men. But after the earth was infected with heinous crime, and each one banished justice from their grasping mind, and brothers steeped their hands in fraternal blood, the son ceased grieving o\u2019er departed parents, the sire craved for the funeral rites of his first-born that freely he might take of the flower of unwedded step-dame, the unholy mother, lying under her unknowing son, did not fear to sully her household gods with dishonour: everything licit and lawless commingled with mad infamy turned away from us the just-seeing mind of the gods. Wherefore nor do they deign to appear at such-like assemblies, nor will they permit themselves to be met in the day-light.</p>','<p class="cantohead">LXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Though outspent with care and unceasing grief, I am withdrawn, Ortalus, from the learned Virgins, nor is my soul\u2019s mind able to bring forth sweet babes of the Muses (so much does it waver \u2019midst ills: for but lately the wave of the Lethean stream doth lave with its flow the pallid foot of my brother, whom \u2019neath the Rhoetean seaboard the Trojan soil doth crush, thrust from our eyesight. * * * Never again may I salute thee, nor hear thy converse; never again, O brother, more loved than life, may I see thee in aftertime. But for all time in truth will I love thee, always will I sing elegies made gloomy by thy death, such as the Daulian bird pipes \u2019neath densest shades of foliage, lamenting the lot of slain Itys.) Yet \u2019midst sorrows so deep, O Ortalus, I send thee these verses re-cast from Battiades, lest thou shouldst credit thy words by chance have slipt from my mind, given o\u2019er to the wandering winds, as \u2019twas with that apple, sent as furtive love-token by the wooer, which outleapt from the virgin\u2019s chaste bosom; for, placed by the hapless girl \u2019neath her soft vestment, and forgotten,&mdash;when she starts at her mother\u2019s approach, out \u2019tis shaken: and down it rolls headlong to the ground, whilst a tell-tale flush mantles the face of the distressed girl.</p>','<p class="cantohead">LXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>He who scanned all the lights of the great firmament, who ascertained the rising and the setting of the stars, how the flaming splendour of the swift sun was endarkened, how the planets disappear at certain seasons, how sweet love with stealth detaining Trivia beneath the Latmian crags, draws her away from her airy circuit, that same Conon saw me amongst celestial light, the hair from Berenice\u2019s head, gleaming with brightness, which she outstretching graceful arms did devote to the whole of the gods, when the king flushed with the season of new wedlock had gone to lay waste the Assyrian borders, bearing the sweet traces of nightly contests, in which he had borne away her virginal spoils. Is Venus abhorred by new-made brides? Why be the parents\u2019 joys turned aside by feigned tears, which they shed copiously amid the lights of the nuptial chamber? Untrue are their groans, by the gods I swear! This did my queen teach me by her many lamentings, when her bridegroom set out for stern warfare. Yet thou didst not mourn the widowhood of desolate couch, but the tearful separation from a dear brother? How care made sad inroads in thy very marrow! In so much that thine whole bosom being agitated, and thy senses being snatched from thee, thy mind wandered! But in truth I have known thee great of heart ever since thou wast a little maiden. Hast thou forgotten that noble deed, by which thou didst gain a regal wedlock, than which none dared other deeds bolder? Yet what grieving words didst thou speak when bidding thy bridegroom farewell! Jupiter! as with sad hand often thine eyes thou didst dry! What mighty god changed thee? Was it that lovers are unwilling to be long absent from their dear one\u2019s body? Then didst thou devote me to the whole of the gods on thy sweet consort\u2019s behalf, not without blood of bullocks, should he be granted safe return. In no long time he added captive Asia to the Egyptian boundaries. Wherefore for these reasons I, bestowed \u2019midst the celestial host, by a new gift fulfil thine ancient promise. With grief, O queen, did I quit thy brow, with grief: I swear to thee and to thine head; fit ill befall whosoever shall swear lightly: but who may bear himself peer with steel? Even that mountain was swept away, the greatest on earth, over which Thia\u2019s illustrious progeny passed, when the Medes created a new sea, and the barbarian youth sailed its fleet through the middle of Athos. What can locks of hair do, when such things yield to iron? Jupiter! may the whole race of the Chalybes perish, and whoever first questing the veins \u2019neath the earth harassed its hardness, breaking it through with iron. Just before severance my sister locks were mourning my fate, when Ethiop Memnon\u2019s brother, the winged steed, beating the air with fluttering pennons, appeared before Locrian Arsinoe, and this one bearing me up, flies through aethereal shadows and lays me in the chaste bosom of Venus. Him Zephyritis herself had dispatched as her servant, a Grecian settler on the Canopian shores. For \u2019twas the wish of many gods that not alone in heaven\u2019s light should the golden coronet from Ariadne\u2019s temples stay fixed, but that we also should gleam, the spoils devote from thy golden-yellow head; when humid with weeping I entered the temples of the gods, the Goddess placed me, a new star, amongst the ancient ones. For a-touching the Virgin\u2019s and the fierce Lion\u2019s gleams, hard by Callisto of Lycaon, I turn westwards fore-guiding the slow-moving Bootes who sinks unwillingly and late into the vasty ocean. But although the footsteps of the gods o\u2019erpress me in the night-tide, and the daytime restoreth me to the white-haired Tethys, (grant me thy grace to speak thus, O Rhamnusian virgin, for I will not hide the truth through any fear, even if the stars revile me with ill words yet I will unfold the pent-up feelings from truthful breast) I am not so much rejoiced at these things as I am tortured by being for ever parted, parted from my lady\u2019s head, with whom I (though whilst a virgin she was free from all such cares) drank many a thousand of Syrian scents.</p>\n\t\t\t<p>Now do you, whom the gladsome light of the wedding torches hath joined, yield not your bodies to your desiring husbands nor throw aside your vestments and bare your bosom\u2019s nipples, before your onyx cup brings me jocund gifts, your onyx, ye who seek the dues of chaste marriage-bed. But she who giveth herself to foul adultery, may the light-lying dust responselessly drink her vile gifts, for I seek no offerings from folk that do ill. But rather, O brides, may concord always be yours, and constant love ever dwell in your homes. But when thou, O queen, whilst gazing at the stars, shalt propitiate the goddess Venus with festal torch-lights, let not me, thine own, be left lacking of unguent, but rather gladden me with large gifts. Stars fall in confusion! So that I become a royal tress, Orion might gleam in Aquarius\u2019 company.</p>','<p class="cantohead">LXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>O dear in thought to the sweet husband, dear in thought to his sire, hail! and may Jove augment his good grace to thee, Door! which of old, men say, didst serve Balbus benignly, whilst the oldster held his home here; and which contrariwise, so \u2019tis said, didst serve with grudging service after the old man was stretched stark, thou doing service to the bride. Come, tell us why thou art reported to be changed and to have renounced thine ancient faithfulness to thy lord?</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>No, (so may I please Caecilius to whom I am now made over!) it is not my fault, although \u2019tis said so to be, nor may anyone impute any crime to me; albeit the fabling tongues of folk make it so, who, whene\u2019er aught is found not well done, all clamour at me: \u201CDoor, thine is the blame!\u201D</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>It is not enough for thee to say this by words merely, but so to act that everyone may feel it and see it.</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>In what way can I? No one questions or troubles to know.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>We are wishful: be not doubtful to tell us.</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>First then, the virgin (so they called her!) who was handed to us was spurious. Her husband was not the first to touch her, he whose little dagger, hanging more limply than the tender beet, never raised itself to the middle of his tunic: but his father is said to have violated his son\u2019s bed and to have polluted the unhappy house, either because his lewd mind blazed with blind lust, or because his impotent son was sprung from sterile seed, and therefore one greater of nerve than he was needed, who could unloose the virgin\u2019s zone.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>Thou tellest of an excellent parent marvellous in piety, who himself urined in the womb of his son!</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>But not this alone is Brixia said to have knowledge of, placed \u2019neath the Cycnean peak, through which the golden-hued Mella flows with its gentle current, Brixia, beloved mother of my Verona. For it talks of the loves of Postumius and of Cornelius, with whom she committed foul adultery.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>Folk might say here: \u201CHow knowest thou these things, O door? thou who art never allowed absence from thy lord\u2019s threshold, nor mayst hear the folk\u2019s gossip, but fixed to this beam art wont only to open or to shut the house!\u201D</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>Often have I heard her talking with hushed voice, when alone with her handmaids, about her iniquities, quoting by name those whom we have spoken of, for she did not expect me to be gifted with either tongue or ear. Moreover she added a certain one whose name I\u2019m unwilling to speak, lest he uplift his red eyebrows. A lanky fellow, against whom some time ago was brought a grave law-suit anent the spurious child-birth of a lying belly.</p>','<p class="cantohead">LXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>That when, opprest by fortune and in grievous case, thou didst send me this epistle o\u2019erwrit with tears, that I might bear up shipwrecked thee tossed by the foaming waves of the sea, and restore thee from the threshold of death; thou whom neither sacred Venus suffers to repose in soft slumber, desolate on a a lonely couch, nor do the Muses divert with the sweet song of ancient poets, whilst thy anxious mind keeps vigil:&mdash;this is grateful to me, since thou dost call me thy friend, and dost seek hither the gifts of the Muses and of Venus. But that my troubles may not be unknown to thee, O Manius, nor thou deem I shun the office of host, hear how I am whelmed in the waves of that same fortune, nor further seek joyful gifts from a wretched one. In that time when the white vestment was first handed to me, and my florid age was passing in jocund spring, much did I sport enow: nor was the goddess unknown to us who mixes bitter-sweet with our cares. But my brother\u2019s death plunged all this pursuit into mourning. O brother, taken from my unhappy self; thou by thy dying hast broken my ease, O brother; all our house is buried with thee; with thee have perished the whole of our joys, which thy sweet love nourished in thy lifetime. Thou lost, I have dismissed wholly from mind these studies and every delight of mind. Wherefore, as to what thou writest, \u201C\u2019Tis shameful for Catullus to be at Verona, for there anyone of utmost note must chafe his frigid limbs on a desolate couch;\u201D that, Manius, is not shameful; rather \u2019tis a pity. Therefore, do thou forgive, if what grief has snatched from me, these gifts, I do not bestow on thee, because I am unable. For, that there is no great store of writings with me arises from this, that we live at Rome: there is my home, there is my hall, thither my time is passed; hither but one of my book-cases follows me. As \u2019tis thus, I would not that thou deem we act so from ill-will or from a mind not sufficiently ingenuous, that ample store is not forthcoming to either of thy desires: both would I grant, had I the wherewithal. Nor can I conceal, goddesses, in what way Allius has aided me, or with how many good offices he has assisted me; nor shall fleeting time with its forgetful centuries cover with night\u2019s blindness this care of his. But I tell it to you, and do ye declare it to many thousands, and make this paper, grown old, speak of it * * * * And let him be more and more noted when dead, nor let the spider aloft, weaving her thin-drawn web, carry on her work over the neglected name of Allius. For you know what anxiety of mind wily Amathusia gave me, and in what manner she overthrew me, when I was burning like the Trinacrian rocks, or the Malian fount in Oetaean Thermopylae; nor did my piteous eyes cease to dissolve with continual weeping, nor my cheeks with sad showers to be bedewed. As the pellucid stream gushes forth from the moss-grown rock on the aerial crest of the mountain, which when it has rolled headlong prone down the valley, softly wends its way through the midst of the populous parts, sweet solace to the wayfarer sweating with weariness, when the oppressive heat cracks the burnt-up fields agape: or, as to sailors tempest-tossed in black whirlpool, there cometh a favourable and a gently-moving breeze, Pollux having been prayed anon, and Castor alike implored: of such kind was Manius\u2019 help to us. He with a wider limit laid open my closed field; he gave us a home and its mistress, on whom we both might exercise our loves in common. Thither with gracious gait my bright-hued goddess betook herself, and pressed her shining sole on the worn threshold with creaking of sandal; as once came Laodamia, flaming with love for her consort, to the home of Protesilaus,&mdash;a beginning of naught! for not yet with sacred blood had a victim made propitiate the lords of the heavens. May nothing please me so greatly, Rhamnusian virgin, that I should act thus heedlessly against the will of those lords! How the thirsty altar craves for sacrificial blood Laodamia was taught by the loss of her husband, being compelled to abandon the neck of her new spouse when one winter was past, before another winter had come, in whose long nights she might so glut her greedy love, that she could have lived despite her broken marriage-yoke, which the Parcae knew would not be long distant, if her husband as soldier should fare to the Ilian walls. For by Helena\u2019s rape Troy had begun to put the Argive Chiefs in the field; Troy accurst, the common grave of Asia and of Europe, Troy, the sad ashes of heroes and of every noble deed, that also lamentably brought death to our brother. O brother taken from unhappy me! O jocund light taken from thy unhappy brother! in thy one grave lies all our house, in thy one grave have perished all our joys, which thy sweet love did nurture during life. Whom now is laid so far away, not amongst familiar tombs nor near the ashes of his kindred, but obscene Troy, malign Troy, an alien earth, holds thee entombed in its remote soil. Thither, \u2019tis said, hastening together from all parts, the Grecian manhood forsook their hearths and homes, lest Paris enjoy his abducted trollop with freedom and leisure in a peaceful bed. Such then was thy case, loveliest Laodamia, to be bereft of husband sweeter than life, and than soul; thou being sucked in so great a whirlpool of love, its eddy submerged thee in its steep abyss, like (so folk say) to the Graian gulph near Pheneus of Cyllene with its fat swamp\u2019s soil drained and dried, which aforetime the falsely-born Amphitryoniades dared to hew through the marrow of cleft mountains, at the time when he smote down the Stymphalian monsters with sure shafts by the command of his inferior lord, so that the heavenly portal might be pressed by a greater number of deities, nor Hebe longer remain in her virginity. But deeper than that abyss was thy deep love which taught [thy husband] to bear his lady\u2019s forceful yoke. For not so dear to the spent age of the grandsire is the late born grandchild an only daughter rears, who, long-wished-for, at length inherits the ancestral wealth, his name duly set down in the attested tablets; and casting afar the impious hopes of the baffled next-of-kin, scares away the vulture from the whitened head; nor so much does any dove-mate rejoice in her snow-white consort (though, \u2019tis averred, more shameless than most in continually plucking kisses with nibbling beak) as thou dost, though woman is especially inconstant. But thou alone didst surpass the great frenzies of these, when thou wast once united to thy yellow-haired husband. Worthy to yield to whom in naught or in little, my light brought herself to my bosom, round whom Cupid, often running hither thither, gleamed lustrous-white in saffron-tinted tunic. Still although she is not content with Catullus alone, we will suffer the rare frailties of our coy lady, lest we may be too greatly unbearable, after the manner of fools. Often even Juno, greatest of heaven-dwellers, boiled with flaring wrath at her husband\u2019s default, wotting the host of frailties of all-wishful Jove. Yet \u2019tis not meet to match men with the gods, * * * * bear up the ungrateful burden of a tremulous parent. Yet she was not handed to me by a father\u2019s right hand when she came to my house fragrant with Assyrian odour, but she gave me her stealthy favours in the mute night, withdrawing of her own will from the bosom of her spouse. Wherefore that is enough if to us alone she gives that day which she marks with a whiter stone. This gift to thee, all that I can, of verse completed, is requital, Allius, for many offices, so that this day and that, and other and other of days may not tarnish your name with scabrous rust. Hither may the gods add gifts full many, which Themis aforetimes was wont to bear to the pious of old. May ye be happy, both thou and thy life\u2019s-love together, and thy home in which we have sported, and its mistress, and Anser who in the beginning brought thee to us, from whom all my good fortunes were first born, and lastly she whose very self is dearer to me than all these,&mdash;my light, whom living, \u2019tis sweet to me to live.</p>','<p class="cantohead">LXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Be unwilling to wonder wherefore no woman, O Rufus, is wishful to place her tender thigh \u2019neath thee, not even if thou dost tempt her by the gift of a rare robe or by the delights of a crystal-clear gem. A certain ill tale injures thee, that thou bearest housed in the valley of thine armpits a grim goat. Hence everyone\u2019s fear. Nor be marvel: for \u2019tis an exceeding ill beast, with whom no fair girl will sleep. Wherefore, either murder that cruel plague of their noses, or cease to marvel why they fly?</p>','<p class="cantohead">LXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>No one, saith my lady, would she rather wed than myself, not even if Jupiter\u2019s self crave her. Thus she saith! but what a woman tells an ardent amourist ought fitly to be graven on the breezes and in running waters.</p>','<p class="cantohead">LXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If ever anyone was deservedly cursed with an atrocious goat-stench from armpits, or if limping gout did justly gnaw one, \u2019tis thy rival, who occupies himself with your love, and who has stumbled by the marvel of fate on both these ills. For as oft as he swives, so oft is he taken vengeance on by both; she he prostrates by his stink, he is slain by his gout.</p>','<p class="cantohead">LXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Once thou didst profess to know but Catullus, Lesbia, nor wouldst hold Jove before me. I loved thee then, not only as a churl his mistress, but as a father loves his own sons and sons-in-law. Now I do know thee: wherefore if more strongly I burn, thou art nevertheless to me far viler and of lighter thought. How may this be? thou askest. Because such wrongs drive a lover to greater passion, but to less wishes of welfare.</p>','<p class="cantohead">LXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Cease thou to wish to merit well from anyone in aught, or to think any can become honourable. All are ingrate, naught benign doth avail to aught, but rather it doth irk and prove the greater ill: so with me, whom none doth o\u2019erpress more heavily nor more bitterly than he who a little while ago held me his one and only friend.</p>','<p class="cantohead">LXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gellius had heard that his uncle was wont to be wroth, if any spake of or practised love-sportings. That this should not happen to him, he kneaded up his uncle\u2019s wife herself, and made of his uncle a god of silence. Whatever he wished, he did; for now, even if he irrumate his uncle\u2019s self, not a word will that uncle murmur.</p>','<p class="cantohead">LXXV.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Now is my mind brought down to this point, my Lesbia, by your fault, and has so lost itself by its devotion, that now it cannot wish you well, were you to become most perfect, nor can it cease to love you, whatever you do.</p>','<p class="cantohead">LXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If to recall good deeds erewhiles performed be pleasure to a man, when he knows himself to be of probity, nor has violated sacred faith, nor has abused the holy assent of the gods in any pact, to work ill to men; great store of joys awaits thee during thy length of years, O Catullus, sprung from this ingrate love of thine. For whatever of benefit men can say or can do for anyone, such have been thy sayings and thy doings, and all thy confidences have been squandered on an ingrate mind. Wherefore now dost torture thyself further? Why not make firm thy heart and withdraw thyself from that [wretchedness], and cease to be unhappy despite the gods\u2019 will? \u2019Tis difficult quickly to depose a love of long growth; \u2019tis difficult, yet it behoves thee to do this. This is thine only salvation, this is thy great victory; this thou must do, whether it be possible or impossible. O gods, if \u2019tis in you to have mercy, or if ever ye held forth help to men in death\u2019s very extremity, look ye on pitiful me, and if I have acted my life with purity, snatch hence from me this canker and pest, which as a lethargy creeping through my veins and vitals, has cast out every gladness from my breast. Now I no longer pray that she may love me in return, or (what is not possible) that she should become chaste: I wish but for health and to cast aside this shameful complaint. O ye gods, vouchsafe me this in return for my probity.</p>','<p class="cantohead">LXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Rufus, credited by me as a friend, wrongly and for naught, (wrongly? nay, at an ill and grievous price) hast thou thus stolen upon me, and a-burning my innermost bowels, snatched from wretched me all our good? Thou hast snatched it, alas, alas, thou cruel venom of our life! alas, alas, thou plague of our amity. But now \u2019tis grief, that thy swinish slaver has soiled the pure love-kisses of our pure girl. But in truth thou shalt not come off with impunity; for every age shall know thee, and Fame the aged, shall denounce what thou art.</p>','<p class="cantohead">LXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gallus has brothers, one of whom has a most charming spouse, the other a charming son. Gallus is a nice fellow! for pandering to their sweet loves, he beds together the nice lad and the nice aunt. Gallus is a foolish fellow not to see that he is himself a husband who as an uncle shews how to cuckold an uncle.</p>','<p class="cantohead">LXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbius is handsome: why not so? when Lesbia prefers him to thee, Catullus, and to thy whole tribe. Yet this handsome one may sell Catullus and his tribe if from three men of note he can gain kisses of salute.</p>','<p class="cantohead">LXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What shall I say, Gellius, wherefore those lips, erstwhile rosy-red, have become whiter than wintery snow, thou leaving home at morn and when the noontide hour arouses thee from soothing slumber to face the longsome day? I know not forsure! but is Rumour gone astray with her whisper that thou devourest the well-grown tenseness of a man\u2019s middle? So forsure it must be! the ruptured guts of wretched Virro cry it aloud, and thy lips marked with lately-drained <span class="greek">&sigma;&epsilon;&mu;&epsilon;&nu;</span> publish the fact.</p>','<p class="cantohead">LXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Could there be no one in so great a crowd, Juventius, no gallant whom thou couldst fall to admiring, beyond him, the guest of thy hearth from moribund Pisaurum, wanner than a gilded statue? Who now is in thine heart, whom thou darest to place above us, and knowest not what crime thou dost commit.</p>','<p class="cantohead">LXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Quintius, if thou dost wish Catullus to owe his eyes to thee, or aught, if such may be, dearer than his eyes, be unwilling to snatch from him what is much dearer to him than his eyes, or than aught which itself may be dearer to him than his eyes.</p>','<p class="cantohead">LXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbia in her lord\u2019s presence says the utmost ill about me: this gives the greatest pleasure to that ninny. Ass, thou hast no sense! if through forgetfulness she were silent about us, it would be well: now that she snarls and scolds, not only does she remember, but what is a far bitterer thing, she is enraged. That is, she inflames herself and ripens her passion.</p>','<p class="cantohead">LXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p><em>Chommodious</em> did Arrius say, whenever he had need to say commodious, and for insidious <em>hinsidious</em>, and felt confident he spoke with accent wondrous fine, when aspirating <em>hinsidious</em> to the full of his lungs. I understand that his mother, his uncle Liber, his maternal grand-parents all spoke thus. He being sent into Syria, everyone\u2019s ears were rested, hearing these words spoken smoothly and slightly, nor after that did folk fear such words from him, when on a sudden is brought the nauseous news that th\u2019 Ionian waves, after Arrius\u2019 arrival thither, no longer are Ionian hight, but are now the <em>Hionian Hocean</em>.</p>','<p class="cantohead">LXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I hate and I love. Wherefore do I so, peradventure thou askest. I know not, but I feel it to be thus and I suffer.</p>','<p class="cantohead">LXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Quintia is lovely to many; to me she is fair, tall, and shapely. Each of these qualities I grant. But that all these make loveliness I deny: for nothing of beauty nor scintilla of sprightliness is in her body so massive. Lesbia is lovely, for whilst the whole of her is most beautiful, she has stolen for herself every love-charm from all her sex.</p>','<p class="cantohead">LXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>No woman can say with truth that she has been loved as much as thou, Lesbia, hast been loved by me: no love-troth was ever so greatly observed as in love of thee on my part has been found.</p>\n\t\t\t<p>Now is my mind so led apart, my Lesbia, by thy fault, and has so lost itself by its very worship, that now it can not wish well to thee, wert thou to become most perfect, nor cease to love thee, do what thou wilt!</p>','<p class="cantohead">LXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What does he, Gellius, who with mother and sister itches and keeps vigils with tunics cast aside? What does he, who suffers not his uncle to be a husband? Dost thou know the weight of crime he takes upon himself? He takes, O Gellius, such store as not furthest Tethys nor Oceanus, progenitor of waters, can cleanse: for there is nothing of any crime which can go further, not though with lowered head he swallow himself.</p>','<p class="cantohead">LXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gellius is meagre: why not? He who lives with so good a mother, so healthy and so beauteous a sister, and who has such a good uncle, and a world-*full of girl cousins, wherefore should he leave off being lean? Though he touch naught save what is banned, thou canst find ample reason wherefore he may stay lean.</p>','<p class="cantohead">LXXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Let there be born a Magian from the infamous conjoining of Gellius and his mother, and he shall learn the Persian aruspicy. For a Magian from a mother and son must needs be begotten, if there be truth in Persia\u2019s vile creed that one may worship with acceptable hymn the assiduous gods, whilst the caul\u2019s fat in the sacred flame is melting.</p>','<p class="cantohead">LXXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Not for other reason, Gellius, did I hope for thy faith to me in this our unhappy, this our desperate love (because I knew thee well nor thought thee constant or able to restrain thy mind from shameless act), but that I saw this girl was neither thy mother nor thy sister, for whom my ardent love ate me. And although I have had many mutual dealings with thee, I did not credit this case to be enough cause for thee. Thou didst find it enough: so great is thy joy in every kind of guilt in which is something infamous.</p>','<p class="cantohead">LXXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbia forever speaks ill of me nor is ever silent anent me: may I perish if Lesbia do not love me! By what sign? because I am just the same: I malign her without cease, yet may I die if I do not love her in sober truth.</p>','<p class="cantohead">LXXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I am not over anxious, Caesar, to please thee greatly, nor to know whether thou art white or black man.</p>','<p class="cantohead">LXXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula whores. By the mentule he is be-whored: certes. This is as though they say the oil pot itself gathers the olives.</p>','<p class="cantohead">LXXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>My Cinna\u2019s \u201CZmyrna\u201D at length, after nine harvests from its inception, is published when nine winters have gone by, whilst in the meantime Hortensius thousands upon thousands in one * * * * \u201CZmyrna\u201D shall wander abroad e\u2019en to the curving surf of Satrachus, hoary ages shall turn the leaves of \u201CZmyrna\u201D in distant days. But Volusius\u2019 Annals shall perish at Padua itself, and shall often furnish loose wrappings for mackerel. The short writings of my comrade are gladsome to my heart; let the populace rejoice in bombastic Antimachus.</p>','<p class="cantohead">LXXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If aught grateful or acceptable can penetrate the silent graves from our dolour, Calvus, when with sweet regret we renew old loves and beweep the lost friendships of yore, of a surety not so much doth Quintilia mourn her untimely death as she doth rejoice o\u2019er thy constant love.</p>','<p class="cantohead">LXXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Nay (may the Gods thus love me) have I thought there to be aught of choice whether I might smell thy mouth or thy buttocks, O Aemilius. Nothing could the one be cleaner, nothing the other more filthy; nay in truth thy backside is the cleaner and better,&mdash;for it is toothless. Thy mouth hath teeth full half a yard in length, gums of a verity like to an old waggon-box, behind which its gape is such as hath the vulva of a she-mule cleft apart by the summer\u2019s heat, always a-staling. This object swives girls enow, and fancies himself a handsome fellow, and is not condemned to the mill as an ass? Whatso girl would touch thee, we think her capable of licking the breech of a leprous hangman.</p>','<p class="cantohead">LXXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>To thee, if to anyone, may I say, foul-mouthed Victius, that which is said to wind bags and fatuities. For with that tongue, if need arrive, thou couldst lick clodhoppers\u2019 shoes, clogs, and buttocks. If thou wishest to destroy us all entirely, Victius, thou need\u2019st but gape: thou wilt accomplish what thou wishest entirely.</p>','<p class="cantohead">LXXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I snatched from thee, whilst thou wast sporting, O honied Juventius, a kiss sweeter than sweet ambrosia. But I bore it off not unpunished; for more than an hour do I remember myself hung on the summit of the cross, whilst I purged myself [for my crime] to thee, nor could any tears in the least remove your anger. For instantly it was done, thou didst bathe thy lips with many drops, and didst cleanse them with every finger-joint, lest anything remained from the conjoining of our mouths, as though it were the obscene slaver of a fetid fricatrice. Nay, more, thou hast handed wretched me over to despiteful Love, nor hast thou ceased to agonize me in every way, so that for me that kiss is now changed from ambrosia to be harsher than harsh hellebore. Since thou dost award such punishment to wretched amourist, never more after this will I steal kisses.</p>','<p class="cantohead">C.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Caelius, Aufilenus; and Quintius, Aufilena;&mdash;flower of the Veronese youth,&mdash;love desperately: this, the brother; that, the sister. This is, as one would say, true brotherhood and sweet friendship. To whom shall I incline the more? Caelius, to thee; for thy single devotion to us was shewn by its deeds, when the raging flame scorched my marrow. Be happy, O Caelius, be potent in love.</p>','<p class="cantohead">CI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Through many a folk and through many waters borne, I am come, brother, to thy sad grave, that I may give the last gifts to the dead, and may vainly speak to thy mute ashes, since fortune hath borne from me thyself. Ah, hapless brother, heavily snatched from me. * * * But now these gifts, which of yore, in manner ancestral handed down, are the sad gifts to the grave, accept thou, drenched with a brother\u2019s tears, and for ever, brother, hail! for ever, adieu!</p>','<p class="cantohead">CII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If aught be committed to secret faith from a friend to one whose inner faith of soul is known, thou wilt find me to be of that sacred faith, O Cornelius, and may\u2019st deem me become an Harpocrates.</p>','<p class="cantohead">CIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Prithee, either return me my ten thousand sesterces, Silo; then be to thy content surly and boorish: or, if the money allure thee, desist I pray thee from being a pander and likewise surly and boorish.</p>','<p class="cantohead">CIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Dost deem me capable of speaking ill of my life, she who is dearer to me than are both mine eyes? I could not, nor if I could, would my love be so desperate: but thou with Tappo dost frame everything heinous.</p>','<p class="cantohead">CV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula presumes the Pimplean mount to scale: the Muses with their pitchforks chuck him headlong down.</p>','<p class="cantohead">CVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>When with a comely lad a crier is seen to be, what may be thought save that he longs to sell himself.</p>','<p class="cantohead">CVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If what one desires and covets is ever obtained unhoped for, this is specially grateful to the soul. Wherefore is it grateful to us and far dearer than gold, that thou com\u2019st again, Lesbia, to longing me; com\u2019st yet again, long-looked for and unhoped, thou restorest thyself. O day of whiter note for us! who lives more happily than I, sole I, or who can say what greater thing than this could be hoped for in life?</p>','<p class="cantohead">CVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If, O Cominius, by the people\u2019s vote thy hoary age made filthy by unclean practices shall perish, forsure I doubt not but that first thy tongue, hostile to goodness, cut out, shall be given to the greedy vulture-brood, thine eyes, gouged out, shall the crows gorge down with sable maw, thine entrails [shall be flung] to the dogs, the members still remaining to the wolf.</p>','<p class="cantohead">CVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>My joy, my life, thou declarest to me that this love of ours shall last ever between us. Great Gods! grant that she may promise truly, and say this in sincerity and from her soul, and that through all our lives we may be allowed to prolong together this bond of holy friendship.</p>','<p class="cantohead">CX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aufilena, honest harlots are always praised: they accept the price of what they intend to do. Thou didst promise that to me, which, being a feigned promise, proves thee unfriendly; not giving that, and often accepting, thou dost wrongfully. Either to do it frankly, or not to promise from modesty, Aufilena, was becoming thee: but to snatch the gift and bilk, proves thee worse than the greedy strumpet who prostitutes herself with every part of her body.</p>','<p class="cantohead">CXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aufilena, to be content to live with single mate, in married dame is praise of praises most excelling: but \u2019tis preferable to lie beneath any lover thou mayest choose, rather than to make thyself mother to thy cousins out of thy uncle.</p>','<p class="cantohead">CXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>A mighty man thou art, Naso, yet is a man not mighty who doth stoop like thee: Naso thou art mighty&mdash;and pathic.</p>','<p class="cantohead">CXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>In the first consulate of Pompey, two, Cinna, were wont to frequent Mucilla: now again made consul, the two remain, but thousands may be added to each unit. The seed of adultery is fecund.</p>','<p class="cantohead">CXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>With Firmian demesne not falsely is Mentula deemed rich, who has everything in it of such excellence, game preserves of every kind, fish, meadows, arable land and ferals. In vain: the yield is o\u2019ercome by the expense. Wherefore I admit the wealth, whilst everything is wanting. We may praise the demesne, but its owner is a needy man.</p>','<p class="cantohead">CXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula has something like thirty acres of meadow land, forty under cultivation: the rest are as the sea. Why might he not o\u2019erpass Croesus in wealth, he who in one demesne possesses so much? Meadow, arable land, immense woods, and demesnes, and morasses, e\u2019en to the uttermost north and to the ocean\u2019s tide! All things great are here, yet is the owner most great beyond all; not a man, but in truth a Mentule mighty, menacing!</p>','<p class="cantohead">CXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Oft with studious mind brought close, enquiring how I might send thee the poems of Battiades for use, that I might soften thee towards us, nor thou continually attempt to sting my head with troublesome barbs&mdash;this I see now to have been trouble and labour in vain, O Gellius, nor were our prayers to this end of any avail. Thy weapons against us we will ward off with our cloak; but, transfixed with ours, thou shalt suffer punishment.</p>']};
+module.exports={bookname:'catulluscarmina',author:'Caius Valerius Catullus',translationid:"burtonsmithersprose",title:'The Carmina',translation:true,source:'<a href="http://www.gutenberg.org/files/20732/20732-h/20732-h.htm">Project Gutenberg</a>',translationshortname:"Burton/Smithers prose",translationfullname:"Richard Burton & Leonard C. Smithers prose",translationclass:"prose",text:['<p class="title">The Carmina</p>\n\t<p class="author">Richard Burton &amp; Leonard C. Smithers</p>\n\t<p class="subtitle">(prose translation)</p>','<p class="cantohead">I.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>To whom inscribe my dainty tome\u2014just out and with ashen pumice polished? Cornelius, to thee! for thou wert wont to deem my triflings of account, and at a time when thou alone of Italians didst dare unfold the ages\u2019 abstract in three chronicles\u2014learned, by Jupiter!\u2014and most laboriously writ. Wherefore take thou this booklet, such as \u2019tis, and O Virgin Patroness, may it outlive generations more than one.</p>','<p class="cantohead">II.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Sparrow, petling of my girl, with which she wantons, which she presses to her bosom, and whose eager peckings is accustomed to incite by stretching forth her forefinger, when my bright-hued beautiful one is pleased to jest in manner light as (perchance) a solace for her heart ache, thus methinks she allays love\u2019s pressing heats! Would that in manner like, I were able with thee to sport and sad cares of mind to lighten!</p>','<p class="cantohead">III.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Mourn ye, O ye Loves and Cupids and all men of gracious mind. Dead is the sparrow of my girl, sparrow, sweetling of my girl. Which more than her eyes she loved; for sweet as honey was it and its mistress knew, as well as damsel knoweth her own mother nor from her bosom did it rove, but hopping round first one side then the other, to its mistress alone it evermore did chirp. Now does it fare along that path of shadows whence naught may e\u2019er return. Ill be to ye, savage glooms of Orcus, which swallow up all things of fairness: which have snatched away from me the comely sparrow. O deed of bale! O sparrow sad of plight! Now on thy account my girl\u2019s sweet eyes, swollen, do redden with tear-drops.</p>','<p class="cantohead">IIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>That pinnace which ye see, my friends, says that it was the speediest of boats, nor any craft the surface skimming but it could gain the lead, whether the course were gone o\u2019er with plashing oars or bended sail. And this the menacing Adriatic shores may not deny, nor may the Island Cyclades, nor noble Rhodes and bristling Thrace, Propontis nor the gusty Pontic gulf, where itself (afterwards a pinnace to become) erstwhile was a foliaged clump; and oft on Cytorus\u2019 ridge hath this foliage announced itself in vocal rustling. And to thee, Pontic Amastris, and to box-screened Cytorus, the pinnace vows that this was alway and yet is of common knowledge most notorious; states that from its primal being it stood upon thy topmost peak, dipped its oars in thy waters, and bore its master thence through surly seas of number frequent, whether the wind whistled \u2019gainst the starboard quarter or the lee or whether Jove propitious fell on both the sheets at once; nor any vows [from stress of storm] to shore-gods were ever made by it when coming from the uttermost seas unto this glassy lake. But these things were of time gone by: now laid away, it rusts in peace and dedicates its age to thee, twin Castor, and to Castor\u2019s twin.</p>','<p class="cantohead">V.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Let us live, my Lesbia, and let us love, and count all the mumblings of sour age at a penny\u2019s fee. Suns set can rise again: we when once our brief light has set must sleep through a perpetual night. Give me of kisses a thousand, and then a hundred, then another thousand, then a second hundred, then another thousand without resting, then a hundred. Then, when we have made many thousands, we will confuse the count lest we know the numbering, so that no wretch may be able to envy us through knowledge of our kisses\u2019 number.</p>','<p class="cantohead">VI.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>O Flavius, of thy sweetheart to Catullus thou would\u2019st speak, nor could\u2019st thou keep silent, were she not both ill-mannered and ungraceful. In truth thou affectest I know not what hot-blooded whore: this thou art ashamed to own. For that thou dost not lie alone a-nights thy couch, fragrant with garlands and Syrian unguent, in no way mute cries out, and eke the pillow and bolsters indented here and there, and the creakings and joggings of the quivering bed: unless thou canst silence these, nothing and again nothing avails thee to hide thy whoredoms. And why? Thou wouldst not display such drain\xE8d flanks unless occupied in some tomfoolery. Wherefore, whatsoever thou hast, be it good or ill, tell us! I wish to laud thee and thy loves to the sky in joyous verse.</p>','<p class="cantohead">VII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Thou askest, how many kisses of thine, Lesbia, may be enough and to spare for me. As the countless Libyan sands which strew the spicy strand of Cyrene \u2019twixt the oracle of swelt\u2019ring Jove and the sacred sepulchre of ancient Battus, or as the thronging stars which in the hush of darkness witness the furtive loves of mortals, to kiss thee with kisses of so great a number is enough and to spare for passion-driven Catullus: so many that prying eyes may not avail to number, nor ill tongues to ensorcel.</p>','<p class="cantohead">VIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Unhappy Catullus, cease thy trifling and what thou seest lost know to be lost. Once bright days used to shine on thee when thou wert wont to haste whither thy girl didst lead thee, loved by us as never girl will e\u2019er be loved. There those many joys were joyed which thou didst wish, nor was the girl unwilling. In truth bright days used once to shine on thee. Now she no longer wishes: thou too, powerless to avail, must be unwilling, nor pursue the retreating one, nor live unhappy, but with firm-set mind endure, steel thyself. Farewell, girl, now Catullus steels himself, seeks thee not, nor entreats thy acquiescence. But thou wilt pine, when thou hast no entreaty proffered. Faithless, go thy way! what manner of life remaineth to thee? who now will visit thee? who find thee beautiful? whom wilt thou love now? whose girl wilt thou be called? whom wilt thou kiss? whose lips wilt thou bite? But thou, Catullus, remain hardened as steel.</p>','<p class="cantohead">VIIII.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Veranius, of all my friends standing in the front, owned I three hundred thousands of them, hast thou come home to thy Penates, thy longing brothers and thine aged mother? Thou hast come back. O joyful news to me! I may see thee safe and sound, and may hear thee speak of regions, deeds, and peoples Iberian, as is thy manner; and reclining o\u2019er thy neck shall kiss thy jocund mouth and eyes. O all ye blissfullest of men, who more gladsome or more blissful is than I am?</p>','<p class="cantohead">X.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Varus drew me off to see his mistress as I was strolling from the Forum: a little whore, as it seemed to me at the first glance, neither inelegant nor lacking good looks. When we came in, we fell to discussing various subjects, amongst which, how was Bithynia now, how things had gone there, and whether I had made any money there. I replied, what was true, that neither ourselves nor the pr&aelig;tors nor their suite had brought away anything whereby to flaunt a better-scented poll, especially as our pr&aelig;tor, the irrumating beast, cared not a single hair for his suite. \u201CBut surely,\u201D she said, \u201Cyou got some men to bear your litter, for they are said to grow there?\u201D I, to make myself appear to the girl as one of the fortunate, \u201CNay,\u201D I say, \u201Cit did not go that badly with me, ill as the province turned out, that I could not procure eight strapping knaves to bear me.\u201D (But not a single one was mine either here or there who the fractured foot of my old bedstead could hoist on his neck.) And she, like a pathic girl, \u201CI pray thee,\u201D says she, \u201Clend me, my Catullus, those bearers for a short time, for I wish to be borne to the shrine of Serapis.\u201D \u201CStay,\u201D quoth I to the girl, \u201Cwhen I said I had this, my tongue slipped; my friend, Cinna Gaius, he provided himself with these. In truth, whether his or mine&mdash;what do I trouble? I use them as though I had paid for them. But thou, in ill manner with foolish teasing dost not allow me to be heedless.\u201D</p','<p class="cantohead">XI.</p>\n\t\t<p class="cantosubhead">A Parting Insult to Lesbia.</p>\n\t\t<p>Furius and Aurelius, comrades of Catullus, whether he penetrate to furthest Ind where the strand is lashed by the far-echoing Eoan surge, or whether \u2019midst the Hyrcans or soft Arabs, or whether the Sacians or quiver-bearing Parthians, or where the seven-mouthed Nile encolours the sea, or whether he traverse the lofty Alps, gazing at the monuments of mighty Caesar, the gallic Rhine, the dismal and remotest Britons, all these, whatever the Heavens\u2019 Will may bear, prepared at once to attempt,&mdash;bear ye to my girl this brief message of no fair speech. May she live and flourish with her swivers, of whom may she hold at once embraced the full three hundred, loving not one in real truth, but bursting again and again the flanks of all: nor may she look upon my love as before, she whose own guile slew it, e\u2019en as a flower on the greensward\u2019s verge, after the touch of the passing plough.</p>','<p class="cantohead">XII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Marrucinius Asinius, thou dost use thy left hand in no fair fashion \u2019midst the jests and wine: thou dost filch away the napkins of the heedless. Dost thou think this a joke? it flies thee, stupid fool, how coarse a thing and unbecoming \u2019tis! Dost not credit me? credit thy brother Pollio who would willingly give a talent to divert thee from thy thefts: for he is a lad skilled in pleasantries and facetiousness. Wherefore, either expect hendecasyllables three hundred, or return me my napkin which I esteem, not for its value but as a pledge of remembrance from my comrade. For Fabullus and Veranius sent me as a gift handkerchiefs from Iberian Saetabis; these must I prize e\u2019en as I do Veraniolus and Fabullus.</p>','<p class="cantohead">XIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Thou shalt feast well with me, my Fabullus, in a few days, if the gods favour thee, provided thou dost bear hither with thee a good and great feast, not forgetting a fair damsel and wine and wit and all kinds of laughter. Provided, I say, thou dost bear hither these, our charming one, thou wilt feast well: for thy Catullus\u2019 purse is brimful of cobwebs. But in return thou may\u2019st receive a perfect love, or whatever is sweeter or more elegant: for I will give thee an unguent which the Loves and Cupids gave unto my girl, which when thou dost smell it, thou wilt entreat the gods to make thee, O Fabullus, one total Nose!</p>','<p class="cantohead">XIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Did I not love thee more than mine eyes, O most jocund Calvus, for thy gift I should abhor thee with Vatinian abhorrence. For what have I done or what have I said that thou shouldst torment me so vilely with these poets? May the gods give that client of thine ills enow, who sent thee so much trash! Yet if, as I suspect, this new and care-picked gift, Sulla, the litterateur, gives thee, it is not ill to me, but well and beatific, that thy labours [in his cause] are not made light of. Great gods, what a horrible and accurst book which, forsooth, thou hast sent to thy Catullus that he might die of boredom the livelong day in the Saturnalia, choicest of days! No, no, my joker, this shall not leave thee so: for at daydawn I will haste to the booksellers\u2019 cases; the Caesii, the Aquini, Suffenus, every poisonous rubbish will I collect that I may repay thee with these tortures. Meantime (farewell ye) hence depart ye from here, whither an ill foot brought ye, pests of the period, puniest of poetasters.</p>\n\t\t\t<p>If by chance ye ever be readers of my triflings and ye will not quake to lay your hands upon us,</p>\n\t\t\t<p>&nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; * &nbsp; &nbsp; &nbsp; *</p>','<p class="cantohead">XV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I commend me to thee with my charmer, Aurelius. I come for modest boon that,&mdash;didst thine heart long for aught, which thou desiredst chaste and untouched,&mdash;thou \u2019lt preserve for me the chastity of my boy. I do not say from the public: I fear those naught who hurry along the thoroughfares hither thither occupied on their own business: truth my fear is from thee and thy penis, pestilent eke to fair and to foul. Set it in motion where thou dost please, whenever thou biddest, as much as thou wishest, wherever thou findest the opportunity out of doors: this one object I except, to my thought a reasonable boon. But if thy evil mind and senseless rutting push thee forward, scoundrel, to so great a crime as to assail our head with thy snares, O wretch, calamitous mishap shall happen thee, when with feet taut bound, through the open entrance radishes and mullets shall pierce.</p>','<p class="cantohead">XVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I will paedicate and irrumate you, Aurelius the bardache and Furius the cinaede, who judge me from my verses rich in love-liesse, to be their equal in modesty. For it behoves your devout poet to be chaste himself; his verses&mdash;not of necessity. Which verses, in a word, may have a spice and volupty, may have passion\u2019s cling and such like decency, so that they can incite with ticklings, I do not say boys, but bearded ones whose stiffened limbs amort lack pliancy in movement. You, because of many thousand kisses you have read, think me womanish. I will paedicate and irrumate you!</p>','<p class="cantohead">XVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Colonia, that longest to disport thyself on a long bridge and art prepared for the dance, but that fearest the trembling legs of the bridgelet builded on re-used shavings, lest supine it may lie stretched in the hollow swamp; may a good bridge take its place designed to thy fancy, on which e\u2019en the Salian dances may be sustained: for the which grant to me, Colonia, greatest of gifts glee-exciting. Such an one, townsman of mine, I want from thy bridge to be pitched in the sludge head over heels, right where the lake of all its stinking slime is dankest and most superfluent&mdash;a deep-sunk abyss. The man is a gaping gaby! lacking the sense of a two-years-old baby dozing on its father\u2019s cradling arm. Although to him is wedded a girl flushed with springtide\u2019s bloom (and a girl more dainty than a tender kid, meet to be watched with keener diligence than the lush-black grape-bunch), he leaves her to sport at her list, cares not a single hair, nor bestirs himself with marital office, but lies as an alder felled by Ligurian hatchet in a ditch, as sentient of everything as though no woman were at his side. Such is my booby! he sees not, he hears naught. Who himself is, or whether he be or be not, he also knows not. Now I wish to chuck him head first from thy bridge, so as to suddenly rouse (if possible) this droning dullard and to leave behind in the sticky slush his sluggish spirit, as a mule casts its iron shoe in the tenacious slough.</p>','<p class="cantohead">XVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>This grove I dedicate and consecrate to thee, Priapus, who hast thy home at Lampsacus, and eke thy woodlands, Priapus; for thee especially in its cities worships the coast of the Hellespont, richer in oysters than all other shores.</p>','<p class="cantohead">XVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>This place, youths, and the marshland cot thatched with rushes, osier-twigs and bundles of sedge, I, carved from a dry oak by a rustic axe, now protect, so that they thrive more and more every year. For its owners, the father of the poor hut and his son,&mdash;both husbandmen,&mdash;revere me and salute me as a god; the one labouring with assiduous diligence that the harsh weeds and brambles may be kept away from my sanctuary, the other often bringing me small offerings with open hand. On me is placed a many-tinted wreath of early spring flowers and the soft green blade and ear of the tender corn. Saffron-coloured violets, the orange-hued poppy, wan gourds, sweet-scented apples, and the purpling grape trained in the shade of the vine, [are offered] to me. Sometimes, (but keep silent as to this) even the bearded he-goat, and the horny-footed nanny sprinkle my altar with blood; for which honours Priapus is bound in return to do everything [which lies in his duty], and to keep strict guard over the little garden and vineyard of his master. Wherefore, abstain, O lads, from your evil pilfering here. Our next neighbour is rich and his Priapus is negligent. Take from him; this path then will lead you to his grounds.</p>','<p class="cantohead">XX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I, O traveller, shaped with rustic art from a dry poplar, guard this little field which thou seest on the left, and the cottage and small garden of its indigent owner, and keep off the greedy hands of the robber. In spring a many-tinted wreath is placed upon me; in summer\u2019s heat ruddy grain; [in autumn] a luscious grape cluster with vine-shoots, and in the bitter cold the pale-green olive. The tender she-goat bears from my pasture to the town milk-distended udders; the well-fattened lamb from my sheepfolds sends back [its owner] with a heavy handful of money; and the tender calf, \u2019midst its mother\u2019s lowings, sheds its blood before the temple of the Gods. Hence, wayfarer, thou shalt be in awe of this God, and it will be profitable to thee to keep thy hands off. For a punishment is prepared&mdash;a roughly-shaped mentule. \u201CTruly, I am willing,\u201D thou sayest; then, truly, behold the farmer comes, and that same mentule plucked from my groin will become an apt cudgel in his strong right hand.</p>','<p class="cantohead">XXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aurelius, father of the famished, in ages past in time now present and in future years yet to come, thou art longing to paedicate my love. Nor is\u2019t done secretly: for thou art with him jesting, closely sticking at his side, trying every means. In vain: for, instructed in thy artifice, I\u2019ll strike home beforehand by irrumating thee. Now if thou didst this to work off the results of full-living I would say naught: but what irks me is that my boy must learn to starve and thirst with thee. Wherefore, desist, whilst thou mayst with modesty, lest thou reach the end,&mdash;but by being irrumated.</p>','<p class="cantohead">XXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>That Suffenus, Varus, whom thou know\u2019st right well, is a man fair spoken, witty and urbane, and one who makes of verses lengthy store. I think he has writ at full length ten thousand or more, nor are they set down, as of custom, on palimpsest: regal paper, new boards, unused bosses, red ribands, lead-ruled parchment, and all most evenly pumiced. But when thou readest these, that refined and urbane Suffenus is seen on the contrary to be a mere goatherd or ditcher-lout, so great and shocking is the change. What can we think of this? he who just now was seen a professed droll, or e\u2019en shrewder than such in gay speech, this same becomes more boorish than a country boor immediately he touches poesy, nor is the dolt e\u2019er as self-content as when he writes in verse,&mdash;so greatly is he pleased with himself, so much does he himself admire. Natheless, we all thus go astray, nor is there any man in whom thou canst not see a Suffenus in some one point. Each of us has his assigned delusion: but we see not what\u2019s in the wallet on our back.</p>','<p class="cantohead">XXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Furius, who neither slaves, nor coffer, nor bug, nor spider, nor fire hast, but hast both father and step-dame whose teeth can munch up even flints,&mdash;thou livest finely with thy sire, and with thy sire\u2019s wood-carved spouse. Nor need\u2019s amaze! for in good health are ye all, grandly ye digest, naught fear ye, nor arson nor house-fall, thefts impious nor poison\u2019s furtive cunning, nor aught of perilous happenings whatsoe\u2019er. And ye have bodies drier than horn (or than aught more arid still, if aught there be), parched by sun, frost, and famine. Wherefore shouldst thou not be happy with such weal. Sweat is a stranger to thee, absent also are saliva, phlegm, and evil nose-snivel. Add to this cleanliness the thing that\u2019s still more cleanly, that thy backside is purer than a salt-cellar, nor cackst thou ten times in the total year, and then \u2019tis harder than beans and pebbles; nay, \u2019tis such that if thou dost rub and crumble it in thy hands, not a finger canst thou ever dirty. These goodly gifts and favours, O Furius, spurn not nor think lightly of; and cease thy \u2019customed begging for an hundred sesterces: for thou\u2019rt blest enough!</p>','<p class="cantohead">XXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O thou who art the floweret of Juventian race, not only of these now living, but of those that were of yore and eke of those that will be in the coming years, rather would I that thou hadst given the wealth e\u2019en of Midas to that fellow who owns neither slave nor store, than that thou shouldst suffer thyself to be loved by such an one. \u201CWhat! isn\u2019t he a fine-looking man?\u201D thou askest. He is; but this fine-looking man has neither slaves nor store. Contemn and slight this as it please thee: nevertheless, he has neither slave nor store.</p>','<p class="cantohead">XXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Thallus the catamite, softer than rabbit\u2019s fur, or goose\u2019s marrow, or lowmost ear-lobe, limper than the drooping penis of an oldster, in its cobwebbed must, greedier than the driving storm, such time as the Kite-Goddess shews us the gaping Gulls, give me back my mantle which thou hast pilfered, and the Saetaban napkin and Thynian tablets which, idiot, thou dost openly parade as though they were heirlooms. These now unglue from thy nails and return, lest the stinging scourge shall shamefully score thy downy flanks and delicate hands, and thou unwonted heave and toss like a tiny boat surprised on the vasty sea by a raging storm.</p>','<p class="cantohead">XXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Furius, our villa not \u2019gainst the southern breeze is pitted nor the western wind nor cruel Boreas nor sunny east, but sesterces fifteen thousand two hundred oppose it. O horrible and baleful draught.</p>','<p class="cantohead">XXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Boy cupbearer of old Falernian, pour me fiercer cups as bids the laws of Postumia, mistress of the feast, drunker than a drunken grape. But ye, hence, as far as ye please, crystal waters, bane of wine, hie ye to the sober: here the Thyonian juice is pure.</p>','<p class="cantohead">XXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Piso\u2019s Company, a starveling band, with lightweight knapsacks, scantly packed, most dear Veranius thou, and my Fabullus eke, how fortunes it with you? have ye borne frost and famine enow with that sot? Which in your tablets appear&mdash;the profits or expenses? So with me, who when I followed a praetor, inscribed more gifts than gains. \u201CO Memmius, well and slowly didst thou irrumate me, supine, day by day, with the whole of that beam.\u201D But, from what I see, in like case ye have been; for ye have been crammed with no smaller a poker. Courting friends of high rank! But may the gods and goddesses heap ill upon ye, reproach to Romulus and Remus.</p>','<p class="cantohead">XXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Who can witness this, who can brook it, save a whore-monger, a guzzler, and a gamester, that Mamurra should possess what long-haired Gaul and remotest Britain erstwhile had. Thou catamite Romulus, this thou\u2019lt see and bear? Then thou\u2019rt a whore-monger, a guzzler, and a gamester. And shall he now, superb and o\u2019er replete, saunter o\u2019er each one\u2019s bed, as though he were a snow-plumed dove or an Adonis? Thou catamite Romulus, this thou\u2019lt see and hear? Then thou\u2019rt a whore-monger, a guzzler, and a gamester. For such a name, O general unique, hast thou been to the furthest island of the west, that this thy futtered-out Mentula should squander hundreds of hundreds? What is\u2019t but ill-placed munificence? What trifles has he squandered, or what petty store washed away? First his patrimony was mangled; secondly the Pontic spoils; then thirdly the Iberian, which the golden Tagus-stream knoweth. Do not the Gauls fear this man, do not the Britons quake? Why dost thou foster this scoundrel? What use is he save to devour well-fattened inheritances? Wast for such a name, O most puissant father-in-law and son-in-law, that ye have spoiled the entire world.</p>','<p class="cantohead">XXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Alfenus, unmemoried and unfaithful to thy comrades true, is there now no pity in thee, O hard of heart, for thine sweet loving friend? Dost thou betray me now, and scruplest not to play me false now, dishonourable one? Yet the irreverent deeds of traitorous men please not the dwellers in heaven: this thou takest no heed of, leaving me wretched amongst my ills. Alas, what may men do, I pray you, in whom put trust? In truth thou didst bid me entrust my soul to thee, sans love returned, lulling me to love, as though all [love-returns] were safely mine. Yet now thou dost withdraw thyself, and all thy purposeless words and deeds thou sufferest to be wafted away into winds and nebulous clouds. If thou hast forgotten, yet the gods remember, and in time to come will make thee rue thy doing.</p>','<p class="cantohead">XXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Sirmio! Eyebabe of Islands and Peninsulas, which Neptune holds whether in limpid lakes or on mighty mains, how gladly and how gladsomely do I re-see thee, scarce crediting that I\u2019ve left behind Thynia and the Bithynian champaign, and that safe and sound I gaze on thee. O what\u2019s more blissful than cares released, when the mind casts down its burden, and when wearied with travel-toils we reach our hearth, and sink on the craved-for couch. This and only this repays our labours numerous. Hail, lovely Sirmio, and gladly greet thy lord; and joy ye, wavelets of the Lybian lake; laugh ye the laughters echoing from my home.</p>','<p class="cantohead">XXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I\u2019ll love thee, my sweet Ipsithilla, my delight, my pleasure: an thou bid me come to thee at noontide. And an thou thus biddest, I adjure thee that none makes fast the outer door [against me], nor be thou minded to gad forth, but do thou stay at home and prepare for us nine continuous conjoinings. In truth if thou art minded, give instant summons: for breakfast o\u2019er, I lie supine and ripe, thrusting through both tunic and cloak.</p>','<p class="cantohead">XXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O, chiefest of pilferers, baths frequenting, Vibennius the father and his pathic son (for with the right hand is the sire more in guilt, and with his backside is the son the greedier), why go ye not to exile and ill hours, seeing that the father\u2019s plunderings are known to all folk, and that, son, thou can\u2019st not sell thine hairy buttocks for a doit?</p>','<p class="cantohead">XXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>We, maids and upright youths, are in Diana\u2019s care: upright youths and maids, we sing Diana.</p>\n\t\t\t<p>O Latonia, progeny great of greatest Jove, whom thy mother bare \u2019neath Delian olive,</p>\n\t\t\t<p>That thou mightst be Queen of lofty mounts, of foliaged groves, of remote glens, and of winding streams.</p>\n\t\t\t<p>Thou art called Juno Lucina by the mother in her travail-pangs, thou art named potent Trivia and Luna with an ill-got light.</p>\n\t\t\t<p>Thou, Goddess, with monthly march measuring the yearly course, dost glut with produce the rustic roofs of the farmer.</p>\n\t\t\t<p>Be thou hallowed by whatsoe\u2019er name thou dost prefer; and cherish, with thine good aid, as thou art wont, the ancient race of Romulus.</p>','<p class="cantohead">XXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>To that sweet poet, my comrade, Caecilius, I bid thee, paper, say: that he hie him here to Verona, quitting New Comum\u2019s city-walls and Larius\u2019 shore; for I wish him to give ear to certain counsels from a friend of his and mine. Wherefore, an he be wise, he\u2019ll devour the way, although a milk-white maid doth thousand times retard his going, and flinging both arms around his neck doth supplicate delay&mdash;a damsel who now, if truth be brought me, is undone with immoderate love of him. For, since what time she first read of the Dindymus Queen, flames devour the innermost marrow of the wretched one. I grant thee pardon, damsel, more learned than the Sapphic muse: for charmingly has the Mighty Mother been sung by Caecilius.</p>','<p class="cantohead">XXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Volusius\u2019 Annals, merdous paper, fulfil ye a vow for my girl: for she vowed to sacred Venus and to Cupid that if I were re-united to her and I desisted hurling savage iambics, she would give the most elect writings of the pettiest poet to the tardy-footed God to be burned with ill-omened wood. And <em>this</em> the saucy minx chose, jocosely and drolly to vow to the gods. Now, O Creation of the cerulean main, who art in sacred Idalium, and in Urian haven, and who doth foster Ancona and reedy Cnidos, Amathus and Golgos, and Dyrrhachium, Adriatic tavern, accept and acknowledge this vow if it lack not grace nor charm. But meantime, hence with ye to the flames, crammed with boorish speech and vapid, Annals of Volusius, merdous paper.</p>','<p class="cantohead">XXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Tavern of lust and you its tippling crowd, (at ninth pile sign-post from the Cap-donned Brothers) think ye that ye alone have mentules, that \u2019tis allowed to you alone to touzle whatever may be feminine, and to deem all other men mere goats? But, because ye sit, a row of fools numbering one hundred or haply two hundred, do ye think I dare not irrumate your entire two hundred&mdash;loungers!&mdash;at once! Think it! but I\u2019ll scrawl all over the front of your tavern with scorpion-words. For my girl, who has fled from my embrace (she whom I loved as ne\u2019er a maid shall be beloved&mdash;for whom I fought fierce fights) has seated herself here. All ye, both honest men and rich, and also, (O cursed shame) all ye paltry back-slum fornicators, are making hot love to her; and thou above all, one of the hairy-visaged sons of coney-caverned Celtiberia, Egnatius, whose quality is stamped by dense-grown beard, and teeth with Spanish urine scrubbed.</p>','<p class="cantohead">XXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>\u2019Tis ill, Cornificius, with thy Catullus, \u2019tis ill, by Hercules, and most untoward; and greater, greater ill, each day and hour! And thou, what solace givest thou, e\u2019en the tiniest, the lightest, by thy words? I\u2019m wroth with thee. Is my love but worth this? Yet one little message would cheer me, though more full of sadness than Simonidean tears.</p>','<p class="cantohead">XXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Egnatius, who has milk-white teeth, grins for ever and aye. An he be in court, when counsel excites tears, he grins. An he be at funeral pyre where one mourns a son devoted, where a bereft mother\u2019s tears stream for her only one, he grins. Whatever it may be, wherever he is, whate\u2019er may happen, he grins. Such ill habit has he&mdash;neither in good taste, well assumed, nor refined. Wherefore do thou take note from me, my good Egnatius. Be thou refined Sabine or Tiburtine, paunch-full Umbrian or obese Tuscan, Lanuvian dusky and large-tusked, or Transpadine (to touch upon mine own folk also), or whom thou wilt of those who cleanly wash their teeth, still I\u2019d wish thee not to grin for ever and aye; for than senseless giggling nothing is more senseless. Now thou\u2019rt a Celtiberian! and in the Celtiberian land each wight who has urined is wont each morn to scrub with it his teeth and pinky gums, so that the higher the polish on thy teeth, the greater fund it notes that thou hast drunk of urine.</p>','<p class="cantohead">XXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What mind ill set, O sorry Ravidus, doth thrust thee rashly on to my iambics? What god, none advocate of good for thee, doth stir thee to a senseless contest? That thou may\u2019st be in the people\u2019s mouth? What would\u2019st thou? Dost wish to be famed, no matter in what way? So thou shalt be, since thou hast aspired to our loved one\u2019s love, but by our long-drawn vengeance.</p>','<p class="cantohead">XXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Ametina, out-drain\xE8d maiden, worries me for a whole ten thousand, that damsel with an outspread nose, <span class="french">ch\xE8re amie</span> of Formianus the wildling. Ye near of kin in whose care the maiden is, summon ye both friends and medicals: for the girl\u2019s not sane. Nor ask ye, in what way: she is subject to delusions.</p>','<p class="cantohead">XXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Hither, all ye hendecasyllables, as many as may be, from every part, all of ye, as many soever as there be! A shameless prostitute deems me fair sport, and denies return to me of our writing tablets, if ye are able to endure this. Let\u2019s after her, and claim them back. \u201CWho may she be,\u201D ye ask? That one, whom ye see strutting awkwardly, stagily, and stiffly, and with a laugh on her mouth like a Gallic whelp. Throng round her, and claim them back. \u201CO putrid punk, hand back our writing tablets; hand back, O putrid punk, our writing tablets.\u201D Not a jot dost heed? O Muck, Brothel-Spawn, or e\u2019en loathsomer if it is possible so to be! Yet think not yet that this is enough. For if naught else we can extort a blush on thy brazened bitch\u2019s face. We\u2019ll yell again in heightened tones, \u201CO putrid punk, hand back our writing tablets, hand back, O putrid punk, our writing tablets.\u201D But naught we profit, naught she budges. Changed must your measure and your manner be, an you would further progress make&mdash;\u201CO Virgin pure and spotless, hand back our writing tablets.\u201D</p>','<p class="cantohead">XXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Hail, O maiden with nose not of the tiniest, with foot lacking shape and eyes lacking darkness, with fingers scant of length, and mouth not dry and tongue scant enough of elegance, <em>ch\xE8re amie</em> of Formianus the wildling. And thee the province declares to be lovely? With thee our Lesbia is to be compared? O generation witless and unmannerly!</p>','<p class="cantohead">XXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O, Homestead of ours, whether Sabine or Tiburtine (for that thou\u2019rt Tiburtine folk concur, in whose heart \u2019tis not to wound Catullus; but those in whose heart \u2019tis, will wager anything thou\u2019rt Sabine) but whether Sabine or more truly Tiburtine, o\u2019erjoyed was I to be within thy rural country-home, and to cast off an ill cough from my chest, which&mdash;not unearned&mdash;my belly granted me, for grasping after sumptuous feeds. For, in my wish to be Sestius\u2019 guest, his defence against the plaintiff Antius, crammed with venom and pestilent dulness, did I read through. Hence a chill heavy rheum and fitful cough shattered me continually until I fled to thine asylum, and brought me back to health with rest and nettle-broth. Wherefore, re-manned, I give thee utmost thanks, that thou hast not avenged my fault. Nor do I pray now for aught but that, should I re-take Sestius\u2019 nefarious script, its frigid vapidness may bring a cold and cough to Sestius\u2019 self; for he but invites me when I read dull stuff.</p>','<p class="cantohead">XXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Septumius clasping Acme his adored to his bosom, \u201CAcme mine,\u201D quoth he, \u201Cif thee I love not to perdition, nor am prepared to love through all the future years moreover without cease, as greatly and distractedly as man may,&mdash;alone in Libya or in torrid India may I oppose a steel-eyed lion.\u201D As thus he said, Love, leftwards as before, with approbation rightwards sneezed. Then Acme slightly bending back her head, and the swimming eyes of her sweet boy with rose-red lips a-kissing, \u201CSo,\u201D quoth she, \u201Cmy life, Septumillus, this Lord unique let us serve for aye, as more forceful in me burns the fire greater and keener \u2019midst my soft marrow.\u201D As thus she said, Love, leftwards as before, with approbation rightwards sneezed. Now with good auspice urged along, with mutual minds they love and are beloved. The thrall o\u2019 love Septumius his only Acme far would choose, than Tyrian or Britannian realms: the faithful Acme with Septumius unique doth work her love delights and wantonings. Whoe\u2019er has seen folk blissfuller, whoe\u2019er a more propitious union?</p>','<p class="cantohead">XXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Now springtide brings back its mild and tepid airs, now the heaven\u2019s fury equinoctial is calmed by Zephyr\u2019s benign breath. The Phrygian meadows are left behind, O Catullus, and the teeming fields of sun-scorched Nicaea: to the glorious Asian cities let us haste. Now my palpitating soul craves wander, now my feet grow vigorous with glad zeal. O charming circlet of comrades, fare ye well, who are together met from distant homes to which divers sundered ways lead back.</p>','<p class="cantohead">XXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Porcius and Socration, twins in rascality of Piso, scurf and famisht of the earth, you before my Veraniolus and Fabullus has that prepuce-lacking Priapus placed? Shall you betimes each day in luxurious opulence banquet? And must my cronies quest for dinner invitations, [lounging] where the three cross-roads meet?</p>','<p class="cantohead">XXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Thine honey-sweet eyes, O Juventius, had I the leave to kiss for aye, for aye I\u2019d kiss e\u2019en to three hundred thousand kisses, nor ever should I reach to future plenity, not even if thicker than dried wheat sheaves be the harvest of our kisses.</p>','<p class="cantohead">XXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Most eloquent of Romulus\u2019 descendancy, who are, who have been, O Marcus Tullius, and who shall later be in after time, to thee doth give his greatest gratitude Catullus, pettiest of all the poets,&mdash;and so much pettiest of all the poets as thou art peerless \u2019mongst all pleaders.</p>','<p class="cantohead">L.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Yestreen, Licinius, in restful day, much mirthful verse we flashed upon my tablets, as became us, men of fancy. Each jotting versicles in turn sported first in this metre then in that, exchanging mutual epigrams \u2019midst jokes and wine. But I departed thence, afire, Licinius, with thy wit and drolleries, so that food was useless to my wretched self; nor could sleep close mine eyes in quiet, but all o\u2019er the bed in restless fury did I toss, longing to behold daylight that with thee I might speak, and again we might be together. But afterwards, when my limbs, weakened by my restless labours, lay stretched in semi-death upon the bed, this poem, O jocund one, I made for thee, from which thou mayst perceive my dolour. Now \u2019ware thee of presumptuousness, and our pleadings \u2019ware thee of rejecting, we pray thee, eye-babe of ours, lest Nemesis exact her dues from thee. She is a forceful Goddess; \u2019ware her wrath.</p>','<p class="cantohead">LI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>He to me to be peer to a god doth seem, he, if such were lawful, to o\u2019er-top the gods, who sitting oft a-front of thee doth gaze on thee, and doth listen to thine laughter lovely, which doth snatch away from sombre me mine every sense: for instant falls my glance on thee, Lesbia, naught is left to me [of voice], but my tongue is numbed, a keen-edged flame spreads through my limbs, with sound self-caused my twin ears sing, and mine eyes are enwrapped with night.</p>\n\t\t\t<p>Sloth, O Catullus, to thee is hurtful: in sloth beyond measure dost thou exult and pass thy life. Sloth hath erewhile ruined rulers and gladsome cities.</p>','<p class="cantohead">LII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Prithee Catullus, why delay thine death? Nonius the tumour is seated in the curule chair, Vatinius forswears himself for consul\u2019s rank: prithee Catullus, why delay thine death?</p>','<p class="cantohead">LIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I laughed at I know not whom in the crowded court who, when with admirable art Vatinius\u2019 crimes my Calvus had set forth, with hands uplifted and admiring mien thus quoth \u201CGreat Gods, the fluent little Larydoodle!\u201D</p>','<p class="cantohead">LIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Otho\u2019s head is paltry past all phrase * * * the uncouth semi-soaped shanks of Nerius, the slender soundless fizzlings of Libo * * * if not all things I wish would displease thee and Fuficius, the white-headed and green-tailed.</p>\n\t\t\t<p>Anew thou shalt be enraged at my harmless iambics, emperor unique.</p>','<p class="cantohead">LV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>We beg, if maybe \u2019tis not untoward, thou\u2019lt shew us where may be thine haunt sequestered. Thee did we quest within the Lesser Fields, thee in the Circus, thee in every bookshop, thee in holy fane of highmost Jove. In promenade yclept \u201CThe Great,\u201D the crowd of cocottes straightway did I stop, O friend, accosting those whose looks I noted were unruffled. And for thee loudly did I clamour, \u201CRestore to me Camerius, most giddy girls.\u201D Quoth such-an-one, her bosom bare a-shewing, \u201CLook! \u2019twixt rose-red paps he shelters him.\u201D But labour \u2019tis of Hercules thee now to find. Not were I framed the Cretan guard, nor did I move with Pegasean wing, nor were I Ladas, or Persius with the flying foot, or Rhesus with swift and snowy team: to these add thou the feathery-footed and winged ones, ask likewise fleetness of the winds: which all united, O Camerius, couldst thou me grant, yet exhausted in mine every marrow and with many a faintness consumed should I be in my quest for thee, O friend. Why withdraw thyself in so much pride, O friend? Tell us where thou wilt be found, declare it boldly, give up the secret, trust it to the light. What, do the milk-white maidens hold thee? If thou dost hold thy tongue closed up in mouth, thou squanderest Love\u2019s every fruit: for Venus joys in many-worded babblings. Yet if thou wishest, thou mayst bar thy palate, if I may be a sharer in thy love.</p>','<p class="cantohead">LVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O thing ridiculous, Cato, and facetious, and worthy of thine ears and of thy laughter. Laugh, Cato, the more thou lovest Catullus: the thing is ridiculous, and beyond measure facetious. Just now I caught a boy a-thrusting in a girl: and on him (so please you, Dione) with rigid spear of mine I fell.</p>','<p class="cantohead">LVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>A comely couple of shameless catamites, Mamurra and Caesar, pathics both. Nor needs amaze: they share like stains&mdash;this, Urban, the other, Formian,&mdash;which stay deep-marked nor can they be got rid of. Both morbidly diseased through pathic vice, the pair of twins lie in one bed, alike in erudition, one not more than other the greater greedier adulterer, allied rivals of the girls. A comely couple of shameless catamites.</p>','<p class="cantohead">LVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Caelius, our Lesbia, that Lesbia, the self-same Lesbia whom Catullus more than himself and all his own did worship, now at cross-roads and in alleys husks off the mettlesome descendants of Remus.</p>','<p class="cantohead">LVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Rufa of Bononia lends her lips to Rufulus, she the wife of Menenius, whom oft among the sepulchres ye have seen clutching her meal from the funeral pile, when pursuing the bread which has rolled from the fire, whilst she was being buffeted by a semi-shorn corpse-burner.</p>','<p class="cantohead">LX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Did a lioness of the Libyan Hills, or Scylla yelping from her lowmost groin, thee procreate, with mind so hard and horrid, that thou hast contempt upon a suppliant\u2019s voice in calamity\u2019s newest stress? O heart o\u2019ergreatly cruel.</p>','<p class="cantohead">LXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Fosterer of the Helicon Hill, sprung from Urania, who beareth the gentle virgin to her mate, O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Twine round thy temples sweet-smelling flowerets of marjoram; put on thy gold-tinted veil; light-hearted, hither, hither haste, bearing on snowy foot the golden-yellow sandal:</p>\n\t\t\t<p>And a-fire with the joyous day, chanting wedding melodies with ringing voice, strike the ground with thy feet, with thine hand swing aloft the pine-link.</p>\n\t\t\t<p>For Vinia&mdash;fair as Idalian Venus, when stood before the Phrygian judge&mdash;a virgin fair, weds Manlius \u2019midst happy auspices.</p>\n\t\t\t<p>She, bright-shining as the Asian myrtle florid in branchlets, which the Hamadryads nurture for their pleasure with besprinkled dew.</p>\n\t\t\t<p>Wherefore, hither! leaving the Aonian grot in the Thespian Rock, o\u2019er which flows the chilling stream of Aganippe.</p>\n\t\t\t<p>And summon homewards the mistress, eager for her new yoke, firm-prisoning her soul in love; as tight-clasping ivy, wandering hither, thither, enwraps the tree around.</p>\n\t\t\t<p>And also ye, upright virgins, for whom a like day is nearing, chant ye in cadence, singing \u201CO Hymenaeus Hymen, O Hymen Hymenaeus!\u201D</p>\n\t\t\t<p>That more freely, hearing himself to his duty called, will he bear hither his presence, Lord of true Venus, uniter of true lovers.</p>\n\t\t\t<p>What god is worthier of solicitation by anxious amourists? Whom of the celestials do men worship more greatly? O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Thee for his young the trembling father beseeches, for thee virgins unclasp the zone from their breasts, for thee the fear-full bridegroom harkeneth with eager ear.</p>\n\t\t\t<p>Thou bearest to the youngster\u2019s arms that flower-like damsel, taken from her mother\u2019s bosom, O Hymenaeus Hymen, O Hymen Hymenaeus!</p>\n\t\t\t<p>Nor lacking thee may Venus take her will with fair Fame\u2019s approbation; but she may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Lacking thee, no house can yield heirs, nor parent be surrounded by offspring; but they may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Nor lacking thy rites may our land be protected e\u2019en to its boundaries; but it may, with thy sanction. With such a God who dares compare?</p>\n\t\t\t<p>Gates open wide: the virgin is here. See how the torch-flakes shake their gleaming locks? Let shame retard the modest:</p>\n\t\t\t<p class="divider">* * * * *</p>\n\t\t\t<p>Yet hearing, greater does she weep, that she must onwards go.</p>\n\t\t\t<p>Cease thy tears. For thee there is no peril, Aurunculeia, that any woman more beauteous from Ocean springing shall ever see the light of day.</p>\n\t\t\t<p>Thou art like the hyacinthine flower, wont to stand aloft \u2019midst varied riches of its lordling\u2019s garden. But thou delayest, day slips by: advance, new mated one.</p>\n\t\t\t<p>Advance, new mated, now in sight, and listen to our speech. Note how the torch-flakes shake their glittering tresses: advance, new mated one.</p>\n\t\t\t<p>Nor given to ill adulteries, nor seeking lawless shames, shall thy husband ever wish to lie away from thy soft breasts,</p>\n\t\t\t<p>But as the lithe vine amongst neighbouring trees doth cling, so shall he be enclasped in thine encircled arms. But day slips by: advance, new mated one.</p>\n\t\t\t<p>O nuptial couch * * * * with feet of ivory white.</p>\n\t\t\t<p>What joys are coming to thy lord, in gloom o\u2019 night, in noon of day. Let him rejoice! but day slips by: advance, new mated one.</p>\n\t\t\t<p>High raise, O boys, the torches: I see the gleaming veil approach. Come, chant in cadence, \u201CO Hymen Hymenaeus io, O Hymen Hymenaeus.\u201D</p>\n\t\t\t<p>Nor longer silent is lewd Fescinnine jest, nor to the boys the nuts deny, ingle, hearing thy master\u2019s love has flown.</p>\n\t\t\t<p>Give nuts to the boys, O listless ingle; enough of days thou hast played with nuts: now \u2019tis meet to serve Talassius. O ingle, give the nuts!</p>\n\t\t\t<p>The country lasses slighted were by thee, O ingle, till to-day: now the bride\u2019s tiresman shaves thy face. Wretched, wretched ingle, give the nuts.</p>\n\t\t\t<p>They say that from thy hairless ingles, O sweet-scented bridegroom, thou canst scarce abstain: but abstain thou! O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>We know that these delights were known to thee only when lawful: but to the wedded these same no more are lawful. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Thou also, bride, what thy husband seekest beware of denying, lest he go elsewhere in its search. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Look, thy husband\u2019s home is thine, potent and goodly, and shall be thine for ever more. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Until with trembling movement thine hoary brow nods ever to everything. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Lift o\u2019er the threshold with good omen thy glistening feet, and go through the polished gates. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Look! thy lord within, lying on Tyrian couch, all-expectant waits for thee. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Not less than in thine, in his breast burns an inmost flame, but more deeply inward. O Hymen Hymenaeus io, O Hymen Hymenaeus!</p>\n\t\t\t<p>Unloose the damsel\u2019s slender arm, O purple-bordered youth: now let her approach her husband\u2019s couch. O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>Ye good dames of fair renown to aged spouses, put ye the damsel a-bed. O Hymen Hymenaeus io, O Hymen Hymenaeus.</p>\n\t\t\t<p>Now thou mayst come, O bridegroom: thy wife is in the bridal-bed, with face brightly blushing as white parthenice \u2019midst ruddy poppies.</p>\n\t\t\t<p>But, O bridegroom (so help me the heaven-dwellers) in no way less beautiful art thou, nor doth Venus slight thee. But the day slips by: on! nor more delay.</p>\n\t\t\t<p>Nor long hast thou delayed, thou comest now. May kindly Venus help thee, since what thou dost desire thou takest publicly, and dost not conceal true love.</p>\n\t\t\t<p>Of Afric\u2019s sands and glittering stars the number first let him tell, who wishes to keep count of your many-thousand sports.</p>\n\t\t\t<p>Sport as ye like, and speedily give heirs. It does not become so old a name to be sans heirs, but for similar stock always to be generated.</p>\n\t\t\t<p>A little Torquatus I wish, from his mother\u2019s bosom reaching out his dainty hands, and smiling sweetly at his father with lips apart.</p>\n\t\t\t<p>May he be like his sire Manlius, and easily acknowledged by every stranger, and by his face point out his mother\u2019s faithfulness.</p>\n\t\t\t<p>May such praise confirm his birth from true mother, such fame unique as rests with Telemachus from best of mothers, Penelope.</p>\n\t\t\t<p>Close ye the doors, virgins: enough we\u2019ve sported. But, fair bride and groom, live ye well, and diligently fulfil the office of vigorous youth.</p>','<p class="cantohead">LXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p class="inthead"><em>Youths.</em></p>\n\t\t\t<p>Vesper is here, arise ye youths: Vesper at last has just borne aloft in the heavens his long-looked-for light. Now \u2019tis time to arise, now to leave the fattened tables, now comes the virgin, now is said the Hymenaeus. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>Discern ye, O unwedded girls, the youths? Arise in response: forsooth the Star of Eve displays its Oetaean fires. Thus \u2019tis; see how fleetly have they leapt forth? Nor without intent have they leapt forth, they will sing what \u2019tis meet we surpass. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>Nor easily is for us, O comrades, the palm prepared; see ye how they talk together in deep thought. Nor in vain do they muse, they have what may be worthy of memory. Nor be wonder: for inwardly toil they with whole of their minds. Our minds one way, our ears another, we have divided: wherefore by right are we conquered, for victory loveth solicitude. So now your minds at the least turn ye hither, now their chant they begin, anon ye will have to respond. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>Hesperus! what crueler light is borne aloft in the heavens? Thou who canst pluck the maid from her mother\u2019s enfolding, pluck from her mother\u2019s enfolding the firm-clinging maid, and canst give the chaste girl to the burning youngster. What more cruel could victors in vanquished city contrive? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>Hesperus! what more jocund light is borne aloft in the heavens? Thou who dost confirm with thy flame the marriage betrothals which the men had pledged, the parents had pledged of aforetime, nor may they be joined in completion before thy flame is borne aloft. What can the gods give more gladsome than that happy hour? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>* * * * Hesperus from us, O comrades, has stolen one away * * * * <em>Hymen O Hymenaeus, Hymen hither O Hymenaeus!</em></p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>* * * * For at thy advent a guard always keeps watch. Thieves lie in wait by night, whom often on thy return, O Hesperus, thou hap\u2019st upon, when with thy changed name Eous. Yet it doth please the unwedded girls to carp at thee with plaints fictitious. But what if they carp at that which in close-shut mind they long for? Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Maidens</em>.</p>\n\t\t\t<p>As grows the hidden flower in garden closed, to kine unknown, uprooted by no ploughshare, whilst the winds caress it, the sun makes it sturdy, and the shower gives it growth * * * * many a boy and many a girl longs for it: this same when pluckt, deflowered from slender stalklet, never a boy and never a girl doth long for it: so the virgin, while she stays untouched, so long is she dear to her folk; when she hath lost her chaste flower from her body profaned, nor to the boys stays she beauteous, nor is she dear to the girls. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>\n\t\t\t<p class="inthead"><em>Youths</em>.</p>\n\t\t\t<p>As the widowed vine which grows in naked field ne\u2019er uplifts itself, ne\u2019er ripens a mellow grape, but bending prone \u2019neath the weight of its tender body now and again its highmost bough touches with its root; this no husbandmen, no herdsmen will foster: but if this same chance to be joined with marital elm, it many husbandmen, many herdsmen will foster: so the virgin, whilst she stays untouched, so long does she age, unfostered; but when fitting union she obtain in meet time, dearer is she to her lord and less of a trouble to parent. <em>Hymen O Hymenaeus, Hymen hither O Hymenaeus!</em></p>\n\t\t\t<p class="inthead"><em>Youths and Maidens</em>.</p>\n\t\t\t<p>But struggle not \u2019gainst such a mate, O virgin. \u2019Tis improper to struggle, thou whose father hath handed thee o\u2019er, that father together with thy mother to whom obedience is needed. Thy maidenhead is not wholly thine, in part \u2019tis thy parents\u2019: a third part is thy father\u2019s, a third part is given to thy mother, a third alone is thine: be unwilling to struggle against two, who to their son-in-law their rights together with dowry have given. Hymen O Hymenaeus, Hymen hither O Hymenaeus!</p>','<p class="cantohead">LXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Over the vast main borne by swift-sailing ship, Attis, as with hasty hurried foot he reached the Phrygian wood and gained the tree-girt gloomy sanctuary of the Goddess, there roused by rabid rage and mind astray, with sharp-edged flint downwards wards dashed his burden of virility. Then as he felt his limbs were left without their manhood, and the fresh-spilt blood staining the soil, with bloodless hand she hastily hent a tambour light to hold, taborine thine, O Cybebe, thine initiate rite, and with feeble fingers beating the hollowed bullock\u2019s back, she rose up quivering thus to chant to her companions.</p>\n\t\t\t<p>\u201CHaste ye together, she-priests, to Cybebe\u2019s dense woods, together haste, ye vagrant herd of the dame Dindymene, ye who inclining towards strange places as exiles, following in my footsteps, led by me, comrades, ye who have faced the ravening sea and truculent main, and have castrated your bodies in your utmost hate of Venus, make glad our mistress speedily with your minds\u2019 mad wanderings. Let dull delay depart from your thoughts, together haste ye, follow to the Phrygian home of Cybebe, to the Phrygian woods of the Goddess, where sounds the cymbal\u2019s voice, where the tambour resounds, where the Phrygian flautist pipes deep notes on the curved reed, where the ivy-clad Maenades furiously toss their heads, where they enact their sacred orgies with shrill-sounding ululations, where that wandering band of the Goddess is wont to flit about: thither \u2019tis meet to hasten with hurried mystic dance.\u201D</p>\n\t\t\t<p>When Attis, spurious woman, had thus chanted to her comity, the chorus straightway shrills with trembling tongues, the light tambour booms, the concave cymbals clang, and the troop swiftly hastes with rapid feet to verdurous Ida. Then raging wildly, breathless, wandering, with brain distraught, hurrieth Attis with her tambour, their leader through dense woods, like an untamed heifer shunning the burden of the yoke: and the swift Gallae press behind their speedy-footed leader. So when the home of Cybebe they reach, wearied out with excess of toil and lack of food they fall in slumber. Sluggish sleep shrouds their eyes drooping with faintness, and raging fury leaves their minds to quiet ease.</p>\n\t\t\t<p>But when the sun with radiant eyes from face of gold glanced o\u2019er the white heavens, the firm soil, and the savage sea, and drave away the glooms of night with his brisk and clamorous team, then sleep fast-flying quickly sped away from wakening Attis, and goddess Pasithea received Somnus in her panting bosom. Then when from quiet rest torn, her delirium over, Attis at once recalled to mind her deed, and with lucid thought saw what she had lost, and where she stood, with heaving heart she backwards traced her steps to the landing-place. There, gazing o\u2019er the vast main with tear-filled eyes, with saddened voice in tristful soliloquy thus did she lament her land:</p>\n\t\t\t<p>\u201CMother-land, O my creatress, mother-land, O my begetter, which full sadly I\u2019m forsaking, as runaway serfs are wont from their lords, to the woods of Ida I have hasted on foot, to stay \u2019mongst snow and icy dens of ferals, and to wander through the hidden lurking-places of ferocious beasts. Where, or in what part, O mother-land, may I imagine that thou art? My very eyeball craves to fix its glance towards thee, whilst for a brief space my mind is freed from wild ravings. And must I wander o\u2019er these woods far from mine home? From country, goods, friends, and parents, must I be parted? Leave the forum, the palaestra, the race-course, and gymnasium? Wretched, wretched soul, \u2019tis thine to grieve for ever and for aye. For whatso shape is there, whose kind I have not worn? I (now a woman), I a man, a stripling, and a lad; I was the gymnasium\u2019s flower, I was the pride of the oiled wrestlers: my gates, my friendly threshold, were crowded, my home was decked with floral coronals, when I was wont to leave my couch at sunrise. Now shall I live a ministrant of gods and slave to Cybebe? I a Maenad, I a part of me, I a sterile trunk! Must I range o\u2019er the snow-clad spots of verdurous Ida, and wear out my life \u2019neath lofty Phrygian peaks, where stay the sylvan-seeking stag and woodland-wandering boar? Now, now, I grieve the deed I\u2019ve done; now, now, do I repent!\u201D</p>\n\t\t\t<p>As the swift sound left those rosy lips, borne by new messenger to gods\u2019 twinned ears, Cybebe, unloosing her lions from their joined yoke, and goading the left-hand foe of the herd, thus doth speak: \u201CCome,\u201D she says, \u201Cto work, thou fierce one, cause a madness urge him on, let a fury prick him onwards till he return through our woods, he who over-rashly seeks to fly from my empire. On! thrash thy flanks with thy tail, endure thy strokes; make the whole place re-echo with roar of thy bellowings; wildly toss thy tawny mane about thy nervous neck.\u201D Thus ireful Cybebe spoke and loosed the yoke with her hand. The monster, self-exciting, to rapid wrath his heart doth spur, he rushes, he roars, he bursts through the brake with heedless tread. But when he gained the humid verge of the foam-flecked shore, and spied the womanish Attis near the opal sea, he made a bound: the witless wretch fled into the wild wold: there throughout the space of her whole life a bondsmaid did she stay. Great Goddess, Goddess Cybebe, Goddess Dame of Dindymus, far from my home may all thine anger be, O mistress: urge others to such actions, to madness others hound.</p>','<p class="cantohead">LXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Pines aforetimes sprung from Pelion peak floated, so \u2019tis said, through liquid billows of Neptune to the flowing Phasis and the confines Aeetaean, when the picked youth, the vigour of Argive manhood seeking to carry away the Golden Fleece from Colchis, dared to skim o\u2019er salt seas in a swift-sailing ship, sweeping caerulean ocean with paddles shapen from fir-wood. That Goddess who guards the castles in topmost parts of the towns herself fashioned the car, scudding with lightest of winds, uniting the interweaved pines unto the curving keel. That same first instructed untaught Amphitrite with sailing. Scarce had it split with its stem the windy waves, and the billow vext with oars had whitened into foam, when arose from the abyss of the hoary eddies the faces of sea-dwelling Nereids wondering at the marvel. And then on that propitious day mortal eyes gazed on sea-nymphs with naked bodies bare to the breasts outstanding from the foamy abyss. Then \u2019tis said Peleus burned with desire for Thetis, then Thetis contemned not mortal hymenaeals, then Thetis\u2019 sire himself sanctioned her joining to Peleus. O born in the time of joyfuller ages, heroes, hail! sprung from the gods, good progeny of mothers, hail! and favourably be ye inclined. You oft in my song I\u2019ll address, thee too I\u2019ll approach, Peleus, pillar of Thessaly, so increased in importance by thy fortunate wedding-torches, to whom Jupiter himself, the sire of the gods himself, yielded up his beloved. Did not Thetis embrace thee, she most winsome of Nereids born? Did not Tethys consent that thou should\u2019st lead home her grandchild, and Oceanus eke, whose waters girdle the total globe? When in full course of time the longed-for day had dawned, all Thessaly assembled throngs his home, a gladsome company o\u2019erspreading the halls: they bear gifts to the fore, and their joy in their faces they shew. Scyros desert remains, they leave Phthiotic Tempe, Crannon\u2019s homes, and the fortressed walls of Larissa; to Pharsalia they hie, \u2019neath Pharsalian roofs they gather. None tills the soil, the heifers\u2019 necks grow softened, the trailing vine is not cleansed by the curved rake-prongs, nor does the sickle prune the shade of the spreading tree-branches, nor does the bullock up-tear the glebe with the prone-bending ploughshare; squalid rust steals o\u2019er the neglected ploughs.</p>\n\t\t\t<p>But this mansion, throughout its innermost recesses of opulent royalty, glitters with gleaming gold and with silver. Ivory makes white the seats; goblets glint on the boards; the whole house delights in the splendour of royal treasure. Placed in the midst of the mansion is the bridal bed of the goddess, made glossy with Indian tusks and covered with purple, tinted with the shell-fish\u2019s rosy dye. This tapestry embroidered with figures of men of ancient time pourtrays with admirable art the heroes\u2019 valour. For looking forth from Dia\u2019s beach, resounding with crashing of breakers, Theseus hasting from sight with swiftest of fleets, Ariadne watches, her heart swelling with raging passion, nor scarce yet credits she sees what she sees, as, newly-awakened from her deceptive sleep, she perceives herself, deserted and woeful, on the lonely shore. But the heedless youth, flying away, beats the waves with his oars, leaving his perjured vows to the gusty gales. In the dim distance from amidst the sea-weed, the daughter of Minos with sorrowful eyes, like a stone-carved Bacchante, gazes afar, alas! gazes after him, heaving with great waves of grief. No longer does the fragile fillet bind her yellow locks, no more with light veil is her hidden bosom covered, no more with rounded zone the milky breasts are clasped; down fallen from her body everything is scattered, hither, thither, and the salt waves toy with them in front of her very feet. But neither on fillet nor floating veil, but on thee, Theseus, in their stead, was she musing: on thee she bent her heart, her thoughts, her love-lorn mind. Ah, woeful one, with sorrows unending distraught, Erycina sows thorny cares deep in thy bosom, since that time when Theseus fierce in his vigour set out from the curved bay of Piraeus, and gained the Gortynian roofs of the iniquitous ruler.</p>\n\t\t\t<p>For of old \u2019tis narrated, that constrained by plague of the cruelest to expiate the slaughter of Androgeos, both chosen youths and the pick of the unmarried maidens Cecropia was wont to give as a feast to the Minotaur. When thus his strait walls with ills were vexed, Theseus with free will preferred to yield up his body for adored Athens rather than such Cecropian corpses be carried to Crete unobsequied. And therefore borne in a speedy craft by favouring breezes, he came to the imperious Minos and his superb seat. Instant the royal virgin him saw with longing glance, she whom the chaste couch out-breathing sweetest of scents cradled in her mother\u2019s tender enfoldings, like to the myrtle which the rivers of Eurotas produce, or the many-tinted blooms opening with the springtide\u2019s breezes, she bent not down away from him her kindling glance, until the flame spread through her whole body, and burned into her innermost marrow. Ah, hard of heart, urging with misery to madness, O holy boy, who mingles men\u2019s cares and their joyings, and thou queen of Golgos and of foliaged Idalium, on what waves did you heave the mind-kindled maid, sighing full oft for the golden-haired guest! What dreads she bore in her swooning soul! How often did she grow sallower in sheen than gold! When craving to contend against the savage monster Theseus faced death or the palm of praise. Then gifts to the gods not unmeet not idly given, with promise from tight-closed lips did she address her vows. For as an oak waving its boughs on Taurus\u2019 top, or a coniferous pine with sweating stem, is uprooted by savage storm, twisting its trunk with its blast (dragged from its roots prone it falleth afar, breaking all in the line of its fall) so did Theseus fling down the conquered body of the brute, tossing its horns in vain towards the skies. Thence backwards he retraced his steps \u2019midst great laud, guiding his errant footsteps by means of a tenuous thread, lest when outcoming from tortuous labyrinthines his efforts be frustrated by unobservant wandering. But why, turned aside from my first story, should I recount more, how the daughter fleeing her father\u2019s face, her sister\u2019s embrace, and e\u2019en her mother\u2019s, who despairingly bemoaned her lost daughter, preferred to all these the sweet love of Theseus; or how borne by their boat to the spumy shores of Dia she came; or how her yokeman with unmemoried breast forsaking her, left her bound in the shadows of sleep? And oft, so \u2019tis said, with her heart burning with fury she outpoured clarion cries from depths of her bosom, then sadly scaled the rugged mounts, whence she could cast her glance o\u2019er the vasty seething ocean, then ran into the opposing billows of the heaving sea, raising from her bared legs her clinging raiment, and in uttermost plight of woe with tear-stained face and chilly sobs spake she thus:&mdash;</p>\n\t\t\t<p>\u201CIs it thus, O perfidious, when dragged from my motherland\u2019s shores, is it thus, O false Theseus, that thou leavest me on this desolate strand? thus dost depart unmindful of slighted godheads, bearing home thy perjured vows? Was no thought able to bend the intent of thy ruthless mind? hadst thou no clemency there, that thy pitiless bowels might compassionate me? But these were not the promises thou gavest me idly of old, this was not what thou didst bid me hope for, but the blithe bride-bed, hymenaeal happiness: all empty air, blown away by the breezes. Now, now, let no woman give credence to man\u2019s oath, let none hope for faithful vows from mankind; for whilst their eager desire strives for its end, nothing fear they to swear, nothing of promises stint they: but instant their lusting thoughts are satiate with lewdness, nothing of speech they remember, nothing of perjuries reck. In truth I snatched thee from the midst of the whirlpool of death, preferring to suffer the loss of a brother rather than fail thy need in the supreme hour, O ingrate. For the which I shall be a gift as prey to be rent by wild beasts and the carrion-fowl, nor dead shall I be placed in the earth, covered with funeral mound. What lioness bare thee \u2019neath lonely crag? What sea conceived and spued thee from its foamy crest? What Syrtis, what grasping Scylla, what vast Charybdis? O thou repayer with such guerdon for thy sweet life! If \u2019twas not thy heart\u2019s wish to yoke with me, through holding in horror the dread decrees of my stern sire, yet thou couldst have led me to thy home, where as thine handmaid I might have served thee with cheerful service, laving thy snowy feet with clear water, or spreading the purple coverlet o\u2019er thy couch. Yet why, distraught with woe, do I vainly lament to the unknowing winds, which unfurnished with sense, can neither hear uttered complaints nor can return them? For now he has sped away into the midst of the seas, nor doth any mortal appear along this desolate seaboard. Thus with o\u2019erweening scorn doth bitter Fate in my extreme hour even grudge ears to my plaints. All-powerful Jupiter! would that in old time the Cecropian poops had not touched at the Gnossian shores, nor that bearing to the unquelled bull the direful ransom had the false mariner moored his hawser to Crete, nor that yon wretch hiding ruthless designs beneath sweet seemings had reposed as a guest in our halls! For whither may I flee? in what hope, O lost one, take refuge? Shall I climb the Idomenean crags? but the truculent sea stretching amain with its whirlings of waters separates us. Can I quest help from my father, whom I deserted to follow a youth besprinkled with my brother\u2019s blood? Can I crave comfort from the care of a faithful yokeman, who is fleeing with yielding oars, encurving \u2019midst whirling waters. If I turn from the beach there is no roof in this tenantless island, no way sheweth a passage, circled by waves of the sea; no way of flight, no hope; all denotes dumbness, desolation, and death. Natheless mine eyes shall not be dimmed in death, nor my senses secede from my spent frame, until I have besought from the gods a meet mulct for my betrayal, and implored the faith of the celestials with my latest breath. Wherefore ye requiters of men\u2019s deeds with avenging pains, O Eumenides, whose front enwreathed with serpent-locks blazons the wrath exhaled from your bosom, hither, hither haste, hear ye my plainings, which I, sad wretch, am urged to outpour from mine innermost marrow, helpless, burning, and blind with frenzied fury. And since in truth they spring from the veriest depths of my heart, be ye unwilling to allow my agony to pass unheeded, but with such mind as Theseus forsook me, with like mind, O goddesses, may he bring evil on himself and on his kin.\u201D</p>\n\t\t\t<p>After she had poured forth these words from her grief-laden bosom, distractedly clamouring for requital against his heartless deeds, the celestial ruler assented with almighty nod, at whose motion the earth and the awe-full waters quaked, and the world of glittering stars did quiver. But Theseus, self-blinded with mental mist, let slip from forgetful breast all those injunctions which until then he had held firmly in mind, nor bore aloft sweet signals to his sad sire, shewing himself safe when in sight of Erectheus\u2019 haven. For \u2019tis said that aforetime, when Aegeus entrusted his son to the winds, on leaving the walls of the chaste goddess\u2019s city, these commands he gave to the youth with his parting embrace.</p>\n\t\t\t<p>\u201CO mine only son, far dearer to me than long life, lately restored to me at extreme end of my years, O son whom I must perforce dismiss to a doubtful hazard, since my ill fate and thine ardent valour snatch thee from unwilling me, whose dim eyes are not yet sated with my son\u2019s dear form: nor gladly and with joyous breast do I send thee, nor will I suffer thee to bear signs of helpful fortune, but first from my breast many a plaint will I express, sullying my grey hairs with dust and ashes, and then will I hang dusky sails to the swaying mast, so that our sorrow and burning lowe are shewn by Iberian canvas, rustily darkened. Yet if the dweller on holy Itone, who deigns defend our race and Erectheus\u2019 dwellings, grant thee to besprinkle thy right hand in the bull\u2019s blood, then see that in very truth these commandments deep-stored in thine heart\u2019s memory do flourish, nor any time deface them. Instant thine eyes shall see our cliffs, lower their gloomy clothing from every yard, and let the twisted cordage bear aloft snowy sails, where splendent shall shine bright topmast spars, so that, instant discerned, I may know with gladness and lightness of heart that in prosperous hour thou art returned to my face.\u201D</p>\n\t\t\t<p>These charges, at first held in constant mind, from Theseus slipped away as clouds are impelled by the breath of the winds from the ethereal peak of a snow-clad mount. But his father as he betook himself to the castle\u2019s turrets as watchplace, dimming his anxious eyes with continual weeping, when first he spied the discoloured canvas, flung himself headlong from the top of the crags, deeming Theseus lost by harsh fate. Thus as he entered the grief-stricken house, his paternal roof, Theseus savage with slaughter met with like grief as that which with unmemoried mind he had dealt to Minos\u2019 daughter: while she with grieving gaze at his disappearing keel, turned over a tumult of cares in her wounded spirit.</p>\n\t\t\t<p>But on another part [of the tapestry] swift hastened the flushed Iacchus with his train of Satyrs and Nisa-begot Sileni, thee questing, Ariadne, and aflame with love for thee. * * * * These scattered all around, an inspired band, rushed madly with mind all distraught, ranting \u201CEuhoe,\u201D with tossing of heads \u201CEuhoe.\u201D Some with womanish hands shook thyrsi with wreath-covered points; some tossed limbs of a rended steer; some engirt themselves with writhed snakes; some enacted obscure orgies with deep chests, orgies of which the profane vainly crave a hearing; others beat the tambours with outstretched palms, or from the burnished brass provoked shrill tinklings, blew raucous-sounding blasts from many horns, and the barbarous pipe droned forth horrible song.</p>\n\t\t\t<p>With luxury of such figures was the coverlet adorned, enwrapping the bed with its mantling embrace. After the Thessalian youthhood with eager engazing were sated they began to give way to the sacred gods. Hence, as with his morning\u2019s breath brushing the still sea Zephyrus makes the sloping billows uprise, when Aurora mounts \u2019neath the threshold of the wandering sun, which waves heave slowly at first with the breeze\u2019s gentle motion (plashing with the sound as of low laughter) but after, as swells the wind, more and more frequent they crowd and gleam in the purple light as they float away,&mdash;so quitting the royal vestibule did the folk hie them away each to his home with steps wandering hither and thither.</p>\n\t\t\t<p>After they had wended their way, chief from the Pelion vertex Chiron came, the bearer of sylvan spoil: for whatsoever the fields bear, whatso the Thessalian land on its high hills breeds, and what flowers the fecund air of warm Favonius begets near the running streams, these did he bear enwreathed into blended garlands wherewith the house rippled with laughter, caressed by the grateful odour.</p>\n\t\t\t<p>Speedily stands present Penios, for a time his verdant Tempe, Tempe whose overhanging trees encircle, leaving to the Dorian choirs, damsels Magnesian, to frequent; nor empty-handed,&mdash;for he has borne hither lofty beeches uprooted and the tall laurel with straight stem, nor lacks he the nodding plane and the lithe sister of flame-wrapt Phaethon and the aerial cypress. These wreathed in line did he place around the palace so that the vestibule might grow green sheltered with soft fronds.</p>\n\t\t\t<p>After him follows Prometheus of inventive mind, bearing diminishing traces of his punishment of aforetime, which of old he had suffered, with his limbs confined by chains hanging from the rugged Scythian crags. Then came the sire of gods from heaven with his holy consort and offspring, leaving thee alone, Phoebus, with thy twin-sister the fosterer of the mountains of Idrus: for equally with thyself did thy sister disdain Peleus nor was she willing to honour the wedding torches of Thetis. After they had reclined their snow-white forms along the seats, tables were loaded on high with food of various kinds.</p>\n\t\t\t<p>In the meantime with shaking bodies and infirm gesture the Parcae began to intone their veridical chant. Their trembling frames were enwrapped around with white garments, encircled with a purple border at their heels, snowy fillets bound each aged brow, and their hands pursued their never-ending toil, as of custom. The left hand bore the distaff enwrapped in soft wool, the right hand lightly withdrawing the threads with upturned fingers did shape them, then twisting them with the prone thumb it turned the balanced spindle with well-polished whirl. And then with a pluck of their tooth the work was always made even, and the bitten wool-shreds adhered to their dried lips, which shreds at first had stood out from the fine thread. And in front of their feet wicker baskets of osier twigs took charge of the soft white woolly fleece. These, with clear-sounding voice, as they combed out the wool, outpoured fates of such kind in sacred song, in song which none age yet to come could tax with untruth.</p>\n\t\t\t<p>\u201CO with great virtues thine exceeding honour augmenting, stay of Emathia-land, most famous in thine issue, receive what the sisters make known to thee on this gladsome day, a weird veridical! But ye whom the fates do follow:&mdash;Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNow Hesperus shall come unto thee bearing what is longed for by bridegrooms, with that fortunate star shall thy bride come, who ensteeps thy soul with the sway of softening love, and prepares with thee to conjoin in languorous slumber, making her smooth arms thy pillow round \u2019neath thy sinewy neck. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNo house ever yet enclosed such loves, no love bound lovers with such pact, as abideth with Thetis, as is the concord of Peleus. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CTo ye shall Achilles be born, a stranger to fear, to his foemen not by his back, but by his broad breast known, who, oft-times the victor in the uncertain struggle of the foot-race, shall outrun the fire-fleet footsteps of the speedy doe. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNone in war with him may compare as a hero, when the Phrygian streams shall trickle with Trojan blood, and when besieging the walls of Troy with a long-drawn-out warfare perjured Pelops\u2019 third heir shall lay that city waste. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CHis glorious acts and illustrious deeds often shall mothers attest o\u2019er funeral-rites of their sons, when the white locks from their heads are unloosed amid ashes, and they bruise their discoloured breasts with feeble fists. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CFor as the husbandman bestrewing the dense wheat-ears mows the harvest yellowed \u2019neath ardent sun, so shall he cast prostrate the corpses of Troy\u2019s sons with grim swords. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CHis great valour shall be attested by Scamander\u2019s wave, which ever pours itself into the swift Hellespont, narrowing whose course with slaughtered heaps of corpses he shall make tepid its deep stream by mingling warm blood with the water. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CAnd she a witness in fine shall be the captive-maid handed to death, when the heaped-up tomb of earth built in lofty mound shall receive the snowy limbs of the stricken virgin. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CFor instant fortune shall give the means to the war-worn Greeks to break Neptune\u2019s stone bonds of the Dardanian city, the tall tomb shall be made dank with Polyxena\u2019s blood, who as the victim succumbing \u2019neath two-edged sword, with yielding hams shall fall forward a headless corpse. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CWherefore haste ye to conjoin in the longed-for delights of your love. Bridegroom thy goddess receive in felicitous compact; let the bride be given to her eager husband. Haste ye, a-weaving the woof, O hasten, ye spindles.</p>\n\t\t\t<p>\u201CNor shall the nurse at orient light returning, with yester-e\u2019en\u2019s thread succeed in circling her neck. [Haste ye, a-weaving the woof, O hasten, ye spindles.] Not need her solicitous mother fear sad discord  shall cause a parted bed for her daughter, nor need she cease to hope for dear grandchildren. Haste ye, a-weaving the woof, O hasten, ye spindles.\u201D</p>\n\t\t\t<p>With such soothsaying songs of yore did the Parcae chant from divine breast the felicitous fate of Peleus. For of aforetime the heaven-dwellers were wont to visit the chaste homes of heroes and to shew themselves in mortal assembly ere yet their worship was scorned. Often the father of the gods, a-resting in his glorious temple, when on the festal days his annual rites appeared, gazed on an hundred bulls strewn prone on the earth. Often wandering Liber on topmost summit of Parnassus led his yelling Thyiads with loosely tossed locks. * * * * When the Delphians tumultuously trooping from the whole of their city joyously acclaimed the god with smoking altars. Often in lethal strife of war Mavors, or swift Triton\u2019s queen, or the Rhamnusian virgin, in person did exhort armed bodies of men. But after the earth was infected with heinous crime, and each one banished justice from their grasping mind, and brothers steeped their hands in fraternal blood, the son ceased grieving o\u2019er departed parents, the sire craved for the funeral rites of his first-born that freely he might take of the flower of unwedded step-dame, the unholy mother, lying under her unknowing son, did not fear to sully her household gods with dishonour: everything licit and lawless commingled with mad infamy turned away from us the just-seeing mind of the gods. Wherefore nor do they deign to appear at such-like assemblies, nor will they permit themselves to be met in the day-light.</p>','<p class="cantohead">LXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Though outspent with care and unceasing grief, I am withdrawn, Ortalus, from the learned Virgins, nor is my soul\u2019s mind able to bring forth sweet babes of the Muses (so much does it waver \u2019midst ills: for but lately the wave of the Lethean stream doth lave with its flow the pallid foot of my brother, whom \u2019neath the Rhoetean seaboard the Trojan soil doth crush, thrust from our eyesight. * * * Never again may I salute thee, nor hear thy converse; never again, O brother, more loved than life, may I see thee in aftertime. But for all time in truth will I love thee, always will I sing elegies made gloomy by thy death, such as the Daulian bird pipes \u2019neath densest shades of foliage, lamenting the lot of slain Itys.) Yet \u2019midst sorrows so deep, O Ortalus, I send thee these verses re-cast from Battiades, lest thou shouldst credit thy words by chance have slipt from my mind, given o\u2019er to the wandering winds, as \u2019twas with that apple, sent as furtive love-token by the wooer, which outleapt from the virgin\u2019s chaste bosom; for, placed by the hapless girl \u2019neath her soft vestment, and forgotten,&mdash;when she starts at her mother\u2019s approach, out \u2019tis shaken: and down it rolls headlong to the ground, whilst a tell-tale flush mantles the face of the distressed girl.</p>','<p class="cantohead">LXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>He who scanned all the lights of the great firmament, who ascertained the rising and the setting of the stars, how the flaming splendour of the swift sun was endarkened, how the planets disappear at certain seasons, how sweet love with stealth detaining Trivia beneath the Latmian crags, draws her away from her airy circuit, that same Conon saw me amongst celestial light, the hair from Berenice\u2019s head, gleaming with brightness, which she outstretching graceful arms did devote to the whole of the gods, when the king flushed with the season of new wedlock had gone to lay waste the Assyrian borders, bearing the sweet traces of nightly contests, in which he had borne away her virginal spoils. Is Venus abhorred by new-made brides? Why be the parents\u2019 joys turned aside by feigned tears, which they shed copiously amid the lights of the nuptial chamber? Untrue are their groans, by the gods I swear! This did my queen teach me by her many lamentings, when her bridegroom set out for stern warfare. Yet thou didst not mourn the widowhood of desolate couch, but the tearful separation from a dear brother? How care made sad inroads in thy very marrow! In so much that thine whole bosom being agitated, and thy senses being snatched from thee, thy mind wandered! But in truth I have known thee great of heart ever since thou wast a little maiden. Hast thou forgotten that noble deed, by which thou didst gain a regal wedlock, than which none dared other deeds bolder? Yet what grieving words didst thou speak when bidding thy bridegroom farewell! Jupiter! as with sad hand often thine eyes thou didst dry! What mighty god changed thee? Was it that lovers are unwilling to be long absent from their dear one\u2019s body? Then didst thou devote me to the whole of the gods on thy sweet consort\u2019s behalf, not without blood of bullocks, should he be granted safe return. In no long time he added captive Asia to the Egyptian boundaries. Wherefore for these reasons I, bestowed \u2019midst the celestial host, by a new gift fulfil thine ancient promise. With grief, O queen, did I quit thy brow, with grief: I swear to thee and to thine head; fit ill befall whosoever shall swear lightly: but who may bear himself peer with steel? Even that mountain was swept away, the greatest on earth, over which Thia\u2019s illustrious progeny passed, when the Medes created a new sea, and the barbarian youth sailed its fleet through the middle of Athos. What can locks of hair do, when such things yield to iron? Jupiter! may the whole race of the Chalybes perish, and whoever first questing the veins \u2019neath the earth harassed its hardness, breaking it through with iron. Just before severance my sister locks were mourning my fate, when Ethiop Memnon\u2019s brother, the winged steed, beating the air with fluttering pennons, appeared before Locrian Arsinoe, and this one bearing me up, flies through aethereal shadows and lays me in the chaste bosom of Venus. Him Zephyritis herself had dispatched as her servant, a Grecian settler on the Canopian shores. For \u2019twas the wish of many gods that not alone in heaven\u2019s light should the golden coronet from Ariadne\u2019s temples stay fixed, but that we also should gleam, the spoils devote from thy golden-yellow head; when humid with weeping I entered the temples of the gods, the Goddess placed me, a new star, amongst the ancient ones. For a-touching the Virgin\u2019s and the fierce Lion\u2019s gleams, hard by Callisto of Lycaon, I turn westwards fore-guiding the slow-moving Bootes who sinks unwillingly and late into the vasty ocean. But although the footsteps of the gods o\u2019erpress me in the night-tide, and the daytime restoreth me to the white-haired Tethys, (grant me thy grace to speak thus, O Rhamnusian virgin, for I will not hide the truth through any fear, even if the stars revile me with ill words yet I will unfold the pent-up feelings from truthful breast) I am not so much rejoiced at these things as I am tortured by being for ever parted, parted from my lady\u2019s head, with whom I (though whilst a virgin she was free from all such cares) drank many a thousand of Syrian scents.</p>\n\t\t\t<p>Now do you, whom the gladsome light of the wedding torches hath joined, yield not your bodies to your desiring husbands nor throw aside your vestments and bare your bosom\u2019s nipples, before your onyx cup brings me jocund gifts, your onyx, ye who seek the dues of chaste marriage-bed. But she who giveth herself to foul adultery, may the light-lying dust responselessly drink her vile gifts, for I seek no offerings from folk that do ill. But rather, O brides, may concord always be yours, and constant love ever dwell in your homes. But when thou, O queen, whilst gazing at the stars, shalt propitiate the goddess Venus with festal torch-lights, let not me, thine own, be left lacking of unguent, but rather gladden me with large gifts. Stars fall in confusion! So that I become a royal tress, Orion might gleam in Aquarius\u2019 company.</p>','<p class="cantohead">LXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>O dear in thought to the sweet husband, dear in thought to his sire, hail! and may Jove augment his good grace to thee, Door! which of old, men say, didst serve Balbus benignly, whilst the oldster held his home here; and which contrariwise, so \u2019tis said, didst serve with grudging service after the old man was stretched stark, thou doing service to the bride. Come, tell us why thou art reported to be changed and to have renounced thine ancient faithfulness to thy lord?</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>No, (so may I please Caecilius to whom I am now made over!) it is not my fault, although \u2019tis said so to be, nor may anyone impute any crime to me; albeit the fabling tongues of folk make it so, who, whene\u2019er aught is found not well done, all clamour at me: \u201CDoor, thine is the blame!\u201D</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>It is not enough for thee to say this by words merely, but so to act that everyone may feel it and see it.</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>In what way can I? No one questions or troubles to know.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>We are wishful: be not doubtful to tell us.</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>First then, the virgin (so they called her!) who was handed to us was spurious. Her husband was not the first to touch her, he whose little dagger, hanging more limply than the tender beet, never raised itself to the middle of his tunic: but his father is said to have violated his son\u2019s bed and to have polluted the unhappy house, either because his lewd mind blazed with blind lust, or because his impotent son was sprung from sterile seed, and therefore one greater of nerve than he was needed, who could unloose the virgin\u2019s zone.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>Thou tellest of an excellent parent marvellous in piety, who himself urined in the womb of his son!</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>But not this alone is Brixia said to have knowledge of, placed \u2019neath the Cycnean peak, through which the golden-hued Mella flows with its gentle current, Brixia, beloved mother of my Verona. For it talks of the loves of Postumius and of Cornelius, with whom she committed foul adultery.</p>\n\t\t\t<p class="inthead"><em>Catullus</em>.</p>\n\t\t\t<p>Folk might say here: \u201CHow knowest thou these things, O door? thou who art never allowed absence from thy lord\u2019s threshold, nor mayst hear the folk\u2019s gossip, but fixed to this beam art wont only to open or to shut the house!\u201D</p>\n\t\t\t<p class="inthead"><em>Door</em>.</p>\n\t\t\t<p>Often have I heard her talking with hushed voice, when alone with her handmaids, about her iniquities, quoting by name those whom we have spoken of, for she did not expect me to be gifted with either tongue or ear. Moreover she added a certain one whose name I\u2019m unwilling to speak, lest he uplift his red eyebrows. A lanky fellow, against whom some time ago was brought a grave law-suit anent the spurious child-birth of a lying belly.</p>','<p class="cantohead">LXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>That when, opprest by fortune and in grievous case, thou didst send me this epistle o\u2019erwrit with tears, that I might bear up shipwrecked thee tossed by the foaming waves of the sea, and restore thee from the threshold of death; thou whom neither sacred Venus suffers to repose in soft slumber, desolate on a a lonely couch, nor do the Muses divert with the sweet song of ancient poets, whilst thy anxious mind keeps vigil:&mdash;this is grateful to me, since thou dost call me thy friend, and dost seek hither the gifts of the Muses and of Venus. But that my troubles may not be unknown to thee, O Manius, nor thou deem I shun the office of host, hear how I am whelmed in the waves of that same fortune, nor further seek joyful gifts from a wretched one. In that time when the white vestment was first handed to me, and my florid age was passing in jocund spring, much did I sport enow: nor was the goddess unknown to us who mixes bitter-sweet with our cares. But my brother\u2019s death plunged all this pursuit into mourning. O brother, taken from my unhappy self; thou by thy dying hast broken my ease, O brother; all our house is buried with thee; with thee have perished the whole of our joys, which thy sweet love nourished in thy lifetime. Thou lost, I have dismissed wholly from mind these studies and every delight of mind. Wherefore, as to what thou writest, \u201C\u2019Tis shameful for Catullus to be at Verona, for there anyone of utmost note must chafe his frigid limbs on a desolate couch;\u201D that, Manius, is not shameful; rather \u2019tis a pity. Therefore, do thou forgive, if what grief has snatched from me, these gifts, I do not bestow on thee, because I am unable. For, that there is no great store of writings with me arises from this, that we live at Rome: there is my home, there is my hall, thither my time is passed; hither but one of my book-cases follows me. As \u2019tis thus, I would not that thou deem we act so from ill-will or from a mind not sufficiently ingenuous, that ample store is not forthcoming to either of thy desires: both would I grant, had I the wherewithal. Nor can I conceal, goddesses, in what way Allius has aided me, or with how many good offices he has assisted me; nor shall fleeting time with its forgetful centuries cover with night\u2019s blindness this care of his. But I tell it to you, and do ye declare it to many thousands, and make this paper, grown old, speak of it * * * * And let him be more and more noted when dead, nor let the spider aloft, weaving her thin-drawn web, carry on her work over the neglected name of Allius. For you know what anxiety of mind wily Amathusia gave me, and in what manner she overthrew me, when I was burning like the Trinacrian rocks, or the Malian fount in Oetaean Thermopylae; nor did my piteous eyes cease to dissolve with continual weeping, nor my cheeks with sad showers to be bedewed. As the pellucid stream gushes forth from the moss-grown rock on the aerial crest of the mountain, which when it has rolled headlong prone down the valley, softly wends its way through the midst of the populous parts, sweet solace to the wayfarer sweating with weariness, when the oppressive heat cracks the burnt-up fields agape: or, as to sailors tempest-tossed in black whirlpool, there cometh a favourable and a gently-moving breeze, Pollux having been prayed anon, and Castor alike implored: of such kind was Manius\u2019 help to us. He with a wider limit laid open my closed field; he gave us a home and its mistress, on whom we both might exercise our loves in common. Thither with gracious gait my bright-hued goddess betook herself, and pressed her shining sole on the worn threshold with creaking of sandal; as once came Laodamia, flaming with love for her consort, to the home of Protesilaus,&mdash;a beginning of naught! for not yet with sacred blood had a victim made propitiate the lords of the heavens. May nothing please me so greatly, Rhamnusian virgin, that I should act thus heedlessly against the will of those lords! How the thirsty altar craves for sacrificial blood Laodamia was taught by the loss of her husband, being compelled to abandon the neck of her new spouse when one winter was past, before another winter had come, in whose long nights she might so glut her greedy love, that she could have lived despite her broken marriage-yoke, which the Parcae knew would not be long distant, if her husband as soldier should fare to the Ilian walls. For by Helena\u2019s rape Troy had begun to put the Argive Chiefs in the field; Troy accurst, the common grave of Asia and of Europe, Troy, the sad ashes of heroes and of every noble deed, that also lamentably brought death to our brother. O brother taken from unhappy me! O jocund light taken from thy unhappy brother! in thy one grave lies all our house, in thy one grave have perished all our joys, which thy sweet love did nurture during life. Whom now is laid so far away, not amongst familiar tombs nor near the ashes of his kindred, but obscene Troy, malign Troy, an alien earth, holds thee entombed in its remote soil. Thither, \u2019tis said, hastening together from all parts, the Grecian manhood forsook their hearths and homes, lest Paris enjoy his abducted trollop with freedom and leisure in a peaceful bed. Such then was thy case, loveliest Laodamia, to be bereft of husband sweeter than life, and than soul; thou being sucked in so great a whirlpool of love, its eddy submerged thee in its steep abyss, like (so folk say) to the Graian gulph near Pheneus of Cyllene with its fat swamp\u2019s soil drained and dried, which aforetime the falsely-born Amphitryoniades dared to hew through the marrow of cleft mountains, at the time when he smote down the Stymphalian monsters with sure shafts by the command of his inferior lord, so that the heavenly portal might be pressed by a greater number of deities, nor Hebe longer remain in her virginity. But deeper than that abyss was thy deep love which taught [thy husband] to bear his lady\u2019s forceful yoke. For not so dear to the spent age of the grandsire is the late born grandchild an only daughter rears, who, long-wished-for, at length inherits the ancestral wealth, his name duly set down in the attested tablets; and casting afar the impious hopes of the baffled next-of-kin, scares away the vulture from the whitened head; nor so much does any dove-mate rejoice in her snow-white consort (though, \u2019tis averred, more shameless than most in continually plucking kisses with nibbling beak) as thou dost, though woman is especially inconstant. But thou alone didst surpass the great frenzies of these, when thou wast once united to thy yellow-haired husband. Worthy to yield to whom in naught or in little, my light brought herself to my bosom, round whom Cupid, often running hither thither, gleamed lustrous-white in saffron-tinted tunic. Still although she is not content with Catullus alone, we will suffer the rare frailties of our coy lady, lest we may be too greatly unbearable, after the manner of fools. Often even Juno, greatest of heaven-dwellers, boiled with flaring wrath at her husband\u2019s default, wotting the host of frailties of all-wishful Jove. Yet \u2019tis not meet to match men with the gods, * * * * bear up the ungrateful burden of a tremulous parent. Yet she was not handed to me by a father\u2019s right hand when she came to my house fragrant with Assyrian odour, but she gave me her stealthy favours in the mute night, withdrawing of her own will from the bosom of her spouse. Wherefore that is enough if to us alone she gives that day which she marks with a whiter stone. This gift to thee, all that I can, of verse completed, is requital, Allius, for many offices, so that this day and that, and other and other of days may not tarnish your name with scabrous rust. Hither may the gods add gifts full many, which Themis aforetimes was wont to bear to the pious of old. May ye be happy, both thou and thy life\u2019s-love together, and thy home in which we have sported, and its mistress, and Anser who in the beginning brought thee to us, from whom all my good fortunes were first born, and lastly she whose very self is dearer to me than all these,&mdash;my light, whom living, \u2019tis sweet to me to live.</p>','<p class="cantohead">LXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Be unwilling to wonder wherefore no woman, O Rufus, is wishful to place her tender thigh \u2019neath thee, not even if thou dost tempt her by the gift of a rare robe or by the delights of a crystal-clear gem. A certain ill tale injures thee, that thou bearest housed in the valley of thine armpits a grim goat. Hence everyone\u2019s fear. Nor be marvel: for \u2019tis an exceeding ill beast, with whom no fair girl will sleep. Wherefore, either murder that cruel plague of their noses, or cease to marvel why they fly?</p>','<p class="cantohead">LXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>No one, saith my lady, would she rather wed than myself, not even if Jupiter\u2019s self crave her. Thus she saith! but what a woman tells an ardent amourist ought fitly to be graven on the breezes and in running waters.</p>','<p class="cantohead">LXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If ever anyone was deservedly cursed with an atrocious goat-stench from armpits, or if limping gout did justly gnaw one, \u2019tis thy rival, who occupies himself with your love, and who has stumbled by the marvel of fate on both these ills. For as oft as he swives, so oft is he taken vengeance on by both; she he prostrates by his stink, he is slain by his gout.</p>','<p class="cantohead">LXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Once thou didst profess to know but Catullus, Lesbia, nor wouldst hold Jove before me. I loved thee then, not only as a churl his mistress, but as a father loves his own sons and sons-in-law. Now I do know thee: wherefore if more strongly I burn, thou art nevertheless to me far viler and of lighter thought. How may this be? thou askest. Because such wrongs drive a lover to greater passion, but to less wishes of welfare.</p>','<p class="cantohead">LXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Cease thou to wish to merit well from anyone in aught, or to think any can become honourable. All are ingrate, naught benign doth avail to aught, but rather it doth irk and prove the greater ill: so with me, whom none doth o\u2019erpress more heavily nor more bitterly than he who a little while ago held me his one and only friend.</p>','<p class="cantohead">LXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gellius had heard that his uncle was wont to be wroth, if any spake of or practised love-sportings. That this should not happen to him, he kneaded up his uncle\u2019s wife herself, and made of his uncle a god of silence. Whatever he wished, he did; for now, even if he irrumate his uncle\u2019s self, not a word will that uncle murmur.</p>','<p class="cantohead">LXXV.</p>\n\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t<p>Now is my mind brought down to this point, my Lesbia, by your fault, and has so lost itself by its devotion, that now it cannot wish you well, were you to become most perfect, nor can it cease to love you, whatever you do.</p>','<p class="cantohead">LXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If to recall good deeds erewhiles performed be pleasure to a man, when he knows himself to be of probity, nor has violated sacred faith, nor has abused the holy assent of the gods in any pact, to work ill to men; great store of joys awaits thee during thy length of years, O Catullus, sprung from this ingrate love of thine. For whatever of benefit men can say or can do for anyone, such have been thy sayings and thy doings, and all thy confidences have been squandered on an ingrate mind. Wherefore now dost torture thyself further? Why not make firm thy heart and withdraw thyself from that [wretchedness], and cease to be unhappy despite the gods\u2019 will? \u2019Tis difficult quickly to depose a love of long growth; \u2019tis difficult, yet it behoves thee to do this. This is thine only salvation, this is thy great victory; this thou must do, whether it be possible or impossible. O gods, if \u2019tis in you to have mercy, or if ever ye held forth help to men in death\u2019s very extremity, look ye on pitiful me, and if I have acted my life with purity, snatch hence from me this canker and pest, which as a lethargy creeping through my veins and vitals, has cast out every gladness from my breast. Now I no longer pray that she may love me in return, or (what is not possible) that she should become chaste: I wish but for health and to cast aside this shameful complaint. O ye gods, vouchsafe me this in return for my probity.</p>','<p class="cantohead">LXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>O Rufus, credited by me as a friend, wrongly and for naught, (wrongly? nay, at an ill and grievous price) hast thou thus stolen upon me, and a-burning my innermost bowels, snatched from wretched me all our good? Thou hast snatched it, alas, alas, thou cruel venom of our life! alas, alas, thou plague of our amity. But now \u2019tis grief, that thy swinish slaver has soiled the pure love-kisses of our pure girl. But in truth thou shalt not come off with impunity; for every age shall know thee, and Fame the aged, shall denounce what thou art.</p>','<p class="cantohead">LXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gallus has brothers, one of whom has a most charming spouse, the other a charming son. Gallus is a nice fellow! for pandering to their sweet loves, he beds together the nice lad and the nice aunt. Gallus is a foolish fellow not to see that he is himself a husband who as an uncle shews how to cuckold an uncle.</p>','<p class="cantohead">LXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbius is handsome: why not so? when Lesbia prefers him to thee, Catullus, and to thy whole tribe. Yet this handsome one may sell Catullus and his tribe if from three men of note he can gain kisses of salute.</p>','<p class="cantohead">LXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What shall I say, Gellius, wherefore those lips, erstwhile rosy-red, have become whiter than wintery snow, thou leaving home at morn and when the noontide hour arouses thee from soothing slumber to face the longsome day? I know not forsure! but is Rumour gone astray with her whisper that thou devourest the well-grown tenseness of a man\u2019s middle? So forsure it must be! the ruptured guts of wretched Virro cry it aloud, and thy lips marked with lately-drained <span class="greek">&sigma;&epsilon;&mu;&epsilon;&nu;</span> publish the fact.</p>','<p class="cantohead">LXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Could there be no one in so great a crowd, Juventius, no gallant whom thou couldst fall to admiring, beyond him, the guest of thy hearth from moribund Pisaurum, wanner than a gilded statue? Who now is in thine heart, whom thou darest to place above us, and knowest not what crime thou dost commit.</p>','<p class="cantohead">LXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Quintius, if thou dost wish Catullus to owe his eyes to thee, or aught, if such may be, dearer than his eyes, be unwilling to snatch from him what is much dearer to him than his eyes, or than aught which itself may be dearer to him than his eyes.</p>','<p class="cantohead">LXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbia in her lord\u2019s presence says the utmost ill about me: this gives the greatest pleasure to that ninny. Ass, thou hast no sense! if through forgetfulness she were silent about us, it would be well: now that she snarls and scolds, not only does she remember, but what is a far bitterer thing, she is enraged. That is, she inflames herself and ripens her passion.</p>','<p class="cantohead">LXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p><em>Chommodious</em> did Arrius say, whenever he had need to say commodious, and for insidious <em>hinsidious</em>, and felt confident he spoke with accent wondrous fine, when aspirating <em>hinsidious</em> to the full of his lungs. I understand that his mother, his uncle Liber, his maternal grand-parents all spoke thus. He being sent into Syria, everyone\u2019s ears were rested, hearing these words spoken smoothly and slightly, nor after that did folk fear such words from him, when on a sudden is brought the nauseous news that th\u2019 Ionian waves, after Arrius\u2019 arrival thither, no longer are Ionian hight, but are now the <em>Hionian Hocean</em>.</p>','<p class="cantohead">LXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I hate and I love. Wherefore do I so, peradventure thou askest. I know not, but I feel it to be thus and I suffer.</p>','<p class="cantohead">LXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Quintia is lovely to many; to me she is fair, tall, and shapely. Each of these qualities I grant. But that all these make loveliness I deny: for nothing of beauty nor scintilla of sprightliness is in her body so massive. Lesbia is lovely, for whilst the whole of her is most beautiful, she has stolen for herself every love-charm from all her sex.</p>','<p class="cantohead">LXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>No woman can say with truth that she has been loved as much as thou, Lesbia, hast been loved by me: no love-troth was ever so greatly observed as in love of thee on my part has been found.</p>\n\t\t\t<p>Now is my mind so led apart, my Lesbia, by thy fault, and has so lost itself by its very worship, that now it can not wish well to thee, wert thou to become most perfect, nor cease to love thee, do what thou wilt!</p>','<p class="cantohead">LXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>What does he, Gellius, who with mother and sister itches and keeps vigils with tunics cast aside? What does he, who suffers not his uncle to be a husband? Dost thou know the weight of crime he takes upon himself? He takes, O Gellius, such store as not furthest Tethys nor Oceanus, progenitor of waters, can cleanse: for there is nothing of any crime which can go further, not though with lowered head he swallow himself.</p>','<p class="cantohead">LXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Gellius is meagre: why not? He who lives with so good a mother, so healthy and so beauteous a sister, and who has such a good uncle, and a world-*full of girl cousins, wherefore should he leave off being lean? Though he touch naught save what is banned, thou canst find ample reason wherefore he may stay lean.</p>','<p class="cantohead">LXXXX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Let there be born a Magian from the infamous conjoining of Gellius and his mother, and he shall learn the Persian aruspicy. For a Magian from a mother and son must needs be begotten, if there be truth in Persia\u2019s vile creed that one may worship with acceptable hymn the assiduous gods, whilst the caul\u2019s fat in the sacred flame is melting.</p>','<p class="cantohead">LXXXXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Not for other reason, Gellius, did I hope for thy faith to me in this our unhappy, this our desperate love (because I knew thee well nor thought thee constant or able to restrain thy mind from shameless act), but that I saw this girl was neither thy mother nor thy sister, for whom my ardent love ate me. And although I have had many mutual dealings with thee, I did not credit this case to be enough cause for thee. Thou didst find it enough: so great is thy joy in every kind of guilt in which is something infamous.</p>','<p class="cantohead">LXXXXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Lesbia forever speaks ill of me nor is ever silent anent me: may I perish if Lesbia do not love me! By what sign? because I am just the same: I malign her without cease, yet may I die if I do not love her in sober truth.</p>','<p class="cantohead">LXXXXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I am not over anxious, Caesar, to please thee greatly, nor to know whether thou art white or black man.</p>','<p class="cantohead">LXXXXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula whores. By the mentule he is be-whored: certes. This is as though they say the oil pot itself gathers the olives.</p>','<p class="cantohead">LXXXXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>My Cinna\u2019s \u201CZmyrna\u201D at length, after nine harvests from its inception, is published when nine winters have gone by, whilst in the meantime Hortensius thousands upon thousands in one * * * * \u201CZmyrna\u201D shall wander abroad e\u2019en to the curving surf of Satrachus, hoary ages shall turn the leaves of \u201CZmyrna\u201D in distant days. But Volusius\u2019 Annals shall perish at Padua itself, and shall often furnish loose wrappings for mackerel. The short writings of my comrade are gladsome to my heart; let the populace rejoice in bombastic Antimachus.</p>','<p class="cantohead">LXXXXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If aught grateful or acceptable can penetrate the silent graves from our dolour, Calvus, when with sweet regret we renew old loves and beweep the lost friendships of yore, of a surety not so much doth Quintilia mourn her untimely death as she doth rejoice o\u2019er thy constant love.</p>','<p class="cantohead">LXXXXVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Nay (may the Gods thus love me) have I thought there to be aught of choice whether I might smell thy mouth or thy buttocks, O Aemilius. Nothing could the one be cleaner, nothing the other more filthy; nay in truth thy backside is the cleaner and better,&mdash;for it is toothless. Thy mouth hath teeth full half a yard in length, gums of a verity like to an old waggon-box, behind which its gape is such as hath the vulva of a she-mule cleft apart by the summer\u2019s heat, always a-staling. This object swives girls enow, and fancies himself a handsome fellow, and is not condemned to the mill as an ass? Whatso girl would touch thee, we think her capable of licking the breech of a leprous hangman.</p>','<p class="cantohead">LXXXXVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>To thee, if to anyone, may I say, foul-mouthed Victius, that which is said to wind bags and fatuities. For with that tongue, if need arrive, thou couldst lick clodhoppers\u2019 shoes, clogs, and buttocks. If thou wishest to destroy us all entirely, Victius, thou need\u2019st but gape: thou wilt accomplish what thou wishest entirely.</p>','<p class="cantohead">LXXXXVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>I snatched from thee, whilst thou wast sporting, O honied Juventius, a kiss sweeter than sweet ambrosia. But I bore it off not unpunished; for more than an hour do I remember myself hung on the summit of the cross, whilst I purged myself [for my crime] to thee, nor could any tears in the least remove your anger. For instantly it was done, thou didst bathe thy lips with many drops, and didst cleanse them with every finger-joint, lest anything remained from the conjoining of our mouths, as though it were the obscene slaver of a fetid fricatrice. Nay, more, thou hast handed wretched me over to despiteful Love, nor hast thou ceased to agonize me in every way, so that for me that kiss is now changed from ambrosia to be harsher than harsh hellebore. Since thou dost award such punishment to wretched amourist, never more after this will I steal kisses.</p>','<p class="cantohead">C.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Caelius, Aufilenus; and Quintius, Aufilena;&mdash;flower of the Veronese youth,&mdash;love desperately: this, the brother; that, the sister. This is, as one would say, true brotherhood and sweet friendship. To whom shall I incline the more? Caelius, to thee; for thy single devotion to us was shewn by its deeds, when the raging flame scorched my marrow. Be happy, O Caelius, be potent in love.</p>','<p class="cantohead">CI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Through many a folk and through many waters borne, I am come, brother, to thy sad grave, that I may give the last gifts to the dead, and may vainly speak to thy mute ashes, since fortune hath borne from me thyself. Ah, hapless brother, heavily snatched from me. * * * But now these gifts, which of yore, in manner ancestral handed down, are the sad gifts to the grave, accept thou, drenched with a brother\u2019s tears, and for ever, brother, hail! for ever, adieu!</p>','<p class="cantohead">CII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If aught be committed to secret faith from a friend to one whose inner faith of soul is known, thou wilt find me to be of that sacred faith, O Cornelius, and may\u2019st deem me become an Harpocrates.</p>','<p class="cantohead">CIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Prithee, either return me my ten thousand sesterces, Silo; then be to thy content surly and boorish: or, if the money allure thee, desist I pray thee from being a pander and likewise surly and boorish.</p>','<p class="cantohead">CIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Dost deem me capable of speaking ill of my life, she who is dearer to me than are both mine eyes? I could not, nor if I could, would my love be so desperate: but thou with Tappo dost frame everything heinous.</p>','<p class="cantohead">CV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula presumes the Pimplean mount to scale: the Muses with their pitchforks chuck him headlong down.</p>','<p class="cantohead">CVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>When with a comely lad a crier is seen to be, what may be thought save that he longs to sell himself.</p>','<p class="cantohead">CVII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If what one desires and covets is ever obtained unhoped for, this is specially grateful to the soul. Wherefore is it grateful to us and far dearer than gold, that thou com\u2019st again, Lesbia, to longing me; com\u2019st yet again, long-looked for and unhoped, thou restorest thyself. O day of whiter note for us! who lives more happily than I, sole I, or who can say what greater thing than this could be hoped for in life?</p>','<p class="cantohead">CVIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>If, O Cominius, by the people\u2019s vote thy hoary age made filthy by unclean practices shall perish, forsure I doubt not but that first thy tongue, hostile to goodness, cut out, shall be given to the greedy vulture-brood, thine eyes, gouged out, shall the crows gorge down with sable maw, thine entrails [shall be flung] to the dogs, the members still remaining to the wolf.</p>','<p class="cantohead">CVIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>My joy, my life, thou declarest to me that this love of ours shall last ever between us. Great Gods! grant that she may promise truly, and say this in sincerity and from her soul, and that through all our lives we may be allowed to prolong together this bond of holy friendship.</p>','<p class="cantohead">CX.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aufilena, honest harlots are always praised: they accept the price of what they intend to do. Thou didst promise that to me, which, being a feigned promise, proves thee unfriendly; not giving that, and often accepting, thou dost wrongfully. Either to do it frankly, or not to promise from modesty, Aufilena, was becoming thee: but to snatch the gift and bilk, proves thee worse than the greedy strumpet who prostitutes herself with every part of her body.</p>','<p class="cantohead">CXI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Aufilena, to be content to live with single mate, in married dame is praise of praises most excelling: but \u2019tis preferable to lie beneath any lover thou mayest choose, rather than to make thyself mother to thy cousins out of thy uncle.</p>','<p class="cantohead">CXII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>A mighty man thou art, Naso, yet is a man not mighty who doth stoop like thee: Naso thou art mighty&mdash;and pathic.</p>','<p class="cantohead">CXIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>In the first consulate of Pompey, two, Cinna, were wont to frequent Mucilla: now again made consul, the two remain, but thousands may be added to each unit. The seed of adultery is fecund.</p>','<p class="cantohead">CXIIII.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>With Firmian demesne not falsely is Mentula deemed rich, who has everything in it of such excellence, game preserves of every kind, fish, meadows, arable land and ferals. In vain: the yield is o\u2019ercome by the expense. Wherefore I admit the wealth, whilst everything is wanting. We may praise the demesne, but its owner is a needy man.</p>','<p class="cantohead">CXV.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Mentula has something like thirty acres of meadow land, forty under cultivation: the rest are as the sea. Why might he not o\u2019erpass Croesus in wealth, he who in one demesne possesses so much? Meadow, arable land, immense woods, and demesnes, and morasses, e\u2019en to the uttermost north and to the ocean\u2019s tide! All things great are here, yet is the owner most great beyond all; not a man, but in truth a Mentule mighty, menacing!</p>','<p class="cantohead">CXVI.</p>\n\t\t\t<p class="cantosubhead">&nbsp;</p>\n\t\t\t<p>Oft with studious mind brought close, enquiring how I might send thee the poems of Battiades for use, that I might soften thee towards us, nor thou continually attempt to sting my head with troublesome barbs&mdash;this I see now to have been trouble and labour in vain, O Gellius, nor were our prayers to this end of any avail. Thy weapons against us we will ward off with our cloak; but, transfixed with ours, thou shalt suffer punishment.</p>']};
 
 /***/ }),
 /* 34 */
@@ -1374,9 +1456,8 @@ module.exports={bookname:'catulluscarmina',author:'Caius Valerius Catullus',tran
 var Hammer = __webpack_require__(72);
 var settings = __webpack_require__(38);
 var helpers = __webpack_require__(5); // .nextrans, .prevtrans
-var resize = __webpack_require__(11);
 var dom = __webpack_require__(1);
-var _notes = __webpack_require__(20);
+var _notes = __webpack_require__(19);
 var data = __webpack_require__(0);
 
 var controls = {
@@ -1398,7 +1479,6 @@ var controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.left.translation),data.canto,"left");
 		};
 		document.querySelector("#navbarleft .navnext").onclick = function () {
 			data.watch.setlens = {
@@ -1408,27 +1488,24 @@ var controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.left.translation),data.canto,"left");
 		};
 		document.querySelector("#navbarleft .navup").onclick = function () {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto - 1,
+				canto: parseInt(data.canto) - 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto-1,"right",0);
 		};
 		document.querySelector("#navbarleft .navdown").onclick = function () {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto + 1,
+				canto: parseInt(data.canto) + 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
 		document.querySelector("#navbarright .navprev").onclick = function () {
 			data.watch.setlens = {
@@ -1438,7 +1515,6 @@ var controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 		};
 		document.querySelector("#navbarright .navnext").onclick = function () {
 			data.watch.setlens = {
@@ -1448,34 +1524,27 @@ var controls = {
 				percentage: 999, // is this okay?
 				trigger: !data.watch.setlens.trigger
 			};
-			//app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 		};
 		document.querySelector("#navbarright .navup").onclick = function () {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto - 1,
+				canto: parseInt(data.canto) - 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto-1,"right",0);
 		};
 		document.querySelector("#navbarright .navdown").onclick = function () {
 			data.watch.setlens = {
 				translation: data.lens.right.translation,
-				canto: data.canto + 1,
+				canto: parseInt(data.canto) + 1,
 				side: "right",
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 		};
 		document.querySelector("#navbarleft .navclose").onclick = function () {
-			dom.removeclass("body", "twinmode");
-			dom.addclass("#twinmode", "off");
-			dom.removeclass("#singlemode", "off");
-			data.usersettings.twinmode = false;
-			resize.check();
+			data.watch.twinmode = false;
 		};
 		data.elements.titlebar.onclick = function () {
 			data.watch.setpage = "lens";
@@ -1499,68 +1568,28 @@ var controls = {
 			data.watch.setpage = "help";
 		};
 
-		if (data.usersettings.twinmode) {
-			dom.removeclass("#twinmode", "off");
-			dom.addclass("#singlemode", "off");
-		} else {
-			dom.addclass("#twinmode", "off");
-			dom.removeclass("#singlemode", "off");
-		}
-
-		if (data.usersettings.nightmode) {
-			dom.removeclass("#nightmode", "off");
-			dom.addclass("#daymode", "off");
-		} else {
-			dom.addclass("#nightmode", "off");
-			dom.removeclass("#daymode", "off");
-		}
-
-		if (data.usersettings.shownotes) {
-			dom.removeclass("#shownotes", "off");
-			dom.addclass("#hidenotes", "off");
-		} else {
-			dom.addclass("#shownotes", "off");
-			dom.removeclass("#hidenotes", "off");
-		}
-
 		document.getElementById("daymode").onclick = function () {
-			dom.removeclass("body", "nightmode");
-			dom.addclass("#nightmode", "off");
-			dom.removeclass("#daymode", "off");
-			data.usersettings.nightmode = false;
+			data.watch.nightmode = false;
 		};
 		document.querySelector("#nightmode").onclick = function () {
-			dom.addclass("body", "nightmode");
-			dom.removeclass("#nightmode", "off");
-			dom.addclass("#daymode", "off");
-			data.usersettings.nightmode = true;
+			data.watch.nightmode = true;
 		};
 		if (document.getElementById("singlemode") !== null) {
 			document.getElementById("singlemode").onclick = function () {
-				dom.removeclass("body", "twinmode");
-				dom.addclass("#twinmode", "off");
-				dom.removeclass("#singlemode", "off");
-				data.usersettings.twinmode = false;
+				data.watch.twinmode = false;
 			};
 			document.querySelector("#twinmode").onclick = function () {
-				dom.addclass("body", "twinmode");
-				dom.removeclass("#twinmode", "off");
-				dom.addclass("#singlemode", "off");
-				data.usersettings.twinmode = true;
+				data.watch.twinmode = true;
 			};
 		}
 
 		// show/hide notes
 
 		document.querySelector("#hidenotes").onclick = function () {
-			dom.addclass("body", "hidenotes");
-			dom.addclass("#shownotes", "off");
-			dom.removeclass("#hidenotes", "off");
+			data.watch.shownotes = false;
 		};
 		document.querySelector("#shownotes").onclick = function () {
-			dom.removeclass("body", "hidenotes");
-			dom.addclass("#hidenotes", "off");
-			dom.removeclass("#shownotes", "off");
+			data.watch.shownotes = true;
 		};
 
 		document.getElementById("backbutton").onclick = function () {
@@ -1621,7 +1650,6 @@ var controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 		}).on('swiperight', function (e) {
 			e.preventDefault();
 			data.watch.setlens = {
@@ -1631,7 +1659,6 @@ var controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 		});
 
 		data.elements.hammerright.on('swipedown', function () {
@@ -1639,12 +1666,11 @@ var controls = {
 			if (data.lens.right.text.scrollTop === 0) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 1, // this needs to be at the bottom
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup', function (e) {
 			e.preventDefault();
@@ -1653,12 +1679,11 @@ var controls = {
 			if (Math.abs(data.lens.right.text.scrollTop + data.lens.right.text.clientHeight - data.lens.right.text.scrollHeight) < 4) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right");
 			}
 		});
 		data.elements.hammerleft.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
@@ -1671,7 +1696,6 @@ var controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.nexttrans(data.lens.left.translation),data.canto,"left");
 		}).on('swiperight', function (e) {
 			e.preventDefault();
 			data.watch.setlens = {
@@ -1681,7 +1705,6 @@ var controls = {
 				percentage: 999,
 				trigger: !data.watch.setlens.trigger
 			};
-			// app.setlens(helpers.prevtrans(data.lens.left.translation),data.canto,"left");
 		});
 
 		data.elements.hammerleft.on('swipedown', function () {
@@ -1689,12 +1712,11 @@ var controls = {
 			if (data.lens.left.text.scrollTop === 0) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 1, // this needs to be at the bottom
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right",1);  // this needs to be at the bottom!
 			}
 		}).on('swipeup', function (e) {
 			e.preventDefault();
@@ -1703,12 +1725,11 @@ var controls = {
 			if (Math.abs(data.lens.left.text.scrollTop + data.lens.left.text.clientHeight - data.lens.left.text.scrollHeight) < 4) {
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right");
 			}
 		});
 	},
@@ -1726,7 +1747,6 @@ var controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(helpers.prevtrans(data.lens.right.translation),data.canto,"right");
 			}
 			if ((e.keyCode || e.which) === 39) {
 				dom.addclass("#navnext", "on");
@@ -1737,29 +1757,26 @@ var controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(helpers.nexttrans(data.lens.right.translation),data.canto,"right");
 			}
 			if ((e.keyCode || e.which) === 38) {
 				dom.addclass("#navup", "on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					// percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right");
 			}
 			if ((e.keyCode || e.which) === 40) {
 				dom.addclass("#navdown", "on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 			}
 
 			if ((e.keyCode || e.which) === 33) {
@@ -1767,24 +1784,22 @@ var controls = {
 				dom.addclass("#navup", "on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1,
 					side: "right",
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto-1,"right");
 			}
 			if ((e.keyCode || e.which) === 34) {
 				// pagedown: right now this goes to the next canto
 				dom.addclass("#navdown", "on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto + 1,
+					canto: parseInt(data.canto) + 1,
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.canto+1,"right",0);
 			}
 
 			if ((e.keyCode || e.which) === 36) {
@@ -1797,19 +1812,17 @@ var controls = {
 					percentage: 999,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,0,"right");
 			}
 			if ((e.keyCode || e.which) === 35) {
 				// end: right now this goes to the last canto
 				dom.addclass("#navdown", "on");
 				data.watch.setlens = {
 					translation: data.lens.right.translation,
-					canto: data.canto - 1,
+					canto: parseInt(data.canto) - 1, // this seems wrong?
 					side: "right",
 					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
-				// app.setlens(data.lens.right.translation,data.cantocount-1,"right",0);
 			}
 		};
 	}
@@ -1832,9 +1845,9 @@ var Velocity = __webpack_require__(74);
 
 var helpers = __webpack_require__(5); // .gettranslationindex
 var dom = __webpack_require__(1);
-var fixpadding = __webpack_require__(18);
-var notes = __webpack_require__(20);
-var localdata = __webpack_require__(19);
+var fixpadding = __webpack_require__(17);
+var notes = __webpack_require__(19);
+var localdata = __webpack_require__(18);
 
 var data = __webpack_require__(0);
 
@@ -1844,191 +1857,214 @@ var setlens = {
 		// potential problem: when this is called without percentage. Right now I'm doing this by setting percentage to 999
 		// maybe percentage should be set to NaN?
 
+
 		console.log("\nSetlens called for " + newtrans + ", canto " + newcanto + ", " + side);
 
-		// if page isn't set to "lens" this doesn't do anything
+		// This needs to check which mode we're in. Going from single mode to twin mode (or the reverse)
+		// currently causes problems
 
-		if (data.currentpage == "lens") {
+		// If page isn't already set to "lens", run setpage so that it is.
+
+		if (data.currentpage !== "lens") {
+			console.log("Running setpage from setlens!");
+			data.watch.setpage = "lens";
+		}
+
+		var changetrans = void 0,
+		    changecanto = false;
+		var thisside = data.lens[side];
+		var otherside = side == "right" ? data.lens.left : data.lens.right;
+		var other = side == "right" ? "left" : "right";
+		//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
+		//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
+
+		var oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
+		var newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
+
+		if (newcanto !== data.canto) {
+			changecanto = true;
+			if (newcanto >= data.cantocount) {
+				newcanto = 0;
+			} else {
+				if (newcanto < 0) {
+					newcanto = data.cantocount - 1;
+				}
+			}
+		}
+
+		if (newtransindex - oldtransindex !== 0) {
+			changetrans = true;
+			percentage = thisside.text.scrollTop /*+ thisside.text.clientHeight*/ / thisside.text.scrollHeight;
+			console.log("\u2014>Current percentage: " + percentage);
+		}
+
+		// need to figure which translationdata we need from master list of translations
+
+		var othertranslationindex = 0;
+		var newtranslationindex = helpers.gettranslationindex(newtrans);
+		var oldtranslationindex = helpers.gettranslationindex(thisside.translation);
+		if (data.watch.twinmode) {
+			othertranslationindex = helpers.gettranslationindex(otherside.translation);
+			if (othertranslationindex === undefined) {
+				console.log("Otherside translation is undefined!");
+				othertranslationindex = helpers.gettranslationindex(helpers.nexttrans(this.translation));
+				console.log("Setting otherside translation to " + othertranslationindex + ".");
+			}
+		}
+
+		if (changetrans) {
 			(function () {
 
-				var changetrans = void 0,
-				    changecanto = false;
-				var thisside = data.lens[side];
-				var otherside = side == "right" ? data.lens.left : data.lens.right;
-				var other = side == "right" ? "left" : "right";
-				//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
-				//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
+				console.log("Changing translation!");
 
-				var oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
-				var newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
+				// changing translation
 
-				if (newcanto !== data.canto) {
-					changecanto = true;
-					if (newcanto >= data.cantocount) {
-						newcanto = 0;
+				var oldframe = thisside.text.id; //  = `oldtext${side}`; // FIX THIS?
+				var direction = 0;
+
+				// if new is bigger than old AND ( old is not 0 OR new is not the last one )
+				// OR if new is 0 and old is the last one
+
+				if (newtransindex > oldtransindex && (oldtransindex > 0 || newtransindex !== data.currenttranslationlist.length - 1) || newtransindex == 0 && oldtransindex == data.currenttranslationlist.length - 1) {
+
+					// we are inserting to the right
+
+					var insert = dom.create("<div id=\"" + newtrans + "-" + side + "\" class=\"textframe " + data.translationdata[newtranslationindex].translationclass + "\" style=\"left:100%;\"><div class=\"textinsideframe\">" + data.textdata[newtranslationindex].text[newcanto] + "</div></div>");
+					thisside.slider.appendChild(insert);
+					if (data.watch.twinmode) {
+						direction = "-50%";
 					} else {
-						if (newcanto < 0) {
-							newcanto = data.cantocount - 1;
-						}
-					}
-				}
-
-				if (newtransindex - oldtransindex !== 0) {
-					changetrans = true;
-					percentage = thisside.text.scrollTop /*+ thisside.text.clientHeight*/ / thisside.text.scrollHeight;
-					console.log("\u2014>Current percentage: " + percentage);
-				}
-
-				// need to figure which translationdata we need from master list of translations
-
-				var othertranslationindex = 0;
-				var newtranslationindex = helpers.gettranslationindex(newtrans);
-				var oldtranslationindex = helpers.gettranslationindex(thisside.translation);
-				if (data.usersettings.twinmode) {
-					othertranslationindex = helpers.gettranslationindex(otherside.translation);
-				}
-
-				if (changetrans) {
-
-					console.log("Changing translation!");
-
-					// changing translation
-
-					thisside.text.id = "oldtext" + side;
-					var direction = 0;
-
-					// if new is bigger than old AND ( old is not 0 OR new is not the last one )
-					// OR if new is 0 and old is the last one
-
-					if (newtransindex > oldtransindex && (oldtransindex > 0 || newtransindex !== data.currenttranslationlist.length - 1) || newtransindex == 0 && oldtransindex == data.currenttranslationlist.length - 1) {
-
-						// we are inserting to the right
-
-						var insert = dom.create("<div id=\"newtext" + side + "\" class=\"textframe " + data.translationdata[newtranslationindex].translationclass + "\" style=\"left:100%;\"><div class=\"textinsideframe\">" + data.textdata[newtranslationindex].text[newcanto] + "</div></div>");
-						thisside.slider.appendChild(insert);
-						if (data.usersettings.twinmode) {
-							direction = "-50%";
-						} else {
-							direction = "-100%";
-						}
-					} else {
-
-						// we are inserting to the left
-
-						var _insert = dom.create("<div id=\"newtext" + side + "\" class=\"textframe " + data.translationdata[newtranslationindex].translationclass + "\" style=\"left:-100%;\"><div class=\"textinsideframe\">" + data.textdata[newtranslationindex].text[newcanto] + "</div></div>");
-						thisside.slider.insertBefore(_insert, thisside.slider.childNodes[0]);
-						if (data.usersettings.twinmode) {
-							direction = "50%";
-						} else {
-							direction = "100%";
-						}
-					}
-
-					otherside.slider.style.zIndex = 500;
-					Velocity(thisside.slider, { 'left': direction }, {
-						duration: data.system.delay,
-						mobileHA: false,
-						complete: function complete() {
-							dom.removebyselector("#oldtext" + side);
-							otherside.slider.style.zIndex = 1;
-							thisside.slider.style.left = "0";
-							thisside.text.style.left = "0";
-							dom.addclass("#slider" + side + " .textframe", "makescroll");
-						}
-					});
-					thisside.text = document.querySelector("#newtext" + side);
-					thisside.textinside = document.querySelector("#newtext" + side + " .textinsideframe");
-					thisside.translation = newtrans;
-
-					// this method still isn't great! it tries to round to current lineheight
-					// to avoid cutting off lines
-
-					var scrollto = setlens.rounded(percentage * document.querySelector("#newtext" + side).scrollHeight);
-					document.querySelector("#newtext" + side).scrollTop = scrollto;
-					if (data.usersettings.twinmode) {
-						var _scrollto = setlens.rounded(percentage * document.querySelector("#newtext" + other).scrollHeight);
-						document.querySelector("#newtext" + other).scrollTop = _scrollto;
-					}
-					console.log("Scrolling to:" + scrollto);
-					if (data.usersettings.twinmode) {
-						setlens.turnonsynchscrolling();
-					}
-				}
-
-				if (changecanto || !changetrans) {
-
-					// we are either changing canto OR this is the first run
-
-					if (data.usersettings.twinmode) {
-						document.querySelector("#slider" + other + " .textinsideframe").innerHTML = data.textdata[othertranslationindex].text[newcanto];
-						dom.removeclass("#slider" + other + " .textframe", data.translationdata[othertranslationindex].translationclass);
-						dom.addclass("#slider" + other + " .textframe", data.translationdata[othertranslationindex].translationclass);
-						document.querySelector("#slider" + side + " .textinsideframe").innerHTML = data.textdata[newtranslationindex].text[newcanto];
-						dom.removeclass("#slider" + side + " .textframe", data.translationdata[oldtranslationindex].translationclass);
-						dom.addclass("#slider" + side + " .textframe", data.translationdata[newtranslationindex].translationclass);
-					} else {
-						document.querySelector("#slider" + side + " .textinsideframe").innerHTML = data.textdata[newtranslationindex].text[newcanto];
-						dom.removeclass("#slider" + side + " .textframe", data.translationdata[oldtranslationindex].translationclass); // is this not working for multiple classes?
-						dom.addclass("#slider" + side + " .textframe", data.translationdata[newtranslationindex].translationclass); // is this not working for multiple classes?
-					}
-					data.canto = newcanto;
-
-					if (percentage > 0 && percentage !== 999) {
-						document.querySelector("#newtext" + side).scrollTop = document.querySelector("#newtext" + side).scrollHeight;
-						if (data.usersettings.twinmode) {
-							document.querySelector("#newtext" + other).scrollTop = document.querySelector("#newtext" + other).scrollHeight;
-						}
-					} else {
-						document.querySelector("#newtext" + side).scrollTop = 0;
-						if (data.usersettings.twinmode) {
-							document.querySelector("#newtext" + other).scrollTop = 0;
-						}
-					}
-				}
-
-				if (data.system.responsive) {
-					fixpadding.responsive(thisside);
-					if (data.usersettings.twinmode) {
-						fixpadding.responsive(otherside);
+						direction = "-100%";
 					}
 				} else {
-					fixpadding.regular(thisside);
-					if (data.usersettings.twinmode) {
-						fixpadding.regular(otherside);
+
+					// we are inserting to the left
+
+					var _insert = dom.create("<div id=\"" + newtrans + "-" + side + "\" class=\"textframe " + data.translationdata[newtranslationindex].translationclass + "\" style=\"left:-100%;\"><div class=\"textinsideframe\">" + data.textdata[newtranslationindex].text[newcanto] + "</div></div>");
+					thisside.slider.insertBefore(_insert, thisside.slider.childNodes[0]);
+					if (data.watch.twinmode) {
+						direction = "50%";
+					} else {
+						direction = "100%";
 					}
 				}
 
-				// deal with title bar
-
-				if (data.canto > 0) {
-					thisside.titlebar.innerHTML = data.translationdata[newtranslationindex].translationshortname + " \xB7 <strong>Canto " + data.canto + "</strong>";
-					if (data.usersettings.twinmode) {
-						if (data.usersettings.twinmode) {
-							otherside.titlebar.innerHTML = data.translationdata[othertranslationindex].translationshortname + " \xB7 <strong>Canto " + data.canto + "</strong>";
-						}
+				otherside.slider.style.zIndex = 500;
+				Velocity(thisside.slider, { 'left': direction }, {
+					duration: data.system.delay,
+					mobileHA: false,
+					complete: function complete() {
+						dom.removebyselector("#" + oldframe);
+						otherside.slider.style.zIndex = 1;
+						thisside.slider.style.left = "0";
+						thisside.text.style.left = "0";
+						dom.addclass("#slider" + side + " .textframe", "makescroll");
 					}
-				} else {
-					thisside.titlebar.innerHTML = "&nbsp;";
-					if (data.usersettings.twinmode) {
-						otherside.titlebar.innerHTML = "&nbsp;";
+				});
+				thisside.text = document.querySelector(".textframe#" + newtrans + "-" + side);
+				thisside.textinside = document.querySelector(".textframe#" + newtrans + "-" + side + " .textinsideframe");
+				thisside.translation = newtrans;
+
+				// this method still isn't great! it tries to round to current lineheight
+				// to avoid cutting off lines
+
+				var scrollto = setlens.rounded(percentage * document.querySelector(".textframe#" + newtrans + "-" + side).scrollHeight);
+				document.querySelector(".textframe#" + newtrans + "-" + side).scrollTop = scrollto;
+				if (data.watch.twinmode) {
+					if (document.querySelector(".textframe#" + newtrans + "-" + other)) {
+						scrollto = setlens.rounded(percentage * document.querySelector(".textframe#" + newtrans + "-" + other).scrollHeight);
+						document.querySelector(".textframe#" + newtrans + "-" + other).scrollTop = scrollto;
+					} else {
+						scrollto = 0;
 					}
 				}
-
-				// set up notes
-
-				notes.setup();
-
-				// turn on synch scrolling
-
-				if (data.usersettings.twinmode) {
+				console.log("Scrolling to:" + scrollto);
+				if (data.watch.twinmode) {
 					setlens.turnonsynchscrolling();
 				}
-
-				// record changes
-
-				localdata.save();
 			})();
 		}
+
+		if (changecanto || !changetrans) {
+
+			// we are either changing canto OR this is the first run
+
+			if (data.watch.twinmode) {
+
+				document.querySelector("#slider" + other + " .textinsideframe").innerHTML = data.textdata[othertranslationindex].text[newcanto];
+				dom.removeclass("#slider" + other + " .textframe", data.translationdata[othertranslationindex].translationclass);
+				dom.addclass("#slider" + other + " .textframe", data.translationdata[othertranslationindex].translationclass);
+				document.querySelector("#slider" + side + " .textinsideframe").innerHTML = data.textdata[newtranslationindex].text[newcanto];
+				dom.removeclass("#slider" + side + " .textframe", data.translationdata[oldtranslationindex].translationclass);
+				dom.addclass("#slider" + side + " .textframe", data.translationdata[newtranslationindex].translationclass);
+			} else {
+				document.querySelector("#slider" + side + " .textinsideframe").innerHTML = data.textdata[newtranslationindex].text[newcanto];
+				dom.removeclass("#slider" + side + " .textframe", data.translationdata[oldtranslationindex].translationclass); // is this not working for multiple classes?
+				dom.addclass("#slider" + side + " .textframe", data.translationdata[newtranslationindex].translationclass); // is this not working for multiple classes?
+			}
+			data.canto = newcanto;
+
+			if (percentage > 0 && percentage !== 999) {
+				document.querySelector(".textframe#" + newtrans + "-" + side).scrollTop = document.querySelector(".textframe#" + newtrans + "-" + side).scrollHeight;
+				if (data.watch.twinmode) {
+					document.querySelector(".textframe#" + newtrans + "-" + other).scrollTop = document.querySelector(".textframe#" + newtrans + "-" + other).scrollHeight;
+				}
+			} else {
+				if (document.querySelector(".textframe#" + newtrans + "-" + side)) {
+					document.querySelector(".textframe#" + newtrans + "-" + side).scrollTop = 0;
+				} else {
+
+					// if we reach here, we are running for the first time!
+
+					document.getElementById("newtext" + side).id = newtrans + "-" + side;
+				}
+				if (data.watch.twinmode) {
+					if (document.querySelector(".textframe#" + newtrans + "-" + other)) {
+						document.querySelector(".textframe#" + newtrans + "-" + other).scrollTop = 0;
+					}
+				}
+			}
+		}
+
+		if (data.system.responsive) {
+			fixpadding.responsive(thisside);
+			if (data.watch.twinmode) {
+				fixpadding.responsive(otherside);
+			}
+		} else {
+			fixpadding.regular(thisside);
+			if (data.watch.twinmode) {
+				fixpadding.regular(otherside);
+			}
+		}
+
+		// deal with title bar
+
+		if (data.canto > 0) {
+			thisside.titlebar.innerHTML = data.translationdata[newtranslationindex].translationshortname + " \xB7 <strong>Canto " + data.canto + "</strong>";
+			if (data.watch.twinmode) {
+				otherside.titlebar.innerHTML = data.translationdata[othertranslationindex].translationshortname + " \xB7 <strong>Canto " + data.canto + "</strong>";
+			}
+		} else {
+			thisside.titlebar.innerHTML = "&nbsp;";
+			if (data.watch.twinmode) {
+				otherside.titlebar.innerHTML = "&nbsp;";
+			}
+		}
+
+		// set up notes
+
+		notes.setup();
+
+		// turn on synch scrolling
+
+		if (data.watch.twinmode) {
+			setlens.turnonsynchscrolling();
+		}
+
+		// record changes
+
+		localdata.save();
 	},
 	rounded: function rounded(pixels) {
 
@@ -2063,7 +2099,7 @@ module.exports = setlens;
 
 
 var dom = __webpack_require__(1);
-var resize = __webpack_require__(11);
+var resize = __webpack_require__(20);
 var data = __webpack_require__(0);
 
 var setpage = function setpage(newpage) {
@@ -2090,7 +2126,7 @@ var setpage = function setpage(newpage) {
 
 		// hide back button on left of nav bar!
 
-		resize.check();
+		resize.check(); // this might be running too often!
 	}
 };
 
@@ -2257,7 +2293,6 @@ var settings = {
 			var thiscanto = selected.options[selected.selectedIndex].id.substr(5);
 			for (var _j = 0; _j < data.translationdata.length; _j++) {
 				if (data.currenttranslationlist[_j] == thistrans) {
-					data.watch.setpage = "lens";
 					data.watch.setlens = {
 						translation: data.currenttranslationlist[_j], thiscanto: thiscanto,
 						canto: thiscanto,
@@ -2265,7 +2300,6 @@ var settings = {
 						percentage: 0,
 						trigger: !data.watch.setlens.trigger
 					};
-					// app.setlens(data.currenttranslationlist[j],thiscanto,"right",0);
 				}
 			}
 		};
@@ -2325,7 +2359,7 @@ module.exports = function(){ /* empty */ };
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(17)
+var toIObject = __webpack_require__(16)
   , toLength  = __webpack_require__(63)
   , toIndex   = __webpack_require__(62);
 module.exports = function(IS_INCLUDES){
@@ -2529,7 +2563,7 @@ module.exports = true;
 var anObject    = __webpack_require__(6)
   , dPs         = __webpack_require__(56)
   , enumBugKeys = __webpack_require__(23)
-  , IE_PROTO    = __webpack_require__(15)('IE_PROTO')
+  , IE_PROTO    = __webpack_require__(14)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
   , PROTOTYPE   = 'prototype';
 
@@ -2572,7 +2606,7 @@ module.exports = Object.create || function create(O, Properties){
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP       = __webpack_require__(14)
+var dP       = __webpack_require__(13)
   , anObject = __webpack_require__(6)
   , getKeys  = __webpack_require__(59);
 
@@ -2593,7 +2627,7 @@ module.exports = __webpack_require__(8) ? Object.defineProperties : function def
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has         = __webpack_require__(9)
   , toObject    = __webpack_require__(64)
-  , IE_PROTO    = __webpack_require__(15)('IE_PROTO')
+  , IE_PROTO    = __webpack_require__(14)('IE_PROTO')
   , ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function(O){
@@ -2609,9 +2643,9 @@ module.exports = Object.getPrototypeOf || function(O){
 /***/ (function(module, exports, __webpack_require__) {
 
 var has          = __webpack_require__(9)
-  , toIObject    = __webpack_require__(17)
+  , toIObject    = __webpack_require__(16)
   , arrayIndexOf = __webpack_require__(45)(false)
-  , IE_PROTO     = __webpack_require__(15)('IE_PROTO');
+  , IE_PROTO     = __webpack_require__(14)('IE_PROTO');
 
 module.exports = function(object, names){
   var O      = toIObject(object)
@@ -2648,8 +2682,8 @@ module.exports = __webpack_require__(4);
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(16)
-  , defined   = __webpack_require__(12);
+var toInteger = __webpack_require__(15)
+  , defined   = __webpack_require__(11);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function(TO_STRING){
@@ -2670,7 +2704,7 @@ module.exports = function(TO_STRING){
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(16)
+var toInteger = __webpack_require__(15)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
@@ -2683,7 +2717,7 @@ module.exports = function(index, length){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(16)
+var toInteger = __webpack_require__(15)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -2694,7 +2728,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(12);
+var defined = __webpack_require__(11);
 module.exports = function(it){
   return Object(defined(it));
 };
@@ -2704,7 +2738,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(13);
+var isObject = __webpack_require__(12);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -2750,7 +2784,7 @@ module.exports = __webpack_require__(7).getIterator = function(it){
 var addToUnscopables = __webpack_require__(44)
   , step             = __webpack_require__(53)
   , Iterators        = __webpack_require__(10)
-  , toIObject        = __webpack_require__(17);
+  , toIObject        = __webpack_require__(16);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()

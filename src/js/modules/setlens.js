@@ -20,189 +20,213 @@ const setlens = {
 		// potential problem: when this is called without percentage. Right now I'm doing this by setting percentage to 999
 		// maybe percentage should be set to NaN?
 
+
 		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}, ${side}`);
 
-		// if page isn't set to "lens" this doesn't do anything
+// This needs to check which mode we're in. Going from single mode to twin mode (or the reverse)
+// currently causes problems
 
-		if(data.currentpage == "lens") {
+		// If page isn't already set to "lens", run setpage so that it is.
 
-			let changetrans, changecanto = false;
-			let thisside = data.lens[side];
-			let otherside = (side == "right") ? data.lens.left : data.lens.right;
-			let other = (side == "right") ? "left" : "right";
-			//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
-			//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
+		if(data.currentpage !== "lens") {
+			console.log("Running setpage from setlens!");
+			data.watch.setpage = "lens";
+		}
 
-			let oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
-			let newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
+		let changetrans, changecanto = false;
+		let thisside = data.lens[side];
+		let otherside = (side == "right") ? data.lens.left : data.lens.right;
+		let other = (side == "right") ? "left" : "right";
+		//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
+		//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
 
-			if(newcanto !== data.canto) {
-				changecanto = true;
-				if(newcanto >= data.cantocount) {
-					newcanto = 0;
+		let oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
+		let newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
+
+		if(newcanto !== data.canto) {
+			changecanto = true;
+			if(newcanto >= data.cantocount) {
+				newcanto = 0;
+			} else {
+				if(newcanto < 0) {
+					newcanto = data.cantocount-1;
+				}
+			}
+		}
+
+		if((newtransindex - oldtransindex) !== 0) {
+			changetrans = true;
+			percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
+			console.log(`—>Current percentage: ${percentage}`);
+		}
+
+		// need to figure which translationdata we need from master list of translations
+
+		let othertranslationindex = 0;
+		let newtranslationindex = helpers.gettranslationindex(newtrans);
+		let oldtranslationindex = helpers.gettranslationindex(thisside.translation);
+		if(data.watch.twinmode) {
+			othertranslationindex = helpers.gettranslationindex(otherside.translation);
+			if(othertranslationindex === undefined) {
+				console.log("Otherside translation is undefined!");
+				othertranslationindex = helpers.gettranslationindex(helpers.nexttrans(this.translation));
+				console.log(`Setting otherside translation to ${othertranslationindex}.`);
+			}
+		}
+
+
+		if(changetrans) {
+
+			console.log("Changing translation!");
+
+			// changing translation
+
+			let oldframe = thisside.text.id; //  = `oldtext${side}`; // FIX THIS?
+			let direction = 0;
+
+			// if new is bigger than old AND ( old is not 0 OR new is not the last one )
+			// OR if new is 0 and old is the last one
+
+			if( ((newtransindex > oldtransindex) && (oldtransindex > 0 || newtransindex !== (data.currenttranslationlist.length - 1 ))) || (newtransindex == 0 && oldtransindex == (data.currenttranslationlist.length-1)) ) {
+
+				// we are inserting to the right
+
+				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
+				thisside.slider.appendChild(insert);
+				if(data.watch.twinmode) {
+					direction = "-50%";
 				} else {
-					if(newcanto < 0) {
-						newcanto = data.cantocount-1;
-					}
-				}
-			}
-
-			if((newtransindex - oldtransindex) !== 0) {
-				changetrans = true;
-				percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
-				console.log(`—>Current percentage: ${percentage}`);
-			}
-
-			// need to figure which translationdata we need from master list of translations
-
-			let othertranslationindex = 0;
-			let newtranslationindex = helpers.gettranslationindex(newtrans);
-			let oldtranslationindex = helpers.gettranslationindex(thisside.translation);
-			if(data.usersettings.twinmode) {
-				othertranslationindex = helpers.gettranslationindex(otherside.translation);
-			}
-
-
-			if(changetrans) {
-
-				console.log("Changing translation!");
-
-				// changing translation
-
-				thisside.text.id = `oldtext${side}`;
-				let direction = 0;
-
-				// if new is bigger than old AND ( old is not 0 OR new is not the last one )
-				// OR if new is 0 and old is the last one
-
-				if( ((newtransindex > oldtransindex) && (oldtransindex > 0 || newtransindex !== (data.currenttranslationlist.length - 1 ))) || (newtransindex == 0 && oldtransindex == (data.currenttranslationlist.length-1)) ) {
-
-					// we are inserting to the right
-
-					let insert = dom.create(`<div id="newtext${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
-					thisside.slider.appendChild(insert);
-					if(data.usersettings.twinmode) {
-						direction = "-50%";
-					} else {
-						direction = "-100%";
-					}
-				} else {
-
-					// we are inserting to the left
-
-					let insert = dom.create(`<div id="newtext${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:-100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
-					thisside.slider.insertBefore(insert, thisside.slider.childNodes[0]);
-					if(data.usersettings.twinmode) {
-						direction = "50%";
-					} else {
-						direction = "100%";
-					}
-				}
-
-				otherside.slider.style.zIndex = 500;
-				Velocity(thisside.slider, {'left':direction}, {
-					duration: data.system.delay,
-					mobileHA: false,
-					complete: function() {
-						dom.removebyselector(`#oldtext${side}`);
-						otherside.slider.style.zIndex = 1;
-						thisside.slider.style.left = "0";
-						thisside.text.style.left = "0";
-						dom.addclass(`#slider${side} .textframe`, "makescroll");
-					}
-				});
-				thisside.text = document.querySelector(`#newtext${side}`);
-				thisside.textinside = document.querySelector(`#newtext${side} .textinsideframe`);
-				thisside.translation = newtrans;
-
-				// this method still isn't great! it tries to round to current lineheight
-				// to avoid cutting off lines
-
-				let scrollto = setlens.rounded(percentage * document.querySelector(`#newtext${side}`).scrollHeight);
-				document.querySelector(`#newtext${side}`).scrollTop = scrollto;
-				if(data.usersettings.twinmode) {
-					let scrollto = setlens.rounded(percentage * document.querySelector(`#newtext${other}`).scrollHeight);
-					document.querySelector(`#newtext${other}`).scrollTop = scrollto;
-				}
-				console.log("Scrolling to:" + scrollto);
-				if(data.usersettings.twinmode) {
-					setlens.turnonsynchscrolling();
-				}
-			}
-
-			if(changecanto || !changetrans) {
-
-				// we are either changing canto OR this is the first run
-
-				if(data.usersettings.twinmode) {
-					document.querySelector(`#slider${other} .textinsideframe`).innerHTML = data.textdata[othertranslationindex].text[newcanto];
-					dom.removeclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
-					dom.addclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
-					document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
-					dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass);
-					dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass);
-				} else {
-					document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
-					dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass); // is this not working for multiple classes?
-					dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass); // is this not working for multiple classes?
-				}
-				data.canto = newcanto;
-
-				if(percentage > 0 && percentage !== 999) {
-					document.querySelector(`#newtext${side}`).scrollTop = document.querySelector(`#newtext${side}`).scrollHeight;
-					if(data.usersettings.twinmode) {
-						document.querySelector(`#newtext${other}`).scrollTop = document.querySelector(`#newtext${other}`).scrollHeight;
-					}
-				} else {
-					document.querySelector(`#newtext${side}`).scrollTop = 0;
-					if(data.usersettings.twinmode) {
-						document.querySelector(`#newtext${other}`).scrollTop = 0;
-					}
-				}
-			}
-
-			if(data.system.responsive) {
-				fixpadding.responsive(thisside);
-				if(data.usersettings.twinmode) {
-					fixpadding.responsive(otherside);
+					direction = "-100%";
 				}
 			} else {
-				fixpadding.regular(thisside);
-				if(data.usersettings.twinmode) {
-					fixpadding.regular(otherside);
+
+				// we are inserting to the left
+
+				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:-100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
+				thisside.slider.insertBefore(insert, thisside.slider.childNodes[0]);
+				if(data.watch.twinmode) {
+					direction = "50%";
+				} else {
+					direction = "100%";
 				}
 			}
 
-			// deal with title bar
-
-			if(data.canto > 0) {
-				thisside.titlebar.innerHTML = `${data.translationdata[newtranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
-				if(data.usersettings.twinmode) {
-					if(data.usersettings.twinmode) {
-						otherside.titlebar.innerHTML = `${data.translationdata[othertranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
-					}
+			otherside.slider.style.zIndex = 500;
+			Velocity(thisside.slider, {'left':direction}, {
+				duration: data.system.delay,
+				mobileHA: false,
+				complete: function() {
+					dom.removebyselector(`#${oldframe}`);
+					otherside.slider.style.zIndex = 1;
+					thisside.slider.style.left = "0";
+					thisside.text.style.left = "0";
+					dom.addclass(`#slider${side} .textframe`, "makescroll");
 				}
-			} else {
-				thisside.titlebar.innerHTML = "&nbsp;";
-				if(data.usersettings.twinmode) {
-					otherside.titlebar.innerHTML = "&nbsp;";
+			});
+			thisside.text = document.querySelector(`.textframe#${newtrans}-${side}`);
+			thisside.textinside = document.querySelector(`.textframe#${newtrans}-${side} .textinsideframe`);
+			thisside.translation = newtrans;
+
+			// this method still isn't great! it tries to round to current lineheight
+			// to avoid cutting off lines
+
+			let scrollto = setlens.rounded(percentage * document.querySelector(`.textframe#${newtrans}-${side}`).scrollHeight);
+			document.querySelector(`.textframe#${newtrans}-${side}`).scrollTop = scrollto;
+			if(data.watch.twinmode) {
+				if(document.querySelector(`.textframe#${newtrans}-${other}`)) {
+					scrollto = setlens.rounded(percentage * document.querySelector(`.textframe#${newtrans}-${other}`).scrollHeight);
+					document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = scrollto;
+				} else {
+					scrollto = 0;
 				}
 			}
-
-			// set up notes
-
-			notes.setup();
-
-			// turn on synch scrolling
-
-			if(data.usersettings.twinmode) {
+			console.log("Scrolling to:" + scrollto);
+			if(data.watch.twinmode) {
 				setlens.turnonsynchscrolling();
 			}
-
-			// record changes
-
-			localdata.save();
 		}
+
+		if(changecanto || !changetrans) {
+
+			// we are either changing canto OR this is the first run
+
+			if(data.watch.twinmode) {
+
+				document.querySelector(`#slider${other} .textinsideframe`).innerHTML = data.textdata[othertranslationindex].text[newcanto];
+				dom.removeclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
+				dom.addclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
+				document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
+				dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass);
+				dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass);
+			} else {
+				document.querySelector(`#slider${side} .textinsideframe`).innerHTML = data.textdata[newtranslationindex].text[newcanto];
+				dom.removeclass(`#slider${side} .textframe`,data.translationdata[oldtranslationindex].translationclass); // is this not working for multiple classes?
+				dom.addclass(`#slider${side} .textframe`,data.translationdata[newtranslationindex].translationclass); // is this not working for multiple classes?
+			}
+			data.canto = newcanto;
+
+			if(percentage > 0 && percentage !== 999) {
+				document.querySelector(`.textframe#${newtrans}-${side}`).scrollTop = document.querySelector(`.textframe#${newtrans}-${side}`).scrollHeight;
+				if(data.watch.twinmode) {
+					document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = document.querySelector(`.textframe#${newtrans}-${other}`).scrollHeight;
+				}
+			} else {
+				if(document.querySelector(`.textframe#${newtrans}-${side}`)) {
+					document.querySelector(`.textframe#${newtrans}-${side}`).scrollTop = 0;
+				} else {
+
+					// if we reach here, we are running for the first time!
+
+					document.getElementById(`newtext${side}`).id = `${newtrans}-${side}`;
+				}
+				if(data.watch.twinmode) {
+					if(document.querySelector(`.textframe#${newtrans}-${other}`)) {
+						document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = 0;
+					}
+				}
+			}
+		}
+
+		if(data.system.responsive) {
+			fixpadding.responsive(thisside);
+			if(data.watch.twinmode) {
+				fixpadding.responsive(otherside);
+			}
+		} else {
+			fixpadding.regular(thisside);
+			if(data.watch.twinmode) {
+				fixpadding.regular(otherside);
+			}
+		}
+
+		// deal with title bar
+
+		if(data.canto > 0) {
+			thisside.titlebar.innerHTML = `${data.translationdata[newtranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
+			if(data.watch.twinmode) {
+				otherside.titlebar.innerHTML = `${data.translationdata[othertranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
+			}
+		} else {
+			thisside.titlebar.innerHTML = "&nbsp;";
+			if(data.watch.twinmode) {
+				otherside.titlebar.innerHTML = "&nbsp;";
+			}
+		}
+
+		// set up notes
+
+		notes.setup();
+
+		// turn on synch scrolling
+
+		if(data.watch.twinmode) {
+			setlens.turnonsynchscrolling();
+		}
+
+		// record changes
+
+		localdata.save();
+
 	},
 	rounded: function(pixels: number) {
 
