@@ -59,6 +59,14 @@ let fixpadding = {
 	},
 	responsive: function(thisside) {
 
+		if(data.watch.twinmode) {
+			console.log("In twin mode!");
+
+
+
+
+		}
+
 		if(dom.hasclass(thisside.text,"poetry")) {
 
 			const ppadding = 33; // this needs to be greater than the margin-left on p.poetry
@@ -92,7 +100,7 @@ let fixpadding = {
 
 					div.style.display = "inline-block";
 					let mywidth = div.clientWidth + myindent;
-					console.log(div.innerHTML + ": "+ mywidth);
+					// console.log(div.innerHTML + ": "+ mywidth);
 
 					if(mywidth > maxwidth) {
 						maxwidth = mywidth + 90; // where is this 90 coming from?

@@ -9,6 +9,7 @@ const setpage = require("./setpage");
 const dom = require("./dom");
 const localdata = require("./localdata");
 const resize = require("./resize");
+const twinmode = require("./twinmode");
 
 let data = require("./appdata");
 
@@ -56,11 +57,12 @@ const watchers = {
 		watch(data.watch, "twinmode", function() {
 			console.log(`Twin mode: ${data.watch.twinmode}`);
 			if(data.watch.twinmode) {
+				twinmode.turnon();
 				dom.addclass("body","twinmode");
 				dom.removeclass("#twinmode","off");
 				dom.addclass("#singlemode","off");
 			} else {
-				dom.removeclass("body","twinmode");
+				twinmode.turnoff();
 				dom.addclass("#twinmode","off");
 				dom.removeclass("#singlemode","off");
 			}

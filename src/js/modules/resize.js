@@ -6,7 +6,7 @@
 
 var data = require("./appdata");
 const dom = require("./dom");
-const helpers = require("./helpers"); // .nexttrans, .gettranslationindex
+const twinmode = require("./twinmode");
 
 const resize = {
 	check: function(keeppage) {
@@ -23,47 +23,13 @@ const resize = {
 
 			data.windowwidth = window.innerWidth;
 			data.windowheight = window.innerHeight;
-			let titlewidth = document.getElementById("navbar").clientWidth - (5 * 40) - 1;
 
 			if(data.watch.twinmode && data.windowwidth > 768) {
-				dom.addclass("body","twinmode");
-				titlewidth = (document.getElementById("navbar").clientWidth / 2) - (5 * 40) - 1;
-				console.log("Twin mode!");
-				if(data.lens.left.translation === "") {
-					data.lens.left.translation = helpers.nexttrans(data.lens.right.translation);
-				}
-				if(document.getElementById("newtextleft")) {
-					document.getElementById("newtextleft").id = `${data.lens.left.translation}-left`;
-				}
-
-				let thistrans = helpers.gettranslationindex(data.lens.left.translation);
-
-				dom.addclass("#sliderleft .textframe", data.translationdata[thistrans].translationclass);
-				let insert = dom.create(data.textdata[thistrans].text[data.canto]);
-				data.lens.left.textinside.appendChild(insert);
-
-				data.lens.left.slider.style.width = "50%";
-				data.lens.right.slider.style.width = "50%";
-				data.watch.setlens = {
-					translation: data.lens.left.translation,
-					canto: data.canto,
-					side: "left",
-					percentage: 999, // is this wrong?
-					trigger: !data.watch.setlens.trigger
-				};
-				// app.setlens(data.lens.left.translation,data.canto,"left");
+				twinmode.turnon();
 			} else {
-				console.log("Single mode!");
-				dom.removeclass("body","twinmode");
-
-				data.lens.left.slider.style.width = "0";
-				data.lens.right.slider.style.width = "100%";
+				twinmode.turnoff();
 			}
 
-			data.lens.left.titlebar.style.width = `${titlewidth}px`;
-			data.lens.left.titlebar.setAttribute("style",`width:${titlewidth}px`);
-			data.lens.right.titlebar.style.width = `${titlewidth}px`;
-			data.lens.right.titlebar.setAttribute("style",`width:${titlewidth}px`);
 
 			console.log(`The window has been resized! New width: ${data.windowwidth},${data.windowheight}`);
 			data.lens.width = data.windowwidth;
@@ -104,9 +70,6 @@ const resize = {
 				data.lens.left.lineheight = data.windowwidth/25;
 				data.lens.right.lineheight = data.windowwidth/25;
 			}
-
-			data.lens.left.width = data.watch.twinmode ? data.windowwidth / 2 : 0;
-			data.lens.right.width = data.watch.twinmode ? data.windowwidth / 2 : data.windowwidth;
 
 			if(!keeppage) {
 				data.watch.setlens = {

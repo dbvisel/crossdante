@@ -25,7 +25,6 @@ const controls = {
 			translation: helpers.nexttrans(data.lens.left.translation),
 			canto: data.canto,
 			side: "left",
-			percentage: 999, // is this okay?
 			trigger: !data.watch.setlens.trigger
 		};
 	},
@@ -34,7 +33,6 @@ const controls = {
 			translation: helpers.prevtrans(data.lens.left.translation),
 			canto: data.canto,
 			side: "left",
-			percentage: 999, // is this okay?
 			trigger: !data.watch.setlens.trigger
 		};
 	},
@@ -61,7 +59,6 @@ const controls = {
 			translation: helpers.prevtrans(data.lens.right.translation),
 			canto: data.canto,
 			side: "right",
-			percentage: 999, // is this okay?
 			trigger: !data.watch.setlens.trigger
 		};
 	},
@@ -70,7 +67,6 @@ const controls = {
 			translation: helpers.nexttrans(data.lens.right.translation),
 			canto: data.canto,
 			side: "right",
-			percentage: 999, // is this okay?
 			trigger: !data.watch.setlens.trigger
 		};
 	},
@@ -282,7 +278,7 @@ const controls = {
 					translation: data.lens.right.translation,
 					canto: 0,
 					side: "right",
-					percentage: 999,
+					percentage: 0,
 					trigger: !data.watch.setlens.trigger
 				};
 			}

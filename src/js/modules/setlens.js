@@ -2,6 +2,12 @@
 //
 // This module switches to a different translation/canto
 
+// CURRENT BUG:
+//
+// * Going from single mode to twin mode (or reverse) causes big problems
+// * Restarting in twin mode causes problems
+
+
 "use strict";
 
 const Velocity = require("velocity-animate");
@@ -10,25 +16,21 @@ const helpers = require("./helpers");  // .gettranslationindex
 const dom = require("./dom");
 const fixpadding = require("./fixpadding");
 const notes = require("./notes");
-const localdata = require("./localdata");
 
 let data = require("./appdata");
 
 const setlens = {
 	go: function(newtrans: string, newcanto: number, side: string, percentage: number) {
 
-		// potential problem: when this is called without percentage. Right now I'm doing this by setting percentage to 999
-		// maybe percentage should be set to NaN?
-
+		// newtrans: translation id
+		// newcanto: integer 0–data.cantocount
+		// side: {"left" | "right"}
+		// percentage: 0–1; overwritten when changing translation
 
 		console.log(`\nSetlens called for ${newtrans}, canto ${newcanto}, ${side}`);
 
-// This needs to check which mode we're in. Going from single mode to twin mode (or the reverse)
-// currently causes problems
-
-		// If page isn't already set to "lens", run setpage so that it is.
-
 		if(data.currentpage !== "lens") {
+			// If page isn't already set to "lens", run setpage so that it is.
 			console.log("Running setpage from setlens!");
 			data.watch.setpage = "lens";
 		}
@@ -37,8 +39,6 @@ const setlens = {
 		let thisside = data.lens[side];
 		let otherside = (side == "right") ? data.lens.left : data.lens.right;
 		let other = (side == "right") ? "left" : "right";
-		//		dom.removebyselector("#oldtextleft"); // attempt to fix flickering if too fast change
-		//		dom.removebyselector("#oldtextright"); // attempt to fix flickering if too fast change
 
 		let oldtransindex = data.currenttranslationlist.indexOf(thisside.translation); // the number of the old translation in current list
 		let newtransindex = data.currenttranslationlist.indexOf(newtrans); // the number of the trans we're going to in currentlist
@@ -56,7 +56,7 @@ const setlens = {
 
 		if((newtransindex - oldtransindex) !== 0) {
 			changetrans = true;
-			percentage = (thisside.text.scrollTop /*+ thisside.text.clientHeight*/)/thisside.text.scrollHeight;
+			percentage = (thisside.text.scrollTop) / thisside.text.scrollHeight;
 			console.log(`—>Current percentage: ${percentage}`);
 		}
 
@@ -202,6 +202,9 @@ const setlens = {
 		// deal with title bar
 
 		if(data.canto > 0) {
+
+			// no title for canto 0, everything else gets a title
+
 			thisside.titlebar.innerHTML = `${data.translationdata[newtranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
 			if(data.watch.twinmode) {
 				otherside.titlebar.innerHTML = `${data.translationdata[othertranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
@@ -225,7 +228,7 @@ const setlens = {
 
 		// record changes
 
-		localdata.save();
+		data.watch.localsave = !data.watch.localsave;
 
 	},
 	rounded: function(pixels: number) {
@@ -236,6 +239,9 @@ const setlens = {
 
 	},
 	turnonsynchscrolling: function() {
+
+		// do we need a turn off synch scrolling?
+
 		document.querySelector("#sliderleft .textframe").onscroll = function() {
 			let percentage = this.scrollTop / this.scrollHeight * document.querySelector("#sliderright .textframe").scrollHeight;
 			document.querySelector("#sliderright .textframe").scrollTop = percentage;

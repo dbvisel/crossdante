@@ -4,7 +4,6 @@
 
 "use strict";
 
-const dom = require("./dom");
 var data = require("./appdata");
 var helpers = require("./helpers"); // getUrlVars, .gettranslationindex,
 
@@ -61,7 +60,7 @@ var localdata =  {
 		let toread = storage.getItem(data.bookname);
 
 		if(toread !== null) {
-			// console.log("What's in local storage: "+ toread);
+			console.log("What's in local storage: "+ toread);
 			let storedvalues = JSON.parse(toread);
 			data.canto = storedvalues.currentcanto;
 			data.lens.right.translation = storedvalues.currenttransright;
@@ -70,53 +69,13 @@ var localdata =  {
 			data.watch.nightmode = storedvalues.nightmode;
 			data.watch.shownotes = storedvalues.shownotes;
 			data.currenttranslationlist = storedvalues.translationset;
-/*
-			if(data.watch.twinmode) {
-//				dom.addclass("body","twinmode");
-			} else {
-				dom.removeclass("body","twinmode");
-				dom.addclass("#twinmode","off");
-				dom.removeclass("#singlemode","off");
-			}
-			if(data.watch.nightmode) {
-				dom.addclass("body","nightmode");
-				dom.removeclass("#nightmode","off");
-				dom.addclass("#daymode","off");
-			} else {
-				dom.removeclass("body","nightmode");
-				dom.addclass("#nightmode","off");
-				dom.removeclass("#daymode","off");
-			}
-			if(data.watch.shownotes) {
-				dom.removeclass("body","hidenotes");
-				dom.removeclass("#shownotes","off");
-				dom.addclass("#hidenotes","off");
-			} else {
-				dom.addclass("body","hidenotes");
-				dom.addclass("#shownotes","off");
-				dom.removeclass("#hidenotes","off");
-			}
-			*/
-/*
-
-// not going to fire this yet.
-
-			data.watch.setlens = {
-				translation: data.currenttranslationlist[helpers.gettranslationindex(data.lens.right.translation)],
-				canto: data.canto,
-				side: "right",
-				percentage: 0,
-				trigger: !data.watch.setlens.trigger
-			};
-*/
-			// app.setlens(data.currenttranslationlist[helpers.gettranslationindex(data.lens.right.translation)],data.canto,"right",0);
 		} else {
 
 			// if we are here, we have no saved data!
 
 			data.canto = 0;
 			data.lens.right.translation = data.currenttranslationlist[0];
-			data.lens.left.translation = data.currenttranslationlist[0];
+			data.lens.left.translation = helpers.netxtrans(data.currenttranslationlist[0]);
 			data.watch.twinmode = false;
 			data.watch.nightmode = false;
 			data.watch.shownotes = true;
@@ -150,9 +109,6 @@ var localdata =  {
 			if(gototwinmode) {
 				console.log("We have left trans from URL!");
 				data.watch.twinmode = true;
-				dom.addclass("body","twinmode");
-				dom.removeclass("#twinmode","off");
-				dom.addclass("#singlemode","off");
 				data.lens.left.translation = gotolefttrans;
 			}
 			data.watch.setlens = {
@@ -162,7 +118,6 @@ var localdata =  {
 				percentage: 0,
 				trigger: !data.watch.setlens.trigger
 			};
-//			app.setlens(data.currenttranslationlist[helpers.gettranslationindex(gototrans)],gotocanto,"right",0);
 		} else {
 			console.log("No canto/translation found in URL.");
 		}
