@@ -24,7 +24,7 @@ const resize = {
 			data.windowwidth = window.innerWidth;
 			data.windowheight = window.innerHeight;
 
-			if(data.watch.twinmode && data.windowwidth > 768) {
+			if(data.settings.twinmode && data.windowwidth > 768) {
 				twinmode.turnon();
 			} else {
 				twinmode.turnoff();
@@ -47,7 +47,7 @@ const resize = {
 			if(data.system.responsive) {
 				// are these numbers actually synched to what's in the CSS? check!
 
-				let actualwidth = data.watch.twinmode ? (data.windowwidth / 2) : data.windowwidth;
+				let actualwidth = data.settings.twinmode ? (data.windowwidth / 2) : data.windowwidth;
 
 				if(actualwidth < 640) {
 					data.lens.left.lineheight = 20;
@@ -72,12 +72,12 @@ const resize = {
 			}
 
 			if(!keeppage) {
-				data.watch.setlens = {
+				data.settings.lens = {
 					translation: data.lens.right.translation,
 					canto: data.canto,
 					side: "right",
 					percentage: 999, // is this wrong?
-					trigger: !data.watch.setlens.trigger
+					trigger: !data.settings.lens.trigger
 				};
 			}
 		}

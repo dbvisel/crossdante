@@ -15,9 +15,9 @@ var localdata =  {
 			currenttransright: 	data.lens.right.translation,
 			currenttransleft: 	data.lens.left.translation,
 			translationset: 		data.currenttranslationlist,
-			twinmode: 					data.watch.twinmode,
-			nightmode: 					data.watch.nightmode,
-			shownotes: 					data.watch.shownotes
+			twinmode: 					data.settings.twinmode,
+			nightmode: 					data.settings.nightmode,
+			shownotes: 					data.settings.shownotes
 		});
 
 		let storage = window.localStorage;
@@ -27,7 +27,7 @@ var localdata =  {
 
 		if (history.pushState) {
 			let newurl = window.location.origin + window.location.pathname + `?canto=${data.canto}&trans=${data.lens.right.translation}`;
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				newurl += `&lefttrans=${data.lens.left.translation}`;
 			}
 			if (window.location.protocol !== "file:") {
@@ -65,9 +65,9 @@ var localdata =  {
 			data.canto = storedvalues.currentcanto;
 			data.lens.right.translation = storedvalues.currenttransright;
 			data.lens.left.translation = storedvalues.currenttransleft;
-			data.watch.twinmode = storedvalues.twinmode;
-			data.watch.nightmode = storedvalues.nightmode;
-			data.watch.shownotes = storedvalues.shownotes;
+			data.settings.twinmode = storedvalues.twinmode;
+			data.settings.nightmode = storedvalues.nightmode;
+			data.settings.shownotes = storedvalues.shownotes;
 			data.currenttranslationlist = storedvalues.translationset;
 		} else {
 
@@ -76,15 +76,15 @@ var localdata =  {
 			data.canto = 0;
 			data.lens.right.translation = data.currenttranslationlist[0];
 			data.lens.left.translation = helpers.netxtrans(data.currenttranslationlist[0]);
-			data.watch.twinmode = false;
-			data.watch.nightmode = false;
-			data.watch.shownotes = true;
-			data.watch.setlens = {
+			data.settings.twinmode = false;
+			data.settings.nightmode = false;
+			data.settings.shownotes = true;
+			data.settings.lens = {
 				translation: data.currenttranslationlist[0],
 				canto: 0,
 				side: "right",
 				percentage: 0,
-				trigger: !data.watch.setlens.trigger
+				trigger: !data.settings.lens.trigger
 			};
 			// app.setlens(data.currenttranslationlist[0],0,"right",0);
 		}
@@ -108,15 +108,15 @@ var localdata =  {
 			console.log("We have canto & trans from URL!");
 			if(gototwinmode) {
 				console.log("We have left trans from URL!");
-				data.watch.twinmode = true;
+				data.settings.twinmode = true;
 				data.lens.left.translation = gotolefttrans;
 			}
-			data.watch.setlens = {
+			data.settings.lens = {
 				translation: data.currenttranslationlist[helpers.gettranslationindex(gototrans)],
 				canto: gotocanto,
 				side: "right",
 				percentage: 0,
-				trigger: !data.watch.setlens.trigger
+				trigger: !data.settings.lens.trigger
 			};
 		} else {
 			console.log("No canto/translation found in URL.");

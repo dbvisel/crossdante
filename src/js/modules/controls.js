@@ -21,71 +21,71 @@ const controls = {
 		controls.keys();
 	},
 	lefttransplus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: helpers.nexttrans(data.lens.left.translation),
 			canto: data.canto,
 			side: "left",
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	lefttransminus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: helpers.prevtrans(data.lens.left.translation),
 			canto: data.canto,
 			side: "left",
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	leftcantominus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: data.lens.right.translation,
 			canto: parseInt(data.canto) - 1,
 			side: "left",
 			percentage: 0,
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	leftcantoplus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: data.lens.right.translation,
 			canto: parseInt(data.canto) + 1,
 			side: "left",
 			percentage: 0,
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	righttransminus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: helpers.prevtrans(data.lens.right.translation),
 			canto: data.canto,
 			side: "right",
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	righttransplus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: helpers.nexttrans(data.lens.right.translation),
 			canto: data.canto,
 			side: "right",
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	rightcantominus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: data.lens.right.translation,
 			canto: parseInt(data.canto) - 1,
 			side: "right",
 			percentage: 0,
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	rightcantoplus: function() {
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: data.lens.right.translation,
 			canto: parseInt(data.canto) + 1,
 			side: "right",
 			percentage: 0,
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 	},
 	navbar: function() {
@@ -100,14 +100,14 @@ const controls = {
 		document.querySelector("#navbarright .navdown").onclick = controls.rightcantoplus;
 
 		document.querySelector("#navbarleft .navclose").onclick = function() {
-			data.watch.twinmode = false;
+			data.settings.twinmode = false;
 		};
 		data.elements.titlebar.onclick = function() {
-			data.watch.setpage = "lens";
+			data.settings.page = "lens";
 		};
 		document.querySelector("#navbarright .navsettings").onclick = function() {
 			settings.update();
-			data.watch.setpage = "settings";
+			data.settings.page = "settings";
 		};
 
 		document.body.onkeyup = function(e) {	// maybe this is screwing us on mobile?
@@ -117,41 +117,41 @@ const controls = {
 	},
 	settings: function() {
 		document.getElementById("aboutlink").onclick = function() {
-			data.watch.setpage = "about";
+			data.settings.page = "about";
 		};
 		document.getElementById("helplink").onclick = function() {
-			data.watch.setpage = "help";
+			data.settings.page = "help";
 		};
 
 		document.getElementById("daymode").onclick = function() {
-			data.watch.nightmode = false;
+			data.settings.nightmode = false;
 		};
 		document.querySelector("#nightmode").onclick = function() {
-			data.watch.nightmode = true;
+			data.settings.nightmode = true;
 		};
 		if(document.getElementById("singlemode") !== null) {
 			document.getElementById("singlemode").onclick = function() {
-				data.watch.twinmode = false;
+				data.settings.twinmode = false;
 			};
 			document.querySelector("#twinmode").onclick = function() {
-				data.watch.twinmode = true;
+				data.settings.twinmode = true;
 			};
 		}
 
 		// show/hide notes
 
 		document.querySelector("#hidenotes").onclick = function() {
-			data.watch.shownotes = false;
+			data.settings.shownotes = false;
 		};
 		document.querySelector("#shownotes").onclick = function() {
-			data.watch.shownotes = true;
+			data.settings.shownotes = true;
 		};
 
 		document.getElementById("backbutton").onclick = function() {
 			if(data.currentpage == "help" || data.currentpage == "about") {
-				data.watch.setpage = "settings";
+				data.settings.page = "settings";
 			} else {
-				data.watch.setpage = "lens";
+				data.settings.page = "lens";
 			}
 		};
 
@@ -274,22 +274,22 @@ const controls = {
 
 			if((e.keyCode || e.which) === 36) {	// home: right now this goes to the first canto
 				dom.addclass("#navup","on");
-				data.watch.setlens = {
+				data.settings.lens = {
 					translation: data.lens.right.translation,
 					canto: 0,
 					side: "right",
 					percentage: 0,
-					trigger: !data.watch.setlens.trigger
+					trigger: !data.settings.lens.trigger
 				};
 			}
 			if((e.keyCode || e.which) === 35) {	// end: right now this goes to the last canto
 				dom.addclass("#navdown","on");
-				data.watch.setlens = {
+				data.settings.lens = {
 					translation: data.lens.right.translation,
 					canto: data.cantocount - 1,
 					side: "right",
 					percentage: 0,
-					trigger: !data.watch.setlens.trigger
+					trigger: !data.settings.lens.trigger
 				};
 			}
 		};

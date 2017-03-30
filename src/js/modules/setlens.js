@@ -10,6 +10,7 @@ const helpers = require("./helpers");  // .gettranslationindex
 const dom = require("./dom");
 const fixpadding = require("./fixpadding");
 const notes = require("./notes");
+const dictionary = require("./dictionary");
 
 let data = require("./appdata");
 
@@ -26,7 +27,7 @@ const setlens = {
 		if(data.currentpage !== "lens") {
 			// If page isn't already set to "lens", run setpage so that it is.
 			console.log("Running setpage from setlens!");
-			data.watch.setpage = "lens";
+			data.settings.page = "lens";
 		}
 
 		let changetrans, changecanto = false;
@@ -59,7 +60,7 @@ const setlens = {
 		let othertranslationindex = 0;
 		let newtranslationindex = helpers.gettranslationindex(newtrans);
 		let oldtranslationindex = helpers.gettranslationindex(thisside.translation);
-		if(data.watch.twinmode) {
+		if(data.settings.twinmode) {
 			othertranslationindex = helpers.gettranslationindex(otherside.translation);
 			if(othertranslationindex === undefined) {
 				console.log("Otherside translation is undefined!");
@@ -87,7 +88,7 @@ const setlens = {
 
 				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 				thisside.slider.appendChild(insert);
-				direction = data.watch.twinmode ? "-50%" :  "-100%";
+				direction = data.settings.twinmode ? "-50%" :  "-100%";
 
 			} else {
 
@@ -95,7 +96,7 @@ const setlens = {
 
 				let insert = dom.create(`<div id="${newtrans}-${side}" class="textframe ${ data.translationdata[newtranslationindex].translationclass }" style="left:-100%;"><div class="textinsideframe">${ data.textdata[newtranslationindex].text[newcanto] }</div></div>`);
 				thisside.slider.insertBefore(insert, thisside.slider.childNodes[0]);
-				direction = data.watch.twinmode ? "50%" : "100%";
+				direction = data.settings.twinmode ? "50%" : "100%";
 			}
 
 			otherside.slider.style.zIndex = 500;
@@ -119,7 +120,7 @@ const setlens = {
 
 			let scrollto = setlens.rounded(percentage * document.querySelector(`.textframe#${newtrans}-${side}`).scrollHeight);
 			document.querySelector(`.textframe#${newtrans}-${side}`).scrollTop = scrollto;
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				if(document.querySelector(`.textframe#${newtrans}-${other}`)) {
 					scrollto = setlens.rounded(percentage * document.querySelector(`.textframe#${newtrans}-${other}`).scrollHeight);
 					document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = scrollto;
@@ -128,7 +129,7 @@ const setlens = {
 				}
 			}
 			console.log("Scrolling to:" + scrollto);
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				setlens.turnonsynchscrolling();
 			}
 		}
@@ -137,7 +138,7 @@ const setlens = {
 
 			// we are either changing canto OR this is the first run
 
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 
 				document.querySelector(`#slider${other} .textinsideframe`).innerHTML = data.textdata[othertranslationindex].text[newcanto];
 				dom.removeclass(`#slider${other} .textframe`,data.translationdata[othertranslationindex].translationclass);
@@ -154,7 +155,7 @@ const setlens = {
 
 			if(percentage > 0 && percentage !== 999) {
 				document.querySelector(`.textframe#${newtrans}-${side}`).scrollTop = document.querySelector(`.textframe#${newtrans}-${side}`).scrollHeight;
-				if(data.watch.twinmode) {
+				if(data.settings.twinmode) {
 					document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = document.querySelector(`.textframe#${newtrans}-${other}`).scrollHeight;
 				}
 			} else {
@@ -166,7 +167,7 @@ const setlens = {
 
 					document.getElementById(`newtext${side}`).id = `${newtrans}-${side}`;
 				}
-				if(data.watch.twinmode) {
+				if(data.settings.twinmode) {
 					if(document.querySelector(`.textframe#${newtrans}-${other}`)) {
 						document.querySelector(`.textframe#${newtrans}-${other}`).scrollTop = 0;
 					}
@@ -176,12 +177,12 @@ const setlens = {
 
 		if(data.system.responsive) {
 			fixpadding.responsive(thisside);
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				fixpadding.responsive(otherside);
 			}
 		} else {
 			fixpadding.regular(thisside);
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				fixpadding.regular(otherside);
 			}
 		}
@@ -193,12 +194,12 @@ const setlens = {
 			// no title for canto 0, everything else gets a title
 
 			thisside.titlebar.innerHTML = `${data.translationdata[newtranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				otherside.titlebar.innerHTML = `${data.translationdata[othertranslationindex].translationshortname} · <strong>Canto ${data.canto}</strong>`;
 			}
 		} else {
 			thisside.titlebar.innerHTML = "&nbsp;";
-			if(data.watch.twinmode) {
+			if(data.settings.twinmode) {
 				otherside.titlebar.innerHTML = "&nbsp;";
 			}
 		}
@@ -209,13 +210,23 @@ const setlens = {
 
 		// turn on synch scrolling
 
-		if(data.watch.twinmode) {
+		if(data.settings.twinmode) {
 			setlens.turnonsynchscrolling();
 		}
 
+		// check for dictionary
+
+		if(data.settings.dictionary) {
+			// check if this translation has dictionary data. if so, enable halo
+			if(!data.settings.dictionary) {
+				dictionary.setup(thisside);
+			}
+		}
+
+
 		// record changes
 
-		data.watch.localsave = !data.watch.localsave;
+		data.settings.localsave = !data.settings.localsave;
 
 	},
 	rounded: function(pixels: number) {

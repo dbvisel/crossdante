@@ -10,6 +10,7 @@ const dom = require("./dom");
 const localdata = require("./localdata");
 const resize = require("./resize");
 const twinmode = require("./twinmode");
+const dictionary = require("./dictionary");
 
 let data = require("./appdata");
 
@@ -27,22 +28,22 @@ const watchers = {
 
 		// attach watchers
 
-		watch(data.watch, "setpage", function(){
-			setpage(data.watch.setpage);
+		watch(data.settings, "page", function(){
+			setpage(data.settings.page);
 		});
 
-		watch(data.watch, "setlens", function(){
-			setlens.go(data.watch.setlens.translation, data.watch.setlens.canto, data.watch.setlens.side, data.watch.setlens.percentage);
+		watch(data.settings, "lens", function(){
+			setlens.go(data.settings.lens.translation, data.settings.lens.canto, data.settings.lens.side, data.settings.lens.percentage);
 		});
 
-		watch(data.watch, "localsave", function() {
-			// this is called by inverting the value of data.watch.localsave
+		watch(data.settings, "localsave", function() {
+			// this is called by inverting the value of data.settings.localsave
 			localdata.save();
 		});
 
-		watch(data.watch, "nightmode", function() {
-			console.log(`Night mode: ${data.watch.nightmode}`);
-			if(data.watch.nightmode) {
+		watch(data.settings, "nightmode", function() {
+			console.log(`Night mode: ${data.settings.nightmode}`);
+			if(data.settings.nightmode) {
 				dom.addclass("body","nightmode");
 				dom.removeclass("#nightmode","off");
 				dom.addclass("#daymode","off");
@@ -51,12 +52,12 @@ const watchers = {
 				dom.addclass("#nightmode","off");
 				dom.removeclass("#daymode","off");
 			}
-			data.watch.localsave = !data.watch.localsave;
+			data.settings.localsave = !data.settings.localsave;
 		});
 
-		watch(data.watch, "twinmode", function() {
-			console.log(`Twin mode: ${data.watch.twinmode}`);
-			if(data.watch.twinmode) {
+		watch(data.settings, "twinmode", function() {
+			console.log(`Twin mode: ${data.settings.twinmode}`);
+			if(data.settings.twinmode) {
 				twinmode.turnon();
 				dom.addclass("body","twinmode");
 				dom.removeclass("#twinmode","off");
@@ -67,12 +68,12 @@ const watchers = {
 				dom.removeclass("#singlemode","off");
 			}
 			resize.check();
-			data.watch.localsave = !data.watch.localsave;
+			data.settings.localsave = !data.settings.localsave;
 		});
 
-		watch(data.watch, "shownotes", function() {
-			console.log(`Show notes: ${data.watch.shownotes}`);
-			if(data.watch.shownotes) {
+		watch(data.settings, "shownotes", function() {
+			console.log(`Show notes: ${data.settings.shownotes}`);
+			if(data.settings.shownotes) {
 				dom.removeclass("body","hidenotes");
 				dom.removeclass("#shownotes","off");
 				dom.addclass("#hidenotes","off");
@@ -81,15 +82,25 @@ const watchers = {
 				dom.addclass("#shownotes","off");
 				dom.removeclass("#hidenotes","off");
 			}
-			data.watch.localsave = !data.watch.localsave;
+			data.settings.localsave = !data.settings.localsave;
+		});
+
+		watch(data.settings, "dictionary", function() {
+			if(data.settings.dictionary) {
+				// dictionary support is turned on, set up dictionary
+				dictionary.initialize();
+			} else {
+				// dictionary support is turned off.
+			}
 		});
 
 		watchers.call();
 	},
 	call: function() {
-		callWatchers(data.watch, "nightmode");
-		callWatchers(data.watch, "shownotes");
-		callWatchers(data.watch, "twinmode");
+		callWatchers(data.settings, "nightmode");
+		callWatchers(data.settings, "shownotes");
+		callWatchers(data.settings, "twinmode");
+		callWatchers(data.settings, "dictionary");
 	}
 };
 

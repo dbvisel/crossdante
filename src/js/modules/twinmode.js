@@ -30,12 +30,12 @@ const twinmode = {
 
 		data.lens.left.slider.style.width = "50%";
 		data.lens.right.slider.style.width = "50%";
-		data.watch.setlens = {
+		data.settings.lens = {
 			translation: data.lens.left.translation,
 			canto: data.canto,
 			side: "left",
 			percentage: 999, // is this wrong?
-			trigger: !data.watch.setlens.trigger
+			trigger: !data.settings.lens.trigger
 		};
 		data.lens.left.titlebar.style.width = `${titlewidth}px`;
 		data.lens.left.titlebar.setAttribute("style",`width:${titlewidth}px`);

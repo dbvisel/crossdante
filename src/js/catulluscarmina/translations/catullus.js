@@ -12,6 +12,7 @@ module.exports = {
 	translationshortname:"Catullus",
 	translationfullname:"Caius Valerius Catullus",
 	translationclass:"poetry",
+	language: "la",
 	text:[`<p class="title">The Carmina</p>
 	<p class="author">Caius Valerius Catullus</p>`,
 		`<p class="cantohead">I.</p>

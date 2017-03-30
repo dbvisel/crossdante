@@ -14,6 +14,7 @@ module.exports = {
 	translationshortname:"Burton/Smithers verse",
 	translationfullname:"Richard Burton & Leonard C. Smithers verse",
 	translationclass:"poetry",
+	language: "en",
 	text:[`<p class="title">The Carmina</p>
 	<p class="author">Richard Burton &amp; Leonard C. Smithers</p>
 	<p class="subtitle">(verse translation)</p>`,

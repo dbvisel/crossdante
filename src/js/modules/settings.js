@@ -38,7 +38,7 @@ const settings = {
 					}
 				}
 			}
-			data.watch.localsave = !data.watch.localsave;
+			data.settings.localsave = !data.settings.localsave;
 			// app.localdata.save();
 		}
 
@@ -111,12 +111,12 @@ const settings = {
 			let thiscanto = selected.options[selected.selectedIndex].id.substr(5);
 			for(let j = 0; j < data.translationdata.length; j++) {
 				if(data.currenttranslationlist[j] == thistrans) {
-					data.watch.setlens = {
+					data.settings.lens = {
 						translation: data.currenttranslationlist[j],thiscanto,
 						canto: thiscanto,
 						side: "right",
 						percentage: 0,
-						trigger: !data.watch.setlens.trigger
+						trigger: !data.settings.lens.trigger
 					};
 				}
 			}

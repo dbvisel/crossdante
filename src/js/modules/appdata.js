@@ -122,9 +122,9 @@ let appdata: {
 	textdata: [],
 	translationdata: [],
 	cantotitles: [],			// the canonical titles for cantos, used in navbar and in selection
-	watch: {
-		setpage: "",				// this is a string (id of page)
-		setlens: {
+	settings: {
+		page: "",				// this is a string (id of page)
+		lens: {
 			trigger: false,		// when this changes, the thing is called
 			canto: 0,					// what's fed to app.setlens
 			translation: "",
@@ -134,7 +134,8 @@ let appdata: {
 		twinmode: false,		// whether or not twin mode is turned on
 		nightmode: false,		// whether or not night mode is turned on
 		shownotes: true,		// whether or not notes are shown
-		localsave: false		// when this is flipped, localsave happens
+		localsave: false,		// when this is flipped, localsave happens
+		dictionary: true
 	},
 	setup: function() {
 		appdata.elements.lens = document.getElementById("lens");

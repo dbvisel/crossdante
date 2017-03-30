@@ -27,6 +27,7 @@ for(let i in appdata.textdata) {
 			appdata.translationdata[j].translationfullname = appdata.textdata[i].translationfullname;
 			appdata.translationdata[j].translationclass = appdata.textdata[i].translationclass;
 			appdata.translationdata[j].source = appdata.textdata[i].source;
+			appdata.translationdata[j].language = appdata.textdata[i].language;
 		}
 	}
 }

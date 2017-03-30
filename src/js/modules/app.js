@@ -116,7 +116,7 @@ var app = {
 		dom.addclass("body",data.bookname);
 		dom.addclass("body",data.system.oncordova ? "cordova" : "web");
 		dom.removebyselector("#loadingscrim");
-		data.watch.setpage = "lens";
+		data.settings.page = "lens";
 	}
 };
 
