@@ -37,6 +37,9 @@ body.nightmode {
       color: $nightnavtexton;
     }
   }
+	& a.dictionarylink {
+		color: $nightpagetext;
+	}
   & #translationgo {
     & p select {
   		background-color: $nightnavtext;

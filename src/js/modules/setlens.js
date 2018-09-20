@@ -217,8 +217,7 @@ const setlens = {
 		// check for dictionary
 
 		if(data.settings.dictionary) {
-			// check if this translation has dictionary data. if so, enable halo
-			if(!data.settings.dictionary) {
+			if(data.translationdata[newtranslationindex].dictionarysupport != "") {
 				dictionary.setup(thisside);
 			}
 		}

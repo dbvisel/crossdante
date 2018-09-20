@@ -91,6 +91,7 @@ const watchers = {
 				dictionary.initialize();
 			} else {
 				// dictionary support is turned off.
+				// might need to undo whatever dictionary.setup does to the text frame
 			}
 		});
 

@@ -135,7 +135,7 @@ let appdata: {
 		nightmode: false,		// whether or not night mode is turned on
 		shownotes: true,		// whether or not notes are shown
 		localsave: false,		// when this is flipped, localsave happens
-		dictionary: true
+		dictionary: true		// when this is true, we use dictionary module
 	},
 	setup: function() {
 		appdata.elements.lens = document.getElementById("lens");

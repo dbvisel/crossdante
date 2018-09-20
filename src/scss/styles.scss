@@ -331,6 +331,9 @@ span.italian, span.italian, span.latin, span.greek { // using span so as not to 
 
 @import "poets";
 
+// deal with dictionary
+@import "dictionary";
+
 // deal with the site
 
 @import "site";
